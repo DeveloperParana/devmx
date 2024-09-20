@@ -1,8 +1,13 @@
 import { AccountsFacade, PresentationsFacade } from './facades';
-import { Account, Presentation, PresentationComment } from './schemas';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Env } from '../shared';
+import {
+  Account,
+  Presentation,
+  PresentationComment,
+  PresentationReaction,
+} from './schemas';
 import {
   JwtService,
   CryptoService,
@@ -49,7 +54,6 @@ export function provideAccountsFacade() {
   };
 }
 
-
 export function provideAuthService() {
   return {
     provide: AuthService,
@@ -75,16 +79,19 @@ export function providePresentationsService() {
     provide: PresentationsService,
     useFactory(
       presentationModel: Model<Presentation>,
-      presentationCommentModel: Model<PresentationComment>
+      presentationCommentModel: Model<PresentationComment>,
+      presentationReactionModel: Model<PresentationReaction>
     ) {
       return new PresentationsServiceImpl(
         presentationModel,
-        presentationCommentModel
+        presentationCommentModel,
+        presentationReactionModel
       );
     },
     inject: [
       getModelToken(Presentation.name),
       getModelToken(PresentationComment.name),
+      getModelToken(PresentationReaction.name),
     ],
   };
 }

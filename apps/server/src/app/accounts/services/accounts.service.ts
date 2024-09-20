@@ -1,6 +1,5 @@
-import { PageDto, QueryFilterDto, QueryParamsDto } from '../dtos';
-import { CreateAccountDto } from '../dtos/create-account.dto';
-import { UpdateAccountDto } from '../dtos/update-account.dto';
+import { PageDto, QueryFilterDto, QueryParamsDto } from '../../shared/dtos';
+import { CreateAccountDto, UpdateAccountDto } from '../dtos';
 import { Account } from '../schemas';
 
 export abstract class AccountsService {

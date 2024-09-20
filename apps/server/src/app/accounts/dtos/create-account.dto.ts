@@ -31,7 +31,21 @@ export class CreateAccountDto {
 
   @IsString()
   @IsOptional()
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    type: 'enum',
+    enum: [
+      '',
+      'male',
+      'female',
+      'non-binary',
+      'gender-fluid',
+      'agender',
+      'other',
+      'prefer-not-to-say',
+    ],
+    default: '',
+    example: 'male'
+  })
   gender?: Gender;
 
   photo?: string;

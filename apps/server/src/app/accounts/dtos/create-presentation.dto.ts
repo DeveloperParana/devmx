@@ -15,7 +15,7 @@ export class CreatePresentationDto {
   @ApiProperty({
     type: 'enum',
     enum: ['talk', 'workshop', 'webinar'],
-    default: 'talk',
+    example: 'talk',
   })
   format: PresentationFormat;
 

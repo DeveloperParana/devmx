@@ -24,6 +24,8 @@ import {
   Presentation,
   PresentationComment,
   PresentationCommentSchema,
+  PresentationReaction,
+  PresentationReactionSchema,
   PresentationSchema,
 } from './schemas';
 
@@ -43,6 +45,7 @@ import {
       { name: Account.name, schema: AccountSchema },
       { name: Presentation.name, schema: PresentationSchema },
       { name: PresentationComment.name, schema: PresentationCommentSchema },
+      { name: PresentationReaction.name, schema: PresentationReactionSchema },
     ]),
   ],
   controllers: [AuthController, AccountsController, PresentationsController],

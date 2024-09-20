@@ -1,7 +1,7 @@
 import { BadRequestException, Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
-import { SignInDto, SignUpDto } from '../dtos';
+import { AccessTokenDto, SignInDto, SignUpDto } from '../dtos';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { AuthService } from '../services';
-import { ApiTags } from '@nestjs/swagger';
 import { Allowed } from '../../shared';
 
 @ApiTags('Auth')
@@ -11,6 +11,7 @@ export class AuthController {
 
   @Allowed()
   @Post('sign-in')
+  @ApiOkResponse({ type: AccessTokenDto })
   async signIn(@Body() signInDto: SignInDto) {
     try {
       return await this.authService.signIn(signInDto);
@@ -21,6 +22,7 @@ export class AuthController {
 
   @Allowed()
   @Post('sign-up')
+  @ApiOkResponse({ type: AccessTokenDto })
   async signUp(@Body() signUpDto: SignUpDto) {
     try {
       return await this.authService.signUp(signUpDto);

@@ -1,9 +1,8 @@
+import { PageDto, QueryParamsDto } from '../../shared/dtos';
 import { plainToInstance } from 'class-transformer';
 import { AccountsService } from '../services';
 import {
-  PageDto,
   AccountDto,
-  QueryParamsDto,
   CreateAccountDto,
   UpdateAccountDto,
 } from '../dtos';

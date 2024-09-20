@@ -20,7 +20,21 @@ export class AccountDto {
   @ApiProperty()
   email: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    type: 'enum',
+    enum: [
+      '',
+      'male',
+      'female',
+      'non-binary',
+      'gender-fluid',
+      'agender',
+      'other',
+      'prefer-not-to-say',
+    ],
+    default: '',
+    example: 'male'
+  })
   gender?: Gender;
 
   @ApiPropertyOptional()

@@ -1,7 +1,7 @@
 import { QueryFilterDto } from './query-filter.dto';
 import { ApiProperty } from '@nestjs/swagger';
-import { QueryFilter } from '../../shared';
 import { Type } from 'class-transformer';
+import { QueryFilter } from '../types';
 
 export class QueryParamsDto<T> {
   @ApiProperty({ minimum: 0, default: 0 })

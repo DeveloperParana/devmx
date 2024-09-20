@@ -4,10 +4,10 @@ export class PageDto<T> {
   @ApiProperty()
   data: T[];
 
-  @ApiProperty()
+  @ApiProperty({ minimum: 0, default: 0 })
   items: number;
 
-  @ApiProperty()
+  @ApiProperty({ minimum: 1, default: 1 })
   pages: number;
 
   constructor(data: T[], items: number, pages: number) {

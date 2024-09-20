@@ -1,12 +1,8 @@
+import { QueryParamsDto, QueryFilterDto } from '../../shared/dtos';
+import { CreateAccountDto, UpdateAccountDto } from '../dtos';
 import { AccountsService } from './accounts.service';
 import { Account } from '../schemas';
 import { Model } from 'mongoose';
-import {
-  QueryParamsDto,
-  CreateAccountDto,
-  UpdateAccountDto,
-  QueryFilterDto,
-} from '../dtos';
 
 export class AccountsServiceImpl implements AccountsService {
   constructor(private accountModel: Model<Account>) {}

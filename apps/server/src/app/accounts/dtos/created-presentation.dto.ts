@@ -13,7 +13,11 @@ export class CreatedPresentationDto {
   @ApiProperty()
   description: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    type: 'enum',
+    enum: ['talk', 'workshop', 'webinar'],
+    example: 'talk',
+  })
   format: PresentationFormat;
 
   @ApiProperty()

@@ -1,4 +1,5 @@
-import { QueryFilter, buildQueryFilter } from '../../shared';
+import { buildQueryFilter } from '../utils';
+import { QueryFilter } from '../types';
 
 export class QueryFilterDto<T> {
   constructor(filter: QueryFilter<T> = {}) {

@@ -1,9 +1,9 @@
-import { SignInDto, SignUpDto, AccessTokenDto, QueryFilterDto } from '../dtos';
+import { SignInDto, SignUpDto, AccessTokenDto } from '../dtos';
+import { Env, QueryFilterDto } from '../../shared';
 import { AccountsService } from './accounts.service';
 import { CryptoService } from './crypto.service';
 import { AuthService } from './auth.service';
 import { JwtService } from './jwt.service';
-import { Env } from '../../shared';
 
 export class AuthServiceImpl implements AuthService {
   constructor(

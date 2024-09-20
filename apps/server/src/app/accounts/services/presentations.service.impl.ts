@@ -1,19 +1,25 @@
+import { QueryFilterDto, QueryParamsDto } from '../../shared/dtos';
 import { PresentationsService } from './presentations.service';
-import { Presentation, PresentationComment } from '../schemas';
 import { Model } from 'mongoose';
 import {
-  QueryParamsDto,
+  Presentation,
+  PresentationComment,
+  PresentationReaction,
+} from '../schemas';
+import {
   CreatePresentationDto,
   UpdatePresentationDto,
-  QueryFilterDto,
   CreatePresentationCommentDto,
   UpdatePresentationCommentDto,
+  CreatePresentationReactionDto,
+  UpdatePresentationReactionDto,
 } from '../dtos';
 
 export class PresentationsServiceImpl implements PresentationsService {
   constructor(
     private presentationModel: Model<Presentation>,
-    private presentationCommentModel: Model<PresentationComment>
+    private presentationCommentModel: Model<PresentationComment>,
+    private presentationReactionModel: Model<PresentationReaction>
   ) {}
 
   async create(
@@ -32,6 +38,15 @@ export class PresentationsServiceImpl implements PresentationsService {
       createPresentationCommentDto
     );
     return (await createdPresentationComment.save()).toJSON();
+  }
+
+  async createReaction(
+    createPresentationReactionDto: CreatePresentationReactionDto
+  ): Promise<PresentationReaction> {
+    const createdPresentationReaction = new this.presentationReactionModel(
+      createPresentationReactionDto
+    );
+    return (await createdPresentationReaction.save()).toJSON();
   }
 
   async find({ page = 0, size = 10, filter }: QueryParamsDto<Presentation>) {
@@ -72,6 +87,16 @@ export class PresentationsServiceImpl implements PresentationsService {
     return { data, items, pages };
   }
 
+  async findReactions(filter: QueryFilterDto<PresentationReaction>) {
+    const where = { ...filter };
+    const reactions = await this.presentationReactionModel
+      .find(where)
+      .populate('account')
+      .exec();
+
+    return reactions.map((item) => item.toJSON());
+  }
+
   async findOne(id: string) {
     const presentation = await this.presentationModel
       .findById(id)
@@ -98,6 +123,19 @@ export class PresentationsServiceImpl implements PresentationsService {
     return comment.toJSON();
   }
 
+  async findOneReaction(id: string) {
+    const reaction = await this.presentationReactionModel
+      .findById(id)
+      .populate('account')
+      .exec();
+
+    if (!reaction) {
+      throw `Reação não encontrada`;
+    }
+
+    return reaction.toJSON();
+  }
+
   async findOneBy(filter: QueryFilterDto<Presentation>) {
     const presentation = await this.presentationModel
       .findOne(filter)
@@ -122,6 +160,19 @@ export class PresentationsServiceImpl implements PresentationsService {
     }
 
     return comment.toJSON();
+  }
+
+  async findOneReactionBy(filter: QueryFilterDto<PresentationReaction>) {
+    const reaction = await this.presentationReactionModel
+      .findOne(filter)
+      .populate('account')
+      .exec();
+
+    if (!reaction) {
+      throw `Reação não encontrada`;
+    }
+
+    return reaction.toJSON();
   }
 
   async update(id: string, updatePresentationDto: UpdatePresentationDto) {
@@ -151,6 +202,21 @@ export class PresentationsServiceImpl implements PresentationsService {
     return comment.toJSON();
   }
 
+  async updateReaction(
+    id: string,
+    updatePresentationReactionDto: UpdatePresentationReactionDto
+  ) {
+    const reaction = await this.presentationReactionModel
+      .findOneAndUpdate({ id }, updatePresentationReactionDto)
+      .exec();
+
+    if (!reaction) {
+      throw `Erro ao alterar reação`;
+    }
+
+    return reaction.toJSON();
+  }
+
   async remove(id: string) {
     const presentation = await this.presentationModel
       .findOneAndDelete({ id })
@@ -173,5 +239,17 @@ export class PresentationsServiceImpl implements PresentationsService {
     }
 
     return comment.toJSON();
+  }
+
+  async removeReaction(id: string) {
+    const reaction = await this.presentationReactionModel
+      .findOneAndDelete({ id })
+      .exec();
+
+    if (!reaction) {
+      throw `Erro ao remover reação`;
+    }
+
+    return reaction.toJSON();
   }
 }

@@ -1,4 +1,5 @@
 export * from './decorators';
+export * from './dtos';
 export * from './models';
 export * from './mongoose';
 export * from './types';

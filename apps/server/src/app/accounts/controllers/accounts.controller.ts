@@ -1,7 +1,7 @@
-import { CreateAccountDto, UpdateAccountDto } from '../dtos';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AccountDto, CreateAccountDto, UpdateAccountDto } from '../dtos';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { QueryParamsDto } from '../../shared/dtos';
 import { AccountsFacade } from '../facades';
-import { QueryParamsDto } from '../dtos';
 import { Account } from '../schemas';
 import {
   Get,
@@ -15,6 +15,7 @@ import {
   NotFoundException,
   BadRequestException,
 } from '@nestjs/common';
+import { ApiPage } from '../../shared';
 
 @ApiBearerAuth()
 @ApiTags('Accounts')
@@ -32,6 +33,7 @@ export class AccountsController {
   }
 
   @Get()
+  @ApiPage(AccountDto)
   async findAll(@Query() params: QueryParamsDto<Account>) {
     try {
       return await this.accountsFacade.find(params);
@@ -41,6 +43,7 @@ export class AccountsController {
   }
 
   @Get(':id')
+  @ApiOkResponse({ type: AccountDto })
   async findOne(@Param('id') id: string) {
     try {
       return await this.accountsFacade.findOne(id);
@@ -50,6 +53,7 @@ export class AccountsController {
   }
 
   @Patch(':id')
+  @ApiOkResponse({ type: AccountDto })
   async update(
     @Param('id') id: string,
     @Body() updateAccountDto: UpdateAccountDto
@@ -62,6 +66,7 @@ export class AccountsController {
   }
 
   @Delete(':id')
+  @ApiOkResponse({ type: AccountDto })
   async remove(@Param('id') id: string) {
     try {
       return await this.accountsFacade.remove(id);
