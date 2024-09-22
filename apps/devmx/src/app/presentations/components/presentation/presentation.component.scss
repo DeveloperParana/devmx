@@ -1,0 +1,33 @@
+:host {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+
+    footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    kbd {
+      background-color: #f3f3f3;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      box-shadow: 0 1px 0 #ccc;
+      color: #666;
+      display: inline-block;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0.2em;
+      font-weight: 600;
+      padding: 0.1em 0.4em;
+      text-shadow: 0 1px 0 #fff;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none; /* Evita que o texto seja selecionado */
+    }
+  }
+}

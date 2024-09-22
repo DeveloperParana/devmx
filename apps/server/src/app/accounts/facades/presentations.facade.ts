@@ -24,28 +24,18 @@ import {
 export class PresentationsFacade {
   constructor(private readonly presentationsService: PresentationsService) {}
 
-  async create(createPresentationDto: CreatePresentationDto) {
-    const presentation = await this.presentationsService.create(
-      createPresentationDto
-    );
+  async create(data: CreatePresentationDto) {
+    const presentation = await this.presentationsService.create(data);
     return plainToInstance(CreatedPresentationDto, presentation);
   }
 
-  async createComment(
-    createPresentationCommentDto: CreatePresentationCommentDto
-  ) {
-    const comment = await this.presentationsService.createComment(
-      createPresentationCommentDto
-    );
+  async createComment(data: CreatePresentationCommentDto) {
+    const comment = await this.presentationsService.createComment(data);
     return plainToInstance(CreatedPresentationCommentDto, comment);
   }
 
-  async createReaction(
-    createPresentationReactionDto: CreatePresentationReactionDto
-  ) {
-    const comment = await this.presentationsService.createReaction(
-      createPresentationReactionDto
-    );
+  async createReaction(data: CreatePresentationReactionDto) {
+    const comment = await this.presentationsService.createReaction(data);
     return plainToInstance(CreatedPresentationReactionDto, comment);
   }
 
@@ -92,33 +82,18 @@ export class PresentationsFacade {
     return plainToInstance(PresentationReactionDto, reaction);
   }
 
-  async update(id: string, updatePresentationDto: UpdatePresentationDto) {
-    const presentation = await this.presentationsService.update(
-      id,
-      updatePresentationDto
-    );
+  async update(id: string, data: UpdatePresentationDto) {
+    const presentation = await this.presentationsService.update(id, data);
     return plainToInstance(PresentationDto, presentation);
   }
 
-  async updateComment(
-    id: string,
-    updatePresentationCommentDto: UpdatePresentationCommentDto
-  ) {
-    const comment = await this.presentationsService.updateComment(
-      id,
-      updatePresentationCommentDto
-    );
+  async updateComment(id: string, data: UpdatePresentationCommentDto) {
+    const comment = await this.presentationsService.updateComment(id, data);
     return plainToInstance(PresentationCommentDto, comment);
   }
 
-  async updateReaction(
-    id: string,
-    updatePresentationReactionDto: UpdatePresentationReactionDto
-  ) {
-    const reaction = await this.presentationsService.updateReaction(
-      id,
-      updatePresentationReactionDto
-    );
+  async updateReaction(id: string, data: UpdatePresentationReactionDto) {
+    const reaction = await this.presentationsService.updateReaction(id, data);
     return plainToInstance(PresentationReactionDto, reaction);
   }
 

@@ -1,8 +1,9 @@
 import { JwtModule, JwtService } from '@nestjs/jwt';
+import { AuthGuard, JwtAuthGuard } from './guards';
+import { PassportModule } from '@nestjs/passport';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
-import { AuthGuard } from './guards';
 import { Env } from '../shared';
 import {
   AuthController,
@@ -15,6 +16,7 @@ import {
   provideAuthService,
   provideCryptoService,
   provideJwtService,
+  provideJwtStrategy,
   providePresentationsFacade,
   providePresentationsService,
 } from './accounts.providers';
@@ -31,6 +33,7 @@ import {
 
 @Module({
   imports: [
+    PassportModule,
     JwtModule.registerAsync({
       useFactory(env: Env) {
         return {
@@ -52,6 +55,7 @@ import {
   providers: [
     provideCryptoService(),
     provideJwtService(JwtService),
+    provideJwtStrategy(),
     provideAuthService(),
     provideAccountsService(),
     providePresentationsService(),
@@ -60,6 +64,10 @@ import {
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
     },
   ],
 })

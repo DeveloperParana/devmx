@@ -34,9 +34,9 @@ export class AuthServiceImpl implements AuthService {
     return new AccessTokenDto(accessToken);
   }
 
-  async signUp(signUpDto: SignUpDto) {
-    const password = this.cryptoService.hash(signUpDto.password);
-    await this.accountsService.create({ ...signUpDto, password, active: true });
-    return this.signIn(signUpDto);
+  async signUp(data: SignUpDto) {
+    const password = this.cryptoService.hash(data.password);
+    await this.accountsService.create({ ...data, password, active: true });
+    return this.signIn(data);
   }
 }

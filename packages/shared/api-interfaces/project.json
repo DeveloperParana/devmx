@@ -1,0 +1,19 @@
+{
+  "name": "shared-api-interfaces",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shared/api-interfaces/src",
+  "projectType": "library",
+  "tags": ["type:api"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/shared/api-interfaces",
+        "main": "packages/shared/api-interfaces/src/index.ts",
+        "tsConfig": "packages/shared/api-interfaces/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

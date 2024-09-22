@@ -1,6 +1,6 @@
-import { AccessTokenPayload } from './access-token-payload.interface';
+import { AuthUser } from '@devmx/shared-api-interfaces';
 import { Request } from 'express';
 
 export interface AuthRequest extends Request {
-  user: AccessTokenPayload;
+  user: AuthUser;
 }

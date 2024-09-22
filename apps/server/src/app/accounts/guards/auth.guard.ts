@@ -1,5 +1,6 @@
-import { AccessTokenPayload, AuthRequest } from '../interfaces';
+import { AuthUser } from '@devmx/shared-api-interfaces';
 import { Env, IS_ALLOWED_KEY } from '../../shared';
+import { AuthRequest } from '../interfaces';
 import { JwtService } from '../services';
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
@@ -42,7 +43,7 @@ export class AuthGuard implements CanActivate {
 
   private verify(token: string) {
     const options = { secret: this.env.jwt.secret };
-    return this.jwtService.verifyAsync<AccessTokenPayload>(token, options);
+    return this.jwtService.verifyAsync<AuthUser>(token, options);
   }
 
   private isAllowed(context: ExecutionContext) {

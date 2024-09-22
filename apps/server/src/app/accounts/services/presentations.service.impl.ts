@@ -22,34 +22,30 @@ export class PresentationsServiceImpl implements PresentationsService {
     private presentationReactionModel: Model<PresentationReaction>
   ) {}
 
-  async create(
-    createPresentationDto: CreatePresentationDto
-  ): Promise<Presentation> {
-    const createdPresentation = new this.presentationModel(
-      createPresentationDto
-    );
+  async create(data: CreatePresentationDto): Promise<Presentation> {
+    const createdPresentation = new this.presentationModel(data);
     return (await createdPresentation.save()).toJSON();
   }
 
   async createComment(
-    createPresentationCommentDto: CreatePresentationCommentDto
+    data: CreatePresentationCommentDto
   ): Promise<PresentationComment> {
-    const createdPresentationComment = new this.presentationCommentModel(
-      createPresentationCommentDto
-    );
+    const createdPresentationComment = new this.presentationCommentModel(data);
     return (await createdPresentationComment.save()).toJSON();
   }
 
   async createReaction(
-    createPresentationReactionDto: CreatePresentationReactionDto
+    data: CreatePresentationReactionDto
   ): Promise<PresentationReaction> {
     const createdPresentationReaction = new this.presentationReactionModel(
-      createPresentationReactionDto
+      data
     );
     return (await createdPresentationReaction.save()).toJSON();
   }
 
-  async find({ page = 0, size = 10, filter }: QueryParamsDto<Presentation>) {
+  async find(params: QueryParamsDto<Presentation>) {
+    const { page = 0, size = 10, filter } = params;
+
     const skip = page * size;
     const where = { ...filter };
     const presentations = await this.presentationModel
@@ -66,11 +62,9 @@ export class PresentationsServiceImpl implements PresentationsService {
     return { data, items, pages };
   }
 
-  async findComments({
-    page = 0,
-    size = 10,
-    filter,
-  }: QueryParamsDto<PresentationComment>) {
+  async findComments(params: QueryParamsDto<PresentationComment>) {
+    const { page = 0, size = 10, filter } = params;
+
     const skip = page * size;
     const where = { ...filter };
     const comments = await this.presentationCommentModel
@@ -175,9 +169,9 @@ export class PresentationsServiceImpl implements PresentationsService {
     return reaction.toJSON();
   }
 
-  async update(id: string, updatePresentationDto: UpdatePresentationDto) {
+  async update(id: string, data: UpdatePresentationDto) {
     const presentation = await this.presentationModel
-      .findOneAndUpdate({ id }, updatePresentationDto)
+      .findOneAndUpdate({ _id: id }, data)
       .exec();
 
     if (!presentation) {
@@ -187,12 +181,9 @@ export class PresentationsServiceImpl implements PresentationsService {
     return presentation.toJSON();
   }
 
-  async updateComment(
-    id: string,
-    updatePresentationCommentDto: UpdatePresentationCommentDto
-  ) {
+  async updateComment(id: string, data: UpdatePresentationCommentDto) {
     const comment = await this.presentationCommentModel
-      .findOneAndUpdate({ id }, updatePresentationCommentDto)
+      .findOneAndUpdate({ _id: id }, data)
       .exec();
 
     if (!comment) {
@@ -202,12 +193,9 @@ export class PresentationsServiceImpl implements PresentationsService {
     return comment.toJSON();
   }
 
-  async updateReaction(
-    id: string,
-    updatePresentationReactionDto: UpdatePresentationReactionDto
-  ) {
+  async updateReaction(id: string, data: UpdatePresentationReactionDto) {
     const reaction = await this.presentationReactionModel
-      .findOneAndUpdate({ id }, updatePresentationReactionDto)
+      .findOneAndUpdate({ _id: id }, data)
       .exec();
 
     if (!reaction) {
@@ -219,7 +207,7 @@ export class PresentationsServiceImpl implements PresentationsService {
 
   async remove(id: string) {
     const presentation = await this.presentationModel
-      .findOneAndDelete({ id })
+      .findOneAndDelete({ _id: id })
       .exec();
 
     if (!presentation) {
@@ -231,7 +219,7 @@ export class PresentationsServiceImpl implements PresentationsService {
 
   async removeComment(id: string) {
     const comment = await this.presentationCommentModel
-      .findOneAndDelete({ id })
+      .findOneAndDelete({ _id: id })
       .exec();
 
     if (!comment) {
@@ -243,7 +231,7 @@ export class PresentationsServiceImpl implements PresentationsService {
 
   async removeReaction(id: string) {
     const reaction = await this.presentationReactionModel
-      .findOneAndDelete({ id })
+      .findOneAndDelete({ _id: id })
       .exec();
 
     if (!reaction) {

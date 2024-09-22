@@ -1,0 +1,78 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <section formGroupName="name">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        formControlName="first"
+        autocomplete="given-name"
+        autofocus
+      />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sobrenome</mat-label>
+      <input matInput formControlName="last" autocomplete="family-name" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-form-field>
+      <mat-label>Gênero</mat-label>
+      @if (form.gender?.value !== '') {
+      <mat-select formControlName="gender">
+        @for (gender of form.genders; track gender) {
+        <mat-option [value]="gender.value">{{ gender.viewValue }}</mat-option>
+        }
+      </mat-select>
+      } @else {
+      <input matInput formControlName="gender" autofocus />
+      }
+      <mat-hint>Opcional</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nascimento</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="birthday"
+        autocomplete="bday"
+        tabindex="-1"
+        readonly
+      />
+      <mat-hint>Opcional</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </section>
+
+  <mat-form-field>
+    <mat-label>E-mail</mat-label>
+    <input type="email" matInput formControlName="email" autocomplete="email" />
+    <mat-error>Endereço inválido</mat-error>
+  </mat-form-field>
+
+  <section>
+    <mat-form-field>
+      <mat-label>Usuário</mat-label>
+      <input matInput formControlName="username" autocomplete="username" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="password" autocomplete="new-password" />
+      <mat-error>Mínimo 6 caracteres</mat-error>
+    </mat-form-field>
+  </section>
+
+  <footer>
+    <button mat-flat-button>Enviar</button>
+  </footer>
+</form>

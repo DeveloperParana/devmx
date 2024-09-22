@@ -1,13 +1,27 @@
-import { BadRequestException, Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { AuthUser } from '@devmx/shared-api-interfaces';
 import { AccessTokenDto, SignInDto, SignUpDto } from '../dtos';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Allowed, User } from '../../shared';
 import { AuthService } from '../services';
-import { Allowed } from '../../shared';
+import {
+  Get,
+  Body,
+  Post,
+  Controller,
+  BadRequestException,
+  UnauthorizedException,
+} from '@nestjs/common';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+
+  @Get()
+  @ApiBearerAuth()
+  user(@User() user: AuthUser) {
+    return user;
+  }
 
   @Allowed()
   @Post('sign-in')

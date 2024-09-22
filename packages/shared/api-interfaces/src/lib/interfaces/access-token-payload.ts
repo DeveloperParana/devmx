@@ -1,4 +1,4 @@
-import { Name } from '../../shared/types/name';
+import { Name } from './name';
 
 export interface AccessTokenPayload {
   sub: string;
@@ -6,4 +6,5 @@ export interface AccessTokenPayload {
   email: string;
   username: string;
   photo: string;
+  iat: number
 }

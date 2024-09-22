@@ -7,12 +7,14 @@ import { Model } from 'mongoose';
 export class AccountsServiceImpl implements AccountsService {
   constructor(private accountModel: Model<Account>) {}
 
-  async create(createAccountDto: CreateAccountDto): Promise<Account> {
-    const createdAccount = new this.accountModel(createAccountDto);
+  async create(data: CreateAccountDto): Promise<Account> {
+    const createdAccount = new this.accountModel(data);
     return createdAccount.save();
   }
 
-  async find({ page = 0, size = 10, filter }: QueryParamsDto<Account>) {
+  async find(params: QueryParamsDto<Account>) {
+    const { page = 0, size = 10, filter } = params;
+
     const skip = page * size;
     const where = { ...filter };
     const accounts = await this.accountModel
@@ -36,11 +38,11 @@ export class AccountsServiceImpl implements AccountsService {
     return this.accountModel.findOne(filter).exec();
   }
 
-  async update(id: string, updateAccountDto: UpdateAccountDto) {
-    return this.accountModel.findOneAndUpdate({ id }, updateAccountDto).exec();
+  async update(id: string, data: UpdateAccountDto) {
+    return this.accountModel.findOneAndUpdate({ _id: id }, data).exec();
   }
 
   async remove(id: string) {
-    return this.accountModel.findOneAndDelete({ id }).exec();
+    return this.accountModel.findOneAndDelete({ _id: id }).exec();
   }
 }

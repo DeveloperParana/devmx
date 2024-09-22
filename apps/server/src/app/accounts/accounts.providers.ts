@@ -19,6 +19,7 @@ import {
   PresentationsService,
   PresentationsServiceImpl,
 } from './services';
+import { JwtStrategy } from './strategies';
 
 export function provideCryptoService() {
   return {
@@ -31,6 +32,16 @@ export function provideJwtService<T>(JwtServiceImpl: T) {
   return {
     provide: JwtService,
     useClass: JwtServiceImpl,
+  };
+}
+
+export function provideJwtStrategy() {
+  return {
+    provide: JwtStrategy,
+    useFactory(env: Env) {
+      return new JwtStrategy(env);
+    },
+    inject: [Env],
   };
 }
 

@@ -43,7 +43,7 @@ export class PresentationsController {
   @Post()
   @ApiOkResponse({ type: CreatedPresentationDto })
   async create(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Body() createPresentationDto: CreatePresentationDto
   ) {
     try {
@@ -59,7 +59,7 @@ export class PresentationsController {
   @Post(':id/comments')
   @ApiOkResponse({ type: CreatedPresentationCommentDto })
   async createComment(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentation: string,
     @Body() createPresentationCommentDto: CreatePresentationCommentDto
   ) {
@@ -77,7 +77,7 @@ export class PresentationsController {
   @Post(':id/reactions')
   @ApiOkResponse({ type: CreatedPresentationReactionDto })
   async createReaction(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentation: string,
     @Body() createPresentationReactionDto: CreatePresentationReactionDto
   ) {
@@ -104,7 +104,7 @@ export class PresentationsController {
 
   @Get(':id')
   @ApiOkResponse({ type: PresentationDto })
-  async findOne(@User('sub') account: string, @Param('id') id: string) {
+  async findOne(@User('id') account: string, @Param('id') id: string) {
     console.log(account, id);
 
     try {
@@ -123,7 +123,7 @@ export class PresentationsController {
   @Get(':id/comments')
   @ApiPage(PresentationCommentDto)
   async findPresentationComments(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentationId: string,
     @Query() params: QueryParamsDto<PresentationComment>
   ) {
@@ -147,7 +147,7 @@ export class PresentationsController {
 
   @Get(':id/reactions')
   async findPresentationReactions(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentationId: string,
     @Query() params: QueryFilterDto<PresentationReaction>
   ) {
@@ -172,7 +172,7 @@ export class PresentationsController {
   @Patch(':id')
   @ApiOkResponse({ type: PresentationDto })
   async update(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') id: string,
     @Body() updatePresentationDto: UpdatePresentationDto
   ) {
@@ -196,7 +196,7 @@ export class PresentationsController {
   @Patch(':id/comments/:commentId')
   @ApiOkResponse({ type: PresentationCommentDto })
   async updateComment(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentationId: string,
     @Param('id') commentId: string,
     @Body() updatePresentationCommentDto: UpdatePresentationCommentDto
@@ -230,7 +230,7 @@ export class PresentationsController {
   @Patch(':id/reactions/:reactionId')
   @ApiOkResponse({ type: PresentationReactionDto })
   async updateReaction(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentationId: string,
     @Param('id') reactionId: string,
     @Body() updatePresentationReactionDto: UpdatePresentationReactionDto
@@ -263,7 +263,7 @@ export class PresentationsController {
 
   @Delete(':id')
   @ApiOkResponse({ type: PresentationDto })
-  async remove(@User('sub') account: string, @Param('id') id: string) {
+  async remove(@User('id') account: string, @Param('id') id: string) {
     const presentation = await this.presentationsFacade.findOne(id);
 
     if (!presentation) {
@@ -284,7 +284,7 @@ export class PresentationsController {
   @Delete(':id/comments/:commentId')
   @ApiOkResponse({ type: PresentationCommentDto })
   async removeComment(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentationId: string,
     @Param('id') commentId: string
   ) {
@@ -314,7 +314,7 @@ export class PresentationsController {
   @Delete(':id/reactions/:reactionId')
   @ApiOkResponse({ type: PresentationReactionDto })
   async removeReaction(
-    @User('sub') account: string,
+    @User('id') account: string,
     @Param('id') presentationId: string,
     @Param('id') reactionId: string
   ) {
