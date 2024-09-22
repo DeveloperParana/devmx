@@ -18,18 +18,46 @@
       "@devmx/account-data-access": [
         "packages/account/data-access/src/index.ts"
       ],
+      "@devmx/account-data-source": [
+        "packages/account/data-source/src/index.ts"
+      ],
       "@devmx/account-domain": ["packages/account/domain/src/index.ts"],
+      "@devmx/account-domain/client": ["packages/account/domain/src/client.ts"],
+      "@devmx/account-domain/server": ["packages/account/domain/src/server.ts"],
       "@devmx/account-feature-auth": [
         "packages/account/feature-auth/src/index.ts"
       ],
       "@devmx/account-feature-shell": [
         "packages/account/feature-shell/src/index.ts"
       ],
+      "@devmx/account-resource": ["packages/account/resource/src/index.ts"],
+      "@devmx/presentation-data-source": [
+        "packages/presentation/data-source/src/index.ts"
+      ],
+      "@devmx/presentation-domain": [
+        "packages/presentation/domain/src/index.ts"
+      ],
+      "@devmx/presentation-domain/server": [
+        "packages/presentation/domain/src/server.ts"
+      ],
+      "@devmx/presentation-resource": [
+        "packages/presentation/resource/src/index.ts"
+      ],
       "@devmx/shared-api-interfaces": [
         "packages/shared/api-interfaces/src/index.ts"
       ],
+      "@devmx/shared-api-interfaces/client": [
+        "packages/shared/api-interfaces/src/client.ts"
+      ],
+      "@devmx/shared-api-interfaces/server": [
+        "packages/shared/api-interfaces/src/server.ts"
+      ],
       "@devmx/shared-data-access": ["packages/shared/data-access/src/index.ts"],
-      "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"]
+      "@devmx/shared-data-source": ["packages/shared/data-source/src/index.ts"],
+      "@devmx/shared-resource": ["packages/shared/resource/src/index.ts"],
+      "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"],
+      "@devmx/shared-util-data": ["packages/shared/util-data/src/index.ts"],
+      "@devmx/shared-util-errors": ["packages/shared/util-errors/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

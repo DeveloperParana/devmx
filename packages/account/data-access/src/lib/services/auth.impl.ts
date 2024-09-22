@@ -1,5 +1,5 @@
 import { HttpClient, Env } from '@devmx/shared-data-access';
-import { AuthService } from '@devmx/account-domain';
+import { AuthService } from '@devmx/account-domain/client';
 import {
   SignIn,
   SignUp,

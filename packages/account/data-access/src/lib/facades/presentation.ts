@@ -1,5 +1,5 @@
+import { PresentationService } from '@devmx/account-domain/client';
 import { Page, Presentation } from '@devmx/shared-api-interfaces';
-import { PresentationService } from '@devmx/account-domain';
 import { State } from '@devmx/shared-data-access';
 import { take } from 'rxjs';
 

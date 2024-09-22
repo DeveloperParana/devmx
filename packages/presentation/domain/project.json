@@ -1,0 +1,23 @@
+{
+  "name": "presentation-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/presentation/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/presentation/domain",
+        "main": "packages/presentation/domain/src/index.ts",
+        "tsConfig": "packages/presentation/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/presentation/domain/src/server.ts"
+        ],
+        "generateExportsField": true
+      }
+    }
+  }
+}

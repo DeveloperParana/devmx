@@ -1,5 +1,5 @@
 import { HttpClient, createQueryParams, Env } from '@devmx/shared-data-access';
-import { PresentationService } from '@devmx/account-domain';
+import { PresentationService } from '@devmx/account-domain/client';
 import {
   Page,
   QueryParams,

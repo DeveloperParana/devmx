@@ -1,6 +1,7 @@
-import { AuthService, PresentationService } from '@devmx/account-domain';
+import { AuthService, PresentationService } from '@devmx/account-domain/client';
 import { AuthServiceImpl, PresentationServiceImpl } from '../services';
 import { Env, HttpClient } from '@devmx/shared-data-access';
+
 
 export function provideAuthService() {
   return {

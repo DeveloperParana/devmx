@@ -1,0 +1,37 @@
+import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
+import { PresentationFormat } from '@devmx/shared-api-interfaces';
+import { ApiProperty } from '@nestjs/swagger';
+
+export class CreatePresentationDto {
+  @IsString()
+  @ApiProperty()
+  title: string;
+
+  @IsString()
+  @ApiProperty()
+  description: string;
+
+  @IsString()
+  @ApiProperty({
+    type: 'enum',
+    enum: ['talk', 'workshop', 'webinar'],
+    example: 'talk',
+  })
+  format: PresentationFormat;
+
+  @IsArray()
+  @IsOptional()
+  @ApiProperty()
+  tags?: string[];
+
+  @IsArray()
+  @IsOptional()
+  @ApiProperty()
+  resources?: string[];
+
+  @IsBoolean()
+  @ApiProperty()
+  visible: boolean;
+
+  account: string;
+}

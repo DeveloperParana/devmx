@@ -1,0 +1,19 @@
+{
+  "name": "presentation-data-source",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/presentation/data-source/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/presentation/data-source",
+        "main": "packages/presentation/data-source/src/index.ts",
+        "tsConfig": "packages/presentation/data-source/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

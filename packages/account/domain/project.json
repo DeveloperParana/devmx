@@ -12,7 +12,12 @@
         "outputPath": "dist/packages/account/domain",
         "main": "packages/account/domain/src/index.ts",
         "tsConfig": "packages/account/domain/tsconfig.lib.json",
-        "assets": []
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/account/domain/src/client.ts",
+          "packages/account/domain/src/server.ts"
+        ],
+        "generateExportsField": true
       }
     }
   }

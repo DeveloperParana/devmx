@@ -1,4 +1,4 @@
-import { AuthService, PresentationService } from '@devmx/account-domain';
+import { AuthService, PresentationService } from '@devmx/account-domain/client';
 import { AuthFacade, PresentationFacade } from '../facades';
 
 export function provideAuthFacade() {

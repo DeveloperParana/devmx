@@ -1,4 +1,4 @@
-import { AuthService } from '@devmx/account-domain';
+import { AuthService } from '@devmx/account-domain/client';
 import { State } from '@devmx/shared-data-access';
 import { take } from 'rxjs';
 import {

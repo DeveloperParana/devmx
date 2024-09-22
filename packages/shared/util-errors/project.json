@@ -1,0 +1,19 @@
+{
+  "name": "shared-util-errors",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shared/util-errors/src",
+  "projectType": "library",
+  "tags": ["type:util"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/shared/util-errors",
+        "main": "packages/shared/util-errors/src/index.ts",
+        "tsConfig": "packages/shared/util-errors/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}
