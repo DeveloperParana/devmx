@@ -1,0 +1,36 @@
+<div
+  class="presentation-container"
+  [class.presentation-is-mobile]="mobileQuery.matches"
+>
+  <devmx-toolbar subtitle="Apresentações" (toggle)="snav.toggle()" />
+
+  <mat-sidenav-container
+    class="presentation-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      class="presentation-sidenav-start"
+      fixedTopGap="56"
+      opened
+    >
+      <mat-nav-list>
+        <h3 mat-subheader>Conta</h3>
+        <a mat-list-item routerLink="/presentations/settings">
+          <mat-icon matListItemIcon>settings</mat-icon>
+          <span matListItemTitle>Configurações</span>
+        </a>
+        <a mat-list-item routerLink="/presentations/presentations">
+          <mat-icon matListItemIcon>collections_bookmark</mat-icon>
+          <span matListItemTitle>Apresentações</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

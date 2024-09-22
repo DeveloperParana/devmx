@@ -1,4 +1,4 @@
-import { PresentationFacade } from '@devmx/account-data-access';
+import { PresentationFacade } from '@devmx/presentation-data-access';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -29,6 +29,6 @@ export class PresentationsContainer implements OnInit {
   presentationFacade = inject(PresentationFacade);
 
   ngOnInit() {
-    this.presentationFacade.loadPresentations();
+    this.presentationFacade.load();
   }
 }

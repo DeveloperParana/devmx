@@ -1,23 +1,13 @@
-import { AuthService, PresentationService } from '@devmx/account-domain/client';
-import { AuthServiceImpl, PresentationServiceImpl } from '../services';
-import { Env, HttpClient } from '@devmx/shared-data-access';
-
+import { AuthService } from '@devmx/account-domain/client';
+import { Env } from '@devmx/shared-api-interfaces/client';
+import { HttpClient } from '@devmx/shared-data-access';
+import { AuthServiceImpl } from '../services';
 
 export function provideAuthService() {
   return {
     provide: AuthService,
     useFactory(http: HttpClient, env: Env) {
       return new AuthServiceImpl(http, env);
-    },
-    deps: [HttpClient, Env],
-  };
-}
-
-export function providePresentationService() {
-  return {
-    provide: PresentationService,
-    useFactory(http: HttpClient, env: Env) {
-      return new PresentationServiceImpl(http, env);
     },
     deps: [HttpClient, Env],
   };

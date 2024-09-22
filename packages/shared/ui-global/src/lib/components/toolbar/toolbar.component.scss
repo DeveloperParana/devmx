@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  width: 100%;
+
+  .app-title {
+    margin-left: 0.4em;
+    margin-right: 0.8em;
+    font-weight: bold;
+  }
+
+  .app-subtitle {
+    opacity: 0.6;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}

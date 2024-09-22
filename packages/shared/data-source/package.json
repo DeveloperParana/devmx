@@ -2,7 +2,14 @@
   "name": "@devmx/shared-data-source",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/swagger": "^7.4.2",
+    "@devmx/shared-api-interfaces": "0.0.1",
+    "class-transformer": "^0.5.1",
+    "express": "4.21.0",
+    "mongoose": "^8.6.3",
+    "@nestjs/mongoose": "^10.0.10"
   },
   "type": "commonjs",
   "main": "./src/index.js",

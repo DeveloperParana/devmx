@@ -2,6 +2,13 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
+    path: 'presentations',
+    loadChildren: () =>
+      import('@devmx/presentation-feature-shell').then(
+        (m) => m.presentationFeatureShellRoutes
+      ),
+  },
+  {
     path: 'account',
     loadChildren: () =>
       import('@devmx/account-feature-shell').then(
@@ -11,6 +18,6 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'prefix',
-    redirectTo: 'account'
+    redirectTo: 'presentations',
   },
 ];

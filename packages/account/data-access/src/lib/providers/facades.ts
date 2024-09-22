@@ -1,22 +1,20 @@
-import { AuthService, PresentationService } from '@devmx/account-domain/client';
-import { AuthFacade, PresentationFacade } from '../facades';
+import { AuthFacade } from '../facades';
+import {
+  SignInUseCase,
+  SignUpUseCase,
+  LoadAuthUserUseCase,
+} from '@devmx/account-domain/client';
 
 export function provideAuthFacade() {
   return {
     provide: AuthFacade,
-    useFactory(service: AuthService) {
-      return new AuthFacade(service);
+    useFactory(
+      signIn: SignInUseCase,
+      signUp: SignUpUseCase,
+      loadAuthUser: LoadAuthUserUseCase
+    ) {
+      return new AuthFacade(signIn, signUp, loadAuthUser);
     },
-    deps: [AuthService],
-  };
-}
-
-export function providePresentationFacade() {
-  return {
-    provide: PresentationFacade,
-    useFactory(service: PresentationService) {
-      return new PresentationFacade(service);
-    },
-    deps: [PresentationService],
+    deps: [SignInUseCase, SignUpUseCase, LoadAuthUserUseCase],
   };
 }

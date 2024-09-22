@@ -1,10 +1,5 @@
 <div class="account-container" [class.account-is-mobile]="mobileQuery.matches">
-  <mat-toolbar class="account-toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="account-app-name">devmx</h1>
-  </mat-toolbar>
+  <devmx-toolbar subtitle="Conta" (toggle)="snav.toggle()" />
 
   <mat-sidenav-container
     class="account-sidenav-container"

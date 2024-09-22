@@ -1,0 +1,19 @@
+{
+  "name": "presentation-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/presentation/data-access/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/presentation/data-access",
+        "main": "packages/presentation/data-access/src/index.ts",
+        "tsConfig": "packages/presentation/data-access/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

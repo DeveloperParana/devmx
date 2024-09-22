@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="toggle.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <h1 class="app-title">{{ title() }}</h1>
+
+  <h2 class="app-subtitle">{{ subtitle() }}</h2>
+
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/presentations" routerLinkActive="active">
+    Apresentações
+  </a>
+
+  <a mat-button routerLink="/account" routerLinkActive="active"> Conta </a>
+</mat-toolbar>

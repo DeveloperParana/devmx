@@ -1,7 +1,7 @@
 import { AuthRequest, IS_ALLOWED_KEY } from '@devmx/shared-data-source';
-import { JwtService } from '@devmx/account-domain/server';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { AuthUser } from '@devmx/shared-api-interfaces';
+import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import {

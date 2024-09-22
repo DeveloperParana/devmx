@@ -1,6 +1,5 @@
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +11,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { ToolbarComponent } from '@devmx/shared-ui-global';
 
 @Component({
   selector: 'devmx-account-feature-shell',
@@ -19,7 +19,7 @@ import {
   styleUrl: './account-feature-shell.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatToolbarModule,
+    ToolbarComponent,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
