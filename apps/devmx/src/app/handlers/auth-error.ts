@@ -12,7 +12,7 @@ export class AuthErrorHandler implements ErrorHandler {
 
   #onTokenChanged = ({ key, newValue }: StorageEvent) => {
     if (key === 'accessToken' && !newValue) {
-      this.router.navigateByUrl('/auth');
+      this.router.navigateByUrl('/account/auth');
     }
   };
 
@@ -20,7 +20,7 @@ export class AuthErrorHandler implements ErrorHandler {
     if (error instanceof HttpErrorResponse) {
       if (error.status === 401) {
         localStorage.removeItem('accessToken');
-        this.router.navigateByUrl('/auth');
+        // this.router.navigateByUrl('/account/auth');
       }
     }
   }

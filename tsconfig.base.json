@@ -15,9 +15,21 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@devmx/account-data-access": [
+        "packages/account/data-access/src/index.ts"
+      ],
+      "@devmx/account-domain": ["packages/account/domain/src/index.ts"],
+      "@devmx/account-feature-auth": [
+        "packages/account/feature-auth/src/index.ts"
+      ],
+      "@devmx/account-feature-shell": [
+        "packages/account/feature-shell/src/index.ts"
+      ],
       "@devmx/shared-api-interfaces": [
         "packages/shared/api-interfaces/src/index.ts"
-      ]
+      ],
+      "@devmx/shared-data-access": ["packages/shared/data-access/src/index.ts"],
+      "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,19 @@
+{
+  "name": "account-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/account/data-access/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/account/data-access",
+        "main": "packages/account/data-access/src/index.ts",
+        "tsConfig": "packages/account/data-access/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

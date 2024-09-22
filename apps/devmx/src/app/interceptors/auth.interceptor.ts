@@ -8,7 +8,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const userToken = localStorage.getItem('accessToken');
 
   if (!userToken) {
-    router.navigateByUrl('/auth');
+    router.navigateByUrl('/account/auth');
   }
 
   const clonedReq = req.clone({

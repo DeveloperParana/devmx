@@ -1,18 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AuthFacade } from './accounts';
+import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'devmx-root',
   template: `<router-outlet />`,
   styles: `:host { height: 100%; display: flex; flex-direction: column; }`,
-  imports: [RouterModule],
+  imports: [RouterOutlet],
   standalone: true,
 })
-export class AppComponent implements OnInit {
-  authFacade = inject(AuthFacade);
-
-  ngOnInit() {
-    this.authFacade.loadAuthUser();
-  }
-}
+export class AppComponent {}

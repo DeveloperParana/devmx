@@ -58,10 +58,10 @@ export function provideAccountsService() {
 export function provideAccountsFacade() {
   return {
     provide: AccountsFacade,
-    useFactory(accountsService: AccountsService) {
-      return new AccountsFacade(accountsService);
+    useFactory(accountsService: AccountsService, presentationsService: PresentationsService) {
+      return new AccountsFacade(accountsService, presentationsService);
     },
-    inject: [AccountsService],
+    inject: [AccountsService, PresentationsService],
   };
 }
 

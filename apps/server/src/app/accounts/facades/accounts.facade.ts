@@ -1,6 +1,6 @@
 import { PageDto, QueryParamsDto } from '../../shared/dtos';
 import { plainToInstance } from 'class-transformer';
-import { AccountsService } from '../services';
+import { AccountsService, PresentationsService } from '../services';
 import {
   AccountDto,
   CreateAccountDto,
@@ -8,7 +8,10 @@ import {
 } from '../dtos';
 
 export class AccountsFacade {
-  constructor(private readonly accountsService: AccountsService) {}
+  constructor(
+    private readonly accountsService: AccountsService,
+    private readonly presentationsService: PresentationsService
+  ) {}
 
   async create(createAccountDto: CreateAccountDto) {
     const account = await this.accountsService.create(createAccountDto);

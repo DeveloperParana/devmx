@@ -1,0 +1,38 @@
+<div class="account-container" [class.account-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="account-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="account-app-name">devmx</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="account-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      class="account-sidenav-start"
+      fixedTopGap="56"
+      opened
+    >
+      <mat-nav-list>
+        <h3 mat-subheader>Conta</h3>
+        <a mat-list-item routerLink="/account/settings">
+          <mat-icon matListItemIcon>settings</mat-icon>
+          <span matListItemTitle>Configurações</span>
+        </a>
+        <a mat-list-item routerLink="/account/presentations">
+          <mat-icon matListItemIcon>collections_bookmark</mat-icon>
+          <span matListItemTitle>Apresentações</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
