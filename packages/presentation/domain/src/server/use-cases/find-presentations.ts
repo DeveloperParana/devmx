@@ -12,6 +12,6 @@ export class FindPresentationsUseCase
   constructor(private presentationsService: PresentationsService) {}
 
   async execute(params: QueryParams<Presentation>) {
-    return this.presentationsService.find(params);
+    return await this.presentationsService.find(params);
   }
 }

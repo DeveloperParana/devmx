@@ -1,0 +1,36 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;;
+
+  .settings-panel {
+    width: 48em;
+  }
+
+  .flex {
+    gap: 1em;
+    display: flex;
+
+    &.row {
+      flex-direction: row;
+
+      &.wrap {
+        flex-flow: row wrap;
+      }
+    }
+
+    > aside {
+      flex: 1;
+    }
+  }
+
+  .settings-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .settings-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+}

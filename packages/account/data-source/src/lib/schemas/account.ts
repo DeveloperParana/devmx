@@ -1,9 +1,11 @@
 import { Account, Gender, Name } from '@devmx/shared-api-interfaces';
+import { createSchema } from '@devmx/shared-data-source';
 import { Prop, raw, Schema } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-@Schema({ collection: 'accounts' })
-export class AccountSchema implements Account {
-  id: string;
+@Schema()
+export class AccountCollection extends Document implements Account {
+  override id: string;
 
   @Prop(
     raw({
@@ -13,13 +15,13 @@ export class AccountSchema implements Account {
   )
   name: Name;
 
-  @Prop()
+  @Prop({ required: true, type: String })
   username: string;
 
-  @Prop()
+  @Prop({ required: true, type: String })
   password: string;
 
-  @Prop()
+  @Prop({ required: true, type: String })
   email: string;
 
   @Prop({
@@ -37,15 +39,17 @@ export class AccountSchema implements Account {
   })
   gender: Gender;
 
-  @Prop()
+  @Prop({ default: '' })
   photo?: string;
 
-  @Prop()
+  @Prop({ default: '' })
   minibio?: string;
 
-  @Prop()
+  @Prop({ default: '' })
   birthday?: string;
 
-  @Prop()
+  @Prop({ default: true })
   active: boolean;
 }
+
+export const AccountSchema = createSchema(AccountCollection);

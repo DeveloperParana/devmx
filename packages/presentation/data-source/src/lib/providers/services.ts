@@ -11,14 +11,14 @@ import {
   PresentationReactionsServiceImpl,
 } from '../services';
 import {
-  PresentationSchema,
-  PresentationCommentSchema,
-  PresentationReactionSchema,
+  PresentationCollection,
+  PresentationCommentCollection,
+  PresentationReactionCollection,
 } from '../schemas';
 
 export function providePresentationsService() {
   return createServiceProvider(PresentationsService, PresentationsServiceImpl, [
-    getModelToken(PresentationSchema.name),
+    getModelToken(PresentationCollection.name),
   ]);
 }
 
@@ -26,7 +26,7 @@ export function providePresentationCommentsService() {
   return createServiceProvider(
     PresentationCommentsService,
     PresentationCommentsServiceImpl,
-    [getModelToken(PresentationCommentSchema.name)]
+    [getModelToken(PresentationCommentCollection.name)]
   );
 }
 
@@ -34,6 +34,6 @@ export function providePresentationReactionsService() {
   return createServiceProvider(
     PresentationReactionsService,
     PresentationReactionsServiceImpl,
-    [getModelToken(PresentationReactionSchema.name)]
+    [getModelToken(PresentationReactionCollection.name)]
   );
 }

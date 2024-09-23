@@ -1,32 +1,44 @@
-import { PresentationCommentsService } from '@devmx/account-domain/server';
-import { QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
-import { PresentationComment } from '@devmx/shared-api-interfaces';
+import { PresentationCommentsService } from '@devmx/presentation-domain/server';
+import { QueryByPresentationParams } from '@devmx/presentation-domain';
+import { PresentationCommentCollection } from '../schemas';
+import { objectId, QueryFilterDto } from '@devmx/shared-data-source';
+import {
+  PresentationComment,
+  PresentationCommentOut,
+} from '@devmx/shared-api-interfaces';
 import { Model } from 'mongoose';
 import {
   CreatePresentationCommentDto,
   UpdatePresentationCommentDto,
 } from '../dtos';
 
-export class PresentationCommentsServiceImpl implements PresentationCommentsService {
-  constructor(private presentationCommentModel: Model<PresentationComment>) {}
+export class PresentationCommentsServiceImpl
+  implements PresentationCommentsService
+{
+  constructor(
+    private presentationCommentModel: Model<PresentationCommentCollection>
+  ) {}
 
   async create(
     data: CreatePresentationCommentDto
-  ): Promise<PresentationComment> {
+  ): Promise<PresentationCommentOut> {
     const createdPresentationComment = new this.presentationCommentModel(data);
     return (await createdPresentationComment.save()).toJSON();
   }
 
-  async find(params: QueryParamsDto<PresentationComment>) {
+  async find(params: QueryByPresentationParams<PresentationComment>) {
     const { page = 0, size = 10, filter } = params;
 
+    const presentation = objectId(params.presentation);
+
     const skip = page * size;
-    const where = { ...filter };
+    const where = { ...filter, presentation };
     const comments = await this.presentationCommentModel
       .find(where)
       .skip(skip)
       .limit(size)
       .populate('account')
+      .populate('presentation')
       .exec();
 
     const data = comments.map((item) => item.toJSON());
@@ -40,6 +52,7 @@ export class PresentationCommentsServiceImpl implements PresentationCommentsServ
     const comment = await this.presentationCommentModel
       .findById(id)
       .populate('account')
+      .populate('presentation')
       .exec();
 
     if (!comment) {
@@ -53,6 +66,7 @@ export class PresentationCommentsServiceImpl implements PresentationCommentsServ
     const comment = await this.presentationCommentModel
       .findOne(filter)
       .populate('account')
+      .populate('presentation')
       .exec();
 
     if (!comment) {

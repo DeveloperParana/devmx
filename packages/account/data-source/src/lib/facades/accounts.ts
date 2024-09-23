@@ -1,9 +1,10 @@
+import { AccountDto, ChangePasswordDto, PresentationDto, UpdateAccountDto } from '../dtos';
 import { PageDto, QueryParamsDto } from '@devmx/shared-data-source';
-import { AccountDto, ChangePasswordDto } from '../dtos';
 import { plainToInstance } from 'class-transformer';
 import {
   ChangePasswordUseCase,
   FindAccountByIDUseCase,
+  FindAccountPresentationsUseCase,
   FindAccountsUseCase,
   RemoveAccountUseCase,
   UpdateAccountUseCase,
@@ -15,7 +16,8 @@ export class AccountsFacade {
     private findAccountByIDUseCase: FindAccountByIDUseCase,
     private updateAccountUseCase: UpdateAccountUseCase,
     private removeAccountUseCase: RemoveAccountUseCase,
-    private changePasswordUseCase: ChangePasswordUseCase
+    private changePasswordUseCase: ChangePasswordUseCase,
+    private findAccountPresentationsUseCase: FindAccountPresentationsUseCase
   ) {}
 
   // async create(createAccountDto: Editable<Account>) {
@@ -31,12 +33,25 @@ export class AccountsFacade {
     return new PageDto(accounts, items, pages);
   }
 
+  async findPresentations(
+    account: string,
+    params: QueryParamsDto<PresentationDto>
+  ) {
+    const { data, items, pages } =
+      await this.findAccountPresentationsUseCase.execute({
+        ...params,
+        account,
+      });
+    const accounts = plainToInstance(PresentationDto, data);
+    return new PageDto(accounts, items, pages);
+  }
+
   async findOne(id: string) {
     const account = await this.findAccountByIDUseCase.execute(id);
     return plainToInstance(AccountDto, account);
   }
 
-  async update(id: string, data: AccountDto) {
+  async update(id: string, data: UpdateAccountDto) {
     const account = await this.updateAccountUseCase.execute({ ...data, id });
     return plainToInstance(AccountDto, account);
   }

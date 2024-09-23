@@ -1,9 +1,15 @@
 import { createUseCaseProvider } from '@devmx/shared-data-access';
 import {
   AuthService,
-  LoadAuthUserUseCase,
   SignInUseCase,
   SignUpUseCase,
+  AccountService,
+  LoadAuthUserUseCase,
+  RemoveAccountUseCase,
+  UpdateAccountUseCase,
+  FindAccountPresentationsUseCase,
+  FindAccountByIDUseCase,
+  ChangePasswordUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideSignInUseCase() {
@@ -16,4 +22,26 @@ export function provideSignUpUseCase() {
 
 export function provideLoadAuthUserUseCase() {
   return createUseCaseProvider(LoadAuthUserUseCase, [AuthService]);
+}
+
+export function provideFindAccountByIDUseCase() {
+  return createUseCaseProvider(FindAccountByIDUseCase, [AccountService]);
+}
+
+export function provideUpdateAccountUseCase() {
+  return createUseCaseProvider(UpdateAccountUseCase, [AccountService]);
+}
+
+export function provideRemoveAccountUseCase() {
+  return createUseCaseProvider(RemoveAccountUseCase, [AccountService]);
+}
+
+export function provideFindAccountPresentationsUseCase() {
+  return createUseCaseProvider(FindAccountPresentationsUseCase, [
+    AccountService,
+  ]);
+}
+
+export function provideChangePasswordUseCase() {
+  return createUseCaseProvider(ChangePasswordUseCase, [AccountService]);
 }

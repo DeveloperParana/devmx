@@ -1,1 +1,1 @@
-export * from './lib/presentation-domain';
+export * from './lib/dtos';

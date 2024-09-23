@@ -1,3 +1,21 @@
-import { Account } from '@devmx/shared-api-interfaces';
+import { Gender, Name } from '@devmx/shared-api-interfaces';
 
-export type UpdateAccount = Partial<Omit<Account, 'password'>>;
+export interface UpdateAccount {
+  id: string;
+
+  name?: Name;
+
+  username?: string;
+
+  email?: string;
+
+  gender?: Gender;
+
+  photo?: string;
+
+  minibio?: string;
+
+  birthday?: string;
+
+  active?: boolean;
+}

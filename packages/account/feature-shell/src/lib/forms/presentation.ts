@@ -37,7 +37,6 @@ export class PresentationForm extends Form<Presentation> {
   currentResource = new FormControl('', {
     nonNullable: true,
     validators: [
-      Validators.required,
       Validators.pattern(
         /^(https?:\/\/)?([a-zA-Z0-9-_]+(\.[a-zA-Z0-9-_]+)+.*)$/
       ),
@@ -46,7 +45,7 @@ export class PresentationForm extends Form<Presentation> {
 
   currentTag = new FormControl('', {
     nonNullable: true,
-    validators: [Validators.required],
+    validators: [Validators.pattern(/^[a-zA-Z0-9]+$/)],
   });
 
   fill(value: Presentation) {
@@ -75,7 +74,7 @@ export class PresentationForm extends Form<Presentation> {
   addResource(event: Event) {
     event.preventDefault();
 
-    if (this.currentResource.valid) {
+    if (this.currentResource.valid && this.currentResource.value) {
       this.pushResource(this.currentResource.value);
       return this.currentResource.reset('');
     }
@@ -86,7 +85,7 @@ export class PresentationForm extends Form<Presentation> {
   addTag(event: Event) {
     event.preventDefault();
 
-    if (this.currentTag.valid) {
+    if (this.currentTag.valid && this.currentTag.value) {
       this.pushTag(this.currentTag.value);
       return this.currentTag.reset('');
     }

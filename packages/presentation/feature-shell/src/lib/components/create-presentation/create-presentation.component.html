@@ -1,0 +1,37 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <h2 mat-dialog-title>Criar apresentação</h2>
+
+  <mat-dialog-content class="dialog-content">
+    <mat-form-field>
+      <mat-label>Título da apresentação</mat-label>
+      <input type="text" matInput formControlName="title" autofocus />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Resenha</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="10"
+        cdkTextareaAutosize
+      ></textarea>
+      <mat-hint>Introdução com no máximo 512 caracteres</mat-hint>
+      <mat-error>
+        @if (form.controls.description.value.length > 512) { Você usou
+        {{ form.controls.description.value.length - 512 }} caracteres acima do
+        máximo aceito } @else { Obrigatório }
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="visible">
+      Visível publicamente
+    </mat-checkbox>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button>Salvar</button>
+  </mat-dialog-actions>
+</form>

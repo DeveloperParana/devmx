@@ -31,7 +31,7 @@ export class SignUpForm extends FormGroup<TypedForm<SignUp>> {
       }),
       username: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)],
       }),
       password: new FormControl('', {
         nonNullable: true,

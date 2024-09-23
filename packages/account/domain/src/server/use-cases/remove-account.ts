@@ -1,4 +1,5 @@
 import { Account, UseCase } from '@devmx/shared-api-interfaces';
+import { PersistenceError } from '@devmx/shared-util-errors';
 import { AccountsService } from '../services';
 
 export class RemoveAccountUseCase implements UseCase<string, Account> {
@@ -8,7 +9,7 @@ export class RemoveAccountUseCase implements UseCase<string, Account> {
     const removed = await this.accountsService.remove(id);
 
     if (!removed) {
-      throw `Problema ao remover conta`;
+      throw new PersistenceError('Problema ao remover conta');
     }
 
     return removed;

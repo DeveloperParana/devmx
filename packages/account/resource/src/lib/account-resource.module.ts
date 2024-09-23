@@ -1,13 +1,12 @@
-import { AccountSchema, provideAccounts } from '@devmx/account-data-source';
+import { PresentationDatabaseModule } from '@devmx/presentation-resource';
 import { AuthController, AccountsController } from './controllers';
+import { AccountDatabaseModule } from './account-database.module';
 import { Env } from '@devmx/shared-api-interfaces/server';
-import { createSchema } from '@devmx/shared-data-source';
-import { JwtModule, JwtService } from '@nestjs/jwt';
 import { AuthGuard, JwtAuthGuard } from './guards';
 import { PassportModule } from '@nestjs/passport';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
+import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -22,13 +21,11 @@ import { APP_GUARD } from '@nestjs/core';
       },
       inject: [Env],
     }),
-    MongooseModule.forFeature([
-      { name: AccountSchema.name, schema: createSchema(AccountSchema) },
-    ]),
+    AccountDatabaseModule,
+    PresentationDatabaseModule
   ],
   controllers: [AuthController, AccountsController],
   providers: [
-    ...provideAccounts(JwtService),
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
@@ -36,7 +33,7 @@ import { APP_GUARD } from '@nestjs/core';
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
-    }
+    },
   ],
   exports: [],
 })

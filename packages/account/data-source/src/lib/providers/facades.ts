@@ -8,6 +8,7 @@ import {
   UpdateAccountUseCase,
   ChangePasswordUseCase,
   FindAccountByIDUseCase,
+  FindAccountPresentationsUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideAccountsFacade() {
@@ -17,6 +18,7 @@ export function provideAccountsFacade() {
     UpdateAccountUseCase,
     RemoveAccountUseCase,
     ChangePasswordUseCase,
+    FindAccountPresentationsUseCase
   ]);
 }
 

@@ -1,1 +1,37 @@
-<p>settings works!</p>
+<mat-accordion class="settings-headers-align">
+  <mat-expansion-panel hideToggle class="settings-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Conta </mat-panel-title>
+      <mat-panel-description>
+        Perfil público
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="flex row wrap">
+      <devmx-editable-account (submitted)="onAccountSubmitted($event)" />
+      <aside>
+        <h3>Dicas</h3>
+        <p>
+          Mussum Ipsum, cacilds vidis litro abertis. Vehicula non. Ut sed ex eros.
+          Vivamus sit amet nibh non tellus tristique interdum. Posuere libero
+          varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.
+          Leite de capivaris, leite de mula manquis sem cabeça. Pellentesque nec
+          nulla ligula. Donec gravida turpis a vulputate ultricies.
+        </p>
+      </aside>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel hideToggle class="settings-panel"v>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Segurança </mat-panel-title>
+      <mat-panel-description>
+        Alterar senha
+        <mat-icon>password</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <devmx-editable-password (submitted)="onPasswordSubmitted($event)" />
+  </mat-expansion-panel>
+</mat-accordion>

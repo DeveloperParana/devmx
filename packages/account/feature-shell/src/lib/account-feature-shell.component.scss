@@ -29,8 +29,16 @@
     flex: 1;
   }
 
+  .account-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+  }
+
   .account-sidenav-start {
     width: 16em;
+    margin-right: 2em;
   }
 
   .account-is-mobile .account-sidenav-container {

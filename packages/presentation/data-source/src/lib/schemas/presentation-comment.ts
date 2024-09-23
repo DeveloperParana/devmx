@@ -1,19 +1,35 @@
 import { PresentationComment } from '@devmx/shared-api-interfaces';
-import { AccountSchema } from '@devmx/account-data-source';
-import { PresentationSchema } from './presentation';
+import { AccountCollection } from '@devmx/account-data-source';
+import { createSchema } from '@devmx/shared-data-source';
+import { PresentationCollection } from './presentation';
 import { Prop, Schema } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
-@Schema({ collection: 'presentationComments' })
-export class PresentationCommentSchema implements PresentationComment {
-  id: string;
+@Schema()
+export class PresentationCommentCollection
+  extends Document
+  implements PresentationComment
+{
+  override id: string;
 
-  @Prop()
+  @Prop({ type: String })
   text: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Presentation' })
-  presentation: PresentationSchema;
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: PresentationCollection.name,
+    required: true,
+  })
+  presentation: PresentationCollection;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Account' })
-  account: AccountSchema;
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: AccountCollection.name,
+    required: true,
+  })
+  account: AccountCollection;
 }
+
+export const PresentationCommentSchema = createSchema(
+  PresentationCommentCollection
+);

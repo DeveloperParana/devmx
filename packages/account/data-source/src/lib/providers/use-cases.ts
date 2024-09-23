@@ -1,3 +1,4 @@
+import { PresentationsService } from '@devmx/presentation-domain/server';
 import { createUseCaseProvider } from '@devmx/shared-data-source';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import {
@@ -11,6 +12,7 @@ import {
   FindAccountByIDUseCase,
   RemoveAccountUseCase,
   UpdateAccountUseCase,
+  FindAccountPresentationsUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideFindAccountsUseCase() {
@@ -47,4 +49,10 @@ export function provideSignInUseCase() {
 
 export function provideSignUpUseCase() {
   return createUseCaseProvider(SignUpUseCase, [AccountsService, CryptoService]);
+}
+
+export function provideFindAccountPresentationsUseCase() {
+  return createUseCaseProvider(FindAccountPresentationsUseCase, [
+    PresentationsService,
+  ]);
 }

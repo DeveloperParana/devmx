@@ -1,16 +1,17 @@
 import { Presentation, PresentationFormat } from '@devmx/shared-api-interfaces';
-import { AccountSchema } from '@devmx/account-data-source';
+import { AccountCollection } from '@devmx/account-data-source';
+import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
-@Schema({ collection: 'presentations' })
-export class PresentationSchema implements Presentation {
-  id: string;
+@Schema()
+export class PresentationCollection extends Document implements Presentation {
+  override id: string;
 
-  @Prop()
+  @Prop({ required: true })
   title: string;
 
-  @Prop()
+  @Prop({ default: '' })
   description: string;
 
   @Prop({
@@ -20,15 +21,21 @@ export class PresentationSchema implements Presentation {
   })
   format: PresentationFormat;
 
-  @Prop()
+  @Prop({ default: [] })
   tags: string[];
 
-  @Prop()
+  @Prop({ default: [] })
   resources: string[];
 
-  @Prop()
+  @Prop({ default: false })
   visible: boolean;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Account' })
-  account: AccountSchema;
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: AccountCollection.name,
+    required: true,
+  })
+  account: AccountCollection;
 }
+
+export const PresentationSchema = createSchema(PresentationCollection);

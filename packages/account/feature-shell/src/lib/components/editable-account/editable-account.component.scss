@@ -1,0 +1,27 @@
+:host {
+  flex: 1;
+  display: block;
+  // margin: 0.6em;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+
+    section {
+      display: flex;
+      gap: 1.2em;
+
+      align-items: center;
+
+      & > * {
+        flex: 1;
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

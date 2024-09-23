@@ -1,22 +1,23 @@
+import { CreatePresentationComment, UpdatePresentationComment } from '../dtos';
+import { QueryByPresentationParams } from '../../lib/dtos';
 import {
   Page,
-  Creatable,
   QueryFilter,
-  QueryParams,
   PresentationComment,
+  PresentationCommentOut,
 } from '@devmx/shared-api-interfaces';
 
 // prettier-ignore
 export abstract class PresentationCommentsService {
-  abstract create(data: Creatable<PresentationComment>): Promise<PresentationComment>;
+  abstract create(data: CreatePresentationComment): Promise<PresentationCommentOut>;
 
-  abstract find(params: QueryParams<PresentationComment>): Promise<Page<PresentationComment>>;
+  abstract find(params: QueryByPresentationParams<PresentationComment>): Promise<Page<PresentationCommentOut>>;
 
-  abstract findOne(id: string): Promise<PresentationComment | null>;
+  abstract findOne(id: string): Promise<PresentationCommentOut | null>;
 
-  abstract findOneBy(filter: QueryFilter<PresentationComment>): Promise<PresentationComment | null>;
+  abstract findOneBy(filter: QueryFilter<PresentationComment>): Promise<PresentationCommentOut | null>;
 
-  abstract update(id: string, data: Partial<PresentationComment>): Promise<PresentationComment | null>;
+  abstract update(id: string, data: UpdatePresentationComment): Promise<PresentationCommentOut | null>;
 
-  abstract remove(id: string): Promise<PresentationComment | null>;
+  abstract remove(id: string): Promise<PresentationCommentOut | null>;
 }

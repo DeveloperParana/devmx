@@ -35,10 +35,19 @@
   <mat-list>
     <h3 mat-subheader>Links úteis</h3>
 
-    @for (resource of form.resources.controls; track resource) {
+    @for (resource of form.resources.controls; track resource; let index =
+    $index) {
     <mat-list-item>
       <mat-icon matListItemIcon>link</mat-icon>
       <div matListItemTitle>{{ resource.value }}</div>
+      <button
+        type="button"
+        matListItemMeta
+        mat-icon-button
+        (click)="form.removeResource(index)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-list-item>
     }
   </mat-list>
@@ -57,10 +66,18 @@
   <mat-list>
     <h3 mat-subheader>Tags</h3>
 
-    @for (tag of form.tags.controls; track tag) {
+    @for (tag of form.tags.controls; track tag; let index = $index) {
     <mat-list-item>
       <mat-icon matListItemIcon>tag</mat-icon>
       <div matListItemTitle>{{ tag.value }}</div>
+      <button
+        type="button"
+        matListItemMeta
+        mat-icon-button
+        (click)="form.removeTag(index)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-list-item>
     }
   </mat-list>
@@ -73,7 +90,7 @@
       (keydown.enter)="form.addTag($event)"
     />
     <mat-hint>Use a tecla <kbd>enter</kbd> para adicionar</mat-hint>
-    <mat-error>Obrigatório</mat-error>
+    <mat-error>Apenas letras e números</mat-error>
   </mat-form-field>
 
   <mat-checkbox formControlName="visible"> Visível publicamente </mat-checkbox>

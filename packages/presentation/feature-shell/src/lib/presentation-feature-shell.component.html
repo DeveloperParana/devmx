@@ -29,8 +29,12 @@
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content class="presentation-content">
       <router-outlet />
+
+      <button class="add-button" type="button" mat-fab (click)="openCreate()">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

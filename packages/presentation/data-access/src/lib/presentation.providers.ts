@@ -1,7 +1,11 @@
 import {
+  provideCreatePresentationCommentUseCase,
   provideCreatePresentationUseCase,
   provideFindPresentationByIDUseCase,
+  provideFindPresentationCommenstUseCase,
   provideFindPresentationsUseCase,
+  providePresentationCommentFacade,
+  providePresentationCommentService,
   providePresentationFacade,
   providePresentationService,
   provideRemovePresentationUseCase,
@@ -11,6 +15,7 @@ import {
 export function providePresentation() {
   return [
     providePresentationService(),
+    providePresentationCommentService(),
 
     provideCreatePresentationUseCase(),
     provideFindPresentationsUseCase(),
@@ -18,6 +23,10 @@ export function providePresentation() {
     provideUpdatePresentationUseCase(),
     provideRemovePresentationUseCase(),
 
+    provideCreatePresentationCommentUseCase(),
+    provideFindPresentationCommenstUseCase(),
+
     providePresentationFacade(),
+    providePresentationCommentFacade(),
   ];
 }

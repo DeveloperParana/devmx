@@ -1,0 +1,47 @@
+@if (presentationFacade.presentation$ | async; as presentation) {
+<article>
+  <mat-card>
+    <mat-card-header>
+      <devmx-avatar mat-card-avatar [src]="presentation.account.photo" />
+      <mat-card-title> {{presentation.title}} </mat-card-title>
+      <mat-card-subtitle>
+        {{presentation.account.name.first}} {{presentation.account.name.last}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{presentation.description}}</p>
+
+      <mat-chip-set aria-label="Fish selection">
+        @for (tag of presentation.tags; track tag) {
+        <mat-chip>#{{tag}}</mat-chip>
+        }
+      </mat-chip-set>
+    </mat-card-content>
+
+  </mat-card>
+</article>
+
+}
+<!--  -->
+@if (presentationCommentFacade.comments$ | async; as comments) {
+<mat-list>
+  <h3 mat-subheader>Comentários</h3>
+
+  @for (comment of comments.data; track comment.id) {
+  <mat-list-item>
+    <devmx-avatar matListItemAvatar [src]="comment.account.photo" />
+
+    <div matListItemTitle>{{comment.account.name.first}}</div>
+    <div matListItemLine>{{comment.text}}</div>
+  </mat-list-item>
+  }
+</mat-list>
+
+<footer>
+  <mat-paginator
+    hidePageSize
+    [length]="comments.items"
+    (page)="onPageChange($event)"
+  />
+</footer>
+}

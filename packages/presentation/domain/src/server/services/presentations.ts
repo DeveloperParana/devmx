@@ -14,6 +14,8 @@ export abstract class PresentationsService {
 
   abstract findOne(id: string): Promise<Presentation | null>;
 
+  abstract findByAccount(accountId: string, params: QueryParams<Presentation>): Promise<Page<Presentation>>;
+
   abstract findOneBy(filter: QueryFilter<Presentation>): Promise<Presentation | null>;
 
   abstract update(id: string, data: Partial<Presentation>): Promise<Presentation | null>;

@@ -7,6 +7,7 @@ import {
   provideChangePasswordUseCase,
   provideCryptoService,
   provideFindAccountByIDUseCase,
+  provideFindAccountPresentationsUseCase,
   provideFindAccountsUseCase,
   provideJwtService,
   provideJwtStrategy,
@@ -33,6 +34,7 @@ export function provideAccounts<T>(jwtService: Type<T>) {
     provideUpdateAccountUseCase(),
     provideRemoveAccountUseCase(),
     provideChangePasswordUseCase(),
+    provideFindAccountPresentationsUseCase(),
 
     provideAccountsFacade(),
     provideAuthFacade(),

@@ -1,7 +1,7 @@
 import { createServiceProvider } from '@devmx/shared-data-source';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { getModelToken } from '@nestjs/mongoose';
-import { AccountSchema } from '../schemas';
+import { AccountCollection } from '../schemas';
 import {
   AuthServiceImpl,
   CryptoServiceImpl,
@@ -30,7 +30,7 @@ export function provideJwtService<T>(JwtServiceImpl: T) {
 
 export function provideAccountsService() {
   return createServiceProvider(AccountsService, AccountsServiceImpl, [
-    getModelToken(AccountSchema.name),
+    getModelToken(AccountCollection.name),
   ]);
 }
 

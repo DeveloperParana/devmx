@@ -1,8 +1,9 @@
-import { PresentationFacade } from '@devmx/presentation-data-access';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import { AccountFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import {
   inject,
@@ -12,7 +13,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-presentations',
+  selector: 'devmx-account-presentations',
   templateUrl: './presentations.container.html',
   styleUrl: './presentations.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,14 +22,19 @@ import {
     MatIconModule,
     MatButtonModule,
     MatPaginatorModule,
-    AsyncPipe
+    RouterLink,
+    AsyncPipe,
   ],
   standalone: true,
 })
 export class PresentationsContainer implements OnInit {
-  presentationFacade = inject(PresentationFacade);
+  accountFacade = inject(AccountFacade);
 
   ngOnInit() {
-    this.presentationFacade.load();
+    this.accountFacade.loadPresentations();
+  }
+
+  onPageChange(event: PageEvent) {
+    this.accountFacade.loadPresentations(event.pageIndex, event.pageSize);
   }
 }

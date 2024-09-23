@@ -1,4 +1,4 @@
-import { Page, Presentation } from '@devmx/shared-api-interfaces';
+import { Page, Presentation, PresentationOut } from '@devmx/shared-api-interfaces';
 import { State } from '@devmx/shared-data-access';
 import {
   CreatePresentationUseCase,
@@ -10,8 +10,8 @@ import {
 import { take } from 'rxjs';
 
 interface PresentationState {
-  presentations: Page<Presentation>;
-  presentation: Presentation | null;
+  presentations: Page<PresentationOut>;
+  presentation: PresentationOut | null;
 }
 
 export class PresentationFacade extends State<PresentationState> {
@@ -30,12 +30,13 @@ export class PresentationFacade extends State<PresentationState> {
       presentations: { data: [], items: 0, pages: 0 },
       presentation: null,
     });
+
   }
 
   load(page = 0, size = 10) {
     const request$ = this.findPresentationsUseCase.execute({ page, size });
 
-    const onPresentations = (presentations: Page<Presentation>) => {
+    const onPresentations = (presentations: Page<PresentationOut>) => {
       this.setState({ presentations });
     };
 
@@ -45,7 +46,7 @@ export class PresentationFacade extends State<PresentationState> {
   loadOne(id: string) {
     const request$ = this.findPresentationByIDUseCase.execute(id);
 
-    const onPresentation = (presentation: Presentation) => {
+    const onPresentation = (presentation: PresentationOut) => {
       this.setState({ presentation });
     };
 

@@ -1,15 +1,19 @@
-import { AccountSchema } from '@devmx/account-data-source';
-import { PresentationSchema } from './presentation';
+import { AccountCollection } from '@devmx/account-data-source';
+import { createSchema } from '@devmx/shared-data-source';
+import { PresentationCollection } from './presentation';
 import { Prop, Schema } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import {
   PresentationReaction,
   PresentationReactionType,
 } from '@devmx/shared-api-interfaces';
 
-@Schema({ collection: 'presentationReactions' })
-export class PresentationReactionSchema implements PresentationReaction {
-  id: string;
+@Schema()
+export class PresentationReactionCollection
+  extends Document
+  implements PresentationReaction
+{
+  override id: string;
 
   @Prop({
     type: String,
@@ -26,9 +30,21 @@ export class PresentationReactionSchema implements PresentationReaction {
   })
   type: PresentationReactionType;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Presentation' })
-  presentation: PresentationSchema;
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: PresentationCollection.name,
+    required: true,
+  })
+  presentation: PresentationCollection;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Account' })
-  account: AccountSchema;
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: AccountCollection.name,
+    required: true,
+  })
+  account: AccountCollection;
 }
+
+export const PresentationReactionSchema = createSchema(
+  PresentationReactionCollection
+);

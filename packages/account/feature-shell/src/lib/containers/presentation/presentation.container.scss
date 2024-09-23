@@ -1,0 +1,26 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .presentation-card {
+    padding: 1em;
+
+    .flex {
+      gap: 1em;
+      display: flex;
+
+      &.row {
+        flex-direction: row;
+
+        &.wrap {
+          flex-flow: row wrap;
+        }
+      }
+
+      > aside {
+        flex: 1;
+      }
+    }
+  }
+}

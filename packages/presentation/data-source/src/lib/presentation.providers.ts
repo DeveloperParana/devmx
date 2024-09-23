@@ -1,9 +1,12 @@
 import {
+  provideCreatePresentationCommentUseCase,
   provideCreatePresentationUseCase,
   provideFindPresentationByIDUseCase,
+  provideFindPresentationCommentsUseCase,
   provideFindPresentationsUseCase,
   providePresentationCommentsService,
   providePresentationReactionsService,
+  providePresentationsCommentsFacade,
   providePresentationsFacade,
   providePresentationsService,
   provideRemovePresentationUseCase,
@@ -22,6 +25,10 @@ export function providePresentations() {
     provideUpdatePresentationUseCase(),
     provideRemovePresentationUseCase(),
 
+    provideCreatePresentationCommentUseCase(),
+    provideFindPresentationCommentsUseCase(),
+
     providePresentationsFacade(),
+    providePresentationsCommentsFacade(),
   ];
 }

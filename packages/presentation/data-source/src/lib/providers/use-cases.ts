@@ -6,6 +6,9 @@ import {
   CreatePresentationUseCase,
   UpdatePresentationUseCase,
   RemovePresentationUseCase,
+  CreatePresentationCommentUseCase,
+  PresentationCommentsService,
+  FindPresentationCommentsUseCase,
 } from '@devmx/presentation-domain/server';
 
 export function provideCreatePresentationUseCase() {
@@ -35,5 +38,17 @@ export function provideUpdatePresentationUseCase() {
 export function provideRemovePresentationUseCase() {
   return createUseCaseProvider(RemovePresentationUseCase, [
     PresentationsService,
+  ]);
+}
+
+export function provideCreatePresentationCommentUseCase() {
+  return createUseCaseProvider(CreatePresentationCommentUseCase, [
+    PresentationCommentsService,
+  ]);
+}
+
+export function provideFindPresentationCommentsUseCase() {
+  return createUseCaseProvider(FindPresentationCommentsUseCase, [
+    PresentationCommentsService,
   ]);
 }

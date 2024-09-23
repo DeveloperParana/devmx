@@ -1,33 +1,13 @@
-import { createSchema } from '@devmx/shared-data-source';
+import { PresentationDatabaseModule } from './presentation-database.module';
 import { PresentationsController } from './controllers';
-import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
-import {
-  PresentationSchema,
-  providePresentations,
-  PresentationCommentSchema,
-  PresentationReactionSchema,
-} from '@devmx/presentation-data-source';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      {
-        name: PresentationSchema.name,
-        schema: createSchema(PresentationSchema),
-      },
-      {
-        name: PresentationCommentSchema.name,
-        schema: createSchema(PresentationCommentSchema),
-      },
-      {
-        name: PresentationReactionSchema.name,
-        schema: createSchema(PresentationReactionSchema),
-      },
-    ]),
+    PresentationDatabaseModule
   ],
   controllers: [PresentationsController],
-  providers: [...providePresentations()],
+  providers: [],
   exports: [],
 })
 export class PresentationResourceModule {}

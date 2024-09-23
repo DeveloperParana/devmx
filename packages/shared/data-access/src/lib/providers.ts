@@ -1,4 +1,4 @@
-import { Env } from './envs';
+import { Env } from '@devmx/shared-api-interfaces/client';
 import { HttpClient } from './ports';
 
 export function provideEnv(env: Env) {

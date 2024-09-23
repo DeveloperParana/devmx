@@ -1,8 +1,10 @@
 import { createServerProvider } from '@devmx/shared-data-source';
-import { PresentationsFacade } from '../facades';
+import { PresentationCommentsFacade, PresentationsFacade } from '../facades';
 import {
+  CreatePresentationCommentUseCase,
   CreatePresentationUseCase,
   FindPresentationByIDUseCase,
+  FindPresentationCommentsUseCase,
   FindPresentationsUseCase,
   RemovePresentationUseCase,
   UpdatePresentationUseCase,
@@ -15,5 +17,12 @@ export function providePresentationsFacade() {
     FindPresentationByIDUseCase,
     UpdatePresentationUseCase,
     RemovePresentationUseCase,
+  ]);
+}
+
+export function providePresentationsCommentsFacade() {
+  return createServerProvider(PresentationCommentsFacade, [
+    CreatePresentationCommentUseCase,
+    FindPresentationCommentsUseCase,
   ]);
 }

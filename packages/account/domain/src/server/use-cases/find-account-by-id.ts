@@ -1,5 +1,6 @@
 import { Account, UseCase } from '@devmx/shared-api-interfaces';
 import { AccountsService } from '../services';
+import { NotFoundError } from '@devmx/shared-util-errors';
 
 export class FindAccountByIDUseCase implements UseCase<string, Account> {
   constructor(private accountsService: AccountsService) {}
@@ -8,7 +9,7 @@ export class FindAccountByIDUseCase implements UseCase<string, Account> {
     const account = await this.accountsService.findOne(id);
 
     if (!account) {
-      throw `Conta não encontrada`;
+      throw new NotFoundError('Conta não encontrada');
     }
 
     return account;

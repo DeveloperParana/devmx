@@ -1,13 +1,19 @@
 import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
-import { Presentation } from '@devmx/shared-api-interfaces';
-import { exceptionByError } from '@devmx/shared-resource';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import {
-  CreatedPresentationDto,
-  CreatePresentationDto,
+  Presentation,
+  PresentationComment,
+} from '@devmx/shared-api-interfaces';
+import { exceptionByError } from '@devmx/shared-resource';
+import {
   PresentationDto,
   PresentationsFacade,
   UpdatePresentationDto,
+  CreatePresentationDto,
+  CreatedPresentationDto,
+  PresentationCommentsFacade,
+  CreatePresentationCommentDto,
+  PresentationCommentDto,
 } from '@devmx/presentation-data-source';
 import {
   Get,
@@ -20,10 +26,14 @@ import {
   Controller,
 } from '@nestjs/common';
 
+@ApiBearerAuth()
 @ApiTags('Apresentações')
 @Controller('presentations')
 export class PresentationsController {
-  constructor(private readonly presentationsFacade: PresentationsFacade) {}
+  constructor(
+    private readonly presentationsFacade: PresentationsFacade,
+    private readonly presentationCommentsFacade: PresentationCommentsFacade
+  ) {}
 
   @Post()
   @ApiOkResponse({ type: CreatedPresentationDto })
@@ -47,6 +57,8 @@ export class PresentationsController {
     try {
       return await this.presentationsFacade.find(params);
     } catch (err) {
+      console.log(err);
+
       throw exceptionByError(err);
     }
   }
@@ -62,6 +74,37 @@ export class PresentationsController {
       }
 
       return presentation;
+    } catch (err) {
+      throw exceptionByError({
+        code: 404,
+        message: 'Apresentação não encontrada',
+      });
+    }
+  }
+
+  @Post(':id/comments')
+  // @ApiOkResponse({ type: CreatedPresentationCommentDto })
+  async createComment(
+    @User('id') account: string,
+    @Param('id') presentation: string,
+    @Body() data: CreatePresentationCommentDto
+  ) {
+    try {
+      const value = { ...data, presentation, account };
+      return await this.presentationCommentsFacade.create(value);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get(':id/comments')
+  @ApiOkResponse({ type: PresentationCommentDto })
+  async findComments(
+    @Param('id') presentation: string,
+    @Query() params: QueryParamsDto<PresentationComment>
+  ) {
+    try {
+      return await this.presentationCommentsFacade.find(presentation, params);
     } catch (err) {
       throw exceptionByError({
         code: 404,

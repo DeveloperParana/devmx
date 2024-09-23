@@ -1,11 +1,83 @@
-import { Component } from '@angular/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { take } from 'rxjs';
+import {
+  AuthFacade,
+  AccountFacade,
+  ChangePassword,
+  UpdateAccount,
+} from '@devmx/account-data-access';
+import {
+  EditableAccountComponent,
+  EditablePasswordComponent,
+} from '../../components';
+import {
+  inject,
+  OnInit,
+  viewChild,
+  Component,
+  DestroyRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
-  selector: 'devmx-settings',
-  standalone: true,
-  imports: [CommonModule],
+  selector: 'devmx-account-settings',
   templateUrl: './settings.container.html',
   styleUrl: './settings.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    EditableAccountComponent,
+    EditablePasswordComponent,
+  ],
+  standalone: true,
 })
-export class SettingsContainer {}
+export class SettingsContainer implements OnInit {
+  authFacade = inject(AuthFacade);
+
+  accountFacade = inject(AccountFacade);
+
+  destroyRef = inject(DestroyRef);
+
+  editableAccountChild = viewChild(EditableAccountComponent);
+  get editableAccount() {
+    return this.editableAccountChild();
+  }
+
+  editablePasswordChild = viewChild(EditablePasswordComponent);
+  get editablePassword() {
+    return this.editablePasswordChild();
+  }
+
+  ngOnInit() {
+    this.accountFacade.account$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((account) => {
+        if (this.editableAccount && account) {
+          this.editableAccount.form.patchValue(account);
+        }
+      });
+
+    this.authFacade.user$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((user) => {
+        if (user) this.accountFacade.loadOne(user.id);
+      });
+
+    this.authFacade.loadAuthUser();
+  }
+
+  onAccountSubmitted(data: UpdateAccount) {
+    this.accountFacade.update(data);
+  }
+
+  onPasswordSubmitted(data: ChangePassword) {
+    this.accountFacade.changePassword(data);
+  }
+}

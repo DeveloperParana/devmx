@@ -33,9 +33,22 @@
     width: 16em;
   }
 
+  .presentation-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+  }
+
   .presentation-is-mobile .presentation-sidenav-container {
     /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
+  }
+
+  .add-button {
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
   }
 }

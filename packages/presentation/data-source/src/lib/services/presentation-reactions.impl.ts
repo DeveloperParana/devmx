@@ -1,4 +1,4 @@
-import { PresentationReactionsService } from '@devmx/account-domain/server';
+import { PresentationReactionsService } from '@devmx/presentation-domain/server';
 import { QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
 import { PresentationReaction } from '@devmx/shared-api-interfaces';
 import { Model } from 'mongoose';

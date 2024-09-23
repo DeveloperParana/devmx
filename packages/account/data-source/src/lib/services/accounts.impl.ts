@@ -31,7 +31,13 @@ export class AccountsServiceImpl implements AccountsService {
   }
 
   async findOne(id: string) {
-    return this.accountModel.findById(id).exec();
+    const account = await this.accountModel.findById(id).exec();
+
+    if (!account) {
+      throw `Conta não encontrada`;
+    }
+
+    return account.toJSON();
   }
 
   async findOneBy(filter: QueryFilterDto<Account>) {
