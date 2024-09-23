@@ -1,0 +1,12 @@
+<input
+  #input
+  hidden
+  type="file"
+  name="file"
+  [accept]="accept()"
+  (change)="onSelected(input.files)"
+/>
+
+<button type="button" mat-icon-button (click)="input.click()">
+  <mat-icon>{{ icon() }}</mat-icon>
+</button>

@@ -11,6 +11,7 @@ import {
   provideRemoveAccountUseCase,
   provideAccountFacade,
   provideChangePasswordUseCase,
+  provideUploadPhotoUseCase,
 } from './providers';
 
 export function provideAccount() {
@@ -27,6 +28,7 @@ export function provideAccount() {
     provideUpdateAccountUseCase(),
     provideRemoveAccountUseCase(),
     provideChangePasswordUseCase(),
+    provideUploadPhotoUseCase(),
 
     provideAuthFacade(),
     provideAccountFacade(),

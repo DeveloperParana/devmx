@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  canvas {
+    cursor: move;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1em;
+  }
+}

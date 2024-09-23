@@ -12,8 +12,7 @@
     "@devmx/presentation-domain": "0.0.1",
     "@devmx/shared-data-source": "0.0.1",
     "@nestjs/mongoose": "^10.0.10",
-    "mongoose": "^8.6.3",
-    "@devmx/account-domain": "0.0.1"
+    "mongoose": "^8.6.3"
   },
   "type": "commonjs",
   "main": "./src/index.js",

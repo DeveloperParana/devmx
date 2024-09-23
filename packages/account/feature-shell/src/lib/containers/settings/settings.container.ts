@@ -3,7 +3,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { take } from 'rxjs';
 import {
   AuthFacade,
   AccountFacade,
@@ -13,6 +12,7 @@ import {
 import {
   EditableAccountComponent,
   EditablePasswordComponent,
+  EditablePhotoComponent,
 } from '../../components';
 import {
   inject,
@@ -22,6 +22,10 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { PhotoComponent } from '@devmx/shared-ui-global';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'devmx-account-settings',
@@ -32,6 +36,9 @@ import {
     CommonModule,
     MatCardModule,
     MatIconModule,
+    PhotoComponent,
+    MatButtonModule,
+    MatDialogModule,
     MatExpansionModule,
     EditableAccountComponent,
     EditablePasswordComponent,
@@ -44,6 +51,8 @@ export class SettingsContainer implements OnInit {
   accountFacade = inject(AccountFacade);
 
   destroyRef = inject(DestroyRef);
+
+  dialog = inject(MatDialog);
 
   editableAccountChild = viewChild(EditableAccountComponent);
   get editableAccount() {
@@ -71,6 +80,15 @@ export class SettingsContainer implements OnInit {
       });
 
     this.authFacade.loadAuthUser();
+  }
+
+  changePhoto() {
+    const dialogRef = this.dialog.open(EditablePhotoComponent);
+    const photo$ = dialogRef.afterClosed().pipe(take(1));
+
+    photo$.subscribe((photo) => {
+      if (photo) this.accountFacade.uploadPhoto(photo);
+    });
   }
 
   onAccountSubmitted(data: UpdateAccount) {

@@ -14,7 +14,9 @@ export abstract class AccountService {
 
   abstract findPresentations(params: URLSearchParams): Observable<Page<PresentationOut>>
 
-  abstract update(id: string, presentation: UpdateAccount): Observable<AccountOut>;
+  abstract update(id: string, data: UpdateAccount): Observable<AccountOut>;
+
+  abstract upload(photo: Blob): Observable<AccountOut>;
 
   abstract changePassword(data: ChangePassword): Observable<AccountOut>;
 

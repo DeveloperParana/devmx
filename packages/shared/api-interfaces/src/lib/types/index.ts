@@ -5,6 +5,7 @@ export * from './editable';
 export * from './findable';
 export * from './fn';
 export * from './gender';
+export * from './mime-type';
 export * from './presentation-format';
 export * from './presentation-reaction-type';
 export * from './query-filter';

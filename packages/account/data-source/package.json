@@ -13,7 +13,8 @@
     "mongoose": "^8.6.3",
     "bcrypt": "^5.1.1",
     "passport-jwt": "^4.0.1",
-    "@nestjs/passport": "^10.0.3"
+    "@nestjs/passport": "^10.0.3",
+    "@devmx/presentation-domain": "0.0.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

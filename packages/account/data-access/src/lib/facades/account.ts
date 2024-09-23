@@ -12,6 +12,7 @@ import {
   FindAccountByIDUseCase,
   FindAccountPresentationsUseCase,
   ChangePasswordUseCase,
+  UploadPhotoUseCase,
 } from '@devmx/account-domain/client';
 
 interface AccountState {
@@ -32,7 +33,8 @@ export class AccountFacade extends State<AccountState> {
     private findAccountPresentationsUseCase: FindAccountPresentationsUseCase,
     private updateAccountUseCase: UpdateAccountUseCase,
     private removeAccountUseCase: RemoveAccountUseCase,
-    private changePasswordUseCase: ChangePasswordUseCase
+    private changePasswordUseCase: ChangePasswordUseCase,
+    private uploadPhotoUseCase: UploadPhotoUseCase
   ) {
     super({
       accounts: { data: [], items: 0, pages: 0 },
@@ -74,6 +76,12 @@ export class AccountFacade extends State<AccountState> {
     const request$ = this.changePasswordUseCase.execute(data);
 
     request$.pipe(take(1)).subscribe(() => this.loadOne(data.id));
+  }
+
+  uploadPhoto(photo: Blob) {
+    const request$ = this.uploadPhotoUseCase.execute(photo);
+
+    request$.pipe(take(1)).subscribe((account) => this.setState({ account }));
   }
 
   remove(id: string) {

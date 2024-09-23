@@ -1,6 +1,6 @@
+import { ChangePassword, UpdateAccount } from '@devmx/account-domain';
 import { AccountService } from '@devmx/account-domain/client';
 import { Env } from '@devmx/shared-api-interfaces/client';
-import { ChangePassword, UpdateAccount } from '@devmx/account-domain';
 import { HttpClient } from '@devmx/shared-data-access';
 import {
   Page,
@@ -31,6 +31,13 @@ export class AccountServiceImpl implements AccountService {
 
   update(id: string, presentation: UpdateAccount) {
     return this.http.patch<AccountOut>(`${this.url}/${id}`, presentation);
+  }
+
+  upload(photo: Blob) {
+    const data = new FormData()
+    data.append('photo', photo)
+    const url = `${this.url}/photo`
+    return this.http.post<AccountOut>(url, data)
   }
 
   changePassword(data: ChangePassword) {

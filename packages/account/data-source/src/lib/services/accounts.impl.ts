@@ -45,7 +45,13 @@ export class AccountsServiceImpl implements AccountsService {
   }
 
   async update(id: string, data: Partial<Account>) {
-    return this.accountModel.findOneAndUpdate({ _id: id }, data).exec();
+    const account = await this.accountModel.findOneAndUpdate({ _id: id }, data).exec();
+
+    if (!account) {
+      throw `Problema ao alterar conta`;
+    }
+
+    return account.toJSON();
   }
 
   async remove(id: string) {
