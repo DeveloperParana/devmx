@@ -13,5 +13,9 @@ export interface Presentation {
 
   resources: string[];
 
+  cover?: string
+
+  video?: string
+
   visible: boolean;
 }

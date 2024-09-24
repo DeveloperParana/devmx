@@ -34,5 +34,15 @@ export class CreatePresentationDto {
   @ApiPropertyOptional()
   visible = false;
 
+  @IsString()
+  @IsOptional()
+  @ApiPropertyOptional()
+  cover: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiPropertyOptional()
+  video: string;
+
   account: string;
 }

@@ -1,6 +1,8 @@
+@use '@angular/cdk/overlay-prebuilt.css';
 @use '@angular/material' as mat;
 @use './scss/theme' as theme;
 @use './scss/utils';
+
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -24,4 +26,15 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+a:link,
+a:visited,
+a:active {
+  color: rgb(7, 80, 224);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

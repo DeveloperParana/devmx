@@ -205,6 +205,9 @@ devDependencies:
   '@typescript-eslint/utils':
     specifier: ^7.16.0
     version: 7.18.0(eslint@8.57.1)(typescript@5.5.4)
+  czg:
+    specifier: ^1.9.4
+    version: 1.9.4
   eslint:
     specifier: ~8.57.0
     version: 8.57.1
@@ -7548,6 +7551,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       cssom: 0.3.8
+    dev: true
+
+  /czg@1.9.4:
+    resolution: {integrity: sha512-x9V/FXA3XUmK6PMvP2WC3WPTA4xAUCcjFcL6HxJSLUAn4gKshMHWLkIfWSCsEqmenn5IIX0/L7NuBJ7/luDqCA==}
+    engines: {node: '>=v12.20.0'}
+    hasBin: true
     dev: true
 
   /data-urls@3.0.2:

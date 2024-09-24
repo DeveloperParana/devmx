@@ -11,6 +11,10 @@ export interface CreatePresentation {
 
   resources?: string[];
 
+  cover?: string;
+
+  video?: string;
+
   visible: boolean;
 
   account: string;

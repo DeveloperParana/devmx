@@ -1,8 +1,10 @@
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { PresentationFacade } from '@devmx/presentation-data-access';
+import { ReactionComponent, ReactionEvent } from '../../components';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import {
   inject,
@@ -10,7 +12,6 @@ import {
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'devmx-presentations',
@@ -22,6 +23,7 @@ import { RouterLink } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatPaginatorModule,
+    ReactionComponent,
     RouterLink,
     AsyncPipe,
   ],
@@ -32,6 +34,10 @@ export class PresentationsContainer implements OnInit {
 
   ngOnInit() {
     this.presentationFacade.load();
+  }
+
+  onReact(event: ReactionEvent) {
+    console.log(event);
   }
 
   onPageChange(event: PageEvent) {

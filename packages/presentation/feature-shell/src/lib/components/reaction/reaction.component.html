@@ -1,0 +1,7 @@
+<menu>
+  @for (reaction of reactions; track reaction) {
+  <button mat-icon-button (click)="react(reaction)">
+    <mat-icon [svgIcon]="reaction" />
+  </button>
+  }
+</menu>

@@ -1,77 +1,73 @@
-# Devmx
-
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
-
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
-
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Finish your CI setup
-
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/MMUTh7bF3w)
+```
+     _                           
+  __| | _____   ___ __ ___ __  __
+ / _` |/ _ \ \ / / '_ ` _ \\ \/ /
+| (_| |  __/\ V /| | | | | |>  < 
+ \__,_|\___| \_/ |_| |_| |_/_/\_\
+```
+# dev member experience
 
 
-## Run tasks
+## Para executar em dev
 
-To run tasks with Nx use:
+### Requisitos
+1. [pnpm](https://pnpm.io/installation) instalado
+1. [docker](https://docs.docker.com/engine/install) instalado
+
+### Configurações
+
+Clone o projeto
 
 ```sh
-npx nx <target> <project-name>
+git clone https://github.com/DeveloperParana/devmx
 ```
 
-For example:
+Configure a senha do banco e segredo jwt como quiser para uso local
 
 ```sh
-npx nx build myproject
+mv .env-example .env
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
-```
-
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+Preencha os valores para `DB_USER`, `DB_PASS`, `JWT_SECRET` e salve antes de executar o docker.
 
 ```sh
-# Genenerate an app
-npx nx g @nx/react:app demo
-
-# Generate a library
-npx nx g @nx/react:lib some-lib
+docker compose up -d
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+Instale as dependências
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```sh
+pnpm install
+```
+
+Execute o back-end e front-end
+
+```sh
+pnpm dev
+```
+
+## Para commits
+
+```sh
+pnpm cmt
+```
+
+Responda as perguntas para fazer o commit.
 
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Responsabilidades e relacionamentos
 
-## Install Nx Console
+Trata-se de responsabilidade e relacionamentos, ou seja, qual a responsabilidade de cada camada e quais camadas podem depender diretamente uma das outras. Na tabela a seguir vemos que camadas do tipo `util` podem depender apenas de camadas que também sejam do tipo `util`, camadas do tipo `domain` podem depender apenas de camadas do tipo `util` e `api`, camadas do tipo `data-source` podem depender apenas dos tipos `util`, `domain` e `api`, e assim por diante...
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+Caso tenha interesse em aprofundar neste assunto e descobrir os motivos, recomendo que leia um conteúdo que escrevi ano passado, você pode fazer download através do link a seguir. [Arquitetura em camadas, uma abordagem sobre responsabilidades e relacionamentos](https://conteudode.dev/pdf/nx)
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+|               | util | domain | data-source | data-access | resource | feature | app | api |
+| ------------: | :--: | :----: | :---------: | :---------: | :------: | :-----: | :-: | :-: |
+|        `util` |  ✓   |   ✓    |      ✓      |      ✓      |    ✓     |    ✓    |  ✓  |  ✓  |
+|      `domain` |  𝗫   |   𝗫    |      ✓      |      ✓      |    𝗫     |    𝗫    |  𝗫  |  ✓  |
+| `data-source` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    ✓     |    𝗫    |  ✓  |  ✓  |
+| `data-access` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    𝗫     |    ✓    |  ✓  |  ✓  |
+|    `resource` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    ✓     |    𝗫    |  ✓  |  ✓  |
+|     `feature` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    𝗫     |    ✓    |  ✓  |  ✓  |
+|         `app` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    𝗫     |    𝗫    |  𝗫  |  𝗫  |
+|         `api` |  𝗫   |   ✓    |      ✓      |      ✓      |    ✓     |    ✓    |  ✓  |  ✓  |

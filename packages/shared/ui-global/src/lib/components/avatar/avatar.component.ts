@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Env } from '@devmx/shared-api-interfaces/client';
+import {
+  input,
+  inject,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'devmx-avatar',
@@ -8,13 +14,13 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   standalone: true,
 })
 export class AvatarComponent {
-  #sizes = {
-    small: 36,
-    medium: 48,
-    large: 64,
-  };
-
-  src = input();
+  env = inject(Env);
 
   color = input('#333');
+
+  src = input<string>();
+
+  get path() {
+    return `${this.env.photos.url}/${this.src()}`;
+  }
 }

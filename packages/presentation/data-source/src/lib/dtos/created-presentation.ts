@@ -1,6 +1,6 @@
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
 import { AccountDto } from '@devmx/account-data-source';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 
 export class CreatedPresentationDto {
@@ -25,6 +25,12 @@ export class CreatedPresentationDto {
 
   @ApiProperty()
   resources: string[];
+
+  @ApiPropertyOptional()
+  cover: string;
+
+  @ApiPropertyOptional()
+  video: string;
 
   @ApiProperty()
   visible: boolean;

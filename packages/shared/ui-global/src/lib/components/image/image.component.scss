@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+:host {
+  padding: 0.2em;
+  overflow: hidden;
+  display: inline-flex;
+  border-radius: 0.6em;
+
+  img {
+    display: inline-flex;
+    border-radius: 0.4em;
+    overflow: hidden;
+  }
+
+  @include mat.elevation-transition();
+  @include mat.elevation(4);
+
+  &:active,
+  &:hover {
+    @include mat.elevation(6);
+  }
+}

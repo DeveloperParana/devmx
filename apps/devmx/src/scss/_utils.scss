@@ -14,3 +14,30 @@ kbd {
   vertical-align: middle;
   user-select: none; /* Evita que o texto seja selecionado */
 }
+
+.flex {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.justify-between {
+    justify-content: space-between;
+  }
+}
+
+.gap {
+  &-1 {
+    gap: 1em;
+  }
+  &-2 {
+    gap: 2em;
+  }
+  &-3 {
+    gap: 3em;
+  }
+  &-4 {
+    gap: 4em;
+  }
+}

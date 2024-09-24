@@ -9,24 +9,24 @@
     </mat-expansion-panel-header>
 
     <div class="flex row wrap">
-      <devmx-editable-account (submitted)="onAccountSubmitted($event)" />
       <aside>
-        @if (accountFacade.account$ | async; as account) {
-        <figure>
-          @if (account.photo) {
-          <img
-            [src]="'http://localhost:3000/photos/' + account.photo"
-            alt="Foto do perfil"
-          />
-          }
-        </figure>
-        }
-        <button mat-button type="button" (click)="changePhoto()">Alterar foto</button>
+        @if (accountFacade.account$ | async; as account) { @if (account.photo) {
+        <devmx-image [src]="account.photo" [width]="200" />
+        } }
+        <div>
+          <button mat-button type="button" (click)="changePhoto()">
+            Alterar foto
+          </button>
+          <button mat-button type="button" (click)="changePhoto()">
+            Remover foto
+          </button>
+        </div>
       </aside>
+      <devmx-editable-account (submitted)="onAccountSubmitted($event)" />
     </div>
   </mat-expansion-panel>
 
-  <mat-expansion-panel hideToggle class="settings-panel" v>
+  <mat-expansion-panel hideToggle class="settings-panel">
     <mat-expansion-panel-header>
       <mat-panel-title> Segurança </mat-panel-title>
       <mat-panel-description>
@@ -35,6 +35,14 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <devmx-editable-password (submitted)="onPasswordSubmitted($event)" />
+    <div class="flex row wrap">
+      <aside>
+        <figure>
+          <img src="figures/password.svg" width="128" alt="Password" />
+        </figure>
+      </aside>
+
+      <devmx-editable-password (submitted)="onPasswordSubmitted($event)" />
+    </div>
   </mat-expansion-panel>
 </mat-accordion>

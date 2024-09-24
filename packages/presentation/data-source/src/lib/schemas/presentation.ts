@@ -27,6 +27,12 @@ export class PresentationCollection extends Document implements Presentation {
   @Prop({ default: [] })
   resources: string[];
 
+  @Prop({ default: '' })
+  cover: string;
+
+  @Prop({ default: '' })
+  video: string;
+
   @Prop({ default: false })
   visible: boolean;
 

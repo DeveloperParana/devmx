@@ -81,7 +81,7 @@ export class AccountFacade extends State<AccountState> {
   uploadPhoto(photo: Blob) {
     const request$ = this.uploadPhotoUseCase.execute(photo);
 
-    request$.pipe(take(1)).subscribe((account) => this.setState({ account }));
+    request$.pipe(take(1)).subscribe(({ id }) => this.loadOne(id));
   }
 
   remove(id: string) {

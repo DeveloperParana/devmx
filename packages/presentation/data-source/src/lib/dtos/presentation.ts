@@ -29,6 +29,12 @@ export class PresentationDto {
   @ApiProperty()
   visible: boolean;
 
+  @ApiProperty()
+  cover: string;
+
+  @ApiProperty()
+  video: string;
+
   @Type(() => AccountDto)
   @ApiProperty({ type: () => AccountDto })
   account: AccountDto;

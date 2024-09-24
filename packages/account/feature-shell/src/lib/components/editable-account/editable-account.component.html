@@ -4,6 +4,7 @@
       <mat-label>Nome</mat-label>
       <input
         matInput
+        #firstName
         formControlName="first"
         autocomplete="given-name"
         autofocus
@@ -33,16 +34,31 @@
 
   <section>
     <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        autocomplete="email"
+      />
+      <mat-error>Endereço inválido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Usuário</mat-label>
+      <input matInput formControlName="username" autocomplete="username" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-form-field>
       <mat-label>Gênero</mat-label>
-      @if (form.gender?.value !== '') {
       <mat-select formControlName="gender">
         @for (gender of form.genders; track gender) {
         <mat-option [value]="gender.value">{{ gender.viewValue }}</mat-option>
         }
       </mat-select>
-      } @else {
-      <input matInput formControlName="gender" autofocus />
-      }
       <mat-hint>Opcional</mat-hint>
     </mat-form-field>
 
@@ -65,23 +81,17 @@
     </mat-form-field>
   </section>
 
-  <mat-form-field>
-    <mat-label>E-mail</mat-label>
-    <input type="email" matInput formControlName="email" autocomplete="email" />
-    <mat-error>Endereço inválido</mat-error>
-  </mat-form-field>
-
-  <section>
-    <mat-form-field>
-      <mat-label>Usuário</mat-label>
-      <input matInput formControlName="username" autocomplete="username" />
-      <mat-error>Obrigatório</mat-error>
-    </mat-form-field>
-
-    <mat-checkbox formControlName="active">Ativo</mat-checkbox>
-  </section>
-
   <footer>
-    <button mat-flat-button>Salvar</button>
+    <div class="flex gap-1">
+      <button type="button" mat-stroked-button (click)="toggleForm(firstName)">
+        <mat-icon>{{ form.disabled ? 'lock_open' : 'lock' }}</mat-icon>
+        <span>{{ form.disabled ? 'Alterar' : 'Bloquear' }}</span>
+      </button>
+
+      <button [disabled]="form.disabled" mat-flat-button>
+        <mat-icon>cloud_upload</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
   </footer>
 </form>

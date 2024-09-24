@@ -14,19 +14,14 @@
       [fixedInViewport]="mobileQuery.matches"
       class="presentation-sidenav-start"
       fixedTopGap="56"
-      opened
     >
-      <mat-nav-list>
-        <h3 mat-subheader>Conta</h3>
-        <a mat-list-item routerLink="/presentations/settings">
-          <mat-icon matListItemIcon>settings</mat-icon>
-          <span matListItemTitle>Configurações</span>
-        </a>
-        <a mat-list-item routerLink="/presentations/presentations">
-          <mat-icon matListItemIcon>collections_bookmark</mat-icon>
-          <span matListItemTitle>Apresentações</span>
-        </a>
-      </mat-nav-list>
+      <mat-selection-list #filterByTags>
+        <h3 mat-subheader>Filtros</h3>
+
+        @for (tag of tags; track tag) {
+        <mat-list-option>{{ tag }}</mat-list-option>
+        }
+      </mat-selection-list>
     </mat-sidenav>
 
     <mat-sidenav-content class="presentation-content">

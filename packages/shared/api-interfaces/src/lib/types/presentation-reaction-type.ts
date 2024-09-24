@@ -3,6 +3,5 @@ export type PresentationReactionType =
   | 'mindblowing'
   | 'insightful'
   | 'amazing'
-  | 'interesting'
-  | 'learnedSomething'
-  | 'like';
+  | 'learned'
+  | 'cool';

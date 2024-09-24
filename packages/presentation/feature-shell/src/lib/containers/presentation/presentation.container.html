@@ -2,7 +2,7 @@
 <article>
   <mat-card>
     <mat-card-header>
-      <devmx-avatar mat-card-avatar [src]="presentation.account.photo" />
+      <devmx-image mat-card-avatar [src]="presentation.account.photo" />
       <mat-card-title> {{presentation.title}} </mat-card-title>
       <mat-card-subtitle>
         {{presentation.account.name.first}} {{presentation.account.name.last}}
@@ -17,31 +17,52 @@
         }
       </mat-chip-set>
     </mat-card-content>
-
   </mat-card>
 </article>
 
-}
-<!--  -->
-@if (presentationCommentFacade.comments$ | async; as comments) {
-<mat-list>
-  <h3 mat-subheader>Comentários</h3>
+<section>
+  @if (presentationCommentFacade.comments$ | async; as comments) {
+  <div class="flex row gap-2 justify-between">
+    <div>
+      <mat-list>
+        <h3 mat-subheader>Comentários</h3>
 
-  @for (comment of comments.data; track comment.id) {
-  <mat-list-item>
-    <devmx-avatar matListItemAvatar [src]="comment.account.photo" />
+        @for (comment of comments.data; track comment.id) {
+        <mat-list-item>
+          <devmx-avatar matListItemAvatar [src]="comment.account.photo" />
 
-    <div matListItemTitle>{{comment.account.name.first}}</div>
-    <div matListItemLine>{{comment.text}}</div>
-  </mat-list-item>
+          <div matListItemTitle>{{comment.account.name.first}}</div>
+          <div matListItemLine>{{comment.text}}</div>
+        </mat-list-item>
+        }
+      </mat-list>
+
+      <devmx-presentation-comment
+        [presentation]="presentation.id"
+        (submitted)="onComment($event)"
+      />
+    </div>
+    <mat-list>
+      <h3 mat-subheader>Recursos</h3>
+
+      @for (resource of presentation.resources; track resource) {
+      <mat-list-item>
+        <mat-icon matListItemIcon>link</mat-icon>
+        <div matListItemTitle>
+          <a [href]="resource" target="_blank">{{ resource }}</a>
+        </div>
+      </mat-list-item>
+      }
+    </mat-list>
+  </div>
+
+  <footer>
+    <mat-paginator
+      hidePageSize
+      [length]="comments.items"
+      (page)="onPageChange($event)"
+    />
+  </footer>
   }
-</mat-list>
-
-<footer>
-  <mat-paginator
-    hidePageSize
-    [length]="comments.items"
-    (page)="onPageChange($event)"
-  />
-</footer>
+</section>
 }

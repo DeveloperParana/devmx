@@ -3,6 +3,7 @@ import { EditablePresentationComponent } from '../../components';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Presentation } from '@devmx/shared-api-interfaces';
+import { MatCardModule } from '@angular/material/card';
 import { param } from '@devmx/shared-ui-global';
 import { take } from 'rxjs';
 import {
@@ -13,7 +14,6 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'devmx-account-presentation',

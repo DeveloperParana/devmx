@@ -1,6 +1,6 @@
 @if (accountFacade.presentations$ | async; as presentations) {
 
-<div>
+<div class="presentations-container">
   @for (presentation of presentations.data; track presentation.id) {
 
   <mat-card>

@@ -22,9 +22,8 @@ export class PresentationReactionCollection
       'mindblowing',
       'insightful',
       'amazing',
-      'interesting',
-      'learnedSomething',
-      'like',
+      'learned',
+      'cool',
     ],
     default: 'claps',
   })

@@ -3,8 +3,31 @@
   display: flex;
   flex-direction: column;
 
-  > div {
-    flex: 1;
+  .presentations-container {
+    display: grid;
+    gap: 16px; /* Espaçamento entre os itens */
+    padding: 16px;
+  }
+
+  /* Estilo padrão para dispositivos grandes: 3 colunas */
+  @media (min-width: 1024px) {
+    .presentations-container {
+      grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    }
+  }
+
+  /* Estilo para dispositivos médios: 2 colunas */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .presentations-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    }
+  }
+
+  /* Estilo para dispositivos pequenos: 1 coluna */
+  @media (max-width: 767px) {
+    .presentations-container {
+      grid-template-columns: 1fr; /* 1 coluna */
+    }
   }
 
   .presentations-footer {

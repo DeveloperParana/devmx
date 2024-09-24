@@ -1,8 +1,13 @@
+import { ImageComponent, PhotoComponent } from '@devmx/shared-ui-global';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
+import { AccountOut } from '@devmx/shared-api-interfaces';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { take } from 'rxjs';
 import {
   AuthFacade,
   AccountFacade,
@@ -22,10 +27,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { PhotoComponent } from '@devmx/shared-ui-global';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { take } from 'rxjs';
+
 
 @Component({
   selector: 'devmx-account-settings',
@@ -37,6 +39,7 @@ import { take } from 'rxjs';
     MatCardModule,
     MatIconModule,
     PhotoComponent,
+    ImageComponent,
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
@@ -68,9 +71,7 @@ export class SettingsContainer implements OnInit {
     this.accountFacade.account$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((account) => {
-        if (this.editableAccount && account) {
-          this.editableAccount.form.patchValue(account);
-        }
+        if (account) this.populate(account);
       });
 
     this.authFacade.user$
@@ -80,6 +81,15 @@ export class SettingsContainer implements OnInit {
       });
 
     this.authFacade.loadAuthUser();
+  }
+
+  populate(account: AccountOut) {
+    if (this.editableAccount) {
+      this.editableAccount.form.patchValue(account);
+    }
+    if (this.editablePassword) {
+      this.editablePassword.form.patchValue(account);
+    }
   }
 
   changePhoto() {

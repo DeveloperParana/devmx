@@ -12,13 +12,15 @@ import { RouterModule } from '@angular/router';
 import { take } from 'rxjs';
 import {
   inject,
+  OnInit,
   Component,
   OnDestroy,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-  OnInit,
 } from '@angular/core';
 import { AuthFacade } from '@devmx/account-data-access';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'devmx-presentation-feature-shell',
@@ -28,6 +30,8 @@ import { AuthFacade } from '@devmx/account-data-access';
   imports: [
     ToolbarComponent,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
@@ -47,6 +51,14 @@ export class PresentationFeatureShellComponent implements OnInit, OnDestroy {
   presentationFacade = inject(PresentationFacade);
 
   dialog = inject(MatDialog);
+
+  tags = [
+    'TypeScript',
+    'Java',
+    'Kotlin',
+    'PHP',
+    'Rust',
+  ]
 
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);

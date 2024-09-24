@@ -1,4 +1,3 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,8 +6,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { UpdateAccount } from '@devmx/account-data-access';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateAccountForm } from '../../forms';
+import {
+  output,
+  OnInit,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'devmx-editable-account',
@@ -23,14 +29,28 @@ import { UpdateAccountForm } from '../../forms';
     MatCheckboxModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
     MatInputModule,
   ],
   standalone: true,
 })
-export class EditableAccountComponent {
+export class EditableAccountComponent implements OnInit {
   form = new UpdateAccountForm();
 
   submitted = output<UpdateAccount>();
+
+  ngOnInit() {
+    this.form.disable();
+  }
+
+  toggleForm(elementToFocus: HTMLInputElement) {
+    if (this.form.disabled) {
+      this.form.enable();
+      elementToFocus.focus();
+    } else {
+      this.form.disable();
+    }
+  }
 
   onSubmit() {
     if (this.form.valid) {
