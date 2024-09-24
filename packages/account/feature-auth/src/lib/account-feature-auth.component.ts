@@ -37,12 +37,10 @@ export class AccountFeatureAuthComponent implements OnInit {
   }
 
   onSignIn(data: SignIn) {
-    console.log(data);
     this.authFacade.signIn(data);
   }
 
   onSignUp(data: SignUp) {
-    console.log(data);
     this.authFacade.signUp(data);
   }
 }

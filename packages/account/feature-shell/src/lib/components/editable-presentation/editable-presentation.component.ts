@@ -6,6 +6,7 @@ import {
   DragDropModule,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { TextFieldModule } from '@angular/cdk/text-field';
@@ -13,7 +14,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PresentationForm } from '../../forms';
 
 @Component({

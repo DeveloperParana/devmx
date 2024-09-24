@@ -20,7 +20,6 @@ import {
 } from '@angular/core';
 import { AuthFacade } from '@devmx/account-data-access';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'devmx-presentation-feature-shell',
@@ -30,7 +29,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     ToolbarComponent,
     MatDialogModule,
-    ReactiveFormsModule,
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
@@ -52,13 +50,7 @@ export class PresentationFeatureShellComponent implements OnInit, OnDestroy {
 
   dialog = inject(MatDialog);
 
-  tags = [
-    'TypeScript',
-    'Java',
-    'Kotlin',
-    'PHP',
-    'Rust',
-  ]
+  tags = ['TypeScript', 'Java', 'Kotlin', 'PHP', 'Rust'];
 
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);
@@ -66,7 +58,9 @@ export class PresentationFeatureShellComponent implements OnInit, OnDestroy {
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.#mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this.#mobileQueryListener);
+    if (this.mobileQuery.addEventListener) {
+      this.mobileQuery.addEventListener('change', this.#mobileQueryListener);
+    }
   }
 
   ngOnInit() {
@@ -90,6 +84,8 @@ export class PresentationFeatureShellComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.mobileQuery.removeEventListener('change', this.#mobileQueryListener);
+    if (this.mobileQuery.removeEventListener) {
+      this.mobileQuery.removeEventListener('change', this.#mobileQueryListener);
+    }
   }
 }

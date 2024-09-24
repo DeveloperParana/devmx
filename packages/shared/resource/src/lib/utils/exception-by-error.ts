@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RawError } from '@devmx/shared-util-errors';
 import {
   NotFoundException,
