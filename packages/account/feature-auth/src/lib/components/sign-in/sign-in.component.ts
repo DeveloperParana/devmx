@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SignIn } from '@devmx/shared-api-interfaces';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignInForm } from './sign-in.form';
+import { SignInForm } from '../../forms';
 
 @Component({
   selector: 'devmx-sign-in',

@@ -21,15 +21,11 @@
   <section>
     <mat-form-field>
       <mat-label>Gênero</mat-label>
-      @if (form.gender?.value !== '') {
       <mat-select formControlName="gender">
         @for (gender of form.genders; track gender) {
         <mat-option [value]="gender.value">{{ gender.viewValue }}</mat-option>
         }
       </mat-select>
-      } @else {
-      <input matInput formControlName="gender" autofocus />
-      }
       <mat-hint>Opcional</mat-hint>
     </mat-form-field>
 
@@ -37,10 +33,10 @@
       <mat-label>Nascimento</mat-label>
       <input
         matInput
+        (focus)="picker.open()"
         [matDatepicker]="picker"
         formControlName="birthday"
         autocomplete="bday"
-        tabindex="-1"
         readonly
       />
       <mat-hint>Opcional</mat-hint>

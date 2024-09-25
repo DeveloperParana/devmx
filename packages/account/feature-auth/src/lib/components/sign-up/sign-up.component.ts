@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SignUp } from '@devmx/shared-api-interfaces';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignUpForm } from './sign-up.form';
+import { SignUpForm } from '../../forms';
 
 @Component({
   selector: 'devmx-sign-up',
