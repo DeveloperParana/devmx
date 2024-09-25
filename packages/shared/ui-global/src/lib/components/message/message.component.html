@@ -1,0 +1,14 @@
+<div [ngClass]="data.type">
+  <em matSnackBarLabel>{{ data.message }}</em>
+  <menu matSnackBarActions>
+    <button
+      mat-button
+      type="button"
+      matSnackBarAction
+      color="error"
+      (click)="messageRef.dismissWithAction()"
+    >
+      Fechar
+    </button>
+  </menu>
+</div>

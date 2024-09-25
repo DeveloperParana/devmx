@@ -2,13 +2,17 @@
   class="presentation-container"
   [class.presentation-is-mobile]="mobileQuery.matches"
 >
-  <devmx-toolbar subtitle="Apresentações" (toggle)="snav.toggle()" />
+  @if (authFacade.user$ | async; as user) {
+  <devmx-toolbar subtitle="Apresentações" hideToggleButtonLeft>
+    <devmx-auth-user [authUser]="user" (logout)="onLogout()" />
+  </devmx-toolbar>
+  }
 
   <mat-sidenav-container
     class="presentation-sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
   >
-    <mat-sidenav
+    <!-- <mat-sidenav
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
@@ -22,14 +26,10 @@
         <mat-list-option>{{ tag }}</mat-list-option>
         }
       </mat-selection-list>
-    </mat-sidenav>
+    </mat-sidenav> -->
 
     <mat-sidenav-content class="presentation-content">
       <router-outlet />
-
-      <button class="add-button" type="button" mat-fab (click)="openCreate()">
-        <mat-icon>add</mat-icon>
-      </button>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

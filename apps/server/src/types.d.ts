@@ -9,5 +9,7 @@ declare namespace NodeJS {
     DB_PASS: string
 
     JWT_SECRET: string
+
+    NODE_ENV: 'production' | 'development'
   }
 }

@@ -31,8 +31,8 @@ export class SignInUseCase implements UseCase<SignIn, AccessToken> {
       throw new AuthenticationError('Credenciais inválidas');
     }
 
-    const { id: sub, name, email, photo = '' } = account;
-    const payload = { sub, name, email, username, photo };
+    const { id: sub, name, email, roles, photo = '' } = account;
+    const payload = { sub, name, email, roles, username, photo };
     const options = { secret: this.env.jwt.secret };
 
     const accessToken = await this.jwtService.signAsync(payload, options);

@@ -1,12 +1,8 @@
-export const env = {
-  db: {
-    name: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    pass: process.env.DB_PASS,
-  },
-  jwt: {
-    secret: process.env.JWT_SECRET
-  }
-};
+import { env as dev } from './env.dev';
+import { env as prod } from './env.prod';
+
+console.log(process.env.NODE_ENV);
+
+const env = process.env.NODE_ENV === 'production' ? prod : dev;
+
+export { env };

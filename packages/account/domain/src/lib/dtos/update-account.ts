@@ -1,4 +1,4 @@
-import { Gender, Name } from '@devmx/shared-api-interfaces';
+import { AccountRole, Gender, Name } from '@devmx/shared-api-interfaces';
 
 export interface UpdateAccount {
   id: string;
@@ -16,6 +16,12 @@ export interface UpdateAccount {
   minibio?: string;
 
   birthday?: string;
+
+  city?: string;
+
+  roles?: AccountRole;
+
+  password?: string;
 
   active?: boolean;
 }

@@ -1,0 +1,27 @@
+{
+  "name": "shared-util-authn",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shared/util-authn/src",
+  "projectType": "library",
+  "tags": ["type:util"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/shared/util-authn",
+        "main": "packages/shared/util-authn/src/index.ts",
+        "tsConfig": "packages/shared/util-authn/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/shared/util-authn/src/types.ts",
+          "packages/shared/util-authn/src/client.ts",
+          "packages/shared/util-authn/src/server.ts",
+          "packages/shared/util-authn/src/device.ts",
+          "packages/shared/util-authn/src/parsers.ts"
+        ],
+        "generateExportsField": true
+      }
+    }
+  }
+}

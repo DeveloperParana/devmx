@@ -1,5 +1,5 @@
+import { AccountRole, Gender } from '@devmx/shared-api-interfaces';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { Gender } from '@devmx/shared-api-interfaces';
 import { Exclude, Type } from 'class-transformer';
 import { NameDto } from './name';
 
@@ -45,6 +45,9 @@ export class AccountDto {
 
   @ApiPropertyOptional()
   birthday?: string;
+
+  @Exclude()
+  roles: AccountRole;
 
   @ApiProperty()
   active: boolean;

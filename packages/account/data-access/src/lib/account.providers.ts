@@ -1,3 +1,5 @@
+import { AccountNavFacade } from './facades';
+import { NavItem } from './interfaces';
 import {
   provideAuthFacade,
   provideAuthService,
@@ -12,18 +14,22 @@ import {
   provideAccountFacade,
   provideChangePasswordUseCase,
   provideUploadPhotoUseCase,
+  provideFindAccountByUsernameUseCase,
+  provideCityService,
 } from './providers';
 
 export function provideAccount() {
   return [
     provideAuthService(),
     provideAccountService(),
+    provideCityService(),
 
     provideSignInUseCase(),
     provideSignUpUseCase(),
     provideLoadAuthUserUseCase(),
 
     provideFindAccountByIDUseCase(),
+    provideFindAccountByUsernameUseCase(),
     provideFindAccountPresentationsUseCase(),
     provideUpdateAccountUseCase(),
     provideRemoveAccountUseCase(),
@@ -33,4 +39,13 @@ export function provideAccount() {
     provideAuthFacade(),
     provideAccountFacade(),
   ];
+}
+
+export function provideAccountNavFacade(items: NavItem[] = []) {
+  return {
+    provide: AccountNavFacade,
+    useFactory() {
+      return new AccountNavFacade(items);
+    },
+  };
 }

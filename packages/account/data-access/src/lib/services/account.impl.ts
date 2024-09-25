@@ -29,15 +29,19 @@ export class AccountServiceImpl implements AccountService {
     return this.http.get<AccountOut>(`${this.url}/${id}`);
   }
 
+  findOneByUsername(username: string) {
+    return this.http.get<AccountOut>(`${this.url}/profile/${username}`);
+  }
+
   update(id: string, presentation: UpdateAccount) {
     return this.http.patch<AccountOut>(`${this.url}/${id}`, presentation);
   }
 
   upload(photo: Blob) {
-    const data = new FormData()
-    data.append('photo', photo)
-    const url = `${this.url}/photo`
-    return this.http.post<AccountOut>(url, data)
+    const data = new FormData();
+    data.append('photo', photo);
+    const url = `${this.url}/photo`;
+    return this.http.post<AccountOut>(url, data);
   }
 
   changePassword(data: ChangePassword) {

@@ -6,7 +6,6 @@ import {
   Presentation,
   PresentationOut,
 } from '@devmx/shared-api-interfaces';
-import { createFormData } from '@devmx/shared-util-data';
 
 export class PresentationServiceImpl implements PresentationService {
   get url() {
@@ -24,13 +23,12 @@ export class PresentationServiceImpl implements PresentationService {
     return this.http.get<PresentationOut>(`${this.url}/${id}`);
   }
 
-  create(presentation: Presentation) {
-    const data = createFormData(presentation);
+  create(data: Presentation) {
     return this.http.post<PresentationOut>(this.url, data);
   }
 
-  update(id: string, presentation: Presentation) {
-    return this.http.patch<PresentationOut>(`${this.url}/${id}`, presentation);
+  update(id: string, data: Presentation) {
+    return this.http.patch<PresentationOut>(`${this.url}/${id}`, data);
   }
 
   remove(id: string) {

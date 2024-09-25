@@ -1,5 +1,14 @@
 <div class="account-container" [class.account-is-mobile]="mobileQuery.matches">
-  <devmx-toolbar subtitle="Conta" (toggle)="snav.toggle()" />
+  <devmx-toolbar
+    subtitle="Conta"
+    hideToggleButtonLeft
+    (toggleLeft)="snav.toggle()"
+  >
+    <devmx-auth-user
+      [authUser]="authFacade.user$ | async"
+      (logout)="onLogout()"
+    />
+  </devmx-toolbar>
 
   <mat-sidenav-container
     class="account-sidenav-container"
@@ -15,14 +24,14 @@
     >
       <mat-nav-list>
         <h3 mat-subheader>Conta</h3>
-        <a mat-list-item routerLink="/account/settings">
-          <mat-icon matListItemIcon>settings</mat-icon>
-          <span matListItemTitle>Configurações</span>
+        @for (item of navFacade.items$ | async; track item.path) {
+        <a mat-list-item [routerLink]="item.path">
+          @if (item.icon) {
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          }
+          <span matListItemTitle>{{ item.text }}</span>
         </a>
-        <a mat-list-item routerLink="/account/presentations">
-          <mat-icon matListItemIcon>collections_bookmark</mat-icon>
-          <span matListItemTitle>Apresentações</span>
-        </a>
+        }
       </mat-nav-list>
     </mat-sidenav>
 

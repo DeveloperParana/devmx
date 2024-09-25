@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx run-many -t serve --projects=server,devmx",
+    "dev": "nx run-many -t serve --projects=server,devmx --configuration=development",
     "cmt": "czg"
   },
   "private": true,
@@ -20,6 +20,7 @@
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/angular": "19.7.4",
+    "@nx/devkit": "^19.8.0",
     "@nx/eslint": "19.7.4",
     "@nx/eslint-plugin": "19.7.4",
     "@nx/jest": "19.7.4",

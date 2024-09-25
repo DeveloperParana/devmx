@@ -1,0 +1,30 @@
+@if (authUser(); as user) {
+
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>account_circle</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item disabled>
+    <mat-icon>alternate_email</mat-icon>
+    <span>{{ user.email}}</span>
+  </button>
+
+  <a mat-menu-item routerLink="/account">
+    <mat-icon>settings</mat-icon>
+    <span>Configurações</span>
+  </a>
+  <a mat-menu-item routerLink="/account/presentations">
+    <mat-icon>collections_bookmark</mat-icon>
+    <span>Apresentações</span>
+  </a>
+
+  <mat-divider />
+
+  <button mat-menu-item (click)="logout.emit()">
+    <mat-icon>logout</mat-icon>
+    <span>Desconectar</span>
+  </button>
+</mat-menu>
+
+}

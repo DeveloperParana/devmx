@@ -1,3 +1,4 @@
+import { UpdateAccount } from '../../lib/dtos';
 import {
   Page,
   Account,
@@ -6,6 +7,7 @@ import {
   QueryParams,
 } from '@devmx/shared-api-interfaces';
 
+// prettier-ignore
 export abstract class AccountsService {
   abstract create(data: Creatable<Account>): Promise<Account>;
 
@@ -15,7 +17,7 @@ export abstract class AccountsService {
 
   abstract findOneBy(filter: QueryFilter<Account>): Promise<Account | null>;
 
-  abstract update(id: string, data: Partial<Account>): Promise<Account | null>;
+  abstract update(id: string, data: Partial<UpdateAccount>): Promise<Account | null>;
 
   abstract remove(id: string): Promise<Account | null>;
 }

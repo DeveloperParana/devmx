@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :host {
   flex: 1;
   display: flex;
@@ -7,6 +9,16 @@
     display: grid;
     gap: 16px; /* Espaçamento entre os itens */
     padding: 16px;
+  }
+
+  .presentation-card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(6);
+    }
   }
 
   /* Estilo padrão para dispositivos grandes: 3 colunas */
@@ -33,5 +45,11 @@
   .presentations-footer {
     display: flex;
     justify-content: center;
+  }
+
+  .add-button {
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
   }
 }

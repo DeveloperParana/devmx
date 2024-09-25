@@ -1,5 +1,7 @@
 import { Name } from '../interfaces/name';
+import { AccountRole } from '../types';
 import { Gender } from '../types/gender';
+import { City } from './city';
 
 export interface Account {
   id: string;
@@ -12,6 +14,8 @@ export interface Account {
 
   email: string;
 
+  roles: AccountRole;
+
   gender?: Gender;
 
   photo?: string;
@@ -19,6 +23,8 @@ export interface Account {
   minibio?: string;
 
   birthday?: string;
+
+  city?: City;
 
   active: boolean;
 }

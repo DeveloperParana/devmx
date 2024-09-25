@@ -4,6 +4,7 @@
       <mat-label>Nome</mat-label>
       <input
         matInput
+        #firstName
         formControlName="first"
         autocomplete="given-name"
         autofocus
@@ -57,13 +58,35 @@
   <section>
     <mat-form-field>
       <mat-label>Usuário</mat-label>
-      <input matInput formControlName="username" autocomplete="username" />
+      <input
+        matInput
+        #username
+        formControlName="username"
+        autocomplete="username"
+        (blur)="usernameChange.emit(username.value)"
+      />
+      @if (form.checkingUsername()) {
+      <mat-spinner
+        matIconSuffix
+        [diameter]="24"
+        class="spinner-suffix"
+        mode="indeterminate"
+      ></mat-spinner>
+      } @if (form.controls.username.hasError('notUnique')) {
+      <mat-error>Usuário em uso</mat-error>
+      } @else if (form.controls.username.hasError('required')) {
       <mat-error>Obrigatório</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Senha</mat-label>
-      <input matInput formControlName="password" autocomplete="new-password" />
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        autocomplete="new-password"
+      />
       <mat-error>Mínimo 6 caracteres</mat-error>
     </mat-form-field>
   </section>

@@ -3,19 +3,16 @@
 <div class="presentations-container">
   @for (presentation of presentations.data; track presentation.id) {
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{presentation.title}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{presentation.description}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <a mat-icon-button [routerLink]="presentation.id">
-        <mat-icon>edit</mat-icon>
-      </a>
-    </mat-card-actions>
-  </mat-card>
+  <a [routerLink]="presentation.id">
+    <mat-card class="presentation-card">
+      <mat-card-header>
+        <mat-card-title>{{presentation.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{presentation.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </a>
 
   }
 </div>
@@ -29,3 +26,7 @@
   ></mat-paginator>
 </footer>
 }
+
+<button class="add-button" type="button" mat-fab (click)="openCreate()">
+  <mat-icon>add</mat-icon>
+</button>

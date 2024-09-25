@@ -54,7 +54,8 @@ export class EditableAccountComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      return this.submitted.emit(this.form.getRawValue());
+      this.submitted.emit(this.form.getRawValue());
+      return this.form.disable();
     }
 
     this.form.markAllAsTouched();

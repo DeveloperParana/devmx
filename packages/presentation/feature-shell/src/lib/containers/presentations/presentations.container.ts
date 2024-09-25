@@ -1,11 +1,18 @@
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { PresentationFacade } from '@devmx/presentation-data-access';
-import { ReactionComponent, ReactionEvent } from '../../components';
+import {
+  FilterPresentation,
+  PresentationFacade,
+} from '@devmx/presentation-data-access';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import {
+  ReactionEvent,
+  ReactionComponent,
+  FilterPresentationComponent,
+} from '../../components';
 import {
   inject,
   OnInit,
@@ -24,6 +31,7 @@ import {
     MatButtonModule,
     MatPaginatorModule,
     ReactionComponent,
+    FilterPresentationComponent,
     RouterLink,
     AsyncPipe,
   ],
@@ -33,6 +41,11 @@ export class PresentationsContainer implements OnInit {
   presentationFacade = inject(PresentationFacade);
 
   ngOnInit() {
+    this.presentationFacade.load();
+  }
+
+  find(filter: FilterPresentation) {
+    this.presentationFacade.setFilter(filter);
     this.presentationFacade.load();
   }
 

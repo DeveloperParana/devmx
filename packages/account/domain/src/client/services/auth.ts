@@ -1,3 +1,4 @@
+import { Username } from '../../lib/dtos';
 import { Observable } from 'rxjs';
 import {
   SignIn,
@@ -8,6 +9,8 @@ import {
 
 export abstract class AuthService {
   abstract auth(): Observable<AuthUser>;
+
+  abstract checkUsername(data: Username): Observable<void>;
 
   abstract signIn(data: SignIn): Observable<AccessToken>;
 

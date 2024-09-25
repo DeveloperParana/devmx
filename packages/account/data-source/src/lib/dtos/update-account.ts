@@ -4,6 +4,7 @@ import { Gender } from '@devmx/shared-api-interfaces';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { NameDto } from './name';
+import { AccountRoleDto } from './account-role';
 
 export class UpdateAccountDto implements UpdateAccount {
   id: string;
@@ -25,22 +26,33 @@ export class UpdateAccountDto implements UpdateAccount {
   @IsString()
   @IsOptional()
   @ApiPropertyOptional()
-  gender?: Gender | undefined;
+  gender?: Gender;
 
   @IsString()
   @IsOptional()
   @ApiPropertyOptional()
-  photo?: string | undefined;
+  photo?: string;
 
   @IsString()
   @IsOptional()
   @ApiPropertyOptional()
-  minibio?: string | undefined;
+  minibio?: string;
 
   @IsString()
   @IsOptional()
   @ApiPropertyOptional()
-  birthday?: string | undefined;
+  birthday?: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiPropertyOptional()
+  city?: string;
+
+  @IsOptional()
+  roles?: AccountRoleDto;
+
+  @IsOptional()
+  password?: string;
 
   @IsBoolean()
   @IsOptional()

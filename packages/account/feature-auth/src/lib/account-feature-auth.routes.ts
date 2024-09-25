@@ -1,8 +1,6 @@
 import { AccountFeatureAuthComponent } from './account-feature-auth.component';
+import { provideAccount } from '@devmx/account-data-access';
 import { Route } from '@angular/router';
-import {
-  provideAccount
-} from '@devmx/account-data-access';
 
 export const accountFeatureAuthRoutes: Route[] = [
   {

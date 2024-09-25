@@ -1,8 +1,13 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  input,
+  output,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'devmx-toolbar',
@@ -14,14 +19,30 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     RouterLinkActive,
-    RouterLink
+    RouterLink,
   ],
   standalone: true,
 })
 export class ToolbarComponent {
-  toggle = output<void>();
+  hideToggleButtonLeft = input<boolean | ''>(false);
 
-  title = input('devmx')
+  hideToggleButtonRight = input<boolean | ''>(false);
 
-  subtitle = input('')
+  get showToggleButtonLeft() {
+    return !(this.hideToggleButtonLeft() || this.hideToggleButtonLeft() === '');
+  }
+
+  get showToggleButtonRight() {
+    return !(
+      this.hideToggleButtonRight() || this.hideToggleButtonRight() === ''
+    );
+  }
+
+  title = input('devmx');
+
+  subtitle = input('');
+
+  toggleLeft = output<void>();
+
+  toggleRight = output<void>();
 }

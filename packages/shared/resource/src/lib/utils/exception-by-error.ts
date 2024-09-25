@@ -1,6 +1,7 @@
 import { RawError } from '@devmx/shared-util-errors';
 import {
   NotFoundException,
+  ConflictException,
   ForbiddenException,
   BadRequestException,
   UnauthorizedException,
@@ -21,6 +22,8 @@ export function exceptionByError(error: unknown) {
         return new ForbiddenException(error.message);
       case 404:
         return new NotFoundException(error.message);
+      case 409:
+        return new ConflictException(error.message);
       case 422:
         return new UnprocessableEntityException(error.message);
       default:

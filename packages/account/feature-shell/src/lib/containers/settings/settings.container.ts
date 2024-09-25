@@ -15,6 +15,7 @@ import {
   UpdateAccount,
 } from '@devmx/account-data-access';
 import {
+  AutoAssignableRoleComponent,
   EditableAccountComponent,
   EditablePasswordComponent,
   EditablePhotoComponent,
@@ -27,7 +28,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-
+import { AutoAssignable } from '../../forms';
 
 @Component({
   selector: 'devmx-account-settings',
@@ -45,6 +46,7 @@ import {
     MatExpansionModule,
     EditableAccountComponent,
     EditablePasswordComponent,
+    AutoAssignableRoleComponent,
   ],
   standalone: true,
 })
@@ -67,6 +69,11 @@ export class SettingsContainer implements OnInit {
     return this.editablePasswordChild();
   }
 
+  autoAssignableRoleChild = viewChild(AutoAssignableRoleComponent);
+  get autoAssignableRole() {
+    return this.autoAssignableRoleChild();
+  }
+
   ngOnInit() {
     this.accountFacade.account$
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -77,7 +84,15 @@ export class SettingsContainer implements OnInit {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        if (user) this.accountFacade.loadOne(user.id);
+        console.log(user);
+
+        if (user) {
+          this.accountFacade.loadOne(user.id);
+
+          if (this.autoAssignableRole) {
+            this.autoAssignableRole.form.patchValue(user);
+          }
+        }
       });
 
     this.authFacade.loadAuthUser();
@@ -107,5 +122,9 @@ export class SettingsContainer implements OnInit {
 
   onPasswordSubmitted(data: ChangePassword) {
     this.accountFacade.changePassword(data);
+  }
+
+  onRolesSubmitted(data: AutoAssignable) {
+    // this.accountFacade.changePassword(data);
   }
 }

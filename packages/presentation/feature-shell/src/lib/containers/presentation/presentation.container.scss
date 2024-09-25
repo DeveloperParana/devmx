@@ -10,8 +10,31 @@
   //   gap: 1em;
   // }
 
-  footer {
+  .presentation-footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
+    .presentation-subfooter {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+    .presentation-resources {
+      a:link,
+      a:visited,
+      a:active {
+        color: rgb(7, 80, 224);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

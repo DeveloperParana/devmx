@@ -2,13 +2,24 @@
   <section>
     <mat-form-field>
       <mat-label>Usuário</mat-label>
-      <input matInput formControlName="username" autocomplete="username" autofocus />
+      <input
+        matInput
+        #username
+        formControlName="username"
+        autocomplete="username"
+        autofocus
+      />
       <mat-error>Obrigatório</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Senha</mat-label>
-      <input matInput formControlName="password" autocomplete="current-password" />
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        autocomplete="current-password"
+      />
       <mat-error>Mínimo 6 caracteres</mat-error>
     </mat-form-field>
   </section>

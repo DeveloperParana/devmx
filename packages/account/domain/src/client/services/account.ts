@@ -12,6 +12,8 @@ export abstract class AccountService {
 
   abstract findOne(id: string): Observable<AccountOut>;
 
+  abstract findOneByUsername(username: string): Observable<AccountOut>
+
   abstract findPresentations(params: URLSearchParams): Observable<Page<PresentationOut>>
 
   abstract update(id: string, data: UpdateAccount): Observable<AccountOut>;

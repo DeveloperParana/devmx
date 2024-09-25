@@ -1,17 +1,22 @@
+import { AuthUserComponent, ToolbarComponent } from '@devmx/shared-ui-global';
+import { PresentationFacade } from '@devmx/presentation-data-access';
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { AccountNavFacade, AuthFacade } from '@devmx/account-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import {
   inject,
+  OnInit,
   OnDestroy,
   Component,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
+  DestroyRef,
 } from '@angular/core';
-import { ToolbarComponent } from '@devmx/shared-ui-global';
 
 @Component({
   selector: 'devmx-account-feature-shell',
@@ -20,19 +25,33 @@ import { ToolbarComponent } from '@devmx/shared-ui-global';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ToolbarComponent,
-    MatButtonModule,
+    AuthUserComponent,
     MatIconModule,
+    MatDividerModule,
     MatSidenavModule,
     MatListModule,
     LayoutModule,
     RouterModule,
+    AsyncPipe,
   ],
   standalone: true,
 })
-export class AccountFeatureShellComponent implements OnDestroy {
+export class AccountFeatureShellComponent implements OnInit, OnDestroy {
+  presentationFacade = inject(PresentationFacade);
+
+  authFacade = inject(AuthFacade);
+
+  navFacade = inject(AccountNavFacade);
+
+  destroyRef = inject(DestroyRef);
+
+  router = inject(Router);
+
   mobileQuery: MediaQueryList;
 
   #mobileQueryListener: () => void;
+
+  // navigation = this.navService.getFeatureNav('account');
 
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);
@@ -41,6 +60,27 @@ export class AccountFeatureShellComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.#mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this.#mobileQueryListener);
+  }
+
+  ngOnInit() {
+    const navItem = {
+      path: ['/account', 'board'],
+      text: 'Administração',
+      icon: 'admin_panel_settings',
+    };
+
+    this.authFacade.level$.subscribe((account) => {
+      if (account && account.isBoard) {
+        this.navFacade.addItem(navItem);
+      }
+    });
+
+    this.authFacade.loadAuthUser();
+  }
+
+  onLogout() {
+    this.authFacade.clearAccessToken();
+    this.router.navigateByUrl('/account/auth');
   }
 
   ngOnDestroy() {

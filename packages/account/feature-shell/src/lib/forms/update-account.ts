@@ -54,6 +54,9 @@ export class UpdateAccountForm extends Form<UpdateAccount> {
       photo: new FormControl('', {
         nonNullable: true,
       }),
+      city: new FormControl('', {
+        nonNullable: true,
+      }),
       active: new FormControl(),
     });
   }

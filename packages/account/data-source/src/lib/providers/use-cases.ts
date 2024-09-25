@@ -13,6 +13,11 @@ import {
   RemoveAccountUseCase,
   UpdateAccountUseCase,
   FindAccountPresentationsUseCase,
+  FindCitiesUseCase,
+  CitiesService,
+  FindCityByIDUseCase,
+  FindAccountByUsernameUseCase,
+  ChangeRolesUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideFindAccountsUseCase() {
@@ -21,6 +26,10 @@ export function provideFindAccountsUseCase() {
 
 export function provideFindAccountByIDUseCase() {
   return createUseCaseProvider(FindAccountByIDUseCase, [AccountsService]);
+}
+
+export function provideFindAccountByUsernameUseCase() {
+  return createUseCaseProvider(FindAccountByUsernameUseCase, [AccountsService]);
 }
 
 export function provideRemoveAccountUseCase() {
@@ -49,6 +58,18 @@ export function provideSignInUseCase() {
 
 export function provideSignUpUseCase() {
   return createUseCaseProvider(SignUpUseCase, [AccountsService, CryptoService]);
+}
+
+export function provideChangeRolesUseCase() {
+  return createUseCaseProvider(ChangeRolesUseCase, [AccountsService]);
+}
+
+export function provideFindCitiesUseCase() {
+  return createUseCaseProvider(FindCitiesUseCase, [CitiesService]);
+}
+
+export function provideFindCityByIDUseCase() {
+  return createUseCaseProvider(FindCityByIDUseCase, [CitiesService]);
 }
 
 export function provideFindAccountPresentationsUseCase() {

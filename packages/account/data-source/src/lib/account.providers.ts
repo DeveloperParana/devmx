@@ -5,10 +5,16 @@ import {
   provideAuthFacade,
   provideAuthService,
   provideChangePasswordUseCase,
+  provideChangeRolesUseCase,
+  provideCitiesFacade,
+  provideCitiesService,
   provideCryptoService,
   provideFindAccountByIDUseCase,
+  provideFindAccountByUsernameUseCase,
   provideFindAccountPresentationsUseCase,
   provideFindAccountsUseCase,
+  provideFindCitiesUseCase,
+  provideFindCityByIDUseCase,
   provideJwtService,
   provideJwtStrategy,
   provideRemoveAccountUseCase,
@@ -24,6 +30,7 @@ export function provideAccounts<T>(jwtService: Type<T>) {
     provideJwtStrategy(),
 
     provideAccountsService(),
+    provideCitiesService(),
     provideAuthService(),
 
     provideSignUpUseCase(),
@@ -35,8 +42,14 @@ export function provideAccounts<T>(jwtService: Type<T>) {
     provideRemoveAccountUseCase(),
     provideChangePasswordUseCase(),
     provideFindAccountPresentationsUseCase(),
+    provideFindAccountByUsernameUseCase(),
+    provideChangeRolesUseCase(),
+
+    provideFindCitiesUseCase(),
+    provideFindCityByIDUseCase(),
 
     provideAccountsFacade(),
+    provideCitiesFacade(),
     provideAuthFacade(),
   ];
 }

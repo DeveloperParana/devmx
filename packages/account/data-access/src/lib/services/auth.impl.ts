@@ -1,6 +1,7 @@
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { AuthService } from '@devmx/account-domain/client';
 import { HttpClient } from '@devmx/shared-data-access';
+import { Username } from '@devmx/account-domain';
 import {
   SignIn,
   SignUp,
@@ -17,6 +18,10 @@ export class AuthServiceImpl implements AuthService {
 
   auth() {
     return this.http.get<AuthUser>(this.url);
+  }
+
+  checkUsername(data: Username) {
+    return this.http.post<void>(`${this.url}/username`, data);
   }
 
   signIn(data: SignIn) {

@@ -1,7 +1,12 @@
-import { User, ApiPage, QueryParamsDto } from '@devmx/shared-data-source';
+import {
+  User,
+  ApiPage,
+  QueryParamsDto,
+  Allowed,
+} from '@devmx/shared-data-source';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { exceptionByError } from '@devmx/shared-resource';
-import { Account } from '@devmx/shared-api-interfaces';
+import { Account, AuthUser } from '@devmx/shared-api-interfaces';
 import {
   ApiBody,
   ApiTags,
@@ -13,6 +18,7 @@ import {
   AccountDto,
   AccountsFacade,
   ChangePasswordDto,
+  ChangeRolesDto,
   PresentationDto,
   UpdateAccountDto,
 } from '@devmx/account-data-source';
@@ -54,12 +60,13 @@ export class AccountsController {
       new ParseFilePipe({
         validators: [
           new MaxFileSizeValidator({ maxSize: 1000 * 1000 }),
-          new FileTypeValidator({ fileType: 'image/png'}),
-        ]
+          new FileTypeValidator({ fileType: 'image/png' }),
+        ],
       })
-    ) photo: Express.Multer.File
+    )
+    photo: Express.Multer.File
   ) {
-    return this.accountsFacade.update(id, { id, photo: photo.filename })
+    return this.accountsFacade.update(id, { id, photo: photo.filename });
   }
 
   @Get()
@@ -93,6 +100,31 @@ export class AccountsController {
   ) {
     try {
       return await this.accountsFacade.changePassword(id, { ...data, id });
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Patch(':id/roles')
+  @ApiOkResponse({ type: AccountDto })
+  async changeRoles(
+    @Param('id') id: string,
+    @User() user: AuthUser,
+    @Body() data: ChangeRolesDto
+  ) {
+    try {
+      return await this.accountsFacade.changeRoles(id, user, data);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Allowed()
+  @Get('profile/:username')
+  @ApiOkResponse({ type: AccountDto })
+  async findOneByUsername(@Param('username') username: string) {
+    try {
+      return await this.accountsFacade.findOneByUsername(username);
     } catch (err) {
       throw exceptionByError(err);
     }

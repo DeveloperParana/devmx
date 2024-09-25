@@ -1,7 +1,7 @@
 import { QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
 import { AccountsService } from '@devmx/account-domain/server';
 import { Account } from '@devmx/shared-api-interfaces';
-import { SignUpDto } from '../dtos';
+import { SignUpDto, UpdateAccountDto } from '../dtos';
 import { Model } from 'mongoose';
 
 export class AccountsServiceImpl implements AccountsService {
@@ -41,11 +41,19 @@ export class AccountsServiceImpl implements AccountsService {
   }
 
   async findOneBy(filter: QueryFilterDto<Account>) {
-    return this.accountModel.findOne(filter).exec();
+    const account = await this.accountModel.findOne(filter).exec();
+
+    if (!account) {
+      throw `Conta não encontrada`;
+    }
+
+    return account.toJSON();
   }
 
-  async update(id: string, data: Partial<Account>) {
-    const account = await this.accountModel.findOneAndUpdate({ _id: id }, data).exec();
+  async update(id: string, data: Partial<UpdateAccountDto>) {
+    const account = await this.accountModel
+      .findOneAndUpdate({ _id: id }, data)
+      .exec();
 
     if (!account) {
       throw `Problema ao alterar conta`;

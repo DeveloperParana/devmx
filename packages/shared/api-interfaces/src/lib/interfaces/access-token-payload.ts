@@ -1,3 +1,4 @@
+import { AccountRole } from '../types';
 import { Name } from './name';
 
 export interface AccessTokenPayload {
@@ -6,5 +7,6 @@ export interface AccessTokenPayload {
   email: string;
   username: string;
   photo: string;
-  iat: number
+  roles: AccountRole;
+  iat: number;
 }

@@ -10,4 +10,14 @@ export abstract class Env {
   abstract jwt: {
     secret: string;
   };
+
+  abstract multer: {
+    photos: {
+      dest: string;
+    };
+  };
+
+  abstract static: {
+    rootPath: string;
+  };
 }

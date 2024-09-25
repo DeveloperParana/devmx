@@ -1,0 +1,21 @@
+:host {
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  .info {
+    --mat-snack-bar-button-color: #39b44d;
+  }
+  .warn {
+    --mat-snack-bar-button-color: #f6db0f;
+  }
+  .error {
+    --mat-snack-bar-button-color: #ff3333;
+  }
+
+  em {
+    font-style: normal;
+    font-size: 1em;
+  }
+}

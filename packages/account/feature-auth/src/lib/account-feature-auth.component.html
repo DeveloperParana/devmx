@@ -1,10 +1,17 @@
 <mat-card>
-  <mat-tab-group dynamicHeight>
+  <mat-tab-group
+    dynamicHeight
+    [animationDuration]="400"
+    (selectedTabChange)="onTabChange($event)"
+  >
     <mat-tab label="Entrar">
       <devmx-sign-in (submitted)="onSignIn($event)" />
     </mat-tab>
     <mat-tab label="Criar conta">
-      <devmx-sign-up (submitted)="onSignUp($event)" />
+      <devmx-sign-up
+        (usernameChange)="onUsernameChange($event)"
+        (submitted)="onSignUp($event)"
+      />
     </mat-tab>
   </mat-tab-group>
 </mat-card>

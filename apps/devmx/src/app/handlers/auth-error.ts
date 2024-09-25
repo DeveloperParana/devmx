@@ -1,12 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { MessageService } from '@devmx/shared-ui-global';
 import { ErrorHandler, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 export class AuthErrorHandler implements ErrorHandler {
   router;
 
+  messageService;
+
   constructor() {
     this.router = inject(Router);
+
+    this.messageService = inject(MessageService);
+
     onstorage = this.#onTokenChanged;
   }
 
@@ -18,10 +24,19 @@ export class AuthErrorHandler implements ErrorHandler {
 
   handleError(error: Error): void {
     if (error instanceof HttpErrorResponse) {
+      const { message } = error.error;
+
+      this.showMessage(error.status, message);
+
       if (error.status === 401) {
+        this.router.navigateByUrl('/account/auth');
         localStorage.removeItem('accessToken');
-        // this.router.navigateByUrl('/account/auth');
       }
     }
+  }
+
+  showMessage(status: number, message: string) {
+    const type = status >= 400 && status < 500 ? 'error' : 'warn';
+    this.messageService.open({ message, type });
   }
 }

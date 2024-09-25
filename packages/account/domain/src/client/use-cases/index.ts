@@ -1,5 +1,6 @@
 export * from './change-password';
 export * from './find-account-by-id';
+export * from './find-account-by-username';
 export * from './find-account-presentations';
 export * from './load-auth-user';
 export * from './remove-account';

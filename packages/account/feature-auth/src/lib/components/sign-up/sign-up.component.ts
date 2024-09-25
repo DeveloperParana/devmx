@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -8,6 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { SignUp } from '@devmx/shared-api-interfaces';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpForm } from '../../forms';
+import {
+  output,
+  viewChild,
+  Component,
+  ElementRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'devmx-sign-up',
@@ -17,6 +24,7 @@ import { SignUpForm } from '../../forms';
   providers: [provideNativeDateAdapter()],
   imports: [
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -26,9 +34,21 @@ import { SignUpForm } from '../../forms';
   standalone: true,
 })
 export class SignUpComponent {
+  firstNameRef = viewChild<ElementRef<HTMLInputElement>>('firstName');
+  get firstName() {
+    return this.firstNameRef()?.nativeElement;
+  }
+
   form = new SignUpForm();
 
   submitted = output<SignUp>();
+
+  usernameChange = output<string>();
+
+  focus() {
+    if (!this.firstName) return;
+    this.firstName.focus();
+  }
 
   onSubmit() {
     if (this.form.valid) {

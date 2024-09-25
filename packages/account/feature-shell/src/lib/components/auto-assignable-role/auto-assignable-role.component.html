@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+  <section formGroupName="roles">
+    <mat-checkbox formControlName="member" disabledInteractive>
+      Membro
+    </mat-checkbox>
+    <mat-checkbox formControlName="speaker"> Palestrante </mat-checkbox>
+  </section>
+
+  <footer>
+    <div class="flex gap-1">
+      <button type="button" mat-stroked-button (click)="toggleForm()">
+        <mat-icon>{{ form.disabled ? 'lock_open' : 'lock' }}</mat-icon>
+        <span>{{ form.disabled ? 'Alterar' : 'Bloquear' }}</span>
+      </button>
+
+      <button [disabled]="form.disabled" mat-flat-button>
+        <mat-icon>cloud_upload</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
+  </footer>
+</form>

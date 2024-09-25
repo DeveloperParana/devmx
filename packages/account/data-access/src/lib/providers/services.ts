@@ -1,7 +1,15 @@
-import { AccountService, AuthService } from '@devmx/account-domain/client';
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { HttpClient } from '@devmx/shared-data-access';
-import { AccountServiceImpl, AuthServiceImpl } from '../services';
+import {
+  AccountService,
+  AuthService,
+  CityService,
+} from '@devmx/account-domain/client';
+import {
+  AccountServiceImpl,
+  AuthServiceImpl,
+  CityServiceImpl,
+} from '../services';
 
 export function provideAuthService() {
   return {
@@ -18,6 +26,16 @@ export function provideAccountService() {
     provide: AccountService,
     useFactory(http: HttpClient, env: Env) {
       return new AccountServiceImpl(http, env);
+    },
+    deps: [HttpClient, Env],
+  };
+}
+
+export function provideCityService() {
+  return {
+    provide: CityService,
+    useFactory(http: HttpClient, env: Env) {
+      return new CityServiceImpl(http, env);
     },
     deps: [HttpClient, Env],
   };

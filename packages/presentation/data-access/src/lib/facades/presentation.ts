@@ -1,5 +1,10 @@
-import { Page, Presentation, PresentationOut } from '@devmx/shared-api-interfaces';
 import { State } from '@devmx/shared-data-access';
+import { FilterPresentation } from '../dtos';
+import {
+  Page,
+  Presentation,
+  PresentationOut,
+} from '@devmx/shared-api-interfaces';
 import {
   CreatePresentationUseCase,
   FindPresentationByIDUseCase,
@@ -12,6 +17,7 @@ import { take } from 'rxjs';
 interface PresentationState {
   presentations: Page<PresentationOut>;
   presentation: PresentationOut | null;
+  filter: FilterPresentation;
 }
 
 export class PresentationFacade extends State<PresentationState> {
@@ -28,13 +34,24 @@ export class PresentationFacade extends State<PresentationState> {
   ) {
     super({
       presentations: { data: [], items: 0, pages: 0 },
+      filter: { title: '', format: '' },
       presentation: null,
     });
+  }
 
+  setFilter(filter: FilterPresentation) {
+    this.setState({ filter });
+  }
+
+  clearFilter() {
+    this.setState({ filter: { format: '', title: '' } });
   }
 
   load(page = 0, size = 10) {
-    const request$ = this.findPresentationsUseCase.execute({ page, size });
+    const filter = this.state.filter;
+    const params = { filter, page, size };
+
+    const request$ = this.findPresentationsUseCase.execute(params);
 
     const onPresentations = (presentations: Page<PresentationOut>) => {
       this.setState({ presentations });

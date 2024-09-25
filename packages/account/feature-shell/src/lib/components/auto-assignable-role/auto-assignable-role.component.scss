@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+
+    section {
+      display: flex;
+      gap: 1.2em;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

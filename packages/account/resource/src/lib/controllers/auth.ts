@@ -7,6 +7,7 @@ import {
   SignInDto,
   SignUpDto,
   AuthFacade,
+  ChallengeDto,
   AccessTokenDto,
 } from '@devmx/account-data-source';
 
@@ -19,6 +20,13 @@ export class AuthController {
   @ApiBearerAuth()
   user(@User() user: AuthUser) {
     return user;
+  }
+
+  @Allowed()
+  @Get('challenge')
+  @ApiOkResponse({ type: ChallengeDto })
+  challenge() {
+    return this.authFacade.challenge();
   }
 
   @Allowed()

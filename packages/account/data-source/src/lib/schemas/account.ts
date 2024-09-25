@@ -1,7 +1,13 @@
-import { Account, Gender, Name } from '@devmx/shared-api-interfaces';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, raw, Schema } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
+import {
+  Name,
+  Gender,
+  Account,
+  AccountRole,
+} from '@devmx/shared-api-interfaces';
+import { CityCollection } from './city';
 
 @Schema()
 export class AccountCollection extends Document implements Account {
@@ -15,14 +21,17 @@ export class AccountCollection extends Document implements Account {
   )
   name: Name;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: true, unique: true, type: String })
   username: string;
 
   @Prop({ required: true, type: String })
   password: string;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: true, unique: true, type: String })
   email: string;
+
+  @Prop({ required: true, type: Object })
+  roles: AccountRole;
 
   @Prop({
     type: String,
@@ -47,6 +56,13 @@ export class AccountCollection extends Document implements Account {
 
   @Prop({ default: '' })
   birthday?: string;
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: CityCollection.name,
+    required: false,
+  })
+  city?: CityCollection;
 
   @Prop({ default: true })
   active: boolean;

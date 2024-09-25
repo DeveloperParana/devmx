@@ -1,3 +1,6 @@
+import { PageDto, QueryParamsDto } from '@devmx/shared-data-source';
+import { Presentation } from '@devmx/shared-api-interfaces';
+import { plainToInstance } from 'class-transformer';
 import {
   CreatePresentationUseCase,
   FindPresentationByIDUseCase,
@@ -11,9 +14,6 @@ import {
   PresentationDto,
   UpdatePresentationDto,
 } from '../dtos';
-import { PageDto, QueryParamsDto } from '@devmx/shared-data-source';
-import { Presentation } from '@devmx/shared-api-interfaces';
-import { plainToInstance } from 'class-transformer';
 
 // prettier-ignore
 export class PresentationsFacade {

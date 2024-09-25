@@ -28,6 +28,26 @@
 
   <mat-expansion-panel hideToggle class="settings-panel">
     <mat-expansion-panel-header>
+      <mat-panel-title> Papéis </mat-panel-title>
+      <mat-panel-description>
+        Alterar funções
+        <mat-icon>local_police</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="flex row wrap">
+      <aside>
+        <figure>
+          <img src="figures/roles.png" width="128" alt="Password" />
+        </figure>
+      </aside>
+
+      <devmx-auto-assignable-role (submitted)="onRolesSubmitted($event)" />
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel hideToggle class="settings-panel">
+    <mat-expansion-panel-header>
       <mat-panel-title> Segurança </mat-panel-title>
       <mat-panel-description>
         Alterar senha

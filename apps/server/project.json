@@ -10,7 +10,7 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "server:build",
+        "buildTarget": "server:build:development",
         "runBuildTargetDependencies": false
       },
       "configurations": {

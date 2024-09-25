@@ -136,6 +136,9 @@ devDependencies:
   '@nx/angular':
     specifier: 19.7.4
     version: 19.7.4(@angular-devkit/build-angular@18.2.5)(@angular-devkit/core@18.2.5)(@angular-devkit/schematics@18.2.5)(@schematics/angular@18.2.5)(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.20)(eslint@8.57.1)(nx@19.7.4)(react-dom@18.3.1)(react@18.3.1)(rxjs@7.8.1)(typescript@5.5.4)(webpack-cli@5.1.4)
+  '@nx/devkit':
+    specifier: ^19.8.0
+    version: 19.8.0(nx@19.7.4)
   '@nx/eslint':
     specifier: 19.7.4
     version: 19.7.4(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.20)(eslint@8.57.1)(nx@19.7.4)
@@ -4183,6 +4186,14 @@ packages:
       - nx
     dev: true
 
+  /@nrwl/devkit@19.8.0(nx@19.7.4):
+    resolution: {integrity: sha512-LehpQ2D1687+JWaUpW84NPuXsQuPosmts66LShPT4+6KozB4gd0hJGAXNXpjNs9CUfLyNf8rRdEeqNjWnPYEmA==}
+    dependencies:
+      '@nx/devkit': 19.8.0(nx@19.7.4)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/eslint-plugin-nx@19.7.4(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.20)(@typescript-eslint/parser@7.18.0)(eslint-config-prettier@9.1.0)(eslint@8.57.1)(nx@19.7.4)(typescript@5.5.4):
     resolution: {integrity: sha512-J7eTvO1h2mboSPTlpzdseUHWev/DkbDJknqleN9v7I1ZUXuPTdNy/k79uBTSLOinCUp2a3j9pinUwPF2PDOVTQ==}
     dependencies:
@@ -4461,6 +4472,23 @@ packages:
       nx: '>= 17 <= 20'
     dependencies:
       '@nrwl/devkit': 19.7.4(nx@19.7.4)
+      ejs: 3.1.10
+      enquirer: 2.3.6
+      ignore: 5.3.2
+      minimatch: 9.0.3
+      nx: 19.7.4(@swc-node/register@1.9.2)(@swc/core@1.5.29)
+      semver: 7.6.3
+      tmp: 0.2.3
+      tslib: 2.7.0
+      yargs-parser: 21.1.1
+    dev: true
+
+  /@nx/devkit@19.8.0(nx@19.7.4):
+    resolution: {integrity: sha512-nPaKHF0m2KONlt8GXjN9EhFo+NOvJnFcK6ujKFFLAyZ4TACY4F1FCjSHFTjYI82j+WukzuyjSmY9wzxYughWIQ==}
+    peerDependencies:
+      nx: '>= 17 <= 20'
+    dependencies:
+      '@nrwl/devkit': 19.8.0(nx@19.7.4)
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.2

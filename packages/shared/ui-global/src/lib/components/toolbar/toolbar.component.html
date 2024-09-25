@@ -1,7 +1,9 @@
 <mat-toolbar>
-  <button mat-icon-button (click)="toggle.emit()">
+  @if (showToggleButtonLeft) {
+  <button mat-icon-button (click)="toggleLeft.emit()">
     <mat-icon>menu</mat-icon>
   </button>
+  }
 
   <h1 class="app-title">{{ title() }}</h1>
 
@@ -13,5 +15,11 @@
     Apresentações
   </a>
 
-  <a mat-button routerLink="/account" routerLinkActive="active"> Conta </a>
+  <ng-content select="devmx-auth-user"></ng-content>
+
+  @if (showToggleButtonLeft) {
+  <button mat-icon-button (click)="toggleLeft.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  }
 </mat-toolbar>

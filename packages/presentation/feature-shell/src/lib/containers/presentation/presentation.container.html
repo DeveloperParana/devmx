@@ -20,10 +20,10 @@
   </mat-card>
 </article>
 
-<section>
+<footer class="presentation-footer">
   @if (presentationCommentFacade.comments$ | async; as comments) {
-  <div class="flex row gap-2 justify-between">
-    <div>
+  <div class="presentation-subfooter">
+    <div class="presentation-comments">
       <mat-list>
         <h3 mat-subheader>Comentários</h3>
 
@@ -42,7 +42,7 @@
         (submitted)="onComment($event)"
       />
     </div>
-    <mat-list>
+    <mat-list class="presentation-resources">
       <h3 mat-subheader>Recursos</h3>
 
       @for (resource of presentation.resources; track resource) {
@@ -56,13 +56,11 @@
     </mat-list>
   </div>
 
-  <footer>
-    <mat-paginator
-      hidePageSize
-      [length]="comments.items"
-      (page)="onPageChange($event)"
-    />
-  </footer>
+  <mat-paginator
+    hidePageSize
+    [length]="comments.items"
+    (page)="onPageChange($event)"
+  />
   }
-</section>
+</footer>
 }

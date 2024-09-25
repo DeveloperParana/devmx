@@ -1,6 +1,7 @@
-import { AccessTokenDto, SignInDto, SignUpDto } from '../dtos';
 import { QueryFilterDto } from '@devmx/shared-data-source';
 import { Env } from '@devmx/shared-api-interfaces/server';
+import { Account } from '@devmx/shared-api-interfaces';
+import { AccessTokenDto, SignInDto } from '../dtos';
 import {
   JwtService,
   AuthService,
@@ -29,15 +30,15 @@ export class AuthServiceImpl implements AuthService {
 
     if (!passwordMatched) throw `Credenciais inválidas`;
 
-    const { id: sub, name, email, photo = '' } = account;
-    const payload = { sub, name, email, username, photo };
+    const { id: sub, name, email, roles, photo = '' } = account;
+    const payload = { sub, name, email, username, roles, photo };
     const options = { secret: this.env.jwt.secret };
     const accessToken = await this.jwtService.signAsync(payload, options);
 
     return new AccessTokenDto(accessToken);
   }
 
-  async signUp(data: SignUpDto) {
+  async signUp(data: Account) {
     const password = this.cryptoService.hash(data.password);
     await this.accountsService.create({ ...data, password, active: true });
     return this.signIn(data);

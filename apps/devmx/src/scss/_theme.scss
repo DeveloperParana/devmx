@@ -1,5 +1,6 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@use './m3-theme' as custom;
 // Plus imports for other components in your app.
 
 body {
@@ -16,8 +17,10 @@ $light: mat.define-theme(
   (
     color: (
       theme-type: light,
-      primary: mat.$green-palette,
-      tertiary: mat.$spring-green-palette,
+      primary: custom.$green-palettte,
+      tertiary: custom.$purple-palettte,
+      // primary: mat.$green-palette,
+      // tertiary: mat.$spring-green-palette,
     ),
     density: (
       scale: 0,

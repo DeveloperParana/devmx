@@ -10,7 +10,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2022", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -27,6 +27,9 @@
       "@devmx/account-feature-auth": [
         "packages/account/feature-auth/src/index.ts"
       ],
+      "@devmx/account-feature-board": [
+        "packages/account/feature-board/src/index.ts"
+      ],
       "@devmx/account-feature-shell": [
         "packages/account/feature-shell/src/index.ts"
       ],
@@ -40,11 +43,11 @@
       "@devmx/presentation-domain": [
         "packages/presentation/domain/src/index.ts"
       ],
-      "@devmx/presentation-domain/server": [
-        "packages/presentation/domain/src/server.ts"
-      ],
       "@devmx/presentation-domain/client": [
         "packages/presentation/domain/src/client.ts"
+      ],
+      "@devmx/presentation-domain/server": [
+        "packages/presentation/domain/src/server.ts"
       ],
       "@devmx/presentation-feature-shell": [
         "packages/presentation/feature-shell/src/index.ts"
@@ -65,6 +68,22 @@
       "@devmx/shared-data-source": ["packages/shared/data-source/src/index.ts"],
       "@devmx/shared-resource": ["packages/shared/resource/src/index.ts"],
       "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"],
+      "@devmx/shared-util-authn": ["packages/shared/util-authn/src/index.ts"],
+      "@devmx/shared-util-authn/client": [
+        "packages/shared/util-authn/src/client.ts"
+      ],
+      "@devmx/shared-util-authn/device": [
+        "packages/shared/util-authn/src/device.ts"
+      ],
+      "@devmx/shared-util-authn/parsers": [
+        "packages/shared/util-authn/src/parsers.ts"
+      ],
+      "@devmx/shared-util-authn/server": [
+        "packages/shared/util-authn/src/server.ts"
+      ],
+      "@devmx/shared-util-authn/types": [
+        "packages/shared/util-authn/src/types.ts"
+      ],
       "@devmx/shared-util-data": ["packages/shared/util-data/src/index.ts"],
       "@devmx/shared-util-errors": ["packages/shared/util-errors/src/index.ts"]
     }

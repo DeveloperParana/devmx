@@ -1,7 +1,10 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
 import { providePresentation } from '@devmx/presentation-data-access';
-import { provideAccount } from '@devmx/account-data-access';
 import { Route } from '@angular/router';
+import {
+  provideAccount,
+  provideAccountNavFacade,
+} from '@devmx/account-data-access';
 import {
   SettingsContainer,
   PresentationContainer,
@@ -20,10 +23,29 @@ export const accountFeatureShellRoutes: Route[] = [
     path: '',
     providers: [
       ...provideAccount(),
-      ...providePresentation()
+      ...providePresentation(),
+      provideAccountNavFacade([
+        {
+          path: ['/account', 'settings'],
+          text: 'Configurações',
+          icon: 'settings',
+        },
+        {
+          path: ['/account', 'presentations'],
+          text: 'Apresentações',
+          icon: 'collections_bookmark',
+        },
+      ]),
     ],
     component: AccountFeatureShellComponent,
     children: [
+      {
+        path: 'board',
+        loadChildren: () =>
+          import('@devmx/account-feature-board').then(
+            (m) => m.accountFeatureBoardRoutes
+          ),
+      },
       {
         path: 'presentations/:id',
         component: PresentationContainer,

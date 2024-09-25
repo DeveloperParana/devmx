@@ -13,12 +13,14 @@ import {
   FindAccountPresentationsUseCase,
   ChangePasswordUseCase,
   UploadPhotoUseCase,
+  FindAccountByUsernameUseCase,
 } from '@devmx/account-domain/client';
 
 interface AccountState {
   presentations: Page<PresentationOut>;
   accounts: Page<AccountOut>;
   account: AccountOut | null;
+  username: boolean | null;
 }
 
 export class AccountFacade extends State<AccountState> {
@@ -28,8 +30,11 @@ export class AccountFacade extends State<AccountState> {
 
   account$ = this.select((state) => state.account);
 
+  username$ = this.select((state) => state.username);
+
   constructor(
     private findAccountByIDUseCase: FindAccountByIDUseCase,
+    private findAccountByUsernameUseCase: FindAccountByUsernameUseCase,
     private findAccountPresentationsUseCase: FindAccountPresentationsUseCase,
     private updateAccountUseCase: UpdateAccountUseCase,
     private removeAccountUseCase: RemoveAccountUseCase,
@@ -40,17 +45,40 @@ export class AccountFacade extends State<AccountState> {
       accounts: { data: [], items: 0, pages: 0 },
       presentations: { data: [], items: 0, pages: 0 },
       account: null,
+      username: null,
     });
   }
 
   loadOne(id: string) {
     const request$ = this.findAccountByIDUseCase.execute(id);
 
-    const onPresentation = (account: AccountOut) => {
+    const onAccount = (account: AccountOut) => {
       this.setState({ account });
     };
 
-    request$.pipe(take(1)).subscribe(onPresentation);
+    request$.pipe(take(1)).subscribe(onAccount);
+  }
+
+  loadOneByUsername(username: string) {
+    const request$ = this.findAccountByUsernameUseCase.execute(username);
+
+    const onAccount = (account: AccountOut) => {
+      this.setState({ account });
+    };
+
+    request$.pipe(take(1)).subscribe(onAccount);
+  }
+
+  checkUsername(username: string) {
+    this.setState({ username: null });
+
+    const request$ = this.findAccountByUsernameUseCase.execute(username);
+
+    const onUsername = (account: AccountOut) => {
+      this.setState({ username: !!account });
+    };
+
+    request$.pipe(take(1)).subscribe(onUsername);
   }
 
   loadPresentations(page = 0, size = 10) {

@@ -1,16 +1,17 @@
 ```
-     _                           
+     _
   __| | _____   ___ __ ___ __  __
  / _` |/ _ \ \ / / '_ ` _ \\ \/ /
-| (_| |  __/\ V /| | | | | |>  < 
+| (_| |  __/\ V /| | | | | |>  <
  \__,_|\___| \_/ |_| |_| |_/_/\_\
 ```
-# dev member experience
 
+# dev member experience
 
 ## Para executar em dev
 
 ### Requisitos
+
 1. [pnpm](https://pnpm.io/installation) instalado
 1. [docker](https://docs.docker.com/engine/install) instalado
 
@@ -48,26 +49,29 @@ pnpm dev
 
 ## Para commits
 
+Os commits podem ser feitos em português, mas use inglês para termos técnicos, não tente traduzi-los quando eles são conhecidos e usados em inglês.
+
 ```sh
 pnpm cmt
 ```
 
 Responda as perguntas para fazer o commit.
 
-
 ## Responsabilidades e relacionamentos
 
-Trata-se de responsabilidade e relacionamentos, ou seja, qual a responsabilidade de cada camada e quais camadas podem depender diretamente uma das outras. Na tabela a seguir vemos que camadas do tipo `util` podem depender apenas de camadas que também sejam do tipo `util`, camadas do tipo `domain` podem depender apenas de camadas do tipo `util` e `api`, camadas do tipo `data-source` podem depender apenas dos tipos `util`, `domain` e `api`, e assim por diante...
+Trata-se de responsabilidade e relacionamentos, ou seja, qual a responsabilidade de cada camada e quais camadas podem depender diretamente uma das outras. Esta é uma convenção chamada [enforce module boundaries](https://nx.dev/features/enforce-module-boundaries#enforce-module-boundaries) e quem permite que as regras sejam aplicadas é o [nx](https://nx.dev).
 
-Caso tenha interesse em aprofundar neste assunto e descobrir os motivos, recomendo que leia um conteúdo que escrevi ano passado, você pode fazer download através do link a seguir. [Arquitetura em camadas, uma abordagem sobre responsabilidades e relacionamentos](https://conteudode.dev/pdf/nx)
+A tabela a seguir representa a configuração no arquivo [`.eslintrc.json`](.eslintrc.json).
 
-|               | util | domain | data-source | data-access | resource | feature | app | api |
-| ------------: | :--: | :----: | :---------: | :---------: | :------: | :-----: | :-: | :-: |
-|        `util` |  ✓   |   ✓    |      ✓      |      ✓      |    ✓     |    ✓    |  ✓  |  ✓  |
-|      `domain` |  𝗫   |   𝗫    |      ✓      |      ✓      |    𝗫     |    𝗫    |  𝗫  |  ✓  |
-| `data-source` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    ✓     |    𝗫    |  ✓  |  ✓  |
-| `data-access` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    𝗫     |    ✓    |  ✓  |  ✓  |
-|    `resource` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    ✓     |    𝗫    |  ✓  |  ✓  |
-|     `feature` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    𝗫     |    ✓    |  ✓  |  ✓  |
-|         `app` |  𝗫   |   𝗫    |      𝗫      |      𝗫      |    𝗫     |    𝗫    |  𝗫  |  𝗫  |
-|         `api` |  𝗫   |   ✓    |      ✓      |      ✓      |    ✓     |    ✓    |  ✓  |  ✓  |
+|            | api | util | domain | data | ui  | feature | resource | app |
+| ---------: | :-: | :--: | :----: | :--: | :-: | :-----: | :------: | :-: |
+|      `api` |  ✓  |  𝗫   |   𝗫    |  𝗫   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
+|     `util` |  ✓  |  ✓   |   𝗫    |  𝗫   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
+|   `domain` |  ✓  |  ✓   |   ✓    |  𝗫   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
+|     `data` |  ✓  |  ✓   |   ✓    |  ✓   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
+|       `ui` |  ✓  |  ✓   |   𝗫    |  𝗫   |  ✓  |    𝗫    |    𝗫     |  𝗫  |
+|  `feature` |  ✓  |  ✓   |   𝗫    |  ✓   |  ✓  |    ✓    |    𝗫     |  𝗫  |
+| `resource` |  ✓  |  ✓   |   𝗫    |  ✓   |  𝗫  |    𝗫    |    ✓     |  𝗫  |
+|      `app` |  ✓  |  ✓   |   𝗫    |  ✓   |  ✓  |    ✓    |    ✓     |  𝗫  |
+
+Caso tenha interesse em aprofundar neste assunto e descobrir os motivos, recomendo que leia um conteúdo que escrevi ano passado, você pode fazer download através do link [Arquitetura em camadas, uma abordagem sobre responsabilidades e relacionamentos](https://conteudode.dev/pdf/nx).

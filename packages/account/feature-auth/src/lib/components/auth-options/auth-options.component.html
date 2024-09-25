@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Autenticador WebAuthn</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Pick one"
+      aria-label="Autenticador WebAuthn"
+      formControlName="authenticator"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      [displayWith]="form.displayFn"
+    >
+      @for (option of form.options$ | async; track option) {
+      <mat-option [value]="option">{{ option.viewValue }}</mat-option>
+      }
+    </mat-autocomplete>
+    <button type="button" mat-icon-button matIconSuffix>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<pre>{{ form.value | json }}</pre>

@@ -1,32 +1,31 @@
+<header class="presentations-header">
+  <devmx-filter-presentation (valueChange)="find($event)" />
+</header>
+
 @if (presentationFacade.presentations$ | async; as presentations) {
 
 <div class="presentations-container">
   @for (presentation of presentations.data; track presentation.id) {
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{presentation.title}}</mat-card-title>
-      <mat-card-subtitle>
-        {{presentation.account.name.first}} {{presentation.account.name.last}}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{presentation.description}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <a
-        mat-icon-button
-        [routerLink]="presentation.id"
-      >
-        <mat-icon>login</mat-icon>
-      </a>
-
-      <devmx-reaction
-        [presentation]="presentation.id"
-        (reacted)="onReact($event)"
-      ></devmx-reaction>
-    </mat-card-actions>
-  </mat-card>
+  <a [routerLink]="presentation.id">
+    <mat-card class="presentation-card">
+      <mat-card-header>
+        <mat-card-title>{{presentation.title}}</mat-card-title>
+        <mat-card-subtitle>
+          {{presentation.account.name.first}} {{presentation.account.name.last}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{presentation.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <devmx-reaction
+          [presentation]="presentation.id"
+          (reacted)="onReact($event)"
+        ></devmx-reaction>
+      </mat-card-actions>
+    </mat-card>
+  </a>
 
   }
 </div>

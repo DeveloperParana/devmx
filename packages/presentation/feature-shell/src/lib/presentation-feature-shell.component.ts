@@ -1,14 +1,17 @@
+import { AuthUserComponent, ToolbarComponent } from '@devmx/shared-ui-global';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Presentation } from '@devmx/shared-api-interfaces';
-import { ToolbarComponent } from '@devmx/shared-ui-global';
 import { MatButtonModule } from '@angular/material/button';
 import { CreatePresentationComponent } from './components';
+import { AuthFacade } from '@devmx/account-data-access';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import { take } from 'rxjs';
 import {
   inject,
@@ -18,8 +21,6 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { AuthFacade } from '@devmx/account-data-access';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'devmx-presentation-feature-shell',
@@ -28,6 +29,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ToolbarComponent,
+    AuthUserComponent,
     MatDialogModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -36,15 +38,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatListModule,
     LayoutModule,
     RouterModule,
+    AsyncPipe,
   ],
   standalone: true,
 })
 export class PresentationFeatureShellComponent implements OnInit, OnDestroy {
+  authFacade = inject(AuthFacade);
+  router = inject(Router);
+
   mobileQuery: MediaQueryList;
 
   #mobileQueryListener: () => void;
-
-  authFacade = inject(AuthFacade);
 
   presentationFacade = inject(PresentationFacade);
 
@@ -81,6 +85,11 @@ export class PresentationFeatureShellComponent implements OnInit, OnDestroy {
         this.presentationFacade.create(presentation);
       }
     });
+  }
+
+  onLogout() {
+    this.authFacade.clearAccessToken();
+    this.router.navigateByUrl('/account/auth');
   }
 
   ngOnDestroy() {
