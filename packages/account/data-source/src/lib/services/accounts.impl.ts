@@ -44,11 +44,7 @@ export class AccountsServiceImpl implements AccountsService {
   async findOneBy(filter: FindFilterDto<Account>) {
     const account = await this.accountModel.findOne(filter).exec();
 
-    if (!account) {
-      throw `Conta não encontrada`;
-    }
-
-    return account.toJSON();
+    return account ? account.toJSON() : null;
   }
 
   async update(id: string, data: Partial<UpdateAccountDto>) {

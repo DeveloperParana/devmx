@@ -84,8 +84,6 @@ export class SettingsContainer implements OnInit {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        console.log(user);
-
         if (user) {
           this.accountFacade.loadOne(user.id);
 

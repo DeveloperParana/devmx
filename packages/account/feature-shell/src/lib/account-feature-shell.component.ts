@@ -17,6 +17,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'devmx-account-feature-shell',
@@ -72,22 +73,25 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
       icon: 'admin_panel_settings',
     };
 
-    this.authFacade.level$.subscribe((account) => {
-      if (account) {
-        if (account.isBoard) {
-          this.navFacade.addItem(navItemBoard);
+    this.authFacade.level$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((account) => {
+        if (account) {
+          if (account.isBoard) {
+            this.navFacade.addItem(navItemBoard);
+          }
+          if (account.isWorthy || account.isBoard) {
+            this.navFacade.addItem(navItemAdmin);
+          }
         }
-        if (account.isWorthy || account.isBoard) {
-          this.navFacade.addItem(navItemAdmin);
-        }
-      }
-    });
+      });
 
     this.authFacade.loadAuthUser();
   }
 
   onLogout() {
-    this.authFacade.clearAccessToken();
+    this.authFacade.signOut();
+    this.navFacade.reset();
     this.router.navigateByUrl('/account/auth');
   }
 

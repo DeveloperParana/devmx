@@ -1,6 +1,5 @@
 import { AccessToken, SignIn, UseCase } from '@devmx/shared-api-interfaces';
 import { AuthenticationError } from '@devmx/shared-util-errors';
-import { createQueryFilter } from '@devmx/shared-util-data';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { CryptoService, JwtService } from '../ports';
 import { AccountsService } from '../services';
@@ -14,7 +13,8 @@ export class SignInUseCase implements UseCase<SignIn, AccessToken> {
   ) {}
 
   async execute({ username, password }: SignIn) {
-    const filter = createQueryFilter({ username });
+    const value = new RegExp(username, 'i');
+    const filter = { username: value };
 
     const account = await this.accountsService.findOneBy(filter);
 

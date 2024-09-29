@@ -7,13 +7,13 @@ import { Type } from 'class-transformer';
 export class ChangeRolesDto implements ChangeRoles {
   id: string;
 
-  @IsObject()
-  @Type(() => AccountRoleDto)
-  @ApiProperty({ type: () => AccountRoleDto })
-  currentRoles: AccountRoleDto;
+  // @IsObject()
+  // @Type(() => AccountRoleDto)
+  // @ApiProperty({ type: () => AccountRoleDto })
+  // currentRoles: AccountRoleDto;
 
   @IsObject()
   @Type(() => AccountRoleDto)
   @ApiProperty({ type: () => AccountRoleDto })
-  newRoles: AccountRoleDto;
+  roles: AccountRoleDto;
 }

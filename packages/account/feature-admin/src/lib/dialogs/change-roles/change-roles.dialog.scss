@@ -1,0 +1,39 @@
+:host {
+  display: block;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .mat-mdc-dialog-title {
+      max-width: 12em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    section {
+      padding: 0.6em;
+    }
+
+    .mdc-form-field {
+      font-size: 120%;
+    }
+
+    .mat-mdc-dialog-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    // .mat-mdc-dialog-content {
+    //   gap: 1em;
+    //   display: flex;
+    //   flex-flow: row wrap;
+
+    //   section {
+    //     display: flex;
+    //     flex-direction: column;
+    //   }
+    // }
+  }
+}

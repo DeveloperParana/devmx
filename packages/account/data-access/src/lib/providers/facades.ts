@@ -11,6 +11,7 @@ import {
   UploadPhotoUseCase,
   FindAccountByUsernameUseCase,
   FindAccountsUseCase,
+  ChangeRolesUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideAuthFacade() {
@@ -38,6 +39,7 @@ export function provideAccountFacade() {
       updateAccount: UpdateAccountUseCase,
       removeAccount: RemoveAccountUseCase,
       changePassword: ChangePasswordUseCase,
+      changeRoles: ChangeRolesUseCase,
       uploadPhoto: UploadPhotoUseCase
     ) {
       return new AccountFacade(
@@ -48,6 +50,7 @@ export function provideAccountFacade() {
         updateAccount,
         removeAccount,
         changePassword,
+        changeRoles,
         uploadPhoto
       );
     },
@@ -59,6 +62,7 @@ export function provideAccountFacade() {
       UpdateAccountUseCase,
       RemoveAccountUseCase,
       ChangePasswordUseCase,
+      ChangeRolesUseCase,
       UploadPhotoUseCase,
     ],
   };

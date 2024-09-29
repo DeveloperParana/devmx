@@ -1,0 +1,45 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <h2 mat-dialog-title>
+    Papéis de {{data.assign.name.first}} {{data.assign.name.last}}
+  </h2>
+
+  <section formGroupName="roles">
+    <mat-list>
+      <h3 mat-subheader>Organização</h3>
+      <mat-list-item>
+        <mat-checkbox formControlName="staff">Organizador(a)</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="leader">Líder</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="fellow">Fellow</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list>
+      <h3 mat-subheader>Apoiador(a)</h3>
+      <mat-list-item>
+        <mat-checkbox formControlName="donor">Doador</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="neighbor">De casa</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list>
+      <h3 mat-subheader>Conselho</h3>
+      <mat-list-item>
+        <mat-checkbox formControlName="manager">Gerente</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="director">Diretor</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </section>
+
+  <mat-dialog-actions>
+    <button type="button" mat-stroked-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button>Salvar</button>
+  </mat-dialog-actions>
+</form>

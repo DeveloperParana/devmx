@@ -1,7 +1,11 @@
-import { ChangePassword, UpdateAccount } from '@devmx/account-domain';
 import { AccountService } from '@devmx/account-domain/client';
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { HttpClient } from '@devmx/shared-data-access';
+import {
+  ChangeRoles,
+  UpdateAccount,
+  ChangePassword,
+} from '@devmx/account-domain';
 import {
   Page,
   AccountOut,
@@ -46,6 +50,10 @@ export class AccountServiceImpl implements AccountService {
 
   changePassword(data: ChangePassword) {
     return this.http.patch<AccountOut>(`${this.url}/password`, data);
+  }
+
+  changeRoles(id: string, data: ChangeRoles) {
+    return this.http.patch<AccountOut>(`${this.url}/${id}/roles`, data);
   }
 
   remove(id: string) {

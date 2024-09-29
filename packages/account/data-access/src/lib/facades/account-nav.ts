@@ -8,8 +8,11 @@ interface AccountNavState {
 export class AccountNavFacade extends State<AccountNavState> {
   items$ = this.select((state) => Array.from(state.items));
 
+  #initialItems: NavItem[] = [];
+
   constructor(items: NavItem[] = []) {
     super({ items: new Set(items) });
+    this.#initialItems = items;
   }
 
   setItems(newItems: NavItem[]) {
@@ -30,5 +33,9 @@ export class AccountNavFacade extends State<AccountNavState> {
     }
 
     this.setState({ items });
+  }
+
+  reset() {
+    this.setItems(this.#initialItems);
   }
 }

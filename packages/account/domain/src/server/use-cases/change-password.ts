@@ -2,6 +2,11 @@ import { Account, UseCase } from '@devmx/shared-api-interfaces';
 import { ChangePassword } from '../../lib/dtos';
 import { AccountsService } from '../services';
 import { CryptoService } from '../ports';
+import {
+  RequestError,
+  NotFoundError,
+  PersistenceError,
+} from '@devmx/shared-util-errors';
 
 export class ChangePasswordUseCase implements UseCase<ChangePassword, Account> {
   constructor(
@@ -13,7 +18,7 @@ export class ChangePasswordUseCase implements UseCase<ChangePassword, Account> {
     const account = await this.accountsService.findOne(data.id);
 
     if (!account) {
-      throw `Conta não encontrada`;
+      throw new NotFoundError('Conta não encontrada');
     }
 
     const matchCurrentPassword = this.cryptoService.compare(
@@ -22,7 +27,7 @@ export class ChangePasswordUseCase implements UseCase<ChangePassword, Account> {
     );
 
     if (!matchCurrentPassword) {
-      throw `Senha atual incorreta`;
+      throw new RequestError('Senha atual incorreta');
     }
 
     const password = this.cryptoService.hash(data.newPassword);
@@ -30,7 +35,7 @@ export class ChangePasswordUseCase implements UseCase<ChangePassword, Account> {
     const changed = await this.accountsService.update(data.id, { password });
 
     if (!changed) {
-      throw `Problema ao persistir nova senha`;
+      throw new PersistenceError('Problema ao persistir nova senha');
     }
 
     return changed;

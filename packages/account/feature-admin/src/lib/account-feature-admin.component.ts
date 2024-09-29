@@ -9,4 +9,5 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   standalone: true,
 })
-export class AccountFeatureAdminComponent {}
+export class AccountFeatureAdminComponent {
+}
