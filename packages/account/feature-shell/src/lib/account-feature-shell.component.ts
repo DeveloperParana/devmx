@@ -1,9 +1,9 @@
 import { AuthUserComponent, ToolbarComponent } from '@devmx/shared-ui-global';
+import { AccountNavFacade, AuthFacade } from '@devmx/account-data-access';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
-import { AccountNavFacade, AuthFacade } from '@devmx/account-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
@@ -11,11 +11,11 @@ import { AsyncPipe } from '@angular/common';
 import {
   inject,
   OnInit,
-  OnDestroy,
   Component,
+  OnDestroy,
+  DestroyRef,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-  DestroyRef,
 } from '@angular/core';
 
 @Component({
@@ -51,8 +51,6 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
 
   #mobileQueryListener: () => void;
 
-  // navigation = this.navService.getFeatureNav('account');
-
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);
     const media = inject(MediaMatcher);
@@ -63,15 +61,25 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const navItem = {
+    const navItemBoard = {
       path: ['/account', 'board'],
+      text: 'Dashboard',
+      icon: 'dashboard',
+    };
+    const navItemAdmin = {
+      path: ['/account', 'admin'],
       text: 'Administração',
       icon: 'admin_panel_settings',
     };
 
     this.authFacade.level$.subscribe((account) => {
-      if (account && account.isBoard) {
-        this.navFacade.addItem(navItem);
+      if (account) {
+        if (account.isBoard) {
+          this.navFacade.addItem(navItemBoard);
+        }
+        if (account.isWorthy || account.isBoard) {
+          this.navFacade.addItem(navItemAdmin);
+        }
       }
     });
 

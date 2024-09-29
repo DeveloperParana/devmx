@@ -24,6 +24,9 @@
       "@devmx/account-domain": ["packages/account/domain/src/index.ts"],
       "@devmx/account-domain/client": ["packages/account/domain/src/client.ts"],
       "@devmx/account-domain/server": ["packages/account/domain/src/server.ts"],
+      "@devmx/account-feature-admin": [
+        "packages/account/feature-admin/src/index.ts"
+      ],
       "@devmx/account-feature-auth": [
         "packages/account/feature-auth/src/index.ts"
       ],

@@ -16,6 +16,7 @@ import {
   provideUploadPhotoUseCase,
   provideFindAccountByUsernameUseCase,
   provideCityService,
+  provideFindAccountsUseCase,
 } from './providers';
 
 export function provideAccount() {
@@ -28,6 +29,7 @@ export function provideAccount() {
     provideSignUpUseCase(),
     provideLoadAuthUserUseCase(),
 
+    provideFindAccountsUseCase(),
     provideFindAccountByIDUseCase(),
     provideFindAccountByUsernameUseCase(),
     provideFindAccountPresentationsUseCase(),

@@ -1,4 +1,4 @@
-import { QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
+import { FindFilterDto, FindParamsDto } from '@devmx/shared-data-source';
 import { AccountsService } from '@devmx/account-domain/server';
 import { Account } from '@devmx/shared-api-interfaces';
 import { SignUpDto, UpdateAccountDto } from '../dtos';
@@ -12,11 +12,12 @@ export class AccountsServiceImpl implements AccountsService {
     return createdAccount.save();
   }
 
-  async find(params: QueryParamsDto<Account>) {
+  async find(params: FindParamsDto<Account>) {
     const { page = 0, size = 10, filter } = params;
 
     const skip = page * size;
     const where = { ...filter };
+
     const accounts = await this.accountModel
       .find(where)
       .skip(skip)
@@ -40,7 +41,7 @@ export class AccountsServiceImpl implements AccountsService {
     return account.toJSON();
   }
 
-  async findOneBy(filter: QueryFilterDto<Account>) {
+  async findOneBy(filter: FindFilterDto<Account>) {
     const account = await this.accountModel.findOne(filter).exec();
 
     if (!account) {

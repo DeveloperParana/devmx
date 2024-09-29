@@ -3,6 +3,7 @@ export * from './abstract';
 export * from './account-role';
 export * from './creatable';
 export * from './editable';
+export * from './find-filter';
 export * from './findable';
 export * from './fn';
 export * from './gender';

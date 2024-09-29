@@ -9,7 +9,8 @@
     "class-transformer": "^0.5.1",
     "express": "4.21.0",
     "mongoose": "^8.6.3",
-    "@nestjs/mongoose": "^10.0.10"
+    "@nestjs/mongoose": "^10.0.10",
+    "@nestjs/core": "^10.0.2"
   },
   "type": "commonjs",
   "main": "./src/index.js",

@@ -2,6 +2,7 @@ export * from './change-password';
 export * from './find-account-by-id';
 export * from './find-account-by-username';
 export * from './find-account-presentations';
+export * from './find-accounts';
 export * from './load-auth-user';
 export * from './remove-account';
 export * from './sign-in';

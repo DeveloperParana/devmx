@@ -2,6 +2,7 @@ import { PresentationDatabaseModule } from '@devmx/presentation-resource';
 import { AccountDatabaseModule } from './account-database.module';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { MulterModule } from '@nestjs/platform-express';
+import { RolesGuard } from '@devmx/shared-resource';
 import { AuthGuard, JwtAuthGuard } from './guards';
 import { PassportModule } from '@nestjs/passport';
 import { APP_GUARD } from '@nestjs/core';
@@ -44,6 +45,10 @@ import {
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
   exports: [],

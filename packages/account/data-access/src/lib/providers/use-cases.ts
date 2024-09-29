@@ -12,6 +12,7 @@ import {
   ChangePasswordUseCase,
   UploadPhotoUseCase,
   FindAccountByUsernameUseCase,
+  FindAccountsUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideSignInUseCase() {
@@ -24,6 +25,10 @@ export function provideSignUpUseCase() {
 
 export function provideLoadAuthUserUseCase() {
   return createUseCaseProvider(LoadAuthUserUseCase, [AuthService]);
+}
+
+export function provideFindAccountsUseCase() {
+  return createUseCaseProvider(FindAccountsUseCase, [AccountService]);
 }
 
 export function provideFindAccountByIDUseCase() {

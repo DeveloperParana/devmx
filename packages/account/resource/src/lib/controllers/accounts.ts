@@ -3,6 +3,7 @@ import {
   ApiPage,
   QueryParamsDto,
   Allowed,
+  Roles,
 } from '@devmx/shared-data-source';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { exceptionByError } from '@devmx/shared-resource';
@@ -71,6 +72,7 @@ export class AccountsController {
 
   @Get()
   @ApiPage(AccountDto)
+  @Roles(['director', 'manager', 'staff', 'leader', 'fellow'])
   async findAll(@Query() params: QueryParamsDto<Account>) {
     try {
       return await this.accountsFacade.find(params);

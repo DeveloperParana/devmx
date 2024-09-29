@@ -1,5 +1,6 @@
 import { ChangePassword, UpdateAccount } from '@devmx/account-domain';
 import { State } from '@devmx/shared-data-access';
+import { FilterAccount } from '../dtos';
 import { take } from 'rxjs';
 import {
   Page,
@@ -14,6 +15,7 @@ import {
   ChangePasswordUseCase,
   UploadPhotoUseCase,
   FindAccountByUsernameUseCase,
+  FindAccountsUseCase,
 } from '@devmx/account-domain/client';
 
 interface AccountState {
@@ -21,6 +23,7 @@ interface AccountState {
   accounts: Page<AccountOut>;
   account: AccountOut | null;
   username: boolean | null;
+  filter: FilterAccount;
 }
 
 export class AccountFacade extends State<AccountState> {
@@ -33,6 +36,7 @@ export class AccountFacade extends State<AccountState> {
   username$ = this.select((state) => state.username);
 
   constructor(
+    private findAccountsUseCase: FindAccountsUseCase,
     private findAccountByIDUseCase: FindAccountByIDUseCase,
     private findAccountByUsernameUseCase: FindAccountByUsernameUseCase,
     private findAccountPresentationsUseCase: FindAccountPresentationsUseCase,
@@ -44,9 +48,31 @@ export class AccountFacade extends State<AccountState> {
     super({
       accounts: { data: [], items: 0, pages: 0 },
       presentations: { data: [], items: 0, pages: 0 },
+      filter: { name: '', username: '' },
       account: null,
       username: null,
     });
+  }
+
+  setFilter(filter: FilterAccount) {
+    this.setState({ filter });
+  }
+
+  clearFilter() {
+    this.setState({ filter: { name: '', username: '' } });
+  }
+
+  load(page = 0, size = 10) {
+    const filter = this.state.filter;
+    const params = { filter, page, size };
+
+    const request$ = this.findAccountsUseCase.execute(params);
+
+    const onAccounts = (accounts: Page<AccountOut>) => {
+      this.setState({ accounts });
+    };
+
+    request$.pipe(take(1)).subscribe(onAccounts);
   }
 
   loadOne(id: string) {

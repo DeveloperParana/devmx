@@ -3,19 +3,19 @@ import {
   Page,
   Account,
   Creatable,
-  QueryFilter,
-  QueryParams,
+  FindFilter,
+  FindParams,
 } from '@devmx/shared-api-interfaces';
 
 // prettier-ignore
 export abstract class AccountsService {
   abstract create(data: Creatable<Account>): Promise<Account>;
 
-  abstract find(params: QueryParams<Account>): Promise<Page<Account>>;
+  abstract find(params: FindParams<Account>): Promise<Page<Account>>;
 
   abstract findOne(id: string): Promise<Account | null>;
 
-  abstract findOneBy(filter: QueryFilter<Account>): Promise<Account | null>;
+  abstract findOneBy(filter: FindFilter<Account>): Promise<Account | null>;
 
   abstract update(id: string, data: Partial<UpdateAccount>): Promise<Account | null>;
 

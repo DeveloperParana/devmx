@@ -1,5 +1,6 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
 import { providePresentation } from '@devmx/presentation-data-access';
+import { roleGroupsGuard, roleGroupGuard } from './guards';
 import { Route } from '@angular/router';
 import {
   provideAccount,
@@ -40,11 +41,22 @@ export const accountFeatureShellRoutes: Route[] = [
     component: AccountFeatureShellComponent,
     children: [
       {
+        path: 'admin',
+        canActivate: [roleGroupsGuard('worthy', 'board')],
+        loadChildren: async () => {
+          return import('@devmx/account-feature-admin').then(
+            (m) => m.accountFeatureAdminRoutes
+          );
+        },
+      },
+      {
         path: 'board',
-        loadChildren: () =>
-          import('@devmx/account-feature-board').then(
+        canActivate: [roleGroupGuard('board')],
+        loadChildren: async () => {
+          return import('@devmx/account-feature-board').then(
             (m) => m.accountFeatureBoardRoutes
-          ),
+          );
+        },
       },
       {
         path: 'presentations/:id',
