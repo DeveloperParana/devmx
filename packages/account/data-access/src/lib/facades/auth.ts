@@ -75,4 +75,11 @@ export class AuthFacade extends State<AuthState> {
   clearAccessToken() {
     localStorage.removeItem('accessToken');
   }
+
+  signOut() {
+    const user = null;
+    const level = null;
+    this.setState({ user, level });
+    this.clearAccessToken();
+  }
 }

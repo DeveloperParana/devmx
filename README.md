@@ -49,6 +49,12 @@ pnpm dev
 
 ## Para commits
 
+Antes de escrever seu commit, execute lint, test e build dos projetos afetados pela sua alteração.
+
+```sh
+pnpm affected
+```
+
 Os commits podem ser feitos em português, mas use inglês para termos técnicos, não tente traduzi-los quando eles são conhecidos e usados em inglês.
 
 ```sh

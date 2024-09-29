@@ -1,4 +1,8 @@
-import { ChangePassword, UpdateAccount } from '@devmx/account-domain';
+import {
+  ChangePassword,
+  ChangeRoles,
+  UpdateAccount,
+} from '@devmx/account-domain';
 import { State } from '@devmx/shared-data-access';
 import { FilterAccount } from '../dtos';
 import { take } from 'rxjs';
@@ -16,6 +20,7 @@ import {
   UploadPhotoUseCase,
   FindAccountByUsernameUseCase,
   FindAccountsUseCase,
+  ChangeRolesUseCase,
 } from '@devmx/account-domain/client';
 
 interface AccountState {
@@ -43,6 +48,7 @@ export class AccountFacade extends State<AccountState> {
     private updateAccountUseCase: UpdateAccountUseCase,
     private removeAccountUseCase: RemoveAccountUseCase,
     private changePasswordUseCase: ChangePasswordUseCase,
+    private changeRolesUseCase: ChangeRolesUseCase,
     private uploadPhotoUseCase: UploadPhotoUseCase
   ) {
     super({
@@ -128,6 +134,12 @@ export class AccountFacade extends State<AccountState> {
 
   changePassword(data: ChangePassword) {
     const request$ = this.changePasswordUseCase.execute(data);
+
+    request$.pipe(take(1)).subscribe(() => this.loadOne(data.id));
+  }
+
+  changeRoles(data: ChangeRoles) {
+    const request$ = this.changeRolesUseCase.execute(data);
 
     request$.pipe(take(1)).subscribe(() => this.loadOne(data.id));
   }

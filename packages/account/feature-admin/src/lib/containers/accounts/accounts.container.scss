@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :host {
   flex: 1;
   display: flex;
@@ -9,7 +11,52 @@
     justify-content: flex-end;
   }
 
+  .accounts-container {
+    display: grid;
+    gap: 1em; /* Espaçamento entre os itens */
+    padding: 1em;
+  }
+
   .account-card {
-    overflow: hidden;
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(6);
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  /* Estilo para dispositivos médios: 2 colunas */
+  @media (min-width: 768px) {
+    .accounts-container {
+      grid-template-columns: repeat(4, 1fr); /* 2 colunas */
+    }
+  }
+
+  /* Estilo para dispositivos pequenos: 1 coluna */
+  @media (max-width: 767px) {
+    .accounts-container {
+      grid-template-columns: 1fr; /* 1 coluna */
+    }
+  }
+
+  .accounts-footer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.roles-sheet-container {
+  min-width: 16em;
+  width: 16em;
+
+  .mat-bottom-sheet-container {
+    min-width: 16em;
+    width: 16em;
   }
 }

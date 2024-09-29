@@ -1,4 +1,4 @@
-import { ChangePassword, UpdateAccount } from '../../lib/dtos';
+import { ChangePassword, ChangeRoles, UpdateAccount } from '../../lib/dtos';
 import { Observable } from 'rxjs';
 import {
   Page,
@@ -21,6 +21,8 @@ export abstract class AccountService {
   abstract upload(photo: Blob): Observable<AccountOut>;
 
   abstract changePassword(data: ChangePassword): Observable<AccountOut>;
+
+  abstract changeRoles(id: string, data: ChangeRoles): Observable<AccountOut>
 
   abstract remove(id: string): Observable<AccountOut>;
 }

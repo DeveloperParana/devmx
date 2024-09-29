@@ -17,6 +17,7 @@ import {
   provideFindAccountByUsernameUseCase,
   provideCityService,
   provideFindAccountsUseCase,
+  provideChangeRolesUseCase,
 } from './providers';
 
 export function provideAccount() {
@@ -36,6 +37,7 @@ export function provideAccount() {
     provideUpdateAccountUseCase(),
     provideRemoveAccountUseCase(),
     provideChangePasswordUseCase(),
+    provideChangeRolesUseCase(),
     provideUploadPhotoUseCase(),
 
     provideAuthFacade(),
