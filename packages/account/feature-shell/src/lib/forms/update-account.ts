@@ -1,7 +1,11 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UpdateAccount } from '@devmx/account-data-access';
 import { Form, FormOption } from '@devmx/shared-ui-global';
-import { Gender } from '@devmx/shared-api-interfaces';
+import { City, Gender } from '@devmx/shared-api-interfaces';
+
+export interface UpdateAccountWithCity extends Omit<UpdateAccount, 'city'> {
+  city: City;
+}
 
 export class UpdateAccountForm extends Form<UpdateAccount> {
   genders: FormOption<Gender>[] = [

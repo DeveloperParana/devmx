@@ -1,3 +1,4 @@
+import { AutocompleteCitiesComponent } from '@devmx/location-ui-forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,7 +9,7 @@ import { UpdateAccount } from '@devmx/account-data-access';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateAccountForm } from '../../forms';
+import { UpdateAccountForm, UpdateAccountWithCity } from '../../forms';
 import {
   output,
   OnInit,
@@ -24,6 +25,7 @@ import {
   providers: [provideNativeDateAdapter()],
   imports: [
     ReactiveFormsModule,
+    AutocompleteCitiesComponent,
     MatDatepickerModule,
     MatFormFieldModule,
     MatCheckboxModule,
@@ -37,7 +39,7 @@ import {
 export class EditableAccountComponent implements OnInit {
   form = new UpdateAccountForm();
 
-  submitted = output<UpdateAccount>();
+  submitted = output<UpdateAccount | UpdateAccountWithCity>();
 
   ngOnInit() {
     this.form.disable();

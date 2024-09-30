@@ -4,6 +4,7 @@ import {
   FindCitiesUseCase,
   FindCityByIDUseCase,
   FindCitiesByLocationUseCase,
+  SearchCitiesUseCase,
 } from '@devmx/location-domain/server';
 
 export function provideFindCitiesUseCase() {
@@ -16,4 +17,8 @@ export function provideFindCityByIDUseCase() {
 
 export function provideFindCitiesByLocationUseCase() {
   return createUseCaseProvider(FindCitiesByLocationUseCase, [CitiesService]);
+}
+
+export function provideSearchCitiesUseCase() {
+  return createUseCaseProvider(SearchCitiesUseCase, [CitiesService]);
 }

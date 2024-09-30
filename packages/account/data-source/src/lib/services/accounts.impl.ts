@@ -22,6 +22,7 @@ export class AccountsServiceImpl implements AccountsService {
       .find(where)
       .skip(skip)
       .limit(size)
+      .populate('city')
       .exec();
 
     const data = accounts.map((item) => item.toJSON());
@@ -32,17 +33,18 @@ export class AccountsServiceImpl implements AccountsService {
   }
 
   async findOne(id: string) {
-    const account = await this.accountModel.findById(id).exec();
-
-    if (!account) {
-      throw `Conta não encontrada`;
-    }
-
-    return account.toJSON();
+    const account = await this.accountModel
+      .findById(id)
+      .populate('city')
+      .exec();
+    return account ? account.toJSON() : null;
   }
 
   async findOneBy(filter: FindFilterDto<Account>) {
-    const account = await this.accountModel.findOne(filter).exec();
+    const account = await this.accountModel
+      .findOne(filter)
+      .populate('city')
+      .exec();
 
     return account ? account.toJSON() : null;
   }
@@ -50,13 +52,10 @@ export class AccountsServiceImpl implements AccountsService {
   async update(id: string, data: Partial<UpdateAccountDto>) {
     const account = await this.accountModel
       .findOneAndUpdate({ _id: id }, data)
+      .populate('city')
       .exec();
 
-    if (!account) {
-      throw `Problema ao alterar conta`;
-    }
-
-    return account.toJSON();
+    return account ? account.toJSON() : null;
   }
 
   async remove(id: string) {

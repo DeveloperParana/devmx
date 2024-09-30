@@ -12,25 +12,34 @@ export class CitiesServiceImpl implements CitiesService {
 
     const skip = page * size;
     const where = { ...filter };
-    const citys = await this.cityModel
+    const cities = await this.cityModel
       .find(where)
       .skip(skip)
       .limit(size)
       .exec();
 
-    const data = citys.map((item) => item.toJSON());
+    const data = cities.map((item) => item.toJSON());
     const items = await this.cityModel.countDocuments().exec();
     const pages = Math.ceil(items / size);
 
     return { data, items, pages };
   }
 
+  async search(name: string) {
+    const cities = await this.cityModel
+      .find({ name: new RegExp('^' + name, 'i') })
+      .exec();
+
+    return cities.map((item) => item.toJSON());
+  }
+
   async findOne(id: string) {
-    return this.cityModel.findById(id).lean().exec();
+    const city = await this.cityModel.findById(id).exec();
+    return city ? city.toJSON() : null;
   }
 
   async findByLocation({ lat, lng, max, min }: LocationFilter) {
-    return this.cityModel
+    const cities = await this.cityModel
       .find({
         location: {
           $near: {
@@ -43,7 +52,8 @@ export class CitiesServiceImpl implements CitiesService {
           },
         },
       })
-      .lean()
       .exec();
+
+    return cities.map((item) => item.toJSON());
   }
 }

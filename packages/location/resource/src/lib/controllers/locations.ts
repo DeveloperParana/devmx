@@ -13,7 +13,7 @@ import {
 export class LocationsController {
   constructor(private citiesFacade: CitiesFacade) {}
 
-  @Get()
+  @Get('cities')
   @Allowed()
   @ApiPage(CityDto)
   async findAll(@Query() params: QueryParamsDto<CityDto>) {
@@ -30,8 +30,16 @@ export class LocationsController {
     return this.citiesFacade.findByLocation(params);
   }
 
+  @ApiBearerAuth()
+  @Get('cities/search/:name')
+  async searchCities(@Param('name') name: string) {
+    console.log(name);
+
+    return this.citiesFacade.search(name);
+  }
+
   @Allowed()
-  @Get(':id')
+  @Get('cities/:id')
   @ApiOkResponse({ type: CityDto })
   async findOne(@Param('id') id: string) {
     try {

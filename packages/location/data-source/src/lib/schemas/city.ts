@@ -7,7 +7,10 @@ import { Document } from 'mongoose';
 export class CityCollection extends Document {
   override id: string;
 
-  @Prop({ type: String })
+  @Prop({
+    type: String,
+    index: 1
+  })
   name: string;
 
   @Prop({ type: Number })
@@ -16,9 +19,9 @@ export class CityCollection extends Document {
   @Prop({
     type: PointSchema,
     index: '2dsphere',
-    required: true
+    required: true,
   })
-  location: PointCollection
+  location: PointCollection;
 
   @Prop({ type: Boolean })
   capital: boolean;

@@ -4,6 +4,7 @@ import {
   provideFindCitiesUseCase,
   provideFindCityByIDUseCase,
   provideFindCitiesByLocationUseCase,
+  provideSearchCitiesUseCase,
 } from './providers';
 
 export function provideLocations() {
@@ -13,6 +14,7 @@ export function provideLocations() {
     provideFindCitiesUseCase(),
     provideFindCityByIDUseCase(),
     provideFindCitiesByLocationUseCase(),
+    provideSearchCitiesUseCase(),
 
     provideCitiesFacade(),
   ];
