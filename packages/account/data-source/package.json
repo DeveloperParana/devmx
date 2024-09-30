@@ -15,7 +15,8 @@
     "passport-jwt": "^4.0.1",
     "@nestjs/passport": "^10.0.3",
     "@devmx/presentation-domain": "0.0.1",
-    "@devmx/shared-util-authn": "0.0.1"
+    "@devmx/shared-util-authn": "0.0.1",
+    "@devmx/location-data-source": "0.0.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

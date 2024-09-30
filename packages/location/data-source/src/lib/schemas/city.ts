@@ -1,10 +1,10 @@
 import { createSchema } from '@devmx/shared-data-source';
-import { City } from '@devmx/shared-api-interfaces';
+import { PointCollection, PointSchema } from './point';
 import { Prop, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class CityCollection extends Document implements City {
+export class CityCollection extends Document {
   override id: string;
 
   @Prop({ type: String })
@@ -13,11 +13,12 @@ export class CityCollection extends Document implements City {
   @Prop({ type: Number })
   ibge: number;
 
-  @Prop({ type: Number })
-  lat: number;
-
-  @Prop({ type: Number })
-  lng: number;
+  @Prop({
+    type: PointSchema,
+    index: '2dsphere',
+    required: true
+  })
+  location: PointCollection
 
   @Prop({ type: Boolean })
   capital: boolean;

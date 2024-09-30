@@ -5,8 +5,6 @@ import {
   AccountSchema,
   provideAccounts,
   AccountCollection,
-  CityCollection,
-  CitySchema,
 } from '@devmx/account-data-source';
 
 @Global()
@@ -14,7 +12,6 @@ import {
   imports: [
     MongooseModule.forFeature([
       { name: AccountCollection.name, schema: AccountSchema },
-      { name: CityCollection.name, schema: CitySchema },
     ]),
   ],
   providers: [...provideAccounts(JwtService)],

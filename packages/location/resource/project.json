@@ -1,0 +1,9 @@
+{
+  "name": "location-resource",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/location/resource/src",
+  "projectType": "library",
+  "tags": ["type:resource"],
+  "// targets": "to see all targets run: nx show project location-resource --web",
+  "targets": {}
+}

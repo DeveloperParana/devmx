@@ -4,7 +4,6 @@ export * from './account';
 export * from './challenge';
 export * from './change-password';
 export * from './change-roles';
-export * from './city';
 export * from './name';
 export * from './presentation';
 export * from './sign-in';

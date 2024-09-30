@@ -11,7 +11,6 @@ import { JwtModule } from '@nestjs/jwt';
 import {
   AuthController,
   AccountsController,
-  CitiesController,
 } from './controllers';
 
 @Module({
@@ -36,7 +35,7 @@ import {
     AccountDatabaseModule,
     PresentationDatabaseModule,
   ],
-  controllers: [AuthController, AccountsController, CitiesController],
+  controllers: [AuthController, AccountsController],
   providers: [
     {
       provide: APP_GUARD,

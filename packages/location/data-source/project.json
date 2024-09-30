@@ -1,0 +1,19 @@
+{
+  "name": "location-data-source",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/location/data-source/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/location/data-source",
+        "main": "packages/location/data-source/src/index.ts",
+        "tsConfig": "packages/location/data-source/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

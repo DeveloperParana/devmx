@@ -11,6 +11,7 @@ import {
   MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
+  MatDialogContent,
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
@@ -23,6 +24,7 @@ import {
     ReactiveFormsModule,
     MatCheckboxModule,
     MatDialogActions,
+    MatDialogContent,
     MatButtonModule,
     MatDialogTitle,
     MatDialogClose,
