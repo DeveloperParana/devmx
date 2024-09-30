@@ -80,14 +80,14 @@ Usuários que serão cadastrados
 
 | username | password | member | speaker | donor | leader | staff | fellow | manager | director |
 | -------- | -------- | :----: | :-----: | :---: | :----: | :---: | :----: | :-----: | :------: |
-| member   | member   |  [x]   |   [ ]   |  [ ]  |  [ ]   |  [ ]  |  [ ]   |   [ ]   |   [ ]    |
-| speaker  | speaker  |  [x]   |   [x]   |  [ ]  |  [ ]   |  [ ]  |  [ ]   |   [ ]   |   [ ]    |
-| donor    | donor123 |  [x]   |   [ ]   |  [x]  |  [ ]   |  [ ]  |  [ ]   |   [ ]   |   [ ]    |
-| leader   | leader   |  [x]   |   [ ]   |  [ ]  |  [x]   |  [ ]  |  [ ]   |   [ ]   |   [ ]    |
-| staff    | staff123 |  [x]   |   [ ]   |  [ ]  |  [ ]   |  [x]  |  [ ]   |   [ ]   |   [ ]    |
-| fellow   | fellow   |  [x]   |   [ ]   |  [ ]  |  [ ]   |  [ ]  |  [x]   |   [ ]   |   [ ]    |
-| manager  | manager  |  [x]   |   [ ]   |  [ ]  |  [ ]   |  [ ]  |  [ ]   |   [x]   |   [ ]    |
-| director | director |  [x]   |   [ ]   |  [ ]  |  [ ]   |  [ ]  |  [ ]   |   [ ]   |   [x]    |
+| member   | member   |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| speaker  | speaker  |   ✓    |    ✓    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| donor    | donor123 |   ✓    |    𝘅    |   ✓   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| leader   | leader   |   ✓    |    𝘅    |   𝘅   |   ✓    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| staff    | staff123 |   ✓    |    𝘅    |   𝘅   |   𝘅    |   ✓   |   𝘅    |    𝘅    |    𝘅     |
+| fellow   | fellow   |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   ✓    |    𝘅    |    𝘅     |
+| manager  | manager  |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    ✓    |    𝘅     |
+| director | director |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    ✓     |
 
 ## Agora sim!
 
@@ -117,14 +117,14 @@ A tabela a seguir representa a configuração no arquivo [`.eslintrc.json`](.esl
 
 |            | api | util | domain | data | ui  | feature | resource | app |
 | ---------: | :-: | :--: | :----: | :--: | :-: | :-----: | :------: | :-: |
-|      `api` |  ✓  |  𝗫   |   𝗫    |  𝗫   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
-|     `util` |  ✓  |  ✓   |   𝗫    |  𝗫   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
-|   `domain` |  ✓  |  ✓   |   ✓    |  𝗫   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
-|     `data` |  ✓  |  ✓   |   ✓    |  ✓   |  𝗫  |    𝗫    |    𝗫     |  𝗫  |
-|       `ui` |  ✓  |  ✓   |   𝗫    |  𝗫   |  ✓  |    𝗫    |    𝗫     |  𝗫  |
-|  `feature` |  ✓  |  ✓   |   𝗫    |  ✓   |  ✓  |    ✓    |    𝗫     |  𝗫  |
-| `resource` |  ✓  |  ✓   |   𝗫    |  ✓   |  𝗫  |    𝗫    |    ✓     |  𝗫  |
-|      `app` |  ✓  |  ✓   |   𝗫    |  ✓   |  ✓  |    ✓    |    ✓     |  𝗫  |
+|      `api` |  ✓  |  𝘅   |   𝘅    |  𝘅   |  𝘅  |    𝘅    |    𝘅     |  𝘅  |
+|     `util` |  ✓  |  ✓   |   𝘅    |  𝘅   |  𝘅  |    𝘅    |    𝘅     |  𝘅  |
+|   `domain` |  ✓  |  ✓   |   ✓    |  𝘅   |  𝘅  |    𝘅    |    𝘅     |  𝘅  |
+|     `data` |  ✓  |  ✓   |   ✓    |  ✓   |  𝘅  |    𝘅    |    𝘅     |  𝘅  |
+|       `ui` |  ✓  |  ✓   |   𝘅    |  𝘅   |  ✓  |    𝘅    |    𝘅     |  𝘅  |
+|  `feature` |  ✓  |  ✓   |   𝘅    |  ✓   |  ✓  |    ✓    |    𝘅     |  𝘅  |
+| `resource` |  ✓  |  ✓   |   𝘅    |  ✓   |  𝘅  |    𝘅    |    ✓     |  𝘅  |
+|      `app` |  ✓  |  ✓   |   𝘅    |  ✓   |  ✓  |    ✓    |    ✓     |  𝘅  |
 
 Caso tenha interesse em aprofundar neste assunto e descobrir os motivos, recomendo que leia um conteúdo que escrevi ano passado, você pode fazer download através do link [Arquitetura em camadas, uma abordagem sobre responsabilidades e relacionamentos](https://conteudode.dev/pdf/nx).
 
