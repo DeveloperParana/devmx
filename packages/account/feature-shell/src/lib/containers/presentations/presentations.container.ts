@@ -53,6 +53,11 @@ export class PresentationsContainer implements OnInit {
 
     afterClosed$.subscribe((presentation) => {
       if (presentation) {
+        const presentation$ = this.presentationFacade.presentation$;
+        presentation$.pipe(take(1)).subscribe(() => {
+          this.accountFacade.loadPresentations();
+        });
+
         this.presentationFacade.create(presentation);
       }
     });
