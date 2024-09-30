@@ -1,0 +1,35 @@
+<header class="events-header">
+  <devmx-filter-event (valueChange)="find($event)" />
+</header>
+
+@if (eventFacade.events$ | async; as events) {
+
+<div class="events-container">
+  @for (event of events.data; track event.id) {
+
+  <a [routerLink]="event.id">
+    <mat-card class="event-card">
+      <mat-card-header>
+        <mat-card-title>{{event.title}}</mat-card-title>
+        <mat-card-subtitle>
+          {{event.date | date}} {{event.time}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+
+  }
+</div>
+
+<footer class="events-footer">
+  <mat-paginator
+    hidePageSize
+    [pageSize]="10"
+    [length]="events.items"
+    (page)="onPageChange($event)"
+  ></mat-paginator>
+</footer>
+}
