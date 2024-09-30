@@ -1,5 +1,7 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
+import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
 import { providePresentation } from '@devmx/presentation-data-access';
+import { provideLocations } from '@devmx/location-data-access';
 import { roleGroupsGuard, roleGroupGuard } from './guards';
 import { Route } from '@angular/router';
 import {
@@ -25,6 +27,8 @@ export const accountFeatureShellRoutes: Route[] = [
     providers: [
       ...provideAccount(),
       ...providePresentation(),
+      ...provideLocations(),
+      provideAutocompleteCitiesService(),
       provideAccountNavFacade([
         {
           path: ['/account', 'settings'],

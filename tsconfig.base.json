@@ -37,6 +37,9 @@
         "packages/account/feature-shell/src/index.ts"
       ],
       "@devmx/account-resource": ["packages/account/resource/src/index.ts"],
+      "@devmx/location-data-access": [
+        "packages/location/data-access/src/index.ts"
+      ],
       "@devmx/location-data-source": [
         "packages/location/data-source/src/index.ts"
       ],
@@ -44,7 +47,11 @@
       "@devmx/location-domain/server": [
         "packages/location/domain/src/server.ts"
       ],
+      "@devmx/location-domain/client": [
+        "packages/location/domain/src/client.ts"
+      ],
       "@devmx/location-resource": ["packages/location/resource/src/index.ts"],
+      "@devmx/location-ui-forms": ["packages/location/ui-forms/src/index.ts"],
       "@devmx/presentation-data-access": [
         "packages/presentation/data-access/src/index.ts"
       ],

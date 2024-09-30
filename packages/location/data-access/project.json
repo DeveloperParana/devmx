@@ -1,0 +1,19 @@
+{
+  "name": "location-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/location/data-access/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/location/data-access",
+        "main": "packages/location/data-access/src/index.ts",
+        "tsConfig": "packages/location/data-access/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

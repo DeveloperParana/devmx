@@ -1,13 +1,19 @@
 import { ImageComponent, PhotoComponent } from '@devmx/shared-ui-global';
+import {
+  AutocompleteCitiesComponent,
+  AutocompleteCitiesService,
+} from '@devmx/location-ui-forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountOut } from '@devmx/shared-api-interfaces';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { take } from 'rxjs';
+import { AutoAssignable, UpdateAccountWithCity } from '../../forms';
+import { switchMap, take } from 'rxjs';
 import {
   AuthFacade,
   AccountFacade,
@@ -28,7 +34,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { AutoAssignable } from '../../forms';
+import { CityFacade } from '@devmx/location-data-access';
 
 @Component({
   selector: 'devmx-account-settings',
@@ -47,13 +53,19 @@ import { AutoAssignable } from '../../forms';
     EditableAccountComponent,
     EditablePasswordComponent,
     AutoAssignableRoleComponent,
+    AutocompleteCitiesComponent,
   ],
+  providers: [],
   standalone: true,
 })
 export class SettingsContainer implements OnInit {
   authFacade = inject(AuthFacade);
 
   accountFacade = inject(AccountFacade);
+
+  autocompleteCitiesService = inject(AutocompleteCitiesService);
+
+  cityFacade = inject(CityFacade);
 
   destroyRef = inject(DestroyRef);
 
@@ -94,6 +106,20 @@ export class SettingsContainer implements OnInit {
       });
 
     this.authFacade.loadAuthUser();
+
+    this.autocompleteCitiesService.search$
+      .pipe(
+        switchMap((name) => {
+          console.log(name);
+
+          return name ? this.cityFacade.search(name) : [];
+        })
+      )
+      .subscribe((cities) => {
+        console.log(cities);
+
+        this.autocompleteCitiesService.setCities(cities);
+      });
   }
 
   populate(account: AccountOut) {
@@ -114,8 +140,11 @@ export class SettingsContainer implements OnInit {
     });
   }
 
-  onAccountSubmitted(data: UpdateAccount) {
-    this.accountFacade.update(data);
+  onAccountSubmitted(data: UpdateAccount | UpdateAccountWithCity) {
+    if (data.city && typeof data.city === 'object') {
+      data.city = data.city.id;
+    }
+    this.accountFacade.update(data as UpdateAccount);
   }
 
   onPasswordSubmitted(data: ChangePassword) {

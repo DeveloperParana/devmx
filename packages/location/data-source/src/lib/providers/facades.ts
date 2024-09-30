@@ -3,6 +3,7 @@ import {
   FindCitiesUseCase,
   FindCityByIDUseCase,
   FindCitiesByLocationUseCase,
+  SearchCitiesUseCase,
 } from '@devmx/location-domain/server';
 
 export function provideCitiesFacade() {
@@ -10,13 +11,20 @@ export function provideCitiesFacade() {
     provide: CitiesFacade,
     useFactory(
       findCities: FindCitiesUseCase,
+      searchCities: SearchCitiesUseCase,
       findCity: FindCityByIDUseCase,
       findCitiesByLocation: FindCitiesByLocationUseCase
     ) {
-      return new CitiesFacade(findCities, findCity, findCitiesByLocation);
+      return new CitiesFacade(
+        findCities,
+        searchCities,
+        findCity,
+        findCitiesByLocation
+      );
     },
     inject: [
       FindCitiesUseCase,
+      SearchCitiesUseCase,
       FindCityByIDUseCase,
       FindCitiesByLocationUseCase,
     ],

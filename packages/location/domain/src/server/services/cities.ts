@@ -1,12 +1,10 @@
-import {
-  Page,
-  City,
-  QueryParams,
-} from '@devmx/shared-api-interfaces';
+import { Page, City, QueryParams } from '@devmx/shared-api-interfaces';
 import { LocationFilter } from '../../lib/dtos';
 
 export abstract class CitiesService {
   abstract find(params: QueryParams<City>): Promise<Page<City>>;
+
+  abstract search(name: string): Promise<City[]>;
 
   abstract findOne(id: string): Promise<City | null>;
 
