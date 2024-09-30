@@ -15,7 +15,7 @@ export const account = {
     staff: false,
     fellow: false,
     manager: false,
-    director: true,
+    director: false,
   },
   gender: 'male',
   photo: '9c14863726af550ff0666c128c32286a',

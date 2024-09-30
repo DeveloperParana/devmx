@@ -21,7 +21,9 @@ export class AccountsServiceMock implements AccountsService {
   }
 
   async findOne(id: string): Promise<Account | null> {
-    throw new Error('Method not implemented.');
+    const account = this.#accounts.find((a) => a.id === id);
+
+    return account ?? null;
   }
 
   async findOneBy(filter: FindFilter<Account>): Promise<Account | null> {
