@@ -1,8 +1,10 @@
+import { CreateEvent, UpdateEvent } from '@devmx/event-domain';
 import { EventOut, Page } from '@devmx/shared-api-interfaces';
+import { EventService } from '@devmx/event-domain/client';
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { HttpClient } from '@devmx/shared-data-access';
 
-export class EventServiceImpl {
+export class EventServiceImpl implements EventService {
   get url() {
     return `${this.env.api.url}/events`;
   }
@@ -18,11 +20,11 @@ export class EventServiceImpl {
     return this.http.get<EventOut>(`${this.url}/${id}`);
   }
 
-  create(data: Event) {
+  create(data: CreateEvent) {
     return this.http.post<EventOut>(this.url, data);
   }
 
-  update(id: string, data: Event) {
+  update(id: string, data: UpdateEvent) {
     return this.http.patch<EventOut>(`${this.url}/${id}`, data);
   }
 

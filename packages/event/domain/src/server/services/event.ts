@@ -1,4 +1,4 @@
-import { CreateEvent, UpdateEvent } from '../dtos';
+import { CreateEvent, UpdateEvent } from '../../lib/dtos';
 import {
   Page,
   Event,

@@ -1,6 +1,6 @@
 import { Event, UseCase } from '@devmx/shared-api-interfaces';
 import { EventsService } from '../services';
-import { CreateEvent } from '../dtos';
+import { CreateEvent } from '../../lib/dtos';
 
 export class CreateEventUseCase implements UseCase<CreateEvent, Event> {
   constructor(private readonly eventsService: EventsService) {}
