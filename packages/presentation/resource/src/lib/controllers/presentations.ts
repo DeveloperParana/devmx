@@ -57,8 +57,6 @@ export class PresentationsController {
     try {
       return await this.presentationsFacade.find(params);
     } catch (err) {
-      console.log(err);
-
       throw exceptionByError(err);
     }
   }

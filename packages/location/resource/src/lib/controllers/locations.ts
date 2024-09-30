@@ -8,7 +8,7 @@ import {
   LocationFilterDto,
 } from '@devmx/location-data-source';
 
-@ApiTags('Locations')
+@ApiTags('Localizações')
 @Controller('locations')
 export class LocationsController {
   constructor(private citiesFacade: CitiesFacade) {}
