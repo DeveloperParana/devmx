@@ -28,7 +28,7 @@ describe('Change Roles UseCase', () => {
   });
 
   it('member assign staff should throw access denied', async () => {
-    const assign = { id: '', roles: merge(accountRole, { staff: true }) };
+    const assign = { id: '66f706967d818c4004effb48', roles: merge(accountRole, { staff: true }) };
 
     const assigner = merge(authUser, {
       roles: merge(accountRole, { member: true }),
@@ -40,7 +40,7 @@ describe('Change Roles UseCase', () => {
   });
 
   it('staff assign manager should throw access denied', async () => {
-    const assign = { id: '', roles: merge(accountRole, { manager: true }) };
+    const assign = { id: '66f706967d818c4004effb48', roles: merge(accountRole, { manager: true }) };
 
     const assigner = merge(authUser, {
       roles: merge(accountRole, { staff: true }),
@@ -52,7 +52,7 @@ describe('Change Roles UseCase', () => {
   });
 
   it('manager assign staff should be ok', async () => {
-    const assign = { id: '', roles: merge(accountRole, { staff: true }) };
+    const assign = { id: '66f706967d818c4004effb48', roles: merge(accountRole, { staff: true }) };
 
     const assigner = merge(authUser, {
       roles: merge(accountRole, { manager: true }),
