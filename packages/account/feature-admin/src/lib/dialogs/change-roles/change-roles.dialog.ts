@@ -45,8 +45,11 @@ export class ChangeRolesDialog implements OnInit {
 
     const account = new AccountLevel(assigner);
 
-    if (account.level < 4) {
+    if (account.level < 2) {
       this.form.disableWorthy();
+    }
+
+    if (account.level < 4) {
       this.form.disableBoard();
     }
 

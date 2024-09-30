@@ -2,6 +2,7 @@ export * from './create-form-data';
 export * from './create-params';
 export * from './create-query-filter';
 export * from './create-query-params';
+export * from './deep-diff';
 export * from './entries';
 export * from './keys';
 export * from './merge';

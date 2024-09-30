@@ -13,6 +13,7 @@ import {
   PresentationContainer,
   PresentationsContainer,
 } from './containers';
+import { provideSidenav } from '@devmx/shared-ui-global';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
@@ -29,17 +30,31 @@ export const accountFeatureShellRoutes: Route[] = [
       ...providePresentation(),
       ...provideLocations(),
       provideAutocompleteCitiesService(),
-      provideAccountNavFacade([
+      provideSidenav([
         {
           path: ['/account', 'settings'],
           text: 'Configurações',
+          roles: ['member'],
           icon: 'settings',
         },
         {
           path: ['/account', 'presentations'],
           text: 'Apresentações',
+          roles: ['speaker'],
           icon: 'collections_bookmark',
         },
+        {
+          path: ['/account', 'board'],
+          text: 'Dashboard',
+          icon: 'dashboard',
+          roles: ['director', 'manager'],
+        },
+        {
+          path: ['/account', 'admin'],
+          text: 'Administração',
+          icon: 'admin_panel_settings',
+          roles: ['director', 'manager', 'leader', 'staff', 'fellow'],
+        }
       ]),
     ],
     component: AccountFeatureShellComponent,

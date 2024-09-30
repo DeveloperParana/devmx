@@ -1,13 +1,19 @@
-import { AuthUserComponent, ToolbarComponent } from '@devmx/shared-ui-global';
-import { AccountNavFacade, AuthFacade } from '@devmx/account-data-access';
 import { PresentationFacade } from '@devmx/presentation-data-access';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import { AuthFacade } from '@devmx/account-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import {
+  Sidenav,
+  AuthUserComponent,
+  SidenavComponent,
+  ToolbarComponent,
+} from '@devmx/shared-ui-global';
 import {
   inject,
   OnInit,
@@ -17,7 +23,6 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'devmx-account-feature-shell',
@@ -26,6 +31,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ToolbarComponent,
+    SidenavComponent,
     AuthUserComponent,
     MatIconModule,
     MatDividerModule,
@@ -42,7 +48,7 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
 
   authFacade = inject(AuthFacade);
 
-  navFacade = inject(AccountNavFacade);
+  sidenav = inject(Sidenav);
 
   destroyRef = inject(DestroyRef);
 
@@ -62,28 +68,10 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const navItemBoard = {
-      path: ['/account', 'board'],
-      text: 'Dashboard',
-      icon: 'dashboard',
-    };
-    const navItemAdmin = {
-      path: ['/account', 'admin'],
-      text: 'Administração',
-      icon: 'admin_panel_settings',
-    };
-
-    this.authFacade.level$
+    this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((account) => {
-        if (account) {
-          if (account.isBoard) {
-            this.navFacade.addItem(navItemBoard);
-          }
-          if (account.isWorthy || account.isBoard) {
-            this.navFacade.addItem(navItemAdmin);
-          }
-        }
+      .subscribe((user) => {
+        if (user) this.sidenav.setRoles(user.roles);
       });
 
     this.authFacade.loadAuthUser();
@@ -91,7 +79,7 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authFacade.signOut();
-    this.navFacade.reset();
+    this.sidenav.resetRoles();
     this.router.navigateByUrl('/account/auth');
   }
 

@@ -5,15 +5,12 @@
 
   <section mat-dialog-content formGroupName="roles">
     <mat-list>
-      <h3 mat-subheader>Organização</h3>
+      <h3 mat-subheader>Auto atribuíveis</h3>
       <mat-list-item>
-        <mat-checkbox formControlName="staff">Organizador(a)</mat-checkbox>
+        <mat-checkbox formControlName="member">Membro</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox formControlName="leader">Líder</mat-checkbox>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-checkbox formControlName="fellow">Fellow</mat-checkbox>
+        <mat-checkbox formControlName="speaker">Palestrante</mat-checkbox>
       </mat-list-item>
     </mat-list>
 
@@ -24,6 +21,19 @@
       </mat-list-item>
       <mat-list-item>
         <mat-checkbox formControlName="neighbor">De casa</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list>
+      <h3 mat-subheader>Organização</h3>
+      <mat-list-item>
+        <mat-checkbox formControlName="staff">Organizador(a)</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="leader">Líder</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="fellow">Fellow</mat-checkbox>
       </mat-list-item>
     </mat-list>
 
