@@ -73,7 +73,7 @@ export class PresentationFacade extends State<PresentationState> {
   create(data: Presentation) {
     const request$ = this.createPresentationUseCase.execute(data);
 
-    request$.pipe(take(1)).subscribe(() => this.load());
+    request$.pipe(take(1)).subscribe(({ id }) => this.loadOne(id));
   }
 
   update(data: Presentation) {

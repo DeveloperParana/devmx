@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "nx run-many -t serve --projects=server,devmx --configuration=development",
+    "dev:server": "nx serve server",
+    "dev:mx": "nx serve devmx",
     "affected": "nx affected -t lint test build --parallel=10",
-    "cmt": "czg"
+    "commit": "czg"
   },
   "private": true,
   "devDependencies": {

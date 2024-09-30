@@ -6,6 +6,11 @@
   .presentation-card {
     padding: 1em;
 
+    h3 {
+      margin: 0.2em 0 0.4em;
+      font-size: 2em;
+    }
+
     .flex {
       gap: 1em;
       display: flex;
