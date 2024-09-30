@@ -59,7 +59,7 @@ export class AccountsContainer implements OnInit {
     this.accountFacade.load();
   }
 
-  openRolesSheet(assigner: AuthUser, assign: AccountOut) {
+  openRoles(assigner: AuthUser, assign: AccountOut) {
     const changeRoles$ = this.changeRoles
       .open({ assigner, assign })
       .afterClosed();
@@ -67,7 +67,6 @@ export class AccountsContainer implements OnInit {
     changeRoles$.pipe(take(1)).subscribe((data) => {
       if (data) {
         this.accountFacade.changeRoles(data);
-        this.accountFacade.load();
       }
     });
   }

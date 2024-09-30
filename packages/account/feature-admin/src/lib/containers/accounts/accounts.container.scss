@@ -21,6 +21,10 @@
     @include mat.elevation-transition();
     @include mat.elevation(2);
 
+    .mat-mdc-card-title {
+      font-size: 1.2em;
+    }
+
     &:active,
     &:hover {
       @include mat.elevation(6);
@@ -34,7 +38,7 @@
   /* Estilo para dispositivos médios: 2 colunas */
   @media (min-width: 768px) {
     .accounts-container {
-      grid-template-columns: repeat(4, 1fr); /* 2 colunas */
+      grid-template-columns: repeat(5, 1fr); /* 2 colunas */
     }
   }
 

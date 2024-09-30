@@ -141,7 +141,7 @@ export class AccountFacade extends State<AccountState> {
   changeRoles(data: ChangeRoles) {
     const request$ = this.changeRolesUseCase.execute(data);
 
-    request$.pipe(take(1)).subscribe(() => this.loadOne(data.id));
+    request$.pipe(take(1)).subscribe(() => this.load());
   }
 
   uploadPhoto(photo: Blob) {
