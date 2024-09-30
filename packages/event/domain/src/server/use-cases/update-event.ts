@@ -1,7 +1,7 @@
 import { NotFoundError, PersistenceError } from '@devmx/shared-util-errors';
 import { Event, UseCase } from '@devmx/shared-api-interfaces';
 import { EventsService } from '../services';
-import { UpdateEvent } from '../dtos';
+import { UpdateEvent } from '../../lib/dtos';
 
 export class UpdateEventUseCase implements UseCase<UpdateEvent, Event> {
   constructor(private eventsService: EventsService) {}

@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .events-header {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .events-container {
+    display: grid;
+    gap: 1em; /* Espaçamento entre os itens */
+    padding: 1em;
+  }
+
+  .event-card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(6);
+    }
+  }
+
+  /* Estilo para dispositivos médios: 2 colunas */
+  @media (min-width: 768px) {
+    .events-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    }
+  }
+
+  /* Estilo para dispositivos pequenos: 1 coluna */
+  @media (max-width: 767px) {
+    .events-container {
+      grid-template-columns: 1fr; /* 1 coluna */
+    }
+  }
+
+  .events-footer {
+    display: flex;
+    justify-content: center;
+  }
+}

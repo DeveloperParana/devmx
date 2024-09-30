@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+
+  form {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.2em;
+
+    .event-format-field {
+      width: 16em;
+    }
+  }
+}
