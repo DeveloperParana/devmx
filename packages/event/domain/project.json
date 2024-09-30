@@ -14,7 +14,8 @@
         "tsConfig": "packages/event/domain/tsconfig.lib.json",
         "assets": [],
         "additionalEntryPoints": [
-          "packages/event/domain/src/server.ts"
+          "packages/event/domain/src/server.ts",
+          "packages/event/domain/src/client.ts"
         ],
         "generateExportsField": true
       }
