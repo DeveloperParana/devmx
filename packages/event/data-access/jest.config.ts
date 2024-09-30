@@ -6,4 +6,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/event/data-access',
+  passWithNoTests: true
 };

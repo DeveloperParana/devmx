@@ -1,3 +1,4 @@
+import { CreateEvent, UpdateEvent } from '../../lib/dtos';
 import { Observable } from 'rxjs';
 import {
   Page,
@@ -12,9 +13,9 @@ export abstract class EventService {
 
   abstract findOne(id: string): Observable<EventOut>
 
-  abstract create(presentation: Event): Observable<EventOut>;
+  abstract create(data: CreateEvent): Observable<EventOut>;
 
-  abstract update(id: string, presentation: Event): Observable<EventOut>;
+  abstract update(id: string, data: UpdateEvent): Observable<EventOut>;
 
   abstract remove(id: string): Observable<EventOut>
 }

@@ -1,1 +1,1 @@
-export * from './lib/event-domain';
+export * from './lib/dtos';
