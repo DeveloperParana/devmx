@@ -1,5 +1,5 @@
 import { createServerProvider } from '@devmx/shared-data-source';
-import { AccountsFacade, AuthFacade, CitiesFacade } from '../facades';
+import { AccountsFacade, AuthFacade } from '../facades';
 import {
   SignInUseCase,
   SignUpUseCase,
@@ -9,8 +9,6 @@ import {
   ChangePasswordUseCase,
   FindAccountByIDUseCase,
   FindAccountPresentationsUseCase,
-  FindCitiesUseCase,
-  FindCityByIDUseCase,
   FindAccountByUsernameUseCase,
   ChangeRolesUseCase,
 } from '@devmx/account-domain/server';
@@ -30,11 +28,4 @@ export function provideAccountsFacade() {
 
 export function provideAuthFacade() {
   return createServerProvider(AuthFacade, [SignInUseCase, SignUpUseCase]);
-}
-
-export function provideCitiesFacade() {
-  return createServerProvider(CitiesFacade, [
-    FindCitiesUseCase,
-    FindCityByIDUseCase,
-  ]);
 }

@@ -1,1 +1,1 @@
-export * from './lib/location-domain';
+export * from './lib/dtos';

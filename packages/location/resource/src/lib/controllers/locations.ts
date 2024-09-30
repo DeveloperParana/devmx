@@ -1,12 +1,16 @@
 import { Allowed, ApiPage, QueryParamsDto } from '@devmx/shared-data-source';
-import { CitiesFacade, CityDto } from '@devmx/account-data-source';
-import { Get, Controller, Query, Param } from '@nestjs/common';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { exceptionByError } from '@devmx/shared-resource';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  CityDto,
+  CitiesFacade,
+  LocationFilterDto,
+} from '@devmx/location-data-source';
 
-@ApiTags('Cities')
-@Controller('cities')
-export class CitiesController {
+@ApiTags('Locations')
+@Controller('locations')
+export class LocationsController {
   constructor(private citiesFacade: CitiesFacade) {}
 
   @Get()
@@ -18,6 +22,12 @@ export class CitiesController {
     } catch (err) {
       throw exceptionByError(err);
     }
+  }
+
+  @ApiBearerAuth()
+  @Get('cities/near')
+  async findCitiesByLocation(@Query() params: LocationFilterDto) {
+    return this.citiesFacade.findByLocation(params);
   }
 
   @Allowed()

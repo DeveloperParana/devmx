@@ -26,8 +26,10 @@ export const account = {
     id: '',
     ibge: 4115200,
     name: 'Maringá',
-    lat: -23.4205,
-    lng: -51.9333,
+    location: {
+      type: 'Point',
+      coordinates: [0, 0],
+    },
     capital: false,
     ibgeState: 41,
     siafi: 7691,

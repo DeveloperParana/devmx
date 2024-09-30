@@ -1,4 +1,5 @@
 import { createSchema } from '@devmx/shared-data-source';
+import { CityCollection } from '@devmx/location-data-source';
 import { Prop, raw, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import {
@@ -7,7 +8,6 @@ import {
   Account,
   AccountRole,
 } from '@devmx/shared-api-interfaces';
-import { CityCollection } from './city';
 
 @Schema()
 export class AccountCollection extends Document implements Account {
@@ -62,7 +62,7 @@ export class AccountCollection extends Document implements Account {
     ref: CityCollection.name,
     required: false,
   })
-  city?: CityCollection;
+  city: CityCollection;
 
   @Prop({ default: true })
   active: boolean;

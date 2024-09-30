@@ -1,5 +1,6 @@
-import { QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
-import { CitiesService } from '@devmx/account-domain/server';
+import { CitiesService } from '@devmx/location-domain/server';
+import { QueryParamsDto } from '@devmx/shared-data-source';
+import { LocationFilter } from '@devmx/location-domain';
 import { City } from '@devmx/shared-api-interfaces';
 import { Model } from 'mongoose';
 
@@ -25,16 +26,24 @@ export class CitiesServiceImpl implements CitiesService {
   }
 
   async findOne(id: string) {
-    const city = await this.cityModel.findById(id).exec();
-
-    if (!city) {
-      throw `Cidade não encontrada`;
-    }
-
-    return city.toJSON();
+    return this.cityModel.findById(id).lean().exec();
   }
 
-  async findOneBy(filter: QueryFilterDto<City>) {
-    return this.cityModel.findOne(filter).exec();
+  async findByLocation({ lat, lng, max, min }: LocationFilter) {
+    return this.cityModel
+      .find({
+        location: {
+          $near: {
+            $geometry: {
+              type: 'Point',
+              coordinates: [lat, lng],
+            },
+            $maxDistance: max,
+            $minDistance: min,
+          },
+        },
+      })
+      .lean()
+      .exec();
   }
 }

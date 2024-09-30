@@ -1,5 +1,6 @@
 import { City } from '@devmx/shared-api-interfaces';
 import { ApiProperty } from '@nestjs/swagger';
+import { LocationDto } from './location';
 
 export class CityDto implements City {
   @ApiProperty()
@@ -12,10 +13,7 @@ export class CityDto implements City {
   name: string;
 
   @ApiProperty()
-  lat: number;
-
-  @ApiProperty()
-  lng: number;
+  location: LocationDto;
 
   @ApiProperty()
   capital: boolean;
