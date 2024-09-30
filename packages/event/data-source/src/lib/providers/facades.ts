@@ -1,7 +1,19 @@
 import { createServerProvider } from '@devmx/shared-data-source';
 import { EventsFacade } from '../facades';
-import { FindEventsUseCase } from '@devmx/event-domain/server';
+import {
+  CreateEventUseCase,
+  FindEventByIDUseCase,
+  FindEventsUseCase,
+  RemoveEventUseCase,
+  UpdateEventUseCase,
+} from '@devmx/event-domain/server';
 
 export function provideEventsFacade() {
-  return createServerProvider(EventsFacade, [FindEventsUseCase]);
+  return createServerProvider(EventsFacade, [
+    CreateEventUseCase,
+    FindEventsUseCase,
+    FindEventByIDUseCase,
+    UpdateEventUseCase,
+    RemoveEventUseCase,
+  ]);
 }
