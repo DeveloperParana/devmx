@@ -41,7 +41,7 @@ import {
 import 'multer';
 
 @ApiBearerAuth()
-@ApiTags('Accounts')
+@ApiTags('Contas')
 @Controller('accounts')
 export class AccountsController {
   constructor(private readonly accountsFacade: AccountsFacade) {}

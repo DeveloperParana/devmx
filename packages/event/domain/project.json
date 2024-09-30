@@ -1,0 +1,23 @@
+{
+  "name": "event-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/event/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/event/domain",
+        "main": "packages/event/domain/src/index.ts",
+        "tsConfig": "packages/event/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/event/domain/src/server.ts"
+        ],
+        "generateExportsField": true
+      }
+    }
+  }
+}

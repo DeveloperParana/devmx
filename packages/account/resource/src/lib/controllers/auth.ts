@@ -11,7 +11,7 @@ import {
   AccessTokenDto,
 } from '@devmx/account-data-source';
 
-@ApiTags('Auth')
+@ApiTags('Autenticação')
 @Controller('auth')
 export class AuthController {
   constructor(private authFacade: AuthFacade) {}

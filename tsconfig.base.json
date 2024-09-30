@@ -37,6 +37,10 @@
         "packages/account/feature-shell/src/index.ts"
       ],
       "@devmx/account-resource": ["packages/account/resource/src/index.ts"],
+      "@devmx/event-data-source": ["packages/event/data-source/src/index.ts"],
+      "@devmx/event-domain": ["packages/event/domain/src/index.ts"],
+      "@devmx/event-domain/server": ["packages/event/domain/src/server.ts"],
+      "@devmx/event-resource": ["packages/event/resource/src/index.ts"],
       "@devmx/location-data-access": [
         "packages/location/data-access/src/index.ts"
       ],
@@ -44,11 +48,11 @@
         "packages/location/data-source/src/index.ts"
       ],
       "@devmx/location-domain": ["packages/location/domain/src/index.ts"],
-      "@devmx/location-domain/server": [
-        "packages/location/domain/src/server.ts"
-      ],
       "@devmx/location-domain/client": [
         "packages/location/domain/src/client.ts"
+      ],
+      "@devmx/location-domain/server": [
+        "packages/location/domain/src/server.ts"
       ],
       "@devmx/location-resource": ["packages/location/resource/src/index.ts"],
       "@devmx/location-ui-forms": ["packages/location/ui-forms/src/index.ts"],
