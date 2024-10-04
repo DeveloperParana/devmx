@@ -52,7 +52,7 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      return this.submitted.emit(this.form.getRawValue());
+      return this.submitted.emit(this.form.getRawValue() as SignUp);
     }
 
     this.form.markAllAsTouched();

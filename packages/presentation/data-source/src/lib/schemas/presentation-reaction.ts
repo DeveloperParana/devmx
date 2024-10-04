@@ -41,7 +41,7 @@ export class PresentationReactionCollection
     ref: AccountCollection.name,
     required: true,
   })
-  account: AccountCollection;
+  owner: AccountCollection;
 }
 
 export const PresentationReactionSchema = createSchema(

@@ -56,7 +56,7 @@ export class EditableAccountComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submitted.emit(this.form.getRawValue());
+      this.submitted.emit(this.form.getRawValue() as UpdateAccount);
       return this.form.disable();
     }
 

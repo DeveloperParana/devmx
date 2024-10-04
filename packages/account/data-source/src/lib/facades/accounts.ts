@@ -1,20 +1,23 @@
 import { PageDto, QueryParamsDto } from '@devmx/shared-data-source';
-import { AuthUser } from '@devmx/shared-api-interfaces';
+import { AuthUser, Role } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
   ChangePasswordUseCase,
   ChangeRolesUseCase,
   FindAccountByIDUseCase,
   FindAccountByUsernameUseCase,
-  FindAccountPresentationsUseCase,
+  FindPresentationsByOwnerUseCase,
   FindAccountsUseCase,
   RemoveAccountUseCase,
   UpdateAccountUseCase,
+  FindEventsByOwnerUseCase,
+  FindAccountsByRoleUseCase,
 } from '@devmx/account-domain/server';
 import {
   AccountDto,
   ChangePasswordDto,
   ChangeRolesDto,
+  EventDto,
   PresentationDto,
   UpdateAccountDto,
 } from '../dtos';
@@ -28,7 +31,9 @@ export class AccountsFacade {
     private removeAccountUseCase: RemoveAccountUseCase,
     private changePasswordUseCase: ChangePasswordUseCase,
     private changeRolesUseCase: ChangeRolesUseCase,
-    private findAccountPresentationsUseCase: FindAccountPresentationsUseCase
+    private findPresentationsByOwnerUseCase: FindPresentationsByOwnerUseCase,
+    private findEventsByOwnerUseCase: FindEventsByOwnerUseCase,
+    private findAccountsByRoleUseCase: FindAccountsByRoleUseCase
   ) {}
 
   async find(params: QueryParamsDto<AccountDto>) {
@@ -40,15 +45,35 @@ export class AccountsFacade {
   }
 
   async findPresentations(
-    account: string,
+    owner: string,
     params: QueryParamsDto<PresentationDto>
   ) {
     const { data, items, pages } =
-      await this.findAccountPresentationsUseCase.execute({
-        ...params,
-        account,
-      });
+      await this.findPresentationsByOwnerUseCase.execute({ ...params, owner });
+
     const accounts = plainToInstance(PresentationDto, data);
+    return new PageDto(accounts, items, pages);
+  }
+
+  async findEvents(owner: string, params: QueryParamsDto<PresentationDto>) {
+    const { data, items, pages } = await this.findEventsByOwnerUseCase.execute({
+      ...params,
+      owner,
+    });
+
+    const events = plainToInstance(EventDto, data);
+    return new PageDto(events, items, pages);
+  }
+
+  async findByRole(role: Role, params: QueryParamsDto<AccountDto>) {
+    const { data, items, pages } = await this.findAccountsByRoleUseCase.execute(
+      {
+        ...params,
+        role,
+      }
+    );
+
+    const accounts = plainToInstance(AccountDto, data);
     return new PageDto(accounts, items, pages);
   }
 

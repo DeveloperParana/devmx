@@ -28,7 +28,7 @@ export class PresentationsServiceImpl implements PresentationsService {
       .find(where)
       .skip(skip)
       .limit(size)
-      .populate('account')
+      .populate('owner', 'name username photo')
       .exec();
 
     const data = presentations.map((item) => item.toJSON());
@@ -41,32 +41,28 @@ export class PresentationsServiceImpl implements PresentationsService {
   async findOne(id: string) {
     const presentation = await this.presentationModel
       .findById(id)
-      .populate('account')
+      .populate('owner', 'name username photo')
       .exec();
 
-    if (!presentation) {
-      throw `Apresentação não encontrada`;
-    }
-
-    return presentation.toJSON();
+    return presentation ? presentation.toJSON() : null;
   }
 
-  async findByAccount(accountId: string, params: QueryParamsDto<Presentation>) {
+  async findByOwner(ownerId: string, params: QueryParamsDto<Presentation>) {
     const { page = 0, size = 10, filter } = params;
     const skip = page * size;
 
-    const account = objectId(accountId);
+    const owner = objectId(ownerId);
 
     const presentations = await this.presentationModel
-      .find({ ...filter, account })
+      .find({ ...filter, owner })
       .skip(skip)
       .limit(size)
-      .populate('account')
+      .populate('owner', 'name username photo')
       .exec();
 
     const data = presentations.map((item) => item.toJSON());
     const items = await this.presentationModel
-      .countDocuments({ ...filter, account })
+      .countDocuments({ ...filter, owner })
       .exec();
     const pages = Math.ceil(items / size);
 
@@ -76,14 +72,10 @@ export class PresentationsServiceImpl implements PresentationsService {
   async findOneBy(filter: QueryFilterDto<Presentation>) {
     const presentation = await this.presentationModel
       .findOne(filter)
-      .populate('account')
+      .populate('owner', 'name username photo')
       .exec();
 
-    if (!presentation) {
-      throw `Apresentação não encontrada`;
-    }
-
-    return presentation.toJSON();
+    return presentation ? presentation.toJSON() : null;
   }
 
   async update(id: string, data: UpdatePresentationDto) {
@@ -91,11 +83,7 @@ export class PresentationsServiceImpl implements PresentationsService {
       .findOneAndUpdate({ _id: id }, data)
       .exec();
 
-    if (!presentation) {
-      throw `Erro ao alterar apresentação`;
-    }
-
-    return presentation.toJSON();
+    return presentation ? presentation.toJSON() : null;
   }
 
   async remove(id: string) {
@@ -103,10 +91,6 @@ export class PresentationsServiceImpl implements PresentationsService {
       .findOneAndDelete({ _id: id })
       .exec();
 
-    if (!presentation) {
-      throw `Erro ao remover apresentação`;
-    }
-
-    return presentation.toJSON();
+    return presentation ? presentation.toJSON() : null;
   }
 }

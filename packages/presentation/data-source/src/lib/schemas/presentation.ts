@@ -41,7 +41,7 @@ export class PresentationCollection extends Document implements Presentation {
     ref: AccountCollection.name,
     required: true,
   })
-  account: AccountCollection;
+  owner: AccountCollection;
 }
 
 export const PresentationSchema = createSchema(PresentationCollection);

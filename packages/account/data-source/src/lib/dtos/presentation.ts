@@ -31,5 +31,5 @@ export class PresentationDto {
 
   @Type(() => AccountDto)
   @ApiProperty({ type: () => AccountDto })
-  account: AccountDto;
+  owner: AccountDto;
 }

@@ -2,6 +2,8 @@ import { Location } from '@devmx/shared-api-interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class LocationDto implements Location {
+  id: string
+
   @ApiProperty({ type: 'enum', enum: ['Point'], default: 'Point' })
   type: 'Point';
 

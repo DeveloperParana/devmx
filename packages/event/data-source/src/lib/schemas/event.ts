@@ -1,5 +1,6 @@
 import { PresentationCollection } from '@devmx/presentation-data-source';
 import { Event, EventFormat } from '@devmx/shared-api-interfaces';
+import { AccountCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
@@ -16,21 +17,22 @@ export class EventCollection extends Document implements Event {
   @Prop({ type: String, required: true })
   title: string;
 
-  @Prop({ type: String, default: '' })
-  description: string;
-
   @Prop({
     type: String,
     enum: ['in-person', 'online', 'mixed'],
     default: 'in-person',
+    required: true,
   })
   format: EventFormat;
 
-  @Prop({ type: String, required: true, default: '' })
-  date: string;
+  @Prop({ type: String, default: '' })
+  description: string;
 
-  @Prop({ type: String, required: true, default: '' })
-  time: string;
+  @Prop({ type: String, default: '' })
+  date?: string;
+
+  @Prop({ type: String, default: '' })
+  time?: string;
 
   @Prop({ default: '' })
   cover: string;
@@ -50,7 +52,6 @@ export class EventCollection extends Document implements Event {
 
   @Prop({
     type: String,
-    required: true,
   })
   address: string;
 
@@ -65,6 +66,23 @@ export class EventCollection extends Document implements Event {
     index: '2dsphere',
   })
   location?: PointCollection;
+
+  @Prop({
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: AccountCollection.name,
+      },
+    ],
+  })
+  leaders: AccountCollection[];
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: AccountCollection.name,
+    required: true,
+  })
+  owner: AccountCollection;
 }
 
 export const EventSchema = createSchema(EventCollection);

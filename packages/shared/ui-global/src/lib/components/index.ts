@@ -8,4 +8,5 @@ export * from './photo/photo.component';
 export * from './toolbar/toolbar.component';
 export * from './sidenav/sidenav.component';
 export * from './sidenav/sidenav.provider';
+export * from './paginator/paginator.component';
 export * from './sidenav/sidenav';

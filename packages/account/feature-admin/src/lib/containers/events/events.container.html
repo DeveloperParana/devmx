@@ -1,0 +1,29 @@
+@if (accountFacade.events$ | async; as events) {
+
+<div class="events-container">
+  @for (event of events.data; track event.id) {
+
+  <a [routerLink]="event.id">
+    <mat-card class="event-card">
+      <mat-card-header>
+        <mat-card-title>{{event.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.date | date}} {{event.time | date}}</p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+
+  }
+</div>
+
+<devmx-paginator
+  [size]="10"
+  [items]="events.items"
+  (pageChange)="onPageChange($event)"
+/>
+}
+
+<button class="add-button" type="button" mat-fab (click)="openCreate()">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,5 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChangeRoles } from '@devmx/account-data-access';
+import { AccountRole } from '@devmx/shared-api-interfaces';
 import { TypedForm } from '@devmx/shared-ui-global';
 
 export class ChangeRolesForm extends FormGroup<TypedForm<ChangeRoles>> {
@@ -42,7 +43,7 @@ export class ChangeRolesForm extends FormGroup<TypedForm<ChangeRoles>> {
   }
 
   get roles() {
-    return this.controls.roles;
+    return this.controls.roles as FormGroup<TypedForm<AccountRole>>;
   }
 
   disableBoard() {

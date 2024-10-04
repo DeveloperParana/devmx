@@ -1,17 +1,20 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsBoolean, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { EventFormat } from '@devmx/shared-api-interfaces';
 
 export class CreateEventDto {
   @IsString()
+  @IsNotEmpty()
   @ApiProperty()
   title: string;
 
   @IsString()
-  @ApiProperty()
+  @IsOptional()
+  @ApiPropertyOptional()
   description: string;
 
   @IsString()
+  @IsNotEmpty()
   @ApiProperty({
     type: 'enum',
     enum: ['in-person', 'online', 'mixed'],
@@ -20,11 +23,13 @@ export class CreateEventDto {
   format: EventFormat;
 
   @IsString()
-  @ApiProperty()
+  @IsOptional()
+  @ApiPropertyOptional()
   date: string;
 
   @IsString()
-  @ApiProperty()
+  @IsOptional()
+  @ApiPropertyOptional()
   time: string;
 
   @IsString()
@@ -38,10 +43,13 @@ export class CreateEventDto {
   visible = false;
 
   @IsString()
-  @ApiProperty()
+  @IsOptional()
+  @ApiPropertyOptional()
   address: string;
 
   city?: string;
 
   location?: string;
+
+  owner: string
 }

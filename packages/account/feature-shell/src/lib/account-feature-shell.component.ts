@@ -2,7 +2,6 @@ import { PresentationFacade } from '@devmx/presentation-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatDividerModule } from '@angular/material/divider';
 import { AuthFacade } from '@devmx/account-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,7 +33,6 @@ import {
     SidenavComponent,
     AuthUserComponent,
     MatIconModule,
-    MatDividerModule,
     MatSidenavModule,
     MatListModule,
     LayoutModule,
@@ -80,7 +78,7 @@ export class AccountFeatureShellComponent implements OnInit, OnDestroy {
   onLogout() {
     this.authFacade.signOut();
     this.sidenav.resetRoles();
-    this.router.navigateByUrl('/account/auth');
+    this.router.navigateByUrl('/conta/auth');
   }
 
   ngOnDestroy() {

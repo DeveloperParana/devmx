@@ -5,6 +5,7 @@ import {
   Page,
   Presentation,
   PresentationOut,
+  CreatePresentation,
 } from '@devmx/shared-api-interfaces';
 
 export class PresentationServiceImpl implements PresentationService {
@@ -23,7 +24,7 @@ export class PresentationServiceImpl implements PresentationService {
     return this.http.get<PresentationOut>(`${this.url}/${id}`);
   }
 
-  create(data: Presentation) {
+  create(data: CreatePresentation) {
     return this.http.post<PresentationOut>(this.url, data);
   }
 

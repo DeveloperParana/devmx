@@ -27,7 +27,7 @@ export class PresentationCommentCollection
     ref: AccountCollection.name,
     required: true,
   })
-  account: AccountCollection;
+  owner: AccountCollection;
 }
 
 export const PresentationCommentSchema = createSchema(

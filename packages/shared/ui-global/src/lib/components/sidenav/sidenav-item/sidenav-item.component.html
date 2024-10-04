@@ -1,0 +1,6 @@
+<a mat-list-item [routerLink]="item().path">
+  @if (item().icon) {
+  <mat-icon matListItemIcon>{{ item().icon }}</mat-icon>
+  }
+  <span matListItemTitle>{{ item().text }}</span>
+</a>

@@ -17,5 +17,5 @@ export interface CreatePresentation {
 
   visible: boolean;
 
-  account: string;
+  owner: string;
 }

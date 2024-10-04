@@ -36,5 +36,5 @@ export class CreatedPresentationDto {
   visible: boolean;
 
   @Exclude()
-  account: AccountDto;
+  owner: AccountDto;
 }

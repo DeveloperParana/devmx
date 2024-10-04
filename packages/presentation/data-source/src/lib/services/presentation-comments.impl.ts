@@ -1,7 +1,7 @@
 import { PresentationCommentsService } from '@devmx/presentation-domain/server';
 import { QueryByPresentationParams } from '@devmx/presentation-domain';
-import { PresentationCommentCollection } from '../schemas';
 import { objectId, QueryFilterDto } from '@devmx/shared-data-source';
+import { PresentationCommentCollection } from '../schemas';
 import {
   PresentationComment,
   PresentationCommentOut,
@@ -37,7 +37,7 @@ export class PresentationCommentsServiceImpl
       .find(where)
       .skip(skip)
       .limit(size)
-      .populate('account')
+      .populate('owner')
       .populate('presentation')
       .exec();
 
@@ -51,29 +51,21 @@ export class PresentationCommentsServiceImpl
   async findOne(id: string) {
     const comment = await this.presentationCommentModel
       .findById(id)
-      .populate('account')
+      .populate('owner')
       .populate('presentation')
       .exec();
 
-    if (!comment) {
-      throw `Comentário não encontrado`;
-    }
-
-    return comment.toJSON();
+    return comment ? comment.toJSON() : null;
   }
 
   async findOneBy(filter: QueryFilterDto<PresentationComment>) {
     const comment = await this.presentationCommentModel
       .findOne(filter)
-      .populate('account')
+      .populate('owner')
       .populate('presentation')
       .exec();
 
-    if (!comment) {
-      throw `Comentário não encontrado`;
-    }
-
-    return comment.toJSON();
+    return comment ? comment.toJSON() : null;
   }
 
   async update(id: string, data: UpdatePresentationCommentDto) {
@@ -81,11 +73,7 @@ export class PresentationCommentsServiceImpl
       .findOneAndUpdate({ _id: id }, data)
       .exec();
 
-    if (!comment) {
-      throw `Erro ao alterar comentário`;
-    }
-
-    return comment.toJSON();
+    return comment ? comment.toJSON() : null;
   }
 
   async remove(id: string) {
@@ -93,10 +81,6 @@ export class PresentationCommentsServiceImpl
       .findOneAndDelete({ _id: id })
       .exec();
 
-    if (!comment) {
-      throw `Erro ao remover comentário`;
-    }
-
-    return comment.toJSON();
+    return comment ? comment.toJSON() : null;
   }
 }

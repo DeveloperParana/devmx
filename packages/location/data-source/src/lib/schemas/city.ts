@@ -2,14 +2,15 @@ import { createSchema } from '@devmx/shared-data-source';
 import { PointCollection, PointSchema } from './point';
 import { Prop, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { City } from '@devmx/shared-api-interfaces';
 
 @Schema()
-export class CityCollection extends Document {
+export class CityCollection extends Document implements City {
   override id: string;
 
   @Prop({
     type: String,
-    index: 1
+    index: 1,
   })
   name: string;
 

@@ -2,6 +2,7 @@ import { ChangePassword, ChangeRoles, UpdateAccount } from '../../lib/dtos';
 import { Observable } from 'rxjs';
 import {
   Page,
+  EventOut,
   AccountOut,
   PresentationOut,
 } from '@devmx/shared-api-interfaces';
@@ -15,6 +16,12 @@ export abstract class AccountService {
   abstract findOneByUsername(username: string): Observable<AccountOut>
 
   abstract findPresentations(params: URLSearchParams): Observable<Page<PresentationOut>>
+
+  abstract findEvents(params: URLSearchParams): Observable<Page<EventOut>>
+
+  abstract findSpeakers(params: URLSearchParams): Observable<Page<AccountOut>>
+
+  abstract findLeaders(params: URLSearchParams): Observable<Page<AccountOut>>
 
   abstract update(id: string, data: UpdateAccount): Observable<AccountOut>;
 

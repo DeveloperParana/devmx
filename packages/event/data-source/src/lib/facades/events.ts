@@ -8,7 +8,12 @@ import {
 } from '@devmx/event-domain/server';
 import { Event } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
-import { CreateEventDto, EventDto, UpdateEventDto } from '../dtos';
+import {
+  CreatedEventDto,
+  CreateEventDto,
+  EventDto,
+  UpdateEventDto,
+} from '../dtos';
 
 export class EventsFacade {
   constructor(
@@ -21,7 +26,7 @@ export class EventsFacade {
 
   async create(data: CreateEventDto) {
     const presentation = await this.createEventUseCase.execute(data);
-    return plainToInstance(EventDto, presentation);
+    return plainToInstance(CreatedEventDto, presentation);
   }
 
   async find(params: QueryParamsDto<Event>) {

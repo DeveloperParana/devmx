@@ -8,5 +8,5 @@ export interface PresentationCommentOut {
 
   presentation: PresentationOut
 
-  account: AccountOut
+  owner: AccountOut
 }

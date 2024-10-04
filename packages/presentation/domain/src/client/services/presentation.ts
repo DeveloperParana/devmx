@@ -4,6 +4,7 @@ import {
   QueryParams,
   Presentation,
   PresentationOut,
+  CreatePresentation,
 } from '@devmx/shared-api-interfaces';
 
 // prettier-ignore
@@ -12,7 +13,7 @@ export abstract class PresentationService {
 
   abstract findOne(id: string): Observable<PresentationOut>
 
-  abstract create(presentation: Presentation): Observable<PresentationOut>;
+  abstract create(presentation: CreatePresentation): Observable<PresentationOut>;
 
   abstract update(id: string, presentation: Presentation): Observable<PresentationOut>;
 

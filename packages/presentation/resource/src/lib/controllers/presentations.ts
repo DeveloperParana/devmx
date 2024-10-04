@@ -1,10 +1,10 @@
 import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { exceptionByError } from '@devmx/shared-resource';
 import {
   Presentation,
   PresentationComment,
 } from '@devmx/shared-api-interfaces';
-import { exceptionByError } from '@devmx/shared-resource';
 import {
   PresentationDto,
   PresentationsFacade,
@@ -37,15 +37,9 @@ export class PresentationsController {
 
   @Post()
   @ApiOkResponse({ type: CreatedPresentationDto })
-  async create(
-    @User('id') account: string,
-    @Body() createPresentationDto: CreatePresentationDto
-  ) {
+  async create(@User('id') owner: string, @Body() data: CreatePresentationDto) {
     try {
-      return await this.presentationsFacade.create({
-        ...createPresentationDto,
-        account,
-      });
+      return await this.presentationsFacade.create({ ...data, owner });
     } catch (err) {
       throw exceptionByError(err);
     }
@@ -67,7 +61,7 @@ export class PresentationsController {
     try {
       const presentation = await this.presentationsFacade.findOne(id);
 
-      if (!presentation.visible && presentation.account.id !== account) {
+      if (!presentation.visible && presentation.owner.id !== account) {
         throw exceptionByError({ code: 403, message: 'Acesso negado' });
       }
 
@@ -127,7 +121,7 @@ export class PresentationsController {
       });
     }
 
-    if (presentation.account.id !== account) {
+    if (presentation.owner.id !== account) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 
@@ -150,7 +144,7 @@ export class PresentationsController {
       });
     }
 
-    if (presentation.account.id !== account) {
+    if (presentation.owner.id !== account) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 

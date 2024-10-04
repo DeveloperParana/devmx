@@ -6,6 +6,7 @@ export interface SidenavItem {
   text: string;
   roles: Role[];
   icon?: string;
+  children?: SidenavItem[];
 }
 
 export class Sidenav {
@@ -33,12 +34,27 @@ export class Sidenav {
     this.itemsByRoles$ = combineLatest([
       this.#items.asObservable(),
       this.#roles.asObservable(),
-    ]).pipe(
-      map(([items, roles]) => {
-        return items.filter((item) => item.roles.some((role) => roles[role]));
-      })
-    );
+    ]).pipe(map(this.#filterItems));
   }
+
+  #filterItem = (roles: AccountRole) => (item: SidenavItem) => {
+    if (item.children) {
+      const children = this.#filterItems([item.children, roles]);
+
+      if (children.length > 0) return { ...item, children };
+    }
+
+    if (item.roles.some((role) => roles[role])) return item;
+
+    return;
+  };
+
+  #filterItems = ([items, roles]: [
+    SidenavItem[],
+    AccountRole
+  ]): SidenavItem[] => {
+    return items.map(this.#filterItem(roles)).filter((item) => !!item);
+  };
 
   setRoles(roles: AccountRole) {
     this.#roles.next(roles);

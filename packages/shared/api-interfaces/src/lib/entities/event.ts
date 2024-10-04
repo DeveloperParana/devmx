@@ -1,4 +1,4 @@
-import { Presentation } from './presentation';
+import { AccountRef, PresentationRef } from '../dtos';
 import { Location } from '../interfaces';
 import { EventFormat } from '../types';
 import { City } from './city';
@@ -8,21 +8,23 @@ export interface Event {
 
   title: string;
 
-  description: string;
-
   format: EventFormat;
 
-  date: string;
+  description?: string;
 
-  time: string;
+  date?: string;
 
-  cover: string;
+  time?: string;
+
+  cover?: string;
 
   visible: boolean;
 
-  presentations: Presentation[];
+  presentations?: PresentationRef[];
 
-  address: string;
+  leaders?: AccountRef[];
+
+  address?: string;
 
   city?: City;
 

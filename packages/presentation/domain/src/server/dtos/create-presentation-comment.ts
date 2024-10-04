@@ -3,5 +3,5 @@ export interface CreatePresentationComment {
 
   presentation: string
 
-  account: string
+  owner: string
 }

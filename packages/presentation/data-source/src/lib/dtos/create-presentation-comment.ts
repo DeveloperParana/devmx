@@ -8,5 +8,5 @@ export class CreatePresentationCommentDto {
 
   presentation: string;
 
-  account: string;
+  owner: string;
 }

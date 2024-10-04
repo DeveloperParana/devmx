@@ -4,8 +4,18 @@
   flex-direction: column;
 
   .mat-mdc-subheader {
+    margin: 1.2em 0.8em 0.4em;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    opacity: 0.6;
     font-size: 1.2em;
+    // line-height: 2.2em;
     font-weight: 600;
-    margin: 0 0.8em;
+    // margin: 0 0.8em;
+  }
+  .list-item-child {
+    margin-left: 1em;
+    width: auto;
   }
 }

@@ -1,6 +1,7 @@
 export * from './abstract-constructor-params';
 export * from './abstract';
 export * from './account-role';
+export * from './convert-relations-to-id';
 export * from './creatable';
 export * from './editable';
 export * from './event-format';

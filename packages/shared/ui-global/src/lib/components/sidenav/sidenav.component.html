@@ -1,11 +1,30 @@
 <mat-nav-list>
-  <h3 mat-subheader>{{ header() }}</h3>
   @for (item of sidenav.itemsByRoles$ | async; track item.path) {
+  <!--  -->
+  @if (item.children) {
+  <h3 mat-subheader>
+    @if (item.icon) {
+    <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+    }
+    <span matListItemTitle>{{ item.text }}</span>
+  </h3>
+  @for (child of item.children; track child.path) {
+  <a mat-list-item class="list-item-child" [routerLink]="child.path">
+    @if (child.icon) {
+    <mat-icon matListItemIcon>{{ child.icon }}</mat-icon>
+    }
+    <span matListItemTitle>{{ child.text }}</span>
+  </a>
+  }
+  <!--  -->
+  } @else {
   <a mat-list-item [routerLink]="item.path">
     @if (item.icon) {
     <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
     }
     <span matListItemTitle>{{ item.text }}</span>
   </a>
+  }
+  <!--  -->
   }
 </mat-nav-list>

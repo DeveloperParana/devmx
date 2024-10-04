@@ -4,7 +4,7 @@ import {
   SignUpUseCase,
   LoadAuthUserUseCase,
   FindAccountByIDUseCase,
-  FindAccountPresentationsUseCase,
+  FindPresentationsByOwnerUseCase,
   UpdateAccountUseCase,
   RemoveAccountUseCase,
   ChangePasswordUseCase,
@@ -12,6 +12,9 @@ import {
   FindAccountByUsernameUseCase,
   FindAccountsUseCase,
   ChangeRolesUseCase,
+  FindEventsByOwnerUseCase,
+  FindSpeakersUseCase,
+  FindLeadersUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideAuthFacade() {
@@ -35,35 +38,44 @@ export function provideAccountFacade() {
       findAccounts: FindAccountsUseCase,
       findAccountByID: FindAccountByIDUseCase,
       findAccountUsernameID: FindAccountByUsernameUseCase,
-      findAccountPresentations: FindAccountPresentationsUseCase,
+      findPresentationsByOwner: FindPresentationsByOwnerUseCase,
+      findEventsByOwner: FindEventsByOwnerUseCase,
       updateAccount: UpdateAccountUseCase,
       removeAccount: RemoveAccountUseCase,
       changePassword: ChangePasswordUseCase,
       changeRoles: ChangeRolesUseCase,
-      uploadPhoto: UploadPhotoUseCase
+      uploadPhoto: UploadPhotoUseCase,
+      findSpeakers: FindSpeakersUseCase,
+      findLeaders: FindLeadersUseCase
     ) {
       return new AccountFacade(
         findAccounts,
         findAccountByID,
         findAccountUsernameID,
-        findAccountPresentations,
+        findPresentationsByOwner,
+        findEventsByOwner,
         updateAccount,
         removeAccount,
         changePassword,
         changeRoles,
-        uploadPhoto
+        uploadPhoto,
+        findSpeakers,
+        findLeaders
       );
     },
     deps: [
       FindAccountsUseCase,
       FindAccountByIDUseCase,
       FindAccountByUsernameUseCase,
-      FindAccountPresentationsUseCase,
+      FindPresentationsByOwnerUseCase,
+      FindEventsByOwnerUseCase,
       UpdateAccountUseCase,
       RemoveAccountUseCase,
       ChangePasswordUseCase,
       ChangeRolesUseCase,
       UploadPhotoUseCase,
+      FindSpeakersUseCase,
+      FindLeadersUseCase,
     ],
   };
 }

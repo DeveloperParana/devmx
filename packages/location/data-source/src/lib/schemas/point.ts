@@ -1,8 +1,11 @@
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 @Schema()
-export class PointCollection {
+export class PointCollection extends Document {
+  override id: string;
+
   @Prop({
     type: String,
     enum: ['Point'],

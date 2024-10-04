@@ -1,9 +1,10 @@
-import { CreateEvent, UpdateEvent } from '../../lib/dtos';
+import { UpdateEvent } from '../../lib/dtos';
 import { Observable } from 'rxjs';
 import {
   Page,
   Event,
   EventOut,
+  CreateEvent,
   QueryParams,
 } from '@devmx/shared-api-interfaces';
 
