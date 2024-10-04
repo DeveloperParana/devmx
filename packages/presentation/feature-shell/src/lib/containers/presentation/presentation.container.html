@@ -2,10 +2,10 @@
 <article>
   <mat-card>
     <mat-card-header>
-      <devmx-image mat-card-avatar [src]="presentation.account.photo" />
+      <devmx-image mat-card-avatar [src]="presentation.owner.photo" />
       <mat-card-title> {{presentation.title}} </mat-card-title>
       <mat-card-subtitle>
-        {{presentation.account.name.first}} {{presentation.account.name.last}}
+        {{presentation.owner.name.first}} {{presentation.owner.name.last}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
@@ -29,9 +29,9 @@
 
         @for (comment of comments.data; track comment.id) {
         <mat-list-item>
-          <devmx-avatar matListItemAvatar [src]="comment.account.photo" />
+          <devmx-avatar matListItemAvatar [src]="comment.owner.photo" />
 
-          <div matListItemTitle>{{comment.account.name.first}}</div>
+          <div matListItemTitle>{{comment.owner.name.first}}</div>
           <div matListItemLine>{{comment.text}}</div>
         </mat-list-item>
         }

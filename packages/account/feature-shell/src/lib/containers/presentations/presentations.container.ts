@@ -1,19 +1,22 @@
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { PresentationFacade } from '@devmx/presentation-data-access';
-import { CreatePresentationComponent } from '../../components';
-import { Presentation } from '@devmx/shared-api-interfaces';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { take } from 'rxjs';
+import {
+  CreatePresentationService,
+  provideCreatePresentation,
+} from '../../dialogs';
 import {
   inject,
   OnInit,
   Component,
+  DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
 
@@ -22,34 +25,42 @@ import {
   templateUrl: './presentations.container.html',
   styleUrl: './presentations.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideCreatePresentation()],
   imports: [
-    MatDialogModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatPaginatorModule,
-    RouterLink,
+    PaginatorComponent,
+    RouterModule,
     AsyncPipe,
   ],
   standalone: true,
 })
 export class PresentationsContainer implements OnInit {
+  router = inject(Router);
+
+  route = inject(ActivatedRoute);
+
+  destroyRef = inject(DestroyRef);
+
   presentationFacade = inject(PresentationFacade);
+
   accountFacade = inject(AccountFacade);
-  dialog = inject(MatDialog);
+
+  createPresentation = inject(CreatePresentationService);
 
   ngOnInit() {
-    this.accountFacade.loadPresentations();
+    this.route.queryParams
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ page = 0, size = 10 }) => {
+        this.accountFacade.loadPresentations(page, size);
+      });
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open<
-      CreatePresentationComponent,
-      void,
-      Presentation
-    >(CreatePresentationComponent);
+    const createPresentationRef = this.createPresentation.open();
 
-    const afterClosed$ = dialogRef.afterClosed().pipe(take(1));
+    const afterClosed$ = createPresentationRef.afterClosed().pipe(take(1));
 
     afterClosed$.subscribe((presentation) => {
       if (presentation) {
@@ -63,7 +74,7 @@ export class PresentationsContainer implements OnInit {
     });
   }
 
-  onPageChange(event: PageEvent) {
-    this.accountFacade.loadPresentations(event.pageIndex, event.pageSize);
+  onPageChange({ page, size }: PageParams) {
+    this.accountFacade.loadPresentations(page, size);
   }
 }

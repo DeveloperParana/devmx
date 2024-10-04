@@ -1,5 +1,5 @@
-import { CreateEvent, UpdateEvent } from '@devmx/event-domain';
-import { EventOut, Page } from '@devmx/shared-api-interfaces';
+import { CreateEvent, EventOut, Page } from '@devmx/shared-api-interfaces';
+import { UpdateEvent } from '@devmx/event-domain';
 import { EventService } from '@devmx/event-domain/client';
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { HttpClient } from '@devmx/shared-data-access';

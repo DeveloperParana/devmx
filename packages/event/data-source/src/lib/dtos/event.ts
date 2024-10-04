@@ -2,6 +2,7 @@ import { CityDto, LocationDto } from '@devmx/location-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { PresentationDto } from '@devmx/presentation-data-source';
 import { EventFormat } from '@devmx/shared-api-interfaces';
+import { AccountDto } from '@devmx/account-data-source';
 import { Type } from 'class-transformer';
 
 export class EventDto {
@@ -37,6 +38,10 @@ export class EventDto {
   @Type(() => PresentationDto)
   presentations: PresentationDto[];
 
+  @ApiProperty({ type: () => [AccountDto]})
+  @Type(() => AccountDto)
+  leaders: AccountDto[];
+
   @ApiProperty()
   address: string;
 
@@ -47,4 +52,8 @@ export class EventDto {
   @ApiPropertyOptional({ type: () => LocationDto})
   @Type(() => LocationDto)
   location?: LocationDto;
+
+  @ApiProperty({ type: () => AccountDto})
+  @Type(() => AccountDto)
+  owner: AccountDto;
 }

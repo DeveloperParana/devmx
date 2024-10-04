@@ -1,19 +1,18 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
+import { accountFeatureShellSidenav } from './account-feature-shell.sidenav';
 import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
 import { providePresentation } from '@devmx/presentation-data-access';
+import { roleGroupsGuard, roleGroupGuard, roleGuard } from './guards';
 import { provideLocations } from '@devmx/location-data-access';
-import { roleGroupsGuard, roleGroupGuard } from './guards';
+import { provideAccount } from '@devmx/account-data-access';
+import { provideSidenav } from '@devmx/shared-ui-global';
+import { provideEvent } from '@devmx/event-data-access';
 import { Route } from '@angular/router';
-import {
-  provideAccount,
-  provideAccountNavFacade,
-} from '@devmx/account-data-access';
 import {
   SettingsContainer,
   PresentationContainer,
   PresentationsContainer,
 } from './containers';
-import { provideSidenav } from '@devmx/shared-ui-global';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
@@ -28,39 +27,15 @@ export const accountFeatureShellRoutes: Route[] = [
     providers: [
       ...provideAccount(),
       ...providePresentation(),
+      ...provideEvent(),
       ...provideLocations(),
       provideAutocompleteCitiesService(),
-      provideSidenav([
-        {
-          path: ['/account', 'settings'],
-          text: 'Configurações',
-          roles: ['member'],
-          icon: 'settings',
-        },
-        {
-          path: ['/account', 'presentations'],
-          text: 'Apresentações',
-          roles: ['speaker'],
-          icon: 'collections_bookmark',
-        },
-        {
-          path: ['/account', 'board'],
-          text: 'Dashboard',
-          icon: 'dashboard',
-          roles: ['director', 'manager'],
-        },
-        {
-          path: ['/account', 'admin'],
-          text: 'Administração',
-          icon: 'admin_panel_settings',
-          roles: ['director', 'manager', 'leader', 'staff', 'fellow'],
-        }
-      ]),
+      provideSidenav(accountFeatureShellSidenav),
     ],
     component: AccountFeatureShellComponent,
     children: [
       {
-        path: 'admin',
+        path: 'administracao',
         canActivate: [roleGroupsGuard('worthy', 'board')],
         loadChildren: async () => {
           return import('@devmx/account-feature-admin').then(
@@ -69,7 +44,7 @@ export const accountFeatureShellRoutes: Route[] = [
         },
       },
       {
-        path: 'board',
+        path: 'dashboard',
         canActivate: [roleGroupGuard('board')],
         loadChildren: async () => {
           return import('@devmx/account-feature-board').then(
@@ -78,21 +53,23 @@ export const accountFeatureShellRoutes: Route[] = [
         },
       },
       {
-        path: 'presentations/:id',
+        path: 'minhas-apresentacoes/:id',
+        canActivate: [roleGuard('speaker')],
         component: PresentationContainer,
       },
       {
-        path: 'settings',
-        component: SettingsContainer,
+        path: 'minhas-apresentacoes',
+        canActivate: [roleGuard('speaker')],
+        component: PresentationsContainer,
       },
       {
-        path: 'presentations',
-        component: PresentationsContainer,
+        path: 'configuracoes',
+        component: SettingsContainer,
       },
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'settings',
+        redirectTo: 'configuracoes',
       },
     ],
   },

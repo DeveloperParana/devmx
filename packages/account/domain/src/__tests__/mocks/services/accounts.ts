@@ -7,6 +7,7 @@ import {
   Creatable,
   FindParams,
   FindFilter,
+  Role,
 } from '@devmx/shared-api-interfaces';
 
 export class AccountsServiceMock implements AccountsService {
@@ -17,6 +18,10 @@ export class AccountsServiceMock implements AccountsService {
   }
 
   async find(params: FindParams<Account>): Promise<Page<Account>> {
+    throw new Error('Method not implemented.');
+  }
+
+  findByRole(role: Role, params: FindParams<Account>): Promise<Page<Account>> {
     throw new Error('Method not implemented.');
   }
 

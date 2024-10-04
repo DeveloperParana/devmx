@@ -1,6 +1,10 @@
 import { AccountFeatureAdminComponent } from './account-feature-admin.component';
-import { AccountsContainer } from './containers';
 import { Route } from '@angular/router';
+import {
+  EventContainer,
+  EventsContainer,
+  AccountsContainer,
+} from './containers';
 
 export const accountFeatureAdminRoutes: Route[] = [
   {
@@ -8,8 +12,21 @@ export const accountFeatureAdminRoutes: Route[] = [
     component: AccountFeatureAdminComponent,
     children: [
       {
-        path: '',
+        path: 'contas',
         component: AccountsContainer,
+      },
+      {
+        path: 'meus-eventos/:id',
+        component: EventContainer,
+      },
+      {
+        path: 'meus-eventos',
+        component: EventsContainer,
+      },
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'contas',
       },
     ],
   },

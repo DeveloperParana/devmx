@@ -1,6 +1,6 @@
 import { FindFilterDto, FindParamsDto } from '@devmx/shared-data-source';
 import { AccountsService } from '@devmx/account-domain/server';
-import { Account } from '@devmx/shared-api-interfaces';
+import { Account, Role } from '@devmx/shared-api-interfaces';
 import { SignUpDto, UpdateAccountDto } from '../dtos';
 import { Model } from 'mongoose';
 
@@ -26,7 +26,27 @@ export class AccountsServiceImpl implements AccountsService {
       .exec();
 
     const data = accounts.map((item) => item.toJSON());
-    const items = await this.accountModel.countDocuments().exec();
+    const items = await this.accountModel.countDocuments(where).exec();
+    const pages = Math.ceil(items / size);
+
+    return { data, items, pages };
+  }
+
+  async findByRole(role: Role, params: FindParamsDto<Account>) {
+    const { page = 0, size = 10, filter } = params;
+
+    const skip = page * size;
+    const where = { ...filter, ...{ ['roles.' + role]: true } };
+
+    const accounts = await this.accountModel
+      .find(where)
+      .skip(skip)
+      .limit(size)
+      .populate('city')
+      .exec();
+
+    const data = accounts.map((item) => item.toJSON());
+    const items = await this.accountModel.countDocuments(where).exec();
     const pages = Math.ceil(items / size);
 
     return { data, items, pages };

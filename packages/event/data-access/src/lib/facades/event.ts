@@ -1,5 +1,13 @@
-import { CreateEvent, UpdateEvent } from '@devmx/event-domain';
-import { EventOut, Page } from '@devmx/shared-api-interfaces';
+import {
+  City,
+  Page,
+  Event,
+  EventOut,
+  AccountRef,
+  CreateEvent,
+  UpdateEvent,
+  PresentationRef,
+} from '@devmx/shared-api-interfaces';
 import { State } from '@devmx/shared-data-access';
 import { FilterEvent } from '../dtos';
 import { take } from 'rxjs';
@@ -68,13 +76,50 @@ export class EventFacade extends State<EventState> {
   }
 
   create(data: CreateEvent) {
-    const request$ = this.createEventUseCase.execute(data);
+    const city = this.#cityIsCity(data.city) ? data.city.id : data.city;
+
+    data.leaders ??= [];
+
+    const leaders: string[] = [];
+
+    for (const leader of data.leaders) {
+      if (this.#leaderIsAccountRef(leader)) {
+        leaders.push(leader.id);
+      }
+    }
+
+    const value = { ...data, city, leaders };
+    const request$ = this.createEventUseCase.execute(value);
 
     request$.pipe(take(1)).subscribe(({ id }) => this.loadOne(id));
   }
 
-  update(data: UpdateEvent) {
-    const request$ = this.updateEventUseCase.execute(data);
+  update(data: Event) {
+    const city = this.#cityIsCity(data.city) ? data.city.id : data.city;
+
+    data.leaders ??= [];
+
+    const leaders: string[] = [];
+
+    for (const leader of data.leaders) {
+      if (this.#leaderIsAccountRef(leader)) {
+        leaders.push(leader.id);
+      }
+    }
+
+    data.presentations ??= [];
+
+    const presentations: string[] = [];
+
+    for (const presentation of data.presentations) {
+      if (this.#isPresentationRef(presentation)) {
+        presentations.push(presentation.id);
+      }
+    }
+
+    const value = { ...data, city, leaders, presentations } as UpdateEvent;
+
+    const request$ = this.updateEventUseCase.execute(value);
 
     request$.pipe(take(1)).subscribe(() => this.load());
   }
@@ -83,5 +128,17 @@ export class EventFacade extends State<EventState> {
     const request$ = this.removeEventUseCase.execute(id);
 
     request$.pipe(take(1)).subscribe(() => this.load());
+  }
+
+  #isPresentationRef(presentation: unknown): presentation is PresentationRef {
+    return typeof presentation === 'object';
+  }
+
+  #leaderIsAccountRef(account: unknown): account is AccountRef {
+    return typeof account === 'object';
+  }
+
+  #cityIsCity(city: unknown): city is City {
+    return typeof city === 'object';
   }
 }

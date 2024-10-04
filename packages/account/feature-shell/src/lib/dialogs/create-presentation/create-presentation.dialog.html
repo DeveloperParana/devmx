@@ -1,0 +1,30 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <h2 mat-dialog-title>Criar apresentação</h2>
+
+  <mat-dialog-content class="dialog-content">
+    <mat-form-field>
+      <mat-label>Título da apresentação</mat-label>
+      <input type="text" matInput formControlName="title" autofocus />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Formato da apresentação</mat-label>
+      <mat-select formControlName="format">
+        @for (format of form.formats; track format) {
+        <mat-option [value]="format.value">{{ format.viewValue }}</mat-option>
+        }
+      </mat-select>
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="visible">
+      Visível publicamente
+    </mat-checkbox>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-button>Salvar</button>
+    <button mat-button mat-dialog-close>Cancelar</button>
+  </mat-dialog-actions>
+</form>

@@ -5,5 +5,5 @@ export interface UpdatePresentationComment {
 
   presentation: string
 
-  account: string
+  owner: string
 }

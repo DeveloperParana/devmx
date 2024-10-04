@@ -21,5 +21,5 @@ export class CreatePresentationReactionDto {
 
   presentation: string;
 
-  account: string;
+  owner: string;
 }

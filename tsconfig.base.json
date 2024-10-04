@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@devmx/account-api-interfaces": [
+        "packages/account/api-interfaces/src/index.ts"
+      ],
+      "@devmx/account-api-interfaces/client": [
+        "packages/account/api-interfaces/src/client.ts"
+      ],
       "@devmx/account-data-access": [
         "packages/account/data-access/src/index.ts"
       ],

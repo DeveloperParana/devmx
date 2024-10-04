@@ -1,6 +1,7 @@
 import { State } from '@devmx/shared-data-access';
 import { FilterPresentation } from '../dtos';
 import {
+  CreatePresentation,
   Page,
   Presentation,
   PresentationOut,
@@ -70,7 +71,7 @@ export class PresentationFacade extends State<PresentationState> {
     request$.pipe(take(1)).subscribe(onPresentation);
   }
 
-  create(data: Presentation) {
+  create(data: CreatePresentation) {
     const request$ = this.createPresentationUseCase.execute(data);
 
     request$.pipe(take(1)).subscribe(({ id }) => this.loadOne(id));

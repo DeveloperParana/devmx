@@ -16,5 +16,5 @@ export interface PresentationOut {
 
   visible: boolean;
 
-  account: AccountOut;
+  owner: AccountOut;
 }

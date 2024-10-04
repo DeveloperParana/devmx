@@ -8,7 +8,7 @@ import {
 import { AccountService } from '../services';
 import { createQueryParams } from '@devmx/shared-util-data';
 
-export class FindAccountPresentationsUseCase
+export class FindPresentationsByOwnerUseCase
   implements UseCase<QueryParams<Presentation>, Page<PresentationOut>>
 {
   constructor(private accountService: AccountService) {}

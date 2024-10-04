@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  width: 36em;
+
+
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.6em;
+  }
+
+  .mat-column-select {
+    max-width: 3em;
+  }
+
+  .mat-mdc-row {
+    cursor: pointer;
+  }
+
+  .selected {
+    margin: 0;
+    padding: 0 2.1em;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0.6;
+  }
+
+  .dialog-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-left: -16px;
+    margin-right: 8px;
+  }
+}

@@ -17,14 +17,11 @@
   }
 </div>
 
-<footer class="presentations-footer">
-  <mat-paginator
-    hidePageSize
-    [pageSize]="10"
-    [length]="presentations.items"
-    (page)="onPageChange($event)"
-  ></mat-paginator>
-</footer>
+<devmx-paginator
+  [size]="10"
+  [items]="presentations.items"
+  (pageChange)="onPageChange($event)"
+/>
 }
 
 <button class="add-button" type="button" mat-fab (click)="openCreate()">

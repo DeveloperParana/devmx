@@ -7,13 +7,16 @@ import {
   LoadAuthUserUseCase,
   RemoveAccountUseCase,
   UpdateAccountUseCase,
-  FindAccountPresentationsUseCase,
+  FindPresentationsByOwnerUseCase,
   FindAccountByIDUseCase,
   ChangePasswordUseCase,
   UploadPhotoUseCase,
   FindAccountByUsernameUseCase,
   FindAccountsUseCase,
   ChangeRolesUseCase,
+  FindEventsByOwnerUseCase,
+  FindSpeakersUseCase,
+  FindLeadersUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideSignInUseCase() {
@@ -48,10 +51,14 @@ export function provideRemoveAccountUseCase() {
   return createUseCaseProvider(RemoveAccountUseCase, [AccountService]);
 }
 
-export function provideFindAccountPresentationsUseCase() {
-  return createUseCaseProvider(FindAccountPresentationsUseCase, [
+export function provideFindPresentationsByOwnerUseCase() {
+  return createUseCaseProvider(FindPresentationsByOwnerUseCase, [
     AccountService,
   ]);
+}
+
+export function provideFindEventsByOwnerUseCase() {
+  return createUseCaseProvider(FindEventsByOwnerUseCase, [AccountService]);
 }
 
 export function provideChangePasswordUseCase() {
@@ -64,4 +71,12 @@ export function provideChangeRolesUseCase() {
 
 export function provideUploadPhotoUseCase() {
   return createUseCaseProvider(UploadPhotoUseCase, [AccountService]);
+}
+
+export function provideFindSpeakersUseCase() {
+  return createUseCaseProvider(FindSpeakersUseCase, [AccountService]);
+}
+
+export function provideFindLeadersUseCase() {
+  return createUseCaseProvider(FindLeadersUseCase, [AccountService]);
 }

@@ -44,5 +44,5 @@ export class CreatePresentationDto {
   @ApiPropertyOptional()
   video: string;
 
-  account: string;
+  owner: string;
 }

@@ -37,7 +37,8 @@
   }
 
   .account-sidenav-start {
-    width: 16em;
+    min-width: 12em;
+    max-width: 16em;
     margin-right: 2em;
   }
 

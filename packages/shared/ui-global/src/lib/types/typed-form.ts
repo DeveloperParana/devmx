@@ -1,7 +1,7 @@
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 type DetectType<T> = T extends Array<infer U>
-  ? FormArray<DetectType<U>>
+  ? FormArray<DetectType<U>> | FormControl<string[]>
   : T extends object
   ? FormGroup<TypedForm<T>>
   : T extends false | true

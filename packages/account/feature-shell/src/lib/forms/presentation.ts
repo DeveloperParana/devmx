@@ -64,11 +64,11 @@ export class PresentationForm extends Form<Presentation> {
   }
 
   get resources() {
-    return this.controls.resources;
+    return this.controls.resources as FormArray;
   }
 
   get tags() {
-    return this.controls.tags;
+    return this.controls.tags as FormArray;
   }
 
   addResource(event: Event) {

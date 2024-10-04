@@ -33,14 +33,11 @@
   }
 </div>
 
-<footer class="accounts-footer">
-  <mat-paginator
-    hidePageSize
-    [pageSize]="10"
-    [length]="accounts.items"
-    (page)="onPageChange($event)"
-  ></mat-paginator>
-</footer>
+<devmx-paginator
+  [size]="10"
+  [items]="accounts.items"
+  (pageChange)="onPageChange($event)"
+/>
 }
 <!--  -->
 }

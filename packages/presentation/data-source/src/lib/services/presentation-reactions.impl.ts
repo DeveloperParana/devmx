@@ -7,7 +7,9 @@ import {
   UpdatePresentationReactionDto,
 } from '../dtos';
 
-export class PresentationReactionsServiceImpl implements PresentationReactionsService {
+export class PresentationReactionsServiceImpl
+  implements PresentationReactionsService
+{
   constructor(private presentationReactionModel: Model<PresentationReaction>) {}
 
   async create(
@@ -24,14 +26,14 @@ export class PresentationReactionsServiceImpl implements PresentationReactionsSe
 
     const skip = page * size;
     const where = { ...filter };
-    const comments = await this.presentationReactionModel
+    const reactions = await this.presentationReactionModel
       .find(where)
       .skip(skip)
       .limit(size)
-      .populate('account')
+      .populate('owner')
       .exec();
 
-    const data = comments.map((item) => item.toJSON());
+    const data = reactions.map((item) => item.toJSON());
     const items = await this.presentationReactionModel.countDocuments().exec();
     const pages = Math.ceil(items / size);
 
@@ -39,52 +41,36 @@ export class PresentationReactionsServiceImpl implements PresentationReactionsSe
   }
 
   async findOne(id: string) {
-    const comment = await this.presentationReactionModel
+    const reaction = await this.presentationReactionModel
       .findById(id)
-      .populate('account')
+      .populate('owner')
       .exec();
 
-    if (!comment) {
-      throw `Reação não encontrada`;
-    }
-
-    return comment.toJSON();
+    return reaction ? reaction.toJSON() : null;
   }
 
   async findOneBy(filter: QueryFilterDto<PresentationReaction>) {
-    const comment = await this.presentationReactionModel
+    const reaction = await this.presentationReactionModel
       .findOne(filter)
-      .populate('account')
+      .populate('owner')
       .exec();
 
-    if (!comment) {
-      throw `Reação não encontrada`;
-    }
-
-    return comment.toJSON();
+    return reaction ? reaction.toJSON() : null;
   }
 
   async update(id: string, data: UpdatePresentationReactionDto) {
-    const comment = await this.presentationReactionModel
+    const reaction = await this.presentationReactionModel
       .findOneAndUpdate({ _id: id }, data)
       .exec();
 
-    if (!comment) {
-      throw `Erro ao alterar reação`;
-    }
-
-    return comment.toJSON();
+    return reaction ? reaction.toJSON() : null;
   }
 
   async remove(id: string) {
-    const comment = await this.presentationReactionModel
+    const reaction = await this.presentationReactionModel
       .findOneAndDelete({ _id: id })
       .exec();
 
-    if (!comment) {
-      throw `Erro ao remover reação`;
-    }
-
-    return comment.toJSON();
+    return reaction ? reaction.toJSON() : null;
   }
 }

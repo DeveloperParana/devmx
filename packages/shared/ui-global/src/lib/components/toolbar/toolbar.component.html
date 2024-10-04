@@ -11,18 +11,16 @@
 
   <span class="spacer"></span>
 
-  <a mat-button routerLink="/events" routerLinkActive="active">
-    Eventos
-  </a>
+  <a mat-button routerLink="/eventos" routerLinkActive="active"> Eventos </a>
 
-  <a mat-button routerLink="/presentations" routerLinkActive="active">
+  <a mat-button routerLink="/apresentacoes" routerLinkActive="active">
     Apresentações
   </a>
 
   <ng-content select="devmx-auth-user"></ng-content>
 
-  @if (showToggleButtonLeft) {
-  <button mat-icon-button (click)="toggleLeft.emit()">
+  @if (showToggleButtonRight) {
+  <button mat-icon-button (click)="toggleRight.emit()">
     <mat-icon>menu</mat-icon>
   </button>
   }

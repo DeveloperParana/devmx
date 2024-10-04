@@ -1,6 +1,7 @@
 import { UpdateAccount } from '../../lib/dtos';
 import {
   Page,
+  Role,
   Account,
   Creatable,
   FindFilter,
@@ -12,6 +13,8 @@ export abstract class AccountsService {
   abstract create(data: Creatable<Account>): Promise<Account>;
 
   abstract find(params: FindParams<Account>): Promise<Page<Account>>;
+
+  abstract findByRole(role: Role, params: FindParams<Account>): Promise<Page<Account>>;
 
   abstract findOne(id: string): Promise<Account | null>;
 

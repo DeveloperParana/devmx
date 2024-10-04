@@ -38,7 +38,7 @@
   /* Estilo para dispositivos médios: 2 colunas */
   @media (min-width: 768px) {
     .accounts-container {
-      grid-template-columns: repeat(5, 1fr); /* 2 colunas */
+      grid-template-columns: repeat(4, 1fr); /* 2 colunas */
     }
   }
 
@@ -47,11 +47,6 @@
     .accounts-container {
       grid-template-columns: 1fr; /* 1 coluna */
     }
-  }
-
-  .accounts-footer {
-    display: flex;
-    justify-content: center;
   }
 }
 

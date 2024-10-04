@@ -1,4 +1,4 @@
-import { Account, AuthUser } from '@devmx/shared-api-interfaces';
+import { Account, AuthUser, Role } from '@devmx/shared-api-interfaces';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { exceptionByError } from '@devmx/shared-resource';
 import {
@@ -7,6 +7,7 @@ import {
   Allowed,
   ApiPage,
   QueryParamsDto,
+  QueryByRoleParamsDto,
 } from '@devmx/shared-data-source';
 import {
   ApiBody,
@@ -16,6 +17,7 @@ import {
   ApiBearerAuth,
 } from '@nestjs/swagger';
 import {
+  EventDto,
   AccountDto,
   AccountsFacade,
   ChangePasswordDto,
@@ -84,11 +86,58 @@ export class AccountsController {
   @Get('presentations')
   @ApiPage(PresentationDto)
   async findAccountPresentations(
-    @User('id') account: string,
+    @User('id') owner: string,
     @Query() params: QueryParamsDto<PresentationDto>
   ) {
     try {
-      return await this.accountsFacade.findPresentations(account, params);
+      return await this.accountsFacade.findPresentations(owner, params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get('events')
+  @ApiPage(PresentationDto)
+  async findEventsByOwner(
+    @User('id') owner: string,
+    @Query() params: QueryParamsDto<EventDto>
+  ) {
+    try {
+      return await this.accountsFacade.findEvents(owner, params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get('speakers')
+  @ApiPage(AccountDto)
+  async findSpeakers(@Query() params: QueryParamsDto<AccountDto>) {
+    try {
+      return await this.accountsFacade.findByRole('speaker', params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get('leaders')
+  @ApiPage(AccountDto)
+  async findLeaders(@Query() params: QueryParamsDto<AccountDto>) {
+    try {
+      return await this.accountsFacade.findByRole('leader', params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get('by-role/:role')
+  @ApiPage(AccountDto)
+  async findAccountsByRole(
+    @Param('role') roleParam: string,
+    @Query() params: QueryByRoleParamsDto<EventDto>
+  ) {
+    const role = (roleParam as Role) ?? params.role;
+    try {
+      return await this.accountsFacade.findByRole(role, params);
     } catch (err) {
       throw exceptionByError(err);
     }

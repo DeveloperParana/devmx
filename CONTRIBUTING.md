@@ -99,13 +99,62 @@ pnpm dev
 
 ## Convenção usada em commits
 
-> [!WARNING]
-> Antes de escrever seu commit, execute `lint`, `test` e `build` dos projetos afetados pela sua alteração com o comando `pnpm affected`.
-
-Os commits podem ser feitos em português, mas use inglês para termos técnicos, não tente traduzi-los quando eles são conhecidos e usados em inglês, por gentileza.
+Apesar de atualmente não haver intenção de automatizações para publicação de pacotes, os [commits convencionais](https://conventionalcommits.org/pt-br/v1.0.0) se mostraram um bom caminho a ser seguido.
 
 > [!TIP]
 > Use o comando `pnpm commit`, e apenas responda as perguntas, assim seu commit seguirá a convenção utilizada.
+
+Os commits podem ser feitos em português, mas use inglês para termos técnicos, não tente traduzi-los quando eles são conhecidos e usados em inglês, por gentileza.
+
+> [!WARNING]
+> Antes de escrever seu commit, execute o comando `pnpm affected` para verificar quaisquer possíveis problemas de `lint`, `test` e `build` nos projetos afetados pelas alterações.
+
+
+---
+
+
+## Stack
+
+<section style="display: flex">
+
+<figure style="display: inline-flex; flex-direction: column">
+
+![Angular](./assets/logos/angular.svg)
+
+  <figcaption style="text-align: center">
+  
+  [Angular](https://angular.dev)
+  
+  </figcaption>
+
+</figure>
+
+<figure style="display: inline-flex; flex-direction: column">
+
+![Nest](./assets/logos/nestjs.svg)
+
+  <figcaption style="text-align: center">
+  
+  [NestJS](https://docs.nestjs.com)
+  
+  </figcaption>
+
+</figure>
+
+<figure style="display: inline-flex; flex-direction: column">
+
+![Nx Dev](./assets/logos/nx-dev.svg)
+
+  <figcaption style="text-align: center">
+  
+  [Nx Dev](https://nx.dev)
+  
+  </figcaption>
+
+</figure>
+
+</section>
+
 
 ## Arquitetura
 

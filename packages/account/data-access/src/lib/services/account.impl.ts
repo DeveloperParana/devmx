@@ -8,6 +8,7 @@ import {
 } from '@devmx/account-domain';
 import {
   Page,
+  EventOut,
   AccountOut,
   PresentationOut,
 } from '@devmx/shared-api-interfaces';
@@ -29,6 +30,21 @@ export class AccountServiceImpl implements AccountService {
     return this.http.get<Page<PresentationOut>>(url.join('?'));
   }
 
+  findEvents(params: URLSearchParams) {
+    const url = [`${this.url}/events`, params.toString()];
+    return this.http.get<Page<EventOut>>(url.join('?'));
+  }
+
+  findSpeakers(params: URLSearchParams) {
+    const url = [`${this.url}/speakers`, params.toString()];
+    return this.http.get<Page<AccountOut>>(url.join('?'));
+  }
+
+  findLeaders(params: URLSearchParams) {
+    const url = [`${this.url}/leaders`, params.toString()];
+    return this.http.get<Page<AccountOut>>(url.join('?'));
+  }
+
   findOne(id: string) {
     return this.http.get<AccountOut>(`${this.url}/${id}`);
   }
@@ -37,8 +53,8 @@ export class AccountServiceImpl implements AccountService {
     return this.http.get<AccountOut>(`${this.url}/profile/${username}`);
   }
 
-  update(id: string, presentation: UpdateAccount) {
-    return this.http.patch<AccountOut>(`${this.url}/${id}`, presentation);
+  update(id: string, data: UpdateAccount) {
+    return this.http.patch<AccountOut>(`${this.url}/${id}`, data);
   }
 
   upload(photo: Blob) {

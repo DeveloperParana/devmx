@@ -1,4 +1,8 @@
-import { QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
+import {
+  objectId,
+  QueryFilterDto,
+  QueryParamsDto,
+} from '@devmx/shared-data-source';
 import { EventsService } from '@devmx/event-domain/server';
 import { CreateEventDto, UpdateEventDto } from '../dtos';
 import { Event } from '@devmx/shared-api-interfaces';
@@ -23,7 +27,9 @@ export class EventsServiceImpl implements EventsService {
       .find(where)
       .skip(skip)
       .limit(size)
-      .populate('account')
+      .populate('owner', 'name username photo')
+      .populate('leaders', 'name username photo')
+      .populate('city', 'name location timeZone')
       .exec();
 
     const data = events.map((item) => item.toJSON());
@@ -34,15 +40,45 @@ export class EventsServiceImpl implements EventsService {
   }
 
   async findOne(id: string) {
-    const event = await this.eventModel.findById(id).populate('account').exec();
+    const event = await this.eventModel.findById(id)
+      .populate('owner', 'name username photo')
+      .populate('leaders', 'name username photo')
+      .populate('city', 'name location timeZone')
+      .exec();
 
     return event ? event.toJSON() : null;
+  }
+
+  async findByOwner(ownerId: string, params: QueryParamsDto<Event>) {
+    const { page = 0, size = 10, filter } = params;
+    const skip = page * size;
+
+    const owner = objectId(ownerId);
+
+    const events = await this.eventModel
+      .find({ ...filter, owner })
+      .skip(skip)
+      .limit(size)
+      .populate('owner', 'name username photo')
+      .populate('leaders', 'name username photo')
+      .populate('city', 'name location timeZone')
+      .exec();
+
+    const data = events.map((item) => item.toJSON());
+    const items = await this.eventModel
+      .countDocuments({ ...filter, owner })
+      .exec();
+    const pages = Math.ceil(items / size);
+
+    return { data, items, pages };
   }
 
   async findOneBy(filter: QueryFilterDto<Event>) {
     const event = await this.eventModel
       .findOne(filter)
-      .populate('account')
+      .populate('owner', 'name username photo')
+      .populate('leaders', 'name username photo')
+      .populate('city', 'name location timeZone')
       .exec();
 
     return event ? event.toJSON() : null;

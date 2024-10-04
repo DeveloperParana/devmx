@@ -1,14 +1,19 @@
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ChangeRolesService, provideChangeRoles } from '../../dialogs';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AccountOut, AuthUser } from '@devmx/shared-api-interfaces';
-import { GenderPipe, PhotoPipe } from '@devmx/shared-ui-global';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { FilterAccountComponent } from '../../components';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import {
+  PhotoPipe,
+  GenderPipe,
+  PageParams,
+  PaginatorComponent,
+} from '@devmx/shared-ui-global';
 import {
   AuthFacade,
   AccountFacade,
@@ -19,6 +24,7 @@ import {
   inject,
   OnInit,
   Component,
+  DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
 
@@ -32,9 +38,9 @@ import {
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule,
     FilterAccountComponent,
-    RouterLink,
+    PaginatorComponent,
+    RouterModule,
     GenderPipe,
     PhotoPipe,
     AsyncPipe,
@@ -44,6 +50,12 @@ import {
   standalone: true,
 })
 export class AccountsContainer implements OnInit {
+  router = inject(Router);
+
+  route = inject(ActivatedRoute);
+
+  destroyRef = inject(DestroyRef);
+
   authFacade = inject(AuthFacade);
 
   accountFacade = inject(AccountFacade);
@@ -51,7 +63,11 @@ export class AccountsContainer implements OnInit {
   changeRoles = inject(ChangeRolesService);
 
   ngOnInit() {
-    this.accountFacade.load();
+    this.route.queryParams
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ page = 0, size = 10 }) => {
+        this.accountFacade.load(page, size);
+      });
   }
 
   find(filter: FilterAccount) {
@@ -71,7 +87,7 @@ export class AccountsContainer implements OnInit {
     });
   }
 
-  onPageChange(event: PageEvent) {
-    this.accountFacade.load(event.pageIndex, event.pageSize);
+  onPageChange({ page, size }: PageParams) {
+    this.router.navigate([], { queryParams: { page, size } });
   }
 }
