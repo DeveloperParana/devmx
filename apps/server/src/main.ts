@@ -27,7 +27,7 @@ async function bootstrap() {
 
   const port = +process.env.PORT || 3000;
   await app.listen(port);
-  const url = `http://localhost:${port}/${urlPrefix}`;
+  const url = `http://localhost:${port}/docs`;
   Logger.log(`🚀 Application is running on: ${url}`);
 }
 
