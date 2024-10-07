@@ -1,5 +1,10 @@
 <header class="accounts-header">
-  <devmx-filter-account (valueChange)="find($event)" />
+  <!-- <devmx-filter-account (valueChange)="onFilterChange($event)" /> -->
+  <devmx-filter
+    [fields]="filterFields"
+    [formGroup]="filterForm"
+    (filterChange)="onFilterChange($event)"
+  ></devmx-filter>
 </header>
 
 @if (authFacade.user$ | async; as authUser) {

@@ -18,5 +18,7 @@ export abstract class EventService {
 
   abstract update(id: string, data: UpdateEvent): Observable<EventOut>;
 
+  abstract upload(id: string, cover: Blob): Observable<EventOut>;
+
   abstract remove(id: string): Observable<EventOut>
 }

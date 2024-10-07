@@ -1,4 +1,5 @@
 export * from './access-token';
+export * from './account-ref';
 export * from './account-role';
 export * from './account';
 export * from './challenge';

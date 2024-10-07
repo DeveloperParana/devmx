@@ -6,6 +6,24 @@
   "projectType": "library",
   "tags": ["type:ui"],
   "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": [
+        "{workspaceRoot}/dist/packages/shared/ui-global"
+      ],
+      "options": {
+        "project": "packages/shared/ui-global/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/shared/ui-global/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/shared/ui-global/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

@@ -13,19 +13,20 @@ import {
   provideChangePasswordUseCase,
   provideUploadPhotoUseCase,
   provideFindAccountByUsernameUseCase,
-  provideCityService,
+  // provideCityService,
   provideFindAccountsUseCase,
   provideChangeRolesUseCase,
   provideFindEventsByOwnerUseCase,
   provideFindSpeakersUseCase,
   provideFindLeadersUseCase,
+  provideRequestChallengeUseCase,
 } from './providers';
 
 export function provideAccount() {
   return [
     provideAuthService(),
     provideAccountService(),
-    provideCityService(),
+    // provideCityService(),
 
     provideSignInUseCase(),
     provideSignUpUseCase(),
@@ -43,10 +44,11 @@ export function provideAccount() {
     provideChangePasswordUseCase(),
     provideChangeRolesUseCase(),
     provideUploadPhotoUseCase(),
+    provideRequestChallengeUseCase(),
 
     provideAuthFacade(),
     provideAccountFacade(),
   ];
 }
 
-export { provideAccountFacade }
+export { provideAccountFacade };

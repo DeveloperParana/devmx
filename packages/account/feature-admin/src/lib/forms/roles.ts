@@ -5,6 +5,15 @@ import { TypedForm } from '@devmx/shared-ui-global';
 export class RolesForm extends FormGroup<TypedForm<AccountRole>> {
   constructor() {
     super({
+      member: new FormControl(false, {
+        nonNullable: true,
+      }),
+      speaker: new FormControl(false, {
+        nonNullable: true,
+      }),
+      recruiter: new FormControl(false, {
+        nonNullable: true,
+      }),
       donor: new FormControl(false, {
         nonNullable: true,
       }),
@@ -24,12 +33,6 @@ export class RolesForm extends FormGroup<TypedForm<AccountRole>> {
         nonNullable: true,
       }),
       director: new FormControl(false, {
-        nonNullable: true,
-      }),
-      member: new FormControl(false, {
-        nonNullable: true,
-      }),
-      speaker: new FormControl(false, {
         nonNullable: true,
       }),
     });

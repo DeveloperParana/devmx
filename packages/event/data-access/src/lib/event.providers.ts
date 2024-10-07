@@ -6,6 +6,7 @@ import {
   provideRemoveEventUseCase,
   provideUpdateEventUseCase,
   provideEventFacade,
+  provideUploadCoverUseCase,
 } from './providers';
 
 export function provideEvent() {
@@ -17,6 +18,7 @@ export function provideEvent() {
     provideFindEventByIDUseCase(),
     provideUpdateEventUseCase(),
     provideRemoveEventUseCase(),
+    provideUploadCoverUseCase(),
 
     provideEventFacade(),
   ];

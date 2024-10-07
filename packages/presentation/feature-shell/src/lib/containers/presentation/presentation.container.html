@@ -2,7 +2,7 @@
 <article>
   <mat-card>
     <mat-card-header>
-      <devmx-image mat-card-avatar [src]="presentation.owner.photo" />
+      <devmx-image mat-card-avatar [src]="presentation.owner.photo | photo" />
       <mat-card-title> {{presentation.title}} </mat-card-title>
       <mat-card-subtitle>
         {{presentation.owner.name.first}} {{presentation.owner.name.last}}

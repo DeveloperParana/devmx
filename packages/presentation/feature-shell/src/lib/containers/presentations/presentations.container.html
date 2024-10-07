@@ -1,5 +1,9 @@
 <header class="presentations-header">
-  <devmx-filter-presentation (valueChange)="find($event)" />
+  <devmx-filter
+    [fields]="filterFields"
+    [formGroup]="filterForm"
+    (filterChange)="onFilterChange($event)"
+  ></devmx-filter>
 </header>
 
 @if (presentationFacade.presentations$ | async; as presentations) {
@@ -30,12 +34,9 @@
   }
 </div>
 
-<footer class="presentations-footer">
-  <mat-paginator
-    hidePageSize
-    [pageSize]="10"
-    [length]="presentations.items"
-    (page)="onPageChange($event)"
-  ></mat-paginator>
-</footer>
+<devmx-paginator
+  [size]="10"
+  [items]="presentations.items"
+  (pageChange)="onPageChange($event)"
+/>
 }

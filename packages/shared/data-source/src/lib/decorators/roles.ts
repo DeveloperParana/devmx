@@ -1,5 +1,4 @@
 import { Role } from '@devmx/shared-api-interfaces';
-import { SetMetadata } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
 export const Roles = Reflector.createDecorator<Role[]>();

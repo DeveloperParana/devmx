@@ -6,6 +6,7 @@ import {
   SignIn,
   SignUp,
   AuthUser,
+  Challenge,
   AccessToken,
 } from '@devmx/shared-api-interfaces';
 
@@ -18,6 +19,10 @@ export class AuthServiceImpl implements AuthService {
 
   auth() {
     return this.http.get<AuthUser>(this.url);
+  }
+
+  challenge() {
+    return this.http.get<Challenge>(`${this.url}/challenge`);
   }
 
   checkUsername(data: Username) {

@@ -1,7 +1,8 @@
 import { Account, RoleGroup } from '@devmx/shared-api-interfaces';
 
 enum Permission {
-  Sponsor = 0b1,
+  Recruiter = 0b1,
+  Sponsor = 0b1 << Recruiter,
   Worthy = 0b1 << Sponsor,
   Board = 0b1 << Worthy,
 }
@@ -26,6 +27,11 @@ export class AccountLevel {
 
     this.#groups.push('auto');
 
+    if (this.isRecruiter) {
+      this.#level += Permission.Recruiter;
+      this.#groups.push('recruiter');
+    }
+
     if (this.isSponsor) {
       this.#level += Permission.Sponsor;
       this.#groups.push('sponsor');
@@ -40,6 +46,10 @@ export class AccountLevel {
       this.#level += Permission.Board;
       this.#groups.push('board');
     }
+  }
+
+  get isRecruiter() {
+    return this.roles.recruiter;
   }
 
   get isSponsor() {

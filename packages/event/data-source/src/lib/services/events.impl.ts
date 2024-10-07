@@ -1,14 +1,25 @@
+import { Event } from '@devmx/shared-api-interfaces';
+import { EventsService } from '@devmx/event-domain/server';
+import { CreateEventDto, UpdateEventDto } from '../dtos';
+import { Model, RootFilterQuery } from 'mongoose';
 import {
   objectId,
   QueryFilterDto,
   QueryParamsDto,
 } from '@devmx/shared-data-source';
-import { EventsService } from '@devmx/event-domain/server';
-import { CreateEventDto, UpdateEventDto } from '../dtos';
-import { Event } from '@devmx/shared-api-interfaces';
-import { Model } from 'mongoose';
 
 export class EventsServiceImpl implements EventsService {
+  #refs = {
+    owner: { path: 'owner', select: 'name username photo' },
+    leaders: { path: 'leaders', select: 'name username photo' },
+    city: { path: 'city', select: 'name location timeZone' },
+    presentations: {
+      path: 'presentations',
+      select: 'title description cover',
+      populate: { path: 'owner', select: 'name username photo' },
+    },
+  };
+
   constructor(private eventModel: Model<Event>) {}
 
   async create(data: CreateEventDto): Promise<Event> {
@@ -21,15 +32,33 @@ export class EventsServiceImpl implements EventsService {
 
     const skip = page * size;
 
-    const where = { ...filter };
+    const where: RootFilterQuery<Event> = { ...filter };
+
+    if (params.location) {
+      const { lat, lng, min, max } = params.location;
+
+      where.city = {
+        location: {
+          $near: {
+            $geometry: {
+              type: 'Point',
+              coordinates: [lat, lng],
+            },
+            $maxDistance: max,
+            $minDistance: min,
+          },
+        },
+      };
+    }
 
     const events = await this.eventModel
       .find(where)
       .skip(skip)
       .limit(size)
-      .populate('owner', 'name username photo')
-      .populate('leaders', 'name username photo')
-      .populate('city', 'name location timeZone')
+      .populate(this.#refs.owner)
+      .populate(this.#refs.leaders)
+      .populate(this.#refs.presentations)
+      .populate(this.#refs.city)
       .exec();
 
     const data = events.map((item) => item.toJSON());
@@ -40,10 +69,12 @@ export class EventsServiceImpl implements EventsService {
   }
 
   async findOne(id: string) {
-    const event = await this.eventModel.findById(id)
-      .populate('owner', 'name username photo')
-      .populate('leaders', 'name username photo')
-      .populate('city', 'name location timeZone')
+    const event = await this.eventModel
+      .findById(id)
+      .populate(this.#refs.owner)
+      .populate(this.#refs.leaders)
+      .populate(this.#refs.presentations)
+      .populate(this.#refs.city)
       .exec();
 
     return event ? event.toJSON() : null;
@@ -59,9 +90,10 @@ export class EventsServiceImpl implements EventsService {
       .find({ ...filter, owner })
       .skip(skip)
       .limit(size)
-      .populate('owner', 'name username photo')
-      .populate('leaders', 'name username photo')
-      .populate('city', 'name location timeZone')
+      .populate(this.#refs.owner)
+      .populate(this.#refs.leaders)
+      .populate(this.#refs.presentations)
+      .populate(this.#refs.city)
       .exec();
 
     const data = events.map((item) => item.toJSON());
@@ -76,9 +108,10 @@ export class EventsServiceImpl implements EventsService {
   async findOneBy(filter: QueryFilterDto<Event>) {
     const event = await this.eventModel
       .findOne(filter)
-      .populate('owner', 'name username photo')
-      .populate('leaders', 'name username photo')
-      .populate('city', 'name location timeZone')
+      .populate(this.#refs.owner)
+      .populate(this.#refs.leaders)
+      .populate(this.#refs.presentations)
+      .populate(this.#refs.city)
       .exec();
 
     return event ? event.toJSON() : null;

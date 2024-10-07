@@ -16,6 +16,11 @@ export const env = {
     photos: {
       dest: 'assets/photos',
     },
+    events: {
+      covers: {
+        dest: 'assets/events/covers',
+      }
+    }
   },
   static: {
     rootPath: join(__dirname, 'assets'),

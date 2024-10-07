@@ -62,14 +62,16 @@ export class PresentationsContainer implements OnInit {
 
     const afterClosed$ = createPresentationRef.afterClosed().pipe(take(1));
 
-    afterClosed$.subscribe((presentation) => {
-      if (presentation) {
+    afterClosed$.subscribe((value) => {
+      if (value) {
         const presentation$ = this.presentationFacade.presentation$;
-        presentation$.pipe(take(1)).subscribe(() => {
-          this.accountFacade.loadPresentations();
+        presentation$.pipe(take(1)).subscribe((presentation) => {
+          if (presentation) {
+            this.router.navigate([presentation.id], { relativeTo: this.route });
+          }
         });
 
-        this.presentationFacade.create(presentation);
+        this.presentationFacade.create(value);
       }
     });
   }

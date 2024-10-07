@@ -1,14 +1,16 @@
+import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { SignIn } from '@devmx/shared-api-interfaces';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SignInForm } from '../../forms';
 import {
-  output,
+  inject,
+  OnInit,
   Component,
   viewChild,
   ElementRef,
+  DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
 
@@ -17,6 +19,12 @@ import {
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [
+    {
+      provide: ControlContainer,
+      useFactory: () => inject(ControlContainer, { skipSelf: true }),
+    },
+  ],
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -25,26 +33,26 @@ import {
   ],
   standalone: true,
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
+  #destroyRef = inject(DestroyRef);
+
   usernameRef = viewChild<ElementRef<HTMLInputElement>>('username');
   get username() {
     return this.usernameRef()?.nativeElement;
   }
 
-  form = new SignInForm();
-
-  submitted = output<SignIn>();
-
-  focus() {
-    if (!this.username) return;
-    this.username.focus();
+  container = inject(ControlContainer);
+  get form() {
+    return this.container.control as SignInForm;
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      return this.submitted.emit(this.form.getRawValue());
-    }
-
-    this.form.markAllAsTouched();
+  ngOnInit() {
+    this.form.focus$
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((state) => {
+        if (state && this.username) {
+          this.username.focus();
+        }
+      });
   }
 }

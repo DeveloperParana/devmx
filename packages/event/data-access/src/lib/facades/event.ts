@@ -1,3 +1,7 @@
+import { UploadCover } from '@devmx/shared-api-interfaces/client';
+import { State } from '@devmx/shared-data-access';
+import { FilterEvent } from '../dtos';
+import { take } from 'rxjs';
 import {
   City,
   Page,
@@ -7,22 +11,22 @@ import {
   CreateEvent,
   UpdateEvent,
   PresentationRef,
+  QueryLocation,
 } from '@devmx/shared-api-interfaces';
-import { State } from '@devmx/shared-data-access';
-import { FilterEvent } from '../dtos';
-import { take } from 'rxjs';
 import {
   CreateEventUseCase,
   FindEventByIDUseCase,
   FindEventsUseCase,
   RemoveEventUseCase,
   UpdateEventUseCase,
+  UploadCoverUseCase,
 } from '@devmx/event-domain/client';
 
 interface EventState {
   events: Page<EventOut>;
   event: EventOut | null;
   filter: FilterEvent;
+  location?: QueryLocation;
 }
 
 export class EventFacade extends State<EventState> {
@@ -35,7 +39,8 @@ export class EventFacade extends State<EventState> {
     private findEventsUseCase: FindEventsUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
-    private removeEventUseCase: RemoveEventUseCase
+    private removeEventUseCase: RemoveEventUseCase,
+    private uploadCoverUseCase: UploadCoverUseCase
   ) {
     super({
       events: { data: [], items: 0, pages: 0 },
@@ -52,9 +57,20 @@ export class EventFacade extends State<EventState> {
     this.setState({ filter: { format: '', title: '' } });
   }
 
+  setLocation(location: QueryLocation) {
+    this.setState({ location });
+  }
+
+  clearLocation() {
+    this.setState({ location: undefined });
+  }
+
   load(page = 0, size = 10) {
     const filter = this.state.filter;
-    const params = { filter, page, size };
+
+    const location = this.state.location;
+
+    const params = { filter, page, size, location };
 
     const request$ = this.findEventsUseCase.execute(params);
 
@@ -122,6 +138,12 @@ export class EventFacade extends State<EventState> {
     const request$ = this.updateEventUseCase.execute(value);
 
     request$.pipe(take(1)).subscribe(() => this.load());
+  }
+
+  uploadCover(data: UploadCover) {
+    const request$ = this.uploadCoverUseCase.execute(data);
+
+    request$.pipe(take(1)).subscribe(({ id }) => this.loadOne(id));
   }
 
   remove(id: string) {

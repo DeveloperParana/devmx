@@ -6,6 +6,7 @@ import {
   FindEventsUseCase,
   RemoveEventUseCase,
   UpdateEventUseCase,
+  UploadCoverUseCase,
 } from '@devmx/event-domain/client';
 
 export function provideEventFacade() {
@@ -15,5 +16,6 @@ export function provideEventFacade() {
     FindEventByIDUseCase,
     UpdateEventUseCase,
     RemoveEventUseCase,
+    UploadCoverUseCase
   ]);
 }

@@ -27,6 +27,12 @@
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/devmx/src/envs/env.ts",
+              "with": "apps/devmx/src/envs/env.prod.ts"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",

@@ -6,4 +6,10 @@ export abstract class Env {
   abstract photos: {
     url: string;
   };
+
+  abstract covers: {
+    events: {
+      url: string;
+    };
+  };
 }

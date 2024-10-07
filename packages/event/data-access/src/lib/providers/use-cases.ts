@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-data-access';
 import {
   EventService,
   CreateEventUseCase,
@@ -5,8 +6,8 @@ import {
   FindEventsUseCase,
   RemoveEventUseCase,
   UpdateEventUseCase,
+  UploadCoverUseCase,
 } from '@devmx/event-domain/client';
-import { createUseCaseProvider } from '@devmx/shared-data-access';
 
 export function provideCreateEventUseCase() {
   return createUseCaseProvider(CreateEventUseCase, [EventService]);
@@ -26,4 +27,8 @@ export function provideUpdateEventUseCase() {
 
 export function provideRemoveEventUseCase() {
   return createUseCaseProvider(RemoveEventUseCase, [EventService]);
+}
+
+export function provideUploadCoverUseCase() {
+  return createUseCaseProvider(UploadCoverUseCase, [EventService]);
 }

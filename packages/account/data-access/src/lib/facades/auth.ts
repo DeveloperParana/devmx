@@ -1,16 +1,23 @@
-import { SignIn, SignUp, AuthUser } from '@devmx/shared-api-interfaces';
+import { AccountLevel } from '@devmx/shared-util-data';
 import { State } from '@devmx/shared-data-access';
 import { take } from 'rxjs';
+import {
+  SignIn,
+  SignUp,
+  AuthUser,
+  Challenge,
+} from '@devmx/shared-api-interfaces';
 import {
   SignInUseCase,
   SignUpUseCase,
   LoadAuthUserUseCase,
+  RequestChallengeUseCase,
 } from '@devmx/account-domain/client';
-import { AccountLevel } from '@devmx/shared-util-data';
 
 interface AuthState {
   user: AuthUser | null;
   level: AccountLevel | null;
+  challenge: string | null;
   webauthAvailable: boolean | null;
 }
 
@@ -21,6 +28,8 @@ export class AuthFacade extends State<AuthState> {
 
   connected$ = this.select(() => !!this.accessToken);
 
+  challenge$ = this.select((state) => state.challenge);
+
   get accessToken() {
     return localStorage.getItem('accessToken');
   }
@@ -28,14 +37,25 @@ export class AuthFacade extends State<AuthState> {
   constructor(
     private signInUseCase: SignInUseCase,
     private signUpUseCase: SignUpUseCase,
-    private loadAuthUserUseCase: LoadAuthUserUseCase
+    private loadAuthUserUseCase: LoadAuthUserUseCase,
+    private requestChallengeUseCase: RequestChallengeUseCase
   ) {
-    super({ user: null, level: null, webauthAvailable: null });
+    super({ user: null, level: null, challenge: null, webauthAvailable: null });
   }
 
   checkWebAuthn() {
     const webauthAvailable = 'PublicKeyCredential' in window;
     this.setState({ webauthAvailable });
+  }
+
+  requestChallenge() {
+    const challenge$ = this.requestChallengeUseCase.execute();
+
+    const onChallenge = ({ challenge }: Challenge) => {
+      this.setState({ challenge });
+    };
+
+    challenge$.pipe(take(1)).subscribe(onChallenge);
   }
 
   loadAuthUser(force = false) {

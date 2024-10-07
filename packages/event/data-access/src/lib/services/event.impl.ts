@@ -28,6 +28,14 @@ export class EventServiceImpl implements EventService {
     return this.http.patch<EventOut>(`${this.url}/${id}`, data);
   }
 
+  upload(id: string, cover: Blob) {
+    const data = new FormData();
+    data.append('cover', cover);
+    const url = `${this.url}/${id}/cover`;
+    return this.http.post<EventOut>(url, data);
+  }
+
+
   remove(id: string) {
     return this.http.delete<EventOut>(`${this.url}/${id}`);
   }

@@ -1,4 +1,5 @@
 import { ConflictError, PersistenceError } from '@devmx/shared-util-errors';
+import { DEFAULT_ROLES, merge } from '@devmx/shared-util-data';
 import { AccountsService } from '../services';
 import { CryptoService } from '../ports';
 import {
@@ -22,17 +23,7 @@ export class SignUpUseCase implements UseCase<SignUp, Account> {
       throw new ConflictError('Nome de usuário em uso');
     }
 
-    const roles: AccountRole = {
-      member: true,
-      speaker: false,
-      neighbor: false,
-      donor: false,
-      leader: false,
-      staff: false,
-      fellow: false,
-      manager: false,
-      director: false,
-    };
+    const roles: AccountRole = merge(DEFAULT_ROLES, { member: true });
 
     const password = this.cryptoService.hash(data.password);
     const value = { ...data, password, roles, active: true };

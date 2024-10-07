@@ -2,6 +2,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormOption, TypedForm } from '@devmx/shared-ui-global';
 import { Gender, SignUp } from '@devmx/shared-api-interfaces';
 import { signal } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export class SignUpForm extends FormGroup<TypedForm<SignUp>> {
   genders: FormOption<Gender>[] = [
@@ -13,6 +14,13 @@ export class SignUpForm extends FormGroup<TypedForm<SignUp>> {
     { value: 'prefer-not-to-say', viewValue: 'Prefiro não dizer' },
     { value: '', viewValue: 'Outro' },
   ];
+
+  #focus = new BehaviorSubject(false);
+  focus$ = this.#focus.asObservable();
+
+  focus() {
+    this.#focus.next(true);
+  }
 
   checkingUsername = signal(false);
 

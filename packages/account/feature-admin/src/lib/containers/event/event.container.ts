@@ -2,7 +2,6 @@ import { AccountRefForm, PresentationRefForm } from '@devmx/shared-ui-global';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -15,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { EventFacade } from '@devmx/event-data-access';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Event } from '@devmx/shared-api-interfaces';
 import { param } from '@devmx/shared-ui-global';
 import { EventForm } from '../../forms';
@@ -22,8 +22,10 @@ import { switchMap, take } from 'rxjs';
 import {
   provideSearchLeaders,
   provideSearchPresentations,
+  provideSelectCover,
   SearchLeadersService,
   SearchPresentationsService,
+  SelectCoverService,
 } from '../../dialogs';
 import {
   AutocompleteCitiesComponent,
@@ -50,6 +52,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     provideNativeDateAdapter(),
+    provideSelectCover(),
     provideSearchLeaders(),
     provideSearchPresentations(),
   ],
@@ -72,6 +75,12 @@ import {
   standalone: true,
 })
 export class EventContainer implements OnInit {
+  destroyRef = inject(DestroyRef);
+
+  cdRef = inject(ChangeDetectorRef);
+
+  route = inject(ActivatedRoute);
+
   eventFacade = inject(EventFacade);
 
   cityFacade = inject(CityFacade);
@@ -80,17 +89,11 @@ export class EventContainer implements OnInit {
 
   searchPresentations = inject(SearchPresentationsService);
 
-  autocompleteCitiesService = inject(AutocompleteCitiesService);
+  autocompleteCities = inject(AutocompleteCitiesService);
 
-  destroyRef = inject(DestroyRef);
-
-  cdRef = inject(ChangeDetectorRef);
-
-  id$ = inject(ActivatedRoute).paramMap.pipe(param('id'));
+  selectCover = inject(SelectCoverService);
 
   form = new EventForm();
-
-  leader = new FormControl();
 
   ngOnInit() {
     this.eventFacade.event$
@@ -99,11 +102,13 @@ export class EventContainer implements OnInit {
         if (event) this.form.fill(event);
       });
 
-    this.id$.pipe(take(1)).subscribe((id) => {
+    const id$ = this.route.paramMap.pipe(param('id'));
+
+    id$.pipe(take(1)).subscribe((id) => {
       if (id) this.eventFacade.loadOne(id);
     });
 
-    this.autocompleteCitiesService.search$
+    this.autocompleteCities.search$
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         switchMap((name) => {
@@ -111,8 +116,19 @@ export class EventContainer implements OnInit {
         })
       )
       .subscribe((cities) => {
-        this.autocompleteCitiesService.setCities(cities);
+        this.autocompleteCities.setCities(cities);
       });
+  }
+
+  openSelectCover() {
+    const cover$ = this.selectCover.open().afterClosed();
+
+    cover$.pipe(take(1)).subscribe((cover) => {
+      const { id } = this.form.value;
+      if (id && cover) {
+        this.eventFacade.uploadCover({ id, cover });
+      }
+    });
   }
 
   openSearchLeaders() {

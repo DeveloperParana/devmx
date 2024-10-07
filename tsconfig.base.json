@@ -101,6 +101,12 @@
       "@devmx/shared-data-source": ["packages/shared/data-source/src/index.ts"],
       "@devmx/shared-resource": ["packages/shared/resource/src/index.ts"],
       "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"],
+      "@devmx/shared-ui-global/filter": [
+        "packages/shared/ui-global/filter/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/layout": [
+        "packages/shared/ui-global/layout/src/index.ts"
+      ],
       "@devmx/shared-util-authn": ["packages/shared/util-authn/src/index.ts"],
       "@devmx/shared-util-authn/client": [
         "packages/shared/util-authn/src/client.ts"

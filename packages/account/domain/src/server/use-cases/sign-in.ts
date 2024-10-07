@@ -1,8 +1,20 @@
-import { AccessToken, SignIn, UseCase } from '@devmx/shared-api-interfaces';
 import { AuthenticationError } from '@devmx/shared-util-errors';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { CryptoService, JwtService } from '../ports';
 import { AccountsService } from '../services';
+import {
+  SignIn,
+  Account,
+  UseCase,
+  AccessToken,
+} from '@devmx/shared-api-interfaces';
+
+const getCity = ({ city }: Account) => {
+  if (!city) return null;
+  const { id, name, location } = city;
+  const [lat, lng] = location.coordinates;
+  return { id, name, lat, lng };
+};
 
 export class SignInUseCase implements UseCase<SignIn, AccessToken> {
   constructor(
@@ -32,7 +44,10 @@ export class SignInUseCase implements UseCase<SignIn, AccessToken> {
     }
 
     const { id: sub, name, email, roles, photo = '' } = account;
-    const payload = { sub, name, email, roles, username, photo };
+
+    const city = getCity(account);
+
+    const payload = { sub, name, email, roles, city, username, photo };
     const options = { secret: this.env.jwt.secret };
 
     const accessToken = await this.jwtService.signAsync(payload, options);

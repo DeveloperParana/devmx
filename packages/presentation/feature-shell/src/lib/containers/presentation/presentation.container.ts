@@ -1,4 +1,3 @@
-import { Component, DestroyRef, inject, OnInit, viewChild } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { PresentationCommentComponent } from '../../components';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -7,11 +6,20 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
+import {
+  inject,
+  OnInit,
+  Component,
+  viewChild,
+  DestroyRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   param,
-  AvatarComponent,
+  PhotoPipe,
   ImageComponent,
+  AvatarComponent,
 } from '@devmx/shared-ui-global';
 import {
   PresentationFacade,
@@ -23,9 +31,9 @@ import {
   selector: 'devmx-presentation',
   templateUrl: './presentation.container.html',
   styleUrl: './presentation.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
-    JsonPipe,
     RouterModule,
     MatIconModule,
     MatChipsModule,
@@ -35,28 +43,29 @@ import {
     PresentationCommentComponent,
     MatCardModule,
     MatListModule,
+    PhotoPipe,
   ],
   standalone: true,
 })
 export class PresentationContainer implements OnInit {
+  #destroyRef = inject(DestroyRef);
+
   presentationFacade = inject(PresentationFacade);
   presentationCommentFacade = inject(PresentationCommentFacade);
 
-  presentationCommentChild = viewChild(PresentationCommentComponent)
+  presentationCommentChild = viewChild(PresentationCommentComponent);
   get presentationComment() {
-    return this.presentationCommentChild()
+    return this.presentationCommentChild();
   }
 
-  id$ = inject(ActivatedRoute).paramMap.pipe(param('id'));
-
-  #destroyRef = inject(DestroyRef);
+  route = inject(ActivatedRoute);
 
   presentation = '';
 
   ngOnInit() {
-    this.id$.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((id) => {
-      console.log(id);
+    const id$ = this.route.paramMap.pipe(param('id'));
 
+    id$.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((id) => {
       if (id) this.loadPresentation(id);
     });
   }

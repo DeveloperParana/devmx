@@ -1,9 +1,9 @@
-import { CityService } from '@devmx/account-domain/client';
+// import { CityService } from '@devmx/account-domain/client';
 import { City, Page } from '@devmx/shared-api-interfaces';
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { HttpClient } from '@devmx/shared-data-access';
 
-export class CityServiceImpl implements CityService {
+export class CityServiceImpl {
   get url() {
     return `${this.env.api.url}/accounts`;
   }

@@ -4,6 +4,7 @@ export * from './create-presentation';
 export * from './created-presentation';
 export * from './presentation-comment';
 export * from './presentation-reaction';
+export * from './presentation-ref';
 export * from './presentation';
 export * from './update-presentation-comment';
 export * from './update-presentation-reaction';

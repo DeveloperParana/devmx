@@ -9,6 +9,7 @@ export * from './find-presentations-by-owner';
 export * from './find-speakers';
 export * from './load-auth-user';
 export * from './remove-account';
+export * from './request-challenge';
 export * from './sign-in';
 export * from './sign-up';
 export * from './update-account';

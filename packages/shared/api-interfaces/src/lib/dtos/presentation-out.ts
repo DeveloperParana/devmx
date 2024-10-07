@@ -1,5 +1,5 @@
 import { PresentationFormat } from '../types';
-import { AccountOut } from './account-out';
+import { AccountRef } from './account-ref';
 
 export interface PresentationOut {
   id: string;
@@ -16,5 +16,5 @@ export interface PresentationOut {
 
   visible: boolean;
 
-  owner: AccountOut;
+  owner: AccountRef;
 }

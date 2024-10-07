@@ -15,6 +15,11 @@ export abstract class Env {
     photos: {
       dest: string;
     };
+    events: {
+      covers: {
+        dest: string;
+      };
+    };
   };
 
   abstract static: {

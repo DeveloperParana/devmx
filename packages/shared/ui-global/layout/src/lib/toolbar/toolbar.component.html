@@ -1,0 +1,61 @@
+<mat-toolbar>
+  @if (toolbar.auth.user$| async; as user) {
+  <button
+    type="button"
+    mat-button
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    (click)="toggleOverlay()"
+  >
+    <mat-icon>account_circle</mat-icon>
+    <span>{{ user.name.first }} {{ user.city?.name }}</span>
+  </button>
+
+  <span class="spacer"></span>
+  <p>
+    Comunidade DevParaná
+    <br />
+    &copy; 2015 - {{ year }}
+  </p>
+  <span class="spacer"></span>
+
+  <a class="devpr-link" target="_blank" href="//devpr.org">
+    <img src="devpr.svg" alt="Comunidade DevParaná" />
+  </a>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="accountOverlayOpened()"
+  >
+    <mat-card class="account-card">
+      <mat-card-header>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-nav-list>
+        @if (user | hasRole: 'speaker') {
+        <a mat-list-item routerLink="/conta/minhas-apresentacoes">
+          <mat-icon matListItemIcon>collections_bookmark</mat-icon>
+          <span matListItemTitle>Minhas apresentações</span>
+        </a>
+        } @if (user | hasRole: 'leader') {
+        <a mat-list-item routerLink="/conta/administracao/meus-eventos">
+          <mat-icon matListItemIcon>calendar_month</mat-icon>
+          <span matListItemTitle>Meus eventos</span>
+        </a>
+        }
+      </mat-nav-list>
+
+      <mat-card-actions>
+        <a mat-icon-button routerLink="/conta">
+          <mat-icon>settings</mat-icon>
+        </a>
+        <button type="button" mat-button (click)="toolbar.auth.signOut()">
+          Sair
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-template>
+  }
+</mat-toolbar>

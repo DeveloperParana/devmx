@@ -1,5 +1,5 @@
 import { toBase64URL } from '../utils/index';
-import { getRandomValues } from 'node:crypto';
+import { getRandomValues } from 'crypto';
 
 export function randomChallenge() {
   /**

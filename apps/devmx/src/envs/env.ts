@@ -4,5 +4,10 @@ export const env = {
   },
   photos: {
     url: '/photos'
+  },
+  covers: {
+    events: {
+      url: '/events/covers'
+    }
   }
 };

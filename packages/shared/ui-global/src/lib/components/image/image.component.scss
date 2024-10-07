@@ -13,10 +13,10 @@
   }
 
   @include mat.elevation-transition();
-  @include mat.elevation(4);
+  @include mat.elevation(2);
 
   &:active,
   &:hover {
-    @include mat.elevation(6);
+    @include mat.elevation(4);
   }
 }

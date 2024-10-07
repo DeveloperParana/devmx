@@ -1,0 +1,27 @@
+<mat-toolbar>
+  @if (showToggleButtonLeft) {
+  <button mat-icon-button (click)="toggleLeft.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  }
+
+  <a routerLink="/" class="app-logo">
+    <img src="devmx.svg" height="48" alt="DevMX">
+  </a>
+
+  <h1 class="app-title">{{ title() }}</h1>
+
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/eventos" routerLinkActive="active"> Eventos </a>
+
+  <a mat-button routerLink="/apresentacoes" routerLinkActive="active">
+    Apresentações
+  </a>
+
+  @if (showToggleButtonRight) {
+  <button mat-icon-button (click)="toggleRight.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  }
+</mat-toolbar>

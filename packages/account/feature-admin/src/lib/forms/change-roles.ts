@@ -11,6 +11,15 @@ export class ChangeRolesForm extends FormGroup<TypedForm<ChangeRoles>> {
         validators: [Validators.required],
       }),
       roles: new FormGroup({
+        member: new FormControl(false, {
+          nonNullable: true,
+        }),
+        speaker: new FormControl(false, {
+          nonNullable: true,
+        }),
+        recruiter: new FormControl(false, {
+          nonNullable: true,
+        }),
         donor: new FormControl(false, {
           nonNullable: true,
         }),
@@ -30,12 +39,6 @@ export class ChangeRolesForm extends FormGroup<TypedForm<ChangeRoles>> {
           nonNullable: true,
         }),
         director: new FormControl(false, {
-          nonNullable: true,
-        }),
-        member: new FormControl(false, {
-          nonNullable: true,
-        }),
-        speaker: new FormControl(false, {
           nonNullable: true,
         }),
       }),

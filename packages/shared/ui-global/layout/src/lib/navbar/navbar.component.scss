@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  width: 100%;
+
+  .app-logo {
+    margin-left: 0.4em;
+    margin-right: 0.8em;
+
+    img {
+      max-height: 48px;
+    }
+  }
+
+  .active {
+    color: #39B44D;
+  }
+
+  .app-title {
+    opacity: 0.6;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
