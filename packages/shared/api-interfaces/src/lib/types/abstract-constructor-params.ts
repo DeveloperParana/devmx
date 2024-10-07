@@ -32,4 +32,4 @@ export type AbstractConstructorParams<T extends Type> =
         Abstract<ConstructorParameters<T>[3]>,
         Abstract<ConstructorParameters<T>[4]>
       ]
-    : never;
+    : [];

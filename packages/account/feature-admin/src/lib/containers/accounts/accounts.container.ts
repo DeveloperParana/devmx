@@ -1,13 +1,13 @@
 import { ChangeRolesService, provideChangeRoles } from '../../dialogs';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { AccountOut, AuthUser } from '@devmx/shared-api-interfaces';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
-import { FilterAccountComponent } from '../../components';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { AsyncPipe, DatePipe } from '@angular/common';
+import { FilterAccountForm } from '../../forms';
 import {
   PhotoPipe,
   GenderPipe,
@@ -27,6 +27,11 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import {
+  FormField,
+  FilterComponent,
+  TextboxFormField,
+} from '@devmx/shared-ui-global/filter';
 
 @Component({
   selector: 'devmx-accounts',
@@ -38,7 +43,7 @@ import {
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    FilterAccountComponent,
+    FilterComponent,
     PaginatorComponent,
     RouterModule,
     GenderPipe,
@@ -62,17 +67,33 @@ export class AccountsContainer implements OnInit {
 
   changeRoles = inject(ChangeRolesService);
 
+  filterForm = new FilterAccountForm();
+
+  filterFields: FormField[] = [
+    new TextboxFormField({
+      key: 'name',
+      label: 'Nome',
+      order: 0,
+      controlType: 'text',
+    }),
+    new TextboxFormField({
+      key: 'username',
+      label: 'Usuário',
+      order: 1,
+      controlType: 'text',
+    }),
+  ];
+
   ngOnInit() {
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(({ page = 0, size = 10 }) => {
+      .subscribe((params: Params) => {
+        const { name = '', username = '' } = params;
+        this.accountFacade.setFilter({ name, username });
+
+        const { page = 0, size = 10 } = params;
         this.accountFacade.load(page, size);
       });
-  }
-
-  find(filter: FilterAccount) {
-    this.accountFacade.setFilter(filter);
-    this.accountFacade.load();
   }
 
   openRoles(assigner: AuthUser, assign: AccountOut) {
@@ -87,7 +108,11 @@ export class AccountsContainer implements OnInit {
     });
   }
 
-  onPageChange({ page, size }: PageParams) {
-    this.router.navigate([], { queryParams: { page, size } });
+  onFilterChange(queryParams: FilterAccount) {
+    this.router.navigate([], { queryParams });
+  }
+
+  onPageChange(queryParams: PageParams) {
+    this.router.navigate([], { queryParams });
   }
 }

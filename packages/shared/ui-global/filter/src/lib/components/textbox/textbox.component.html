@@ -1,0 +1,9 @@
+@if (options(); as opts) {
+
+<mat-form-field>
+  <mat-label>{{ opts.label }}</mat-label>
+  <input matInput [formControlName]="opts.key" [type]="opts.controlType" />
+  <mat-error>Obrigatório</mat-error>
+</mat-form-field>
+
+}

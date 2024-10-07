@@ -1,0 +1,13 @@
+@if (options(); as opts) {
+
+<mat-form-field>
+  <mat-label>{{ opts.label }}</mat-label>
+  <mat-select [formControlName]="opts.key">
+    @for (opt of opts.options; track opt) {
+    <mat-option [value]="opt.value">{{ opt.viewValue }}</mat-option>
+    }
+  </mat-select>
+  <mat-error>Obrigatório</mat-error>
+</mat-form-field>
+
+}

@@ -1,12 +1,7 @@
+import { add, DEFAULT_ROLES, merge, use } from '@devmx/shared-util-data';
 import { AccountsService, ChangeRolesUseCase } from '../../../server';
+import { account, authUser, AccountsServiceMock } from '../../mocks';
 import { AccessDeniedError } from '@devmx/shared-util-errors';
-import { add, merge, use } from '@devmx/shared-util-data';
-import {
-  account,
-  authUser,
-  accountRole,
-  AccountsServiceMock,
-} from '../../mocks';
 
 describe('Change Roles UseCase', () => {
   let useCase: ChangeRolesUseCase;
@@ -28,10 +23,13 @@ describe('Change Roles UseCase', () => {
   });
 
   it('member assign staff should throw access denied', async () => {
-    const assign = { id: '66f706967d818c4004effb48', roles: merge(accountRole, { staff: true }) };
+    const assign = {
+      id: '66f706967d818c4004effb48',
+      roles: merge(DEFAULT_ROLES, { staff: true }),
+    };
 
     const assigner = merge(authUser, {
-      roles: merge(accountRole, { member: true }),
+      roles: merge(DEFAULT_ROLES, { member: true }),
     });
 
     await expect(useCase.execute({ assign, assigner })).rejects.toThrow(
@@ -40,10 +38,13 @@ describe('Change Roles UseCase', () => {
   });
 
   it('staff assign manager should throw access denied', async () => {
-    const assign = { id: '66f706967d818c4004effb48', roles: merge(accountRole, { manager: true }) };
+    const assign = {
+      id: '66f706967d818c4004effb48',
+      roles: merge(DEFAULT_ROLES, { manager: true }),
+    };
 
     const assigner = merge(authUser, {
-      roles: merge(accountRole, { staff: true }),
+      roles: merge(DEFAULT_ROLES, { staff: true }),
     });
 
     await expect(useCase.execute({ assign, assigner })).rejects.toThrow(
@@ -52,10 +53,13 @@ describe('Change Roles UseCase', () => {
   });
 
   it('manager assign staff should be ok', async () => {
-    const assign = { id: '66f706967d818c4004effb48', roles: merge(accountRole, { staff: true }) };
+    const assign = {
+      id: '66f706967d818c4004effb48',
+      roles: merge(DEFAULT_ROLES, { staff: true }),
+    };
 
     const assigner = merge(authUser, {
-      roles: merge(accountRole, { manager: true }),
+      roles: merge(DEFAULT_ROLES, { manager: true }),
     });
 
     const result = { ...account, ...assign, id: assign.id };

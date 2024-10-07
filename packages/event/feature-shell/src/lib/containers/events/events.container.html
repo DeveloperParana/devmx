@@ -1,5 +1,9 @@
 <header class="events-header">
-  <devmx-filter-event (valueChange)="find($event)" />
+  <devmx-filter
+    [fields]="filterFields"
+    [formGroup]="filterForm"
+    (filterChange)="onFilterChange($event)"
+  ></devmx-filter>
 </header>
 
 @if (eventFacade.events$ | async; as events) {
@@ -9,27 +13,52 @@
 
   <a [routerLink]="event.id">
     <mat-card class="event-card">
+      @if (event.cover) {
+      <img
+        mat-card-image
+        [src]="event.cover | cover: 'events'"
+        [alt]="event.title"
+      />
+      }
       <mat-card-header>
-        <mat-card-title>{{event.title}}</mat-card-title>
+        <h2 mat-card-title>{{event.title}}</h2>
         <mat-card-subtitle>
-          {{event.date | date}} {{event.time}}
+          {{event.date | date}} às {{event.time}}h
         </mat-card-subtitle>
       </mat-card-header>
+
       <mat-card-content>
         <p>{{event.description}}</p>
       </mat-card-content>
+
+      <mat-list class="event-presentations">
+        @for (presentation of event.presentations; track presentation.id) {
+        <mat-list-item>
+          @if (presentation.owner.photo) {
+          <img
+            matListItemAvatar
+            [src]="presentation.owner.photo | photo"
+            [alt]="presentation.owner.name.first"
+          />
+          } @else {
+          <mat-icon matListItemIcon>interpreter_mode</mat-icon>
+          }
+          <h3 matListItemTitle>{{presentation.title}}</h3>
+          <p matListItemLine>
+            {{presentation.owner.name.first}} {{presentation.owner.name.last}}
+          </p>
+        </mat-list-item>
+        }
+      </mat-list>
     </mat-card>
   </a>
 
   }
 </div>
 
-<footer class="events-footer">
-  <mat-paginator
-    hidePageSize
-    [pageSize]="10"
-    [length]="events.items"
-    (page)="onPageChange($event)"
-  ></mat-paginator>
-</footer>
+<devmx-paginator
+  [size]="10"
+  [items]="events.items"
+  (pageChange)="onPageChange($event)"
+/>
 }

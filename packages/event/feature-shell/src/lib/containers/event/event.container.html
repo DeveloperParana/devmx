@@ -1,0 +1,51 @@
+<div>
+  @if (eventFacade.event$ | async; as event) {
+
+  <mat-card>
+    @if (event.cover) {
+    <img
+      mat-card-image
+      [src]="event.cover | cover: 'events'"
+      [alt]="event.title"
+    />
+    }
+  </mat-card>
+
+  <h2>{{event.title}}</h2>
+  <h4>{{event.city?.name}}</h4>
+
+  <section class="row">
+    <div>
+      @for (presentation of event.presentations; track presentation.id) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{presentation.title}}</mat-card-title>
+          <mat-card-subtitle>
+            {{presentation.owner.name.first}}
+            </mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{presentation.description}}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+    <div>
+      @for (leader of event.leaders; track leader.id) {
+      <mat-card>
+        <mat-card-header>
+          <img
+            mat-card-avatar
+            [src]="leader.photo | photo"
+            [alt]="leader.name.first"
+          />
+          <mat-card-title>{{leader.name.first}}</mat-card-title>
+          <mat-card-subtitle>{{leader.username}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      }
+    </div>
+  </section>
+  }
+</div>

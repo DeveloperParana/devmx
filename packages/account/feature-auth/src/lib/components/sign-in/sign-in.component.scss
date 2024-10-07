@@ -1,24 +1,41 @@
 :host {
-  display: block;
+  // display: block;
   margin: 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
 
-  form {
+  section {
     display: flex;
-    flex-direction: column;
-    gap: 0.4em;
+    gap: 1.2em;
 
-    section {
-      display: flex;
-      gap: 1.2em;
-
-      & > * {
-        flex: 1;
-      }
-    }
-
-    footer {
-      display: flex;
-      justify-content: flex-end;
+    & > * {
+      flex: 1;
     }
   }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  // form {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 0.4em;
+
+  //   section {
+  //     display: flex;
+  //     gap: 1.2em;
+
+  //     & > * {
+  //       flex: 1;
+  //     }
+  //   }
+
+  //   footer {
+  //     display: flex;
+  //     justify-content: flex-end;
+  //   }
+  // }
 }

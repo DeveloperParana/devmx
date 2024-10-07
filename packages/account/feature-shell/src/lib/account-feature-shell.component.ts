@@ -1,87 +1,61 @@
-import { PresentationFacade } from '@devmx/presentation-data-access';
+import { LayoutComponent, LayoutSidenav } from '@devmx/shared-ui-global/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { AuthFacade } from '@devmx/account-data-access';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
-import {
-  Sidenav,
-  AuthUserComponent,
-  SidenavComponent,
-  ToolbarComponent,
-} from '@devmx/shared-ui-global';
 import {
   inject,
   OnInit,
   Component,
-  OnDestroy,
   DestroyRef,
-  ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
+  template: `<devmx-layout />`,
+  styles: `
+    :host {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    `,
   selector: 'devmx-account-feature-shell',
-  templateUrl: './account-feature-shell.component.html',
-  styleUrl: './account-feature-shell.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ToolbarComponent,
-    SidenavComponent,
-    AuthUserComponent,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    LayoutModule,
-    RouterModule,
-    AsyncPipe,
-  ],
+  imports: [RouterModule, LayoutComponent],
   standalone: true,
 })
-export class AccountFeatureShellComponent implements OnInit, OnDestroy {
-  presentationFacade = inject(PresentationFacade);
-
-  authFacade = inject(AuthFacade);
-
-  sidenav = inject(Sidenav);
-
-  destroyRef = inject(DestroyRef);
-
+export class AccountFeatureShellComponent implements OnInit {
   router = inject(Router);
-
-  mobileQuery: MediaQueryList;
-
-  #mobileQueryListener: () => void;
-
-  constructor() {
-    const changeDetectorRef = inject(ChangeDetectorRef);
-    const media = inject(MediaMatcher);
-
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this.#mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this.#mobileQueryListener);
-  }
+  destroyRef = inject(DestroyRef);
+  authFacade = inject(AuthFacade);
+  sidenav = inject(LayoutSidenav);
 
   ngOnInit() {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        if (user) this.sidenav.setRoles(user.roles);
+        const userExists = !!user;
+
+        if (userExists) {
+          this.sidenav.setRoles(user.roles);
+
+          this.waitingForLogout();
+        }
       });
 
     this.authFacade.loadAuthUser();
   }
 
-  onLogout() {
-    this.authFacade.signOut();
-    this.sidenav.resetRoles();
-    this.router.navigateByUrl('/conta/auth');
-  }
+  waitingForLogout() {
+    this.authFacade.user$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((user) => {
+        const userIsNull = !user;
 
-  ngOnDestroy() {
-    this.mobileQuery.removeEventListener('change', this.#mobileQueryListener);
+        if (userIsNull) {
+          this.router.navigateByUrl('/conta/auth');
+          this.sidenav.resetRoles();
+        }
+      });
   }
 }

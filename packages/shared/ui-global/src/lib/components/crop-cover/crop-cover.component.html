@@ -1,0 +1,30 @@
+<canvas
+  #canvasRef
+  [width]="width()"
+  [height]="height()"
+  (mousemove)="dragImage($event)"
+  (mousedown)="startDrag($event)"
+  (mouseleave)="stopDrag()"
+  (mouseup)="stopDrag()"
+></canvas>
+
+<footer>
+  <devmx-file
+    [accept]="['image/jpeg', 'image/png', 'image/webp']"
+    (selected)="onFileSelected($event)"
+  />
+
+  <nav>
+    <button type="button" mat-icon-button (click)="zoomIn()">
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+
+    <button type="button" mat-icon-button (click)="zoomOut()">
+      <mat-icon>zoom_out</mat-icon>
+    </button>
+  </nav>
+
+  <button type="button" mat-icon-button (click)="cropImage()">
+    <mat-icon>crop_free</mat-icon>
+  </button>
+</footer>

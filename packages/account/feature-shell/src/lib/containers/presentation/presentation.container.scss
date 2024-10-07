@@ -4,28 +4,51 @@
   flex-direction: column;
 
   .presentation-card {
-    padding: 1em;
-
-    h3 {
-      margin: 0.2em 0 0.4em;
-      font-size: 2em;
-    }
-
-    .flex {
+    .mat-mdc-card-content {
       gap: 1em;
       display: flex;
+      flex-flow: row wrap;
 
-      &.row {
-        flex-direction: row;
-
-        &.wrap {
-          flex-flow: row wrap;
-        }
-      }
-
-      > aside {
+      > section {
         flex: 1;
+        gap: 0.4em;
+        display: flex;
+        flex-direction: column;
       }
+    }
+
+    .sortable-list {
+      padding: 0;
+    }
+
+    .sortable-list-item {
+      cursor: grab;
+    }
+
+    .sortable-list.cdk-drop-list-dragging,
+    .sortable-list.cdk-drop-list-dragging .sortable-list-item {
+      cursor: grabbing;
+    }
+
+    .cdk-drag-preview {
+      border: none;
+      box-sizing: border-box;
+      border-radius: 4px;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    .cdk-drag-placeholder {
+      opacity: 0;
+    }
+
+    .cdk-drag-animating {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .sortable-list.cdk-drop-list-dragging
+      .sortable-list-item:not(.cdk-drag-placeholder) {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
     }
   }
 }

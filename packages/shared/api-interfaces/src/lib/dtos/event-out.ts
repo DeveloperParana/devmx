@@ -23,11 +23,13 @@ export interface EventOut {
 
   presentations: PresentationOut[];
 
+  leaders: AccountRef[];
+
   address: string;
 
   city?: City;
 
   location?: Location;
 
-  owner: AccountRef
+  owner: AccountRef;
 }

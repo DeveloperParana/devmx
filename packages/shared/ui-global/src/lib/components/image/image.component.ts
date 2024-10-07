@@ -1,11 +1,10 @@
-import { Component, inject, input } from '@angular/core';
-import { Env } from '@devmx/shared-api-interfaces/client';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'devmx-image',
   styleUrl: './image.component.scss',
   template: `<img
-    [src]="path"
+    [src]="src()"
     [loading]="lazy() ? 'lazy' : 'eager'"
     [width]="width()"
     [alt]="alt()"
@@ -13,13 +12,7 @@ import { Env } from '@devmx/shared-api-interfaces/client';
   standalone: true,
 })
 export class ImageComponent {
-  env = inject(Env);
-
   src = input<string>();
-
-  get path() {
-    return `${this.env.photos.url}/${this.src()}`;
-  }
 
   alt = input('');
 

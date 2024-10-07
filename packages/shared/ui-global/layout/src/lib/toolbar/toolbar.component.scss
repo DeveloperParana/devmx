@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  width: 100%;
+
+  .devpr-link {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.4em;
+    margin-right: 0.8em;
+
+    img {
+      height: 42px;
+    }
+  }
+
+  .active {
+    color: #39B44D;
+  }
+
+  .app-title {
+    opacity: 0.6;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  p {
+    text-align: center;
+    line-height: 1.2;
+    font-size: 0.62em;
+    opacity: 0.8;
+  }
+}
+
+.account-card {
+  .mat-mdc-card-header {
+    padding-bottom: 0.6em;
+  }
+
+  .mat-mdc-nav-list {
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+
+    .mat-mdc-list-item {
+      border-radius: 0;
+    }
+  }
+
+  .mat-mdc-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

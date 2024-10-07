@@ -1,134 +1,145 @@
 <form [formGroup]="form" (submit)="onSubmit()">
   <mat-card>
     <mat-card-content>
-      <mat-form-field>
-        <mat-label>Título do evento</mat-label>
-        <input matInput formControlName="title" autofocus />
-        <mat-error>Obrigatório</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Detalhes do evento</mat-label>
-        <textarea
-          matInput
-          formControlName="description"
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="9"
-        ></textarea>
-      </mat-form-field>
-
-      <section>
-        <devmx-autocomplete-cities formControlName="city" />
-
-        <mat-form-field class="form-field-address">
-          <mat-label>Endereço do evento</mat-label>
-          <input matInput formControlName="address" />
+      <div class="form-fields">
+        <mat-form-field>
+          <mat-label>Título do evento</mat-label>
+          <input matInput formControlName="title" autofocus />
           <mat-error>Obrigatório</mat-error>
         </mat-form-field>
-      </section>
-
-      <section>
         <mat-form-field>
-          <mat-label>Formato do evento</mat-label>
-          <mat-select formControlName="format">
-            @for (format of form.formats; track format) {
-            <mat-option [value]="format.value"
-              >{{ format.viewValue }}</mat-option
-            >
-            }
-          </mat-select>
-          <mat-error>Obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Data do evento</mat-label>
-          <input
+          <mat-label>Detalhes do evento</mat-label>
+          <textarea
             matInput
-            (focus)="picker.open()"
-            [min]="form.minDate"
-            [matDatepicker]="picker"
-            formControlName="date"
-            readonly
-          />
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error>Obrigatório</mat-error>
+            formControlName="description"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="3"
+            cdkAutosizeMaxRows="9"
+          ></textarea>
         </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Horário do evento</mat-label>
-          <input matInput formControlName="time" />
-          <mat-error>Obrigatório</mat-error>
-        </mat-form-field>
-      </section>
+        <section>
+          <devmx-autocomplete-cities formControlName="city" />
 
-      <section>
-        <div>
-          <mat-list
-            class="sortable-list"
-            cdkDropList
-            (cdkDropListDropped)="dropLeaders($event)"
-          >
-            <h3 mat-subheader>Líderes</h3>
+          <mat-form-field class="form-field-address">
+            <mat-label>Endereço do evento</mat-label>
+            <input matInput formControlName="address" />
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+        </section>
 
-            @for (leader of form.leaders.controls; track leader.value.id; let
-            index = $index) {
-            <mat-list-item class="sortable-list-item" cdkDrag>
-              <mat-icon matListItemIcon>person</mat-icon>
-              <div matListItemTitle>{{ leader.value.name?.first }}</div>
-              <button
-                type="button"
-                matListItemMeta
-                mat-icon-button
-                (click)="form.leaders.removeAt(index)"
+        <section>
+          <mat-form-field>
+            <mat-label>Formato do evento</mat-label>
+            <mat-select formControlName="format">
+              @for (format of form.formats; track format) {
+              <mat-option [value]="format.value"
+                >{{ format.viewValue }}</mat-option
               >
-                <mat-icon>close</mat-icon>
-              </button>
-            </mat-list-item>
-            }
-          </mat-list>
+              }
+            </mat-select>
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
 
-          <button type="button" mat-button (click)="openSearchLeaders()">
-            Adicionar líder
-          </button>
-        </div>
-        <div>
-          <mat-list
-            class="sortable-list"
-            cdkDropList
-            (cdkDropListDropped)="dropPresentations($event)"
-          >
-            <h3 mat-subheader>Apresentações</h3>
+          <mat-form-field>
+            <mat-label>Data do evento</mat-label>
+            <input
+              matInput
+              (focus)="picker.open()"
+              [min]="form.minDate"
+              [matDatepicker]="picker"
+              formControlName="date"
+              readonly
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
 
-            @for (presentation of form.presentations.controls; track
-            presentation.value.id; let index = $index) {
-            <mat-list-item class="sortable-list-item" cdkDrag>
-              <mat-icon matListItemIcon>person</mat-icon>
-              <div matListItemTitle>{{ presentation.value.title }}</div>
-              <button
-                type="button"
-                matListItemMeta
-                mat-icon-button
-                (click)="form.presentations.removeAt(index)"
-              >
-                <mat-icon>close</mat-icon>
-              </button>
-            </mat-list-item>
-            }
-          </mat-list>
+          <mat-form-field>
+            <mat-label>Horário do evento</mat-label>
+            <input matInput formControlName="time" />
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+        </section>
 
-          <button type="button" mat-button (click)="openSearchPresentations()">
-            Adicionar apresentação
-          </button>
-        </div>
-      </section>
+        <mat-checkbox formControlName="visible">
+          Visível publicamente
+        </mat-checkbox>
+      </div>
+      <div class="selectable-fields">
+        <button type="button" mat-stroked-button (click)="openSelectCover()">
+          Selecionar imagem de capa
+        </button>
 
-      <mat-checkbox formControlName="visible">
-        Visível publicamente
-      </mat-checkbox>
+        <section>
+          <div>
+            <mat-list
+              class="sortable-list"
+              cdkDropList
+              (cdkDropListDropped)="dropLeaders($event)"
+            >
+              <h3 mat-subheader>Líderes</h3>
+
+              @for (leader of form.leaders.controls; track leader.value.id; let
+              index = $index) {
+              <mat-list-item class="sortable-list-item" cdkDrag>
+                <mat-icon matListItemIcon>person</mat-icon>
+                <div matListItemTitle>{{ leader.value.name?.first }}</div>
+                <button
+                  type="button"
+                  matListItemMeta
+                  mat-icon-button
+                  (click)="form.leaders.removeAt(index)"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-list-item>
+              }
+            </mat-list>
+
+            <button type="button" mat-button (click)="openSearchLeaders()">
+              Adicionar líder
+            </button>
+          </div>
+          <div>
+            <mat-list
+              class="sortable-list"
+              cdkDropList
+              (cdkDropListDropped)="dropPresentations($event)"
+            >
+              <h3 mat-subheader>Apresentações</h3>
+
+              @for (presentation of form.presentations.controls; track
+              presentation.value.id; let index = $index) {
+              <mat-list-item class="sortable-list-item" cdkDrag>
+                <mat-icon matListItemIcon>person</mat-icon>
+                <div matListItemTitle>{{ presentation.value.title }}</div>
+                <button
+                  type="button"
+                  matListItemMeta
+                  mat-icon-button
+                  (click)="form.presentations.removeAt(index)"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-list-item>
+              }
+            </mat-list>
+
+            <button
+              type="button"
+              mat-button
+              (click)="openSearchPresentations()"
+            >
+              Adicionar apresentação
+            </button>
+          </div>
+        </section>
+      </div>
     </mat-card-content>
 
     <mat-card-actions [align]="'end'">

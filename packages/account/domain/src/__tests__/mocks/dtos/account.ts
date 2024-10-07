@@ -1,3 +1,5 @@
+import { DEFAULT_ROLES, merge } from '@devmx/shared-util-data';
+
 export const account = {
   name: {
     first: 'Guilherme',
@@ -6,17 +8,7 @@ export const account = {
   username: 'guiseek',
   password: '',
   email: 'guilherme@devpr.org',
-  roles: {
-    member: true,
-    speaker: false,
-    neighbor: false,
-    donor: false,
-    leader: false,
-    staff: false,
-    fellow: false,
-    manager: false,
-    director: false,
-  },
+  roles: merge(DEFAULT_ROLES, { member: true }),
   gender: 'male',
   photo: '9c14863726af550ff0666c128c32286a',
   minibio: '',

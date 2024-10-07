@@ -1,6 +1,7 @@
 export * from './access-token';
 export * from './account-out';
 export * from './account-ref';
+export * from './challenge';
 export * from './city-ref';
 export * from './create-event';
 export * from './create-presentation';

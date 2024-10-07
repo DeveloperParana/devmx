@@ -18,12 +18,46 @@
   }
 
   .event-card {
+    max-width: 100%;
     @include mat.elevation-transition();
     @include mat.elevation(2);
 
     &:active,
     &:hover {
       @include mat.elevation(6);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    h2,
+    h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      font-size: var(
+        --mat-card-title-text-size,
+        var(--mat-app-title-large-size)
+      );
+    }
+
+    h4 {
+      font-size: var(
+        --mat-card-subtitle-text-size,
+        var(--mat-app-title-medium-size)
+      );
+    }
+
+    .event-presentations {
+      h3 {
+        font-size: var(
+          --mdc-list-list-item-label-text-size,
+          var(--mat-app-body-large-size)
+        );
+      }
     }
   }
 

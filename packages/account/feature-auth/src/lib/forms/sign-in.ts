@@ -1,8 +1,16 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignIn } from '@devmx/shared-api-interfaces';
 import { TypedForm } from '@devmx/shared-ui-global';
+import { BehaviorSubject } from 'rxjs';
 
 export class SignInForm extends FormGroup<TypedForm<SignIn>> {
+  #focus = new BehaviorSubject(false);
+  focus$ = this.#focus.asObservable();
+
+  focus() {
+    this.#focus.next(true);
+  }
+
   constructor() {
     super(
       {

@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup()">
+  @for (field of fields(); track field) {
+
+  <!--  -->
+
+  @switch (field.type) {
+
+  <!--  -->
+
+  @case ('textbox') {
+  <devmx-textbox [options]="field"></devmx-textbox>
+  } @case ('checkbox') {
+  <devmx-checkbox [options]="field"></devmx-checkbox>
+  } @case ('dropdown') {
+  <devmx-dropdown [options]="field"></devmx-dropdown>
+  }
+
+  <!--  -->
+
+  }
+
+  <!--  -->
+
+  }
+</form>

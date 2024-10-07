@@ -1,8 +1,8 @@
 import { CityDto, LocationDto } from '@devmx/location-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { PresentationDto } from '@devmx/presentation-data-source';
+import { PresentationRefDto } from '@devmx/presentation-data-source';
 import { EventFormat } from '@devmx/shared-api-interfaces';
-import { AccountDto } from '@devmx/account-data-source';
+import { AccountRefDto } from '@devmx/account-data-source';
 import { Type } from 'class-transformer';
 
 export class EventDto {
@@ -34,13 +34,13 @@ export class EventDto {
   @ApiProperty()
   visible: boolean;
 
-  @ApiProperty({ type: () => [PresentationDto]})
-  @Type(() => PresentationDto)
-  presentations: PresentationDto[];
+  @ApiProperty({ type: () => [PresentationRefDto]})
+  @Type(() => PresentationRefDto)
+  presentations: PresentationRefDto[];
 
-  @ApiProperty({ type: () => [AccountDto]})
-  @Type(() => AccountDto)
-  leaders: AccountDto[];
+  @ApiProperty({ type: () => [AccountRefDto]})
+  @Type(() => AccountRefDto)
+  leaders: AccountRefDto[];
 
   @ApiProperty()
   address: string;
@@ -53,7 +53,7 @@ export class EventDto {
   @Type(() => LocationDto)
   location?: LocationDto;
 
-  @ApiProperty({ type: () => AccountDto})
-  @Type(() => AccountDto)
-  owner: AccountDto;
+  @ApiProperty({ type: () => AccountRefDto})
+  @Type(() => AccountRefDto)
+  owner: AccountRefDto;
 }

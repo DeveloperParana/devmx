@@ -1,6 +1,6 @@
-import { SidenavItem } from '@devmx/shared-ui-global';
+import { LayoutSidenavItem } from '@devmx/shared-ui-global/layout';
 
-export const accountFeatureShellSidenav: SidenavItem[] = [
+export const accountFeatureShellSidenav: LayoutSidenavItem[] = [
   {
     path: ['/conta', 'configuracoes'],
     text: 'Conta',
@@ -19,7 +19,7 @@ export const accountFeatureShellSidenav: SidenavItem[] = [
         roles: ['speaker'],
         icon: 'collections_bookmark',
       },
-    ]
+    ],
   },
   {
     path: ['/conta', 'dashboard'],

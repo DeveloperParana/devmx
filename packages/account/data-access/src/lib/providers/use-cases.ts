@@ -17,6 +17,7 @@ import {
   FindEventsByOwnerUseCase,
   FindSpeakersUseCase,
   FindLeadersUseCase,
+  RequestChallengeUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideSignInUseCase() {
@@ -79,4 +80,8 @@ export function provideFindSpeakersUseCase() {
 
 export function provideFindLeadersUseCase() {
   return createUseCaseProvider(FindLeadersUseCase, [AccountService]);
+}
+
+export function provideRequestChallengeUseCase() {
+  return createUseCaseProvider(RequestChallengeUseCase, [AuthService]);
 }

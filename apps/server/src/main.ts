@@ -9,6 +9,8 @@ async function bootstrap() {
   const urlPrefix = 'api';
   app.setGlobalPrefix(urlPrefix);
 
+  app.enableCors();
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,

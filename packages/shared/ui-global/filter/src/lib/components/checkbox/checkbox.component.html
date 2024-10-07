@@ -1,0 +1,11 @@
+@if (options(); as opts) {
+
+<mat-checkbox
+  [formControlName]="opts.key"
+  [checked]="opts.checked"
+  [value]="opts.value ?? ''"
+>
+  {{ opts.label }}
+</mat-checkbox>
+
+}

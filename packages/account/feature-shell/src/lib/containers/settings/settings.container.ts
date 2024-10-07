@@ -1,19 +1,19 @@
 import { ImageComponent, PhotoComponent } from '@devmx/shared-ui-global';
-import {
-  AutocompleteCitiesComponent,
-  AutocompleteCitiesService,
-} from '@devmx/location-ui-forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { AutoAssignable, UpdateAccountWithCity } from '../../forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountOut } from '@devmx/shared-api-interfaces';
-
+import { CityFacade } from '@devmx/location-data-access';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { AutoAssignable, UpdateAccountWithCity } from '../../forms';
 import { switchMap, take } from 'rxjs';
+import {
+  AutocompleteCitiesComponent,
+  AutocompleteCitiesService,
+} from '@devmx/location-ui-forms';
 import {
   AuthFacade,
   AccountFacade,
@@ -34,7 +34,6 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { CityFacade } from '@devmx/location-data-access';
 
 @Component({
   selector: 'devmx-account-settings',

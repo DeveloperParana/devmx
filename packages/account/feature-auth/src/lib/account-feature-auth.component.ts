@@ -1,16 +1,17 @@
 import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
+import { AccountFacade, AuthFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SignInComponent, SignUpComponent } from './components';
-import { SignIn, SignUp } from '@devmx/shared-api-interfaces';
-import { AccountFacade, AuthFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignInForm, SignUpForm } from './forms';
 import { Router } from '@angular/router';
 import { take, timer } from 'rxjs';
 import {
   inject,
+  signal,
   OnInit,
   Component,
-  viewChild,
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
@@ -20,7 +21,13 @@ import {
   templateUrl: './account-feature-auth.component.html',
   styleUrl: './account-feature-auth.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatCardModule, MatTabsModule, SignInComponent, SignUpComponent],
+  imports: [
+    ReactiveFormsModule,
+    MatCardModule,
+    MatTabsModule,
+    SignInComponent,
+    SignUpComponent
+  ],
   standalone: true,
 })
 export class AccountFeatureAuthComponent implements OnInit {
@@ -31,16 +38,10 @@ export class AccountFeatureAuthComponent implements OnInit {
 
   router = inject(Router);
 
-  signInChild = viewChild(SignInComponent);
-  signUpChild = viewChild(SignUpComponent);
+  signInForm = new SignInForm();
+  signUpForm = new SignUpForm();
 
-  get signIn() {
-    return this.signInChild();
-  }
-
-  get signUp() {
-    return this.signUpChild();
-  }
+  localAuthenticator = signal(false);
 
   ngOnInit() {
     const auth$ = this.authFacade.connected$.pipe(
@@ -56,33 +57,41 @@ export class AccountFeatureAuthComponent implements OnInit {
     });
 
     username$.subscribe((username) => {
-      if (!this.signUp || username === null) return;
+      if (username === null) return;
       console.log(username);
 
-      this.signUp.form.setUsernameError(!!username);
+      this.signUpForm.setUsernameError(!!username);
     });
   }
 
   onTabChange(value: MatTabChangeEvent) {
-    if (!this.signIn || !this.signUp) return;
-
-    const auth = [this.signIn, this.signUp];
+    const auth = [this.signInForm, this.signUpForm];
 
     const timer$ = timer(400).pipe(take(1));
     timer$.subscribe(() => auth[value.index].focus());
   }
 
   onUsernameChange(username: string) {
-    if (!this.signUp || !username) return;
-    this.signUp.form.checkingUsername.set(true);
+    if (!username) return;
+    this.signUpForm.checkingUsername.set(true);
     this.accountFacade.checkUsername(username);
   }
 
-  onSignIn(data: SignIn) {
-    this.authFacade.signIn(data);
+  onSignIn() {
+    if (this.signInForm.valid) {
+      const data = this.signInForm.getRawValue();
+      return this.authFacade.signIn(data);
+    }
+
+    this.signInForm.markAllAsTouched();
   }
 
-  onSignUp(data: SignUp) {
-    this.authFacade.signUp(data);
+  onSignUp() {
+    if (this.signUpForm.valid) {
+      const data = this.signUpForm.getRawValue();
+      return this.authFacade.signUp(data);
+    }
+
+    this.signUpForm.markAllAsTouched();
   }
 }

@@ -1,13 +1,17 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
 import { accountFeatureShellSidenav } from './account-feature-shell.sidenav';
 import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
+import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
 import { roleGroupsGuard, roleGroupGuard, roleGuard } from './guards';
-import { provideLocations } from '@devmx/location-data-access';
-import { provideAccount } from '@devmx/account-data-access';
-import { provideSidenav } from '@devmx/shared-ui-global';
+import { provideLocation } from '@devmx/location-data-access';
 import { provideEvent } from '@devmx/event-data-access';
+import { SidenavLeftOutlet } from './outlets';
 import { Route } from '@angular/router';
+import {
+  provideLayoutSidenav,
+  provideLayoutToolbar,
+} from '@devmx/shared-ui-global/layout';
 import {
   SettingsContainer,
   PresentationContainer,
@@ -28,12 +32,19 @@ export const accountFeatureShellRoutes: Route[] = [
       ...provideAccount(),
       ...providePresentation(),
       ...provideEvent(),
-      ...provideLocations(),
+      ...provideLocation(),
       provideAutocompleteCitiesService(),
-      provideSidenav(accountFeatureShellSidenav),
+      provideLayoutToolbar(AuthFacade),
+      provideLayoutSidenav(accountFeatureShellSidenav),
+      // provideSidenav(accountFeatureShellSidenav),
     ],
     component: AccountFeatureShellComponent,
     children: [
+      {
+        path: '',
+        component: SidenavLeftOutlet,
+        outlet: 'left',
+      },
       {
         path: 'administracao',
         canActivate: [roleGroupsGuard('worthy', 'board')],

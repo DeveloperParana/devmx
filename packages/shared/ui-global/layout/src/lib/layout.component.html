@@ -1,0 +1,47 @@
+<div class="layout-container" [class.layout-is-mobile]="mobileQuery.matches">
+  <devmx-layout-navbar
+    (toggleLeft)="snav.toggle()"
+    (toggleRight)="enav.toggle()"
+    [hideToggleButtonLeft]="hideToggleButtonLeft()"
+    [hideToggleButtonRight]="hideToggleButtonRight()"
+  />
+
+  <mat-sidenav-container
+    class="layout-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    [style.marginBottom.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      class="layout-sidenav-start"
+      fixedTopGap="56"
+    >
+      <router-outlet
+        name="left"
+        (activate)="openLeft(snav)"
+        (deactivate)="closeLeft(snav)"
+      />
+    </mat-sidenav>
+    <mat-sidenav-content class="layout-content">
+      <router-outlet />
+    </mat-sidenav-content>
+    <mat-sidenav
+      #enav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      class="layout-sidenav-end"
+      fixedTopGap="56"
+      position="end"
+    >
+      <router-outlet
+        name="right"
+        (activate)="openRight(enav)"
+        (deactivate)="closeRight(enav)"
+      />
+    </mat-sidenav>
+  </mat-sidenav-container>
+
+  <devmx-layout-toolbar />
+</div>
