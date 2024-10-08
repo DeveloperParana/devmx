@@ -2,9 +2,7 @@ import { Event, UseCase } from '@devmx/shared-api-interfaces';
 import { EventsService } from '../services';
 import { NotFoundError } from '@devmx/shared-util-errors';
 
-export class FindEventByIDUseCase
-  implements UseCase<string, Event>
-{
+export class FindEventByIDUseCase implements UseCase<string, Event> {
   constructor(private eventsService: EventsService) {}
 
   async execute(id: string) {

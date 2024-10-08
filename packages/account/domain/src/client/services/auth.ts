@@ -11,7 +11,7 @@ import {
 export abstract class AuthService {
   abstract auth(): Observable<AuthUser>;
 
-  abstract challenge(): Observable<Challenge>
+  abstract challenge(): Observable<Challenge>;
 
   abstract checkUsername(data: Username): Observable<void>;
 

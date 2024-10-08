@@ -6,14 +6,7 @@ export class CreatePresentationReactionDto {
   @IsString()
   @ApiProperty({
     type: 'enum',
-    enum: [
-      'claps',
-      'mindblowing',
-      'insightful',
-      'amazing',
-      'learned',
-      'cool',
-    ],
+    enum: ['claps', 'mindblowing', 'insightful', 'amazing', 'learned', 'cool'],
     default: 'claps',
     example: 'mindblowing',
   })

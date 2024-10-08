@@ -19,6 +19,7 @@ import {
 
 @Component({
   selector: 'devmx-editable-account',
+  exportAs: 'devmxEditableAccount',
   templateUrl: './editable-account.component.html',
   styleUrl: './editable-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,6 +51,12 @@ export class EditableAccountComponent implements OnInit {
       this.form.enable();
       elementToFocus.focus();
     } else {
+      this.disable();
+    }
+  }
+
+  disable() {
+    if (this.form.enabled) {
       this.form.disable();
     }
   }

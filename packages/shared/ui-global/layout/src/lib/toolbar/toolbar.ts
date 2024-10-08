@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 export abstract class AuthUserFacade {
   abstract user$: Observable<AuthUser | null>;
 
-  abstract signOut(): void
+  abstract signOut(): void;
 }
 
 export class LayoutToolbar {

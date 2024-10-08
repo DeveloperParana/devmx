@@ -53,8 +53,8 @@ export class AccountFeatureShellComponent implements OnInit {
         const userIsNull = !user;
 
         if (userIsNull) {
-          this.router.navigateByUrl('/conta/auth');
           this.sidenav.resetRoles();
+          this.router.navigateByUrl('/conta/auth');
         }
       });
   }

@@ -56,10 +56,9 @@
     </mat-list>
   </div>
 
-  <mat-paginator
-    hidePageSize
-    [length]="comments.items"
-    (page)="onPageChange($event)"
+  <devmx-paginator
+    [items]="comments.items"
+    (pageChange)="onPageChange($event)"
   />
   }
 </footer>

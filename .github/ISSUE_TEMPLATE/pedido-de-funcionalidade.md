@@ -4,7 +4,6 @@ about: Sugira uma ideia para este projeto
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **Sua solicitação de recurso está relacionada a um problema? Descreva.**

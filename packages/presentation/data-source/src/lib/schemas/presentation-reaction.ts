@@ -17,14 +17,7 @@ export class PresentationReactionCollection
 
   @Prop({
     type: String,
-    enum: [
-      'claps',
-      'mindblowing',
-      'insightful',
-      'amazing',
-      'learned',
-      'cool',
-    ],
+    enum: ['claps', 'mindblowing', 'insightful', 'amazing', 'learned', 'cool'],
     default: 'claps',
   })
   type: PresentationReactionType;

@@ -25,32 +25,36 @@ import {
   standalone: true,
 })
 export class PresentationFeatureShellComponent implements OnInit {
-  authFacade = inject(AuthFacade);
-
-  sidenav = inject(LayoutSidenav);
-
   router = inject(Router);
-
   destroyRef = inject(DestroyRef);
+  authFacade = inject(AuthFacade);
+  sidenav = inject(LayoutSidenav);
 
   ngOnInit() {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        if (user) {
+        const userExists = !!user;
+        console.log(user);
+        console.log(userExists);
+
+        if (userExists) {
           this.sidenav.setRoles(user.roles);
-          this.onLogout();
+
+          this.waitingForLogout();
         }
       });
 
     this.authFacade.loadAuthUser();
   }
 
-  onLogout() {
+  waitingForLogout() {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        if (!user) {
+        const userIsNull = !user;
+
+        if (userIsNull) {
           this.sidenav.resetRoles();
           this.router.navigateByUrl('/conta/auth');
         }

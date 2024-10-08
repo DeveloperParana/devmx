@@ -20,7 +20,7 @@ export class FindAccountsUseCase
       if (params.filter.name) {
         filter['name.first'] = new RegExp(params.filter.name.toString(), 'i');
       } else {
-        delete params.filter.name
+        delete params.filter.name;
       }
 
       if (params.filter.username) {

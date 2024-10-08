@@ -1,1 +1,1 @@
-export { AuthenticationInfo, Base64URLString } from './types/index'
+export { AuthenticationInfo, Base64URLString } from './types/index';

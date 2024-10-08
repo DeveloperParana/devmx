@@ -8,11 +8,11 @@ export function parseAuthenticator(
 ): AuthenticatorParsed {
   if (typeof authData == 'string') authData = parseBase64URL(authData);
 
-  console.debug(authData)
+  console.debug(authData);
 
   const flags = new DataView(authData.slice(32, 33)).getUint8(0);
 
-  console.debug(flags)
+  console.debug(flags);
 
   // https://w3c.github.io/webauthn/#sctn-authenticator-data
   return {

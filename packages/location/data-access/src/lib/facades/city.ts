@@ -8,7 +8,7 @@ import { State } from '@devmx/shared-data-access';
 
 interface CityState {
   cities: Page<City>;
-  result: City[]
+  result: City[];
   city: City | null;
 }
 

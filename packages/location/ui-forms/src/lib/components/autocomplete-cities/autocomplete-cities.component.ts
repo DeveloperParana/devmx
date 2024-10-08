@@ -24,7 +24,6 @@ import {
   DestroyRef,
 } from '@angular/core';
 
-
 @Component({
   selector: 'devmx-autocomplete-cities',
   templateUrl: './autocomplete-cities.component.html',

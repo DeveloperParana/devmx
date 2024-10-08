@@ -1,7 +1,12 @@
 import { PresentationReactionType } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import {
   COOL_ICON,
   CLAPS_ICON,

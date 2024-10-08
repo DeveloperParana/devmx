@@ -85,7 +85,7 @@
 
   <footer>
     <div class="flex gap-1">
-      <button type="button" mat-stroked-button (click)="toggleForm(firstName)">
+      <button type="button" mat-raised-button (click)="toggleForm(firstName)">
         <mat-icon>{{ form.disabled ? 'lock_open' : 'lock' }}</mat-icon>
         <span>{{ form.disabled ? 'Alterar' : 'Bloquear' }}</span>
       </button>

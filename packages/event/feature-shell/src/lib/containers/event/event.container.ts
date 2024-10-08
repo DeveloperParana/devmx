@@ -17,12 +17,7 @@ import {
   templateUrl: './event.container.html',
   styleUrl: './event.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    AsyncPipe,
-    PhotoPipe,
-    CoverPipe
-  ],
+  imports: [MatCardModule, AsyncPipe, PhotoPipe, CoverPipe],
   standalone: true,
 })
 export class EventContainer implements OnInit {

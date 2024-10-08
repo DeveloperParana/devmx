@@ -5,3 +5,5 @@
 /.nx/workspace-data
 .angular
 /diagrams
+/assets/seeds
+pnpm-lock.yaml

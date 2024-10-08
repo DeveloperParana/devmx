@@ -16,7 +16,6 @@ export function provideLocation() {
     provideGetCurrentPositionUseCase(),
 
     provideCityFacade(),
-    provideGeoFacade()
-
+    provideGeoFacade(),
   ];
 }

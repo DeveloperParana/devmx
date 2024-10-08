@@ -39,6 +39,5 @@ body {
   }
 }
 
-
 @include mat.color-variants-backwards-compatibility(theme.$light);
 @include mat.typography-hierarchy(theme.$light);

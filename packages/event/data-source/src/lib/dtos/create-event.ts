@@ -51,5 +51,5 @@ export class CreateEventDto {
 
   location?: string;
 
-  owner: string
+  owner: string;
 }

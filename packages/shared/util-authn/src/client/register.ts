@@ -1,4 +1,9 @@
-import { isBase64URL, parseBase64URL, toBase64URL, toBuffer } from '../utils/index';
+import {
+  isBase64URL,
+  parseBase64URL,
+  toBase64URL,
+  toBuffer,
+} from '../utils/index';
 import { getOngoingAuth, setOngoingAuth } from './on-going-auth';
 import { getAuthAttachment } from './get-auth-attachment';
 import {

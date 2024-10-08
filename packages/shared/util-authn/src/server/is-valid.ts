@@ -1,7 +1,10 @@
-import { Fn } from "../types/index";
+import { Fn } from '../types/index';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export async function isValid<T extends Fn | string>(validator: T, value: string) {
+export async function isValid<T extends Fn | string>(
+  validator: T,
+  value: string
+) {
   if (typeof validator === 'function') {
     const res = validator(value);
     if (res instanceof Promise) return await res;

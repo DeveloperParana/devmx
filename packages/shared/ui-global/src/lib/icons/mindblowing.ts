@@ -22,4 +22,4 @@ export const MINDBLOWING_ICON = `
     <path d="M13.395 12.965C13.395 12.965 13.185 12.66 13.185 11.525" stroke="#45413C" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M13.175 8.72998V10.06" stroke="#45413C" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
-`
+`;

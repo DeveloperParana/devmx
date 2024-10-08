@@ -26,7 +26,7 @@ import {
     MatCardModule,
     MatTabsModule,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
   ],
   standalone: true,
 })

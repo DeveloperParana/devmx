@@ -1,4 +1,4 @@
-import { join } from "node:path";
+import { join } from 'node:path';
 
 export const env = {
   production: true,
@@ -19,10 +19,10 @@ export const env = {
     events: {
       covers: {
         dest: 'assets/events/covers',
-      }
-    }
+      },
+    },
   },
   static: {
     rootPath: join(__dirname, 'assets'),
-  }
+  },
 };

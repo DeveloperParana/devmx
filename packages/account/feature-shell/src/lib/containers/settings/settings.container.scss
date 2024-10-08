@@ -24,7 +24,8 @@
     > aside {
       display: block;
       gap: 1em;
-    } ~ * {
+    }
+    ~ * {
       flex: 3;
     }
   }

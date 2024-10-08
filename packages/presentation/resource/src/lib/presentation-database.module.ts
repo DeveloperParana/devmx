@@ -10,7 +10,6 @@ import {
   PresentationReactionCollection,
 } from '@devmx/presentation-data-source';
 
-
 @Global()
 @Module({
   imports: [
@@ -30,8 +29,6 @@ import {
     ]),
   ],
   providers: [...providePresentations()],
-  exports: [
-    ...providePresentations()
-  ]
+  exports: [...providePresentations()],
 })
 export class PresentationDatabaseModule {}

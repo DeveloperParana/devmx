@@ -16,7 +16,6 @@ export class FindPresentationsUseCase
     const filter: QueryFilter<Presentation> = {};
 
     if (params.filter) {
-
       if (params.filter.format) {
         filter.format = new RegExp(params.filter.format, 'i');
       } else {

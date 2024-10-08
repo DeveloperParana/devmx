@@ -1,7 +1,7 @@
 export interface CreatePresentationComment {
-  text: string
+  text: string;
 
-  presentation: string
+  presentation: string;
 
-  owner: string
+  owner: string;
 }

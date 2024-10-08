@@ -1,7 +1,6 @@
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { PresentationCommentComponent } from '../../components';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -20,6 +19,8 @@ import {
   PhotoPipe,
   ImageComponent,
   AvatarComponent,
+  PaginatorComponent,
+  PageParams,
 } from '@devmx/shared-ui-global';
 import {
   PresentationFacade,
@@ -39,7 +40,7 @@ import {
     MatChipsModule,
     ImageComponent,
     AvatarComponent,
-    MatPaginatorModule,
+    PaginatorComponent,
     PresentationCommentComponent,
     MatCardModule,
     MatListModule,
@@ -49,6 +50,7 @@ import {
 })
 export class PresentationContainer implements OnInit {
   #destroyRef = inject(DestroyRef);
+  router = inject(Router);
 
   presentationFacade = inject(PresentationFacade);
   presentationCommentFacade = inject(PresentationCommentFacade);
@@ -81,11 +83,7 @@ export class PresentationContainer implements OnInit {
     this.presentationCommentFacade.create(data);
   }
 
-  onPageChange(event: PageEvent) {
-    this.presentationCommentFacade.load(
-      this.presentation,
-      event.pageIndex,
-      event.pageSize
-    );
+  onPageChange(queryParams: PageParams) {
+    this.router.navigate([], { queryParams });
   }
 }

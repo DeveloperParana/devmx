@@ -25,6 +25,6 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'prefix',
-    redirectTo: 'eventos',
+    redirectTo: 'conta',
   },
 ];

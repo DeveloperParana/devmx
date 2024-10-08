@@ -8,9 +8,7 @@
   "targets": {
     "build": {
       "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": [
-        "{workspaceRoot}/dist/packages/shared/ui-global"
-      ],
+      "outputs": ["{workspaceRoot}/dist/packages/shared/ui-global"],
       "options": {
         "project": "packages/shared/ui-global/ng-package.json"
       },

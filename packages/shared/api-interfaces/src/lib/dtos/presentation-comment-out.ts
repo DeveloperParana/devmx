@@ -1,12 +1,12 @@
-import { AccountOut } from "./account-out"
-import { PresentationOut } from "./presentation-out"
+import { AccountOut } from './account-out';
+import { PresentationOut } from './presentation-out';
 
 export interface PresentationCommentOut {
-  id: string
+  id: string;
 
-  text: string
+  text: string;
 
-  presentation: PresentationOut
+  presentation: PresentationOut;
 
-  owner: AccountOut
+  owner: AccountOut;
 }

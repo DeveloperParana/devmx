@@ -1,1 +1,1 @@
-export type Fn = ReturnType<FunctionConstructor>
+export type Fn = ReturnType<FunctionConstructor>;
