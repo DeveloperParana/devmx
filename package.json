@@ -23,17 +23,17 @@
     "@angular/language-service": "~18.2.0",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
-    "@nx/angular": "19.8.2",
-    "@nx/devkit": "19.8.2",
-    "@nx/eslint": "19.8.2",
-    "@nx/eslint-plugin": "19.8.2",
-    "@nx/jest": "19.8.2",
-    "@nx/js": "19.8.2",
-    "@nx/nest": "19.8.2",
-    "@nx/node": "19.8.2",
-    "@nx/web": "19.8.2",
-    "@nx/webpack": "19.8.2",
-    "@nx/workspace": "19.8.2",
+    "@nx/angular": "20.0.0",
+    "@nx/devkit": "20.0.0",
+    "@nx/eslint": "20.0.0",
+    "@nx/eslint-plugin": "20.0.0",
+    "@nx/jest": "20.0.0",
+    "@nx/js": "20.0.0",
+    "@nx/nest": "20.0.0",
+    "@nx/node": "20.0.0",
+    "@nx/web": "20.0.0",
+    "@nx/webpack": "20.0.0",
+    "@nx/workspace": "20.0.0",
     "@schematics/angular": "~18.2.0",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
@@ -56,7 +56,7 @@
     "jest-environment-node": "^29.7.0",
     "jest-preset-angular": "~14.1.0",
     "ng-packagr": "^18.2.1",
-    "nx": "19.8.2",
+    "nx": "20.0.0",
     "prettier": "^2.6.2",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
@@ -107,5 +107,9 @@
       "path-to-regexp@>=0.2.0 <1.9.0": ">=1.9.0",
       "rollup@>=4.0.0 <4.22.4": ">=4.22.4"
     }
-  }
+  },
+  "engines": {
+    "node": "22.5.1"
+  },
+  "packageManager": "pnpm@9.12.1"
 }
