@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "nx run-many -t serve --projects=server,devmx --configuration=development",
     "dev:server": "nx serve server",
-    "build:server": "pnpx nx build server",
+    "build:server": "pnpm nx build server --verbose",
     "dev:mx": "nx serve devmx",
-    "affected": "pnpx nx affected -t lint test build --parallel=10",
+    "affected": "pnpm nx affected -t lint test build --parallel=10",
     "commit": "czg"
   },
   "private": true,
