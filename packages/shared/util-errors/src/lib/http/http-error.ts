@@ -1,5 +1,5 @@
 export abstract class HttpError {
-  readonly name = 'HttpErrorResponse'
+  readonly name = 'HttpErrorResponse';
   abstract readonly message: string;
   abstract readonly error: Error;
 }

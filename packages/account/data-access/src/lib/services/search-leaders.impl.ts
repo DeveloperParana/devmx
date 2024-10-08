@@ -1,7 +1,7 @@
-import { SearchLeadersService } from "@devmx/account-api-interfaces/client";
-import { AccountOut, Page } from "@devmx/shared-api-interfaces";
-import { Env } from "@devmx/shared-api-interfaces/client";
-import { HttpClient } from "@devmx/shared-data-access";
+import { SearchLeadersService } from '@devmx/account-api-interfaces/client';
+import { AccountOut, Page } from '@devmx/shared-api-interfaces';
+import { Env } from '@devmx/shared-api-interfaces/client';
+import { HttpClient } from '@devmx/shared-data-access';
 
 export class SearchLeadersServiceImpl implements SearchLeadersService {
   get url() {

@@ -36,7 +36,6 @@ export const accountFeatureShellRoutes: Route[] = [
       provideAutocompleteCitiesService(),
       provideLayoutToolbar(AuthFacade),
       provideLayoutSidenav(accountFeatureShellSidenav),
-      // provideSidenav(accountFeatureShellSidenav),
     ],
     component: AccountFeatureShellComponent,
     children: [

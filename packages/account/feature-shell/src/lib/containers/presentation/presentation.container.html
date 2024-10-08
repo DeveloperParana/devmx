@@ -47,7 +47,6 @@
           cdkDropList
           (cdkDropListDropped)="dropResources($event)"
         >
-
           @for (resource of form.resources.controls; track resource; let index =
           $index) {
           <mat-list-item class="sortable-list-item" cdkDrag>
@@ -81,7 +80,6 @@
           cdkDropList
           (cdkDropListDropped)="dropTags($event)"
         >
-
           @for (tag of form.tags.controls; track tag; let index = $index) {
           <mat-list-item class="sortable-list-item" cdkDrag>
             <mat-icon matListItemIcon>tag</mat-icon>

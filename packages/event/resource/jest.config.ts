@@ -7,5 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/event/resource',
-  passWithNoTests: true
+  passWithNoTests: true,
 };

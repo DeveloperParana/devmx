@@ -1,9 +1,9 @@
 export interface UpdatePresentationComment {
-  id: string
+  id: string;
 
-  text: string
+  text: string;
 
-  presentation: string
+  presentation: string;
 
-  owner: string
+  owner: string;
 }

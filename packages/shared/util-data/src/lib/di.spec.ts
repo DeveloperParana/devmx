@@ -73,6 +73,6 @@ describe('di', () => {
     const c = use(C);
 
     expect(c).toBeInstanceOf(CImpl);
-    expect(c.shout()).toBeTruthy()
+    expect(c.shout()).toBeTruthy();
   });
 });

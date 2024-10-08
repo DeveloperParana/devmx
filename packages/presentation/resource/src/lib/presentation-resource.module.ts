@@ -3,9 +3,7 @@ import { PresentationsController } from './controllers';
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [
-    PresentationDatabaseModule
-  ],
+  imports: [PresentationDatabaseModule],
   controllers: [PresentationsController],
   providers: [],
   exports: [],

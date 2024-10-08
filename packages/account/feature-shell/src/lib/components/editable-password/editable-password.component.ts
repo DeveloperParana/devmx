@@ -15,6 +15,7 @@ import {
 
 @Component({
   selector: 'devmx-editable-password',
+  exportAs: 'devmxEditablePassword',
   templateUrl: './editable-password.component.html',
   styleUrl: './editable-password.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,6 +43,12 @@ export class EditablePasswordComponent implements OnInit {
       this.form.enable();
       elementToFocus.focus();
     } else {
+      this.disable();
+    }
+  }
+
+  disable() {
+    if (this.form.enabled) {
       this.form.disable();
     }
   }

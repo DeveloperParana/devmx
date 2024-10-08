@@ -23,9 +23,9 @@ import {
 export class CropCoverComponent implements AfterViewInit {
   cropped = output<Blob>();
 
-  width = input(1280)
+  width = input(1280);
 
-  height = input(480)
+  height = input(480);
 
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvasRef');
 
@@ -44,8 +44,8 @@ export class CropCoverComponent implements AfterViewInit {
   ngAfterViewInit() {
     const canvas = this.canvasRef()?.nativeElement;
     if (canvas) {
-      canvas.width = this.width()
-      canvas.height = this.height()
+      canvas.width = this.width();
+      canvas.height = this.height();
       this.context = canvas.getContext('2d');
     }
   }
@@ -81,7 +81,13 @@ export class CropCoverComponent implements AfterViewInit {
     this.context.rect(0, 0, cropWidth, cropHeight);
     this.context.clip();
     this.context.globalAlpha = 1.0; // Áreas que mostram a imagem original
-    this.context.drawImage(this.image, offsetX, offsetY, scaledWidth, scaledHeight);
+    this.context.drawImage(
+      this.image,
+      offsetX,
+      offsetY,
+      scaledWidth,
+      scaledHeight
+    );
     this.context.restore();
   }
 
@@ -130,7 +136,17 @@ export class CropCoverComponent implements AfterViewInit {
     const h = this.image.height * this.scale;
 
     // Copiar somente a área de interesse da imagem para o canvas de recorte
-    context.drawImage(this.image, x, y, w, h, 0, 0, cropped.width, cropped.height);
+    context.drawImage(
+      this.image,
+      x,
+      y,
+      w,
+      h,
+      0,
+      0,
+      cropped.width,
+      cropped.height
+    );
 
     cropped.toBlob((blob) => {
       if (blob) this.cropped.emit(blob);

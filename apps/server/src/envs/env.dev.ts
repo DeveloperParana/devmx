@@ -19,10 +19,10 @@ export const env = {
     events: {
       covers: {
         dest: 'assets/server/events/covers',
-      }
-    }
+      },
+    },
   },
   static: {
     rootPath: join(__dirname, '..', '..', '..', 'assets', 'server'),
-  }
+  },
 };

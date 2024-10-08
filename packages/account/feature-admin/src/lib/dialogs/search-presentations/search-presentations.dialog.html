@@ -39,7 +39,10 @@
   ></tr>
 </table>
 
-<devmx-paginator [items]="presentations.items" (pageChange)="onPageChange($event)" />
+<devmx-paginator
+  [items]="presentations.items"
+  (pageChange)="onPageChange($event)"
+/>
 }
 
 <p class="selected">{{selection.selected.length}} selecionado(s)</p>

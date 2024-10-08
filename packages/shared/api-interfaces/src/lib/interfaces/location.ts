@@ -1,5 +1,5 @@
 export interface Location {
-  id: string
-  type: 'Point',
-  coordinates: [number, number]
+  id: string;
+  type: 'Point';
+  coordinates: [number, number];
 }

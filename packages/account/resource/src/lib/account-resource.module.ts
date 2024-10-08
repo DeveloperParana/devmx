@@ -8,10 +8,7 @@ import { PassportModule } from '@nestjs/passport';
 import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import {
-  AuthController,
-  AccountsController,
-} from './controllers';
+import { AuthController, AccountsController } from './controllers';
 
 @Module({
   imports: [

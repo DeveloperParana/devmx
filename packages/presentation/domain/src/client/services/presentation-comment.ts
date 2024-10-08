@@ -11,7 +11,7 @@ import {
 export abstract class PresentationCommentService {
   abstract find(presentation: string, params: QueryParams<PresentationComment>): Observable<Page<PresentationCommentOut>>;
 
-  abstract findOne(id: string): Observable<PresentationCommentOut>;
+  // abstract findOne(id: string): Observable<PresentationCommentOut>;
 
   abstract create(data: CreatePresentationComment): Observable<PresentationCommentOut>;
 

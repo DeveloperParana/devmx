@@ -18,15 +18,11 @@ export class CreatePresentationForm extends FormGroup<
     super({
       title: new FormControl('', {
         nonNullable: true,
-        validators: [
-          Validators.required
-        ]
+        validators: [Validators.required],
       }),
       format: new FormControl('talk', {
         nonNullable: true,
-        validators: [
-          Validators.required
-        ]
+        validators: [Validators.required],
       }),
       description: new FormControl('', {
         nonNullable: true,

@@ -16,6 +16,6 @@ export function provideEventFacade() {
     FindEventByIDUseCase,
     UpdateEventUseCase,
     RemoveEventUseCase,
-    UploadCoverUseCase
+    UploadCoverUseCase,
   ]);
 }

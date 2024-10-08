@@ -1,7 +1,7 @@
-import { CreatePresentationComment } from "./create-presentation-comment";
+import { CreatePresentationComment } from './create-presentation-comment';
 
 export interface UpdatePresentationComment extends CreatePresentationComment {
-  id: string
+  id: string;
 
-  account: string
+  account: string;
 }

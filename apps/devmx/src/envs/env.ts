@@ -3,11 +3,11 @@ export const env = {
     url: '/api',
   },
   photos: {
-    url: '/photos'
+    url: '/photos',
   },
   covers: {
     events: {
-      url: '/events/covers'
-    }
-  }
+      url: '/events/covers',
+    },
+  },
 };

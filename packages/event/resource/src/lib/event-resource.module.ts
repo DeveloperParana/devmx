@@ -12,7 +12,7 @@ import { Module } from '@nestjs/common';
       },
       inject: [Env],
     }),
-    EventDatabaseModule
+    EventDatabaseModule,
   ],
   controllers: [EventsController],
 })

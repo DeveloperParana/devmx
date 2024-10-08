@@ -1,7 +1,7 @@
 import { Base64URLString, NamedAlgo } from '../types/index';
 import { parseCryptoKey } from './parse-crypto-key';
 import { getAlgoParams } from './get-algo-params';
-import { subtle } from 'node:crypto'
+import { subtle } from 'node:crypto';
 import {
   SHA256,
   toBase64URL,

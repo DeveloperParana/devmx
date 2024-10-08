@@ -1,15 +1,15 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    PORT: string
+    PORT: string;
 
-    DB_HOST: string
-    DB_PORT: string
-    DB_NAME: string
-    DB_USER: string
-    DB_PASS: string
+    DB_HOST: string;
+    DB_PORT: string;
+    DB_NAME: string;
+    DB_USER: string;
+    DB_PASS: string;
 
-    JWT_SECRET: string
+    JWT_SECRET: string;
 
-    NODE_ENV: 'production' | 'development'
+    NODE_ENV: 'production' | 'development';
   }
 }

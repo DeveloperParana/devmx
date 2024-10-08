@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/account/resource',
-  passWithNoTests: true
+  passWithNoTests: true,
 };

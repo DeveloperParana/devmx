@@ -35,7 +35,6 @@ export class EventServiceImpl implements EventService {
     return this.http.post<EventOut>(url, data);
   }
 
-
   remove(id: string) {
     return this.http.delete<EventOut>(`${this.url}/${id}`);
   }

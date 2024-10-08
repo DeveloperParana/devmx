@@ -6,4 +6,3 @@ export { getAuthAttachment } from './get-auth-attachment';
 export { authenticate } from './authenticate';
 export { isAvailable } from './is-available';
 export { register } from './register';
-

@@ -1,10 +1,11 @@
-import { PublicKeyCredentialHints } from "../types/index";
+import { PublicKeyCredentialHints } from '../types/index';
 
 /**
  * Antes que "hints" existissem, o "authenticatorAttachment" era o caminho a seguir.
  */
 export function getAuthAttachment(
-  hints?: PublicKeyCredentialHints[]): AuthenticatorAttachment | undefined {
+  hints?: PublicKeyCredentialHints[]
+): AuthenticatorAttachment | undefined {
   if (!hints || hints.length === 0) return undefined; // The webauthn protocol considers `null` as invalid but `undefined` as "both"!
 
   if (hints.includes('client-device')) {

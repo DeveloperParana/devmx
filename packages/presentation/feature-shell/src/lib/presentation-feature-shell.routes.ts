@@ -1,4 +1,5 @@
 import { PresentationFeatureShellComponent } from './presentation-feature-shell.component';
+import { presentationFeatureShellSidenav } from './presentation-feature-shell.sidenav';
 import { PresentationContainer, PresentationsContainer } from './containers';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
@@ -12,10 +13,10 @@ export const presentationFeatureShellRoutes: Route[] = [
   {
     path: '',
     providers: [
-      ...providePresentation(),
       ...provideAccount(),
+      ...providePresentation(),
       provideLayoutToolbar(AuthFacade),
-      provideLayoutSidenav([]),
+      provideLayoutSidenav(presentationFeatureShellSidenav),
     ],
     component: PresentationFeatureShellComponent,
     children: [

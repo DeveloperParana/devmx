@@ -7,5 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/location/data-source',
-  passWithNoTests: true
+  passWithNoTests: true,
 };

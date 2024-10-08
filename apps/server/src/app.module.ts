@@ -1,4 +1,7 @@
-import { SharedDatabaseModule, SharedResourceModule } from '@devmx/shared-resource';
+import {
+  SharedDatabaseModule,
+  SharedResourceModule,
+} from '@devmx/shared-resource';
 import { PresentationResourceModule } from '@devmx/presentation-resource';
 import { LocationResourceModule } from '@devmx/location-resource';
 import { AccountResourceModule } from '@devmx/account-resource';
@@ -15,7 +18,7 @@ import { env } from './envs/env';
     AccountResourceModule,
     PresentationResourceModule,
     LocationResourceModule,
-    EventResourceModule
-  ]
+    EventResourceModule,
+  ],
 })
 export class AppModule {}

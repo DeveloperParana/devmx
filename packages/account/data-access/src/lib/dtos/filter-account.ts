@@ -1,4 +1,4 @@
 export interface FilterAccount {
-  name: string
+  name: string;
   username: string;
 }

@@ -19,9 +19,8 @@ export class PresentationCommentFacade extends State<PresentationCommentState> {
 
   constructor(
     private createPresentationCommentUseCase: CreatePresentationCommentUseCase,
-    private findPresentationCommentsUseCase: FindPresentationCommentsUseCase // private findPresentationCommentByIDUseCase: FindPresentationCommentByIDUseCase, // private updatePresentationCommentUseCase: UpdatePresentationCommentUseCase,
-  ) // private removePresentationCommentUseCase: RemovePresentationCommentUseCase
-  {
+    private findPresentationCommentsUseCase: FindPresentationCommentsUseCase // private findPresentationCommentByIDUseCase: FindPresentationCommentByIDUseCase, // private updatePresentationCommentUseCase: UpdatePresentationCommentUseCase, // private removePresentationCommentUseCase: RemovePresentationCommentUseCase
+  ) {
     super({
       comments: { data: [], items: 0, pages: 0 },
       comment: null,

@@ -13,7 +13,7 @@ export interface DropdownFormFieldOptions<T>
 export class DropdownFormField<T> extends FormFieldBase<T> {
   options: DropDownFormFieldOption<T>[];
 
-  readonly type = 'dropdown'
+  readonly type = 'dropdown';
 
   constructor(options: DropdownFormFieldOptions<T>) {
     super(options);

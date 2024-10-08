@@ -34,26 +34,26 @@ export class EventDto {
   @ApiProperty()
   visible: boolean;
 
-  @ApiProperty({ type: () => [PresentationRefDto]})
+  @ApiProperty({ type: () => [PresentationRefDto] })
   @Type(() => PresentationRefDto)
   presentations: PresentationRefDto[];
 
-  @ApiProperty({ type: () => [AccountRefDto]})
+  @ApiProperty({ type: () => [AccountRefDto] })
   @Type(() => AccountRefDto)
   leaders: AccountRefDto[];
 
   @ApiProperty()
   address: string;
 
-  @ApiPropertyOptional({ type: () => CityDto})
+  @ApiPropertyOptional({ type: () => CityDto })
   @Type(() => CityDto)
   city?: CityDto;
 
-  @ApiPropertyOptional({ type: () => LocationDto})
+  @ApiPropertyOptional({ type: () => LocationDto })
   @Type(() => LocationDto)
   location?: LocationDto;
 
-  @ApiProperty({ type: () => AccountRefDto})
+  @ApiProperty({ type: () => AccountRefDto })
   @Type(() => AccountRefDto)
   owner: AccountRefDto;
 }

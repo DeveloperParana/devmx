@@ -1,5 +1,9 @@
 <mat-accordion class="settings-headers-align">
-  <mat-expansion-panel hideToggle class="settings-panel">
+  <mat-expansion-panel
+    hideToggle
+    (closed)="accountComponent.disable()"
+    class="settings-panel"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title> Conta </mat-panel-title>
       <mat-panel-description>
@@ -19,11 +23,18 @@
           </button>
         </div>
       </aside>
-      <devmx-editable-account (submitted)="onAccountSubmitted($event)" />
+      <devmx-editable-account
+        #accountComponent="devmxEditableAccount"
+        (submitted)="onAccountSubmitted($event)"
+      />
     </div>
   </mat-expansion-panel>
 
-  <mat-expansion-panel hideToggle class="settings-panel">
+  <mat-expansion-panel
+    hideToggle
+    (closed)="autoRoleComponent.disable()"
+    class="settings-panel"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title> Papéis </mat-panel-title>
       <mat-panel-description>
@@ -39,11 +50,18 @@
         </figure>
       </aside>
 
-      <devmx-auto-assignable-role (submitted)="onRolesSubmitted($event)" />
+      <devmx-auto-assignable-role
+        #autoRoleComponent="devmxAutoAssignableRole"
+        (submitted)="onRolesSubmitted($event)"
+      />
     </div>
   </mat-expansion-panel>
 
-  <mat-expansion-panel hideToggle class="settings-panel">
+  <mat-expansion-panel
+    hideToggle
+    (closed)="passwordComponent.disable()"
+    class="settings-panel"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title> Segurança </mat-panel-title>
       <mat-panel-description>
@@ -59,7 +77,10 @@
         </figure>
       </aside>
 
-      <devmx-editable-password (submitted)="onPasswordSubmitted($event)" />
+      <devmx-editable-password
+        #passwordComponent="devmxEditablePassword"
+        (submitted)="onPasswordSubmitted($event)"
+      />
     </div>
   </mat-expansion-panel>
 </mat-accordion>

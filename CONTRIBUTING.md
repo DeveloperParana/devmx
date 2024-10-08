@@ -109,9 +109,7 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
 > [!WARNING]
 > Antes de escrever seu commit, execute o comando `pnpm affected` para verificar quaisquer possíveis problemas de `lint`, `test` e `build` nos projetos afetados pelas alterações.
 
-
 ---
-
 
 ## Stack
 
@@ -154,7 +152,6 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
 </figure>
 
 </section>
-
 
 ## Arquitetura
 

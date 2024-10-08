@@ -40,16 +40,15 @@ export class ChangeRolesDialog implements OnInit {
   form = new ChangeRolesForm();
 
   ngOnInit() {
-    console.log(this.data);
     const { assign, assigner } = this.data;
 
     const account = new AccountLevel(assigner);
 
-    if (account.level < 2) {
+    if (account.level < 4) {
       this.form.disableWorthy();
     }
 
-    if (account.level < 4) {
+    if (account.level < 16) {
       this.form.disableBoard();
     }
 

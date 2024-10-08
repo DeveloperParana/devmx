@@ -10,7 +10,7 @@ export interface TextboxFormFieldOptions<T>
 export class TextboxFormField<T> extends FormFieldBase<T> {
   controlType: TextboxFormFieldControlType;
 
-  readonly type = 'textbox'
+  readonly type = 'textbox';
 
   constructor(options: TextboxFormFieldOptions<T>) {
     super(options);

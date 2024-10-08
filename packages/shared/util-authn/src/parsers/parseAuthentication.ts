@@ -1,7 +1,6 @@
-import { AuthenticationJSON, AuthenticationInfo } from "../types/index";
-import { toAuthenticationInfo } from "./to-authentication-info";
-import { parseAuthenticator } from "./parse-authenticator";
-
+import { AuthenticationJSON, AuthenticationInfo } from '../types/index';
+import { toAuthenticationInfo } from './to-authentication-info';
+import { parseAuthenticator } from './parse-authenticator';
 
 export function parseAuthentication(
   authenticationJson: AuthenticationJSON

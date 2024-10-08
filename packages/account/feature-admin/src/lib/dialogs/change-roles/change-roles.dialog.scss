@@ -4,9 +4,10 @@
   form {
     display: flex;
     flex-direction: column;
+    padding: 0.6em 1.2em 0.6em 0.6em;
 
     .mat-mdc-dialog-title {
-      max-width: 12em;
+      max-width: calc(100% - 2px);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -19,7 +20,16 @@
     }
 
     section {
+      display: flex;
+      flex-flow: row wrap;
       padding: 0 2em;
+      gap: 4em;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
     }
 
     .mdc-form-field {

@@ -6,4 +6,3 @@ export { parseCryptoKey } from './parse-crypto-key';
 export { getAlgoParams } from './get-algo-params';
 export { isNotValid } from './is-not-valid';
 export { isValid } from './is-valid';
-

@@ -17,11 +17,15 @@ export class PresentationCommentServiceImpl
 
   constructor(private http: HttpClient, private env: Env) {}
 
-  findOne(id: string): Observable<PresentationCommentOut> {
-    throw new Error('Method not implemented.');
-  }
+  // findOne(id: string): Observable<PresentationCommentOut> {
+  //   const url = [`${this.url}/${i}/comments`, params.toString()];
+  //   return this.http.get()
+  // }
 
-  update(id: string, data: UpdatePresentationComment): Observable<PresentationCommentOut> {
+  update(
+    id: string,
+    data: UpdatePresentationComment
+  ): Observable<PresentationCommentOut> {
     throw new Error('Method not implemented.');
   }
 

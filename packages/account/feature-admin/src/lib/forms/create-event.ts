@@ -13,11 +13,11 @@ export class CreateEventForm extends FormGroup<TypedForm<CreateEvent>> {
     super({
       title: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required]
+        validators: [Validators.required],
       }),
       format: new FormControl('in-person', {
         nonNullable: true,
-        validators: [Validators.required]
+        validators: [Validators.required],
       }),
       visible: new FormControl(false, {
         nonNullable: true,

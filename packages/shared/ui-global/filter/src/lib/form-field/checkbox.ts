@@ -8,7 +8,7 @@ export interface CheckboxFormFieldOptions<T>
 export class CheckboxFormField<T> extends FormFieldBase<T> {
   checked: boolean;
 
-  readonly type = 'checkbox'
+  readonly type = 'checkbox';
 
   constructor(options: CheckboxFormFieldOptions<T>) {
     super(options);

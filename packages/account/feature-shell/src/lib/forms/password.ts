@@ -30,7 +30,7 @@ export class PasswordForm extends Form<ChangePassword> {
           validators: [Validators.required, Validators.minLength(6)],
         }),
       },
-      { validators: samePasswordsValidation }
+      { updateOn: 'blur', validators: samePasswordsValidation }
     );
   }
 }

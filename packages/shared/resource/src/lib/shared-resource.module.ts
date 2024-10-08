@@ -8,10 +8,7 @@ export class SharedResourceModule {
   static forRoot(env: Env): DynamicModule {
     return {
       module: SharedResourceModule,
-      providers: [
-        provideEnv(env),
-        provideMongoURI(),
-      ],
+      providers: [provideEnv(env), provideMongoURI()],
       exports: [Env, 'MONGO_URI'],
     };
   }

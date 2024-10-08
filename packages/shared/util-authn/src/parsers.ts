@@ -4,7 +4,7 @@ import {
   toRegistrationInfo,
   parseAuthenticator,
   parseAuthentication,
-  parseRegistration
+  parseRegistration,
 } from './parsers/index';
 
 export const parsers = {
@@ -13,5 +13,5 @@ export const parsers = {
   toRegistrationInfo,
   parseAuthentication,
   parseAuthenticator,
-  parseRegistration
+  parseRegistration,
 };

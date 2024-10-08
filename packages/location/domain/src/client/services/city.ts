@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export abstract class CityService {
   abstract find(params: QueryParams<City>): Observable<Page<City>>;
 
-  abstract search(name: string): Observable<City[]>
+  abstract search(name: string): Observable<City[]>;
 
   abstract findByLocation(filter: LocationFilter): Observable<City[]>;
 
