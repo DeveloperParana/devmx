@@ -1,7 +1,7 @@
 import { AccountRefDto } from '@devmx/account-data-source';
 import { CityRefDto } from '@devmx/location-data-source';
 import { RangeDto } from '@devmx/shared-data-source';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   JobOut,
@@ -52,25 +52,28 @@ export class JobDto implements JobOut {
   })
   mode: JobMode;
 
-  @ApiProperty({ type: [String] })
+  @ApiPropertyOptional({ type: [String] })
   benefits?: string[] | undefined;
 
   @Type(() => RangeDto)
-  @ApiProperty({ type: () => RangeDto })
+  @ApiPropertyOptional({ type: () => RangeDto })
   salary?: RangeDto;
 
   @Type(() => CityRefDto)
-  @ApiProperty({ type: () => CityRefDto })
+  @ApiPropertyOptional({ type: () => CityRefDto })
   city?: CityRefDto;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   contact?: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   company?: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   link?: string;
+
+  @ApiProperty({ type: Boolean })
+  active: boolean;
 
   @Type(() => AccountRefDto)
   @ApiProperty({ type: () => AccountRefDto })
