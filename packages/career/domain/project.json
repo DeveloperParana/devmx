@@ -1,0 +1,23 @@
+{
+  "name": "career-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/career/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/career/domain",
+        "main": "packages/career/domain/src/index.ts",
+        "tsConfig": "packages/career/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/career/domain/src/client.ts",
+          "packages/career/domain/src/server.ts"
+        ]
+      }
+    }
+  }
+}

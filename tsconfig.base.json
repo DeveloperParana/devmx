@@ -43,6 +43,9 @@
         "packages/account/feature-shell/src/index.ts"
       ],
       "@devmx/account-resource": ["packages/account/resource/src/index.ts"],
+      "@devmx/career-domain": ["packages/career/domain/src/index.ts"],
+      "@devmx/career-domain/client": ["packages/career/domain/src/client.ts"],
+      "@devmx/career-domain/server": ["packages/career/domain/src/server.ts"],
       "@devmx/event-data-access": ["packages/event/data-access/src/index.ts"],
       "@devmx/event-data-source": ["packages/event/data-source/src/index.ts"],
       "@devmx/event-domain": ["packages/event/domain/src/index.ts"],
