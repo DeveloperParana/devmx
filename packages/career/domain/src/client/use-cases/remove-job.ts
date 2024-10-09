@@ -1,7 +1,7 @@
-import { Job, UseCase } from '@devmx/shared-api-interfaces';
+import { JobOut, UseCase } from '@devmx/shared-api-interfaces';
 import { JobService } from '../services';
 
-export class RemoveJobUseCase implements UseCase<string, Job> {
+export class RemoveJobUseCase implements UseCase<string, JobOut> {
   constructor(private jobService: JobService) {}
 
   execute(id: string) {
