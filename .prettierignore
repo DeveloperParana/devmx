@@ -7,3 +7,5 @@
 /diagrams
 /assets/seeds
 pnpm-lock.yaml
+
+packages/shared/ui-global/forms/src/lib/components

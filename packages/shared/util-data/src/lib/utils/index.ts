@@ -8,4 +8,5 @@ export * from './entries';
 export * from './keys';
 export * from './merge';
 export * from './same-keys';
+export * from './values';
 export * from './vector2';

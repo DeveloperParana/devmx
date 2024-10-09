@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .dialog-content {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

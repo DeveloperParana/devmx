@@ -1,0 +1,17 @@
+@if (field(); as opts) {
+
+  <mat-form-field>
+    <mat-label>{{ opts.label }}</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="opts.min" [max]="opts.max">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error>
+    @for (error of opts.errors | keyvalue; track error) {
+      @if (control().hasError(error.key)) {
+        {{ error.value }}
+      }
+    }
+    </mat-error>
+  </mat-form-field>
+
+  }

@@ -1,0 +1,27 @@
+@for (field of fields() | keyvalue | orderBy: 'value.order'; track field) {
+  @if (isFormField(field.value)) {
+    @switch (field.value.kind) {
+      @case ('textbox') {
+        @if (field.value.type !== 'hidden') {
+        <devmx-textbox [field]="field.value" [name]="field.key" [control]="getControl(field.key)" />
+        }
+      }
+      @case ('dropdown') {
+        <devmx-dropdown [field]="field.value" [control]="getControl(field.key)" />
+      }
+      @case ('datepicker') {
+        <devmx-datepicker [field]="field.value" [control]="getControl(field.key)" />
+      }
+      @case ('checkbox') {
+        <devmx-checkbox [field]="field.value" [control]="getControl(field.key)" />
+      }
+      @case ('radio') {
+        <devmx-radio [field]="field.value" [control]="getControl(field.key)" />
+      }
+    }
+  } @else {
+    <ng-container [formGroup]="getGroup(field.key)">
+      <devmx-form-group [fields]="$any(field.value)" [formGroup]="getGroup(field.key)" />
+    </ng-container>
+  }
+}

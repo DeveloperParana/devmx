@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<form [formGroup]="data.form" (submit)="onSubmit()">
+  <mat-dialog-content class="dialog-content">
+    <devmx-form-group [fields]="data.fields" [formGroup]="data.form" />
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button type="button" mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button>Enviar</button>
+  </mat-dialog-actions>
+</form>

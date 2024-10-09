@@ -104,6 +104,9 @@
       "@devmx/shared-ui-global/filter": [
         "packages/shared/ui-global/filter/src/index.ts"
       ],
+      "@devmx/shared-ui-global/forms": [
+        "packages/shared/ui-global/forms/src/index.ts"
+      ],
       "@devmx/shared-ui-global/layout": [
         "packages/shared/ui-global/layout/src/index.ts"
       ],

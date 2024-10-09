@@ -1,0 +1,9 @@
+@if (field(); as opts) {
+
+<mat-radio-group [ariaLabel]="opts.label" [formControl]="control()">
+  @for (opt of opts.options; track opt) {
+    <mat-radio-button [value]="opt.value">{{ opt.text }}</mat-radio-button>
+  }
+</mat-radio-group>
+
+}

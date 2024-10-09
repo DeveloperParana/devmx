@@ -1,0 +1,20 @@
+@if (field(); as opts) {
+
+<mat-form-field>
+  <mat-label>{{ opts.label }}</mat-label>
+
+  @if (opts.type === 'long') {
+    <textarea matInput [formControl]="control()" cdkTextareaAutosize></textarea>
+  } @else {
+    <input matInput [formControl]="control()" [type]="opts.type" [autocomplete]="opts.autocomplete" />
+  }
+  <mat-error>
+  @for (error of opts.errors | keyvalue; track error) {
+    @if (control().hasError(error.key)) {
+      {{ error.value }}
+    }
+  }
+  </mat-error>
+</mat-form-field>
+
+}
