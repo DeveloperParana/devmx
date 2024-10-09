@@ -1,5 +1,5 @@
 import { Job, JobOut, Page, QueryParams } from '@devmx/shared-api-interfaces';
-import { CreateJob } from '../../common/dtos';
+import { CreateJob, UpdateJob } from '../../common/dtos';
 import { Observable } from 'rxjs';
 
 export abstract class JobService {
@@ -9,7 +9,7 @@ export abstract class JobService {
 
   abstract create(data: CreateJob): Observable<JobOut>;
 
-  abstract update(id: string, data: Partial<Job>): Observable<Job>;
+  abstract update(id: string, data: UpdateJob): Observable<JobOut>;
 
-  abstract remove(id: string): Observable<Job>;
+  abstract remove(id: string): Observable<JobOut>;
 }
