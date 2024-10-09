@@ -19,6 +19,12 @@ export const accountFeatureShellSidenav: LayoutSidenavItem[] = [
         roles: ['speaker'],
         icon: 'collections_bookmark',
       },
+      {
+        path: ['/conta', 'minhas-vagas'],
+        text: 'Vagas',
+        roles: ['recruiter'],
+        icon: 'work_update',
+      },
     ],
   },
   {

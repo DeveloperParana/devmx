@@ -1,6 +1,7 @@
 import { PresentationsService } from '@devmx/presentation-domain/server';
 import { createUseCaseProvider } from '@devmx/shared-data-source';
 import { EventsService } from '@devmx/event-domain/server';
+import { JobsService } from '@devmx/career-domain/server';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import {
   JwtService,
@@ -18,6 +19,7 @@ import {
   ChangeRolesUseCase,
   FindEventsByOwnerUseCase,
   FindAccountsByRoleUseCase,
+  FindJobsByOwnerUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideFindAccountsUseCase() {
@@ -74,6 +76,28 @@ export function provideFindEventsByOwnerUseCase() {
   return createUseCaseProvider(FindEventsByOwnerUseCase, [EventsService]);
 }
 
+export function provideFindJobsByOwnerUseCase() {
+  return createUseCaseProvider(FindJobsByOwnerUseCase, [JobsService]);
+}
+
 export function provideFindAccountsByRoleUseCase() {
   return createUseCaseProvider(FindAccountsByRoleUseCase, [AccountsService]);
+}
+
+export function provideUseCases() {
+  return [
+    provideFindAccountsUseCase(),
+    provideFindAccountByIDUseCase(),
+    provideFindAccountByUsernameUseCase(),
+    provideRemoveAccountUseCase(),
+    provideUpdateAccountUseCase(),
+    provideChangePasswordUseCase(),
+    provideSignInUseCase(),
+    provideSignUpUseCase(),
+    provideChangeRolesUseCase(),
+    provideFindPresentationsByOwnerUseCase(),
+    provideFindEventsByOwnerUseCase(),
+    provideFindJobsByOwnerUseCase(),
+    provideFindAccountsByRoleUseCase(),
+  ];
 }

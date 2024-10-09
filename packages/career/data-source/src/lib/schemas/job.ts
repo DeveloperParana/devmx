@@ -22,8 +22,8 @@ export class JobCollection extends Document implements Job {
   @Prop({ required: true, type: String })
   description: string;
 
-  @Prop({ required: true, type: [String] })
-  requirements: string[];
+  @Prop({ required: true, type: String })
+  requirements: string;
 
   @Prop({ required: true, type: String, enum: ['junior', 'mid', 'senior'] })
   experience: ExperienceLevel;
@@ -41,8 +41,8 @@ export class JobCollection extends Document implements Job {
   @Prop({ required: true, type: String, enum: ['office', 'remote', 'hybrid'] })
   mode: JobMode;
 
-  @Prop({ type: [String] })
-  benefits?: string[];
+  @Prop({ type: String })
+  benefits?: string;
 
   @Prop(
     raw({

@@ -8,6 +8,7 @@ import {
 } from '@devmx/account-domain';
 import {
   Page,
+  JobOut,
   EventOut,
   AccountOut,
   PresentationOut,
@@ -28,6 +29,11 @@ export class AccountServiceImpl implements AccountService {
   findPresentations(params: URLSearchParams) {
     const url = [`${this.url}/presentations`, params.toString()];
     return this.http.get<Page<PresentationOut>>(url.join('?'));
+  }
+
+  findJobs(params: URLSearchParams) {
+    const url = [`${this.url}/jobs`, params.toString()];
+    return this.http.get<Page<JobOut>>(url.join('?'));
   }
 
   findEvents(params: URLSearchParams) {

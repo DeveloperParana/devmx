@@ -2,7 +2,7 @@ import { CityDto, LocationDto } from '@devmx/location-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { PresentationRefDto } from '@devmx/presentation-data-source';
 import { EventFormat } from '@devmx/shared-api-interfaces';
-import { AccountRefDto } from '@devmx/account-data-source';
+import { AccountRefDto } from '@devmx/shared-data-source';
 import { Type } from 'class-transformer';
 
 export class EventDto {

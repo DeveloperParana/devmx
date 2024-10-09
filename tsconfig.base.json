@@ -48,6 +48,9 @@
       "@devmx/career-domain": ["packages/career/domain/src/index.ts"],
       "@devmx/career-domain/client": ["packages/career/domain/src/client.ts"],
       "@devmx/career-domain/server": ["packages/career/domain/src/server.ts"],
+      "@devmx/career-feature-shell": [
+        "packages/career/feature-shell/src/index.ts"
+      ],
       "@devmx/career-resource": ["packages/career/resource/src/index.ts"],
       "@devmx/event-data-access": ["packages/event/data-access/src/index.ts"],
       "@devmx/event-data-source": ["packages/event/data-source/src/index.ts"],
@@ -107,6 +110,9 @@
       "@devmx/shared-data-source": ["packages/shared/data-source/src/index.ts"],
       "@devmx/shared-resource": ["packages/shared/resource/src/index.ts"],
       "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"],
+      "@devmx/shared-ui-global/crumbs": [
+        "packages/shared/ui-global/crumbs/src/index.ts"
+      ],
       "@devmx/shared-ui-global/filter": [
         "packages/shared/ui-global/filter/src/index.ts"
       ],

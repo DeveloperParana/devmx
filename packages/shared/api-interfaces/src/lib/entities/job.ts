@@ -9,7 +9,7 @@ export interface Job {
 
   description: string;
 
-  requirements: string[];
+  requirements: string;
 
   experience: ExperienceLevel;
 
@@ -19,7 +19,7 @@ export interface Job {
 
   mode: JobMode;
 
-  benefits?: string[];
+  benefits?: string;
 
   salary?: Range;
 

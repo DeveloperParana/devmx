@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :host {
   flex: 1;
   display: flex;
@@ -11,12 +13,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-  }
-
-  .layout-is-mobile .layout-toolbar {
-    position: fixed;
-    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-    z-index: 2;
   }
 
   h1.layout-app-name {
@@ -33,6 +29,17 @@
     width: 16em;
   }
 
+  .layout-sidenav-end {
+    width: 50vw;
+    @include mat.elevation-transition();
+    @include mat.elevation(6);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(12);
+    }
+  }
+
   .layout-content {
     flex: 1;
     display: flex;
@@ -40,9 +47,25 @@
     padding: 0 1em;
   }
 
-  .layout-is-mobile .layout-sidenav-container {
-    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
-    flex: 1 0 auto;
+  .layout-is-mobile {
+    .layout-toolbar {
+      position: fixed;
+      /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+      z-index: 2;
+    }
+
+    .layout-sidenav-container {
+      /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+         `<body>` to be our scrolling element for mobile layouts. */
+      flex: 1 0 auto;
+    }
+
+    .layout-sidenav-start {
+      height: calc(100% - 104px);
+    }
+
+    .layout-sidenav-end {
+      height: calc(100% - 104px);
+    }
   }
 }

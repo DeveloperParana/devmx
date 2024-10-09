@@ -1,21 +1,19 @@
 import { AutocompleteCitiesComponent } from '@devmx/location-ui-forms';
+import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { UpdateAccount } from '@devmx/account-data-access';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
-import { UpdateAccountForm, UpdateAccountWithCity } from '../../forms';
+import { UpdateAccountForm } from '../../forms';
 import {
-  output,
   OnInit,
+  inject,
   Component,
   ChangeDetectionStrategy,
-  inject,
 } from '@angular/core';
 
 @Component({
@@ -47,13 +45,9 @@ import {
 export class EditableAccountComponent implements OnInit {
   container = inject(ControlContainer);
 
-  get formGroup() {
+  get form() {
     return this.container.control as UpdateAccountForm;
   }
-
-  form = new UpdateAccountForm();
-
-  submitted = output<UpdateAccount | UpdateAccountWithCity>();
 
   ngOnInit() {
     this.form.disable();
@@ -72,14 +66,5 @@ export class EditableAccountComponent implements OnInit {
     if (this.form.enabled) {
       this.form.disable();
     }
-  }
-
-  onSubmit() {
-    if (this.form.valid) {
-      this.submitted.emit(this.form.getRawValue() as UpdateAccount);
-      return this.form.disable();
-    }
-
-    this.form.markAllAsTouched();
   }
 }

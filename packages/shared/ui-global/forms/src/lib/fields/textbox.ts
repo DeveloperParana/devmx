@@ -14,5 +14,5 @@ export class Textbox<T> extends Field<T> {
 }
 
 export function textbox<T>(options: TextboxOptions<T>) {
-  return new Textbox(options);
+  return new Textbox<T>(options);
 }

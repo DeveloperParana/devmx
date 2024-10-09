@@ -1,5 +1,5 @@
-import { JobDto, CreateJobDto, UpdateJobDto, CreatedJobDto } from '../dtos';
-import { PageDto, QueryParamsDto } from '@devmx/shared-data-source';
+import { JobDto, PageDto, QueryParamsDto } from '@devmx/shared-data-source';
+import { CreateJobDto, UpdateJobDto, CreatedJobDto } from '../dtos';
 import { Job } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {

@@ -13,6 +13,9 @@ export const accountFeatureAdminRoutes: Route[] = [
     children: [
       {
         path: 'contas',
+        data: {
+          breadcrumb: 'Contas'
+        },
         component: AccountsContainer,
       },
       {
@@ -21,6 +24,9 @@ export const accountFeatureAdminRoutes: Route[] = [
       },
       {
         path: 'meus-eventos',
+        data: {
+          breadcrumb: 'Meus eventos'
+        },
         component: EventsContainer,
       },
       {

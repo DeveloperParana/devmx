@@ -4,6 +4,7 @@ import { exceptionByError } from '@devmx/shared-resource';
 import {
   User,
   Roles,
+  JobDto,
   Allowed,
   ApiPage,
   QueryParamsDto,
@@ -91,6 +92,19 @@ export class AccountsController {
   ) {
     try {
       return await this.accountsFacade.findPresentations(owner, params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get('jobs')
+  @ApiPage(JobDto)
+  async findAccountJobs(
+    @User('id') owner: string,
+    @Query() params: QueryParamsDto<JobDto>
+  ) {
+    try {
+      return await this.accountsFacade.findJobs(owner, params);
     } catch (err) {
       throw exceptionByError(err);
     }

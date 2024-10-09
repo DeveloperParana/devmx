@@ -18,6 +18,7 @@ import {
   FindSpeakersUseCase,
   FindLeadersUseCase,
   RequestChallengeUseCase,
+  FindJobsByOwnerUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideSignInUseCase() {
@@ -58,6 +59,10 @@ export function provideFindPresentationsByOwnerUseCase() {
   ]);
 }
 
+export function provideFindJobsByOwnerUseCase() {
+  return createUseCaseProvider(FindJobsByOwnerUseCase, [AccountService]);
+}
+
 export function provideFindEventsByOwnerUseCase() {
   return createUseCaseProvider(FindEventsByOwnerUseCase, [AccountService]);
 }
@@ -84,4 +89,26 @@ export function provideFindLeadersUseCase() {
 
 export function provideRequestChallengeUseCase() {
   return createUseCaseProvider(RequestChallengeUseCase, [AuthService]);
+}
+
+export function provideUseCases() {
+  return [
+    provideSignInUseCase(),
+    provideSignUpUseCase(),
+    provideLoadAuthUserUseCase(),
+    provideFindAccountsUseCase(),
+    provideFindAccountByIDUseCase(),
+    provideFindAccountByUsernameUseCase(),
+    provideUpdateAccountUseCase(),
+    provideRemoveAccountUseCase(),
+    provideFindPresentationsByOwnerUseCase(),
+    provideFindJobsByOwnerUseCase(),
+    provideFindEventsByOwnerUseCase(),
+    provideChangePasswordUseCase(),
+    provideChangeRolesUseCase(),
+    provideUploadPhotoUseCase(),
+    provideFindSpeakersUseCase(),
+    provideFindLeadersUseCase(),
+    provideRequestChallengeUseCase(),
+  ];
 }

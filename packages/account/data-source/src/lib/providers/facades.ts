@@ -13,6 +13,7 @@ import {
   ChangeRolesUseCase,
   FindEventsByOwnerUseCase,
   FindAccountsByRoleUseCase,
+  FindJobsByOwnerUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideAccountsFacade() {
@@ -25,6 +26,7 @@ export function provideAccountsFacade() {
     ChangePasswordUseCase,
     ChangeRolesUseCase,
     FindPresentationsByOwnerUseCase,
+    FindJobsByOwnerUseCase,
     FindEventsByOwnerUseCase,
     FindAccountsByRoleUseCase,
   ]);

@@ -5,6 +5,7 @@ import {
 import { PresentationResourceModule } from '@devmx/presentation-resource';
 import { LocationResourceModule } from '@devmx/location-resource';
 import { AccountResourceModule } from '@devmx/account-resource';
+import { CareerResourceModule } from '@devmx/career-resource';
 import { EventResourceModule } from '@devmx/event-resource';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { Module } from '@nestjs/common';
@@ -19,6 +20,7 @@ import { env } from './envs/env';
     PresentationResourceModule,
     LocationResourceModule,
     EventResourceModule,
+    CareerResourceModule
   ],
 })
 export class AppModule {}

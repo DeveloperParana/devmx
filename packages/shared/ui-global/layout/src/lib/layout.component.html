@@ -6,30 +6,28 @@
     [hideToggleButtonRight]="hideToggleButtonRight()"
   />
 
-  <mat-sidenav-container
-    class="layout-sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-    [style.marginBottom.px]="mobileQuery.matches ? 56 : 0"
-  >
+  <mat-sidenav-container [hasBackdrop]="false" class="layout-sidenav-container">
     <mat-sidenav
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
       class="layout-sidenav-start"
-      fixedTopGap="56"
+      fixedTopGap="52"
     >
-      <router-outlet
+      <ng-template [cdkPortalOutlet]="sidenavOutlet"></ng-template>
+      <!-- <router-outlet
         name="left"
         (activate)="openLeft(snav)"
         (deactivate)="closeLeft(snav)"
-      />
+      /> -->
     </mat-sidenav>
     <mat-sidenav-content class="layout-content">
+      <devmx-crumbs />
       <router-outlet />
     </mat-sidenav-content>
     <mat-sidenav
       #enav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      mode="over"
       [fixedInViewport]="mobileQuery.matches"
       class="layout-sidenav-end"
       fixedTopGap="56"

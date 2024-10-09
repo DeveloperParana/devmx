@@ -1,0 +1,29 @@
+@if (accountFacade.jobs$ | async; as jobs) {
+
+<div class="jobs-container">
+  @for (job of jobs.data; track job.id) {
+
+  <a [routerLink]="job.id">
+    <mat-card class="job-card">
+      <mat-card-header>
+        <mat-card-title>{{job.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{job.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+
+  }
+</div>
+
+<devmx-paginator
+  [size]="10"
+  [items]="jobs.items"
+  (pageChange)="onPageChange($event)"
+/>
+}
+
+<button class="add-button" type="button" mat-fab (click)="openCreate()">
+  <mat-icon>add</mat-icon>
+</button>

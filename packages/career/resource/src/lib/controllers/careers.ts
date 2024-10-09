@@ -1,24 +1,23 @@
+import { ApiPage, JobDto, QueryParamsDto, User } from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
+import { Job } from '@devmx/shared-api-interfaces';
 import {
-  Body,
-  Controller,
-  Delete,
   Get,
+  Post,
+  Body,
   Param,
   Patch,
-  Post,
   Query,
+  Delete,
+  Controller,
 } from '@nestjs/common';
-import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
 import {
   JobsFacade,
   CreateJobDto,
   CreatedJobDto,
-  JobDto,
   UpdateJobDto,
 } from '@devmx/career-data-source';
-import { Job } from '@devmx/shared-api-interfaces';
 
 @ApiBearerAuth()
 @ApiTags('Carreiras')

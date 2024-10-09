@@ -1,0 +1,50 @@
+@use '@angular/material' as mat;
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .jobs-container {
+    display: grid;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .job-card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(6);
+    }
+  }
+
+  /* Estilo padrão para dispositivos grandes: 3 colunas */
+  @media (min-width: 1024px) {
+    .jobs-container {
+      grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    }
+  }
+
+  /* Estilo para dispositivos médios: 2 colunas */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .jobs-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    }
+  }
+
+  /* Estilo para dispositivos pequenos: 1 coluna */
+  @media (max-width: 767px) {
+    .jobs-container {
+      grid-template-columns: 1fr; /* 1 coluna */
+    }
+  }
+
+  .add-button {
+    position: fixed;
+    right: 8em;
+    bottom: 2em;
+  }
+}

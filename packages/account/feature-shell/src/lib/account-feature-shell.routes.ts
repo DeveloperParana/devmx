@@ -10,14 +10,17 @@ import { provideEvent } from '@devmx/event-data-access';
 import { SidenavLeftOutlet } from './outlets';
 import { Route } from '@angular/router';
 import {
+  provideLayout,
   provideLayoutSidenav,
   provideLayoutToolbar,
 } from '@devmx/shared-ui-global/layout';
 import {
+  JobsContainer,
   SettingsContainer,
   PresentationContainer,
   PresentationsContainer,
 } from './containers';
+import { provideCareer } from '@devmx/career-data-access';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
@@ -34,18 +37,18 @@ export const accountFeatureShellRoutes: Route[] = [
       ...providePresentation(),
       ...provideEvent(),
       ...provideLocation(),
+      ...provideCareer(),
       provideAutocompleteCitiesService(),
       provideLayoutToolbar(AuthFacade),
       provideLayoutSidenav(accountFeatureShellSidenav),
-      provideFormDialog()
+      provideLayout(SidenavLeftOutlet),
+      provideFormDialog(),
     ],
     component: AccountFeatureShellComponent,
+    data: {
+      breadcrumb: 'Conta'
+    },
     children: [
-      {
-        path: '',
-        component: SidenavLeftOutlet,
-        outlet: 'left',
-      },
       {
         path: 'administracao',
         canActivate: [roleGroupsGuard('worthy', 'board')],
@@ -71,11 +74,25 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: 'minhas-apresentacoes',
+        data: {
+          breadcrumb: 'Minhas apresentações'
+        },
         canActivate: [roleGuard('speaker')],
         component: PresentationsContainer,
       },
       {
+        path: 'minhas-vagas',
+        data: {
+          breadcrumb: 'Minhas vagas'
+        },
+        canActivate: [roleGuard('recruiter')],
+        component: JobsContainer,
+      },
+      {
         path: 'configuracoes',
+        data: {
+          breadcrumb: 'Configurações'
+        },
         component: SettingsContainer,
       },
       {

@@ -4,21 +4,10 @@ import {
   provideAccountsService,
   provideAuthFacade,
   provideAuthService,
-  provideChangePasswordUseCase,
-  provideChangeRolesUseCase,
   provideCryptoService,
-  provideFindAccountByIDUseCase,
-  provideFindAccountByUsernameUseCase,
-  provideFindPresentationsByOwnerUseCase,
-  provideFindAccountsUseCase,
   provideJwtService,
   provideJwtStrategy,
-  provideRemoveAccountUseCase,
-  provideSignInUseCase,
-  provideSignUpUseCase,
-  provideUpdateAccountUseCase,
-  provideFindEventsByOwnerUseCase,
-  provideFindAccountsByRoleUseCase,
+  provideUseCases,
 } from './providers';
 
 export function provideAccounts<T>(jwtService: Type<T>) {
@@ -30,19 +19,7 @@ export function provideAccounts<T>(jwtService: Type<T>) {
     provideAccountsService(),
     provideAuthService(),
 
-    provideSignUpUseCase(),
-    provideSignInUseCase(),
-
-    provideFindAccountsUseCase(),
-    provideFindAccountByIDUseCase(),
-    provideUpdateAccountUseCase(),
-    provideRemoveAccountUseCase(),
-    provideChangePasswordUseCase(),
-    provideFindPresentationsByOwnerUseCase(),
-    provideFindAccountsByRoleUseCase(),
-    provideFindEventsByOwnerUseCase(),
-    provideFindAccountByUsernameUseCase(),
-    provideChangeRolesUseCase(),
+    ...provideUseCases(),
 
     provideAccountsFacade(),
     provideAuthFacade(),
