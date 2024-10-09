@@ -30,4 +30,6 @@ export interface Job {
   company?: string;
 
   link?: string;
+
+  active: boolean
 }

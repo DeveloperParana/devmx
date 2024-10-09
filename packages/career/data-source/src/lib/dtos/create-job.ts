@@ -8,6 +8,7 @@ import {
   IsString,
   IsNotEmpty,
   IsOptional,
+  IsBoolean,
 } from 'class-validator';
 import {
   Range,
@@ -85,6 +86,10 @@ export class CreateJobDto implements CreateJob {
   @IsOptional()
   @ApiPropertyOptional({ type: String })
   link?: string;
+
+  @IsBoolean()
+  @ApiProperty({ type: Boolean })
+  active: boolean;
 
   owner: string;
 }
