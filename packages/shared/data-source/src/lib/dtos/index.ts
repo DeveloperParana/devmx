@@ -3,4 +3,6 @@ export * from './find-params';
 export * from './page';
 export * from './query-by-role-params';
 export * from './query-filter';
+export * from './query-location';
 export * from './query-params';
+export * from './range';

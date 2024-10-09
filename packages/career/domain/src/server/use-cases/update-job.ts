@@ -1,11 +1,12 @@
 import { NotFoundError, PersistenceError } from '@devmx/shared-util-errors';
-import { Job, Findable, UseCase } from '@devmx/shared-api-interfaces';
+import { Job, UseCase } from '@devmx/shared-api-interfaces';
+import { UpdateJob } from '../../common/dtos';
 import { JobsService } from '../services';
 
-export class UpdateJobUseCase implements UseCase<Findable<Job>, Job> {
+export class UpdateJobUseCase implements UseCase<UpdateJob, Job> {
   constructor(private jobsService: JobsService) {}
 
-  async execute(data: Findable<Job>) {
+  async execute(data: UpdateJob) {
     const job = await this.jobsService.findOne(data.id);
 
     if (!job) {

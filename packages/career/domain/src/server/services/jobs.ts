@@ -1,4 +1,4 @@
-import { CreateJob } from '../../common/dtos';
+import { CreateJob, UpdateJob } from '../../common/dtos';
 import {
   Job,
   Page,
@@ -15,7 +15,7 @@ export abstract class JobsService {
 
   abstract findOneBy(filter: QueryFilter<Job>): Promise<Job | null>;
 
-  abstract update(id: string, data: Partial<Job>): Promise<Job | null>;
+  abstract update(id: string, data: UpdateJob): Promise<Job | null>;
 
   abstract remove(id: string): Promise<Job | null>;
 }

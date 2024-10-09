@@ -1,13 +1,13 @@
-import { Job, Page, QueryParams } from '@devmx/shared-api-interfaces';
+import { Job, JobOut, Page, QueryParams } from '@devmx/shared-api-interfaces';
 import { CreateJob } from '../../common/dtos';
 import { Observable } from 'rxjs';
 
 export abstract class JobService {
-  abstract find(params: QueryParams<Job>): Observable<Page<Job>>;
+  abstract find(params: QueryParams<Job>): Observable<Page<JobOut>>;
 
-  abstract findOne(id: string): Observable<Job>;
+  abstract findOne(id: string): Observable<JobOut>;
 
-  abstract create(data: CreateJob): Observable<Job>;
+  abstract create(data: CreateJob): Observable<JobOut>;
 
   abstract update(id: string, data: Partial<Job>): Observable<Job>;
 

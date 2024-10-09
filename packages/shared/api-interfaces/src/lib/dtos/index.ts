@@ -6,6 +6,7 @@ export * from './city-ref';
 export * from './create-event';
 export * from './create-presentation';
 export * from './event-out';
+export * from './job-out';
 export * from './presentation-comment-out';
 export * from './presentation-out';
 export * from './presentation-ref';
