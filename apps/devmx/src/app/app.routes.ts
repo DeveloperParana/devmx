@@ -2,6 +2,13 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
+    path: 'carreiras',
+    loadChildren: () =>
+      import('@devmx/career-feature-shell').then(
+        (m) => m.careerFeatureShellRoutes
+      ),
+  },
+  {
     path: 'eventos',
     loadChildren: () =>
       import('@devmx/event-feature-shell').then(
@@ -25,6 +32,6 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'prefix',
-    redirectTo: 'conta',
+    redirectTo: 'carreiras',
   },
 ];

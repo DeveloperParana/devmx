@@ -1,8 +1,10 @@
 import { RouterOutlet } from '@angular/router';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
+  selector: 'devmx-calendar-scope',
   template: `<router-outlet />`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet],
   standalone: true,
 })

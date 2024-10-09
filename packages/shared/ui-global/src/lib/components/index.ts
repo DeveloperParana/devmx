@@ -6,3 +6,5 @@ export * from './message/message.component';
 export * from './photo/photo.component';
 export * from './crop-cover/crop-cover.component';
 export * from './paginator/paginator.component';
+export * from './loader/loader.component';
+export * from './devpr/devpr.component';

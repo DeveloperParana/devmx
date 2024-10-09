@@ -32,6 +32,9 @@ export const eventFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
+        data: {
+          breadcrumb: 'Eventos',
+        },
         component: EventsContainer,
       },
     ],

@@ -23,11 +23,8 @@
           </button>
         </div>
       </aside>
-      <form [formGroup]="form.updateAccount">
-        <devmx-editable-account
-          #accountComponent="devmxEditableAccount"
-          (submitted)="onAccountSubmitted($event)"
-        />
+      <form [formGroup]="form.updateAccount" (submit)="onAccountSubmit()">
+        <devmx-editable-account #accountComponent="devmxEditableAccount" />
       </form>
     </div>
   </mat-expansion-panel>
@@ -86,31 +83,3 @@
     </div>
   </mat-expansion-panel>
 </mat-accordion>
-
-@if (accountFacade.account$ | async; as account) {
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Conta</mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content>
-    <button
-      type="button"
-      mat-raised-button
-      (click)="openUpdateAccount(account)"
-    >
-      Alterar dados da conta
-    </button>
-  </mat-card-content>
-
-  <mat-card-header>
-    <mat-card-title>Segurança</mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content>
-    <button type="button" mat-raised-button (click)="openPassword(account)">
-      Alterar senha
-    </button>
-  </mat-card-content>
-</mat-card>
-}

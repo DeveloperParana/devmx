@@ -1,10 +1,7 @@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
-import {
-  provideRouter,
-  withRouterConfig,
-  withViewTransitions,
-} from '@angular/router';
+// import { provideCrumbs } from '@devmx/shared-ui-global/crumbs';
+import { provideLayout } from '@devmx/shared-ui-global/layout';
 import { registerLocaleData } from '@angular/common';
 import { authInterceptor } from './interceptors';
 import ptBr from '@angular/common/locales/extra/br';
@@ -12,6 +9,11 @@ import { AuthErrorHandler } from './handlers';
 import pt from '@angular/common/locales/pt';
 import { appRoutes } from './app.routes';
 import { env } from '../envs/env';
+import {
+  provideRouter,
+  withRouterConfig,
+  withViewTransitions,
+} from '@angular/router';
 import {
   withFetch,
   HttpClient,
@@ -49,5 +51,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideHttpClientImpl(HttpClient),
     provideEnv(env),
+    provideLayout(),
   ],
 };

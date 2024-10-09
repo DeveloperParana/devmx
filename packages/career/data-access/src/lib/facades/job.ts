@@ -33,7 +33,6 @@ export class JobFacade extends State<JobState> {
       jobs: { data: [], items: 0, pages: 0 },
       filter: {
         title: '',
-        description: '',
         mode: '',
         contract: '',
         experience: '',
@@ -50,7 +49,6 @@ export class JobFacade extends State<JobState> {
     this.setState({
       filter: {
         title: '',
-        description: '',
         mode: '',
         contract: '',
         experience: '',

@@ -10,7 +10,7 @@ export interface JobOut {
 
   description: string;
 
-  requirements: string[];
+  requirements: string;
 
   experience: ExperienceLevel;
 
@@ -20,7 +20,7 @@ export interface JobOut {
 
   mode: JobMode;
 
-  benefits?: string[];
+  benefits?: string;
 
   salary?: Range;
 

@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <a mat-card-avatar routerLink=".." mat-icon-button>
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+    <mat-card-title>Detalhes da apresentação</mat-card-title>
+  </mat-card-header>
+
+  <devmx-devpr [active]="true" />
+
+  @defer (when presentationFacade.presentation$ | async;) {
+  <!--  -->
+  @if (presentationFacade.presentation$ | async; as presentation) {
+  <pre>{{ presentation | json }}</pre>
+  }
+  <!--  -->
+  } @placeholder {
+  <img src="placeholder.svg" alt="Carregando" />
+  } @loading {
+  <h4>Carregando apresentação...</h4>
+  }
+</mat-card>
+

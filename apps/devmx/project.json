@@ -17,6 +17,7 @@
         "tsConfig": "apps/devmx/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          "apps/devmx/src/CNAME",
           {
             "glob": "**/*",
             "input": "apps/devmx/public"

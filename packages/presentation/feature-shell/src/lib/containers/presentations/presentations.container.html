@@ -11,7 +11,7 @@
 <div class="presentations-container">
   @for (presentation of presentations.data; track presentation.id) {
 
-  <a [routerLink]="presentation.id">
+  <a [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] }}]">
     <mat-card class="presentation-card">
       <mat-card-header>
         <mat-card-title>{{presentation.title}}</mat-card-title>

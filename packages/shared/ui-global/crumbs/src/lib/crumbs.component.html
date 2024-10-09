@@ -1,0 +1,10 @@
+<ul>
+  @for (crumb of crumbsService.breadcrumbs$ | async; track crumb) {
+  <li>
+    <a mat-button [routerLink]="crumb.path">
+      <mat-icon>chevron_right</mat-icon>
+      <span>{{ crumb.text }}</span>
+    </a>
+  </li>
+  }
+</ul>

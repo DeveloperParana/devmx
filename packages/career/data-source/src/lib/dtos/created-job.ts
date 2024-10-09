@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { AccountRefDto } from '@devmx/account-data-source';
-import { CityRefDto } from '@devmx/location-data-source';
+import { AccountRefDto } from '@devmx/shared-data-source';
+import { CityRefDto } from '@devmx/shared-data-source';
 import { RangeDto } from '@devmx/shared-data-source';
 import { Exclude, Type } from 'class-transformer';
 import {
@@ -12,17 +12,17 @@ import {
 } from '@devmx/shared-api-interfaces';
 
 export class CreatedJobDto implements JobOut {
-  @ApiProperty()
+  @ApiProperty({ type: String })
   id: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: String })
   title: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: String })
   description: string;
 
-  @ApiProperty()
-  requirements: string[];
+  @ApiProperty({ type: String })
+  requirements: string;
 
   @ApiProperty({
     type: 'enum',
@@ -52,8 +52,8 @@ export class CreatedJobDto implements JobOut {
   })
   mode: JobMode;
 
-  @ApiPropertyOptional({ type: [String] })
-  benefits?: string[] | undefined;
+  @ApiPropertyOptional({ type: String })
+  benefits?: string;
 
   @Type(() => RangeDto)
   @ApiPropertyOptional({ type: () => RangeDto })
@@ -62,16 +62,16 @@ export class CreatedJobDto implements JobOut {
   @Exclude()
   city?: CityRefDto;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ type: String })
   contact?: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ type: String })
   company?: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ type: String })
   link?: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: Boolean })
   active: boolean;
 
   @Exclude()

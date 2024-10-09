@@ -29,10 +29,10 @@ export class CreateJobDto implements CreateJob {
   @ApiProperty()
   description: string;
 
-  @IsArray()
+  @IsString()
   @IsNotEmpty()
-  @ApiProperty({ type: [String] })
-  requirements: string[];
+  @ApiProperty({ type: String })
+  requirements: string;
 
   @IsString()
   @IsNotEmpty()
@@ -57,10 +57,10 @@ export class CreateJobDto implements CreateJob {
   @ApiProperty({ type: 'enum', enum: ['office', 'remote', 'hybrid'] })
   mode: JobMode;
 
-  @IsArray()
+  @IsString()
   @IsOptional()
-  @ApiPropertyOptional({ type: [String] })
-  benefits?: string[];
+  @ApiPropertyOptional({ type: String })
+  benefits?: string;
 
   @IsOptional()
   @Type(() => RangeDto)

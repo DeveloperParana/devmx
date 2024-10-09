@@ -13,9 +13,7 @@
 
   <span class="spacer"></span>
   <p>
-    Comunidade DevParaná
-    <br />
-    &copy; 2015 - {{ year }}
+    Comunidade DevParaná &copy; 2015 - {{ year }}
   </p>
   <span class="spacer"></span>
 
@@ -43,6 +41,11 @@
         <a mat-list-item routerLink="/conta/administracao/meus-eventos">
           <mat-icon matListItemIcon>calendar_month</mat-icon>
           <span matListItemTitle>Meus eventos</span>
+        </a>
+        } @if (user | hasRole: 'recruiter') {
+        <a mat-list-item routerLink="/conta/minhas-vagas">
+          <mat-icon matListItemIcon>work_update</mat-icon>
+          <span matListItemTitle>Minhas vagas</span>
         </a>
         }
       </mat-nav-list>

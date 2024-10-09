@@ -1,7 +1,9 @@
+import { CrumbsComponent, provideCrumbs } from '@devmx/shared-ui-global/crumbs';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutToolbarComponent } from './toolbar/toolbar.component';
 import { LayoutNavbarComponent } from './navbar/navbar.component';
 import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
+import { Portal, PortalModule } from '@angular/cdk/portal';
 import { RouterModule } from '@angular/router';
 import {
   inject,
@@ -10,24 +12,31 @@ import {
   DestroyRef,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
+  ViewContainerRef,
 } from '@angular/core';
+import { Layout } from './layout';
 
 @Component({
   selector: 'devmx-layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideCrumbs()],
   imports: [
     LayoutModule,
+    PortalModule,
+    RouterModule,
+    CrumbsComponent,
     MatSidenavModule,
     LayoutToolbarComponent,
     LayoutNavbarComponent,
-    RouterModule,
   ],
   standalone: true,
 })
 export class LayoutComponent {
   destroyRef = inject(DestroyRef);
+
+  viewContainerRef = inject(ViewContainerRef);
 
   mobileQuery: MediaQueryList;
 
@@ -35,6 +44,10 @@ export class LayoutComponent {
 
   hideToggleButtonLeft = signal(true);
   hideToggleButtonRight = signal(true);
+
+  sidenavOutlet?: Portal<unknown>;
+
+  layout = inject(Layout);
 
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);
@@ -51,6 +64,14 @@ export class LayoutComponent {
     this.destroyRef.onDestroy(() => {
       this.mobileQuery.removeEventListener('change', this.#mobileQueryListener);
     });
+
+    this.layout.component$.subscribe((component) => {
+      console.log(component);
+      if (component) {
+        this.sidenavOutlet = component;
+        this.hideToggleButtonLeft.set(false);
+      }
+    });
   }
 
   openLeft(sidenav: MatSidenav) {
@@ -64,6 +85,8 @@ export class LayoutComponent {
   }
 
   openRight(sidenav: MatSidenav) {
+    console.log(sidenav);
+
     this.hideToggleButtonRight.set(false);
     sidenav.open();
   }

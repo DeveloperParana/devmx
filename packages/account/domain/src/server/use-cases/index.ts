@@ -5,6 +5,7 @@ export * from './find-account-by-username';
 export * from './find-accounts-by-role';
 export * from './find-accounts';
 export * from './find-events-by-owner';
+export * from './find-jobs-by-owner';
 export * from './find-presentations-by-owner';
 export * from './remove-account';
 export * from './sign-in';

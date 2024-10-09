@@ -1,0 +1,16 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    opacity: 0.8;
+  }
+
+  .mat-mdc-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+}

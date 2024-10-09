@@ -8,7 +8,8 @@
     "@devmx/shared-util-errors": "0.0.1",
     "@devmx/shared-util-data": "0.0.1",
     "@devmx/presentation-domain": "0.0.1",
-    "@devmx/event-domain": "0.0.1"
+    "@devmx/event-domain": "0.0.1",
+    "@devmx/career-domain": "0.0.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

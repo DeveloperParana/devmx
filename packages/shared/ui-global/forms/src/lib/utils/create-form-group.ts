@@ -1,5 +1,5 @@
 import { FormField, TypedFields, TypedForm } from '../types';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { createValidators } from './create-validators';
 import { entries } from '@devmx/shared-util-data';
 import { isFormField } from './is-form-field';
@@ -15,6 +15,11 @@ function createTypedForm<T>(fields: TypedFields<T>): TypedForm<T> {
     if (isFormField(curr)) {
       const control = createFormControl(curr);
       return { ...prev, [name]: control };
+    }
+
+    if (Array.isArray(curr)) {
+      const controls = curr.map((c) => createFormControl(c));
+      return { ...prev, [name]: new FormArray(controls) };
     }
 
     const controls = createTypedForm(curr as TypedFields<T[keyof T]>);

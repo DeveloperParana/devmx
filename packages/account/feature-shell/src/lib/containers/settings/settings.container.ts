@@ -1,4 +1,3 @@
-import { FormService, createFormGroup } from '@devmx/shared-ui-global/forms';
 import { ImageComponent, PhotoComponent } from '@devmx/shared-ui-global';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -13,8 +12,6 @@ import { CommonModule } from '@angular/common';
 import { switchMap, take } from 'rxjs';
 import {
   AutoAssignable,
-  changePassword,
-  updateAccount,
   UpdateAccountForm,
   UpdateAccountWithCity,
 } from '../../forms';
@@ -76,8 +73,6 @@ export class SettingsContainer implements OnInit {
   cityFacade = inject(CityFacade);
 
   destroyRef = inject(DestroyRef);
-
-  formService = inject(FormService);
 
   dialog = inject(MatDialog);
 
@@ -154,44 +149,11 @@ export class SettingsContainer implements OnInit {
     });
   }
 
-  openPassword(account: AccountOut) {
-    const title = 'Alterar senha';
-
-    const fields = changePassword(account);
-    const form = createFormGroup<ChangePassword>(fields);
-
-    const password$ = this.formService
-      .open<ChangePassword>({ title, form, fields })
-      .afterClosed();
-    password$.pipe(take(1)).subscribe((result) => {
-      console.log(result);
-    });
-  }
-
-  openUpdateAccount(account: AccountOut) {
-    const title = 'Alterar dados da conta';
-
-    const fields = updateAccount(account);
-    console.log(fields);
-
-    const form = createFormGroup(fields);
-    console.log(form);
-
-
-    const account$ = this.formService
-      .open({ title, fields, form })
-      .afterClosed();
-
-    // account$.pipe(take(1)).subscribe((result) => {
-    //   console.log(result);
-    // });
-  }
-
-  onAccountSubmitted(data: UpdateAccount | UpdateAccountWithCity) {
-    if (data.city && typeof data.city === 'object') {
-      data.city = data.city.id;
+  onAccountSubmit() {
+    if (this.form.updateAccount.valid) {
+      const value = this.form.updateAccount.getRawValue()
+      this.accountFacade.update(value);
     }
-    this.accountFacade.update(data as UpdateAccount);
   }
 
   onPasswordSubmitted(data: ChangePassword) {

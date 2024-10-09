@@ -17,6 +17,7 @@ import {
   FindSpeakersUseCase,
   FindLeadersUseCase,
   RequestChallengeUseCase,
+  FindJobsByOwnerUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideAuthFacade() {
@@ -34,6 +35,7 @@ export function provideAccountFacade() {
     FindAccountByIDUseCase,
     FindAccountByUsernameUseCase,
     FindPresentationsByOwnerUseCase,
+    FindJobsByOwnerUseCase,
     FindEventsByOwnerUseCase,
     UpdateAccountUseCase,
     RemoveAccountUseCase,

@@ -17,10 +17,10 @@ $light: mat.define-theme(
   (
     color: (
       theme-type: light,
-      primary: custom.$green-palettte,
-      tertiary: custom.$purple-palettte,
-      // primary: mat.$green-palette,
-      // tertiary: mat.$spring-green-palette,,,,
+      // primary: custom.$primary,
+      // tertiary: custom.$tertiary,
+      primary: mat.$green-palette,
+      tertiary: mat.$spring-green-palette,
     ),
     density: (
       scale: 0,
