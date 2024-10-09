@@ -1,6 +1,6 @@
-import { FormControl, FormGroup } from '@angular/forms';
 import { AccountRole } from '@devmx/shared-api-interfaces';
-import { TypedForm } from '@devmx/shared-ui-global';
+import { TypedForm } from '@devmx/shared-ui-global/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 export class RolesForm extends FormGroup<TypedForm<AccountRole>> {
   constructor() {

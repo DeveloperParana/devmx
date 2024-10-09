@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TypedForm } from '@devmx/shared-ui-global';
+import { TypedForm } from '@devmx/shared-ui-global/forms';
 import { debounceTime } from 'rxjs';
 import {
   input,

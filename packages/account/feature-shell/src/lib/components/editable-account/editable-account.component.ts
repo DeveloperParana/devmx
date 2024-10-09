@@ -8,13 +8,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { UpdateAccount } from '@devmx/account-data-access';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { UpdateAccountForm, UpdateAccountWithCity } from '../../forms';
 import {
   output,
   OnInit,
   Component,
   ChangeDetectionStrategy,
+  inject,
 } from '@angular/core';
 
 @Component({
@@ -24,6 +25,12 @@ import {
   styleUrl: './editable-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideNativeDateAdapter()],
+  viewProviders: [
+    {
+      provide: ControlContainer,
+      useFactory: () => inject(ControlContainer, { skipSelf: true }),
+    },
+  ],
   imports: [
     ReactiveFormsModule,
     AutocompleteCitiesComponent,
@@ -38,6 +45,12 @@ import {
   standalone: true,
 })
 export class EditableAccountComponent implements OnInit {
+  container = inject(ControlContainer);
+
+  get formGroup() {
+    return this.container.control as UpdateAccountForm;
+  }
+
   form = new UpdateAccountForm();
 
   submitted = output<UpdateAccount | UpdateAccountWithCity>();

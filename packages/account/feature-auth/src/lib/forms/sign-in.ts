@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TypedForm } from '@devmx/shared-ui-global/forms';
 import { SignIn } from '@devmx/shared-api-interfaces';
-import { TypedForm } from '@devmx/shared-ui-global';
 import { BehaviorSubject } from 'rxjs';
 
 export class SignInForm extends FormGroup<TypedForm<SignIn>> {

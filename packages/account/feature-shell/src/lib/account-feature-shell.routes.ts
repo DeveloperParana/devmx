@@ -4,6 +4,7 @@ import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
 import { roleGroupsGuard, roleGroupGuard, roleGuard } from './guards';
+import { provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { provideLocation } from '@devmx/location-data-access';
 import { provideEvent } from '@devmx/event-data-access';
 import { SidenavLeftOutlet } from './outlets';
@@ -36,6 +37,7 @@ export const accountFeatureShellRoutes: Route[] = [
       provideAutocompleteCitiesService(),
       provideLayoutToolbar(AuthFacade),
       provideLayoutSidenav(accountFeatureShellSidenav),
+      provideFormDialog()
     ],
     component: AccountFeatureShellComponent,
     children: [

@@ -1,3 +1,4 @@
+export * from './fields';
 export * from './auto-assignable-role';
 export * from './create-presentation';
 export * from './password';

@@ -1,6 +1,6 @@
 import { Presentation, PresentationFormat } from '@devmx/shared-api-interfaces';
 import { FormArray, FormControl, Validators } from '@angular/forms';
-import { Form, FormOption } from '@devmx/shared-ui-global';
+import { Form, FormOption } from '@devmx/shared-ui-global/forms';
 
 export class PresentationForm extends Form<Presentation> {
   formats: FormOption<PresentationFormat>[] = [

@@ -1,6 +1,6 @@
 import { CreateEvent, EventFormat } from '@devmx/shared-api-interfaces';
+import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormOption, TypedForm } from '@devmx/shared-ui-global';
 
 export class CreateEventForm extends FormGroup<TypedForm<CreateEvent>> {
   formats: FormOption<EventFormat | ''>[] = [

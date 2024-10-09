@@ -1,6 +1,6 @@
+import { FormService, createFormGroup } from '@devmx/shared-ui-global/forms';
 import { ImageComponent, PhotoComponent } from '@devmx/shared-ui-global';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { AutoAssignable, UpdateAccountWithCity } from '../../forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,8 +8,16 @@ import { AccountOut } from '@devmx/shared-api-interfaces';
 import { CityFacade } from '@devmx/location-data-access';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { switchMap, take } from 'rxjs';
+import {
+  AutoAssignable,
+  changePassword,
+  updateAccount,
+  UpdateAccountForm,
+  UpdateAccountWithCity,
+} from '../../forms';
 import {
   AutocompleteCitiesComponent,
   AutocompleteCitiesService,
@@ -41,6 +49,7 @@ import {
   styleUrl: './settings.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     MatCardModule,
     MatIconModule,
@@ -68,7 +77,13 @@ export class SettingsContainer implements OnInit {
 
   destroyRef = inject(DestroyRef);
 
+  formService = inject(FormService);
+
   dialog = inject(MatDialog);
+
+  form = {
+    updateAccount: new UpdateAccountForm(),
+  };
 
   editableAccountChild = viewChild(EditableAccountComponent);
   get editableAccount() {
@@ -123,7 +138,7 @@ export class SettingsContainer implements OnInit {
 
   populate(account: AccountOut) {
     if (this.editableAccount) {
-      this.editableAccount.form.patchValue(account);
+      this.form.updateAccount.patchValue(account);
     }
     if (this.editablePassword) {
       this.editablePassword.form.patchValue(account);
@@ -139,6 +154,39 @@ export class SettingsContainer implements OnInit {
     });
   }
 
+  openPassword(account: AccountOut) {
+    const title = 'Alterar senha';
+
+    const fields = changePassword(account);
+    const form = createFormGroup<ChangePassword>(fields);
+
+    const password$ = this.formService
+      .open<ChangePassword>({ title, form, fields })
+      .afterClosed();
+    password$.pipe(take(1)).subscribe((result) => {
+      console.log(result);
+    });
+  }
+
+  openUpdateAccount(account: AccountOut) {
+    const title = 'Alterar dados da conta';
+
+    const fields = updateAccount(account);
+    console.log(fields);
+
+    const form = createFormGroup(fields);
+    console.log(form);
+
+
+    const account$ = this.formService
+      .open({ title, fields, form })
+      .afterClosed();
+
+    // account$.pipe(take(1)).subscribe((result) => {
+    //   console.log(result);
+    // });
+  }
+
   onAccountSubmitted(data: UpdateAccount | UpdateAccountWithCity) {
     if (data.city && typeof data.city === 'object') {
       data.city = data.city.id;
@@ -147,7 +195,7 @@ export class SettingsContainer implements OnInit {
   }
 
   onPasswordSubmitted(data: ChangePassword) {
-    this.accountFacade.changePassword(data);
+    // this.accountFacade.changePassword(data);
   }
 
   onRolesSubmitted(data: AutoAssignable) {

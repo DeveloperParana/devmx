@@ -1,5 +1,5 @@
+import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormOption, TypedForm } from '@devmx/shared-ui-global';
 import { Gender, SignUp } from '@devmx/shared-api-interfaces';
 import { signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';

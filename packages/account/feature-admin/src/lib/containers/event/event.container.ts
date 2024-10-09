@@ -1,4 +1,4 @@
-import { AccountRefForm, PresentationRefForm } from '@devmx/shared-ui-global';
+import { AccountRefForm, PresentationRefForm } from '@devmx/shared-ui-global/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';

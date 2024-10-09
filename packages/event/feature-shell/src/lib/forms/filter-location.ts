@@ -1,6 +1,6 @@
-import { LocationFilter } from '@devmx/location-data-access';
-import { TypedForm } from '@devmx/shared-ui-global';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LocationFilter } from '@devmx/location-data-access';
+import { TypedForm } from '@devmx/shared-ui-global/forms';
 
 export class FilterLocationForm extends FormGroup<TypedForm<LocationFilter>> {
   constructor() {

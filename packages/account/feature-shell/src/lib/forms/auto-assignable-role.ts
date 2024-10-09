@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoAssignableRole } from '@devmx/shared-api-interfaces';
-import { Form } from '@devmx/shared-ui-global';
+import { Form } from '@devmx/shared-ui-global/forms';
 
 export interface AutoAssignable {
   id: string;

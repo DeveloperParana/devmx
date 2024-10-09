@@ -1,6 +1,6 @@
 import { PresentationComment } from '@devmx/presentation-data-access';
 import { FormControl, Validators } from '@angular/forms';
-import { Form } from '@devmx/shared-ui-global';
+import { Form } from '@devmx/shared-ui-global/forms';
 
 export class PresentationCommentForm extends Form<PresentationComment> {
   constructor() {

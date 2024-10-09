@@ -1,4 +1,4 @@
-import { FormOption, TypedForm } from '@devmx/shared-ui-global';
+import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
 import { EventFormat } from '@devmx/shared-api-interfaces';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FilterEvent } from '@devmx/event-data-access';

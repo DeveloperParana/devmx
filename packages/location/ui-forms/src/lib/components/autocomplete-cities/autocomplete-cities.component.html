@@ -1,6 +1,11 @@
 <mat-form-field>
   <mat-label>Cidade</mat-label>
-  <input matInput [formControl]="control" [matAutocomplete]="auto" />
+  <input
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    (blur)="clearIfString()"
+  />
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     @for (option of service.cities$| async; track option.id) {
     <mat-option [value]="option">{{ option.name }}</mat-option>

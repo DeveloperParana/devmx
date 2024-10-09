@@ -69,6 +69,12 @@ export class AutocompleteCitiesComponent
       .subscribe((name) => this.service.search(name));
   }
 
+  clearIfString() {
+    if (typeof this.control.value === 'string') {
+      this.control.reset();
+    }
+  }
+
   displayFn(city: City): string {
     return city && city.name ? city.name : '';
   }

@@ -1,6 +1,6 @@
 import { Validators, FormControl, AbstractControl } from '@angular/forms';
 import { ChangePassword } from '@devmx/account-data-access';
-import { Form } from '@devmx/shared-ui-global';
+import { Form } from '@devmx/shared-ui-global/forms';
 
 function samePasswordsValidation(control: AbstractControl) {
   const currentPassword = control.get('currentPassword')?.value;

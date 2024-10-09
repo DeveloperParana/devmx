@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChangeRoles } from '@devmx/account-data-access';
 import { AccountRole } from '@devmx/shared-api-interfaces';
-import { TypedForm } from '@devmx/shared-ui-global';
+import { TypedForm } from '@devmx/shared-ui-global/forms';
 
 export class ChangeRolesForm extends FormGroup<TypedForm<ChangeRoles>> {
   constructor() {

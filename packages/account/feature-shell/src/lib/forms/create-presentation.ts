@@ -1,5 +1,5 @@
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormOption, TypedForm } from '@devmx/shared-ui-global';
+import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
 import {
   CreatePresentation,
   PresentationFormat,

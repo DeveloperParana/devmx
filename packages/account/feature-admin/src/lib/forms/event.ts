@@ -4,7 +4,7 @@ import {
   FormOption,
   AccountRefForm,
   PresentationRefForm,
-} from '@devmx/shared-ui-global';
+} from '@devmx/shared-ui-global/forms';
 import {
   Event,
   AccountRef,
