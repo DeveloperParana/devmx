@@ -1,0 +1,1 @@
+import{a as e}from"./chunk-IBYG5X6L.js";import{ea as o}from"./chunk-RVTW6D6W.js";var n=new o("layout.sidenav.component");function i(t){return[{provide:n,useValue:t??null},{provide:e,deps:[n]}]}export{i as a};
