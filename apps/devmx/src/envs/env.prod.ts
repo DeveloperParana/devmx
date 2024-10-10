@@ -1,13 +1,13 @@
 export const env = {
   api: {
-    url: 'http://localhost:3000/api',
+    url: 'https://api.devparana.mx/api',
   },
   photos: {
-    url: 'http://localhost:3000/photos',
+    url: 'https://api.devparana.mx/photos',
   },
   covers: {
     events: {
-      url: 'http://localhost:3000/events/covers',
+      url: 'https://api.devparana.mx/events/covers',
     },
   },
 };

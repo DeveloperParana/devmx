@@ -35,7 +35,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - uses: nrwl/nx-set-shas@v4
-      - run: pnpm exec nx build devmx
+      - run: pnpm exec nx build devmx --configuration=production
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
