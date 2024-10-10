@@ -78,16 +78,17 @@ mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=a
 
 Usuários que serão cadastrados
 
-| username | password | member | speaker | donor | leader | staff | fellow | manager | director |
-| -------- | -------- | :----: | :-----: | :---: | :----: | :---: | :----: | :-----: | :------: |
-| member   | member   |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
-| speaker  | speaker  |   ✓    |    ✓    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
-| donor    | donor123 |   ✓    |    𝘅    |   ✓   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
-| leader   | leader   |   ✓    |    𝘅    |   𝘅   |   ✓    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
-| staff    | staff123 |   ✓    |    𝘅    |   𝘅   |   𝘅    |   ✓   |   𝘅    |    𝘅    |    𝘅     |
-| fellow   | fellow   |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   ✓    |    𝘅    |    𝘅     |
-| manager  | manager  |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    ✓    |    𝘅     |
-| director | director |   ✓    |    𝘅    |   𝘅   |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    ✓     |
+| username  | password  | member | speaker | donor | recruiter | leader | staff | fellow | manager | director |
+| --------- | --------- | :----: | :-----: | :---: | :-------: | :----: | :---: | :----: | :-----: | :------: |
+| member    | member    |   ✓    |    𝘅    |   𝘅   |     𝘅     |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| speaker   | speaker   |   ✓    |    ✓    |   𝘅   |     𝘅     |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| donor     | donor123  |   ✓    |    𝘅    |   ✓   |     𝘅     |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| recruiter | recruiter |   ✓    |    𝘅    |   𝘅   |     ✓     |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| leader    | leader    |   ✓    |    𝘅    |   𝘅   |     𝘅     |   ✓    |   𝘅   |   𝘅    |    𝘅    |    𝘅     |
+| staff     | staff123  |   ✓    |    𝘅    |   𝘅   |     𝘅     |   𝘅    |   ✓   |   𝘅    |    𝘅    |    𝘅     |
+| fellow    | fellow    |   ✓    |    𝘅    |   𝘅   |     𝘅     |   𝘅    |   𝘅   |   ✓    |    𝘅    |    𝘅     |
+| manager   | manager   |   ✓    |    𝘅    |   𝘅   |     𝘅     |   𝘅    |   𝘅   |   𝘅    |    ✓    |    𝘅     |
+| director  | director  |   ✓    |    𝘅    |   𝘅   |     𝘅     |   𝘅    |   𝘅   |   𝘅    |    𝘅    |    ✓     |
 
 ## Agora sim!
 
