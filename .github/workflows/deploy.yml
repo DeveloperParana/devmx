@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write # needed for provenance data generation
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout repository
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.1
+
+      - name: Install Node
+        # Cache node_modules
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - uses: nrwl/nx-set-shas@v4
+      - run: pnpm exec nx build devmx
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/devmx/browser
