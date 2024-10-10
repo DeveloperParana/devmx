@@ -3,7 +3,8 @@
 <div class="jobs-container">
   @for (job of jobs.data; track job.id) {
 
-  <a [routerLink]="['/', 'carreiras', { outlets: { left: ['filtrar'], right: [job.id]} }]">
+  <!-- <a [routerLink]="['/', 'carreiras', { outlets: { left: ['filtrar'], right: [job.id]} }]"> -->
+    <a [routerLink]="job.id">
     <mat-card class="job-card">
       <mat-card-header>
         <mat-card-title>{{job.title}}</mat-card-title>
@@ -12,7 +13,7 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>{{job.description}}</p>
+        <p class="truncate">{{job.description}}</p>
       </mat-card-content>
     </mat-card>
   </a>

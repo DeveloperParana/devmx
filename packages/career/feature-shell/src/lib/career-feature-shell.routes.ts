@@ -1,9 +1,11 @@
 import { CareerFeatureShellComponent } from './career-feature-shell.component';
 import { careerFeatureShellSidenav } from './career-feature-shell.sidenav';
+import { CareerDetailsContainer, CareersContainer } from './containers';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
-import { CareerDetailsOutlet, CareersFilterOutlet } from './outlets';
 import { provideCareer } from '@devmx/career-data-access';
-import { CareersContainer } from './containers';
+import { JobOut } from '@devmx/shared-api-interfaces';
+import { CareersFilterOutlet } from './outlets';
+import { jobResolver } from './resolvers';
 import { Route } from '@angular/router';
 import {
   provideLayout,
@@ -14,6 +16,9 @@ import {
 export const careerFeatureShellRoutes: Route[] = [
   {
     path: '',
+    data: {
+      breadcrumb: 'Carreiras',
+    },
     providers: [
       ...provideAccount(),
       ...provideCareer(),
@@ -23,22 +28,30 @@ export const careerFeatureShellRoutes: Route[] = [
     ],
     component: CareerFeatureShellComponent,
     children: [
+      // {
+      //   path: ':id',
+      //   component: CareerDetailsOutlet,
+      //   outlet: 'right',
+      // },
+      // {
+      //   path: 'filtrar',
+      //   component: CareersFilterOutlet,
+      //   outlet: 'left',
+      // },
+
       {
         path: ':id',
-        component: CareerDetailsOutlet,
-        outlet: 'right',
-      },
-      {
-        path: 'filtrar',
-        component: CareersFilterOutlet,
-        outlet: 'left',
+        data: {
+          breadcrumb: (data: { job: JobOut }) => {
+            return data.job.title;
+          },
+        },
+        resolve: { job: jobResolver },
+        component: CareerDetailsContainer,
       },
       {
         path: '',
         component: CareersContainer,
-        data: {
-          breadcrumb: 'Carreiras',
-        },
       },
       {
         path: '',

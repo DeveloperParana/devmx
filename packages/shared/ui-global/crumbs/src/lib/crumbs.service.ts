@@ -34,8 +34,10 @@ export class CrumbsService {
         const isFactory = typeof route.data['breadcrumb'] === 'function';
         const text = isFactory ? breadcrumb(route.data) : breadcrumb;
 
-        const path = '/' + url.join('/');
-        breadcrumbs.push({ path, text });
+        if (breadcrumbs.every((crumb) => crumb.text !== text)) {
+          const path = '/' + url.join('/');
+          breadcrumbs.push({ path, text });
+        }
       }
 
       this.#addBreadcrumb(url, breadcrumbs, route.firstChild);

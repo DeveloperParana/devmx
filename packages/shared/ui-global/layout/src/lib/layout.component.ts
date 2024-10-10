@@ -66,7 +66,6 @@ export class LayoutComponent {
     });
 
     this.layout.component$.subscribe((component) => {
-      console.log(component);
       if (component) {
         this.sidenavOutlet = component;
         this.hideToggleButtonLeft.set(false);

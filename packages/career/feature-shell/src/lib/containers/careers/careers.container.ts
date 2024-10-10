@@ -18,7 +18,7 @@ import {
   selector: 'devmx-careers',
   templateUrl: './careers.container.html',
   styleUrl: './careers.container.scss',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule,
     MatCardModule,

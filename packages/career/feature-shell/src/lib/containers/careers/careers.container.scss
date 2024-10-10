@@ -26,6 +26,12 @@
       @include mat.elevation(6);
     }
   }
+  .truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
   /* Estilo para dispositivos médios: 2 colunas */
   @media (min-width: 768px) {

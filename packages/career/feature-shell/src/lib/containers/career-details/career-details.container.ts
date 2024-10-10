@@ -18,17 +18,17 @@ import {
   imports: [RouterModule, AsyncPipe, JsonPipe],
   standalone: true,
 })
-export class CareerDetailsContainer implements OnInit {
+export class CareerDetailsContainer  {
   router = inject(Router);
 
   route = inject(ActivatedRoute);
 
   jobFacade = inject(JobFacade);
 
-  ngOnInit() {
-    const id$ = this.route.paramMap.pipe(param('id'));
-    id$.pipe(take(1)).subscribe((id) => {
-      if (id) this.jobFacade.loadOne(id);
-    });
-  }
+  // ngOnInit() {
+  //   // const id$ = this.route.paramMap.pipe(param('id'));
+  //   // id$.pipe(take(1)).subscribe((id) => {
+  //   //   if (id) this.jobFacade.loadOne(id);
+  //   // });
+  // }
 }
