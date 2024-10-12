@@ -1,5 +1,5 @@
 import { createServerProvider } from '@devmx/shared-data-source';
-import { AccountsFacade, AuthFacade } from '../facades';
+import { AboutFacade, AccountsFacade, AuthFacade } from '../facades';
 import {
   SignInUseCase,
   SignUpUseCase,
@@ -14,6 +14,7 @@ import {
   FindEventsByOwnerUseCase,
   FindAccountsByRoleUseCase,
   FindJobsByOwnerUseCase,
+  FindAboutAccountUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideAccountsFacade() {
@@ -34,4 +35,12 @@ export function provideAccountsFacade() {
 
 export function provideAuthFacade() {
   return createServerProvider(AuthFacade, [SignInUseCase, SignUpUseCase]);
+}
+
+export function provideAboutFacade() {
+  return createServerProvider(AboutFacade, [FindAboutAccountUseCase]);
+}
+
+export function provideFacades() {
+  return [provideAccountsFacade(), provideAuthFacade(), provideAboutFacade()];
 }

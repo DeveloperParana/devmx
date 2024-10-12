@@ -1,4 +1,5 @@
 import { AccountRole } from '../types';
+import { AuthCity } from './auth-user';
 import { Name } from './name';
 
 export interface AccessTokenPayload {
@@ -8,5 +9,6 @@ export interface AccessTokenPayload {
   username: string;
   photo: string;
   roles: AccountRole;
+  city?: AuthCity;
   iat: number;
 }

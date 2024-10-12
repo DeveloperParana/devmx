@@ -1,8 +1,8 @@
 import { createSchema } from '@devmx/shared-data-source';
 import { PointCollection, PointSchema } from './point';
+import { City } from '@devmx/shared-api-interfaces';
 import { Prop, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { City } from '@devmx/shared-api-interfaces';
 
 @Schema()
 export class CityCollection extends Document implements City {
@@ -14,15 +14,15 @@ export class CityCollection extends Document implements City {
   })
   name: string;
 
-  @Prop({ type: Number })
-  ibge: number;
-
   @Prop({
     type: PointSchema,
     index: '2dsphere',
     required: true,
   })
   location: PointCollection;
+
+  @Prop({ type: Number })
+  ibge: number;
 
   @Prop({ type: Boolean })
   capital: boolean;

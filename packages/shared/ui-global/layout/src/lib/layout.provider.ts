@@ -1,4 +1,5 @@
 import { ComponentType } from '@angular/cdk/portal';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { InjectionToken } from '@angular/core';
 import { Layout } from './layout';
 
@@ -14,7 +15,7 @@ export function provideLayout<T>(component?: ComponentType<T>) {
     },
     {
       provide: Layout,
-      deps: [LAYOUT_SIDENAV_COMPONENT],
+      deps: [MediaMatcher, LAYOUT_SIDENAV_COMPONENT],
     },
   ];
 }

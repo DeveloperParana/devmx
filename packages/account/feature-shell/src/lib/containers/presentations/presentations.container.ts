@@ -3,11 +3,11 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
-import { AccountFacade } from '@devmx/account-data-access';
+import { AccountFacade, AuthFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { AsyncPipe } from '@angular/common';
-import { take } from 'rxjs';
+import { combineLatest, take } from 'rxjs';
 import {
   CreatePresentationService,
   provideCreatePresentation,
@@ -47,14 +47,31 @@ export class PresentationsContainer implements OnInit {
 
   accountFacade = inject(AccountFacade);
 
+  authFacade = inject(AuthFacade);
+
   createPresentation = inject(CreatePresentationService);
 
   ngOnInit() {
-    this.route.queryParams
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(({ page = 0, size = 10 }) => {
-        this.accountFacade.loadPresentations(page, size);
-      });
+    // this.authFacade.user$.subscribe(user => {
+    //   if (user) {
+
+    //   }
+    // })
+    combineLatest([this.authFacade.user$, this.route.queryParams]).subscribe(
+      ([user, params]) => {
+        console.log(user, params);
+
+        if (user) {
+          const { page = 0, size = 10 } = params;
+          this.accountFacade.loadPresentations(page, size, user.id);
+        }
+      }
+    );
+    // this.route.queryParams
+    //   .pipe(takeUntilDestroyed(this.destroyRef))
+    //   .subscribe(({ page = 0, size = 10 }) => {
+    //     this.accountFacade.loadPresentations(page, size);
+    //   });
   }
 
   openCreate() {

@@ -1,5 +1,5 @@
 export interface FilterJob {
-  title: string;
+  // title: string;
   mode: string;
   contract: string;
   experience: string;

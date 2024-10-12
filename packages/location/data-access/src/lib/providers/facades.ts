@@ -1,9 +1,10 @@
 import { createClientProvider } from '@devmx/shared-data-access';
-import { CityFacade, GeoFacade } from '../facades';
+import { AddressFacade, CityFacade, GeoFacade } from '../facades';
 import {
   SearchCitiesUseCase,
   FindCitiesByLocationUseCase,
   GetCurrentPositionUseCase,
+  GetCoordsByAddressUseCase,
 } from '@devmx/location-domain/client';
 
 export function provideCityFacade() {
@@ -21,4 +22,12 @@ export function provideCityFacade() {
 
 export function provideGeoFacade() {
   return createClientProvider(GeoFacade, [GetCurrentPositionUseCase]);
+}
+
+export function provideAddressFacade() {
+  return createClientProvider(AddressFacade, [GetCoordsByAddressUseCase]);
+}
+
+export function provideFacades() {
+  return [provideCityFacade(), provideGeoFacade(), provideAddressFacade()];
 }

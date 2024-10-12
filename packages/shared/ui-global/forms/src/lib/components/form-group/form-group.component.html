@@ -1,4 +1,4 @@
-@for (field of fields() | keyvalue | orderBy: 'value.order'; track field) {
+@for (field of fields() | keyvalue | orderBy: 'value.order'; track field.key) {
   @if (isFormField(field.value)) {
     @switch (field.value.kind) {
       @case ('textbox') {
@@ -17,6 +17,9 @@
       }
       @case ('radio') {
         <devmx-radio [field]="field.value" [control]="getControl(field.key)" />
+      }
+      @case ('slider') {
+        <devmx-slider [field]="field.value" [control]="getControl(field.key)" />
       }
     }
   } @else {

@@ -1,4 +1,4 @@
-import { AccountRefForm, PresentationRefForm } from '@devmx/shared-ui-global/forms';
+import { AddressFacade, CityFacade } from '@devmx/location-data-access';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatInputModule } from '@angular/material/input';
-import { CityFacade } from '@devmx/location-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -18,7 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Event } from '@devmx/shared-api-interfaces';
 import { param } from '@devmx/shared-ui-global';
 import { EventForm } from '../../forms';
-import { switchMap, take } from 'rxjs';
+import { debounceTime, switchMap, take } from 'rxjs';
+import {
+  AccountRefForm,
+  PresentationRefForm,
+} from '@devmx/shared-ui-global/forms';
 import {
   provideSearchLeaders,
   provideSearchPresentations,
@@ -85,6 +88,8 @@ export class EventContainer implements OnInit {
 
   cityFacade = inject(CityFacade);
 
+  addressFacade = inject(AddressFacade);
+
   searchLeaders = inject(SearchLeadersService);
 
   searchPresentations = inject(SearchPresentationsService);
@@ -118,6 +123,29 @@ export class EventContainer implements OnInit {
       .subscribe((cities) => {
         this.autocompleteCities.setCities(cities);
       });
+
+    // if (this.form.controls.location) return;
+
+    // this.addressFacade.coords$
+    //   .pipe(takeUntilDestroyed(this.destroyRef))
+    //   .subscribe((coords) => {
+    //     if (coords) {
+
+    //       const location = {
+    //         type: 'Point',
+    //         coordinates: [coords.lat, coords.lng]
+    //       }
+    //       this.form.patchValue({ location })
+    //     }
+    //   });
+  }
+
+  onAddressChange(address?: string) {
+    const { city } = this.form.value;
+    if (address && city) {
+      address += `, ${city.name}`;
+      this.addressFacade.findCoords(address);
+    }
   }
 
   openSelectCover() {

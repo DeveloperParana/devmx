@@ -1,0 +1,8 @@
+@if (field(); as opts) {
+
+<mat-slider [formControl]="control()" [min]="opts.min" [max]="opts.max" discrete>
+  <input [value]="opts.min" matSliderStartThumb>
+  <input [value]="opts.max" matSliderEndThumb>
+</mat-slider>
+
+}

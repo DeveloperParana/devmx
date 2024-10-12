@@ -62,6 +62,8 @@ export class PresentationFacade extends State<PresentationState> {
   }
 
   loadOne(id: string) {
+    this.setState({ presentation: null });
+
     const request$ = this.findPresentationByIDUseCase.execute(id);
 
     const onPresentation = (presentation: PresentationOut) => {

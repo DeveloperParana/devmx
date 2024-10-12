@@ -26,13 +26,26 @@
   }
 
   .layout-sidenav-start {
-    width: 16em;
+    width: 20vw;
+    min-width: 220px;
+
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    height: calc(100% - 66px);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(4);
+    }
   }
 
+
   .layout-sidenav-end {
-    width: 50vw;
+    width: 78vw;
     @include mat.elevation-transition();
-    @include mat.elevation(6);
+    @include mat.elevation(4);
+    height: calc(100% - 66px);
 
     &:active,
     &:hover {
@@ -60,12 +73,17 @@
       flex: 1 0 auto;
     }
 
+    .layout-content {
+      padding-bottom: 64px;
+    }
+
     .layout-sidenav-start {
-      height: calc(100% - 104px);
+      height: calc(100% - 48px);
     }
 
     .layout-sidenav-end {
-      height: calc(100% - 104px);
+      width: 98vw;
+      height: calc(100% - 52px);
     }
   }
 }

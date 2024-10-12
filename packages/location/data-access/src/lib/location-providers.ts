@@ -1,21 +1,5 @@
-import {
-  provideCityFacade,
-  provideCityService,
-  provideFindCitiesByLocationUseCase,
-  provideGeoFacade,
-  provideGetCurrentPositionUseCase,
-  provideSearchCitiesUseCase,
-} from './providers';
+import { provideFacades, provideServices, provideUseCases } from './providers';
 
 export function provideLocation() {
-  return [
-    provideCityService(),
-
-    provideFindCitiesByLocationUseCase(),
-    provideSearchCitiesUseCase(),
-    provideGetCurrentPositionUseCase(),
-
-    provideCityFacade(),
-    provideGeoFacade(),
-  ];
+  return [...provideServices(), ...provideUseCases(), ...provideFacades()];
 }

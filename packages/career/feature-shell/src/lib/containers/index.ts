@@ -1,2 +1,2 @@
-export * from './career-details/career-details.container';
+export * from './job-details/job-details.container';
 export * from './careers/careers.container';

@@ -1,34 +1,14 @@
-<header class="presentations-header">
-  <devmx-filter
-    [fields]="filterFields"
-    [formGroup]="filterForm"
-    (filterChange)="onFilterChange($event)"
-  ></devmx-filter>
-</header>
-
+@defer {
+<!--  -->
 @if (presentationFacade.presentations$ | async; as presentations) {
 
 <div class="presentations-container">
   @for (presentation of presentations.data; track presentation.id) {
 
-  <a [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] }}]">
-    <mat-card class="presentation-card">
-      <mat-card-header>
-        <mat-card-title>{{presentation.title}}</mat-card-title>
-        <mat-card-subtitle>
-          {{presentation.owner.name.first}} {{presentation.owner.name.last}}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{presentation.description}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <devmx-reaction
-          [presentation]="presentation.id"
-          (reacted)="onReact($event)"
-        ></devmx-reaction>
-      </mat-card-actions>
-    </mat-card>
+  <a
+    [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] }}]"
+  >
+    <devmx-presentation-card [data]="presentation" />
   </a>
 
   }
@@ -39,4 +19,11 @@
   [items]="presentations.items"
   (pageChange)="onPageChange($event)"
 />
+}
+<!--  -->
+} @placeholder {
+<div class="presentations-container">
+  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="4" />
+</div>
 }

@@ -1,19 +1,12 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
-import { EventFacade, FilterEvent } from '@devmx/event-data-access';
+import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButtonModule } from '@angular/material/button';
-import { EventFormat } from '@devmx/shared-api-interfaces';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { AsyncPipe, DatePipe } from '@angular/common';
-import { FilterEventForm } from '../../forms';
-import {
-  CoverPipe,
-  PhotoPipe,
-  PageParams,
-  PaginatorComponent,
-} from '@devmx/shared-ui-global';
+import { AuthFacade } from '@devmx/account-data-access';
+import { Layout } from '@devmx/shared-ui-global/layout';
+import { EventFacade } from '@devmx/event-data-access';
+import { EventCardComponent } from '../../components';
+import { AsyncPipe } from '@angular/common';
 import {
   inject,
   OnInit,
@@ -21,12 +14,8 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import {
-  FormField,
-  FilterComponent,
-  TextboxFormField,
-  DropdownFormField,
-} from '@devmx/shared-ui-global/filter';
+import { combineLatest } from 'rxjs';
+import { AuthUser } from '@devmx/shared-api-interfaces';
 
 @Component({
   selector: 'devmx-events',
@@ -34,22 +23,20 @@ import {
   styleUrl: './events.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatCardModule,
-    MatIconModule,
-    MatListModule,
-    MatButtonModule,
     PaginatorComponent,
-    FilterComponent,
+    EventCardComponent,
+    SkeletonComponent,
     RouterModule,
-    PhotoPipe,
     AsyncPipe,
-    DatePipe,
-    CoverPipe,
   ],
   standalone: true,
 })
 export class EventsContainer implements OnInit {
   eventFacade = inject(EventFacade);
+
+  authFacade = inject(AuthFacade);
+
+  layout = inject(Layout);
 
   destroyRef = inject(DestroyRef);
 
@@ -57,44 +44,42 @@ export class EventsContainer implements OnInit {
 
   route = inject(ActivatedRoute);
 
-  filterForm = new FilterEventForm();
-
-  filterFields: FormField[] = [
-    new TextboxFormField({
-      order: 0,
-      key: 'title',
-      label: 'Título',
-      controlType: 'text',
-    }),
-    new DropdownFormField<EventFormat | ''>({
-      order: 1,
-      key: 'format',
-      label: 'Formato',
-      options: [
-        { value: '', viewValue: 'Todos' },
-        { value: 'in-person', viewValue: 'Presencial' },
-        { value: 'online', viewValue: 'Online' },
-        { value: 'mixed', viewValue: 'Híbrido' },
-      ],
-    }),
-  ];
-
   ngOnInit() {
-    const onQueryParams = (params: Params) => {
+    this.layout.openSidenav();
+
+    /**
+     * @todo criar PlaceCollection
+     */
+    const onUserAndQueryParams = ([user, params]: [
+      AuthUser | null,
+      Params
+    ]) => {
       const { title = '', format = '' } = params;
-      this.eventFacade.setFilter({ title, format });
+      let { city } = params;
+      city = city === 'true' && user && user.city ? user.city.id : '';
+      this.eventFacade.setFilter({ title, format, city });
 
       const { page = 0, size = 10 } = params;
       this.eventFacade.load(page, size);
     };
 
-    this.route.queryParams
+    combineLatest([this.authFacade.user$, this.route.queryParams])
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(onQueryParams);
-  }
+      .subscribe(onUserAndQueryParams);
 
-  onFilterChange(queryParams: FilterEvent) {
-    this.router.navigate([], { queryParams });
+    // const onQueryParams = (params: Params) => {
+    //   const { title = '', format = '', distance } = params;
+    //   this.eventFacade.setFilter({ title, format });
+
+    //   const location = { min: 0, max: distance };
+    //   this.eventFacade.setLocation({ min: 0, max: distance });
+
+    //   const { page = 0, size = 10 } = params;
+    //   this.eventFacade.load(page, size);
+    // };
+    // this.route.queryParams
+    //   .pipe(takeUntilDestroyed(this.destroyRef))
+    //   .subscribe(onQueryParams);
   }
 
   onPageChange(queryParams: PageParams) {

@@ -5,6 +5,7 @@ import { Name } from './name';
 export interface AuthCity extends GeoCoords {
   id: string;
   name: string;
+  ibgeState: number;
 }
 
 export interface AuthUser {

@@ -7,6 +7,7 @@ export * from './create-event';
 export * from './create-presentation';
 export * from './event-out';
 export * from './job-out';
+export * from './location-filter';
 export * from './presentation-comment-out';
 export * from './presentation-out';
 export * from './presentation-ref';

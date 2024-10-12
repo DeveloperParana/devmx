@@ -23,15 +23,10 @@ export const appRoutes: Route[] = [
       ),
   },
   {
-    path: 'conta',
+    path: '',
     loadChildren: () =>
       import('@devmx/account-feature-shell').then(
         (m) => m.accountFeatureShellRoutes
       ),
-  },
-  {
-    path: '',
-    pathMatch: 'prefix',
-    redirectTo: 'carreiras',
-  },
+  }
 ];

@@ -1,5 +1,11 @@
+import { ECommerceIcon } from './e-commerce';
+import { TransportIcon } from './transport';
+import { SoftwareIcon } from './software';
+import { BuildingIcon } from './building';
 import { ArrowIcon } from './arrow';
 import { EmojiIcon } from './emoji';
+import { MenuIcon } from './menu';
+import { DocIcon } from './doc';
 
 type Root =
   | 'airplay'
@@ -104,10 +110,20 @@ type Root =
   | 'user-box'
   | 'user-circle'
   | 'user-security'
+  | 'user-presentation'
   | 'user'
   | 'video-camera'
   | 'video'
   | 'wreach'
   | 'zoom-search';
 
-export type Icon = Root | ArrowIcon | EmojiIcon;
+export type Icon =
+  | Root
+  | ArrowIcon
+  | EmojiIcon
+  | TransportIcon
+  | DocIcon
+  | ECommerceIcon
+  | MenuIcon
+  | SoftwareIcon
+  | BuildingIcon;

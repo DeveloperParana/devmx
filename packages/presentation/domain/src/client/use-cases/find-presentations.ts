@@ -9,11 +9,11 @@ import {
 } from '@devmx/shared-api-interfaces';
 
 export class FindPresentationsUseCase
-  implements UseCase<QueryParams<Presentation>, Page<PresentationOut>>
+  implements UseCase<QueryParams<PresentationOut>, Page<PresentationOut>>
 {
   constructor(private presentationService: PresentationService) {}
 
-  execute(params: QueryParams<Presentation>) {
+  execute(params: QueryParams<PresentationOut>) {
     return this.presentationService.find(createQueryParams(params));
   }
 }

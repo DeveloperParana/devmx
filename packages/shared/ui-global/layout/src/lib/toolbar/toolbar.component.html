@@ -8,13 +8,13 @@
     (click)="toggleOverlay()"
   >
     <mat-icon>account_circle</mat-icon>
-    <span>{{ user.name.first }} {{ user.city?.name }}</span>
+    <span>{{ user.name.first }}</span>
   </button>
 
   <span class="spacer"></span>
-  <p>
-    Comunidade DevParaná &copy; 2015 - {{ year }}
-  </p>
+
+  <p class="copy-left">Comunidade DevParaná &copy; 2015 - {{ year }}</p>
+
   <span class="spacer"></span>
 
   <a class="devpr-link" target="_blank" href="//devpr.org">
@@ -32,7 +32,12 @@
       </mat-card-header>
 
       <mat-nav-list>
-        @if (user | hasRole: 'speaker') {
+        @if (user | hasRole: 'manager':'director') {
+        <a mat-list-item routerLink="/conta/administracao/contas">
+          <mat-icon matListItemIcon>collections_bookmark</mat-icon>
+          <span matListItemTitle>Administrar contas</span>
+        </a>
+        } @if (user | hasRole: 'speaker') {
         <a mat-list-item routerLink="/conta/minhas-apresentacoes">
           <mat-icon matListItemIcon>collections_bookmark</mat-icon>
           <span matListItemTitle>Minhas apresentações</span>

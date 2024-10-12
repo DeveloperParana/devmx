@@ -11,6 +11,7 @@ import {
 export function provideEvents() {
   return [
     provideEventsService(),
+    // provideCitiesService(),
 
     provideCreateEventUseCase(),
     provideFindEventsUseCase(),

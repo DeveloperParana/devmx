@@ -1,1 +1,1 @@
-export type ExperienceLevel = 'junior' | 'mid' | 'senior'
+export type ExperienceLevel = 'junior' | 'mid' | 'senior' | 'internship'

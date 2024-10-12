@@ -33,7 +33,7 @@ export class IconComponent implements OnInit {
 
   color = input('#111');
 
-  size = input<string | number>(32);
+  size = input<string | number>(24);
 
   ngOnInit() {
     this.registry

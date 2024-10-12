@@ -1,43 +1,40 @@
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { PresentationFacade } from '@devmx/presentation-data-access';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { PhotoPipe, StateNamePipe } from '@devmx/shared-ui-global';
+import { PresentationOut } from '@devmx/shared-api-interfaces';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import { LoaderComponent, param, DevPRComponent } from '@devmx/shared-ui-global';
+import { PresentationFormatPipe } from '../../pipes';
+import { AsyncPipe } from '@angular/common';
+import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'devmx-presentation-details',
   templateUrl: './presentation-details.container.html',
   styleUrl: './presentation-details.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule,
     MatCardModule,
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    DevPRComponent,
-    LoaderComponent,
+    IconComponent,
+    PresentationFormatPipe,
+    StateNamePipe,
+    PhotoPipe,
     AsyncPipe,
-    JsonPipe
   ],
   standalone: true,
 })
-export class PresentationDetailsContainer implements OnInit {
-  presentationFacade = inject(PresentationFacade);
-
-  #destroyRef = inject(DestroyRef);
+export class PresentationDetailsContainer {
   route = inject(ActivatedRoute);
-  router = inject(Router);
 
-  ngOnInit() {
-    const id$ = this.route.paramMap.pipe(param('id'));
-
-    id$.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((id) => {
-      if (id) this.presentationFacade.loadOne(id);
-    });
-  }
+  presentation$ = this.route.data.pipe(
+    filter((data) => 'presentation' in data),
+    map((data) => data['presentation'] as PresentationOut)
+  );
 }

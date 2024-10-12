@@ -15,6 +15,7 @@ export * from './job-contract';
 export * from './job-mode';
 export * from './job-type';
 export * from './mime-type';
+export * from './params';
 export * from './presentation-format';
 export * from './presentation-reaction-type';
 export * from './query-filter';

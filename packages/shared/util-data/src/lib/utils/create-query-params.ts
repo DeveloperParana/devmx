@@ -12,12 +12,12 @@ export function createQueryParams<T>({
   params.append('size', `${size}`);
 
   for (const [key, value] of Object.entries(filter)) {
-    params.append(`filter[${key}]`, `${value}`);
+    if (value) params.append(`filter[${key}]`, `${value}`);
   }
 
   if (location) {
     for (const [key, value] of Object.entries(location)) {
-      params.append(`location[${key}]`, `${value}`);
+      if (value) params.append(`location[${key}]`, `${value}`);
     }
   }
 

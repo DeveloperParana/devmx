@@ -1,5 +1,5 @@
 <ul>
-  @for (crumb of crumbsService.breadcrumbs$ | async; track crumb) {
+  @for (crumb of crumbsService.breadcrumbs$ | async; track crumb.path) {
   <li>
     <a mat-button [routerLink]="crumb.path">
       <mat-icon>chevron_right</mat-icon>

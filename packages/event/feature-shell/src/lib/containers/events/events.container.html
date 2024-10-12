@@ -1,58 +1,12 @@
-<header class="events-header">
-  <devmx-filter
-    [fields]="filterFields"
-    [formGroup]="filterForm"
-    (filterChange)="onFilterChange($event)"
-  ></devmx-filter>
-</header>
-
+@defer {
+<!--  -->
 @if (eventFacade.events$ | async; as events) {
 
 <div class="events-container">
   @for (event of events.data; track event.id) {
-
-  <a [routerLink]="event.id">
-    <mat-card class="event-card">
-      @if (event.cover) {
-      <img
-        mat-card-image
-        [src]="event.cover | cover: 'events'"
-        [alt]="event.title"
-      />
-      }
-      <mat-card-header>
-        <h2 mat-card-title>{{event.title}}</h2>
-        <mat-card-subtitle>
-          {{event.date | date}} às {{event.time}}h
-        </mat-card-subtitle>
-      </mat-card-header>
-
-      <mat-card-content>
-        <p>{{event.description}}</p>
-      </mat-card-content>
-
-      <mat-list class="event-presentations">
-        @for (presentation of event.presentations; track presentation.id) {
-        <mat-list-item>
-          @if (presentation.owner.photo) {
-          <img
-            matListItemAvatar
-            [src]="presentation.owner.photo | photo"
-            [alt]="presentation.owner.name.first"
-          />
-          } @else {
-          <mat-icon matListItemIcon>interpreter_mode</mat-icon>
-          }
-          <h3 matListItemTitle>{{presentation.title}}</h3>
-          <p matListItemLine>
-            {{presentation.owner.name.first}} {{presentation.owner.name.last}}
-          </p>
-        </mat-list-item>
-        }
-      </mat-list>
-    </mat-card>
+  <a [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]">
+    <devmx-event-card [data]="event" />
   </a>
-
   }
 </div>
 
@@ -61,4 +15,10 @@
   [items]="events.items"
   (pageChange)="onPageChange($event)"
 />
+}
+} @placeholder {
+  <div class="events-container">
+    <devmx-skeleton [rows]="3" />
+    <devmx-skeleton [rows]="2" />
+  </div>
 }

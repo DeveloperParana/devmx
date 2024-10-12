@@ -7,13 +7,14 @@ import {
   Account,
   UseCase,
   AccessToken,
+  AuthCity,
 } from '@devmx/shared-api-interfaces';
 
-const getCity = ({ city }: Account) => {
+const getCity = ({ city }: Account): AuthCity | null => {
   if (!city) return null;
-  const { id, name, location } = city;
+  const { id, name, location, ibgeState } = city;
   const [lat, lng] = location.coordinates;
-  return { id, name, lat, lng };
+  return { id, name, lat, lng, ibgeState };
 };
 
 export class SignInUseCase implements UseCase<SignIn, AccessToken> {

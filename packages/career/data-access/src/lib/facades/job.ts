@@ -32,7 +32,7 @@ export class JobFacade extends State<JobState> {
     super({
       jobs: { data: [], items: 0, pages: 0 },
       filter: {
-        title: '',
+        // title: '',
         mode: '',
         contract: '',
         experience: '',
@@ -48,7 +48,7 @@ export class JobFacade extends State<JobState> {
   clearFilter() {
     this.setState({
       filter: {
-        title: '',
+        // title: '',
         mode: '',
         contract: '',
         experience: '',
@@ -70,6 +70,8 @@ export class JobFacade extends State<JobState> {
   }
 
   loadOne(id: string) {
+    this.setState({ job: null })
+
     const request$ = this.findJobByIDUseCase.execute(id);
 
     const onJob = (job: JobOut) => {

@@ -25,13 +25,10 @@ import {
   standalone: true,
 })
 export class EventFeatureShellComponent implements OnInit {
-  authFacade = inject(AuthFacade);
-
-  sidenav = inject(LayoutSidenav);
-
   router = inject(Router);
-
   destroyRef = inject(DestroyRef);
+  authFacade = inject(AuthFacade);
+  sidenav = inject(LayoutSidenav);
 
   ngOnInit() {
     this.authFacade.user$
@@ -39,18 +36,19 @@ export class EventFeatureShellComponent implements OnInit {
       .subscribe((user) => {
         if (user) {
           this.sidenav.setRoles(user.roles);
-          this.onLogout();
+
+          this.waitingForLogout();
         }
       });
 
     this.authFacade.loadAuthUser();
   }
 
-  onLogout() {
+  waitingForLogout() {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        if (!user) {
+        if (user === null) {
           this.sidenav.resetRoles();
           this.router.navigateByUrl('/conta/auth');
         }

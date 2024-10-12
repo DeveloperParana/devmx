@@ -2,12 +2,16 @@ import { PresentationFeatureShellComponent } from './presentation-feature-shell.
 import { presentationFeatureShellSidenav } from './presentation-feature-shell.sidenav';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
+import { PresentationOut } from '@devmx/shared-api-interfaces';
+import { PresentationFilterComponent } from './components';
+import { presentationResolver } from './resolvers';
 import { Route } from '@angular/router';
 import {
   PresentationDetailsContainer,
   PresentationsContainer,
 } from './containers';
 import {
+  provideLayout,
   provideLayoutSidenav,
   provideLayoutToolbar,
 } from '@devmx/shared-ui-global/layout';
@@ -18,28 +22,30 @@ export const presentationFeatureShellRoutes: Route[] = [
     providers: [
       ...provideAccount(),
       ...providePresentation(),
+      ...provideLayout(PresentationFilterComponent),
       provideLayoutToolbar(AuthFacade),
       provideLayoutSidenav(presentationFeatureShellSidenav),
     ],
     data: {
-      breadcrumb: 'Apresentações'
+      breadcrumb: 'Apresentações',
     },
     component: PresentationFeatureShellComponent,
     children: [
       {
-        path: ':id',
-        component: PresentationDetailsContainer,
-        outlet: 'right',
-      },
-      {
-        path: ':id',
+        path: '',
         component: PresentationsContainer,
       },
       {
-        path: '',
-        pathMatch: 'prefix',
-        redirectTo: 'todas'
-      }
+        path: ':id',
+        data: {
+          breadcrumb: (data: { presentation: PresentationOut }) => {
+            return data.presentation.title;
+          },
+        },
+        resolve: { presentation: presentationResolver },
+        component: PresentationDetailsContainer,
+        outlet: 'right',
+      },
     ],
   },
 ];
