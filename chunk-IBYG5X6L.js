@@ -1,1 +1,0 @@
-import{Ja as e}from"./chunk-ZBCWPQHJ.js";import{k as t}from"./chunk-RVTW6D6W.js";var n=class{#o=new t(null);component$=this.#o.asObservable();constructor(o){o&&this.setComponent(o)}setComponent(o){this.#o.next(new e(o))}};export{n as a};
