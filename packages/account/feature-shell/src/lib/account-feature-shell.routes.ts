@@ -126,4 +126,9 @@ export const accountFeatureShellRoutes: Route[] = [
       },
     ],
   },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'conta',
+  },
 ];

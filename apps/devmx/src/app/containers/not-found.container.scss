@@ -1,0 +1,30 @@
+:host {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    flex: 1;
+    gap: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 4.04em;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    color: blue;
+  }
+}
