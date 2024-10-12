@@ -5,7 +5,9 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TextboxComponent } from '../textbox/textbox.component';
 import { FormField, TypedFields, TypedForm } from '../../types';
+import { SliderComponent } from '../slider/slider.component';
 import { RadioComponent } from '../radio/radio.component';
+import { RangeComponent } from '../range/range.component';
 import { KeyValuePipe } from '@angular/common';
 import { OrderByPipe } from '../../pipes';
 import { debounceTime } from 'rxjs';
@@ -31,6 +33,8 @@ import {
     CheckboxComponent,
     RadioComponent,
     DatepickerComponent,
+    RangeComponent,
+    SliderComponent,
     KeyValuePipe,
     OrderByPipe
   ],

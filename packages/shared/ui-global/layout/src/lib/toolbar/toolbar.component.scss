@@ -1,16 +1,25 @@
 :host {
-  display: block;
-  width: 100%;
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  z-index: 100000;
+  bottom: 0;
 
   .devpr-link {
     height: 100%;
     display: inline-flex;
     align-items: center;
     margin-left: 0.4em;
-    margin-right: 0.8em;
+    margin-right: 0.4em;
 
     img {
-      height: 42px;
+      height: 32px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .copy-left {
+      display: none;
     }
   }
 

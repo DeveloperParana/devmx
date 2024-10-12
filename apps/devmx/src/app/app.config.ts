@@ -11,6 +11,7 @@ import { appRoutes } from './app.routes';
 import { env } from '../envs/env';
 import {
   provideRouter,
+  withHashLocation,
   withRouterConfig,
   withViewTransitions,
 } from '@angular/router';
@@ -35,8 +36,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       appRoutes,
       withViewTransitions(),
+      withHashLocation(),
       withRouterConfig({
-        urlUpdateStrategy: 'eager',
+        onSameUrlNavigation: 'ignore',
+        urlUpdateStrategy: 'deferred',
       })
     ),
     provideAnimationsAsync(),

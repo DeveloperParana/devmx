@@ -1,0 +1,9 @@
+@if (field(); as opts) {
+
+  <label for="slider">{{opts.label}}</label>
+
+  <mat-slider [min]="opts.min" [max]="opts.max" [step]="opts.step" discrete>
+    <input [formControl]="control()" matSliderThumb [value]="opts.value" id="slider">
+  </mat-slider>
+
+}

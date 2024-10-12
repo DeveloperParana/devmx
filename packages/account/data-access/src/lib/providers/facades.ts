@@ -1,11 +1,11 @@
+import { FindPresentationsUseCase } from '@devmx/presentation-domain/client';
+import { AboutFacade, AccountFacade, AuthFacade } from '../facades';
 import { createClientProvider } from '@devmx/shared-data-access';
-import { AccountFacade, AuthFacade } from '../facades';
 import {
   SignInUseCase,
   SignUpUseCase,
   LoadAuthUserUseCase,
   FindAccountByIDUseCase,
-  FindPresentationsByOwnerUseCase,
   UpdateAccountUseCase,
   RemoveAccountUseCase,
   ChangePasswordUseCase,
@@ -18,7 +18,9 @@ import {
   FindLeadersUseCase,
   RequestChallengeUseCase,
   FindJobsByOwnerUseCase,
+  FindAboutAccountUseCase,
 } from '@devmx/account-domain/client';
+
 
 export function provideAuthFacade() {
   return createClientProvider(AuthFacade, [
@@ -29,12 +31,19 @@ export function provideAuthFacade() {
   ]);
 }
 
+export function provideAboutFacade() {
+  return createClientProvider(AboutFacade, [
+    FindAboutAccountUseCase
+  ]);
+}
+
 export function provideAccountFacade() {
   return createClientProvider(AccountFacade, [
     FindAccountsUseCase,
     FindAccountByIDUseCase,
     FindAccountByUsernameUseCase,
-    FindPresentationsByOwnerUseCase,
+    FindPresentationsUseCase,
+    // FindPresentationsByOwnerUseCase,
     FindJobsByOwnerUseCase,
     FindEventsByOwnerUseCase,
     UpdateAccountUseCase,
@@ -45,4 +54,12 @@ export function provideAccountFacade() {
     FindSpeakersUseCase,
     FindLeadersUseCase,
   ]);
+}
+
+export function provideFacades() {
+  return [
+    provideAuthFacade(),
+    provideAboutFacade(),
+    provideAccountFacade()
+  ]
 }

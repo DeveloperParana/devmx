@@ -1,37 +1,51 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
 import { accountFeatureShellSidenav } from './account-feature-shell.sidenav';
 import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
-import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
 import { roleGroupsGuard, roleGroupGuard, roleGuard } from './guards';
 import { provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { provideLocation } from '@devmx/location-data-access';
+import { provideCareer } from '@devmx/career-data-access';
+import { aboutResolver, jobResolver } from './resolvers';
 import { provideEvent } from '@devmx/event-data-access';
+import { JobOut } from '@devmx/shared-api-interfaces';
 import { SidenavLeftOutlet } from './outlets';
 import { Route } from '@angular/router';
+import {
+  AuthFacade,
+  provideAbout,
+  provideAccount,
+} from '@devmx/account-data-access';
 import {
   provideLayout,
   provideLayoutSidenav,
   provideLayoutToolbar,
 } from '@devmx/shared-ui-global/layout';
 import {
+  JobContainer,
+  AboutContainer,
   JobsContainer,
   SettingsContainer,
   PresentationContainer,
   PresentationsContainer,
 } from './containers';
-import { provideCareer } from '@devmx/career-data-access';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
-    path: 'auth',
+    path: 'conta/auth',
     loadChildren: () =>
       import('@devmx/account-feature-auth').then(
         (m) => m.accountFeatureAuthRoutes
       ),
   },
   {
-    path: '',
+    path: 'sobre/:username',
+    providers: [...provideAbout()],
+    resolve: { account: aboutResolver },
+    component: AboutContainer,
+  },
+  {
+    path: 'conta',
     providers: [
       ...provideAccount(),
       ...providePresentation(),
@@ -46,7 +60,7 @@ export const accountFeatureShellRoutes: Route[] = [
     ],
     component: AccountFeatureShellComponent,
     data: {
-      breadcrumb: 'Conta'
+      breadcrumb: 'Conta',
     },
     children: [
       {
@@ -75,15 +89,25 @@ export const accountFeatureShellRoutes: Route[] = [
       {
         path: 'minhas-apresentacoes',
         data: {
-          breadcrumb: 'Minhas apresentações'
+          breadcrumb: 'Minhas apresentações',
         },
         canActivate: [roleGuard('speaker')],
         component: PresentationsContainer,
       },
       {
+        path: 'minhas-vagas/:id',
+        data: {
+          breadcrumb: (data: { job: JobOut }) => {
+            return data.job.title;
+          },
+        },
+        resolve: { job: jobResolver },
+        component: JobContainer,
+      },
+      {
         path: 'minhas-vagas',
         data: {
-          breadcrumb: 'Minhas vagas'
+          breadcrumb: 'Minhas vagas',
         },
         canActivate: [roleGuard('recruiter')],
         component: JobsContainer,
@@ -91,7 +115,7 @@ export const accountFeatureShellRoutes: Route[] = [
       {
         path: 'configuracoes',
         data: {
-          breadcrumb: 'Configurações'
+          breadcrumb: 'Configurações',
         },
         component: SettingsContainer,
       },

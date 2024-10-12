@@ -1,3 +1,4 @@
+// import { provideFindCitiesByLocationUseCase } from '@devmx/location-data-source';
 import {
   provideEventService,
   provideCreateEventUseCase,
@@ -12,6 +13,8 @@ import {
 export function provideEvent() {
   return [
     provideEventService(),
+
+    // provideFindCitiesByLocationUseCase(),
 
     provideCreateEventUseCase(),
     provideFindEventsUseCase(),

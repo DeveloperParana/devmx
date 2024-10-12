@@ -34,11 +34,7 @@ export class PresentationFeatureShellComponent implements OnInit {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        const userExists = !!user;
-        console.log(user);
-        console.log(userExists);
-
-        if (userExists) {
+        if (user) {
           this.sidenav.setRoles(user.roles);
 
           this.waitingForLogout();
@@ -52,9 +48,7 @@ export class PresentationFeatureShellComponent implements OnInit {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
-        const userIsNull = !user;
-
-        if (userIsNull) {
+        if (user === null) {
           this.sidenav.resetRoles();
           this.router.navigateByUrl('/conta/auth');
         }

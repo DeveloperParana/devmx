@@ -1,3 +1,4 @@
+import { LayoutModule, MediaMatcher } from '@angular/cdk/layout';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,6 +8,9 @@ import {
   output,
   Component,
   ChangeDetectionStrategy,
+  inject,
+  ChangeDetectorRef,
+  DestroyRef,
 } from '@angular/core';
 
 @Component({
@@ -15,15 +19,18 @@ import {
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    RouterLinkActive,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    RouterLinkActive,
+    LayoutModule,
     RouterLink,
   ],
   standalone: true,
 })
 export class LayoutNavbarComponent {
+  destroyRef = inject(DestroyRef);
+
   hideToggleButtonLeft = input<boolean | ''>(false);
 
   hideToggleButtonRight = input<boolean | ''>(false);
@@ -43,4 +50,25 @@ export class LayoutNavbarComponent {
   toggleLeft = output<void>();
 
   toggleRight = output<void>();
+
+  mobileQuery: MediaQueryList;
+
+  #mobileQueryListener: () => void;
+
+  constructor() {
+    const changeDetectorRef = inject(ChangeDetectorRef);
+    const media = inject(MediaMatcher);
+
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+
+    this.#mobileQueryListener = () => changeDetectorRef.detectChanges();
+
+    if (this.mobileQuery.addEventListener) {
+      this.mobileQuery.addEventListener('change', this.#mobileQueryListener);
+    }
+
+    this.destroyRef.onDestroy(() => {
+      this.mobileQuery.removeEventListener('change', this.#mobileQueryListener);
+    });
+  }
 }

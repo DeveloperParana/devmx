@@ -1,12 +1,15 @@
-import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
+import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { CreateEventService, provideCreateEvent } from '../../dialogs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountFacade } from '@devmx/account-data-access';
+import { EventFacade } from '@devmx/event-data-access';
+import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { EventFacade, FilterEvent } from '@devmx/event-data-access';
+import { MatMenuModule } from '@angular/material/menu';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { take } from 'rxjs';
 import {
@@ -27,6 +30,9 @@ import {
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatListModule,
+    MatMenuModule,
+    IconComponent,
     PaginatorComponent,
     RouterModule,
     AsyncPipe,
@@ -50,15 +56,17 @@ export class EventsContainer implements OnInit {
   ngOnInit() {
     const onQueryParams = (params: Params) => {
       const { title = '', format = '' } = params;
-      this.eventFacade.setFilter({ title, format });
+      this.accountFacade.setEventFilter({ title, format });
 
       const { page = 0, size = 10 } = params;
-      this.eventFacade.load(page, size);
+      this.accountFacade.loadEvents(page, size);
     };
 
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(onQueryParams);
+
+    this.accountFacade.events$.subscribe(console.log);
   }
 
   openCreate() {
@@ -75,8 +83,10 @@ export class EventsContainer implements OnInit {
     });
   }
 
-  onFilterChange(queryParams: FilterEvent) {
-    this.router.navigate([], { queryParams });
+  remove(id: string) {
+    this.eventFacade.remove(id).subscribe(() => {
+      this.accountFacade.loadEvents();
+    });
   }
 
   onPageChange(queryParams: PageParams) {

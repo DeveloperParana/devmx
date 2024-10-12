@@ -1,24 +1,34 @@
-import { AccountService, AuthService } from '@devmx/account-domain/client';
-import { AccountServiceImpl, AuthServiceImpl } from '../services';
+import { createServiceProvider, HttpClient } from '@devmx/shared-data-access';
 import { Env } from '@devmx/shared-api-interfaces/client';
-import { HttpClient } from '@devmx/shared-data-access';
+import {
+  AboutService,
+  AccountService,
+  AuthService,
+} from '@devmx/account-domain/client';
+import {
+  AboutServiceImpl,
+  AccountServiceImpl,
+  AuthServiceImpl,
+} from '../services';
 
 export function provideAuthService() {
-  return {
-    provide: AuthService,
-    useFactory(http: HttpClient, env: Env) {
-      return new AuthServiceImpl(http, env);
-    },
-    deps: [HttpClient, Env],
-  };
+  return createServiceProvider(AuthService, AuthServiceImpl, [HttpClient, Env]);
+}
+
+export function provideAboutService() {
+  return createServiceProvider(AboutService, AboutServiceImpl, [
+    HttpClient,
+    Env,
+  ]);
 }
 
 export function provideAccountService() {
-  return {
-    provide: AccountService,
-    useFactory(http: HttpClient, env: Env) {
-      return new AccountServiceImpl(http, env);
-    },
-    deps: [HttpClient, Env],
-  };
+  return createServiceProvider(AccountService, AccountServiceImpl, [
+    HttpClient,
+    Env,
+  ]);
+}
+
+export function provideServices() {
+  return [provideAuthService(), provideAboutService(), provideAccountService()];
 }

@@ -1,14 +1,18 @@
-import { CityService } from '@devmx/location-domain/client';
+import { createServiceProvider, HttpClient } from '@devmx/shared-data-access';
+import { AddressService, CityService } from '@devmx/location-domain/client';
+import { AddressServiceImpl, CityServiceImpl } from '../services';
 import { Env } from '@devmx/shared-api-interfaces/client';
-import { HttpClient } from '@devmx/shared-data-access';
-import { CityServiceImpl } from '../services';
 
 export function provideCityService() {
-  return {
-    provide: CityService,
-    useFactory(http: HttpClient, env: Env) {
-      return new CityServiceImpl(http, env);
-    },
-    deps: [HttpClient, Env],
-  };
+  return createServiceProvider(CityService, CityServiceImpl, [HttpClient, Env]);
+}
+
+export function provideAddressService() {
+  return createServiceProvider(AddressService, AddressServiceImpl, [
+    HttpClient,
+  ]);
+}
+
+export function provideServices() {
+  return [provideCityService(), provideAddressService()];
 }

@@ -28,6 +28,11 @@ export function createSchema<T>(target: new () => T): Schema<T> {
     return this._id.toString();
   });
 
+  // schema.set('timestamps', {
+  //   createdAt: true,
+  //   updatedAt: true,
+  // });
+
   schema.set('toJSON', {
     virtuals: true,
     versionKey: false,

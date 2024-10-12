@@ -1,0 +1,22 @@
+:host {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .event-card {
+    height: 100%;
+
+    h3 {
+      margin: 0 16px;
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+
+    p {
+      white-space: pre-line;
+      line-height: 1.2em;
+      word-wrap: break-word;
+    }
+  }
+}

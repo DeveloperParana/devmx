@@ -119,8 +119,14 @@
       "@devmx/shared-ui-global/forms": [
         "packages/shared/ui-global/forms/src/index.ts"
       ],
+      "@devmx/shared-ui-global/icon": [
+        "packages/shared/ui-global/icon/src/index.ts"
+      ],
       "@devmx/shared-ui-global/layout": [
         "packages/shared/ui-global/layout/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/skeleton": [
+        "packages/shared/ui-global/skeleton/src/index.ts"
       ],
       "@devmx/shared-util-authn": ["packages/shared/util-authn/src/index.ts"],
       "@devmx/shared-util-authn/client": [

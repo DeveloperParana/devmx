@@ -1,0 +1,62 @@
+<mat-card class="presentation-card">
+  @if (presentation.cover) {
+  <img mat-card-image [src]="presentation.cover" [alt]="presentation.title" />
+  }
+
+  <mat-card-header>
+    <mat-card-title>{{ presentation.title }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    <mat-list-item>
+      <span matListItemTitle>Resumo</span>
+      <span>{{ presentation.description }}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon
+        matListItemIcon
+        [name]="
+          presentation.format === 'webinar'
+            ? 'presentation'
+            : 'user-presentation'
+        "
+      />
+      <div matListItemTitle>
+        Formato: {{ presentation.format | presentationFormat }}
+      </div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon
+        matListItemIcon
+        name="video"
+        [color]="presentation.video ? '#111' : '#999'"
+      />
+      <div matListItemTitle>
+        {{ presentation.video ? 'Tem' : 'Não  tem' }} vídeo
+      </div>
+    </mat-list-item>
+
+    @for (resource of presentation.resources; track resource) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="external-link" />
+      <div matListItemTitle>
+        <a target="_blank" rel="noopener noreferrer" [href]="resource">
+          {{ resource }}
+        </a>
+      </div>
+    </mat-list-item>
+    }
+  </mat-list>
+
+  @if (presentation.tags) {
+  <mat-card-content>
+    <mat-chip-set>
+      @for (tag of presentation.tags; track tag) {
+      <mat-chip>{{ tag }}</mat-chip>
+      }
+    </mat-chip-set>
+  </mat-card-content>
+  }
+</mat-card>

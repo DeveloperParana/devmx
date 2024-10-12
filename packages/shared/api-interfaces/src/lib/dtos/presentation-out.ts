@@ -10,6 +10,10 @@ export interface PresentationOut {
 
   format: PresentationFormat;
 
+  cover?: string;
+
+  video?: string;
+
   tags: string[];
 
   resources: string[];

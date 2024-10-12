@@ -1,0 +1,26 @@
+export type Doc =
+  | 'book'
+  | 'box'
+  | 'check'
+  | 'compress-file'
+  | 'copy'
+  | 'file-alt'
+  | 'file-off'
+  | 'file'
+  | 'footer'
+  | 'history'
+  | 'id-card'
+  | 'key'
+  | 'keyhole-alt'
+  | 'keyhole'
+  | 'lock'
+  | 'opened-lock'
+  | 'page'
+  | 'plus'
+  | 'server'
+  | 'sheet'
+  | 'shield-check'
+  | 'shield-plus'
+  | 'shield';
+
+export type DocIcon = `doc/${Doc}`;

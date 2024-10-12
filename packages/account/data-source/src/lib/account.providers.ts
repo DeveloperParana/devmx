@@ -1,10 +1,9 @@
 import { Type } from '@devmx/shared-api-interfaces';
 import {
-  provideAccountsFacade,
   provideAccountsService,
-  provideAuthFacade,
   provideAuthService,
   provideCryptoService,
+  provideFacades,
   provideJwtService,
   provideJwtStrategy,
   provideUseCases,
@@ -21,7 +20,6 @@ export function provideAccounts<T>(jwtService: Type<T>) {
 
     ...provideUseCases(),
 
-    provideAccountsFacade(),
-    provideAuthFacade(),
+    ...provideFacades(),
   ];
 }

@@ -40,11 +40,11 @@ export class EventFacade extends State<EventState> {
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
     private removeEventUseCase: RemoveEventUseCase,
-    private uploadCoverUseCase: UploadCoverUseCase
+    private uploadCoverUseCase: UploadCoverUseCase // private findCitiesByLocationUseCase: FindCitiesByLocationUseCase,
   ) {
     super({
       events: { data: [], items: 0, pages: 0 },
-      filter: { title: '', format: '' },
+      filter: { title: '', format: '', city: '' },
       event: null,
     });
   }
@@ -54,7 +54,7 @@ export class EventFacade extends State<EventState> {
   }
 
   clearFilter() {
-    this.setState({ filter: { format: '', title: '' } });
+    this.setState({ filter: { format: '', title: '', city: '' } });
   }
 
   setLocation(location: QueryLocation) {
@@ -82,6 +82,8 @@ export class EventFacade extends State<EventState> {
   }
 
   loadOne(id: string) {
+    this.setState({ event: null });
+
     const request$ = this.findEventByIDUseCase.execute(id);
 
     const onEvent = (event: EventOut) => {
@@ -147,9 +149,7 @@ export class EventFacade extends State<EventState> {
   }
 
   remove(id: string) {
-    const request$ = this.removeEventUseCase.execute(id);
-
-    request$.pipe(take(1)).subscribe(() => this.load());
+    return this.removeEventUseCase.execute(id).pipe(take(1));
   }
 
   #isPresentationRef(presentation: unknown): presentation is PresentationRef {

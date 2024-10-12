@@ -28,6 +28,12 @@ export class FindEventsUseCase
         delete params.filter.title;
       }
 
+      if (params.filter.city) {
+        filter.city = params.filter.city;
+      } else {
+        delete params.filter.city;
+      }
+
       if (params.filter.description) {
         filter.description = new RegExp(params.filter.description, 'i');
       } else {

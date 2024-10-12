@@ -1,0 +1,99 @@
+@if (job$ | async; as job) {
+
+<mat-card class="job-card">
+  <mat-card-header>
+    <a mat-card-avatar routerLink=".." mat-icon-button>
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+    <mat-card-title>{{job.title}}</mat-card-title>
+    <mat-card-subtitle>{{job.mode | jobMode}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-list>
+    <mat-list-item>
+      <devmx-icon
+        size="24"
+        matListItemIcon
+        [name]="job.active ? 'emoji/big-smile' : 'emoji/neutral'"
+      />
+      <div matListItemTitle>Vaga {{ job.active ? 'aberta' : 'fechada' }}</div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="transport/location-pin-alt" />
+      <div matListItemTitle>{{ job.mode | jobMode }}</div>
+      @if (job.mode !== 'remote' && job.city) {
+      <div matListItemLine>{{ job.city.name }}</div>
+      }
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="doc/check" />
+      <div matListItemTitle>Contrato {{ job.contract }}</div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="doc/shield" />
+      <div matListItemTitle>{{ job.experience | jobLevel }}</div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="time-loading" />
+      <div matListItemTitle>{{ job.type | jobType }}</div>
+    </mat-list-item>
+
+    @if (job.salary) {
+    <mat-list-item>
+      <mat-icon matListItemIcon>payments</mat-icon>
+      <div matListItemTitle>
+        {{ job.salary.min | currency }} ~ {{ job.salary.max | currency }}
+      </div>
+    </mat-list-item>
+    } @if (job.company) {
+    <mat-list-item>
+      <span matListItemTitle>Empresa</span>
+      <span>{{ job.company }}</span>
+    </mat-list-item>
+    }
+  </mat-list>
+
+  <mat-card-content>
+    <h3>Detalhes</h3>
+    <p>{{job.description}}</p>
+
+    <h3>Requisitos</h3>
+    <p>{{job.requirements}}</p>
+
+    @if (job.benefits) {
+    <h3>Benefícios</h3>
+    <p>{{job.benefits}}</p>
+    }
+  </mat-card-content>
+
+  <mat-card-header>
+    <img
+      mat-card-avatar
+      [src]="job.owner.photo | photo"
+      [alt]="job.owner.name.first"
+    />
+    <mat-card-title>
+      {{ job.owner.name.first }} {{ job.owner.name.last }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <a [routerLink]="['/', 'sobre',job.owner.username]">
+        {{job.owner.username}}
+      </a>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  @if (job.link) {
+  <mat-card-footer>
+    <a target="_blank" rel="noopener noreferrer" mat-button [href]="job.link">
+      <span>Candidatar-se</span>
+      <mat-icon>open_in_new</mat-icon>
+    </a>
+  </mat-card-footer>
+  }
+</mat-card>
+
+}

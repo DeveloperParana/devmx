@@ -1,0 +1,124 @@
+:host {
+  --background: rgba(180, 200, 190, 0.2);
+  --progress: rgba(255,255,255, 0.6);
+  --progress-dark: rgba(0,0,0, 0.2);
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1em;
+
+  .skeleton {
+    box-sizing: border-box;
+
+    overflow: hidden;
+    position: relative;
+
+    background: var(--background) no-repeat;
+
+    width: 100%;
+    height: 20px;
+    display: inline-block;
+    border-radius: 6px;
+
+
+    // Informa ao navegador que tipo de mudanças acontecerão no elemento
+    // Isso premite que o navegador faça otimizações antes das mudanças
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/will-change
+    will-change: transform;
+
+    &:after,
+    &:before {
+      box-sizing: border-box;
+    }
+
+    &.progress,
+    &.progress-dark {
+      &:after,
+      &:before {
+        box-sizing: border-box;
+      }
+      // Aceleração com GPU
+      transform: translate3d(0, 0, 0);
+
+      &:before {
+        animation: progress 2s ease-in-out infinite;
+        background-size: 200px 100%;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        content: '';
+      }
+    }
+
+    &.progress {
+      &:before {
+        background-image: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0),
+          var(--progress),
+          rgba(255, 255, 255, 0)
+        );
+      }
+    }
+
+    &.progress-dark {
+      &:before {
+        background-image: linear-gradient(
+          90deg,
+          transparent,
+          var(--progress-dark),
+          transparent
+        );
+      }
+    }
+
+    // Anula a animação caso a opção `Reduce motion`
+    // esteja habilitada pelo usuário
+    // saiba mais sobre `prefers-reduced-motion`
+    // https://web.dev/prefers-reduced-motion/
+    @media (prefers-reduced-motion: reduce) {
+      &.progress-dark,
+      &.progress::before {
+        animation: none;
+      }
+
+      &.progress::before,
+      &.progress-dark {
+        background-image: none;
+      }
+    }
+
+    // Apenas para dektops
+    @media screen and (min-device-width: 1200px) {
+      // Desabilita a seleção de conteúdo pelo cursor
+      user-select: none;
+      // Ícone do cursor
+      cursor: wait;
+    }
+  }
+
+  // Animação CSS
+  @keyframes progress {
+    0% {
+      transform: translate3d(-200px, 0, 0);
+    }
+    100% {
+      transform: translate3d(calc(200px + 100vw), 0, 0);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

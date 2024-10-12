@@ -1,3 +1,5 @@
+import { FindPresentationsUseCase } from '@devmx/presentation-domain/client';
+import { FilterEvent } from '@devmx/event-data-access';
 import { State } from '@devmx/shared-data-access';
 import { FilterAccount } from '../dtos';
 import { take } from 'rxjs';
@@ -17,7 +19,6 @@ import {
   RemoveAccountUseCase,
   UpdateAccountUseCase,
   FindAccountByIDUseCase,
-  FindPresentationsByOwnerUseCase,
   ChangePasswordUseCase,
   UploadPhotoUseCase,
   FindAccountByUsernameUseCase,
@@ -28,6 +29,12 @@ import {
   FindLeadersUseCase,
   FindJobsByOwnerUseCase,
 } from '@devmx/account-domain/client';
+import { FilterJob } from '@devmx/career-data-access';
+
+interface AccountFilters {
+  event: FilterEvent;
+  job: FilterJob;
+}
 
 interface AccountState {
   events: Page<EventOut>;
@@ -39,6 +46,7 @@ interface AccountState {
   account: AccountOut | null;
   username: boolean | null;
   filter: FilterAccount;
+  filters: AccountFilters;
 }
 
 export class AccountFacade extends State<AccountState> {
@@ -62,7 +70,8 @@ export class AccountFacade extends State<AccountState> {
     private findAccountsUseCase: FindAccountsUseCase,
     private findAccountByIDUseCase: FindAccountByIDUseCase,
     private findAccountByUsernameUseCase: FindAccountByUsernameUseCase,
-    private findPresentationsByOwnerUseCase: FindPresentationsByOwnerUseCase,
+    // private findPresentationsByOwnerUseCase: FindPresentationsByOwnerUseCase,
+    private findPresentationsByOwnerUseCase: FindPresentationsUseCase,
     private findJobsByOwnerUseCase: FindJobsByOwnerUseCase,
     private findEventsByOwnerUseCase: FindEventsByOwnerUseCase,
     private updateAccountUseCase: UpdateAccountUseCase,
@@ -81,6 +90,10 @@ export class AccountFacade extends State<AccountState> {
       jobs: { data: [], items: 0, pages: 0 },
       events: { data: [], items: 0, pages: 0 },
       filter: { name: '', username: '' },
+      filters: {
+        event: { title: '', format: '' },
+        job: { mode: '', contract: '', experience: '' },
+      },
       account: null,
       username: null,
     });
@@ -92,6 +105,30 @@ export class AccountFacade extends State<AccountState> {
 
   clearFilter() {
     this.setState({ filter: { name: '', username: '' } });
+  }
+
+  setEventFilter(event: FilterEvent) {
+    const { filters } = this.state;
+    filters.event = event;
+    this.setState({ filters });
+  }
+
+  clearEventFilter() {
+    const { filters } = this.state;
+    filters.event = { title: '', format: '' };
+    this.setState({ filters });
+  }
+
+  setJobFilter(job: FilterJob) {
+    const { filters } = this.state;
+    filters.job = job;
+    this.setState({ filters });
+  }
+
+  clearJobFilter() {
+    const { filters } = this.state;
+    filters.job = { mode: '', contract: '', experience: '' };
+    this.setState({ filters });
   }
 
   load(page = 0, size = 10) {
@@ -165,10 +202,11 @@ export class AccountFacade extends State<AccountState> {
     request$.pipe(take(1)).subscribe(onUsername);
   }
 
-  loadPresentations(page = 0, size = 10) {
+  loadPresentations(page = 0, size = 10, owner?: string) {
     const request$ = this.findPresentationsByOwnerUseCase.execute({
       page,
       size,
+      filter: { owner },
     });
 
     const onPresentations = (presentations: Page<PresentationOut>) => {
@@ -198,6 +236,8 @@ export class AccountFacade extends State<AccountState> {
     });
 
     const onEvents = (events: Page<EventOut>) => {
+      console.log(events);
+
       this.setState({ events });
     };
 

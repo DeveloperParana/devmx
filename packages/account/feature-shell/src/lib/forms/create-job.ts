@@ -29,7 +29,7 @@ const fields: TypedFields<CreateJob> = {
     label: 'Formato',
     options: [
       { value: 'contract', text: 'Contrato' },
-      { value: 'freelance', text: 'Contrato' },
+      { value: 'freelance', text: 'Freelance' },
       { value: 'full-time', text: 'Integral' },
       { value: 'part-time', text: 'Meio periodo' },
     ],

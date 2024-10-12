@@ -1,9 +1,11 @@
 import { CareerFeatureShellComponent } from './career-feature-shell.component';
 import { careerFeatureShellSidenav } from './career-feature-shell.sidenav';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
-import { CareerDetailsOutlet, CareersFilterOutlet } from './outlets';
+import { CareersContainer, JobDetailsContainer } from './containers';
 import { provideCareer } from '@devmx/career-data-access';
-import { CareersContainer } from './containers';
+import { JobOut } from '@devmx/shared-api-interfaces';
+import { JobFilterComponent } from './components';
+import { jobResolver } from './resolvers';
 import { Route } from '@angular/router';
 import {
   provideLayout,
@@ -14,37 +16,32 @@ import {
 export const careerFeatureShellRoutes: Route[] = [
   {
     path: '',
+    data: {
+      breadcrumb: 'Carreiras',
+    },
     providers: [
       ...provideAccount(),
       ...provideCareer(),
-      ...provideLayout(CareersFilterOutlet),
+      ...provideLayout(JobFilterComponent),
       provideLayoutToolbar(AuthFacade),
       provideLayoutSidenav(careerFeatureShellSidenav),
     ],
     component: CareerFeatureShellComponent,
     children: [
       {
-        path: ':id',
-        component: CareerDetailsOutlet,
-        outlet: 'right',
-      },
-      {
-        path: 'filtrar',
-        component: CareersFilterOutlet,
-        outlet: 'left',
-      },
-      {
         path: '',
         component: CareersContainer,
-        data: {
-          breadcrumb: 'Carreiras',
-        },
       },
       {
-        path: '',
-        // outlet: 'left',
-        pathMatch: 'prefix',
-        redirectTo: 'filtrar',
+        path: ':id',
+        data: {
+          breadcrumb: (data: { job: JobOut }) => {
+            return data.job.title;
+          },
+        },
+        resolve: { job: jobResolver },
+        component: JobDetailsContainer,
+        outlet: 'right',
       },
     ],
   },

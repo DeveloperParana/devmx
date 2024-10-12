@@ -1,10 +1,10 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { Layout } from '@devmx/shared-ui-global/layout';
 import { JobFacade } from '@devmx/career-data-access';
+import { JobCardComponent } from '../../components';
 import { AsyncPipe } from '@angular/common';
 import {
   inject,
@@ -18,19 +18,20 @@ import {
   selector: 'devmx-careers',
   templateUrl: './careers.container.html',
   styleUrl: './careers.container.scss',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    RouterModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
     PaginatorComponent,
+    SkeletonComponent,
+    JobCardComponent,
+    RouterModule,
     AsyncPipe,
   ],
   standalone: true,
 })
 export class CareersContainer implements OnInit {
   jobFacade = inject(JobFacade);
+
+  layout = inject(Layout);
 
   destroyRef = inject(DestroyRef);
 
@@ -39,6 +40,8 @@ export class CareersContainer implements OnInit {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
+    this.layout.openSidenav();
+
     const onQueryParams = (params: Params) => {
       const {
         title = '',
@@ -58,10 +61,6 @@ export class CareersContainer implements OnInit {
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(onQueryParams);
-  }
-
-  open(id: string) {
-    this.router.navigate([{ outlets: { left: [id] } }]);
   }
 
   onPageChange(queryParams: PageParams) {

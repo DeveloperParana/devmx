@@ -27,6 +27,15 @@ kbd {
   }
 }
 
+.truncate-line {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Exibe até 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
 .gap {
   &-1 {
     gap: 1em;

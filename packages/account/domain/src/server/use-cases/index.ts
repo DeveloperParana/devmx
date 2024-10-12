@@ -1,5 +1,6 @@
 export * from './change-password';
 export * from './change-roles';
+export * from './find-about-account';
 export * from './find-account-by-id';
 export * from './find-account-by-username';
 export * from './find-accounts-by-role';

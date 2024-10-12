@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .presentation-card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(6);
+    }
+  }
+}

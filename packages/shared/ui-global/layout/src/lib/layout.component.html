@@ -1,4 +1,8 @@
-<div class="layout-container" [class.layout-is-mobile]="mobileQuery.matches">
+<div
+  class="layout-container"
+  [class.layout-is-mobile]="layout.mobileQuery$ | async"
+>
+  <!-- Layout Navbar -->
   <devmx-layout-navbar
     (toggleLeft)="snav.toggle()"
     (toggleRight)="enav.toggle()"
@@ -9,26 +13,26 @@
   <mat-sidenav-container [hasBackdrop]="false" class="layout-sidenav-container">
     <mat-sidenav
       #snav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches"
+      [mode]="(layout.mobileQuery$ | async) ? 'over' : 'side'"
+      [fixedInViewport]="layout.mobileQuery$ | async"
+      [opened]="layout.sidenav$ | async"
       class="layout-sidenav-start"
       fixedTopGap="52"
     >
       <ng-template [cdkPortalOutlet]="sidenavOutlet"></ng-template>
-      <!-- <router-outlet
-        name="left"
-        (activate)="openLeft(snav)"
-        (deactivate)="closeLeft(snav)"
-      /> -->
     </mat-sidenav>
+
     <mat-sidenav-content class="layout-content">
+      <!-- Breadcrumbs -->
       <devmx-crumbs />
+
       <router-outlet />
     </mat-sidenav-content>
+
     <mat-sidenav
       #enav
       mode="over"
-      [fixedInViewport]="mobileQuery.matches"
+      [fixedInViewport]="layout.mobileQuery$ | async"
       class="layout-sidenav-end"
       fixedTopGap="56"
       position="end"
@@ -41,5 +45,6 @@
     </mat-sidenav>
   </mat-sidenav-container>
 
+  <!-- Layout Toolbar -->
   <devmx-layout-toolbar />
 </div>

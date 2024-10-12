@@ -20,6 +20,7 @@ import {
   FindEventsByOwnerUseCase,
   FindAccountsByRoleUseCase,
   FindJobsByOwnerUseCase,
+  FindAboutAccountUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideFindAccountsUseCase() {
@@ -84,6 +85,10 @@ export function provideFindAccountsByRoleUseCase() {
   return createUseCaseProvider(FindAccountsByRoleUseCase, [AccountsService]);
 }
 
+export function provideFindAboutAccountUseCase() {
+  return createUseCaseProvider(FindAboutAccountUseCase, [AccountsService]);
+}
+
 export function provideUseCases() {
   return [
     provideFindAccountsUseCase(),
@@ -99,5 +104,6 @@ export function provideUseCases() {
     provideFindEventsByOwnerUseCase(),
     provideFindJobsByOwnerUseCase(),
     provideFindAccountsByRoleUseCase(),
+    provideFindAboutAccountUseCase(),
   ];
 }

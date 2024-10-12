@@ -8,7 +8,11 @@ import { PassportModule } from '@nestjs/passport';
 import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthController, AccountsController } from './controllers';
+import {
+  AuthController,
+  AccountsController,
+  AboutController,
+} from './controllers';
 
 @Module({
   imports: [
@@ -32,7 +36,7 @@ import { AuthController, AccountsController } from './controllers';
     AccountDatabaseModule,
     PresentationDatabaseModule,
   ],
-  controllers: [AuthController, AccountsController],
+  controllers: [AuthController, AboutController, AccountsController],
   providers: [
     {
       provide: APP_GUARD,

@@ -1,23 +1,55 @@
-<mat-card>
+@if (presentation$ | async; as presentation) {
+
+<mat-card class="presentation-card">
   <mat-card-header>
     <a mat-card-avatar routerLink=".." mat-icon-button>
       <mat-icon>arrow_forward</mat-icon>
     </a>
-    <mat-card-title>Detalhes da apresentação</mat-card-title>
+    <mat-card-title>{{presentation.title}}</mat-card-title>
   </mat-card-header>
 
-  <devmx-devpr [active]="true" />
+  @if (presentation.cover) {
+  <img mat-card-image [src]="presentation.cover" [alt]="presentation.title" />
+  }
 
-  @defer (when presentationFacade.presentation$ | async;) {
-  <!--  -->
-  @if (presentationFacade.presentation$ | async; as presentation) {
-  <pre>{{ presentation | json }}</pre>
+  <mat-list>
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="user-presentation" />
+      <div matListItemTitle>{{presentation.format | presentationFormat }}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-card-content>
+    <p>{{presentation.description}}</p>
+  </mat-card-content>
+
+  @if (presentation.resources.length) {
+  <mat-list>
+    <h3 mat-subheader>Materiais</h3>
+    @for (resource of presentation.resources; track resource) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="external-link" />
+      <div matListItemTitle>{{ resource }}</div>
+    </mat-list-item>
+    }
+  </mat-list>
   }
-  <!--  -->
-  } @placeholder {
-  <img src="placeholder.svg" alt="Carregando" />
-  } @loading {
-  <h4>Carregando apresentação...</h4>
-  }
+
+  <mat-card-header>
+    <img
+      mat-card-avatar
+      [src]="presentation.owner.photo | photo"
+      [alt]="presentation.owner.name.first"
+    />
+    <mat-card-title>
+      {{ presentation.owner.name.first }} {{ presentation.owner.name.last }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <a [routerLink]="['/', 'sobre',presentation.owner.username]">
+        {{presentation.owner.username}}
+      </a>
+    </mat-card-subtitle>
+  </mat-card-header>
 </mat-card>
 
+}

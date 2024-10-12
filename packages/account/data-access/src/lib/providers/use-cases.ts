@@ -1,3 +1,4 @@
+import { provideFindPresentationsUseCase } from '@devmx/presentation-data-access';
 import { createUseCaseProvider } from '@devmx/shared-data-access';
 import {
   AuthService,
@@ -7,7 +8,6 @@ import {
   LoadAuthUserUseCase,
   RemoveAccountUseCase,
   UpdateAccountUseCase,
-  FindPresentationsByOwnerUseCase,
   FindAccountByIDUseCase,
   ChangePasswordUseCase,
   UploadPhotoUseCase,
@@ -19,7 +19,10 @@ import {
   FindLeadersUseCase,
   RequestChallengeUseCase,
   FindJobsByOwnerUseCase,
+  FindAboutAccountUseCase,
+  AboutService,
 } from '@devmx/account-domain/client';
+
 
 export function provideSignInUseCase() {
   return createUseCaseProvider(SignInUseCase, [AuthService]);
@@ -51,12 +54,6 @@ export function provideUpdateAccountUseCase() {
 
 export function provideRemoveAccountUseCase() {
   return createUseCaseProvider(RemoveAccountUseCase, [AccountService]);
-}
-
-export function provideFindPresentationsByOwnerUseCase() {
-  return createUseCaseProvider(FindPresentationsByOwnerUseCase, [
-    AccountService,
-  ]);
 }
 
 export function provideFindJobsByOwnerUseCase() {
@@ -91,6 +88,10 @@ export function provideRequestChallengeUseCase() {
   return createUseCaseProvider(RequestChallengeUseCase, [AuthService]);
 }
 
+export function provideFindAboutAccountUseCase() {
+  return createUseCaseProvider(FindAboutAccountUseCase, [AboutService]);
+}
+
 export function provideUseCases() {
   return [
     provideSignInUseCase(),
@@ -101,7 +102,7 @@ export function provideUseCases() {
     provideFindAccountByUsernameUseCase(),
     provideUpdateAccountUseCase(),
     provideRemoveAccountUseCase(),
-    provideFindPresentationsByOwnerUseCase(),
+    provideFindPresentationsUseCase(),
     provideFindJobsByOwnerUseCase(),
     provideFindEventsByOwnerUseCase(),
     provideChangePasswordUseCase(),
@@ -110,5 +111,6 @@ export function provideUseCases() {
     provideFindSpeakersUseCase(),
     provideFindLeadersUseCase(),
     provideRequestChallengeUseCase(),
+    provideFindAboutAccountUseCase()
   ];
 }
