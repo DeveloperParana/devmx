@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { NotFoundContainer } from './containers';
 
 export const appRoutes: Route[] = [
   {
@@ -28,5 +29,9 @@ export const appRoutes: Route[] = [
       import('@devmx/account-feature-shell').then(
         (m) => m.accountFeatureShellRoutes
       ),
-  }
+  },
+  {
+    path: '**',
+    component: NotFoundContainer,
+  },
 ];
