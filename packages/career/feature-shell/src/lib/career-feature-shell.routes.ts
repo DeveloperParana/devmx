@@ -1,17 +1,9 @@
 import { CareerFeatureShellComponent } from './career-feature-shell.component';
-import { careerFeatureShellSidenav } from './career-feature-shell.sidenav';
-import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { CareersContainer, JobDetailsContainer } from './containers';
 import { provideCareer } from '@devmx/career-data-access';
 import { JobOut } from '@devmx/shared-api-interfaces';
-import { JobFilterComponent } from './components';
 import { jobResolver } from './resolvers';
 import { Route } from '@angular/router';
-import {
-  provideLayout,
-  provideLayoutSidenav,
-  provideLayoutToolbar,
-} from '@devmx/shared-ui-global/layout';
 
 export const careerFeatureShellRoutes: Route[] = [
   {
@@ -19,13 +11,7 @@ export const careerFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Carreiras',
     },
-    providers: [
-      ...provideAccount(),
-      ...provideCareer(),
-      ...provideLayout(JobFilterComponent),
-      provideLayoutToolbar(AuthFacade),
-      provideLayoutSidenav(careerFeatureShellSidenav),
-    ],
+    providers: [...provideCareer()],
     component: CareerFeatureShellComponent,
     children: [
       {

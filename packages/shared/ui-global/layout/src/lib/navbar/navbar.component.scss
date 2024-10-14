@@ -2,21 +2,23 @@
   display: block;
   width: 100%;
 
-  .app-logo {
-    margin-left: 0.4em;
-    margin-right: 0.8em;
+  .layout-navbar {
+    display: flex;
+    gap: 0.4em;
+  }
 
+  .app-logo {
     img {
       max-height: 48px;
     }
   }
 
-  .active {
-    color: #39b44d;
-  }
-
   .app-title {
+    margin-right: 1em;
+    font-size: 0.9em;
+    font-weight: 600;
     opacity: 0.6;
+    margin: 0;
   }
 
   @media (max-width: 767px) {

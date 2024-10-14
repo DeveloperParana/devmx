@@ -8,4 +8,6 @@ export * from './lib/toolbar/toolbar';
 
 export * from './lib/layout.component';
 export * from './lib/layout.provider';
-export * from './lib/layout';
+export * from './lib/layout.facade';
+
+export * from './lib/interfaces';

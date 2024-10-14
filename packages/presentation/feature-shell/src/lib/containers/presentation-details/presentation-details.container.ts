@@ -5,7 +5,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PresentationFormatPipe } from '../../pipes';
 import { AsyncPipe } from '@angular/common';
@@ -21,7 +20,6 @@ import { filter, map } from 'rxjs';
     MatCardModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule,
     IconComponent,
     PresentationFormatPipe,
     StateNamePipe,

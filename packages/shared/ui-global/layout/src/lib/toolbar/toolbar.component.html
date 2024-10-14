@@ -1,4 +1,25 @@
-<mat-toolbar>
+<mat-toolbar class="layout-toolbar">
+  @if (toolbar.auth.user$| async; as user) {
+  <p class="layout-toolbar-account">
+    <devmx-icon name="user-circle" />
+    <span>{{ user.name.first }}</span>
+  </p>
+  } @else {
+  <span class="spacer"></span>
+  }
+
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="/eventos"> Eventos </a>
+    <a mat-tab-link routerLink="/apresentacoes"> Apresentações </a>
+    <a mat-tab-link routerLink="/carreiras"> Carreiras </a>
+  </nav>
+
+  <a class="devpr-link" target="_blank" href="//devpr.org">
+    <img src="devpr.svg" alt="Comunidade DevParaná" />
+  </a>
+</mat-toolbar>
+
+<!-- <mat-toolbar>
   @if (toolbar.auth.user$| async; as user) {
   <button
     type="button"
@@ -66,4 +87,4 @@
     </mat-card>
   </ng-template>
   }
-</mat-toolbar>
+</mat-toolbar> -->

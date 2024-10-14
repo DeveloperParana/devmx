@@ -1,0 +1,33 @@
+@use '@angular/material' as mat;
+
+@mixin layout-theme($theme) {
+  .mat-mdc-nav-list .mat-mdc-list-item.active {
+    background-color: mat.get-theme-color($theme, secondary, 70);
+    color: mat.get-theme-color($theme, on-secondary);
+  }
+
+  .layout-container {
+    background-color: rgba(
+      mat.get-theme-color($theme, surface-variant),
+      1
+    );
+  }
+
+  .layout-main-wrapper {
+    background-color: rgba(
+      mat.get-theme-color($theme, surface-container-lowest),
+      0.75
+    );
+
+    .mat-mdc-paginator {
+      background-color: transparent;
+    }
+  }
+  .layout-content {
+    @media (pointer: fine) {
+      &::-webkit-scrollbar-thumb {
+        background-color: mat.get-theme-color($theme, primary);
+      }
+    }
+  }
+}

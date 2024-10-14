@@ -1,6 +1,5 @@
 import { QueryFilter, QueryParams } from '@devmx/shared-api-interfaces';
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { QueryLocationDto } from './query-location';
 import { QueryFilterDto } from './query-filter';
 import { Type } from 'class-transformer';
 
@@ -14,8 +13,4 @@ export class QueryParamsDto<T> implements QueryParams<T> {
   @ApiPropertyOptional({ type: () => QueryFilterDto<T> })
   @Type(() => QueryFilterDto<T>)
   filter?: QueryFilter<T> = {};
-
-  @ApiPropertyOptional({ type: () => QueryLocationDto })
-  @Type(() => QueryLocationDto)
-  location?: QueryLocationDto;
 }

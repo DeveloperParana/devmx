@@ -3,9 +3,12 @@ import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PresentationCardComponent } from '../../components';
-import { Layout } from '@devmx/shared-ui-global/layout';
+import { LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { AsyncPipe } from '@angular/common';
+import {
+  PresentationCardComponent,
+  PresentationFilterComponent,
+} from '../../components';
 import {
   inject,
   OnInit,
@@ -31,7 +34,7 @@ import {
 export class PresentationsContainer implements OnInit {
   presentationFacade = inject(PresentationFacade);
 
-  layout = inject(Layout);
+  layoutFacade = inject(LayoutFacade);
 
   destroyRef = inject(DestroyRef);
 
@@ -40,7 +43,12 @@ export class PresentationsContainer implements OnInit {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.layout.openSidenav();
+    this.layoutFacade.setSidenav({ start: true });
+    this.layoutFacade.setComponent(PresentationFilterComponent);
+
+    this.destroyRef.onDestroy(() => {
+      this.layoutFacade.resetComponent();
+    });
 
     const onQueryParams = (params: Params) => {
       const { title = '', format = '' } = params;

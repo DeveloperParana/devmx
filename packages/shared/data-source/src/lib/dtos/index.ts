@@ -7,6 +7,7 @@ export * from './location';
 export * from './page';
 export * from './query-by-role-params';
 export * from './query-filter';
+export * from './query-location-params';
 export * from './query-location';
 export * from './query-params';
 export * from './range';

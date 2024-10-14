@@ -1,4 +1,4 @@
-import { LayoutComponent, LayoutSidenav } from '@devmx/shared-ui-global/layout';
+import { LayoutComponent, LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthFacade } from '@devmx/account-data-access';
 import { Router, RouterModule } from '@angular/router';
@@ -28,14 +28,14 @@ export class EventFeatureShellComponent implements OnInit {
   router = inject(Router);
   destroyRef = inject(DestroyRef);
   authFacade = inject(AuthFacade);
-  sidenav = inject(LayoutSidenav);
+  layoutFacade = inject(LayoutFacade);
 
   ngOnInit() {
     this.authFacade.user$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
         if (user) {
-          this.sidenav.setRoles(user.roles);
+          this.layoutFacade.loadNavLinks(user.roles);
 
           this.waitingForLogout();
         }
@@ -49,7 +49,7 @@ export class EventFeatureShellComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
         if (user === null) {
-          this.sidenav.resetRoles();
+          this.layoutFacade.resetNavLinks();
           this.router.navigateByUrl('/conta/auth');
         }
       });

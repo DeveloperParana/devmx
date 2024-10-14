@@ -1,10 +1,10 @@
+import { LocationsController, PlacesController } from './controllers';
 import { LocationDatabaseModule } from './location-database.module';
-import { LocationsController } from './controllers';
 import { Module } from '@nestjs/common';
 
 @Module({
   imports: [LocationDatabaseModule],
-  controllers: [LocationsController],
+  controllers: [LocationsController, PlacesController],
   providers: [],
   exports: [],
 })

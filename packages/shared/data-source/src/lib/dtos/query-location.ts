@@ -3,11 +3,11 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
 export class QueryLocationDto implements QueryLocation {
-  @ApiProperty({ type: Number, minimum: 0, default: 0.0 })
+  @ApiProperty({ type: Number, default: 0.0 })
   @Type(() => Number)
   lat = 0.0;
 
-  @ApiProperty({ type: Number, minimum: 0, default: 0.0 })
+  @ApiProperty({ type: Number, default: 0.0 })
   @Type(() => Number)
   lng = 0.0;
 

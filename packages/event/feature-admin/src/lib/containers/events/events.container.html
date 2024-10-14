@@ -1,0 +1,37 @@
+@if (accountFacade.events$ | async; as events) {
+
+<div class="events-container">
+  <mat-list>
+    @for (event of events.data; track event.id) {
+    <mat-list-item>
+      <div matListItemTitle>{{event.title}}</div>
+      <button
+        matListItemMeta
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        [matMenuTriggerData]="{id: event.id}"
+      >
+        <devmx-icon name="menu/dot-menu-circle"></devmx-icon>
+      </button>
+    </mat-list-item>
+    }
+  </mat-list>
+
+  <mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-id="id">
+      <a mat-menu-item [routerLink]="id">Editar</a>
+      <button mat-menu-item (click)="remove(id)">Remover</button>
+    </ng-template>
+  </mat-menu>
+
+  <devmx-paginator
+    [size]="10"
+    [items]="events.items"
+    (pageChange)="onPageChange($event)"
+  />
+</div>
+}
+
+<button class="add-button" type="button" mat-fab (click)="openCreate()">
+  <mat-icon>add</mat-icon>
+</button>

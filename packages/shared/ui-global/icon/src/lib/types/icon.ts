@@ -6,6 +6,7 @@ import { ArrowIcon } from './arrow';
 import { EmojiIcon } from './emoji';
 import { MenuIcon } from './menu';
 import { DocIcon } from './doc';
+import { MusicIcon } from './music';
 
 type Root =
   | 'airplay'
@@ -48,8 +49,8 @@ type Root =
   | 'frame-close'
   | 'frame-person'
   | 'gear'
-  | 'haf-star-left'
-  | 'haf-star-right'
+  | 'star-half-left'
+  | 'star-half-right'
   | 'hashtag'
   | 'heart'
   | 'information-circle'
@@ -67,6 +68,7 @@ type Root =
   | 'link'
   | 'list-fill'
   | 'list-unchecked'
+  | 'lock'
   | 'loading'
   | 'magnet'
   | 'minus'
@@ -84,6 +86,7 @@ type Root =
   | 'presentation'
   | 'puzzle-piece'
   | 'question-circle'
+  | 'opened-lock'
   | 'rotate-left'
   | 'rotate-right'
   | 'sandclock'
@@ -126,4 +129,5 @@ export type Icon =
   | ECommerceIcon
   | MenuIcon
   | SoftwareIcon
-  | BuildingIcon;
+  | BuildingIcon
+  | MusicIcon;

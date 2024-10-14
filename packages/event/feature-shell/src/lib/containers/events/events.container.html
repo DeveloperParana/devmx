@@ -1,24 +1,27 @@
-@defer {
-<!--  -->
-@if (eventFacade.events$ | async; as events) {
+@defer { @if (eventFacade.events$ | async; as events) {
 
 <div class="events-container">
-  @for (event of events.data; track event.id) {
+  @for (event of events.data; track event.id) { @defer (on viewport) {
   <a [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]">
     <devmx-event-card [data]="event" />
   </a>
-  }
+  } @placeholder {
+  <devmx-skeleton [rows]="3" />
+  } }
 </div>
 
-<devmx-paginator
-  [size]="10"
-  [items]="events.items"
-  (pageChange)="onPageChange($event)"
-/>
-}
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="events.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+} } @loading {
+<img src="loader.svg" alt="Carregando..." />
 } @placeholder {
-  <div class="events-container">
-    <devmx-skeleton [rows]="3" />
-    <devmx-skeleton [rows]="2" />
-  </div>
+<div class="events-container">
+  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+</div>
 }

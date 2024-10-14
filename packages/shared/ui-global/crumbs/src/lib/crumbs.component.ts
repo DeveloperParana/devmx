@@ -1,5 +1,5 @@
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { Component, inject } from '@angular/core';
 import { CrumbsService } from './crumbs.service';
 import { RouterLink } from '@angular/router';
@@ -9,7 +9,7 @@ import { AsyncPipe } from '@angular/common';
   selector: 'devmx-crumbs',
   templateUrl: './crumbs.component.html',
   styleUrl: './crumbs.component.scss',
-  imports: [RouterLink, MatButtonModule, MatIconModule, AsyncPipe],
+  imports: [RouterLink, MatButtonModule, IconComponent, AsyncPipe],
   standalone: true,
 })
 export class CrumbsComponent {

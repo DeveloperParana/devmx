@@ -5,7 +5,6 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { EventOut } from '@devmx/shared-api-interfaces';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { EventFormatPipe } from '../../pipes';
@@ -21,7 +20,6 @@ import { filter, map } from 'rxjs';
     MatCardModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule,
     IconComponent,
     EventFormatPipe,
     StateNamePipe,

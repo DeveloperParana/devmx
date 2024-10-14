@@ -11,8 +11,8 @@ import { plainToInstance } from 'class-transformer';
 import {
   CreatedEventDto,
   CreateEventDto,
-  EventDto,
   UpdateEventDto,
+  EventDto,
 } from '../dtos';
 
 export class EventsFacade {

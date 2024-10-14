@@ -1,10 +1,11 @@
 <ul>
-  @for (crumb of crumbsService.breadcrumbs$ | async; track crumb.path) {
+  @for (crumb of crumbsService.breadcrumbs$ | async; track crumb.path; let last
+  = $last) {
   <li>
-    <a mat-button [routerLink]="crumb.path">
-      <mat-icon>chevron_right</mat-icon>
-      <span>{{ crumb.text }}</span>
-    </a>
+    <a mat-button [routerLink]="crumb.path">{{ crumb.text }}</a>
+    @if (!last) {
+    <devmx-icon name="arrow/chevron-right" [size]="16" />
+    }
   </li>
   }
 </ul>

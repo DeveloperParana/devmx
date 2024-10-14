@@ -1,6 +1,7 @@
 import { ImageComponent, PhotoComponent } from '@devmx/shared-ui-global';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AutoAssignable, UpdateAccountForm } from '../../forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountOut } from '@devmx/shared-api-interfaces';
@@ -11,11 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { switchMap, take } from 'rxjs';
 import {
-  AutoAssignable,
-  UpdateAccountForm,
-  UpdateAccountWithCity,
-} from '../../forms';
-import {
   AutocompleteCitiesComponent,
   AutocompleteCitiesService,
 } from '@devmx/location-ui-forms';
@@ -23,7 +19,6 @@ import {
   AuthFacade,
   AccountFacade,
   ChangePassword,
-  UpdateAccount,
 } from '@devmx/account-data-access';
 import {
   AutoAssignableRoleComponent,
@@ -39,6 +34,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { LayoutFacade } from '@devmx/shared-ui-global/layout';
 
 @Component({
   selector: 'devmx-account-settings',
@@ -46,7 +42,6 @@ import {
   styleUrl: './settings.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ReactiveFormsModule,
     CommonModule,
     MatCardModule,
     MatIconModule,
@@ -55,6 +50,7 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
+    ReactiveFormsModule,
     EditableAccountComponent,
     EditablePasswordComponent,
     AutoAssignableRoleComponent,
@@ -65,6 +61,8 @@ import {
 })
 export class SettingsContainer implements OnInit {
   authFacade = inject(AuthFacade);
+
+  layoutFacade = inject(LayoutFacade);
 
   accountFacade = inject(AccountFacade);
 
@@ -96,6 +94,8 @@ export class SettingsContainer implements OnInit {
   }
 
   ngOnInit() {
+    this.layoutFacade.setSidenav({ start: true });
+
     this.accountFacade.account$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((account) => {
@@ -119,14 +119,10 @@ export class SettingsContainer implements OnInit {
     this.autocompleteCitiesService.search$
       .pipe(
         switchMap((name) => {
-          console.log(name);
-
           return name ? this.cityFacade.search(name) : [];
         })
       )
       .subscribe((cities) => {
-        console.log(cities);
-
         this.autocompleteCitiesService.setCities(cities);
       });
   }
@@ -151,7 +147,7 @@ export class SettingsContainer implements OnInit {
 
   onAccountSubmit() {
     if (this.form.updateAccount.valid) {
-      const value = this.form.updateAccount.getRawValue()
+      const value = this.form.updateAccount.getRawValue();
       this.accountFacade.update(value);
     }
   }
@@ -161,6 +157,6 @@ export class SettingsContainer implements OnInit {
   }
 
   onRolesSubmitted(data: AutoAssignable) {
-    // this.accountFacade.changePassword(data);
+    // this.accountFacade.update({ roles: data });
   }
 }

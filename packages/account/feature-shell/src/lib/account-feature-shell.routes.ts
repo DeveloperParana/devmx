@@ -1,26 +1,15 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
-import { accountFeatureShellSidenav } from './account-feature-shell.sidenav';
 import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
 import { providePresentation } from '@devmx/presentation-data-access';
 import { roleGroupsGuard, roleGroupGuard, roleGuard } from './guards';
 import { provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { provideLocation } from '@devmx/location-data-access';
 import { provideCareer } from '@devmx/career-data-access';
+import { provideAbout } from '@devmx/account-data-access';
 import { aboutResolver, jobResolver } from './resolvers';
 import { provideEvent } from '@devmx/event-data-access';
 import { JobOut } from '@devmx/shared-api-interfaces';
-import { SidenavLeftOutlet } from './outlets';
 import { Route } from '@angular/router';
-import {
-  AuthFacade,
-  provideAbout,
-  provideAccount,
-} from '@devmx/account-data-access';
-import {
-  provideLayout,
-  provideLayoutSidenav,
-  provideLayoutToolbar,
-} from '@devmx/shared-ui-global/layout';
 import {
   JobContainer,
   AboutContainer,
@@ -28,6 +17,8 @@ import {
   SettingsContainer,
   PresentationContainer,
   PresentationsContainer,
+  HomeContainer,
+  SignOutContainer,
 } from './containers';
 
 export const accountFeatureShellRoutes: Route[] = [
@@ -47,17 +38,14 @@ export const accountFeatureShellRoutes: Route[] = [
   {
     path: 'conta',
     providers: [
-      ...provideAccount(),
       ...providePresentation(),
       ...provideEvent(),
       ...provideLocation(),
       ...provideCareer(),
       provideAutocompleteCitiesService(),
-      provideLayoutToolbar(AuthFacade),
-      provideLayoutSidenav(accountFeatureShellSidenav),
-      provideLayout(SidenavLeftOutlet),
       provideFormDialog(),
     ],
+    canActivate: [roleGuard('member')],
     component: AccountFeatureShellComponent,
     data: {
       breadcrumb: 'Conta',
@@ -120,9 +108,12 @@ export const accountFeatureShellRoutes: Route[] = [
         component: SettingsContainer,
       },
       {
+        path: 'sair',
+        component: SignOutContainer,
+      },
+      {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'configuracoes',
+        component: HomeContainer,
       },
     ],
   },

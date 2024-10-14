@@ -4,6 +4,8 @@ import {
   CitySchema,
   CityCollection,
   provideLocations,
+  PlaceCollection,
+  PlaceSchema,
 } from '@devmx/location-data-source';
 
 @Global()
@@ -11,6 +13,7 @@ import {
   imports: [
     MongooseModule.forFeature([
       { name: CityCollection.name, schema: CitySchema },
+      { name: PlaceCollection.name, schema: PlaceSchema },
     ]),
   ],
   providers: [...provideLocations()],

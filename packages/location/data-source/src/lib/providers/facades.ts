@@ -1,9 +1,17 @@
-import { CitiesFacade } from '../facades';
+import { createServerProvider } from '@devmx/shared-data-source';
+import { CitiesFacade, PlacesFacade } from '../facades';
 import {
   FindCitiesUseCase,
   FindCityByIDUseCase,
   FindCitiesByLocationUseCase,
   SearchCitiesUseCase,
+  CreatePlaceUseCase,
+  UpdatePlaceUseCase,
+  RemovePlaceUseCase,
+  FindPlacesUseCase,
+  SearchPlacesUseCase,
+  FindPlaceByIDUseCase,
+  FindPlacesByLocationUseCase,
 } from '@devmx/location-domain/server';
 
 export function provideCitiesFacade() {
@@ -29,4 +37,20 @@ export function provideCitiesFacade() {
       FindCitiesByLocationUseCase,
     ],
   };
+}
+
+export function providePlacesFacade() {
+  return createServerProvider(PlacesFacade, [
+    CreatePlaceUseCase,
+    UpdatePlaceUseCase,
+    RemovePlaceUseCase,
+    FindPlacesUseCase,
+    SearchPlacesUseCase,
+    FindPlaceByIDUseCase,
+    FindPlacesByLocationUseCase,
+  ]);
+}
+
+export function provideFacades() {
+  return [provideCitiesFacade(), providePlacesFacade()];
 }

@@ -1,11 +1,11 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
+import { EventCardComponent, EventFilterComponent } from '../../components';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { AuthFacade } from '@devmx/account-data-access';
-import { Layout } from '@devmx/shared-ui-global/layout';
 import { EventFacade } from '@devmx/event-data-access';
-import { EventCardComponent } from '../../components';
 import { AsyncPipe } from '@angular/common';
 import {
   inject,
@@ -35,8 +35,7 @@ export class EventsContainer implements OnInit {
   eventFacade = inject(EventFacade);
 
   authFacade = inject(AuthFacade);
-
-  layout = inject(Layout);
+  layoutFacade = inject(LayoutFacade);
 
   destroyRef = inject(DestroyRef);
 
@@ -45,7 +44,12 @@ export class EventsContainer implements OnInit {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.layout.openSidenav();
+    this.layoutFacade.setComponent(EventFilterComponent);
+    this.layoutFacade.setSidenav({ start: true });
+
+    this.destroyRef.onDestroy(() => {
+      this.layoutFacade.resetComponent();
+    });
 
     /**
      * @todo criar PlaceCollection
