@@ -1,0 +1,17 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .events-container {
+    gap: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-button {
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+  }
+}

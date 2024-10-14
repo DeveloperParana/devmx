@@ -5,12 +5,26 @@ export const eventFeatureShellSidenav: LayoutSidenavItem[] = [
     path: ['/eventos'],
     text: 'Eventos',
     roles: ['member'],
-    icon: 'events',
+    // icon: 'calendar-tasks',
+    children: [
+      {
+        path: ['/eventos/administracao'],
+        text: 'Seus eventos',
+        icon: 'calendar-tasks',
+        roles: ['leader']
+      }
+    ]
   },
+  // {
+  //   path: ['/eventos'],
+  //   text: 'Eventos',
+  //   roles: ['member'],
+  //   icon: 'events',
+  // },
   {
     path: ['/eventos/calendario'],
     text: 'Calendário',
     roles: ['member'],
-    icon: 'calendar_view_month',
+    icon: 'calendar-days',
   },
 ];

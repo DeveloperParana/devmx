@@ -5,5 +5,6 @@ export * from './e-commerce';
 export * from './emoji';
 export * from './icon';
 export * from './menu';
+export * from './music';
 export * from './software';
 export * from './transport';

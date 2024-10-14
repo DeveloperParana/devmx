@@ -1,28 +1,24 @@
-@defer {
-<!--  -->
-@if (jobFacade.jobs$ | async; as jobs) {
+@defer { @if (jobFacade.jobs$ | async; as jobs) {
 
 <div class="jobs-container">
-  @for (job of jobs.data; track job.id) {
-  <!--  -->
-  @defer (on viewport) {
+  @for (job of jobs.data; track job.id) { @defer (on viewport) {
   <a [routerLink]="['/', 'carreiras', { outlets: { right: [job.id] }}]">
     <devmx-job-card [data]="job" />
   </a>
   } @placeholder {
   <devmx-skeleton [rows]="3" />
-  }
-  <!--  -->
-  }
+  } }
 </div>
 
-<devmx-paginator
-  [size]="10"
-  [items]="jobs.items"
-  (pageChange)="onPageChange($event)"
-/>
-}
-<!--  -->
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="jobs.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+} } @loading {
+  <img src="loader.svg" alt="Carregando...">
 } @placeholder {
 <div class="jobs-container">
   <devmx-skeleton [rows]="4" />

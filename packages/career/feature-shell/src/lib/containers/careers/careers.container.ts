@@ -1,10 +1,11 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { JobCardComponent, JobFilterComponent } from '../../components';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Layout } from '@devmx/shared-ui-global/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { JobFacade } from '@devmx/career-data-access';
-import { JobCardComponent } from '../../components';
 import { AsyncPipe } from '@angular/common';
 import {
   inject,
@@ -23,6 +24,7 @@ import {
     PaginatorComponent,
     SkeletonComponent,
     JobCardComponent,
+    MatToolbarModule,
     RouterModule,
     AsyncPipe,
   ],
@@ -31,7 +33,7 @@ import {
 export class CareersContainer implements OnInit {
   jobFacade = inject(JobFacade);
 
-  layout = inject(Layout);
+  layoutFacade = inject(LayoutFacade);
 
   destroyRef = inject(DestroyRef);
 
@@ -40,7 +42,12 @@ export class CareersContainer implements OnInit {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.layout.openSidenav();
+    this.layoutFacade.setComponent(JobFilterComponent);
+    this.layoutFacade.setSidenav({ start: true });
+
+    this.destroyRef.onDestroy(() => {
+      this.layoutFacade.resetComponent();
+    });
 
     const onQueryParams = (params: Params) => {
       const {

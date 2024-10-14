@@ -1,8 +1,9 @@
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { HasRolePipe } from '@devmx/shared-ui-global';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -13,6 +14,8 @@ import {
   inject,
   Component,
   ChangeDetectionStrategy,
+  viewChild,
+  AfterViewInit,
 } from '@angular/core';
 
 @Component({
@@ -25,21 +28,28 @@ import {
     MatCardModule,
     OverlayModule,
     MatButtonModule,
-    MatIconModule,
+    IconComponent,
     RouterLinkActive,
     MatListModule,
+    MatTabsModule,
     RouterLink,
     AsyncPipe,
     HasRolePipe,
   ],
   standalone: true,
 })
-export class LayoutToolbarComponent {
+export class LayoutToolbarComponent implements AfterViewInit {
   toolbar = inject(LayoutToolbar);
+
+  tabPanel = viewChild('tabPanel');
 
   year = new Date().getFullYear();
 
   accountOverlayOpened = signal(false);
+
+  ngAfterViewInit() {
+    console.log(this.tabPanel());
+  }
 
   toggleOverlay() {
     const state = !this.accountOverlayOpened();

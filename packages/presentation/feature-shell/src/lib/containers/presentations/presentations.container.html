@@ -1,29 +1,30 @@
-@defer {
-<!--  -->
-@if (presentationFacade.presentations$ | async; as presentations) {
+@defer { @if (presentationFacade.presentations$ | async; as presentations) {
 
 <div class="presentations-container">
-  @for (presentation of presentations.data; track presentation.id) {
-
+  @for (presentation of presentations.data; track presentation.id) { @defer (on
+  viewport) {
   <a
-    [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] }}]"
+    [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] } }]"
   >
     <devmx-presentation-card [data]="presentation" />
   </a>
-
-  }
+  } @placeholder {
+  <devmx-skeleton [rows]="3" />
+  } }
 </div>
 
-<devmx-paginator
-  [size]="10"
-  [items]="presentations.items"
-  (pageChange)="onPageChange($event)"
-/>
-}
-<!--  -->
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="presentations.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+} } @loading {
+<img src="loader.svg" alt="Carregando..." />
 } @placeholder {
 <div class="presentations-container">
   <devmx-skeleton [rows]="4" />
-  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
 </div>
 }

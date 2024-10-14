@@ -1,0 +1,16 @@
+<section #carousel [ngStyle]="wrapperStyle">
+  @for (item of items(); track item) {
+  <div class="carousel-item" devmxCarouselElement>
+    <ng-container [ngTemplateOutlet]="item.tmpl"></ng-container>
+  </div>
+  }
+</section>
+
+@if (controls()) {
+<button type="button" mat-icon-button (click)="prev()">
+  <devmx-icon name="arrow/left" />
+</button>
+<button type="button" mat-icon-button (click)="next()">
+  <devmx-icon name="arrow/right" />
+</button>
+}

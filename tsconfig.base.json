@@ -57,6 +57,9 @@
       "@devmx/event-domain": ["packages/event/domain/src/index.ts"],
       "@devmx/event-domain/client": ["packages/event/domain/src/client.ts"],
       "@devmx/event-domain/server": ["packages/event/domain/src/server.ts"],
+      "@devmx/event-feature-admin": [
+        "packages/event/feature-admin/src/index.ts"
+      ],
       "@devmx/event-feature-shell": [
         "packages/event/feature-shell/src/index.ts"
       ],
@@ -110,6 +113,9 @@
       "@devmx/shared-data-source": ["packages/shared/data-source/src/index.ts"],
       "@devmx/shared-resource": ["packages/shared/resource/src/index.ts"],
       "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"],
+      "@devmx/shared-ui-global/carousel": [
+        "packages/shared/ui-global/carousel/src/index.ts"
+      ],
       "@devmx/shared-ui-global/crumbs": [
         "packages/shared/ui-global/crumbs/src/index.ts"
       ],

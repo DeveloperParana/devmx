@@ -3,7 +3,7 @@
 <mat-card class="presentation-card">
   <mat-card-header>
     <a mat-card-avatar routerLink=".." mat-icon-button>
-      <mat-icon>arrow_forward</mat-icon>
+      <devmx-icon name="arrow/left" />
     </a>
     <mat-card-title>{{presentation.title}}</mat-card-title>
   </mat-card-header>
@@ -29,7 +29,11 @@
     @for (resource of presentation.resources; track resource) {
     <mat-list-item>
       <devmx-icon matListItemIcon name="external-link" />
-      <div matListItemTitle>{{ resource }}</div>
+      <div matListItemTitle>
+        <a target="_blank" rel="noopener noreferrer" [href]="resource">
+          {{ resource }}
+        </a>
+      </div>
     </mat-list-item>
     }
   </mat-list>

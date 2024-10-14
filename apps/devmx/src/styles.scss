@@ -1,14 +1,18 @@
 // @use '@angular/cdk/overlay-prebuilt.css';
 @use '@angular/material' as mat;
-// @use '/node_modules/@angular/material/core/theming/color-api-backwards-compatibility' as mat;
 @use './scss/theme' as theme;
+@use './scss/component';
 @use './scss/utils';
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
 :root {
   @include mat.all-component-themes(theme.$light);
+  @include mat.typography-hierarchy(theme.$light);
+  @include component.layout-theme(theme.$light);
+  @include component.form-theme(theme.$light);
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
@@ -19,13 +23,18 @@
 // @include mat.color-variants-backwards-compatibility(theme.$light);
 /* You can add global styles to this file, and also import other style files */
 
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 900
+
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'Mukta', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 body {
@@ -40,4 +49,3 @@ body {
 }
 
 @include mat.color-variants-backwards-compatibility(theme.$light);
-@include mat.typography-hierarchy(theme.$light);

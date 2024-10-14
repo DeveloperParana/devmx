@@ -13,6 +13,12 @@ import {
 
 @Component({
   selector: 'devmx-icon',
+  template: '',
+  styles: `
+    :host {
+      display: inline-flex;
+    }
+  `,
   standalone: true,
   providers: [
     {
@@ -20,7 +26,6 @@ import {
       deps: [HttpClient],
     },
   ],
-  template: '',
 })
 export class IconComponent implements OnInit {
   renderer = inject(Renderer2);
@@ -40,7 +45,6 @@ export class IconComponent implements OnInit {
       .getIcon(this.name())
       .pipe(take(1))
       .subscribe((icon) => {
-
         const parser = new DOMParser();
         const element = parser.parseFromString(icon, 'image/svg+xml');
         const svg = element.firstChild;

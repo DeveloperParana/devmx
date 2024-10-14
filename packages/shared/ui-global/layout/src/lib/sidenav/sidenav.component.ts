@@ -1,6 +1,7 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { LayoutSidenav } from './sidenav';
 import {
@@ -15,7 +16,14 @@ import {
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatListModule, MatIconModule, RouterLink, AsyncPipe],
+  imports: [
+    MatListModule,
+    MatIconModule,
+    IconComponent,
+    RouterLink,
+    RouterLinkActive,
+    AsyncPipe,
+  ],
   standalone: true,
 })
 export class LayoutSidenavComponent {

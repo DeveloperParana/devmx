@@ -1,29 +1,23 @@
-<mat-toolbar>
-  @if (showToggleButtonLeft) {
-  <button mat-icon-button (click)="toggleLeft.emit()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  }
-
+<mat-toolbar class="layout-navbar">
   <a routerLink="/" class="app-logo">
     <img src="devmx.svg" height="48" alt="DevMX" />
   </a>
 
+  @if (showToggleButtonLeft) {
+  <button mat-icon-button (click)="toggleLeft.emit()">
+    <devmx-icon name="menu/burguer-menu"></devmx-icon>
+  </button>
+  }
+
   <h1 class="app-title">{{ title() }}</h1>
+
+  <devmx-crumbs />
 
   <span class="spacer"></span>
 
-  <a mat-button routerLink="/eventos" routerLinkActive="active"> Eventos </a>
-
-  <a mat-button routerLink="/apresentacoes" routerLinkActive="active">
-    Conhecimento
-  </a>
-
-  <a mat-button routerLink="/carreiras" routerLinkActive="active"> Vagas </a>
-
   @if (showToggleButtonRight) {
   <button mat-icon-button (click)="toggleRight.emit()">
-    <mat-icon>menu</mat-icon>
+    <devmx-icon name="menu/dot-menu"></devmx-icon>
   </button>
   }
 </mat-toolbar>

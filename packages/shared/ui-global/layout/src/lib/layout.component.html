@@ -1,6 +1,6 @@
 <div
   class="layout-container"
-  [class.layout-is-mobile]="layout.mobileQuery$ | async"
+  [class.layout-is-mobile]="layoutFacade.mobile$ | async"
 >
   <!-- Layout Navbar -->
   <devmx-layout-navbar
@@ -13,34 +13,64 @@
   <mat-sidenav-container [hasBackdrop]="false" class="layout-sidenav-container">
     <mat-sidenav
       #snav
-      [mode]="(layout.mobileQuery$ | async) ? 'over' : 'side'"
-      [fixedInViewport]="layout.mobileQuery$ | async"
-      [opened]="layout.sidenav$ | async"
+      [mode]="(layoutFacade.mobile$ | async) ? 'over' : 'side'"
+      [fixedInViewport]="layoutFacade.mobile$ | async"
+      [opened]="layoutFacade.sidenavStart$ | async"
       class="layout-sidenav-start"
       fixedTopGap="52"
     >
       <ng-template [cdkPortalOutlet]="sidenavOutlet"></ng-template>
+
+      <mat-nav-list>
+        @for (section of layoutFacade.sections$ | async; track section.label) {
+        <h3 mat-subheader>{{ section.label }}</h3>
+
+        @for (link of section.links; track link.route) {
+        <a mat-list-item [routerLink]="link.route" [disabled]="link.disabled">
+          @if (link.icon) {
+          <devmx-icon matListItemIcon [name]="link.icon" />
+          }
+
+          <span [matBadge]="link.badge | async" matBadgeDescription="before">
+            {{ link.label }}
+          </span>
+
+          @if (link.showLock) {
+          <devmx-icon matListItemMeta [name]="link.lock" />
+          }
+        </a>
+        } }
+      </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content class="layout-content">
-      <!-- Breadcrumbs -->
-      <devmx-crumbs />
+      <div class="layout-progress">
+        @if (layoutFacade.loader$ | async) {
+        <mat-progress-bar mode="indeterminate" />
+        }
+      </div>
+      <ng-content select="mat-toolbar" />
 
-      <router-outlet />
+      <div class="layout-main-wrapper">
+        <main class="layout-main">
+          <router-outlet />
+        </main>
+      </div>
     </mat-sidenav-content>
 
     <mat-sidenav
       #enav
       mode="over"
-      [fixedInViewport]="layout.mobileQuery$ | async"
+      [fixedInViewport]="layoutFacade.mobile$ | async"
+      [opened]="layoutFacade.sidenavEnd$ | async"
       class="layout-sidenav-end"
       fixedTopGap="56"
       position="end"
     >
       <router-outlet
         name="right"
-        (activate)="openRight(enav)"
-        (deactivate)="closeRight(enav)"
+        (activate)="enav.open()"
+        (deactivate)="enav.close()"
       />
     </mat-sidenav>
   </mat-sidenav-container>

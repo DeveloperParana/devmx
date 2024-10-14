@@ -1,10 +1,18 @@
-import { CrumbsComponent, provideCrumbs } from '@devmx/shared-ui-global/crumbs';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutToolbarComponent } from './toolbar/toolbar.component';
 import { LayoutNavbarComponent } from './navbar/navbar.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatBadgeModule } from '@angular/material/badge';
+import { PaginatorComponent } from '@devmx/shared-ui-global';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { Portal, PortalModule } from '@angular/cdk/portal';
+import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
+import { LayoutFacade } from './layout.facade';
 import { RouterModule } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import {
   inject,
   signal,
@@ -12,59 +20,62 @@ import {
   DestroyRef,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-  ViewContainerRef,
 } from '@angular/core';
-import { Layout } from './layout';
-import { AsyncPipe } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'devmx-layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideCrumbs()],
   imports: [
+    AsyncPipe,
     LayoutModule,
     PortalModule,
     RouterModule,
-    CrumbsComponent,
+    MatListModule,
+    IconComponent,
+    MatBadgeModule,
     MatSidenavModule,
+    MatToolbarModule,
+    MatProgressBarModule,
+    PaginatorComponent,
     LayoutToolbarComponent,
     LayoutNavbarComponent,
-    AsyncPipe,
   ],
   standalone: true,
 })
 export class LayoutComponent {
   destroyRef = inject(DestroyRef);
 
-  viewContainerRef = inject(ViewContainerRef);
-
   hideToggleButtonLeft = signal(true);
   hideToggleButtonRight = signal(true);
 
   sidenavOutlet?: Portal<unknown>;
 
-  layout = inject(Layout);
+  layoutFacade = inject(LayoutFacade);
 
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);
 
-    this.layout.mobileQuery$
+    this.layoutFacade.mobile$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => changeDetectorRef.detectChanges());
+    // this.layout.mobileQuery$
+    //   .pipe(takeUntilDestroyed(this.destroyRef))
+    //   .subscribe(() => changeDetectorRef.detectChanges());
 
     this.destroyRef.onDestroy(() => {
-      this.layout.destroy();
+      this.layoutFacade.destroyListener();
     });
 
-    this.layout.component$.subscribe((component) => {
-      if (component) {
-        this.sidenavOutlet = component;
-        this.hideToggleButtonLeft.set(false);
-      }
-    });
+    this.layoutFacade.component$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((component) => {
+        if (component) {
+          this.sidenavOutlet = component;
+          this.hideToggleButtonLeft.set(false);
+        }
+      });
   }
 
   openLeft(sidenav: MatSidenav) {
@@ -74,16 +85,6 @@ export class LayoutComponent {
 
   closeLeft(sidenav: MatSidenav) {
     this.hideToggleButtonLeft.set(true);
-    sidenav.close();
-  }
-
-  openRight(sidenav: MatSidenav) {
-    this.hideToggleButtonRight.set(false);
-    sidenav.open();
-  }
-
-  closeRight(sidenav: MatSidenav) {
-    this.hideToggleButtonRight.set(true);
     sidenav.close();
   }
 }

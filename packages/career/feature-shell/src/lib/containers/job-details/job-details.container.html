@@ -3,7 +3,7 @@
 <mat-card class="job-card">
   <mat-card-header>
     <a mat-card-avatar routerLink=".." mat-icon-button>
-      <mat-icon>arrow_forward</mat-icon>
+      <devmx-icon name="arrow/left" />
     </a>
     <mat-card-title>{{job.title}}</mat-card-title>
     <mat-card-subtitle>{{job.mode | jobMode}}</mat-card-subtitle>
@@ -90,7 +90,7 @@
   <mat-card-footer>
     <a target="_blank" rel="noopener noreferrer" mat-button [href]="job.link">
       <span>Candidatar-se</span>
-      <mat-icon>open_in_new</mat-icon>
+      <devmx-icon name="external-link" />
     </a>
   </mat-card-footer>
   }

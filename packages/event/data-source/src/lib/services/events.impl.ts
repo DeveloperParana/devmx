@@ -55,23 +55,23 @@ export class EventsServiceImpl implements EventsService {
 
     const where: RootFilterQuery<Event> = { ...filter };
 
-    if (params.location) {
-      console.log(params.location);
-      const { lat, lng, min, max } = params.location;
+    // if (params.location) {
+    //   console.log(params.location);
+    //   const { lat, lng, min, max } = params.location;
 
-      where.city = {
-        location: {
-          $near: {
-            $geometry: {
-              type: 'Point',
-              coordinates: [lat, lng],
-            },
-            $maxDistance: max,
-            $minDistance: min,
-          },
-        },
-      };
-    }
+    //   where.city = {
+    //     location: {
+    //       $near: {
+    //         $geometry: {
+    //           type: 'Point',
+    //           coordinates: [lat, lng],
+    //         },
+    //         $maxDistance: max,
+    //         $minDistance: min,
+    //       },
+    //     },
+    //   };
+    // }
 
     try {
       const events = await this.eventModel

@@ -1,14 +1,18 @@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
-// import { provideCrumbs } from '@devmx/shared-ui-global/crumbs';
-import { provideLayout } from '@devmx/shared-ui-global/layout';
+import { authInterceptor, loaderInterceptor } from './interceptors';
+import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { registerLocaleData } from '@angular/common';
-import { authInterceptor } from './interceptors';
 import ptBr from '@angular/common/locales/extra/br';
 import { AuthErrorHandler } from './handlers';
+import { appSections } from './app.sections';
 import pt from '@angular/common/locales/pt';
 import { appRoutes } from './app.routes';
 import { env } from '../envs/env';
+import {
+  provideLayout,
+  provideLayoutToolbar,
+} from '@devmx/shared-ui-global/layout';
 import {
   provideRouter,
   withHashLocation,
@@ -37,10 +41,7 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withViewTransitions(),
       withHashLocation(),
-      withRouterConfig({
-        onSameUrlNavigation: 'ignore',
-        urlUpdateStrategy: 'deferred',
-      })
+      withRouterConfig({})
     ),
     provideAnimationsAsync(),
     {
@@ -51,9 +52,14 @@ export const appConfig: ApplicationConfig = {
       provide: ErrorHandler,
       useClass: AuthErrorHandler,
     },
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    provideLayout(undefined, appSections),
+    provideAccount(),
+    provideLayoutToolbar(AuthFacade),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([authInterceptor, loaderInterceptor])
+    ),
     provideHttpClientImpl(HttpClient),
     provideEnv(env),
-    provideLayout(),
   ],
 };

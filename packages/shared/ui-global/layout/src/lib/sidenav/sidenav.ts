@@ -1,12 +1,13 @@
 import { map, Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { AccountRole, Role } from '@devmx/shared-api-interfaces';
 import { DEFAULT_ROLES } from '@devmx/shared-util-data';
+import { Icon } from '@devmx/shared-ui-global/icon';
 
 export interface LayoutSidenavItem {
   path: (string | number)[];
   text: string;
   roles: Role[];
-  icon?: string;
+  icon?: Icon & string;
   children?: LayoutSidenavItem[];
 }
 

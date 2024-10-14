@@ -10,7 +10,15 @@
     flex-direction: row;
 
     li {
+      display: inline-flex;
+      align-items: center;
       padding: 0;
     }
+  }
+
+  .crumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
   }
 }

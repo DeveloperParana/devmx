@@ -3,7 +3,7 @@
 <mat-card class="event-card">
   <mat-card-header>
     <a mat-card-avatar routerLink=".." mat-icon-button>
-      <mat-icon>arrow_forward</mat-icon>
+      <devmx-icon name="arrow/left" />
     </a>
     <mat-card-title>{{event.title}}</mat-card-title>
   </mat-card-header>
@@ -11,6 +11,8 @@
   @if (event.cover) {
   <img mat-card-image [src]="event.cover" [alt]="event.title" />
   }
+
+  <!-- <devmx-rating /> -->
 
   <mat-list>
     @if (event.city) {

@@ -1,0 +1,30 @@
+:host {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+
+  > section {
+    flex: 1;
+    width: 6000px;
+    display: flex;
+    flex-direction: row;
+
+    .carousel-item {
+      min-width: 100%;
+    }
+  }
+
+  > button {
+    position: absolute;
+
+    &:first-of-type {
+      left: 2em;
+    }
+
+    &:last-of-type {
+      right: 2em;
+    }
+  }
+}
