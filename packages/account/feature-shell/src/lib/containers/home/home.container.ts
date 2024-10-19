@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { CarouselComponent, CarouselItemDirective } from "@devmx/shared-ui-global/carousel";
+import { LayoutFacade } from "@devmx/shared-ui-global/layout";
 
 @Component({
   selector: 'devmx-home',
@@ -8,4 +9,11 @@ import { CarouselComponent, CarouselItemDirective } from "@devmx/shared-ui-globa
   imports: [CarouselComponent, CarouselItemDirective],
   standalone: true
 })
-export class HomeContainer {}
+export class HomeContainer {
+
+  constructor() {
+    const layout = inject(LayoutFacade)
+    layout.setSidenav({ start: true })
+
+  }
+}

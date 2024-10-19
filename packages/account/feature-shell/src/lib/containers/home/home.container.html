@@ -1,10 +1,20 @@
-<h2>Home</h2>
-
-<devmx-carousel class="account-banner">
-  <figure *devmxCarouselItem>
-    <h2>Banner</h2>
-  </figure>
-  <figure *devmxCarouselItem>
-    <h2>Banner 2</h2>
-  </figure>
+<devmx-carousel [auto]="5000" duration="0.5s" class="account-banner">
+  <section *devmxCarouselItem>
+    <h2>Conte sobre você no seu perfil</h2>
+    <figure>
+      <img src="illustrations/perfil.svg" alt="Preencha seu perfil" />
+    </figure>
+  </section>
+  <section *devmxCarouselItem>
+    <h2>Acompanhe nosso calendário de eventos</h2>
+    <figure>
+      <img src="illustrations/calendario.svg" alt="Calendário de eventos" />
+    </figure>
+  </section>
+  <section *devmxCarouselItem>
+    <h2>Divulgue seus projetos</h2>
+    <figure>
+      <img src="illustrations/projetos.svg" alt="Divulgue seus projetos" />
+    </figure>
+  </section>
 </devmx-carousel>

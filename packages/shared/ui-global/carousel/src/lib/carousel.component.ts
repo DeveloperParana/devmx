@@ -5,6 +5,7 @@ import { TransitionDuration, TransitionTiming } from './types';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { Subscription, take, timer } from 'rxjs';
 import {
   input,
   inject,
@@ -55,19 +56,23 @@ export class CarouselComponent implements AfterViewInit {
 
   duration = input<TransitionDuration>('250ms');
 
-  timing = input<TransitionTiming>('ease-in');
+  timing = input<TransitionTiming>('ease-in-out');
 
   controls = input<boolean | ''>(true);
+
+  auto = input<number>(0);
 
   /**
    * Locals
    */
 
-  #width = 1280;
+  #width = 0;
 
   #currentSlide = 0;
 
   wrapperStyle: Partial<CSSStyleDeclaration> = {};
+
+  #subscription?: Subscription;
 
   ngAfterViewInit() {
     const ref = this.carouselRef();
@@ -76,25 +81,39 @@ export class CarouselComponent implements AfterViewInit {
 
     const element = ref.nativeElement;
 
-    const { width } = element.getBoundingClientRect();
+    const rect = element.getBoundingClientRect();
+
+    console.log(rect);
+
+    const { width } = rect
 
     this.#width = width;
+
+    if (this.auto() > 0) this.#startAuto();
   }
 
-  next() {
+  next = () => {
     const nextSlide = this.#currentSlide + 1;
 
     this.#currentSlide = nextSlide % this.items().length;
 
     this.#execTransition();
-  }
+  };
 
-  prev() {
+  prev = () => {
     const prevSlide = this.#currentSlide - 1 + this.items().length;
 
     this.#currentSlide = prevSlide % this.items().length;
 
     this.#execTransition();
+  };
+
+  #startAuto() {
+    if (this.#subscription) {
+      this.#subscription.unsubscribe();
+    }
+    const auto$ = timer(this.auto()).pipe(take(1));
+    this.#subscription = auto$.subscribe(this.next);
   }
 
   @HostListener('window:resize')
@@ -119,6 +138,8 @@ export class CarouselComponent implements AfterViewInit {
     if (!carouselRef) return;
 
     animation.create(carouselRef.nativeElement).play();
+
+    if (this.auto() > 0) this.#startAuto();
   }
 
   #buildAnimation(offset: number) {

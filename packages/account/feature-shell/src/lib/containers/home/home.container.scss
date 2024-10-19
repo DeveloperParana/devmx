@@ -4,6 +4,49 @@
   flex-direction: column;
 
   .account-banner {
-    display: flex;
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 3em;
+      gap: 2em;
+
+      h2,
+      figure {
+        flex: 1;
+      }
+
+      figure {
+        img {
+          width: 100%;
+        }
+      }
+
+      h2 {
+        font-size: 3.6em;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+
+    /* Dispositivos pequenos */
+    @media (max-width: 767px) {
+      section {
+        flex: 1;
+        padding: 1em;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+          margin: 0;
+          font-size: 2em;
+          font-weight: 600;
+          max-width: 100%;
+        }
+        figure {
+          margin: 0 2em;
+        }
+      }
+    }
   }
 }
