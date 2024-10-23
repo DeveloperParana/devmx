@@ -92,7 +92,7 @@
               @for (leader of form.leaders.controls; track leader.value.id; let
               index = $index) {
               <mat-list-item class="sortable-list-item" cdkDrag>
-                <mat-icon matListItemIcon>person</mat-icon>
+                <devmx-icon matListItemIcon name="user" />
                 <div matListItemTitle>{{ leader.value.name?.first }}</div>
                 <button
                   type="button"
@@ -100,7 +100,7 @@
                   mat-icon-button
                   (click)="form.leaders.removeAt(index)"
                 >
-                  <mat-icon>close</mat-icon>
+                  <devmx-icon name="close-cross" />
                 </button>
               </mat-list-item>
               }
@@ -121,7 +121,7 @@
               @for (presentation of form.presentations.controls; track
               presentation.value.id; let index = $index) {
               <mat-list-item class="sortable-list-item" cdkDrag>
-                <mat-icon matListItemIcon>person</mat-icon>
+                <devmx-icon matListItemIcon name="user" />
                 <div matListItemTitle>{{ presentation.value.title }}</div>
                 <button
                   type="button"
@@ -129,7 +129,7 @@
                   mat-icon-button
                   (click)="form.presentations.removeAt(index)"
                 >
-                  <mat-icon>close</mat-icon>
+                  <devmx-icon name="close-cross" />
                 </button>
               </mat-list-item>
               }

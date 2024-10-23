@@ -1,11 +1,9 @@
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { AccountFacade, AuthFacade } from '@devmx/account-data-access';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { PresentationFacade } from '@devmx/presentation-data-access';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
-import { AccountFacade, AuthFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { AsyncPipe } from '@angular/common';
 import { combineLatest, take } from 'rxjs';
 import {
@@ -19,6 +17,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
   selector: 'devmx-account-presentations',
@@ -28,7 +27,7 @@ import {
   providers: [provideCreatePresentation()],
   imports: [
     MatCardModule,
-    MatIconModule,
+    IconComponent,
     MatButtonModule,
     PaginatorComponent,
     RouterModule,

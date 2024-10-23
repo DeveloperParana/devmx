@@ -10,7 +10,6 @@ import { AccountFacade } from '@devmx/account-data-access';
 import { EventFacade } from '@devmx/event-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { take } from 'rxjs';
@@ -30,7 +29,6 @@ import {
   providers: [provideCreateEvent()],
   imports: [
     MatCardModule,
-    MatIconModule,
     MatButtonModule,
     MatListModule,
     MatMenuModule,

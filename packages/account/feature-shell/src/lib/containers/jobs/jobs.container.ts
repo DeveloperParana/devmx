@@ -1,15 +1,13 @@
+import { FormService, provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { FormService, provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { AccountFacade } from '@devmx/account-data-access';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { JobFacade } from '@devmx/career-data-access';
 import { AsyncPipe } from '@angular/common';
-// import { createJob } from '../../forms';
-// import { take } from 'rxjs';
 import {
   inject,
   OnInit,
@@ -26,7 +24,7 @@ import {
   providers: [provideFormDialog()],
   imports: [
     MatCardModule,
-    MatIconModule,
+    IconComponent,
     MatButtonModule,
     PaginatorComponent,
     RouterModule,

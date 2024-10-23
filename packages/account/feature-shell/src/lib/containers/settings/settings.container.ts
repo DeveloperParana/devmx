@@ -8,7 +8,6 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountOut } from '@devmx/shared-api-interfaces';
 import { CityFacade } from '@devmx/location-data-access';
-import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -47,7 +46,6 @@ import {
     CommonModule,
     IconComponent,
     MatCardModule,
-    MatIconModule,
     PhotoComponent,
     ImageComponent,
     MatButtonModule,

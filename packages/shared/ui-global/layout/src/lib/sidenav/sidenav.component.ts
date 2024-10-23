@@ -1,7 +1,6 @@
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { AsyncPipe } from '@angular/common';
 import { LayoutSidenav } from './sidenav';
 import {
@@ -18,7 +17,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatListModule,
-    MatIconModule,
     IconComponent,
     RouterLink,
     RouterLinkActive,
