@@ -1,0 +1,1 @@
+import{f as p}from"./chunk-SL6VQ2OX.js";import{F as t,ha as u,u as o}from"./chunk-DR3MHCOP.js";var l=(...a)=>()=>{let e=u(p),n=e.level$.pipe(t(r=>!!r),o(r=>a.some(s=>r.groups.includes(s))));return e.loadAuthUser(),n};export{l as a};
