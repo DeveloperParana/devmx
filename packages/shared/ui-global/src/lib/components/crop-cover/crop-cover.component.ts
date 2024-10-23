@@ -11,13 +11,14 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
   selector: 'devmx-crop-cover',
   templateUrl: './crop-cover.component.html',
   styleUrl: './crop-cover.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, FileComponent],
+  imports: [MatButtonModule, MatIconModule, IconComponent, FileComponent],
   standalone: true,
 })
 export class CropCoverComponent implements AfterViewInit {

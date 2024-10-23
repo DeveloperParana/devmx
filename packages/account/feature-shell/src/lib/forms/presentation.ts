@@ -49,15 +49,18 @@ export class PresentationForm extends Form<Presentation> {
   });
 
   fill(value: Presentation) {
+
     if (value.id && this.controls.id) {
       this.controls.id.enable();
     }
     this.patchValue(value);
 
+    this.resources.clear()
     for (const resource of value.resources) {
       this.pushResource(resource);
     }
 
+    this.tags.clear()
     for (const tag of value.tags) {
       this.pushTag(tag);
     }

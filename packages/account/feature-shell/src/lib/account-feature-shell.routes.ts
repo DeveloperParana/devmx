@@ -1,7 +1,7 @@
+import { roleGroupsGuard, roleGroupGuard, roleGuard } from '@devmx/shared-ui-global/guards';
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
 import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
 import { providePresentation } from '@devmx/presentation-data-access';
-import { roleGroupsGuard, roleGroupGuard, roleGuard } from './guards';
 import { provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { provideLocation } from '@devmx/location-data-access';
 import { provideCareer } from '@devmx/career-data-access';

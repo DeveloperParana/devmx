@@ -14,8 +14,6 @@ import {
   inject,
   Component,
   ChangeDetectionStrategy,
-  viewChild,
-  AfterViewInit,
 } from '@angular/core';
 
 @Component({
@@ -38,18 +36,12 @@ import {
   ],
   standalone: true,
 })
-export class LayoutToolbarComponent implements AfterViewInit {
+export class LayoutToolbarComponent {
   toolbar = inject(LayoutToolbar);
-
-  tabPanel = viewChild('tabPanel');
 
   year = new Date().getFullYear();
 
   accountOverlayOpened = signal(false);
-
-  ngAfterViewInit() {
-    console.log(this.tabPanel());
-  }
 
   toggleOverlay() {
     const state = !this.accountOverlayOpened();

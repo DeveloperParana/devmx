@@ -7,4 +7,5 @@ export * from './icon';
 export * from './menu';
 export * from './music';
 export * from './software';
+export * from './tech';
 export * from './transport';

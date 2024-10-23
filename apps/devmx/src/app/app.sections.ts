@@ -2,7 +2,7 @@ import { SectionHeaderOptions } from '@devmx/shared-ui-global/layout';
 
 export const appSections: SectionHeaderOptions[] = [
   {
-    label: 'Conta',
+    label: 'Configurações',
     links: [
       {
         label: 'Sobre você',
@@ -10,40 +10,40 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'doc/id-card',
         roles: ['member'],
       },
+      // {
+      //   label: 'Habilidades',
+      //   route: ['/conta', 'habilidades'],
+      //   icon: 'settings',
+      //   roles: ['member'],
+      // },
       {
-        label: 'Suas habilidades',
-        route: ['/conta', 'habilidades'],
-        icon: 'settings',
-        roles: ['member'],
-      },
-      {
-        label: 'Suas apresentações',
+        label: 'Apresentações',
         route: ['/conta', 'minhas-apresentacoes'],
         icon: 'presentation',
         roles: ['speaker'],
       },
       {
-        label: 'Seus eventos',
-        route: ['/conta', 'administracao', 'meus-eventos'],
+        label: 'Eventos',
+        route: ['/eventos', 'administracao', 'meus-eventos'],
         icon: 'calendar-tasks',
         roles: ['leader'],
       },
       {
-        label: 'Suas ofertas',
-        route: ['/carreiras', 'administracao', 'suas-ofertas'],
+        label: 'Ofertas',
+        route: ['/carreiras', 'administracao', 'minhas-ofertas'],
         icon: 'music/speaker',
         roles: ['recruiter'],
       },
       {
-        label: 'Administrar contas',
+        label: 'Contas',
         route: ['/conta', 'administracao', 'contas'],
         icon: 'gear',
         roles: ['manager', 'director'],
       },
       {
         label: 'Dashboard',
-        route: ['/conta', 'administracao', 'dashboard'],
-        icon: 'gear',
+        route: ['/conta', 'dashboard'],
+        icon: 'menu/layout-6',
         roles: ['manager', 'director'],
       },
       {

@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'devmx-event-feature-admin',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './event-feature-admin.component.html',
+  template: '<router-outlet />',
   styleUrl: './event-feature-admin.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterOutlet],
+  standalone: true,
 })
 export class EventFeatureAdminComponent {}

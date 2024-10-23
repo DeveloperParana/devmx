@@ -10,7 +10,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { param } from '@devmx/shared-ui-global';
 import { PresentationForm } from '../../forms';
 import { take } from 'rxjs';
@@ -26,6 +25,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
   selector: 'devmx-account-presentation',
@@ -41,9 +41,9 @@ import {
     MatSelectModule,
     DragDropModule,
     MatInputModule,
+    IconComponent,
     MatListModule,
     MatButtonModule,
-    MatIconModule,
     TextFieldModule,
   ],
   standalone: true,

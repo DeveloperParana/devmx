@@ -1,10 +1,10 @@
 import { AutoAssignable, AutoAssinableRoleForm } from '../../forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBaseComponent } from '../base';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'devmx-auto-assignable-role',
@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatIconModule,
+    IconComponent,
   ],
   standalone: true,
 })

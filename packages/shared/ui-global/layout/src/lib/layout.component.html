@@ -21,6 +21,8 @@
     >
       <ng-template [cdkPortalOutlet]="sidenavOutlet"></ng-template>
 
+      <div class="spacer"></div>
+
       <mat-nav-list>
         @for (section of layoutFacade.sections$ | async; track section.label) {
         <h3 mat-subheader>{{ section.label }}</h3>

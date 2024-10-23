@@ -21,6 +21,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { skip } from 'rxjs';
 
 @Component({
   selector: 'devmx-layout',
@@ -52,17 +53,16 @@ export class LayoutComponent {
 
   sidenavOutlet?: Portal<unknown>;
 
-  layoutFacade = inject(LayoutFacade);
+  layoutFacade;
 
   constructor() {
     const changeDetectorRef = inject(ChangeDetectorRef);
 
+    this.layoutFacade = inject(LayoutFacade);
+
     this.layoutFacade.mobile$
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this.destroyRef), skip(1))
       .subscribe(() => changeDetectorRef.detectChanges());
-    // this.layout.mobileQuery$
-    //   .pipe(takeUntilDestroyed(this.destroyRef))
-    //   .subscribe(() => changeDetectorRef.detectChanges());
 
     this.destroyRef.onDestroy(() => {
       this.layoutFacade.destroyListener();

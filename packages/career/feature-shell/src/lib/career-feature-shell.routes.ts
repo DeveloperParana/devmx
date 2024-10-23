@@ -1,5 +1,6 @@
 import { CareerFeatureShellComponent } from './career-feature-shell.component';
 import { CareersContainer, JobDetailsContainer } from './containers';
+import { roleGroupsGuard } from '@devmx/shared-ui-global/guards';
 import { provideCareer } from '@devmx/career-data-access';
 import { JobOut } from '@devmx/shared-api-interfaces';
 import { jobResolver } from './resolvers';
@@ -15,7 +16,18 @@ export const careerFeatureShellRoutes: Route[] = [
     component: CareerFeatureShellComponent,
     children: [
       {
+        path: 'administracao',
+        canActivate: [roleGroupsGuard('worthy', 'board')],
+        loadChildren: () =>
+          import('@devmx/career-feature-admin').then(
+            (m) => m.careerFeatureAdminRoutes
+          ),
+      },
+      {
         path: '',
+        data: {
+          breadcrumb: 'Carreiras',
+        },
         component: CareersContainer,
       },
       {

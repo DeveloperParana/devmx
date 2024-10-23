@@ -50,7 +50,7 @@
           @for (resource of form.resources.controls; track resource; let index =
           $index) {
           <mat-list-item class="sortable-list-item" cdkDrag>
-            <mat-icon matListItemIcon>link</mat-icon>
+            <devmx-icon matListItemIcon name="link" />
             <div matListItemTitle>{{ resource.value }}</div>
             <button
               type="button"
@@ -58,7 +58,7 @@
               mat-icon-button
               (click)="form.removeResource(index)"
             >
-              <mat-icon>close</mat-icon>
+            <devmx-icon name="close-cross" />
             </button>
           </mat-list-item>
           }
@@ -82,7 +82,7 @@
         >
           @for (tag of form.tags.controls; track tag; let index = $index) {
           <mat-list-item class="sortable-list-item" cdkDrag>
-            <mat-icon matListItemIcon>tag</mat-icon>
+            <devmx-icon matListItemIcon name="hashtag" />
             <div matListItemTitle>{{ tag.value }}</div>
             <button
               type="button"
@@ -90,7 +90,7 @@
               mat-icon-button
               (click)="form.removeTag(index)"
             >
-              <mat-icon>close</mat-icon>
+              <devmx-icon name="close-cross" />
             </button>
           </mat-list-item>
           }

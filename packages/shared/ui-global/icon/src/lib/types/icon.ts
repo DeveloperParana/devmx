@@ -7,6 +7,7 @@ import { EmojiIcon } from './emoji';
 import { MenuIcon } from './menu';
 import { DocIcon } from './doc';
 import { MusicIcon } from './music';
+import { TechIcon } from './tech';
 
 type Root =
   | 'airplay'
@@ -118,7 +119,9 @@ type Root =
   | 'video-camera'
   | 'video'
   | 'wreach'
-  | 'zoom-search';
+  | 'zoom-search'
+  | 'zoom-plus'
+  | 'zoom-minus'
 
 export type Icon =
   | Root
@@ -130,4 +133,5 @@ export type Icon =
   | MenuIcon
   | SoftwareIcon
   | BuildingIcon
-  | MusicIcon;
+  | MusicIcon
+  | TechIcon

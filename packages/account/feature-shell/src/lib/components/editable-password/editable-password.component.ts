@@ -2,7 +2,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChangePassword } from '@devmx/account-data-access';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PasswordForm } from '../../forms';
@@ -12,6 +11,7 @@ import {
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
   selector: 'devmx-editable-password',
@@ -24,8 +24,8 @@ import {
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    IconComponent,
     MatButtonModule,
-    MatIconModule,
   ],
   standalone: true,
 })

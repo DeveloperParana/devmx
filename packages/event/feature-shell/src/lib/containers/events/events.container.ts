@@ -1,9 +1,10 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
-import { EventCardComponent, EventFilterComponent } from '../../components';
+import { EventFilterComponent } from '../../components';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LayoutFacade } from '@devmx/shared-ui-global/layout';
+import { EventCardComponent } from '@devmx/event-ui-shared';
 import { AuthFacade } from '@devmx/account-data-access';
 import { EventFacade } from '@devmx/event-data-access';
 import { AsyncPipe } from '@angular/common';

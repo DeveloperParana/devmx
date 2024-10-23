@@ -8,8 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { JobFacade } from '@devmx/career-data-access';
 import { AsyncPipe } from '@angular/common';
-import { createJob } from '../../forms';
-import { take } from 'rxjs';
+// import { createJob } from '../../forms';
+// import { take } from 'rxjs';
 import {
   inject,
   OnInit,
@@ -56,18 +56,18 @@ export class JobsContainer implements OnInit {
   }
 
   openCreate() {
-    const title = 'Criar vaga';
-    const job$ = this.formService.open({ title, ...createJob }).afterClosed();
+    // const title = 'Criar vaga';
+    // const job$ = this.formService.open({ title, ...createJob }).afterClosed();
 
-    job$.pipe(take(1)).subscribe((result) => {
-      if (result) {
-        this.jobFacade.job$.pipe(take(1)).subscribe(() => {
-          this.accountFacade.loadJobs();
-        });
+    // job$.pipe(take(1)).subscribe((result) => {
+    //   if (result) {
+    //     this.jobFacade.job$.pipe(take(1)).subscribe(() => {
+    //       this.accountFacade.loadJobs();
+    //     });
 
-        this.jobFacade.create(result);
-      }
-    });
+    //     this.jobFacade.create(result);
+    //   }
+    // });
   }
 
   onPageChange({ page, size }: PageParams) {

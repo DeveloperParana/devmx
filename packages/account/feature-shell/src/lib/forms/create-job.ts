@@ -5,6 +5,7 @@ import {
   dropdown,
   TypedFields,
   createFormGroup,
+  range,
 } from '@devmx/shared-ui-global/forms';
 
 const fields: TypedFields<CreateJob> = {
@@ -72,6 +73,26 @@ const fields: TypedFields<CreateJob> = {
       required: 'Obrigatório',
     },
   }),
+  skills: [
+    {
+      weight: range({
+        label: 'Peso',
+        min: 0,
+        max: 10,
+      }),
+      skill: {
+        id: textbox({
+          label: 'ID',
+          type: 'hidden'
+        }),
+        name: dropdown({
+          label: 'Habilidade',
+          options: [],
+        })
+      }
+    }
+
+  ],
   requirements: textbox({
     order: 7,
     label: 'Requisitos',
@@ -87,6 +108,6 @@ const fields: TypedFields<CreateJob> = {
   }),
 };
 
-const form = createFormGroup(fields)
+// const form = createFormGroup(fields)
 
-export const createJob = { fields, form }
+// export const createJob = { fields, form }

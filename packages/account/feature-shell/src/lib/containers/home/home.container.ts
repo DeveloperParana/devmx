@@ -1,12 +1,11 @@
 import { Component, inject } from "@angular/core";
-import { CarouselComponent, CarouselItemDirective } from "@devmx/shared-ui-global/carousel";
 import { LayoutFacade } from "@devmx/shared-ui-global/layout";
 
 @Component({
   selector: 'devmx-home',
   templateUrl: './home.container.html',
   styleUrl: './home.container.scss',
-  imports: [CarouselComponent, CarouselItemDirective],
+  imports: [],
   standalone: true
 })
 export class HomeContainer {

@@ -17,6 +17,7 @@ import {
   JobContract,
   ExperienceLevel,
 } from '@devmx/shared-api-interfaces';
+import { JobSkillDto } from './job-skill';
 
 export class CreateJobDto implements CreateJob {
   @IsString()
@@ -57,10 +58,14 @@ export class CreateJobDto implements CreateJob {
   @ApiProperty({ type: 'enum', enum: ['office', 'remote', 'hybrid'] })
   mode: JobMode;
 
-  @IsString()
+  @IsArray()
   @IsOptional()
   @ApiPropertyOptional({ type: String })
   benefits?: string;
+
+  @ApiProperty({ type: () => [JobSkillDto] })
+  @Type(() => Array<JobSkillDto>)
+  skills: JobSkillDto[];
 
   @IsOptional()
   @Type(() => RangeDto)

@@ -17,6 +17,7 @@ export type Software =
   | 'brush-alt'
   | 'brush'
   | 'cloud-downlaod'
+  | 'cloud-upload'
   | 'cloud-server'
   | 'code'
   | 'color-palette'

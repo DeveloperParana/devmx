@@ -1,3 +1,5 @@
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
 <mat-toolbar class="layout-toolbar">
   @if (toolbar.auth.user$| async; as user) {
   <p class="layout-toolbar-account">
@@ -8,7 +10,7 @@
   <span class="spacer"></span>
   }
 
-  <nav mat-tab-nav-bar>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
     <a mat-tab-link routerLink="/eventos"> Eventos </a>
     <a mat-tab-link routerLink="/apresentacoes"> Apresentações </a>
     <a mat-tab-link routerLink="/carreiras"> Carreiras </a>

@@ -3,18 +3,24 @@
     <mat-checkbox formControlName="member" disabledInteractive>
       Membro
     </mat-checkbox>
-    <mat-checkbox class="mat-checkbox" formControlName="speaker" color="accent"> Palestrante </mat-checkbox>
+    <mat-checkbox class="mat-checkbox" formControlName="speaker" color="accent">
+      Palestrante
+    </mat-checkbox>
   </section>
 
   <footer>
     <div class="flex gap-1">
       <button type="button" mat-raised-button (click)="toggleForm()">
-        <mat-icon>{{ form.disabled ? 'lock_open' : 'lock' }}</mat-icon>
+        @if (form.disabled) {
+        <devmx-icon name="lock" [size]="18" />
+        } @else {
+        <devmx-icon name="opened-lock" [size]="18" />
+        }
         <span>{{ form.disabled ? 'Alterar' : 'Bloquear' }}</span>
       </button>
 
       <button [disabled]="form.disabled" mat-flat-button>
-        <mat-icon>cloud_upload</mat-icon>
+        <devmx-icon name="software/cloud-upload" [size]="18" />
         <span>Salvar</span>
       </button>
     </div>

@@ -3,6 +3,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AutoAssignable, UpdateAccountForm } from '../../forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { LayoutFacade } from '@devmx/shared-ui-global/layout';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountOut } from '@devmx/shared-api-interfaces';
 import { CityFacade } from '@devmx/location-data-access';
@@ -34,7 +36,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { LayoutFacade } from '@devmx/shared-ui-global/layout';
+
 
 @Component({
   selector: 'devmx-account-settings',
@@ -43,6 +45,7 @@ import { LayoutFacade } from '@devmx/shared-ui-global/layout';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
+    IconComponent,
     MatCardModule,
     MatIconModule,
     PhotoComponent,

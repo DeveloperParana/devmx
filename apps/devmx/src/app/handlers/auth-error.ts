@@ -23,6 +23,8 @@ export class AuthErrorHandler implements ErrorHandler {
   };
 
   handleError(error: Error): void {
+    console.error(error);
+
     if (error instanceof HttpErrorResponse) {
       const { message } = error.error;
 

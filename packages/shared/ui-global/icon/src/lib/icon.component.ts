@@ -36,7 +36,7 @@ export class IconComponent implements OnInit {
 
   name = input.required<Icon>();
 
-  color = input('#111');
+  color = input();
 
   size = input<string | number>(24);
 
@@ -53,7 +53,10 @@ export class IconComponent implements OnInit {
 
         this.renderer.setAttribute(svg, 'width', size);
         this.renderer.setAttribute(svg, 'height', size);
-        this.renderer.setStyle(svg, 'color', this.color());
+
+        if (this.color()) {
+          this.renderer.setStyle(svg, 'color', this.color());
+        }
 
         this.renderer.appendChild(this.elRef.nativeElement, svg);
       });

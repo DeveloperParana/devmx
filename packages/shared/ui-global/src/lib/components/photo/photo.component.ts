@@ -10,13 +10,14 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
   selector: 'devmx-photo',
   templateUrl: './photo.component.html',
   styleUrl: './photo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, FileComponent],
+  imports: [MatButtonModule, MatIconModule, IconComponent, FileComponent],
   standalone: true,
 })
 export class PhotoComponent implements AfterViewInit {

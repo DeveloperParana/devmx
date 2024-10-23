@@ -19,7 +19,7 @@ export class CreateEventForm extends FormGroup<TypedForm<CreateEvent>> {
         nonNullable: true,
         validators: [Validators.required],
       }),
-      visible: new FormControl(false, {
+      visible: new FormControl(true, {
         nonNullable: true,
       }),
     });

@@ -1,16 +1,18 @@
 import { AccountCollection } from '@devmx/account-data-source';
 import { CityCollection } from '@devmx/location-data-source';
+import { createSchema } from '@devmx/shared-data-source';
 import { Prop, raw, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
+import { JobSkillSchema } from './job-skill';
 import {
   Job,
   Range,
   JobMode,
   JobType,
+  JobSkill,
   JobContract,
   ExperienceLevel,
 } from '@devmx/shared-api-interfaces';
-import { createSchema } from '@devmx/shared-data-source';
 
 @Schema()
 export class JobCollection extends Document implements Job {
@@ -51,6 +53,9 @@ export class JobCollection extends Document implements Job {
     })
   )
   salary?: Range;
+
+  @Prop([JobSkillSchema])
+  skills: JobSkill[];
 
   @Prop({ type: String })
   contact?: string;

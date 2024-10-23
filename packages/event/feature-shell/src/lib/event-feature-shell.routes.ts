@@ -6,13 +6,7 @@ import { eventResolver } from './resolvers';
 import { Route } from '@angular/router';
 
 export const eventFeatureShellRoutes: Route[] = [
-  {
-    path: 'administracao',
-    loadChildren: () =>
-      import('@devmx/event-feature-admin').then(
-        (m) => m.eventFeatureAdminRoutes
-      ),
-  },
+
   {
     path: '',
     providers: [...provideEvent()],
@@ -22,7 +16,18 @@ export const eventFeatureShellRoutes: Route[] = [
     component: EventFeatureShellComponent,
     children: [
       {
+        path: 'administracao',
+        providers: [...provideEvent()],
+        loadChildren: () =>
+          import('@devmx/event-feature-admin').then(
+            (m) => m.eventFeatureAdminRoutes
+          ),
+      },
+      {
         path: '',
+        data: {
+          breadcrumb: 'Eventos',
+        },
         component: EventsContainer,
       },
       {

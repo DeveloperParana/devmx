@@ -7,7 +7,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { UpdateAccountForm } from '../../forms';
 import {
   OnInit,
@@ -15,6 +14,7 @@ import {
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
   selector: 'devmx-editable-account',
@@ -37,7 +37,7 @@ import {
     MatCheckboxModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule,
+    IconComponent,
     MatInputModule,
   ],
   standalone: true,
