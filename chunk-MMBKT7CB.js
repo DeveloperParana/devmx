@@ -1,0 +1,1 @@
+import{a as i}from"./chunk-5TFH5YPG.js";import{ia as r,pa as o}from"./chunk-FETYZ75O.js";var f=(()=>{class e{env=r(i);transform(t){return this.#t(t)}#t(t){return t?`${this.env.photos.url}/${t}`:"/photos/default.svg"}static \u0275fac=function(n){return new(n||e)};static \u0275pipe=o({name:"photo",type:e,pure:!0,standalone:!0})}return e})();export{f as a};
