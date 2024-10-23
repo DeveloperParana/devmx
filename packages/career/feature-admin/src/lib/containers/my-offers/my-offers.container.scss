@@ -1,0 +1,62 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .jobs-container {
+    gap: 1em;
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    > * {
+      flex: 1;
+      max-width: 50%;
+    }
+
+    grid-template-columns: repeat(2, 1fr);
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Limita a 3 linhas */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (min-width: 1920px) {
+    .jobs-container {
+      > * {
+        flex: 1;
+        max-width: 33%;
+      }
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .jobs-container {
+      align-content: flex-start;
+
+      > * {
+        display: inline-flex;
+        min-width: 100%;
+      }
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .add-button {
+    position: fixed;
+    right: 4em;
+    top: 2em;
+  }
+}

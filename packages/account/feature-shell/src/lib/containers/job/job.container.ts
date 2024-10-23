@@ -9,6 +9,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateJobForm } from '../../forms';
+import {
+  createFormGroup,
+  FormService,
+  textbox,
+  TypedFields,
+} from '@devmx/shared-ui-global/forms';
+import { EditableSkill } from '@devmx/shared-api-interfaces';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'devmx-job',
@@ -21,6 +29,7 @@ import { UpdateJobForm } from '../../forms';
     MatCardModule,
     MatCheckboxModule,
     MatInputModule,
+    MatListModule,
     MatSelectModule,
     MatButtonModule,
     RouterModule,
@@ -30,11 +39,33 @@ import { UpdateJobForm } from '../../forms';
 export class JobContainer implements OnInit {
   route = inject(ActivatedRoute);
 
+  formService = inject(FormService);
+
   form = new UpdateJobForm();
 
   ngOnInit() {
     this.route.data.subscribe(({ job }) => {
       if (job) this.form.patchValue(job);
     });
+  }
+
+  openCreateSkill() {
+    const fields: TypedFields<EditableSkill> = {
+      id: textbox({
+        label: 'ID',
+        type: 'hidden',
+      }),
+      name: textbox({
+        label: 'Habilidade',
+        type: 'text',
+        errors: {
+          required: 'Obrigatório',
+        },
+      }),
+    };
+
+    const form = createFormGroup(fields);
+
+    this.formService.open({ title: '', fields, form });
   }
 }

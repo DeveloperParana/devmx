@@ -17,7 +17,8 @@ export const careerFeatureShellRoutes: Route[] = [
     children: [
       {
         path: 'administracao',
-        canActivate: [roleGroupsGuard('worthy', 'board')],
+        providers: [...provideCareer()],
+        canActivate: [roleGroupsGuard('worthy', 'board', 'recruiter')],
         loadChildren: () =>
           import('@devmx/career-feature-admin').then(
             (m) => m.careerFeatureAdminRoutes

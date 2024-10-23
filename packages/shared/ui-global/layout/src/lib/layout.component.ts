@@ -61,7 +61,7 @@ export class LayoutComponent {
     this.layoutFacade = inject(LayoutFacade);
 
     this.layoutFacade.mobile$
-      .pipe(takeUntilDestroyed(this.destroyRef), skip(1))
+      .pipe(takeUntilDestroyed(), skip(1))
       .subscribe(() => changeDetectorRef.detectChanges());
 
     this.destroyRef.onDestroy(() => {
@@ -69,7 +69,7 @@ export class LayoutComponent {
     });
 
     this.layoutFacade.component$
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed())
       .subscribe((component) => {
         if (component) {
           this.sidenavOutlet = component;

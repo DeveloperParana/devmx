@@ -1,5 +1,5 @@
 import { createServerProvider } from '@devmx/shared-data-source';
-import { JobsFacade } from '../facades';
+import { JobsFacade, provideSkillsFacade } from '../facades';
 import {
   CreateJobUseCase,
   FindJobByIDUseCase,
@@ -19,5 +19,5 @@ export function provideJobsFacade() {
 }
 
 export function provideFacades() {
-  return [provideJobsFacade()];
+  return [provideJobsFacade(), provideSkillsFacade()];
 }

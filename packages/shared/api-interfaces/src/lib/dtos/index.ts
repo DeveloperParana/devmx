@@ -5,6 +5,8 @@ export * from './challenge';
 export * from './city-ref';
 export * from './create-event';
 export * from './create-presentation';
+export * from './editable-job-skill';
+export * from './editable-skill';
 export * from './event-out';
 export * from './job-out';
 export * from './location-filter';
