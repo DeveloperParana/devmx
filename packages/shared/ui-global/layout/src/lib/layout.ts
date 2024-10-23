@@ -1,4 +1,9 @@
-import { BehaviorSubject, debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import {
+  BehaviorSubject,
+  debounceTime,
+  distinctUntilChanged,
+  Subject,
+} from 'rxjs';
 import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
 import { MediaMatcher } from '@angular/cdk/layout';
 
@@ -18,7 +23,9 @@ export class Layout {
   sidenav$ = this.#sidenav.asObservable();
 
   #loader = new Subject<LoaderMode>();
-  loader$ = this.#loader.asObservable().pipe(debounceTime(10), distinctUntilChanged());
+  loader$ = this.#loader
+    .asObservable()
+    .pipe(debounceTime(10), distinctUntilChanged());
 
   constructor(media: MediaMatcher, component: ComponentType<unknown> | null) {
     if (component) this.setComponent(component);

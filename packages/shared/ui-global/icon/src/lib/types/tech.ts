@@ -14,7 +14,6 @@ export type Tech =
   | 'folder-opened'
   | 'keyboard'
   | 'laptop'
-
   | 'lightning'
   | 'memory-card'
   | 'mobile-ring'
@@ -31,11 +30,10 @@ export type Tech =
   | 'plug-alt'
   | 'plug'
   | 'printer-alt'
-
   | 'printer'
   | 'sim-card'
   | 'telephone-tower'
   | 'wifi-1'
-  | 'wifi'
+  | 'wifi';
 
-export type TechIcon = `tech/${Tech}`
+export type TechIcon = `tech/${Tech}`;

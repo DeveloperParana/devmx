@@ -6,5 +6,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/career/data-access',
-  passWithNoTests: true
+  passWithNoTests: true,
 };

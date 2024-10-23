@@ -7,10 +7,7 @@
   }
 
   .layout-container {
-    background-color: rgba(
-      mat.get-theme-color($theme, surface-variant),
-      1
-    );
+    background-color: rgba(mat.get-theme-color($theme, surface-variant), 1);
   }
 
   .layout-main-wrapper {

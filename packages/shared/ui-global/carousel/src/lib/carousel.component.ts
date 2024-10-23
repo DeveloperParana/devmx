@@ -85,7 +85,7 @@ export class CarouselComponent implements AfterViewInit {
 
     console.log(rect);
 
-    const { width } = rect
+    const { width } = rect;
 
     this.#width = width;
 

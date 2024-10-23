@@ -20,5 +20,5 @@ export class CreatePlaceDto implements CreatePlace {
   @ApiProperty({ type: CreateLocationDto })
   location: CreateLocationDto;
 
-  creator: string
+  creator: string;
 }

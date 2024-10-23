@@ -20,7 +20,7 @@ export interface Job {
 
   mode: JobMode;
 
-  skills: JobSkill[]
+  skills: JobSkill[];
 
   benefits?: string;
 
@@ -34,5 +34,5 @@ export interface Job {
 
   link?: string;
 
-  active: boolean
+  active: boolean;
 }

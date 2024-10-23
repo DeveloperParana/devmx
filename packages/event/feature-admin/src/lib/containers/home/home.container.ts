@@ -12,12 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrl: './home.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    MatGridListModule,
-    MatButtonModule,
-    MatCardModule,
-    AsyncPipe,
-  ]
+  imports: [MatGridListModule, MatButtonModule, MatCardModule, AsyncPipe],
 })
 export class HomeContainer {
   private breakpointObserver = inject(BreakpointObserver);
@@ -29,7 +24,7 @@ export class HomeContainer {
           { title: 'Card 1', cols: 1, rows: 1 },
           { title: 'Card 2', cols: 1, rows: 1 },
           { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Card 4', cols: 1, rows: 1 },
         ];
       }
 
@@ -37,7 +32,7 @@ export class HomeContainer {
         { title: 'Card 1', cols: 2, rows: 1 },
         { title: 'Card 2', cols: 1, rows: 1 },
         { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Card 4', cols: 1, rows: 1 },
       ];
     })
   );

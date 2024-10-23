@@ -7,7 +7,7 @@
     "dev:server": "nx serve server",
     "build:server": "pnpm nx build server --verbose",
     "dev:mx": "nx serve devmx",
-    "affected": "pnpm nx affected -t lint test build --parallel=10",
+    "affected": "pnpm exec nx affected -t lint test build --parallel=10",
     "commit": "czg"
   },
   "private": true,

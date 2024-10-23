@@ -83,15 +83,14 @@ const fields: TypedFields<CreateJob> = {
       skill: {
         id: textbox({
           label: 'ID',
-          type: 'hidden'
+          type: 'hidden',
         }),
         name: dropdown({
           label: 'Habilidade',
           options: [],
-        })
-      }
-    }
-
+        }),
+      },
+    },
   ],
   requirements: textbox({
     order: 7,

@@ -1,4 +1,8 @@
-import { objectId, QueryFilterDto, QueryParamsDto } from '@devmx/shared-data-source';
+import {
+  objectId,
+  QueryFilterDto,
+  QueryParamsDto,
+} from '@devmx/shared-data-source';
 import { JobsService } from '@devmx/career-domain/server';
 import { CreateJobDto, UpdateJobDto } from '../dtos';
 import { Job } from '@devmx/shared-api-interfaces';
@@ -79,17 +83,13 @@ export class JobsServiceImpl implements JobsService {
   }
 
   async update(id: string, data: UpdateJobDto) {
-    const job = await this.jobModel
-      .findOneAndUpdate({ _id: id }, data)
-      .exec();
+    const job = await this.jobModel.findOneAndUpdate({ _id: id }, data).exec();
 
     return job ? job.toJSON() : null;
   }
 
   async remove(id: string) {
-    const job = await this.jobModel
-      .findOneAndDelete({ _id: id })
-      .exec();
+    const job = await this.jobModel.findOneAndDelete({ _id: id }).exec();
 
     return job ? job.toJSON() : null;
   }

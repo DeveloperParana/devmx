@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'devmx-my-offers',
@@ -6,6 +6,6 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
   styleUrl: './my-offers.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  standalone: true
+  standalone: true,
 })
 export class MyOffersContainer {}

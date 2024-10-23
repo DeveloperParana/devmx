@@ -1,4 +1,9 @@
-import { ApiPage, JobDto, QueryParamsDto, User } from '@devmx/shared-data-source';
+import {
+  ApiPage,
+  JobDto,
+  QueryParamsDto,
+  User,
+} from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { Job } from '@devmx/shared-api-interfaces';

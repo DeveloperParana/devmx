@@ -1,7 +1,7 @@
 :host {
   --background: rgba(180, 200, 190, 0.2);
-  --progress: rgba(255,255,255, 0.6);
-  --progress-dark: rgba(0,0,0, 0.2);
+  --progress: rgba(255, 255, 255, 0.6);
+  --progress-dark: rgba(0, 0, 0, 0.2);
 
   display: inline-flex;
   flex-direction: column;
@@ -19,7 +19,6 @@
     height: 20px;
     display: inline-block;
     border-radius: 6px;
-
 
     // Informa ao navegador que tipo de mudanças acontecerão no elemento
     // Isso premite que o navegador faça otimizações antes das mudanças

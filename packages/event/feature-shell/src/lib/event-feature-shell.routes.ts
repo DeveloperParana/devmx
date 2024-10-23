@@ -6,7 +6,6 @@ import { eventResolver } from './resolvers';
 import { Route } from '@angular/router';
 
 export const eventFeatureShellRoutes: Route[] = [
-
   {
     path: '',
     providers: [...provideEvent()],

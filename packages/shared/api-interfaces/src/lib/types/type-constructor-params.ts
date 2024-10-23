@@ -133,10 +133,10 @@ export type TypeConstructorParams<T extends Type> =
         TypeOrString<ConstructorParameters<T>[9]>,
         TypeOrString<ConstructorParameters<T>[10]>,
         TypeOrString<ConstructorParameters<T>[11]>,
-        TypeOrString<ConstructorParameters<T>[12]>,
+        TypeOrString<ConstructorParameters<T>[12]>
       ]
-      : ConstructorParameters<T> extends { length: 14 }
-      ? [
+    : ConstructorParameters<T> extends { length: 14 }
+    ? [
         TypeOrString<ConstructorParameters<T>[0]>,
         TypeOrString<ConstructorParameters<T>[1]>,
         TypeOrString<ConstructorParameters<T>[2]>,
@@ -150,7 +150,7 @@ export type TypeConstructorParams<T extends Type> =
         TypeOrString<ConstructorParameters<T>[10]>,
         TypeOrString<ConstructorParameters<T>[11]>,
         TypeOrString<ConstructorParameters<T>[12]>,
-        TypeOrString<ConstructorParameters<T>[13]>,
+        TypeOrString<ConstructorParameters<T>[13]>
       ]
     : ConstructorParameters<T> extends { length: 15 }
     ? [
@@ -168,6 +168,6 @@ export type TypeConstructorParams<T extends Type> =
         TypeOrString<ConstructorParameters<T>[11]>,
         TypeOrString<ConstructorParameters<T>[12]>,
         TypeOrString<ConstructorParameters<T>[13]>,
-        TypeOrString<ConstructorParameters<T>[14]>,
+        TypeOrString<ConstructorParameters<T>[14]>
       ]
     : never;

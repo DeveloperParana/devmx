@@ -56,13 +56,11 @@ export class JobsContainer implements OnInit {
   openCreate() {
     // const title = 'Criar vaga';
     // const job$ = this.formService.open({ title, ...createJob }).afterClosed();
-
     // job$.pipe(take(1)).subscribe((result) => {
     //   if (result) {
     //     this.jobFacade.job$.pipe(take(1)).subscribe(() => {
     //       this.accountFacade.loadJobs();
     //     });
-
     //     this.jobFacade.create(result);
     //   }
     // });

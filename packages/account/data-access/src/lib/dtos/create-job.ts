@@ -1,1 +1,1 @@
-export { CreateJob } from '@devmx/career-domain'
+export { CreateJob } from '@devmx/career-domain';
