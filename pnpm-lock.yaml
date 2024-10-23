@@ -7,6 +7,8 @@ settings:
 overrides:
   path-to-regexp@>=0.2.0 <1.9.0: '>=1.9.0'
   rollup@>=4.0.0 <4.22.4: '>=4.22.4'
+  cookie@<0.7.0: '>=0.7.0'
+  http-proxy-middleware@>=3.0.0 <3.0.3: '>=3.0.3'
 
 importers:
 
@@ -4019,10 +4021,6 @@ packages:
   cookie-signature@1.0.6:
     resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
 
-  cookie@0.6.0:
-    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
-    engines: {node: '>= 0.6'}
-
   cookie@0.7.1:
     resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
     engines: {node: '>= 0.6'}
@@ -5011,10 +5009,6 @@ packages:
     peerDependenciesMeta:
       '@types/express':
         optional: true
-
-  http-proxy-middleware@3.0.0:
-    resolution: {integrity: sha512-36AV1fIaI2cWRzHo+rbcxhe3M3jUDCNzc4D5zRl57sEWRAxdXYtw7FSQKYY6PDKssiAKjLYypbssHk+xs/kMXw==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
   http-proxy-middleware@3.0.3:
     resolution: {integrity: sha512-usY0HG5nyDUwtqpiZdETNbmKtw3QQ1jwYFZ9wi5iHzX2BcILwQKtYDJPo7XHTsu5Z0B2Hj3W9NNnbd+AjFWjqg==}
@@ -7981,7 +7975,7 @@ snapshots:
       css-loader: 7.1.2(webpack@5.94.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.23.0)(webpack-cli@5.1.4))
       esbuild-wasm: 0.23.0
       fast-glob: 3.3.2
-      http-proxy-middleware: 3.0.0
+      http-proxy-middleware: 3.0.3
       https-proxy-agent: 7.0.5
       istanbul-lib-instrument: 6.0.3
       jsonc-parser: 3.3.1
@@ -12902,8 +12896,6 @@ snapshots:
 
   cookie-signature@1.0.6: {}
 
-  cookie@0.6.0: {}
-
   cookie@0.7.1: {}
 
   cookies@0.9.1:
@@ -13594,7 +13586,7 @@ snapshots:
       body-parser: 1.20.3
       content-disposition: 0.5.4
       content-type: 1.0.5
-      cookie: 0.6.0
+      cookie: 0.7.1
       cookie-signature: 1.0.6
       debug: 2.6.9
       depd: 2.0.0
@@ -14092,17 +14084,6 @@ snapshots:
       '@types/express': 4.17.21
     transitivePeerDependencies:
       - debug
-
-  http-proxy-middleware@3.0.0:
-    dependencies:
-      '@types/http-proxy': 1.17.15
-      debug: 4.3.7
-      http-proxy: 1.18.1(debug@4.3.7)
-      is-glob: 4.0.3
-      is-plain-obj: 3.0.0
-      micromatch: 4.0.8
-    transitivePeerDependencies:
-      - supports-color
 
   http-proxy-middleware@3.0.3:
     dependencies:

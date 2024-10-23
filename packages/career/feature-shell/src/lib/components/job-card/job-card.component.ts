@@ -4,7 +4,6 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { JobOut } from '@devmx/shared-api-interfaces';
 import { PhotoPipe } from '@devmx/shared-ui-global';
@@ -17,7 +16,6 @@ import { PhotoPipe } from '@devmx/shared-ui-global';
   imports: [
     MatCardModule,
     MatListModule,
-    MatIconModule,
     MatButtonModule,
     IconComponent,
     CurrencyPipe,

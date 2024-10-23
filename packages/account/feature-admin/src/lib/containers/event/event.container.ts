@@ -5,19 +5,19 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { EventFacade } from '@devmx/event-data-access';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Event } from '@devmx/shared-api-interfaces';
 import { param } from '@devmx/shared-ui-global';
 import { EventForm } from '../../forms';
-import { debounceTime, switchMap, take } from 'rxjs';
+import { switchMap, take } from 'rxjs';
 import {
   AccountRefForm,
   PresentationRefForm,
@@ -48,6 +48,7 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
+
 @Component({
   selector: 'devmx-account-event',
   templateUrl: './event.container.html',
@@ -73,7 +74,7 @@ import {
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule,
+    IconComponent,
   ],
   standalone: true,
 })

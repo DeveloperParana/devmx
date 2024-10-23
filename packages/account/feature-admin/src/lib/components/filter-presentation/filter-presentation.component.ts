@@ -9,9 +9,9 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FilterPresentation } from '@devmx/account-data-access';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterPresentationForm } from '../../forms';
 import { debounceTime } from 'rxjs';
@@ -26,7 +26,7 @@ import { debounceTime } from 'rxjs';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatIconModule,
+    IconComponent,
   ],
   standalone: true,
 })

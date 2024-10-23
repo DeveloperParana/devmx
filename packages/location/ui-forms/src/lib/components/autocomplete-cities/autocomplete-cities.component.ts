@@ -3,7 +3,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { City } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
 import { debounceTime, map } from 'rxjs';
@@ -33,7 +32,6 @@ import {
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     AsyncPipe,
   ],
   standalone: true,

@@ -1,9 +1,9 @@
 import { PresentationComment } from '@devmx/presentation-data-access';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { PresentationCommentForm } from '../../forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
@@ -25,7 +25,7 @@ import {
     MatInputModule,
     TextFieldModule,
     MatButtonModule,
-    MatIconModule,
+    IconComponent
   ],
   standalone: true,
 })

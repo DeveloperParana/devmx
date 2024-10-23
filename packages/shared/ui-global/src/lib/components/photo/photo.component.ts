@@ -1,5 +1,4 @@
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { FileComponent } from '../file/file.component';
 import { Vector2 } from '@devmx/shared-util-data';
 import {
@@ -17,7 +16,7 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
   templateUrl: './photo.component.html',
   styleUrl: './photo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, IconComponent, FileComponent],
+  imports: [MatButtonModule, IconComponent, FileComponent],
   standalone: true,
 })
 export class PhotoComponent implements AfterViewInit {
