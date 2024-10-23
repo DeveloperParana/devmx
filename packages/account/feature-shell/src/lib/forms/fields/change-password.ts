@@ -2,7 +2,9 @@ import { textbox, TypedFields } from '@devmx/shared-ui-global/forms';
 import { ChangePassword } from '@devmx/account-data-access';
 import { AccountOut } from '@devmx/shared-api-interfaces';
 
-export const changePassword = (account: Pick<AccountOut, 'id' | 'username'>): TypedFields<ChangePassword> => ({
+export const changePassword = (
+  account: Pick<AccountOut, 'id' | 'username'>
+): TypedFields<ChangePassword> => ({
   id: textbox({
     label: 'Id',
     type: 'hidden',

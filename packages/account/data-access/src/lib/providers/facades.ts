@@ -21,7 +21,6 @@ import {
   FindAboutAccountUseCase,
 } from '@devmx/account-domain/client';
 
-
 export function provideAuthFacade() {
   return createClientProvider(AuthFacade, [
     SignInUseCase,
@@ -32,9 +31,7 @@ export function provideAuthFacade() {
 }
 
 export function provideAboutFacade() {
-  return createClientProvider(AboutFacade, [
-    FindAboutAccountUseCase
-  ]);
+  return createClientProvider(AboutFacade, [FindAboutAccountUseCase]);
 }
 
 export function provideAccountFacade() {
@@ -57,9 +54,5 @@ export function provideAccountFacade() {
 }
 
 export function provideFacades() {
-  return [
-    provideAuthFacade(),
-    provideAboutFacade(),
-    provideAccountFacade()
-  ]
+  return [provideAuthFacade(), provideAboutFacade(), provideAccountFacade()];
 }

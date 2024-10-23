@@ -5,7 +5,7 @@ export const accountFeatureBoardRoutes: Route[] = [
   {
     path: '',
     data: {
-      breadcrumb: 'Dashboard'
+      breadcrumb: 'Dashboard',
     },
     component: AccountFeatureBoardComponent,
   },

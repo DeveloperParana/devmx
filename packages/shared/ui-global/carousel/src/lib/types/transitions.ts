@@ -15,4 +15,3 @@ export type TransitionTiming =
   | `start`
   | `end`
   | TransitionTimingFunction;
-

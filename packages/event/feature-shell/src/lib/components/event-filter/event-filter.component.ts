@@ -6,7 +6,7 @@ import {
   radio,
   TypedFields,
   createFormGroup,
-  FormGroupComponent
+  FormGroupComponent,
 } from '@devmx/shared-ui-global/forms';
 
 interface EventFilter {

@@ -25,7 +25,7 @@ import {
     MatInputModule,
     TextFieldModule,
     MatButtonModule,
-    IconComponent
+    IconComponent,
   ],
   standalone: true,
 })

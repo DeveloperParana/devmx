@@ -48,7 +48,6 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
-
 @Component({
   selector: 'devmx-account-event',
   templateUrl: './event.container.html',

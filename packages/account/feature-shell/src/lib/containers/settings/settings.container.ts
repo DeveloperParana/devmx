@@ -36,7 +36,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-
 @Component({
   selector: 'devmx-account-settings',
   templateUrl: './settings.container.html',

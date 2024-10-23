@@ -23,7 +23,6 @@ import {
   AboutService,
 } from '@devmx/account-domain/client';
 
-
 export function provideSignInUseCase() {
   return createUseCaseProvider(SignInUseCase, [AuthService]);
 }
@@ -111,6 +110,6 @@ export function provideUseCases() {
     provideFindSpeakersUseCase(),
     provideFindLeadersUseCase(),
     provideRequestChallengeUseCase(),
-    provideFindAboutAccountUseCase()
+    provideFindAboutAccountUseCase(),
   ];
 }

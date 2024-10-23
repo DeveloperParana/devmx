@@ -121,7 +121,7 @@ type Root =
   | 'wreach'
   | 'zoom-search'
   | 'zoom-plus'
-  | 'zoom-minus'
+  | 'zoom-minus';
 
 export type Icon =
   | Root
@@ -134,4 +134,4 @@ export type Icon =
   | SoftwareIcon
   | BuildingIcon
   | MusicIcon
-  | TechIcon
+  | TechIcon;

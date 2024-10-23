@@ -14,7 +14,6 @@ import { RouterLink } from '@angular/router';
       </main>
 
       <img src="devpr.svg" width="100" />
-
     </div>
   `,
   styleUrl: './not-found.container.scss',

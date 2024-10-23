@@ -20,7 +20,7 @@ import { env } from './envs/env';
     PresentationResourceModule,
     LocationResourceModule,
     EventResourceModule,
-    CareerResourceModule
+    CareerResourceModule,
   ],
 })
 export class AppModule {}

@@ -1,25 +1,28 @@
 @use '@angular/material' as mat;
 
 @mixin form-theme($theme) {
-
   $primary-color: mat.get-theme-color($theme, primary, 70);
   $secondary-color: mat.get-theme-color($theme, secondary, 70);
 
   .mat-radio-button {
-    @include mat.radio-theme((
-      color: (
-        selected: $secondary-color,
-        unselected: $primary-color
+    @include mat.radio-theme(
+      (
+        color: (
+          selected: $secondary-color,
+          unselected: $primary-color,
+        ),
       )
-    ));
+    );
   }
 
   .mat-checkbox {
-    @include mat.checkbox-theme((
-      color: (
-        selected: $primary-color,
-        unselected: $primary-color
+    @include mat.checkbox-theme(
+      (
+        color: (
+          selected: $primary-color,
+          unselected: $primary-color,
+        ),
       )
-    ));
+    );
   }
 }

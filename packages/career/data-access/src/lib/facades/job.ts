@@ -70,7 +70,7 @@ export class JobFacade extends State<JobState> {
   }
 
   loadOne(id: string) {
-    this.setState({ job: null })
+    this.setState({ job: null });
 
     const request$ = this.findJobByIDUseCase.execute(id);
 

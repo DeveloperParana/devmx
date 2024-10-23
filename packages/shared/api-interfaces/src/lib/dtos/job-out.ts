@@ -32,7 +32,7 @@ export interface JobOut {
 
   link?: string;
 
-  active: boolean
+  active: boolean;
 
   owner: AccountRef;
 }

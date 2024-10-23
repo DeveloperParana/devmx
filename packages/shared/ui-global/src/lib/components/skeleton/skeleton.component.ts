@@ -18,7 +18,7 @@ import {
 export class SkeletonComponent implements AfterViewInit {
   maskRef = viewChild<ElementRef<SVGSVGElement>>('#maskRef');
 
-  svgRef = contentChild<SVGSVGElement>('#childRef')
+  svgRef = contentChild<SVGSVGElement>('#childRef');
 
   // data = input.required<string>();
 
