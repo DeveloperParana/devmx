@@ -1,7 +1,7 @@
 import { createServiceProvider } from '@devmx/shared-data-source';
 import { JobsService } from '@devmx/career-domain/server';
 import { getModelToken } from '@nestjs/mongoose';
-import { JobsServiceImpl } from '../services';
+import { JobsServiceImpl, provideSkillsMongoService } from '../services';
 import { JobCollection } from '../schemas';
 
 export function provideJobsService() {
@@ -11,5 +11,5 @@ export function provideJobsService() {
 }
 
 export function provideServices() {
-  return [provideJobsService()];
+  return [provideJobsService(), provideSkillsMongoService()];
 }

@@ -6,6 +6,12 @@ import {
   RemoveJobUseCase,
   UpdateJobUseCase,
   FindJobByIDUseCase,
+  CreateSkillUseCase,
+  SkillService,
+  FindSkillsUseCase,
+  FindSkillByIDUseCase,
+  UpdateSkillUseCase,
+  RemoveSkillUseCase,
 } from '@devmx/career-domain/client';
 
 export function provideCreateJobUseCase() {
@@ -28,6 +34,26 @@ export function provideRemoveJobUseCase() {
   return createUseCaseProvider(RemoveJobUseCase, [JobService]);
 }
 
+export function provideCreateSkillUseCase() {
+  return createUseCaseProvider(CreateSkillUseCase, [SkillService]);
+}
+
+export function provideFindSkillsUseCase() {
+  return createUseCaseProvider(FindSkillsUseCase, [SkillService]);
+}
+
+export function provideFindSkillByIDUseCase() {
+  return createUseCaseProvider(FindSkillByIDUseCase, [SkillService]);
+}
+
+export function provideUpdateSkillUseCase() {
+  return createUseCaseProvider(UpdateSkillUseCase, [SkillService]);
+}
+
+export function provideRemoveSkillUseCase() {
+  return createUseCaseProvider(RemoveSkillUseCase, [SkillService]);
+}
+
 export function provideUseCases() {
   return [
     provideCreateJobUseCase(),
@@ -35,5 +61,11 @@ export function provideUseCases() {
     provideFindJobByIDUseCase(),
     provideUpdateJobUseCase(),
     provideRemoveJobUseCase(),
+
+    provideCreateSkillUseCase(),
+    provideFindSkillsUseCase(),
+    provideFindSkillByIDUseCase(),
+    provideUpdateSkillUseCase(),
+    provideRemoveSkillUseCase(),
   ];
 }

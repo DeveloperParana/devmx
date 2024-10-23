@@ -50,6 +50,7 @@ type Root =
   | 'frame-close'
   | 'frame-person'
   | 'gear'
+  | 'github'
   | 'star-half-left'
   | 'star-half-right'
   | 'hashtag'

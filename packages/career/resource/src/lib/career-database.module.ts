@@ -4,6 +4,8 @@ import {
   JobSchema,
   JobCollection,
   provideCareers,
+  SkillCollection,
+  SkillSchema,
 } from '@devmx/career-data-source';
 
 @Global()
@@ -13,6 +15,10 @@ import {
       {
         name: JobCollection.name,
         schema: JobSchema,
+      },
+      {
+        name: SkillCollection.name,
+        schema: SkillSchema,
       },
     ]),
   ],

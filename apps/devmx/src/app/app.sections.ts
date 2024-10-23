@@ -17,19 +17,19 @@ export const appSections: SectionHeaderOptions[] = [
       //   roles: ['member'],
       // },
       {
-        label: 'Apresentações',
+        label: 'Minhas apresentações',
         route: ['/conta', 'minhas-apresentacoes'],
         icon: 'presentation',
         roles: ['speaker'],
       },
       {
-        label: 'Eventos',
+        label: 'Meus eventos',
         route: ['/eventos', 'administracao', 'meus-eventos'],
         icon: 'calendar-tasks',
         roles: ['leader'],
       },
       {
-        label: 'Ofertas',
+        label: 'Minhas  ofertas',
         route: ['/carreiras', 'administracao', 'minhas-ofertas'],
         icon: 'music/speaker',
         roles: ['recruiter'],

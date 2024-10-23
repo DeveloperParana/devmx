@@ -31,6 +31,7 @@ import {
   ApplicationConfig,
   provideZoneChangeDetection,
 } from '@angular/core';
+import { provideCareer } from '@devmx/career-data-access';
 
 registerLocaleData(pt, 'pt-BR', ptBr);
 
@@ -61,5 +62,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClientImpl(HttpClient),
     provideEnv(env),
+    ...provideCareer()
   ],
 };
