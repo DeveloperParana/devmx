@@ -1,0 +1,18 @@
+<header class="devmx-dialog-header">
+  <devmx-icon name="question-hexagon" [size]="32" />
+  <h2>{{ data.title }}</h2>
+</header>
+
+<div class="devmx-dialog-content">
+  @for (paragraph of data.message; track paragraph) {
+  <p>{{ paragraph }}</p>
+  }
+</div>
+
+<footer class="devmx-dialog-footer">
+  <button type="button" mat-button color="warn" (click)="close(false)">Não, cancelar</button>
+
+  <button type="button" mat-flat-button color="warn" (click)="close(true)">
+    Sim, continuar
+  </button>
+</footer>

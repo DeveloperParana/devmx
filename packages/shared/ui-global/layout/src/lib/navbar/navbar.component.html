@@ -4,14 +4,18 @@
   </a>
 
   <!-- @if (showToggleButtonLeft) { -->
-  <button mat-icon-button (click)="toggleLeft.emit()">
-    <devmx-icon name="menu/burguer-menu"></devmx-icon>
+  <button mat-icon-button class="layout-navbar-toggle-menu" (click)="toggleLeft.emit()">
+    @if (sidenavIsOpened) {
+    <devmx-icon name="menu/hide"></devmx-icon>
+    } @else {
+    <devmx-icon name="menu/show"></devmx-icon>
+    }
   </button>
   <!-- } -->
 
   <h1 class="app-title">{{ title() }}</h1>
 
-  <devmx-crumbs />
+  <devmx-crumbs class="app-crumbs" />
 
   <span class="spacer"></span>
 

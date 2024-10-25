@@ -1,5 +1,5 @@
 import { EntityService } from '@devmx/shared-api-interfaces/server';
-import { Model, RootFilterQuery } from 'mongoose';
+import { Model, Query, RootFilterQuery } from 'mongoose';
 import {
   Entity,
   QueryParams,
@@ -11,9 +11,20 @@ export abstract class MongoService<T extends Entity>
 {
   constructor(private entityModel: Model<T>) {}
 
+  protected applyPopulate<U>(query: Query<U, T>): Query<U, T> {
+    return query;
+  }
+
+  protected applyEditableParser<U>(data: EditableEntity<T>) {
+    return data as U;
+  }
+
   async create(data: EditableEntity<T>) {
-    const created = new this.entityModel(data);
-    return created.save();
+    const value = this.applyEditableParser(data);
+
+    const created = new this.entityModel(value);
+
+    return (await created.save()).toJSON() as T;
   }
 
   async find(params: QueryParams<T>) {
@@ -22,11 +33,9 @@ export abstract class MongoService<T extends Entity>
     const skip = page * size;
     const where = { ...filter };
 
-    const entities = await this.entityModel
-      .find(where)
-      .skip(skip)
-      .limit(size)
-      .exec();
+    const query = this.entityModel.find(where).skip(skip).limit(size);
+
+    const entities = await this.applyPopulate(query).exec();
 
     const data = entities.map((item) => item.toJSON() as T);
     const items = await this.entityModel.countDocuments(where).exec();
@@ -36,7 +45,9 @@ export abstract class MongoService<T extends Entity>
   }
 
   async findOne(id: string) {
-    const entity = await this.entityModel.findById(id).exec();
+    const query = this.entityModel.findById(id);
+
+    const entity = await this.applyPopulate(query).exec();
 
     return entity ? (entity.toJSON() as T) : null;
   }
@@ -49,15 +60,13 @@ export abstract class MongoService<T extends Entity>
   }
 
   async update(id: string, data: EditableEntity<T>) {
-    const entity = await this.entityModel
-      .findOneAndUpdate({ _id: id }, data as T)
+    const value = this.applyEditableParser<T>(data);
+
+    const updated = await this.entityModel
+      .findOneAndUpdate({ _id: id }, value)
       .exec();
 
-    if (!entity) {
-      throw new Error(` ${id} not found`);
-    }
-
-    return entity.toJSON() as T;
+    return updated?.toJSON() as T;
   }
 
   async delete(id: string) {

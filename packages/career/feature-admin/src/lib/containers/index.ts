@@ -1,2 +1,2 @@
-export * from './my-offers/my-offers.container';
-export * from './job/job.container';
+export * from './my-job-openings/my-job-openings.container';
+export * from './job-opening/job-opening.container';

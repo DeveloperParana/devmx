@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 
+  .dialog-title {
+    font-size: 140%;
+  }
+
   .dialog-content {
     padding-top: 0;
     display: flex;

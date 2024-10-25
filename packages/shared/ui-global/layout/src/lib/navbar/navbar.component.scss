@@ -5,6 +5,10 @@
   .layout-navbar {
     display: flex;
     gap: 0.4em;
+
+    &-toggle-menu.cdk-focused devmx-icon {
+      animation: rotate-center 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
   }
 
   .app-logo {
@@ -17,17 +21,26 @@
     margin-right: 1em;
     font-size: 0.9em;
     font-weight: 600;
-    opacity: 0.6;
+    opacity: 0.3;
     margin: 0;
   }
 
   @media (max-width: 767px) {
-    .app-title {
+    .app-crumbs {
       display: none;
     }
   }
 
   .spacer {
     flex: 1 1 auto;
+  }
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

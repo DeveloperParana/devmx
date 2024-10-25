@@ -3,7 +3,7 @@ import { AccountRole } from '@devmx/shared-api-interfaces';
 import { SectionHeaderOptions } from './interfaces';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { navLinksValidator } from './validators';
-import { State } from '@devmx/shared-util-data';
+import { forceAsync, State } from '@devmx/shared-util-data';
 import { SectionHeader } from './models';
 
 interface SidenavState {
@@ -58,6 +58,14 @@ export class LayoutFacade extends State<LayoutState> {
       if (ev.matches) this.setSidenav({ start: false });
       this.setMobile(ev.matches);
     };
+
+    this.setMobile(this.#mediaQuery.matches);
+
+    forceAsync(() => {
+      if (this.#mediaQuery.matches) {
+        this.setSidenav({ start: false });
+      }
+    }, 500);
 
     this.#mediaQuery.addEventListener('change', this.#mediaQueryListener);
   }

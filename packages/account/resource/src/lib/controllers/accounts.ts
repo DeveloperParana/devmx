@@ -42,12 +42,22 @@ import {
   FileTypeValidator,
 } from '@nestjs/common';
 import 'multer';
+import { map, timer } from 'rxjs';
 
 @ApiBearerAuth()
 @ApiTags('Contas')
 @Controller('accounts')
 export class AccountsController {
   constructor(private readonly accountsFacade: AccountsFacade) {}
+
+  @Get('download')
+  download() {
+    const start = new Date()
+    return timer(6000).pipe(map(() => {
+      const end = new Date()
+      return end.getTime() - start.getTime()
+    }))
+  }
 
   @Post('photo')
   @ApiConsumes('multipart/form-data')

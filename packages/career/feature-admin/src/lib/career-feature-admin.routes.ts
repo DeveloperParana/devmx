@@ -1,10 +1,9 @@
 import { CareerFeatureAdminComponent } from './career-feature-admin.component';
-import { provideFormDialog } from '@devmx/shared-ui-global/forms';
-import { JobContainer, MyOffersContainer } from './containers';
-import { Job } from '@devmx/shared-api-interfaces';
-import { jobResolver } from './resolvers';
+import { careerFeatureAdminProviders } from './career-feature-admin.providers';
+import { JobOpeningContainer, MyJobOpeningsContainer } from './containers';
+import { JobOpening } from '@devmx/shared-api-interfaces';
+import { jobOpeningResolver } from './resolvers';
 import { Route } from '@angular/router';
-import { provideSkillDialog } from './dialogs';
 
 export const careerFeatureAdminRoutes: Route[] = [
   {
@@ -12,25 +11,25 @@ export const careerFeatureAdminRoutes: Route[] = [
     data: {
       breadcrumb: 'Administração',
     },
-    providers: [provideFormDialog(), provideSkillDialog()],
+    providers: careerFeatureAdminProviders,
     component: CareerFeatureAdminComponent,
     children: [
       {
         path: 'minhas-ofertas/:id',
         data: {
-          breadcrumb: (data: { job: Job }) => {
-            return data.job.title;
+          breadcrumb: (data: { jobOpening: JobOpening }) => {
+            return data.jobOpening.title;
           },
         },
-        resolve: { job: jobResolver },
-        component: JobContainer,
+        resolve: { jobOpening: jobOpeningResolver },
+        component: JobOpeningContainer,
       },
       {
         path: 'minhas-ofertas',
         data: {
-          breadcrumb: 'Minhas ofertas',
+          breadcrumb: 'Minhas vagas',
         },
-        component: MyOffersContainer,
+        component: MyJobOpeningsContainer,
       },
     ],
   },

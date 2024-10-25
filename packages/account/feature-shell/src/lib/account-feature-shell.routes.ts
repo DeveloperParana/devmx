@@ -10,19 +10,16 @@ import { provideFormDialog } from '@devmx/shared-ui-global/forms';
 import { provideLocation } from '@devmx/location-data-access';
 import { provideCareer } from '@devmx/career-data-access';
 import { provideAbout } from '@devmx/account-data-access';
-import { aboutResolver, jobResolver } from './resolvers';
 import { provideEvent } from '@devmx/event-data-access';
-import { JobOut } from '@devmx/shared-api-interfaces';
+import { aboutResolver } from './resolvers';
 import { Route } from '@angular/router';
 import {
-  JobContainer,
+  HomeContainer,
   AboutContainer,
-  JobsContainer,
+  SignOutContainer,
   SettingsContainer,
   PresentationContainer,
   PresentationsContainer,
-  HomeContainer,
-  SignOutContainer,
 } from './containers';
 
 export const accountFeatureShellRoutes: Route[] = [
@@ -85,24 +82,6 @@ export const accountFeatureShellRoutes: Route[] = [
         },
         canActivate: [roleGuard('speaker')],
         component: PresentationsContainer,
-      },
-      {
-        path: 'minhas-vagas/:id',
-        data: {
-          breadcrumb: (data: { job: JobOut }) => {
-            return data.job.title;
-          },
-        },
-        resolve: { job: jobResolver },
-        component: JobContainer,
-      },
-      {
-        path: 'minhas-vagas',
-        data: {
-          breadcrumb: 'Minhas vagas',
-        },
-        canActivate: [roleGuard('recruiter')],
-        component: JobsContainer,
       },
       {
         path: 'configuracoes',

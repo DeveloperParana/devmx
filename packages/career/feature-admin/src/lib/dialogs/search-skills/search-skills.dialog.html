@@ -7,28 +7,26 @@
     <input
       matInput
       [formControl]="search"
-      placeholder="Escreva o que deseja encontrar"
+      placeholder="Qual habilidade procura?"
     />
   </mat-form-field>
 
-  <mat-selection-list #skills>
+  <button type="button" class="add-skill" mat-button (click)="addSkill()">
+    <devmx-icon name="plus" [size]="18" />
+    <span>Adicionar habilidade</span>
+  </button>
+
+  <mat-selection-list class="skills" #skills>
     @for (item of response.data; track item.id) {
     <mat-list-option [value]="item"> {{item.name}} </mat-list-option>
     }
   </mat-selection-list>
-</mat-dialog-content>
-
-
-<footer class="dialog-footer">
-  <button type="button" mat-icon-button (click)="addSkill()">
-    <devmx-icon name="plus" />
-  </button>
 
   <devmx-paginator
     [items]="response.items"
     (pageChange)="onPageChange($event)"
   />
-</footer>
+</mat-dialog-content>
 
 <mat-dialog-actions class="dialog-actions" align="end">
   <button

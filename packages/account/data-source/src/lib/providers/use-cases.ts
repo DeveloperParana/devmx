@@ -1,7 +1,7 @@
 import { PresentationsService } from '@devmx/presentation-domain/server';
 import { createUseCaseProvider } from '@devmx/shared-data-source';
+import { JobOpeningsService } from '@devmx/career-domain/server';
 import { EventsService } from '@devmx/event-domain/server';
-import { JobsService } from '@devmx/career-domain/server';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import {
   JwtService,
@@ -22,6 +22,7 @@ import {
   FindJobsByOwnerUseCase,
   FindAboutAccountUseCase,
 } from '@devmx/account-domain/server';
+
 
 export function provideFindAccountsUseCase() {
   return createUseCaseProvider(FindAccountsUseCase, [AccountsService]);
@@ -78,7 +79,7 @@ export function provideFindEventsByOwnerUseCase() {
 }
 
 export function provideFindJobsByOwnerUseCase() {
-  return createUseCaseProvider(FindJobsByOwnerUseCase, [JobsService]);
+  return createUseCaseProvider(FindJobsByOwnerUseCase, [JobOpeningsService]);
 }
 
 export function provideFindAccountsByRoleUseCase() {

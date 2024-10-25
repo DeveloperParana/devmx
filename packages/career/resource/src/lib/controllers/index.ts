@@ -1,2 +1,2 @@
-export * from './careers';
+export * from './job-openings';
 export * from './skills';

@@ -1,0 +1,31 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .job-opening-card {
+    height: 100%;
+    box-shadow: none;
+
+    h3 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+
+    p {
+      white-space: pre-line;
+      line-height: 1.2em;
+      word-wrap: break-word;
+    }
+
+    &-header {
+      justify-content: space-between;
+
+      ::ng-deep .mat-mdc-card-header-text {
+        flex: 1;
+        justify-self: flex-start;
+      }
+    }
+  }
+}

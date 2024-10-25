@@ -6,6 +6,8 @@ export type EditableEntity<T> = Omit<
         : U[]
       : T[K] extends { id: string; createdAt: Date; updatedAt: Date }
       ? EditableEntity<Omit<T[K], 'createdAt' | 'updatedAt'>>
+      : T[K] extends string
+      ? T[K] | string
       : T[K];
   },
   'createdAt' | 'updatedAt'

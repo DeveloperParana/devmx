@@ -7,6 +7,7 @@ import { SkillDto } from './skill';
 export class JobSkillDto implements JobSkill {
   @IsNumber()
   @IsNotEmpty()
+  @ApiProperty()
   weight: number;
 
   @Type(() => SkillDto)

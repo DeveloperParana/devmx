@@ -1,5 +1,5 @@
 import { createClientProvider } from '@devmx/shared-data-access';
-import { provideSkillFacade } from '../application';
+import { provideJobOpeningFacade, provideSkillFacade } from '../application';
 import { JobFacade } from '../facades';
 import {
   CreateJobUseCase,
@@ -20,5 +20,5 @@ export function provideJobFacade() {
 }
 
 export function provideFacades() {
-  return [provideJobFacade(), provideSkillFacade()];
+  return [provideJobFacade(), provideSkillFacade(), provideJobOpeningFacade()];
 }
