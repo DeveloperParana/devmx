@@ -36,6 +36,8 @@ export type Menu =
   | 'layout-8'
   | 'layout'
   | 'maximize'
+  | 'show'
+  | 'hide'
   | 'split-halved'
   | 'split-horizontal-double'
   | 'split-horizontal'

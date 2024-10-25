@@ -2,7 +2,10 @@ import { Env } from '@devmx/shared-api-interfaces/client';
 import { JobService } from '@devmx/career-domain/client';
 import { HttpClient } from '@devmx/shared-data-access';
 import { JobServiceImpl } from '../services';
-import { provideSkillHttpService } from '../infrastructure';
+import {
+  provideJobOpeningHttpService,
+  provideSkillHttpService,
+} from '../infrastructure';
 
 export function provideJobService() {
   return {
@@ -15,5 +18,9 @@ export function provideJobService() {
 }
 
 export function provideServices() {
-  return [provideJobService(), provideSkillHttpService()];
+  return [
+    provideJobService(),
+    provideSkillHttpService(),
+    provideJobOpeningHttpService(),
+  ];
 }

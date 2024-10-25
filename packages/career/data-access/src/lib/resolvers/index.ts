@@ -1,1 +1,1 @@
-export * from './job-resolver-wrapped';
+export * from './job-opening-wrapped';

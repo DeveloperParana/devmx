@@ -1,0 +1,36 @@
+{
+  "name": "career-ui-shared",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/career/ui-shared/src",
+  "prefix": "devmx",
+  "projectType": "library",
+  "tags": ["type:ui"],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "packages/career/ui-shared/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/career/ui-shared/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/career/ui-shared/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/career/ui-shared/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <form [formGroup]="form" (submit)="onSubmit()">
-  <h2 mat-dialog-title>
+  <h2 mat-dialog-title class="dialog-title">
     Papéis de {{data.assign.name.first}} {{data.assign.name.last}}
   </h2>
 
@@ -12,6 +12,9 @@
         </mat-list-item>
         <mat-list-item>
           <mat-checkbox formControlName="speaker">Palestrante</mat-checkbox>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-checkbox formControlName="recruiter">Recrutador(a)</mat-checkbox>
         </mat-list-item>
       </mat-list>
       <mat-list>
@@ -27,11 +30,12 @@
         </mat-list-item>
       </mat-list>
     </div>
+
     <div>
       <mat-list>
         <h3 mat-subheader>Apoiador(a)</h3>
         <mat-list-item>
-          <mat-checkbox formControlName="donor">Doador</mat-checkbox>
+          <mat-checkbox formControlName="donor">Doador(a)</mat-checkbox>
         </mat-list-item>
         <mat-list-item>
           <mat-checkbox formControlName="neighbor">De casa</mat-checkbox>
@@ -44,7 +48,7 @@
           <mat-checkbox formControlName="manager">Gerente</mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-          <mat-checkbox formControlName="director">Diretor</mat-checkbox>
+          <mat-checkbox formControlName="director">Diretor(a)</mat-checkbox>
         </mat-list-item>
       </mat-list>
     </div>

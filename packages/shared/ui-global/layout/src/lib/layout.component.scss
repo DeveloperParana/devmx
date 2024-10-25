@@ -25,6 +25,10 @@
     flex: 1;
   }
 
+  .section-header {
+    opacity: 0.6;
+  }
+
   .layout-content {
     flex: 1;
     display: flex;
@@ -36,7 +40,30 @@
     }
 
     .layout-progress {
-      height: 6px;
+      padding: 0 8px;
+      max-height: 2px;
+      overflow: hidden;
+      position: relative;
+
+      &::after {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: ' ';
+        position: absolute;
+        background-size: 100%;
+        background: rgb(254, 253, 253);
+        background-position: center center;
+        background: linear-gradient(
+          90deg,
+          rgba(254, 253, 253, 1) 0%,
+          rgba(254, 253, 253, 0) 25%,
+          rgba(254, 253, 253, 0) 75%,
+          rgba(254, 253, 253, 1) 100%
+        );
+
+      }
     }
   }
 

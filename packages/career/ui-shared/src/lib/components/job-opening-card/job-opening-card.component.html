@@ -1,0 +1,34 @@
+<mat-card class="job-opening-card">
+  <mat-card-header>
+    <mat-card-title>{{ jobOpening.title }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="transport/location-pin-alt" />
+      <div matListItemTitle>{{ jobOpening.mode | jobMode }}</div>
+      <!-- @if (jobOpening.mode !== 'remote' && jobOpening.city) {
+      <div matListItemLine>em {{ jobOpening.city.name }}</div>
+      } -->
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="doc/shield" />
+      <div matListItemTitle>{{ jobOpening.experience | jobLevel }}</div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="time-loading" />
+      <div matListItemTitle>{{ jobOpening.type | jobType }}</div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="doc/check" />
+      <div matListItemTitle>Contrato {{ jobOpening.contract }}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-card-actions align="end" class="job-opening-card-actions">
+    <ng-content />
+  </mat-card-actions>
+</mat-card>

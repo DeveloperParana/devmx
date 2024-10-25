@@ -27,70 +27,11 @@
       height: 32px;
     }
   }
+
+  @media (max-width: 767px) {
+    .devpr-link,
+    .layout-toolbar-account {
+      display: none;
+    }
+  }
 }
-
-// :host {
-//   display: flex;
-//   width: 100vw;
-//   position: fixed;
-//   z-index: 100000;
-//   bottom: 0;
-
-//   .devpr-link {
-//     height: 100%;
-//     display: inline-flex;
-//     align-items: center;
-//     margin-left: 0.4em;
-//     margin-right: 0.4em;
-
-//     img {
-//       height: 32px;
-//     }
-//   }
-
-//   @media (max-width: 767px) {
-//     .copy-left {
-//       display: none;
-//     }
-//   }
-
-//   .active {
-//     color: #39b44d;
-//   }
-
-//   .app-title {
-//     opacity: 0.6;
-//   }
-
-//   .spacer {
-//     flex: 1 1 auto;
-//   }
-
-//   p {
-//     margin: 0;
-//     text-align: center;
-//     line-height: 1.2;
-//     font-size: 0.62em;
-//     opacity: 0.8;
-//   }
-// }
-
-// .account-card {
-//   .mat-mdc-card-header {
-//     padding-bottom: 0.6em;
-//   }
-
-//   .mat-mdc-nav-list {
-//     border-top: 1px solid #eaeaea;
-//     border-bottom: 1px solid #eaeaea;
-
-//     .mat-mdc-list-item {
-//       border-radius: 0;
-//     }
-//   }
-
-//   .mat-mdc-card-actions {
-//     display: flex;
-//     justify-content: space-between;
-//   }
-// }

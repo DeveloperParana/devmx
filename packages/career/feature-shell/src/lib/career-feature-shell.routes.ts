@@ -1,9 +1,9 @@
+import { JobOpeningsContainer, JobOpeningDetailsContainer } from './containers';
 import { CareerFeatureShellComponent } from './career-feature-shell.component';
-import { CareersContainer, JobDetailsContainer } from './containers';
 import { roleGroupsGuard } from '@devmx/shared-ui-global/guards';
 import { provideCareer } from '@devmx/career-data-access';
-import { JobOut } from '@devmx/shared-api-interfaces';
-import { jobResolver } from './resolvers';
+import { JobOpening } from '@devmx/shared-api-interfaces';
+import { jobOpeningResolver } from './resolvers';
 import { Route } from '@angular/router';
 
 export const careerFeatureShellRoutes: Route[] = [
@@ -29,17 +29,17 @@ export const careerFeatureShellRoutes: Route[] = [
         data: {
           breadcrumb: 'Carreiras',
         },
-        component: CareersContainer,
+        component: JobOpeningsContainer,
       },
       {
         path: ':id',
         data: {
-          breadcrumb: (data: { job: JobOut }) => {
-            return data.job.title;
+          breadcrumb: (data: { jobOpening: JobOpening }) => {
+            return data.jobOpening.title;
           },
         },
-        resolve: { job: jobResolver },
-        component: JobDetailsContainer,
+        resolve: { jobOpening: jobOpeningResolver },
+        component: JobOpeningDetailsContainer,
         outlet: 'right',
       },
     ],

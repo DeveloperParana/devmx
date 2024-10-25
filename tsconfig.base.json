@@ -55,6 +55,7 @@
         "packages/career/feature-shell/src/index.ts"
       ],
       "@devmx/career-resource": ["packages/career/resource/src/index.ts"],
+      "@devmx/career-ui-shared": ["packages/career/ui-shared/src/index.ts"],
       "@devmx/event-data-access": ["packages/event/data-access/src/index.ts"],
       "@devmx/event-data-source": ["packages/event/data-source/src/index.ts"],
       "@devmx/event-domain": ["packages/event/domain/src/index.ts"],
@@ -117,11 +118,17 @@
       "@devmx/shared-data-source": ["packages/shared/data-source/src/index.ts"],
       "@devmx/shared-resource": ["packages/shared/resource/src/index.ts"],
       "@devmx/shared-ui-global": ["packages/shared/ui-global/src/index.ts"],
+      "@devmx/shared-ui-global/bash": [
+        "packages/shared/ui-global/bash/src/index.ts"
+      ],
       "@devmx/shared-ui-global/carousel": [
         "packages/shared/ui-global/carousel/src/index.ts"
       ],
       "@devmx/shared-ui-global/crumbs": [
         "packages/shared/ui-global/crumbs/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/dialog": [
+        "packages/shared/ui-global/dialog/src/index.ts"
       ],
       "@devmx/shared-ui-global/filter": [
         "packages/shared/ui-global/filter/src/index.ts"

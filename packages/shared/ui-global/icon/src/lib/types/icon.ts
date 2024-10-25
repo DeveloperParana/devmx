@@ -8,6 +8,7 @@ import { MenuIcon } from './menu';
 import { DocIcon } from './doc';
 import { MusicIcon } from './music';
 import { TechIcon } from './tech';
+import { FinanceIcon } from './finance';
 
 type Root =
   | 'airplay'
@@ -88,6 +89,7 @@ type Root =
   | 'presentation'
   | 'puzzle-piece'
   | 'question-circle'
+  | 'question-hexagon'
   | 'opened-lock'
   | 'rotate-left'
   | 'rotate-right'
@@ -135,4 +137,5 @@ export type Icon =
   | SoftwareIcon
   | BuildingIcon
   | MusicIcon
-  | TechIcon;
+  | TechIcon
+  | FinanceIcon;

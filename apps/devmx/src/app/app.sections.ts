@@ -3,6 +3,7 @@ import { SectionHeaderOptions } from '@devmx/shared-ui-global/layout';
 export const appSections: SectionHeaderOptions[] = [
   {
     label: 'Configurações',
+    icon: 'settings',
     links: [
       {
         label: 'Sobre você',

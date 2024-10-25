@@ -35,6 +35,8 @@ export class LayoutNavbarComponent {
 
   hideToggleButtonRight = input<boolean | ''>(false);
 
+  sidenavOpened = input<boolean | ''>(false);
+
   get showToggleButtonLeft() {
     return !(this.hideToggleButtonLeft() || this.hideToggleButtonLeft() === '');
   }
@@ -45,7 +47,12 @@ export class LayoutNavbarComponent {
     );
   }
 
-  title = input('Portal DevMX');
+  get sidenavIsOpened() {
+    const state = this.sidenavOpened();
+    return state === true || state === '';
+  }
+
+  title = input('devparana . mx');
 
   toggleLeft = output<void>();
 

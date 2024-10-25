@@ -1,0 +1,54 @@
+<a class="add-button" mat-fab routerLink="nova">
+  <devmx-icon name="plus" />
+</a>
+
+@if (jobOpeningFacade.response$ | async; as jobOpenings) {
+
+<div class="job-openings-container">
+  @for (job of jobOpenings.data; track job.id) {
+
+  <devmx-job-opening-card [data]="job">
+    <a
+      mat-icon-button
+      [routerLink]="job.id"
+      matTooltip="Editar vaga"
+      matTooltipPosition="before"
+    >
+      <devmx-icon name="software/edit" />
+    </a>
+
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar vaga"
+      matTooltipPosition="after"
+      (click)="deleteJobOpening(job)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-job-opening-card>
+  }
+</div>
+
+@if (!jobOpenings.items) {
+<div class="no-job-openings-yet">
+  <h2>Não temos nada aqui...</h2>
+  <h3>
+    Siga nessa direção
+    <devmx-icon color="#3BCE53" name="arrow/up-right" [size]="32" /> <br />
+    até encontrar o botão com um
+    <devmx-icon color="#3BCE53" name="plus" [size]="32" /> <br />
+    e cadastre suas vagas.
+    <devmx-icon color="#3BCE53" name="emoji/smirking-alt" [size]="32" />
+  </h3>
+</div>
+}
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="jobOpenings.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

@@ -6,6 +6,7 @@
   <devmx-layout-navbar
     (toggleLeft)="snav.toggle()"
     (toggleRight)="enav.toggle()"
+    [sidenavOpened]="snav.opened"
     [hideToggleButtonLeft]="hideToggleButtonLeft()"
     [hideToggleButtonRight]="hideToggleButtonRight()"
   />
@@ -25,7 +26,12 @@
 
       <mat-nav-list>
         @for (section of layoutFacade.sections$ | async; track section.label) {
-        <h3 mat-subheader>{{ section.label }}</h3>
+        <mat-list-item class="section-header">
+          @if (section.icon) {
+          <devmx-icon matListItemIcon [name]="section.icon" />
+          }
+          <span matListItemtitle>{{ section.label }}</span>
+        </mat-list-item>
 
         @for (link of section.links; track link.route) {
         <a mat-list-item [routerLink]="link.route" [disabled]="link.disabled">
@@ -48,7 +54,7 @@
     <mat-sidenav-content class="layout-content">
       <div class="layout-progress">
         @if (layoutFacade.loader$ | async) {
-        <mat-progress-bar mode="indeterminate" />
+          <mat-progress-bar mode="indeterminate" />
         }
       </div>
       <ng-content select="mat-toolbar" />

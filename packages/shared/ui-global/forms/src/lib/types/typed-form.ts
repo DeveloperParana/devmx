@@ -1,11 +1,13 @@
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 type DetectType<T> = T extends Array<infer U>
-  ? FormArray<DetectType<U>> | FormControl<string[]>
+  ? FormArray<DetectType<U>>
   : T extends object
   ? FormGroup<TypedForm<T>>
   : T extends false | true
   ? FormControl<boolean>
+  // : T extends string
+  // ? FormControl<T | ''>
   : FormControl<T>;
 
 export type TypedForm<T> = {

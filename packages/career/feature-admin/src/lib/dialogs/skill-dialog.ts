@@ -30,7 +30,8 @@ export class SkillDialog {
 
     const form = createFormGroup(fields);
 
-    return this.formService.open({ title: '', fields, form });
+    const title = (data ? 'Editar' : 'Cadastrar') + ' habilidade';
+    return this.formService.open({ title, fields, form });
   }
 
   searchSkills() {

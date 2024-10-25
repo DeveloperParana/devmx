@@ -10,7 +10,6 @@
     "class-validator": "^0.14.1",
     "@devmx/shared-api-interfaces": "0.0.1",
     "@devmx/account-data-source": "0.0.1",
-    "@devmx/location-data-source": "0.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^10.0.10",
     "mongoose": "^8.6.3"

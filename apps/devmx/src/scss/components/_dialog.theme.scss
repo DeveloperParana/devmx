@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+@mixin dialog-theme($theme) {
+  .devmx-confirm-dialog {
+    border-radius: 16px;
+    overflow: hidden;
+
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+
+    .devmx-dialog-header {
+      background-color: mat.get-theme-color($theme, error, 50);
+      color: mat.get-theme-color($theme, on-error);
+    }
+  }
+}

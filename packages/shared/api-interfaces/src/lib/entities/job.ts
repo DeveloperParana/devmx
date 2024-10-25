@@ -1,7 +1,7 @@
 import { ExperienceLevel, JobContract, JobMode, JobType } from '../types';
+import { JobSkill } from './job-skill';
 import { Range } from '../interfaces';
 import { City } from './city';
-import { JobSkill } from './job-skill';
 
 export interface Job {
   id: string;

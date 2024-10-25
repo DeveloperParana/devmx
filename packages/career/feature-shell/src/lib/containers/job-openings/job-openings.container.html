@@ -1,0 +1,29 @@
+@defer { @if (jobOpeningFacade.response$ | async; as jobs) {
+
+<div class="job-openings-container">
+  @for (job of jobs.data; track job.id) {
+  <!--  -->
+  @defer (on viewport) {
+  <a [routerLink]="['/', 'carreiras', { outlets: { right: [job.id] }}]">
+    <devmx-job-opening-card [data]="job" />
+  </a>
+  } @placeholder {
+  <devmx-skeleton [rows]="3" />
+  } }
+</div>
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="jobs.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+} } @loading {
+<img src="loader.svg" alt="Carregando..." />
+} @placeholder {
+<div class="jobs-container">
+  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+</div>
+}

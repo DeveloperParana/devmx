@@ -1,7 +1,14 @@
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableJobSkill, JobSkill } from '@devmx/shared-api-interfaces';
 import { TypedForm } from '@devmx/shared-ui-global/forms';
+import { signal } from '@angular/core';
 import { SkillForm } from './skill';
+import {
+  FormArray,
+  FormGroup,
+  Validators,
+  FormControl,
+  ValidationErrors,
+} from '@angular/forms';
 
 export class JobSkillForm extends FormGroup<TypedForm<JobSkill>> {
   constructor(value?: EditableJobSkill) {
@@ -21,10 +28,22 @@ export class JobSkillForm extends FormGroup<TypedForm<JobSkill>> {
 
 export class SkillsForm extends FormArray<JobSkillForm> {
   constructor() {
-    super([]);
+    super([], {
+      validators: [Validators.required],
+    });
   }
 
   add(value?: EditableJobSkill) {
     this.push(new JobSkillForm(value));
+  }
+
+  childrenErrors = signal<(ValidationErrors | null)[]>([]);
+
+  updateErrors() {
+    const errors = this.controls.map((jobSkill) => {
+      return jobSkill.errors;
+    });
+
+    this.childrenErrors.set(errors);
   }
 }

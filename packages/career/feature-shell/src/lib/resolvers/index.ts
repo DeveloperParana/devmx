@@ -1,1 +1,1 @@
-export * from './job.resolver';
+export * from './job-opening';
