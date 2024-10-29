@@ -256,6 +256,6 @@ export class AccountFacade extends State<AccountState> {
   remove(id: string) {
     const request$ = this.removeAccountUseCase.execute(id);
 
-    request$.pipe(take(1)).subscribe(() => this.loadOne(id));
+    request$.pipe(take(1)).subscribe(() => this.load());
   }
 }
