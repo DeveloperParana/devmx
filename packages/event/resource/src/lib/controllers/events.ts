@@ -17,6 +17,8 @@ import {
   EventsFacade,
   CreateEventDto,
   UpdateEventDto,
+  RSVPsFacade,
+  CreateRSVPDto,
 } from '@devmx/event-data-source';
 import 'multer';
 
@@ -24,7 +26,10 @@ import 'multer';
 @ApiTags('Eventos')
 @Controller('events')
 export class EventsController {
-  constructor(private readonly eventsFacade: EventsFacade) {}
+  constructor(
+    private readonly eventsFacade: EventsFacade,
+    private readonly rsvpsFacade: RSVPsFacade
+  ) {}
 
   @Post()
   async create(@User('id') owner: string, @Body() data: CreateEventDto) {
@@ -34,30 +39,6 @@ export class EventsController {
       throw exceptionByError(err);
     }
   }
-
-  // @Post(':id/cover')
-  // @ApiConsumes('multipart/form-data')
-  // @ApiBody({
-  //   schema: {
-  //     type: 'object',
-  //     properties: { cover: { type: 'string', format: 'binary' } },
-  //   },
-  // })
-  // @UseInterceptors(FileInterceptor('cover'))
-  // uploadFile(
-  //   @Param('id') id: string,
-  //   @UploadedFile(
-  //     new ParseFilePipe({
-  //       validators: [
-  //         new MaxFileSizeValidator({ maxSize: 1000 * 1000 }),
-  //         new FileTypeValidator({ fileType: 'image/png' }),
-  //       ],
-  //     })
-  //   )
-  //   cover: Express.Multer.File
-  // ) {
-  //   return this.eventsFacade.update(id, { id, cover: cover.filename });
-  // }
 
   @Get()
   @ApiPage(EventDto)
@@ -83,7 +64,39 @@ export class EventsController {
     } catch (err) {
       throw exceptionByError({
         code: 404,
-        message: 'Apresentação não encontrada',
+        message: 'Evento não encontrado',
+      });
+    }
+  }
+
+  @Post(':id/rsvps')
+  async createRSVP(
+    @User('id') account: string,
+    @Param('id') event: string,
+    @Body() data: CreateRSVPDto
+  ) {
+    try {
+      return await this.rsvpsFacade.create({ ...data, event, account });
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get(':id/rsvps')
+  @ApiOkResponse({ type: EventDto })
+  async findRSVPs(@User('id') owner: string, @Param('id') id: string) {
+    try {
+      const event = await this.eventsFacade.findOne(id);
+
+      if (!event.visible && event.owner.id !== owner) {
+        throw exceptionByError({ code: 403, message: 'Acesso negado' });
+      }
+
+      return await this.rsvpsFacade.find(id);
+    } catch (err) {
+      throw exceptionByError({
+        code: 404,
+        message: 'Evento não encontrado',
       });
     }
   }

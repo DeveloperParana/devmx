@@ -1,13 +1,8 @@
-import { provideEventsMongoService } from '../infrastructure';
-
-// export function provideEventsService() {
-//   return createServiceProvider(EventsService, EventsServiceImpl, [
-//     getModelToken(EventCollection.name),
-//   ]);
-// }
+import { provideEventsMongoService, provideRSVPsMongoService } from '../infrastructure';
 
 export function provideServices() {
   return [
-    provideEventsMongoService()
+    provideEventsMongoService(),
+    provideRSVPsMongoService()
   ]
 }

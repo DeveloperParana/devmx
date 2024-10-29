@@ -11,6 +11,7 @@ export * from './editable-job-skill';
 export * from './editable-presentation';
 export * from './editable-skill';
 export * from './event-out';
+export * from './event-ref';
 export * from './job-opening-out';
 export * from './job-out';
 export * from './location-filter';

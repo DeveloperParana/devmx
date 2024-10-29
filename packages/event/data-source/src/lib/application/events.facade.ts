@@ -25,29 +25,29 @@ export class EventsFacade {
   ) {}
 
   async create(data: CreateEventDto) {
-    const job = await this.createEventUseCase.execute(data);
-    return plainToInstance(EventDto, job);
+    const event = await this.createEventUseCase.execute(data);
+    return plainToInstance(EventDto, event);
   }
 
   async find(params: QueryParamsDto<Event>) {
     const { data, items, pages } = await this.findEventsUseCase.execute(params);
-    const jobs = plainToInstance(EventDto, data);
-    return new PageDto(jobs, items, pages);
+    const events = plainToInstance(EventDto, data);
+    return new PageDto(events, items, pages);
   }
 
   async findOne(id: string) {
-    const job = await this.findEventByIDUseCase.execute(id);
-    return plainToInstance(EventDto, job);
+    const event = await this.findEventByIDUseCase.execute(id);
+    return plainToInstance(EventDto, event);
   }
 
   async update(id: string, data: UpdateEventDto) {
-    const job = await this.updateEventUseCase.execute({ ...data, id });
-    return plainToInstance(EventDto, job);
+    const event = await this.updateEventUseCase.execute({ ...data, id });
+    return plainToInstance(EventDto, event);
   }
 
   async delete(id: string) {
-    const job = this.deleteEventUseCase.execute(id);
-    return plainToInstance(EventDto, job);
+    const event = this.deleteEventUseCase.execute(id);
+    return plainToInstance(EventDto, event);
   }
 }
 

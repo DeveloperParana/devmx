@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-data-source';
 import {
   CreateEventUseCase,
   EventsService,
@@ -5,8 +6,11 @@ import {
   FindEventsUseCase,
   DeleteEventUseCase,
   UpdateEventUseCase,
+  CreateRSVPUseCase,
+  RSVPsService,
+  FindRSVPByEventUseCase,
 } from '@devmx/event-domain/server';
-import { createUseCaseProvider } from '@devmx/shared-data-source';
+
 
 export function provideCreateEventUseCase() {
   return createUseCaseProvider(CreateEventUseCase, [EventsService]);
@@ -28,12 +32,23 @@ export function provideDeleteEventUseCase() {
   return createUseCaseProvider(DeleteEventUseCase, [EventsService]);
 }
 
+export function provideCreateRSVPUseCase() {
+  return createUseCaseProvider(CreateRSVPUseCase, [RSVPsService]);
+}
+
+export function provideFindRSVPByEventUseCase() {
+  return createUseCaseProvider(FindRSVPByEventUseCase, [RSVPsService]);
+}
+
 export function provideUseCases() {
   return [
     provideCreateEventUseCase(),
     provideFindEventsUseCase(),
     provideFindEventByIDUseCase(),
     provideUpdateEventUseCase(),
-    provideDeleteEventUseCase()
-  ]
+    provideDeleteEventUseCase(),
+
+    provideCreateRSVPUseCase(),
+    provideFindRSVPByEventUseCase(),
+  ];
 }
