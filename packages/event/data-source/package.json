@@ -9,7 +9,6 @@
     "@devmx/location-data-source": "0.0.1",
     "@devmx/presentation-data-source": "0.0.1",
     "class-transformer": "^0.5.1",
-    "@nestjs/mapped-types": "*",
     "@devmx/shared-data-source": "0.0.1",
     "@devmx/event-domain": "0.0.1",
     "@nestjs/mongoose": "^10.0.10",
