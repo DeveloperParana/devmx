@@ -1,0 +1,10 @@
+<div class="file-attachment-container">
+  <input
+    hidden
+    type="file"
+    #fileInput
+    [attr.directory]="directory() ? '' : null"
+    (change)="onChange($event)"
+  />
+  <ng-content></ng-content>
+</div>

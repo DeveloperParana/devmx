@@ -13,6 +13,7 @@ export class FindPresentationsByOwnerUseCase
   constructor(private presentationsService: PresentationsService) {}
 
   execute({ owner, ...params }: QueryByOwnerParams<PresentationOut>) {
-    return this.presentationsService.findByOwner(owner, params);
+    params.filter = { ...params.filter, owner }
+    return this.presentationsService.find(params);
   }
 }

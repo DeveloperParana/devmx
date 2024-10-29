@@ -1,4 +1,3 @@
-import { FindPresentationsUseCase } from '@devmx/presentation-domain/client';
 import { FilterEvent } from '@devmx/event-data-access';
 import { State } from '@devmx/shared-data-access';
 import { FilterAccount } from '../dtos';
@@ -13,7 +12,8 @@ import {
   JobOut,
   EventOut,
   AccountOut,
-  PresentationOut,
+  QueryParams,
+  QueryFilter,
 } from '@devmx/shared-api-interfaces';
 import {
   RemoveAccountUseCase,
@@ -41,17 +41,15 @@ interface AccountState {
   accounts: Page<AccountOut>;
   speakers: Page<AccountOut>;
   leaders: Page<AccountOut>;
-  presentations: Page<PresentationOut>;
   jobs: Page<JobOut>;
   account: AccountOut | null;
   username: boolean | null;
   filter: FilterAccount;
+  params: QueryParams<FilterAccount>;
   filters: AccountFilters;
 }
 
 export class AccountFacade extends State<AccountState> {
-  presentations$ = this.select((state) => state.presentations);
-
   jobs$ = this.select((state) => state.jobs);
 
   events$ = this.select((state) => state.events);
@@ -70,8 +68,6 @@ export class AccountFacade extends State<AccountState> {
     private findAccountsUseCase: FindAccountsUseCase,
     private findAccountByIDUseCase: FindAccountByIDUseCase,
     private findAccountByUsernameUseCase: FindAccountByUsernameUseCase,
-    // private findPresentationsByOwnerUseCase: FindPresentationsByOwnerUseCase,
-    private findPresentationsByOwnerUseCase: FindPresentationsUseCase,
     private findJobsByOwnerUseCase: FindJobsByOwnerUseCase,
     private findEventsByOwnerUseCase: FindEventsByOwnerUseCase,
     private updateAccountUseCase: UpdateAccountUseCase,
@@ -86,7 +82,6 @@ export class AccountFacade extends State<AccountState> {
       accounts: { data: [], items: 0, pages: 0 },
       speakers: { data: [], items: 0, pages: 0 },
       leaders: { data: [], items: 0, pages: 0 },
-      presentations: { data: [], items: 0, pages: 0 },
       jobs: { data: [], items: 0, pages: 0 },
       events: { data: [], items: 0, pages: 0 },
       filter: { name: '', username: '' },
@@ -94,13 +89,20 @@ export class AccountFacade extends State<AccountState> {
         event: { title: '', format: '' },
         job: { mode: '', contract: '', experience: '' },
       },
+      params: { page: 0, size: 10, filter: { name: '', username: '' } },
       account: null,
       username: null,
     });
   }
 
-  setFilter(filter: FilterAccount) {
-    this.setState({ filter });
+  setParams(params: QueryParams<FilterAccount>) {
+    this.setState({ params });
+  }
+
+  setFilter(filter: QueryFilter<FilterAccount>) {
+    const { params } = this.state;
+    params.filter = filter;
+    this.setState({ params });
   }
 
   clearFilter() {
@@ -131,11 +133,8 @@ export class AccountFacade extends State<AccountState> {
     this.setState({ filters });
   }
 
-  load(page = 0, size = 10) {
-    const filter = this.state.filter;
-    const params = { filter, page, size };
-
-    const request$ = this.findAccountsUseCase.execute(params);
+  load() {
+    const request$ = this.findAccountsUseCase.execute(this.state.params);
 
     const onAccounts = (accounts: Page<AccountOut>) => {
       this.setState({ accounts });
@@ -157,11 +156,8 @@ export class AccountFacade extends State<AccountState> {
     request$.pipe(take(1)).subscribe(onSpeakers);
   }
 
-  loadLeaders(page = 0, size = 10) {
-    const filter = this.state.filter;
-    const params = { filter, page, size };
-
-    const request$ = this.findLeadersUseCase.execute(params);
+  loadLeaders() {
+    const request$ = this.findLeadersUseCase.execute(this.state.params);
 
     const onLeaders = (leaders: Page<AccountOut>) => {
       this.setState({ leaders });
@@ -200,20 +196,6 @@ export class AccountFacade extends State<AccountState> {
     };
 
     request$.pipe(take(1)).subscribe(onUsername);
-  }
-
-  loadPresentations(page = 0, size = 10, owner?: string) {
-    const request$ = this.findPresentationsByOwnerUseCase.execute({
-      page,
-      size,
-      filter: { owner },
-    });
-
-    const onPresentations = (presentations: Page<PresentationOut>) => {
-      this.setState({ presentations });
-    };
-
-    request$.pipe(take(1)).subscribe(onPresentations);
   }
 
   loadJobs(page = 0, size = 10) {
@@ -274,6 +256,6 @@ export class AccountFacade extends State<AccountState> {
   remove(id: string) {
     const request$ = this.removeAccountUseCase.execute(id);
 
-    request$.pipe(take(1)).subscribe(() => this.loadOne(id));
+    request$.pipe(take(1)).subscribe(() => this.load());
   }
 }

@@ -1,9 +1,9 @@
-import { SearchLeadersService } from './search-leaders.service';
 import { MatDialog } from '@angular/material/dialog';
+import { SearchLeaders } from './search-leaders';
 
 export function provideSearchLeaders() {
   return {
-    provide: SearchLeadersService,
+    provide: SearchLeaders,
     deps: [MatDialog],
   };
 }

@@ -1,57 +1,32 @@
-<h3 mat-dialog-title>Buscar apresentações</h3>
+<h2 mat-dialog-title>Encontre apresentações</h2>
+
+@if (presentationFacade.response$ | async; as response) {
 
 <mat-dialog-content class="dialog-content">
-  <devmx-form-group
-    [fields]="filter.fields"
-    [formGroup]="filter.formGroup"
-    (valueChanges)="onFilterChange($event)"
+  <devmx-presentation-search (valueChange)="onSearchChange($event)" />
+
+  <mat-selection-list class="presentations" #presentations>
+    @for (presentation of response.data; track presentation) {
+    <mat-list-option [value]="presentation">
+      {{presentation.title}}
+    </mat-list-option>
+    }
+  </mat-selection-list>
+
+  <devmx-paginator
+    [items]="response.items"
+    (pageChange)="onPageChange($event)"
   />
 </mat-dialog-content>
 
-@if (presentationFacade.presentations$ | async; as presentations) {
-<table mat-table [dataSource]="presentations.data">
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox
-        (click)="$event.stopPropagation()"
-        (change)="$event ? selection.toggle(row) : null"
-        [checked]="isSelected(row)"
-        [aria-label]="checkboxLabel(row)"
-      >
-      </mat-checkbox>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Título</th>
-    <td mat-cell *matCellDef="let element">{{element.title}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="owner">
-    <th mat-header-cell *matHeaderCellDef>Criador</th>
-    <td mat-cell *matCellDef="let element">
-      {{element.owner.name.first}} {{element.owner.name.last}}
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: displayedColumns;"
-    (click)="selection.toggle(row)"
-  ></tr>
-</table>
-
-<devmx-paginator
-  [items]="presentations.items"
-  (pageChange)="onPageChange($event)"
-/>
-}
-
-<p class="selected">{{selection.selected.length}} selecionado(s)</p>
-
-<mat-dialog-actions class="dialog-actions">
-  <button mat-button [mat-dialog-close]="selection.selected">Adicionar</button>
-  <button mat-button mat-dialog-close>Cancelar</button>
+<mat-dialog-actions class="dialog-actions" align="end">
+  <button
+    mat-raised-button
+    type="button"
+    (click)="close(presentations.selectedOptions.selected)"
+  >
+    Salvar
+  </button>
+  <button mat-button type="button" (click)="ref.close()">Cancelar</button>
 </mat-dialog-actions>
+}

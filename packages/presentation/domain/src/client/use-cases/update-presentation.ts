@@ -1,16 +1,16 @@
+import { PresentationService } from '../services';
 import {
   UseCase,
   Presentation,
-  PresentationOut,
+  EditablePresentation,
 } from '@devmx/shared-api-interfaces';
-import { PresentationService } from '../services';
 
 export class UpdatePresentationUseCase
-  implements UseCase<Presentation, PresentationOut>
+  implements UseCase<EditablePresentation, Presentation>
 {
   constructor(private presentationService: PresentationService) {}
 
-  execute(data: Presentation) {
+  execute(data: EditablePresentation) {
     return this.presentationService.update(data.id, data);
   }
 }

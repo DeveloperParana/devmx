@@ -1,13 +1,13 @@
-import { Presentation, Findable, UseCase } from '@devmx/shared-api-interfaces';
+import { Presentation, UseCase, EditablePresentation } from '@devmx/shared-api-interfaces';
 import { NotFoundError, PersistenceError } from '@devmx/shared-util-errors';
 import { PresentationsService } from '../services';
 
 export class UpdatePresentationUseCase
-  implements UseCase<Findable<Presentation>, Presentation>
+  implements UseCase<EditablePresentation, Presentation>
 {
   constructor(private presentationsService: PresentationsService) {}
 
-  async execute(data: Findable<Presentation>) {
+  async execute(data: EditablePresentation) {
     const presentation = await this.presentationsService.findOne(data.id);
 
     if (!presentation) {

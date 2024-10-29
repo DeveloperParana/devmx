@@ -1,6 +1,6 @@
+import { Page, Event, UseCase, EventOut } from '@devmx/shared-api-interfaces';
 import { EventsService } from '@devmx/event-domain/server';
 import { QueryByOwnerParams } from '../dtos';
-import { Page, Event, UseCase, EventOut } from '@devmx/shared-api-interfaces';
 
 export class FindEventsByOwnerUseCase
   implements UseCase<QueryByOwnerParams<EventOut>, Page<Event>>
@@ -8,6 +8,7 @@ export class FindEventsByOwnerUseCase
   constructor(private eventsService: EventsService) {}
 
   execute({ owner, ...params }: QueryByOwnerParams<EventOut>) {
-    return this.eventsService.findByOwner(owner, params);
+    params.filter = {...params.filter, owner}
+    return this.eventsService.find(params);
   }
 }

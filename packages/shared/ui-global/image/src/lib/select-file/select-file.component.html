@@ -1,0 +1,12 @@
+<input
+  #input
+  hidden
+  type="file"
+  name="file"
+  accept="image/png,image/jpg,image/svg,image/webp"
+  (change)="onFilesChange(input.files)"
+/>
+
+<button type="button" mat-icon-button (click)="input.click()">
+  <devmx-icon name="tech/folder-opened" />
+</button>

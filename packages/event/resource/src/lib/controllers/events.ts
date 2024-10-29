@@ -1,14 +1,7 @@
 import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { Event } from '@devmx/shared-api-interfaces';
-import {
-  ApiBody,
-  ApiTags,
-  ApiConsumes,
-  ApiOkResponse,
-  ApiBearerAuth,
-} from '@nestjs/swagger';
 import {
   Get,
   Post,
@@ -18,11 +11,6 @@ import {
   Query,
   Delete,
   Controller,
-  UseInterceptors,
-  UploadedFile,
-  ParseFilePipe,
-  MaxFileSizeValidator,
-  FileTypeValidator,
 } from '@nestjs/common';
 import {
   EventDto,
@@ -47,29 +35,29 @@ export class EventsController {
     }
   }
 
-  @Post(':id/cover')
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: { cover: { type: 'string', format: 'binary' } },
-    },
-  })
-  @UseInterceptors(FileInterceptor('cover'))
-  uploadFile(
-    @Param('id') id: string,
-    @UploadedFile(
-      new ParseFilePipe({
-        validators: [
-          new MaxFileSizeValidator({ maxSize: 1000 * 1000 }),
-          new FileTypeValidator({ fileType: 'image/png' }),
-        ],
-      })
-    )
-    cover: Express.Multer.File
-  ) {
-    return this.eventsFacade.update(id, { id, cover: cover.filename });
-  }
+  // @Post(':id/cover')
+  // @ApiConsumes('multipart/form-data')
+  // @ApiBody({
+  //   schema: {
+  //     type: 'object',
+  //     properties: { cover: { type: 'string', format: 'binary' } },
+  //   },
+  // })
+  // @UseInterceptors(FileInterceptor('cover'))
+  // uploadFile(
+  //   @Param('id') id: string,
+  //   @UploadedFile(
+  //     new ParseFilePipe({
+  //       validators: [
+  //         new MaxFileSizeValidator({ maxSize: 1000 * 1000 }),
+  //         new FileTypeValidator({ fileType: 'image/png' }),
+  //       ],
+  //     })
+  //   )
+  //   cover: Express.Multer.File
+  // ) {
+  //   return this.eventsFacade.update(id, { id, cover: cover.filename });
+  // }
 
   @Get()
   @ApiPage(EventDto)
@@ -144,7 +132,7 @@ export class EventsController {
     }
 
     try {
-      return await this.eventsFacade.remove(id);
+      return await this.eventsFacade.delete(id);
     } catch (err) {
       throw exceptionByError({ code: 400, message: 'Solicitação incorreta' });
     }

@@ -1,12 +1,7 @@
 import { AccountFeatureAdminComponent } from './account-feature-admin.component';
-import { Event } from '@devmx/shared-api-interfaces';
-import { eventResolver } from './resolvers';
+import { accountFeatureAdminProviders } from './account-feature-admin.providers';
+import { AccountsContainer } from './containers';
 import { Route } from '@angular/router';
-import {
-  EventContainer,
-  EventsContainer,
-  AccountsContainer,
-} from './containers';
 
 export const accountFeatureAdminRoutes: Route[] = [
   {
@@ -14,6 +9,7 @@ export const accountFeatureAdminRoutes: Route[] = [
     data: {
       breadcrumb: 'Administração',
     },
+    providers: accountFeatureAdminProviders,
     component: AccountFeatureAdminComponent,
     children: [
       {
@@ -22,23 +18,6 @@ export const accountFeatureAdminRoutes: Route[] = [
           breadcrumb: 'Contas',
         },
         component: AccountsContainer,
-      },
-      {
-        path: 'meus-eventos/:id',
-        data: {
-          breadcrumb: (data: { event: Event }) => {
-            return data.event.title;
-          },
-        },
-        resolve: { event: eventResolver },
-        component: EventContainer,
-      },
-      {
-        path: 'meus-eventos',
-        data: {
-          breadcrumb: 'Meus eventos',
-        },
-        component: EventsContainer,
       },
       {
         path: '',

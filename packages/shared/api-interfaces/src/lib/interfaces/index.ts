@@ -7,6 +7,7 @@ export * from './find-one';
 export * from './find-params';
 export * from './find';
 export * from './geo-coords';
+export * from './image-ref';
 export * from './location';
 export * from './name';
 export * from './page';

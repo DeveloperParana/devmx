@@ -34,7 +34,7 @@ export class EventCollection extends Document implements Event {
   @Prop({ type: String, default: '' })
   time?: string;
 
-  @Prop({ default: '' })
+  @Prop()
   cover: string;
 
   @Prop({ default: false })

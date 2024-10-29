@@ -1,7 +1,7 @@
-@defer { @if (eventFacade.events$ | async; as events) {
+@defer { @if (eventFacade.response$ | async; as response) {
 
 <div class="events-container">
-  @for (event of events.data; track event.id) { @defer (on viewport) {
+  @for (event of response.data; track event.id) { @defer (on viewport) {
   <a [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]">
     <devmx-event-card [data]="event" />
   </a>
@@ -13,7 +13,7 @@
 <footer>
   <devmx-paginator
     [size]="10"
-    [items]="events.items"
+    [items]="response.items"
     (pageChange)="onPageChange($event)"
   />
 </footer>

@@ -5,6 +5,7 @@ import {
   QueryParams,
   EditableEntity,
 } from '@devmx/shared-api-interfaces';
+import { QueryMongoParams } from '../interfaces';
 
 export abstract class MongoService<T extends Entity>
   implements EntityService<T>
@@ -27,7 +28,7 @@ export abstract class MongoService<T extends Entity>
     return (await created.save()).toJSON() as T;
   }
 
-  async find(params: QueryParams<T>) {
+  async find(params: QueryParams<T> | QueryMongoParams<T>) {
     const { page = 0, size = 10, filter } = params;
 
     const skip = page * size;

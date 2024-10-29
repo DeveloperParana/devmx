@@ -3,7 +3,7 @@ import {
   EventsService,
   FindEventByIDUseCase,
   FindEventsUseCase,
-  RemoveEventUseCase,
+  DeleteEventUseCase,
   UpdateEventUseCase,
 } from '@devmx/event-domain/server';
 import { createUseCaseProvider } from '@devmx/shared-data-source';
@@ -24,6 +24,16 @@ export function provideUpdateEventUseCase() {
   return createUseCaseProvider(UpdateEventUseCase, [EventsService]);
 }
 
-export function provideRemoveEventUseCase() {
-  return createUseCaseProvider(RemoveEventUseCase, [EventsService]);
+export function provideDeleteEventUseCase() {
+  return createUseCaseProvider(DeleteEventUseCase, [EventsService]);
+}
+
+export function provideUseCases() {
+  return [
+    provideCreateEventUseCase(),
+    provideFindEventsUseCase(),
+    provideFindEventByIDUseCase(),
+    provideUpdateEventUseCase(),
+    provideDeleteEventUseCase()
+  ]
 }

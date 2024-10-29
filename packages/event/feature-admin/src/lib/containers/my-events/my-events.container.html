@@ -1,14 +1,48 @@
-@if (accountFacade.events$ | async; as events) {
+<a class="add-button tertiary-fab" mat-fab routerLink="novo">
+  <devmx-icon name="plus" />
+</a>
+
+@if (eventFacade.response$ | async; as events) {
 
 <div class="events-container">
-  @for (event of events.data; track event.id) { @defer (on viewport) {
-  <a [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]">
-    <devmx-event-card [data]="event" />
-  </a>
-  } @placeholder {
-  <devmx-skeleton [rows]="3" />
-  } }
+  @for (event of events.data; track event.id) {
+
+  <devmx-event-card [data]="event">
+    <a
+      mat-icon-button
+      [routerLink]="event.id"
+      matTooltip="Editar evento"
+      matTooltipPosition="before"
+    >
+      <devmx-icon name="software/edit" />
+    </a>
+
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar evento"
+      matTooltipPosition="after"
+      (click)="deleteEvent(event)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-event-card>
+  }
 </div>
+
+@if (!events.items) {
+<div class="no-events-yet">
+  <h2>Não temos nada aqui...</h2>
+  <h3>
+    Siga nessa direção
+    <devmx-icon color="#3BCE53" name="arrow/up-right" [size]="32" /> <br />
+    até encontrar o botão com um
+    <devmx-icon color="#3BCE53" name="plus" [size]="32" /> <br />
+    e cadastre suas eventos.
+    <devmx-icon color="#3BCE53" name="emoji/smirking-alt" [size]="32" />
+  </h3>
+</div>
+}
 
 <footer>
   <devmx-paginator
@@ -17,9 +51,4 @@
     (pageChange)="onPageChange($event)"
   />
 </footer>
-
 }
-
-<button class="add-button" type="button" mat-fab (click)="openCreate()">
-  <devmx-icon name="plus" />
-</button>

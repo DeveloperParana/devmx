@@ -1,13 +1,16 @@
-import { Presentation, UseCase } from '@devmx/shared-api-interfaces';
+import {
+  UseCase,
+  Presentation,
+  EditablePresentation,
+} from '@devmx/shared-api-interfaces';
 import { PresentationsService } from '../services';
-import { CreatePresentation } from '../dtos';
 
 export class CreatePresentationUseCase
-  implements UseCase<CreatePresentation, Presentation>
+  implements UseCase<EditablePresentation, Presentation>
 {
   constructor(private readonly presentationsService: PresentationsService) {}
 
-  execute(data: CreatePresentation) {
+  execute(data: EditablePresentation) {
     return this.presentationsService.create(data);
   }
 }

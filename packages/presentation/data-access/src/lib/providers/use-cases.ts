@@ -1,14 +1,11 @@
 import { createUseCaseProvider } from '@devmx/shared-data-access';
 import {
   PresentationService,
-  FindPresentationsUseCase,
-  FindPresentationByIDUseCase,
   CreatePresentationUseCase,
+  FindPresentationByIDUseCase,
+  FindPresentationsUseCase,
+  DeletePresentationUseCase,
   UpdatePresentationUseCase,
-  RemovePresentationUseCase,
-  CreatePresentationCommentUseCase,
-  PresentationCommentService,
-  FindPresentationCommentsUseCase,
 } from '@devmx/presentation-domain/client';
 
 export function provideCreatePresentationUseCase() {
@@ -33,20 +30,22 @@ export function provideUpdatePresentationUseCase() {
   ]);
 }
 
-export function provideRemovePresentationUseCase() {
-  return createUseCaseProvider(RemovePresentationUseCase, [
+export function provideDeletePresentationUseCase() {
+  return createUseCaseProvider(DeletePresentationUseCase, [
     PresentationService,
   ]);
 }
 
-export function provideCreatePresentationCommentUseCase() {
-  return createUseCaseProvider(CreatePresentationCommentUseCase, [
-    PresentationCommentService,
-  ]);
-}
+// export function provideUploadCoverUseCase() {
+//   return createUseCaseProvider(UploadCoverUseCase, [PresentationService]);
+// }
 
-export function provideFindPresentationCommenstUseCase() {
-  return createUseCaseProvider(FindPresentationCommentsUseCase, [
-    PresentationCommentService,
-  ]);
+export function provideUseCases() {
+  return [
+    provideCreatePresentationUseCase(),
+    provideFindPresentationsUseCase(),
+    provideFindPresentationByIDUseCase(),
+    provideUpdatePresentationUseCase(),
+    provideDeletePresentationUseCase(),
+  ];
 }

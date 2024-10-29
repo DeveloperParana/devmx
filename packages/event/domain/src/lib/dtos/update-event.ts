@@ -1,5 +1,6 @@
-import { CreateEvent } from './create-event';
+import { EditableEntity, Event } from '@devmx/shared-api-interfaces';
 
-export interface UpdateEvent extends Partial<CreateEvent> {
-  id: string;
-}
+export type UpdateEvent = EditableEntity<Event>
+// export interface UpdateEvent extends Partial<CreateEvent> {
+//   id: string;
+// }

@@ -1,9 +1,9 @@
-import { SearchPresentationsService } from './search-presentations.service';
+import { SearchPresentations } from './search-presentations';
 import { MatDialog } from '@angular/material/dialog';
 
 export function provideSearchPresentations() {
   return {
-    provide: SearchPresentationsService,
+    provide: SearchPresentations,
     deps: [MatDialog],
   };
 }

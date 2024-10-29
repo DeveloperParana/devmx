@@ -1,95 +1,62 @@
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { FormGroupComponent } from '@devmx/shared-ui-global/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule, MatListOption } from '@angular/material/list';
+import { AccountSearchComponent } from '@devmx/account-ui-shared';
+import { EditableAccount } from '@devmx/shared-api-interfaces';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SelectionModel } from '@angular/cdk/collections';
-import { AccountRef } from '@devmx/shared-api-interfaces';
-import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import {
   MatDialogRef,
-  MatDialogModule,
-  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogActions,
+  MatDialogContent,
 } from '@angular/material/dialog';
-import {
-  AccountFacade,
-  FilterAccount,
-  provideAccount,
-} from '@devmx/account-data-access';
-import {
-  OnInit,
-  inject,
-  Component,
-  DestroyRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
-  searchLeadersControls,
-  searchLeadersFields,
-} from './search-leaders.fields';
+import { AccountFacade } from '@devmx/account-data-access';
+import { AccountSearch } from '@devmx/account-ui-shared';
 
 @Component({
-  selector: 'devmx-search-leaders',
+  selector: 'devmx-admin-search-leaders',
   templateUrl: './search-leaders.dialog.html',
   styleUrl: './search-leaders.dialog.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideAccount()],
   imports: [
-    MatDialogModule,
-    MatTableModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    PaginatorComponent,
-    FormGroupComponent,
     ReactiveFormsModule,
+    PaginatorComponent,
+    AccountSearchComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    IconComponent,
+    MatListModule,
     AsyncPipe,
+    JsonPipe,
   ],
   standalone: true,
 })
-export class SearchLeadersDialog implements OnInit {
-  ref = inject<MatDialogRef<SearchLeadersDialog, AccountRef[]>>(MatDialogRef);
-
-  data = inject<AccountRef[]>(MAT_DIALOG_DATA);
-
+export class SearchLeadersDialog {
   accountFacade = inject(AccountFacade);
 
-  destroyRef = inject(DestroyRef);
+  ref =
+    inject<MatDialogRef<SearchLeadersDialog, EditableAccount[]>>(MatDialogRef);
 
-  displayedColumns: string[] = ['select', 'name', 'username', 'email'];
-  selection = new SelectionModel<AccountRef>(true, []);
-
-  filter = {
-    fields: searchLeadersFields,
-    formGroup: searchLeadersControls,
-  };
-
-  ngOnInit() {
+  constructor() {
     this.accountFacade.loadLeaders();
-    if (this.data) {
-      this.selection.select(...this.data);
-    }
   }
 
-  onFilterChange(filter: FilterAccount) {
+  onSearchChange(filter: AccountSearch) {
     this.accountFacade.setFilter(filter);
     this.accountFacade.loadLeaders();
   }
 
   onPageChange({ page, size }: PageParams) {
-    this.accountFacade.loadLeaders(page, size);
+    this.accountFacade.setParams({ page, size });
+    this.accountFacade.loadLeaders();
   }
 
-  isSelected(row: AccountRef) {
-    return this.selection.selected.find((account) => account.id === row.id);
-  }
-
-  checkboxLabel(row?: AccountRef): string {
-    if (!row) {
-      return 'Marcar';
-    }
-    const prefix = this.selection.isSelected(row) ? 'desmarcar' : 'marcar';
-
-    return `${prefix} row ${row.name.first}`;
+  close(selected: MatListOption[]) {
+    this.ref.close(selected.map((option) => option.value));
   }
 }

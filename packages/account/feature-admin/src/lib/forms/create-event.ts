@@ -11,6 +11,10 @@ export class CreateEventForm extends FormGroup<TypedForm<CreateEvent>> {
 
   constructor() {
     super({
+      id: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
       title: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],

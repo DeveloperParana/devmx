@@ -1,35 +1,32 @@
 :host {
   display: block;
-  width: 36em;
+  width: 24em;
+
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 0;
+  }
+
+  .presentations {
+    margin-top: 0;
+  }
 
   .dialog-content {
     display: flex;
     flex-direction: column;
-    padding-top: 0.6em;
+    // padding-top: 0.6em;
   }
 
-  .mat-column-select {
-    max-width: 3em;
-  }
-
-  .mat-mdc-row {
-    cursor: pointer;
-  }
-
-  .selected {
-    margin: 0;
-    padding: 0 2.1em;
+  .dialog-footer {
+    padding: 0 16px;
     display: flex;
-    justify-content: flex-end;
-    opacity: 0.6;
+    justify-content: space-between;
   }
 
   .dialog-actions {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    margin-top: 0;
-    margin-left: -16px;
-    margin-right: 8px;
+    margin-left: -8px;
   }
 }

@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LayoutFacade } from './layout.facade';
 import { RouterModule } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import {
   inject,
   signal,
@@ -29,6 +29,7 @@ import { skip } from 'rxjs';
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    NgClass,
     AsyncPipe,
     LayoutModule,
     PortalModule,

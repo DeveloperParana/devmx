@@ -1,8 +1,11 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { EventFormat } from '@devmx/shared-api-interfaces';
+import { CreateEvent } from '@devmx/event-domain';
 
-export class CreateEventDto {
+export class CreateEventDto implements CreateEvent {
+  id: string;
+
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
@@ -35,7 +38,7 @@ export class CreateEventDto {
   @IsString()
   @IsOptional()
   @ApiPropertyOptional()
-  cover = '';
+  cover?: string;
 
   @IsBoolean()
   @IsOptional()
@@ -47,9 +50,9 @@ export class CreateEventDto {
   @ApiPropertyOptional()
   address: string;
 
-  city?: string;
+  // city?: string;
 
-  location?: string;
+  // location?: string;
 
   owner: string;
 }

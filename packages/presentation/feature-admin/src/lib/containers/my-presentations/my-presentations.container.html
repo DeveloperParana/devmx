@@ -1,0 +1,54 @@
+<a class="add-button tertiary-fab" mat-fab routerLink="nova">
+  <devmx-icon name="plus" />
+</a>
+
+@if (presentationFacade.response$ | async; as presentations) {
+
+<div class="presentations-container">
+  @for (job of presentations.data; track job.id) {
+
+  <devmx-presentation-card [data]="job">
+    <a
+      mat-icon-button
+      [routerLink]="job.id"
+      matTooltip="Editar apresentação"
+      matTooltipPosition="before"
+    >
+      <devmx-icon name="software/edit" />
+    </a>
+
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar apresentação"
+      matTooltipPosition="after"
+      (click)="deletePresentation(job)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-presentation-card>
+  }
+</div>
+
+@if (!presentations.items) {
+<div class="no-presentations-yet">
+  <h2>Não temos nada aqui...</h2>
+  <h3>
+    Siga nessa direção
+    <devmx-icon color="#3BCE53" name="arrow/up-right" [size]="32" /> <br />
+    até encontrar o botão com um
+    <devmx-icon color="#3BCE53" name="plus" [size]="32" /> <br />
+    e cadastre suas apresentações.
+    <devmx-icon color="#3BCE53" name="emoji/smirking-alt" [size]="32" />
+  </h3>
+</div>
+}
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="presentations.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

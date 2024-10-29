@@ -23,13 +23,13 @@ export abstract class EntityFacade<T extends Entity> extends State<
   abstract load(): void;
 
   setParams(params: QueryParams<T>) {
-    const { filter } = this.state.params;
-    this.setState({ params: { ...params, filter } });
+    this.setState({ params });
   }
 
   setFilter(filter: QueryFilter<T>) {
     const { params } = this.state;
-    this.setState({ params: { ...params, filter} });
+    params.filter = filter;
+    this.setState({ params });
   }
 
   protected onLoad(request$: Observable<Page<T>>) {

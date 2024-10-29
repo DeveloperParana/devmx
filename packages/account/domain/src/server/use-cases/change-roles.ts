@@ -30,10 +30,7 @@ export class ChangeRolesUseCase implements UseCase<ChangeRolesBy, Account> {
       throw new AccessDeniedError('Permissão insuficiente');
     }
 
-    const changed = await this.accountsService.update(
-      data.assign.id,
-      data.assign
-    );
+    const changed = await this.accountsService.update(data.assign.id, data.assign);
 
     if (!changed) {
       throw new PersistenceError('Problema ao persistir novas permissões');

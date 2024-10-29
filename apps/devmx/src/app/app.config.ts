@@ -2,6 +2,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
 import { authInterceptor, loaderInterceptor } from './interceptors';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
+import { providePresentation } from '@devmx/presentation-data-access';
+import { provideCareer } from '@devmx/career-data-access';
+import { provideEvent } from '@devmx/event-data-access';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/extra/br';
 import { AuthErrorHandler } from './handlers';
@@ -31,7 +34,6 @@ import {
   ApplicationConfig,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { provideCareer } from '@devmx/career-data-access';
 
 registerLocaleData(pt, 'pt-BR', ptBr);
 
@@ -62,6 +64,8 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClientImpl(HttpClient),
     provideEnv(env),
-    ...provideCareer()
+    ...provideCareer(),
+    ...providePresentation(),
+    ...provideEvent()
   ],
 };

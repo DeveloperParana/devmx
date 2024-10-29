@@ -2,8 +2,30 @@ import { SectionHeaderOptions } from '@devmx/shared-ui-global/layout';
 
 export const appSections: SectionHeaderOptions[] = [
   {
+    label: 'Navegação',
+    links: [
+      {
+        label: 'Eventos',
+        route: ['/eventos'],
+        icon: 'calendar',
+        roles: ['member'],
+      },
+      {
+        label: 'Apresentações',
+        route: ['/apresentacoes'],
+        icon: 'presentation',
+        roles: ['member'],
+      },
+      {
+        label: 'Vagas',
+        route: ['/carreiras'],
+        icon: 'finance/bullseye',
+        roles: ['member'],
+      },
+    ]
+  },
+  {
     label: 'Configurações',
-    icon: 'settings',
     links: [
       {
         label: 'Sobre você',
@@ -11,27 +33,21 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'doc/id-card',
         roles: ['member'],
       },
-      // {
-      //   label: 'Habilidades',
-      //   route: ['/conta', 'habilidades'],
-      //   icon: 'settings',
-      //   roles: ['member'],
-      // },
       {
         label: 'Minhas apresentações',
-        route: ['/conta', 'minhas-apresentacoes'],
+        route: ['/apresentacoes', 'administracao'],
         icon: 'presentation',
         roles: ['speaker'],
       },
       {
         label: 'Meus eventos',
-        route: ['/eventos', 'administracao', 'meus-eventos'],
+        route: ['/eventos', 'administracao'],
         icon: 'calendar-tasks',
         roles: ['leader'],
       },
       {
-        label: 'Minhas  ofertas',
-        route: ['/carreiras', 'administracao', 'minhas-ofertas'],
+        label: 'Vagas',
+        route: ['/carreiras', 'administracao'],
         icon: 'music/speaker',
         roles: ['recruiter'],
       },

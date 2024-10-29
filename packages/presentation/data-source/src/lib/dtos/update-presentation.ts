@@ -1,4 +1,8 @@
+import { OmitType } from '@nestjs/swagger';
 import { CreatePresentationDto } from './create-presentation';
-import { PartialType } from '@nestjs/mapped-types';
 
-export class UpdatePresentationDto extends PartialType(CreatePresentationDto) {}
+export class UpdatePresentationDto extends OmitType(CreatePresentationDto, [
+  'id',
+]) {
+  id: string;
+}

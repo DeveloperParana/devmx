@@ -1,4 +1,4 @@
-import { PresentationOut } from '@devmx/shared-api-interfaces';
+import { Presentation } from '@devmx/shared-api-interfaces';
 import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';
 import {
@@ -6,6 +6,6 @@ import {
   presentationResolverWrapped,
 } from '@devmx/presentation-data-access';
 
-export const presentationResolver: ResolveFn<PresentationOut> = (route) => {
+export const presentationResolver: ResolveFn<Presentation> = (route) => {
   return presentationResolverWrapped(inject(PresentationFacade), route.params);
 };

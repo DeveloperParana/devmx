@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Formato</mat-label>
+    <mat-select formControlName="format">
+      @for (format of form.formats; track format.value) {
+      <mat-option [value]="format.value">
+        {{ format.viewValue }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>

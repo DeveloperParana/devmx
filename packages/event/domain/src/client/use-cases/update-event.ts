@@ -1,8 +1,7 @@
-import { UseCase, EventOut } from '@devmx/shared-api-interfaces';
-import { UpdateEvent } from '../../lib/dtos';
+import { UpdateEvent, UseCase, Event } from '@devmx/shared-api-interfaces';
 import { EventService } from '../services';
 
-export class UpdateEventUseCase implements UseCase<UpdateEvent, EventOut> {
+export class UpdateEventUseCase implements UseCase<UpdateEvent, Event> {
   constructor(private eventService: EventService) {}
 
   execute(data: UpdateEvent) {

@@ -1,99 +1,66 @@
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { FilterPresentation } from '@devmx/presentation-data-access';
-import { FormGroupComponent } from '@devmx/shared-ui-global/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PresentationRef } from '@devmx/shared-api-interfaces';
+import { PresentationFacade } from '@devmx/presentation-data-access';
+import { EditablePresentation } from '@devmx/shared-api-interfaces';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableModule } from '@angular/material/table';
+import { MatListModule, MatListOption } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import {
-  PresentationFacade,
-  providePresentation,
-} from '@devmx/presentation-data-access';
+  PresentationSearch,
+  PresentationSearchComponent,
+} from '@devmx/presentation-ui-shared';
 import {
   MatDialogRef,
-  MatDialogModule,
-  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogActions,
+  MatDialogContent,
 } from '@angular/material/dialog';
-import {
-  OnInit,
-  inject,
-  Component,
-  DestroyRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
-  searchPresentationsFields,
-  searchPresentationsControls,
-} from './search-presentations.fields';
 
 @Component({
-  selector: 'devmx-search-presentations',
+  selector: 'devmx-admin-search-presentations',
   templateUrl: './search-presentations.dialog.html',
   styleUrl: './search-presentations.dialog.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [providePresentation()],
   imports: [
-    MatDialogModule,
-    MatTableModule,
-    MatButtonModule,
-    MatCheckboxModule,
+    ReactiveFormsModule,
     PaginatorComponent,
-    FormGroupComponent,
+    PresentationSearchComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    IconComponent,
+    MatListModule,
     AsyncPipe,
     JsonPipe,
   ],
   standalone: true,
 })
-export class SearchPresentationsDialog implements OnInit {
+export class SearchPresentationsDialog {
+  presentationFacade = inject(PresentationFacade);
+
   ref =
-    inject<MatDialogRef<SearchPresentationsDialog, PresentationRef[]>>(
+    inject<MatDialogRef<SearchPresentationsDialog, EditablePresentation[]>>(
       MatDialogRef
     );
 
-  data = inject<PresentationRef[]>(MAT_DIALOG_DATA);
-
-  presentationFacade = inject(PresentationFacade);
-
-  destroyRef = inject(DestroyRef);
-
-  displayedColumns: string[] = ['select', 'title', 'owner'];
-  selection = new SelectionModel<PresentationRef>(true, []);
-
-  filter = {
-    fields: searchPresentationsFields,
-    formGroup: searchPresentationsControls,
-  };
-
-  ngOnInit() {
+  constructor() {
     this.presentationFacade.load();
-    if (this.data) {
-      this.selection.select(...this.data);
-    }
   }
 
-  onFilterChange(filter: FilterPresentation) {
+  onSearchChange(filter: PresentationSearch) {
     this.presentationFacade.setFilter(filter);
     this.presentationFacade.load();
   }
 
   onPageChange({ page, size }: PageParams) {
-    this.presentationFacade.load(page, size);
+    this.presentationFacade.setParams({ page, size });
+    this.presentationFacade.load();
   }
 
-  isSelected(row: PresentationRef) {
-    return this.selection.selected.find(
-      (presentation) => presentation.id === row.id
-    );
-  }
-
-  checkboxLabel(row?: PresentationRef): string {
-    if (!row) {
-      return 'Marcar';
-    }
-    const prefix = this.selection.isSelected(row) ? 'desmarcar' : 'marcar';
-
-    return `${prefix} row ${row.title}`;
+  close(selected: MatListOption[]) {
+    this.ref.close(selected.map((option) => option.value));
   }
 }

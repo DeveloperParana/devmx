@@ -1,23 +1,24 @@
-import { EventFormat } from '@devmx/shared-api-interfaces';
+import { EditableEntity, Event } from '@devmx/shared-api-interfaces';
 
-export interface CreateEvent {
-  title: string;
+export type CreateEvent = EditableEntity<Event>
+// export interface CreateEvent {
+//   title: string;
 
-  description: string;
+//   description: string;
 
-  format: EventFormat;
+//   format: EventFormat;
 
-  date: string;
+//   date: string;
 
-  time: string;
+//   time: string;
 
-  cover?: string;
+//   cover?: string;
 
-  visible?: boolean;
+//   visible?: boolean;
 
-  address: string;
+//   address: string;
 
-  city?: string;
+//   city?: string;
 
-  location?: string;
-}
+//   location?: string;
+// }

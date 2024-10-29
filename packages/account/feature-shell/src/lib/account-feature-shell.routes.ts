@@ -18,8 +18,6 @@ import {
   AboutContainer,
   SignOutContainer,
   SettingsContainer,
-  PresentationContainer,
-  PresentationsContainer,
 } from './containers';
 
 export const accountFeatureShellRoutes: Route[] = [
@@ -69,19 +67,6 @@ export const accountFeatureShellRoutes: Route[] = [
             (m) => m.accountFeatureBoardRoutes
           );
         },
-      },
-      {
-        path: 'minhas-apresentacoes/:id',
-        canActivate: [roleGuard('speaker')],
-        component: PresentationContainer,
-      },
-      {
-        path: 'minhas-apresentacoes',
-        data: {
-          breadcrumb: 'Minhas apresentações',
-        },
-        canActivate: [roleGuard('speaker')],
-        component: PresentationsContainer,
       },
       {
         path: 'configuracoes',

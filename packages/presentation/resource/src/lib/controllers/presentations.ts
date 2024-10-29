@@ -1,19 +1,13 @@
 import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Presentation } from '@devmx/shared-api-interfaces';
 import { exceptionByError } from '@devmx/shared-resource';
-import {
-  Presentation,
-  PresentationComment,
-} from '@devmx/shared-api-interfaces';
 import {
   PresentationDto,
   PresentationsFacade,
   UpdatePresentationDto,
   CreatePresentationDto,
   CreatedPresentationDto,
-  PresentationCommentsFacade,
-  CreatePresentationCommentDto,
-  PresentationCommentDto,
 } from '@devmx/presentation-data-source';
 import {
   Get,
@@ -30,10 +24,7 @@ import {
 @ApiTags('Apresentações')
 @Controller('presentations')
 export class PresentationsController {
-  constructor(
-    private readonly presentationsFacade: PresentationsFacade,
-    private readonly presentationCommentsFacade: PresentationCommentsFacade
-  ) {}
+  constructor(private readonly presentationsFacade: PresentationsFacade) {}
 
   @Post()
   @ApiOkResponse({ type: CreatedPresentationDto })
@@ -66,37 +57,6 @@ export class PresentationsController {
       }
 
       return presentation;
-    } catch (err) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Apresentação não encontrada',
-      });
-    }
-  }
-
-  @Post(':id/comments')
-  // @ApiOkResponse({ type: CreatedPresentationCommentDto })
-  async createComment(
-    @User('id') account: string,
-    @Param('id') presentation: string,
-    @Body() data: CreatePresentationCommentDto
-  ) {
-    try {
-      const value = { ...data, presentation, account };
-      return await this.presentationCommentsFacade.create(value);
-    } catch (err) {
-      throw exceptionByError(err);
-    }
-  }
-
-  @Get(':id/comments')
-  @ApiOkResponse({ type: PresentationCommentDto })
-  async findComments(
-    @Param('id') presentation: string,
-    @Query() params: QueryParamsDto<PresentationComment>
-  ) {
-    try {
-      return await this.presentationCommentsFacade.find(presentation, params);
     } catch (err) {
       throw exceptionByError({
         code: 404,
@@ -149,7 +109,7 @@ export class PresentationsController {
     }
 
     try {
-      return await this.presentationsFacade.remove(id);
+      return await this.presentationsFacade.delete(id);
     } catch (err) {
       throw exceptionByError({ code: 400, message: 'Solicitação incorreta' });
     }

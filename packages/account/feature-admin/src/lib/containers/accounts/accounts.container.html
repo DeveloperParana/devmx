@@ -1,10 +1,5 @@
 <header class="accounts-header">
-  <!-- <devmx-filter-account (valueChange)="onFilterChange($event)" /> -->
-  <devmx-filter
-    [fields]="filterFields"
-    [formGroup]="filterForm"
-    (filterChange)="onFilterChange($event)"
-  ></devmx-filter>
+  <devmx-account-search (valueChange)="onFilterChange($event)" />
 </header>
 
 @if (authFacade.user$ | async; as authUser) {
@@ -14,26 +9,22 @@
 <div class="accounts-container">
   @for (account of accounts.data; track account.id) {
 
-  <mat-card class="account-card">
-    <img mat-card-image [src]="account.photo | photo" />
-
-    <mat-card-header>
-      <mat-card-title>
-        {{account.name.first}} {{account.name.last}}
-      </mat-card-title>
-      <mat-card-subtitle> {{account.username}} </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-actions>
-      <button
-        mat-button
-        [disabled]="authUser.id === account.id"
-        (click)="openRoles(authUser, account)"
-      >
-        Permissões
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <devmx-account-card [data]="account">
+    <button
+      mat-button
+      [disabled]="authUser.id === account.id"
+      (click)="openRoles(authUser, account)"
+    >
+      Permissões
+    </button>
+    <button
+      mat-icon-button
+      [disabled]="authUser.id === account.id"
+      (click)="openDelete(account)"
+    >
+      <devmx-icon name="trash" />
+    </button>
+  </devmx-account-card>
 
   }
 </div>

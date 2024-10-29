@@ -1,14 +1,17 @@
 import { EventFeatureShellComponent } from './event-feature-shell.component';
-import { EventDetailsContainer, EventsContainer } from './containers';
-import { provideEvent } from '@devmx/event-data-access';
-import { EventOut } from '@devmx/shared-api-interfaces';
+import { roleGuard } from '@devmx/shared-ui-global/guards';
+import { Event } from '@devmx/shared-api-interfaces';
 import { eventResolver } from './resolvers';
 import { Route } from '@angular/router';
+import {
+  EventDetailsContainer,
+  EventHomeContainer,
+  EventsContainer,
+} from './containers';
 
 export const eventFeatureShellRoutes: Route[] = [
   {
     path: '',
-    providers: [...provideEvent()],
     data: {
       breadcrumb: 'Eventos',
     },
@@ -16,7 +19,7 @@ export const eventFeatureShellRoutes: Route[] = [
     children: [
       {
         path: 'administracao',
-        providers: [...provideEvent()],
+        canActivate: [roleGuard('leader')],
         loadChildren: () =>
           import('@devmx/event-feature-admin').then(
             (m) => m.eventFeatureAdminRoutes
@@ -24,21 +27,22 @@ export const eventFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
-        data: {
-          breadcrumb: 'Eventos',
-        },
         component: EventsContainer,
       },
       {
         path: ':id',
         data: {
-          breadcrumb: (data: { event: EventOut }) => {
+          breadcrumb: (data: { event: Event }) => {
             return data.event.title;
           },
         },
         resolve: { event: eventResolver },
         component: EventDetailsContainer,
         outlet: 'right',
+      },
+      {
+        path: '',
+        component: EventHomeContainer,
       },
     ],
   },

@@ -4,6 +4,7 @@ export * from './account-role';
 export * from './convert-relations-to-id';
 export * from './creatable';
 export * from './editable-entity';
+export * from './editable-event';
 export * from './editable';
 export * from './event-format';
 export * from './experience-level';
