@@ -13,7 +13,7 @@ import {
   JobOut,
   EventOut,
   AccountOut,
-  PresentationOut,
+  Presentation,
 } from '@devmx/shared-api-interfaces';
 import {
   RemoveAccountUseCase,
@@ -41,7 +41,6 @@ interface AccountState {
   accounts: Page<AccountOut>;
   speakers: Page<AccountOut>;
   leaders: Page<AccountOut>;
-  presentations: Page<PresentationOut>;
   jobs: Page<JobOut>;
   account: AccountOut | null;
   username: boolean | null;
@@ -50,7 +49,6 @@ interface AccountState {
 }
 
 export class AccountFacade extends State<AccountState> {
-  presentations$ = this.select((state) => state.presentations);
 
   jobs$ = this.select((state) => state.jobs);
 
@@ -70,8 +68,6 @@ export class AccountFacade extends State<AccountState> {
     private findAccountsUseCase: FindAccountsUseCase,
     private findAccountByIDUseCase: FindAccountByIDUseCase,
     private findAccountByUsernameUseCase: FindAccountByUsernameUseCase,
-    // private findPresentationsByOwnerUseCase: FindPresentationsByOwnerUseCase,
-    private findPresentationsByOwnerUseCase: FindPresentationsUseCase,
     private findJobsByOwnerUseCase: FindJobsByOwnerUseCase,
     private findEventsByOwnerUseCase: FindEventsByOwnerUseCase,
     private updateAccountUseCase: UpdateAccountUseCase,
@@ -86,7 +82,6 @@ export class AccountFacade extends State<AccountState> {
       accounts: { data: [], items: 0, pages: 0 },
       speakers: { data: [], items: 0, pages: 0 },
       leaders: { data: [], items: 0, pages: 0 },
-      presentations: { data: [], items: 0, pages: 0 },
       jobs: { data: [], items: 0, pages: 0 },
       events: { data: [], items: 0, pages: 0 },
       filter: { name: '', username: '' },
@@ -200,20 +195,6 @@ export class AccountFacade extends State<AccountState> {
     };
 
     request$.pipe(take(1)).subscribe(onUsername);
-  }
-
-  loadPresentations(page = 0, size = 10, owner?: string) {
-    const request$ = this.findPresentationsByOwnerUseCase.execute({
-      page,
-      size,
-      filter: { owner },
-    });
-
-    const onPresentations = (presentations: Page<PresentationOut>) => {
-      this.setState({ presentations });
-    };
-
-    request$.pipe(take(1)).subscribe(onPresentations);
   }
 
   loadJobs(page = 0, size = 10) {

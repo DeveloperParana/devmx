@@ -1,21 +1,4 @@
-import { Observable } from 'rxjs';
-import {
-  Page,
-  QueryParams,
-  Presentation,
-  PresentationOut,
-  CreatePresentation,
-} from '@devmx/shared-api-interfaces';
+import { Presentation } from '@devmx/shared-api-interfaces';
+import { EntityService } from '@devmx/shared-api-interfaces/client';
 
-// prettier-ignore
-export abstract class PresentationService {
-  abstract find(params: QueryParams<Presentation>): Observable<Page<PresentationOut>>;
-
-  abstract findOne(id: string): Observable<PresentationOut>
-
-  abstract create(presentation: CreatePresentation): Observable<PresentationOut>;
-
-  abstract update(id: string, presentation: Presentation): Observable<PresentationOut>;
-
-  abstract remove(id: string): Observable<PresentationOut>
-}
+export abstract class PresentationService extends EntityService<Presentation> { }

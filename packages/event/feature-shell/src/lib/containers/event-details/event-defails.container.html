@@ -6,31 +6,24 @@
       <devmx-icon name="arrow/left" />
     </a>
     <mat-card-title>{{event.title}}</mat-card-title>
+    <a routerLink=".." mat-icon-button>
+      <devmx-icon name="close-cross" />
+    </a>
   </mat-card-header>
 
   @if (event.cover) {
   <img mat-card-image [src]="event.cover" [alt]="event.title" />
   }
 
-  <!-- <devmx-rating /> -->
-
   <mat-list>
-    @if (event.city) {
-    <mat-list-item>
-      <devmx-icon matListItemIcon name="transport/map" />
-      <div matListItemTitle>{{ event.city.name }}</div>
-      <div matListItemLine>{{event.city.ibgeState | stateName}}</div>
-    </mat-list-item>
-    } @if (event.address) {
-    <mat-list-item>
-      <devmx-icon matListItemIcon name="transport/map-pin" />
-      <div matListItemTitle>{{ event.address }}</div>
-    </mat-list-item>
-    }
-
     <mat-list-item>
       <devmx-icon matListItemIcon name="transport/flag-pin" />
       <div matListItemTitle>{{event.format | eventFormat }}</div>
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="alarm-clock-alert" />
+      <div matListItemTitle>{{event.time }}h</div>
     </mat-list-item>
 
     <mat-list-item>
@@ -38,10 +31,12 @@
       <div matListItemTitle>{{event.date | date }}</div>
     </mat-list-item>
 
+    @if (event.address) {
     <mat-list-item>
-      <devmx-icon matListItemIcon name="alarm-clock-alert" />
-      <div matListItemTitle>{{event.time }}h</div>
+      <devmx-icon matListItemIcon name="transport/map-pin" />
+      <div matListItemTitle>{{ event.address }}</div>
     </mat-list-item>
+    }
   </mat-list>
 
   <mat-card-content>

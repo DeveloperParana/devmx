@@ -99,11 +99,17 @@
       "@devmx/presentation-domain/server": [
         "packages/presentation/domain/src/server.ts"
       ],
+      "@devmx/presentation-feature-admin": [
+        "packages/presentation/feature-admin/src/index.ts"
+      ],
       "@devmx/presentation-feature-shell": [
         "packages/presentation/feature-shell/src/index.ts"
       ],
       "@devmx/presentation-resource": [
         "packages/presentation/resource/src/index.ts"
+      ],
+      "@devmx/presentation-ui-shared": [
+        "packages/presentation/ui-shared/src/index.ts"
       ],
       "@devmx/shared-api-interfaces": [
         "packages/shared/api-interfaces/src/index.ts"
@@ -124,6 +130,9 @@
       "@devmx/shared-ui-global/carousel": [
         "packages/shared/ui-global/carousel/src/index.ts"
       ],
+      "@devmx/shared-ui-global/crop": [
+        "packages/shared/ui-global/crop/src/index.ts"
+      ],
       "@devmx/shared-ui-global/crumbs": [
         "packages/shared/ui-global/crumbs/src/index.ts"
       ],
@@ -141,6 +150,9 @@
       ],
       "@devmx/shared-ui-global/icon": [
         "packages/shared/ui-global/icon/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/image": [
+        "packages/shared/ui-global/image/src/index.ts"
       ],
       "@devmx/shared-ui-global/layout": [
         "packages/shared/ui-global/layout/src/index.ts"

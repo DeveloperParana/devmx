@@ -13,5 +13,11 @@
     &:hover {
       @include mat.elevation(6);
     }
+
+    &-actions {
+      &:empty {
+        display: none;
+      }
+    }
   }
 }

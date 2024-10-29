@@ -2,6 +2,7 @@ export * from './account-ref';
 export * from './city-ref';
 export * from './find-filter';
 export * from './find-params';
+export * from './image-ref';
 export * from './job';
 export * from './location';
 export * from './page';

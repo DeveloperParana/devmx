@@ -1,24 +1,12 @@
-import {
-  provideEventsFacade,
-  provideEventsService,
-  provideCreateEventUseCase,
-  provideFindEventByIDUseCase,
-  provideFindEventsUseCase,
-  provideRemoveEventUseCase,
-  provideUpdateEventUseCase,
-} from './providers';
+import { provideFacades, provideServices, provideUseCases } from './providers';
 
 export function provideEvents() {
   return [
-    provideEventsService(),
+    ...provideServices(),
     // provideCitiesService(),
 
-    provideCreateEventUseCase(),
-    provideFindEventsUseCase(),
-    provideFindEventByIDUseCase(),
-    provideUpdateEventUseCase(),
-    provideRemoveEventUseCase(),
+    ...provideUseCases(),
 
-    provideEventsFacade(),
+    ...provideFacades(),
   ];
 }

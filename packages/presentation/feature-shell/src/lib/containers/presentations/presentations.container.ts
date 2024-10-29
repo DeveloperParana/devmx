@@ -8,10 +8,9 @@ import { AsyncPipe } from '@angular/common';
 import {
   PresentationCardComponent,
   PresentationFilterComponent,
-} from '../../components';
+} from '@devmx/presentation-ui-shared';
 import {
   inject,
-  OnInit,
   Component,
   DestroyRef,
   ChangeDetectionStrategy,
@@ -31,7 +30,7 @@ import {
   ],
   standalone: true,
 })
-export class PresentationsContainer implements OnInit {
+export class PresentationsContainer {
   presentationFacade = inject(PresentationFacade);
 
   layoutFacade = inject(LayoutFacade);
@@ -42,26 +41,28 @@ export class PresentationsContainer implements OnInit {
 
   route = inject(ActivatedRoute);
 
-  ngOnInit() {
-    this.layoutFacade.setSidenav({ start: true });
+  constructor() {
+    this.route.queryParams
+      .pipe(takeUntilDestroyed())
+      .subscribe(this.onQueryParams);
+
     this.layoutFacade.setComponent(PresentationFilterComponent);
+    this.layoutFacade.setSidenav({ start: true });
 
     this.destroyRef.onDestroy(() => {
       this.layoutFacade.resetComponent();
     });
-
-    const onQueryParams = (params: Params) => {
-      const { title = '', format = '' } = params;
-      this.presentationFacade.setFilter({ title, format });
-
-      const { page = 0, size = 10 } = params;
-      this.presentationFacade.load(page, size);
-    };
-
-    this.route.queryParams
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(onQueryParams);
   }
+
+  onQueryParams = (params: Params) => {
+    const { page = 0, size = 10 } = params;
+    const { title = '', format = '' } = params;
+    const filter = { title, format };
+    console.log(filter);
+
+    this.presentationFacade.setParams({ page, size, filter });
+    this.presentationFacade.load();
+  };
 
   onPageChange(queryParams: PageParams) {
     this.router.navigate([], { queryParams });

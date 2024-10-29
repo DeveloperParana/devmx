@@ -1,0 +1,36 @@
+{
+  "name": "presentation-ui-shared",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/presentation/ui-shared/src",
+  "prefix": "devmx",
+  "projectType": "library",
+  "tags": ["type:ui"],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "packages/presentation/ui-shared/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/presentation/ui-shared/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/presentation/ui-shared/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/presentation/ui-shared/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

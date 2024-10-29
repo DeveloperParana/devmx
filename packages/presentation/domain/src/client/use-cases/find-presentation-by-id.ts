@@ -1,8 +1,8 @@
-import { UseCase, PresentationOut } from '@devmx/shared-api-interfaces';
+import { UseCase, Presentation } from '@devmx/shared-api-interfaces';
 import { PresentationService } from '../services';
 
 export class FindPresentationByIDUseCase
-  implements UseCase<string, PresentationOut>
+  implements UseCase<string, Presentation | null>
 {
   constructor(private presentationService: PresentationService) {}
 

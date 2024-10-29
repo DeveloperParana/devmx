@@ -1,4 +1,3 @@
-import { providePresentationService } from '@devmx/presentation-data-access';
 import {
   provideAuthFacade,
   provideAuthService,
@@ -14,8 +13,6 @@ import {
 
 export function provideAccount() {
   return [
-    providePresentationService(),
-
     provideAuthService(),
     provideAccountService(),
 

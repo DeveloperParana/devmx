@@ -1,32 +1,11 @@
-import {
-  provideCreatePresentationCommentUseCase,
-  provideCreatePresentationUseCase,
-  provideFindPresentationByIDUseCase,
-  provideFindPresentationCommenstUseCase,
-  provideFindPresentationsUseCase,
-  providePresentationCommentFacade,
-  providePresentationCommentService,
-  providePresentationFacade,
-  providePresentationService,
-  provideRemovePresentationUseCase,
-  provideUpdatePresentationUseCase,
-} from './providers';
+import { provideFacades, provideServices, provideUseCases } from "./providers";
 
 export function providePresentation() {
   return [
-    providePresentationService(),
-    providePresentationCommentService(),
+    ...provideServices(),
 
-    provideCreatePresentationUseCase(),
-    provideFindPresentationsUseCase(),
-    provideFindPresentationByIDUseCase(),
-    provideUpdatePresentationUseCase(),
-    provideRemovePresentationUseCase(),
+    ...provideUseCases(),
 
-    provideCreatePresentationCommentUseCase(),
-    provideFindPresentationCommenstUseCase(),
-
-    providePresentationFacade(),
-    providePresentationCommentFacade(),
+    ...provideFacades()
   ];
 }

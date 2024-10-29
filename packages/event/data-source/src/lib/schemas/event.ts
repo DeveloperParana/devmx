@@ -1,8 +1,8 @@
 import { PresentationCollection } from '@devmx/presentation-data-source';
-import { Event, EventFormat } from '@devmx/shared-api-interfaces';
+import { Event, EventFormat, ImageRef } from '@devmx/shared-api-interfaces';
 import { AccountCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, raw, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import {
   PointSchema,
@@ -34,8 +34,11 @@ export class EventCollection extends Document implements Event {
   @Prop({ type: String, default: '' })
   time?: string;
 
-  @Prop({ default: '' })
-  cover: string;
+  @Prop(raw({
+    src: { type: String },
+    alt: { type: String },
+  }))
+  cover: ImageRef;
 
   @Prop({ default: false })
   visible: boolean;

@@ -15,6 +15,7 @@
   @include component.layout-theme(theme.$light);
   @include component.dialog-theme(theme.$light);
   @include component.form-theme(theme.$light);
+  @include component.fab-theme(theme.$light);
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.

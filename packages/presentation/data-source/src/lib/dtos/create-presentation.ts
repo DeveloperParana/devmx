@@ -1,8 +1,11 @@
 import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { CreatePresentation } from '@devmx/presentation-domain';
 
-export class CreatePresentationDto {
+export class CreatePresentationDto implements CreatePresentation {
+  id: string
+
   @IsString()
   @ApiProperty()
   title: string;
@@ -22,12 +25,12 @@ export class CreatePresentationDto {
   @IsArray()
   @IsOptional()
   @ApiPropertyOptional()
-  tags?: string[] = [];
+  tags: string[] = [];
 
   @IsArray()
   @IsOptional()
   @ApiPropertyOptional()
-  resources?: string[] = [];
+  resources: string[] = [];
 
   @IsBoolean()
   @IsOptional()

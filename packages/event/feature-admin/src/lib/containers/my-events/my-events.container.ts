@@ -1,98 +1,87 @@
-import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { CreateEventService, provideCreateEvent } from '../../dialogs';
-import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { EventCardComponent } from '@devmx/event-ui-shared';
-import { MatButtonModule } from '@angular/material/button';
-import { AccountFacade } from '@devmx/account-data-access';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { EventFacade } from '@devmx/event-data-access';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { AsyncPipe, DatePipe } from '@angular/common';
-import { take } from 'rxjs';
-import {
-  inject,
-  OnInit,
-  Component,
-  DestroyRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { Event } from '@devmx/shared-api-interfaces';
+import { AsyncPipe } from '@angular/common';
+import { AuthFacade } from '@devmx/account-data-access';
+import { combineLatest, filter, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-my-events',
+  selector: 'devmx-event-admin-my-events',
   templateUrl: './my-events.container.html',
   styleUrl: './my-events.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideCreateEvent()],
   imports: [
-    MatCardModule,
+    RouterModule,
     MatButtonModule,
-    MatListModule,
-    MatMenuModule,
-    IconComponent,
+    MatTooltipModule,
     EventCardComponent,
     PaginatorComponent,
-    SkeletonComponent,
     IconComponent,
-    RouterModule,
     AsyncPipe,
-    DatePipe,
   ],
   standalone: true,
 })
-export class MyEventsContainer implements OnInit {
+export class MyEventsContainer {
   router = inject(Router);
 
   route = inject(ActivatedRoute);
 
-  destroyRef = inject(DestroyRef);
+  dialogFacade = inject(DialogFacade);
+
+  authFacade = inject(AuthFacade);
 
   eventFacade = inject(EventFacade);
 
-  accountFacade = inject(AccountFacade);
+  constructor() {
+    const user$ = this.authFacade.user$.pipe(
+      filter((user) => !!user),
+      map(({ id }) => id)
+    );
 
-  createEvent = inject(CreateEventService);
+    const params$ = this.route.queryParams.pipe(
+      map(({ page, size, title, format, date }) => {
+        return { page, size, title, format, date };
+      })
+    );
 
-  ngOnInit() {
-    const onQueryParams = (params: Params) => {
-      const { title = '', format = '' } = params;
-      this.accountFacade.setEventFilter({ title, format });
-
-      const { page = 0, size = 10 } = params;
-      this.accountFacade.loadEvents(page, size);
-    };
-
-    this.route.queryParams
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(onQueryParams);
-
-    this.accountFacade.events$.subscribe(console.log);
+    combineLatest([user$, params$])
+      .pipe(takeUntilDestroyed())
+      .subscribe(this.onQueryParams);
   }
 
-  openCreate() {
-    const createEventRef = this.createEvent.open();
-    const afterClosed$ = createEventRef.afterClosed().pipe(take(1));
-    afterClosed$.subscribe((event) => {
-      if (event) {
-        const event$ = this.eventFacade.event$;
-        event$.pipe(take(1)).subscribe(() => {
-          this.accountFacade.loadEvents();
-        });
-        this.eventFacade.create(event);
-      }
-    });
+  onQueryParams = ([owner, params]: [string, Params]) => {
+    const { page, size, title, format, date } = params;
+
+    const filter = { title, format, date, owner };
+
+    this.eventFacade.setParams({ page, size, filter });
+
+    this.eventFacade.load();
+  };
+
+  deleteEvent({ id, title }: Event) {
+    this.dialogFacade
+      .confirm(
+        `Confirme que deseja apagar a vaga ${title}`,
+        `Esta ação não poderá ser desfeita`
+      )
+      .subscribe((confirmation) => {
+        if (confirmation) {
+          this.eventFacade.delete(id);
+        }
+      });
   }
 
-  remove(id: string) {
-    this.eventFacade.remove(id).subscribe(() => {
-      this.accountFacade.loadEvents();
-    });
-  }
-
-  onPageChange(queryParams: PageParams) {
+  onPageChange({ page, size }: PageParams) {
+    const queryParams = { page, size };
     this.router.navigate([], { queryParams });
   }
 }

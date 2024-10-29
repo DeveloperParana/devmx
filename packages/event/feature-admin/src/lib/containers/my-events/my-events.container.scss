@@ -17,6 +17,36 @@
     }
 
     grid-template-columns: repeat(2, 1fr);
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Limita a 3 linhas */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .no-events-yet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2,
+    h3 {
+      margin: 0;
+      padding: 0;
+      white-space: normal;
+    }
+
+    h2 {
+      font-size: 160%;
+    }
+
+    h3 {
+      font-size: 120%;
+      text-align: end;
+    }
   }
 
   footer {
@@ -48,7 +78,7 @@
 
   .add-button {
     position: fixed;
-    right: 6em;
-    bottom: 2em;
+    right: 4em;
+    top: 2em;
   }
 }

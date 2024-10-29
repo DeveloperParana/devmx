@@ -4,9 +4,8 @@ import {
   CreateEventUseCase,
   FindEventByIDUseCase,
   FindEventsUseCase,
-  RemoveEventUseCase,
+  DeleteEventUseCase,
   UpdateEventUseCase,
-  UploadCoverUseCase,
 } from '@devmx/event-domain/client';
 
 export function provideCreateEventUseCase() {
@@ -25,10 +24,20 @@ export function provideUpdateEventUseCase() {
   return createUseCaseProvider(UpdateEventUseCase, [EventService]);
 }
 
-export function provideRemoveEventUseCase() {
-  return createUseCaseProvider(RemoveEventUseCase, [EventService]);
+export function provideDeleteEventUseCase() {
+  return createUseCaseProvider(DeleteEventUseCase, [EventService]);
 }
 
-export function provideUploadCoverUseCase() {
-  return createUseCaseProvider(UploadCoverUseCase, [EventService]);
+// export function provideUploadCoverUseCase() {
+//   return createUseCaseProvider(UploadCoverUseCase, [EventService]);
+// }
+
+export function provideUseCases() {
+  return [
+    provideCreateEventUseCase(),
+    provideFindEventsUseCase(),
+    provideFindEventByIDUseCase(),
+    provideUpdateEventUseCase(),
+    provideDeleteEventUseCase(),
+  ];
 }

@@ -1,6 +1,7 @@
 import { PresentationFeatureShellComponent } from './presentation-feature-shell.component';
 import { providePresentation } from '@devmx/presentation-data-access';
-import { PresentationOut } from '@devmx/shared-api-interfaces';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
+import { Presentation } from '@devmx/shared-api-interfaces';
 import { presentationResolver } from './resolvers';
 import { Route } from '@angular/router';
 import {
@@ -18,13 +19,21 @@ export const presentationFeatureShellRoutes: Route[] = [
     component: PresentationFeatureShellComponent,
     children: [
       {
+        path: 'administracao',
+        canActivate: [rolesGuard('speaker')],
+        loadChildren: () =>
+          import('@devmx/presentation-feature-admin').then(
+            (m) => m.presentationFeatureAdminRoutes
+          ),
+      },
+      {
         path: '',
         component: PresentationsContainer,
       },
       {
         path: ':id',
         data: {
-          breadcrumb: (data: { presentation: PresentationOut }) => {
+          breadcrumb: (data: { presentation: Presentation }) => {
             return data.presentation.title;
           },
         },

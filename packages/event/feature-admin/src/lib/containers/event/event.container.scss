@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  padding: 1em;
+
+  .event-content {
+    flex: 1;
+    gap: 1.6em;
+    display: flex;
+    flex-flow: row wrap;
+
+    section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+
+      h3 {
+        font-size: 100%;
+        opacity: 0.72;
+        margin-bottom: 0;
+      }
+
+      .mat-mdc-form-field {
+        width: 100%;
+      }
+
+
+      .add-button {
+        align-self: flex-start;
+      }
+
+      div {
+        gap: 1em;
+        display: flex;
+        flex-flow: row wrap;
+
+        .mat-mdc-form-field {
+          flex: 1;
+        }
+
+        &.event-leaders,
+        &.event-presentations {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}

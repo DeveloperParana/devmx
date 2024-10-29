@@ -1,6 +1,6 @@
 import { input, Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import { EventOut } from '@devmx/shared-api-interfaces';
+import { Event } from '@devmx/shared-api-interfaces';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { StateNamePipe } from '@devmx/shared-ui-global';
@@ -23,7 +23,7 @@ import { DatePipe } from '@angular/common';
   standalone: true,
 })
 export class EventCardComponent {
-  data = input.required<EventOut>();
+  data = input.required<Event>();
 
   get event() {
     return this.data();

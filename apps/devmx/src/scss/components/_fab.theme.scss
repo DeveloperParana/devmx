@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+@mixin fab-theme($theme) {
+  body {
+    .mat-mdc-fab {
+      z-index: 10;
+
+      @include mat.elevation-transition();
+      @include mat.elevation(4);
+
+      &:hover,
+      &:active {
+        @include mat.elevation(8)
+      }
+    }
+
+    .mat-mdc-fab.primary-fab {
+      background-color: mat.get-theme-color($theme, primary-container);
+      color: mat.get-theme-color($theme, on-primary-container);
+    }
+
+    .mat-mdc-fab.secondary-fab {
+      background-color: mat.get-theme-color($theme, secondary-container);
+      color: mat.get-theme-color($theme, on-secondary-container);
+    }
+
+    .mat-mdc-fab.tertiary-fab {
+      background-color: mat.get-theme-color($theme, tertiary, 50);
+      color: mat.get-theme-color($theme, on-tertiary);
+    }
+  }
+}

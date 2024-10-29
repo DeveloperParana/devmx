@@ -1,4 +1,3 @@
-import { ConvertRelationsToID } from '../types';
-import { Presentation } from '../entities';
+import { EditablePresentation } from './editable-presentation';
 
-export type CreatePresentation = ConvertRelationsToID<Omit<Presentation, 'id'>>;
+export type CreatePresentation = EditablePresentation;

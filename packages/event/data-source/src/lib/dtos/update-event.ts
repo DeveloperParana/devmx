@@ -1,6 +1,6 @@
 import { CreateEventDto } from './create-event';
-import { PartialType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 
-export class UpdateEventDto extends PartialType(CreateEventDto) {
+export class UpdateEventDto extends OmitType(CreateEventDto, ['id']) {
   id: string;
 }

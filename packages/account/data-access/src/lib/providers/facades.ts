@@ -1,4 +1,3 @@
-import { FindPresentationsUseCase } from '@devmx/presentation-domain/client';
 import { AboutFacade, AccountFacade, AuthFacade } from '../facades';
 import { createClientProvider } from '@devmx/shared-data-access';
 import {
@@ -39,8 +38,6 @@ export function provideAccountFacade() {
     FindAccountsUseCase,
     FindAccountByIDUseCase,
     FindAccountByUsernameUseCase,
-    FindPresentationsUseCase,
-    // FindPresentationsByOwnerUseCase,
     FindJobsByOwnerUseCase,
     FindEventsByOwnerUseCase,
     UpdateAccountUseCase,

@@ -1,5 +1,5 @@
 import { Params } from '@devmx/shared-api-interfaces';
-import { PresentationFacade } from '../facades';
+import { PresentationFacade } from '../application';
 import { filter } from 'rxjs';
 
 export const presentationResolverWrapped = (
@@ -7,5 +7,5 @@ export const presentationResolverWrapped = (
   params: Params
 ) => {
   facade.loadOne(params['id']);
-  return facade.presentation$.pipe(filter((presentation) => !!presentation));
+  return facade.selected$.pipe(filter((presentation) => !!presentation));
 };

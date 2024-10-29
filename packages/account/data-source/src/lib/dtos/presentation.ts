@@ -1,9 +1,9 @@
-import { PresentationFormat } from '@devmx/shared-api-interfaces';
+import { PresentationFormat, PresentationOut } from '@devmx/shared-api-interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { AccountDto } from './account';
 
-export class PresentationDto {
+export class PresentationDto implements PresentationOut {
   @ApiProperty()
   id: string;
 

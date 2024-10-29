@@ -1,9 +1,9 @@
-import { SelectCoverService } from './select-cover.service';
-import { MatDialog } from '@angular/material/dialog';
+import { Dialog } from '@angular/cdk/dialog';
+import { SelectCover } from './select-cover';
 
 export function provideSelectCover() {
   return {
-    provide: SelectCoverService,
-    deps: [MatDialog],
+    provide: SelectCover,
+    deps: [Dialog],
   };
 }

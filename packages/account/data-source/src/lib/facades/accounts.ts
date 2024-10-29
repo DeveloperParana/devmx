@@ -1,5 +1,5 @@
 import { JobDto, PageDto, QueryParamsDto } from '@devmx/shared-data-source';
-import { AuthUser, Role } from '@devmx/shared-api-interfaces';
+import { AuthUser, Presentation, Role } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
   ChangePasswordUseCase,
@@ -46,10 +46,7 @@ export class AccountsFacade {
     return new PageDto(accounts, items, pages);
   }
 
-  async findPresentations(
-    owner: string,
-    params: QueryParamsDto<PresentationDto>
-  ) {
+  async findPresentations(owner: string, params: QueryParamsDto<Presentation>) {
     const { data, items, pages } =
       await this.findPresentationsByOwnerUseCase.execute({ ...params, owner });
 

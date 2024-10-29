@@ -7,6 +7,7 @@ export * from './create-event';
 export * from './create-presentation';
 export * from './editable-job-opening';
 export * from './editable-job-skill';
+export * from './editable-presentation';
 export * from './editable-skill';
 export * from './event-out';
 export * from './job-opening-out';
