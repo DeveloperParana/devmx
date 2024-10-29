@@ -1,5 +1,5 @@
 import { AccountRef, PresentationRef } from '../dtos';
-import { ImageRef, Location } from '../interfaces';
+import { Location } from '../interfaces';
 import { EventFormat } from '../types';
 import { City } from './city';
 
@@ -16,7 +16,7 @@ export interface Event {
 
   time?: string;
 
-  cover?: ImageRef;
+  cover?: string;
 
   visible: boolean;
 

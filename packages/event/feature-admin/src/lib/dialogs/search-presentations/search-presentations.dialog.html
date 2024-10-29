@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Encontre apresentações</h2>
+
+@if (presentationFacade.response$ | async; as response) {
+
+<mat-dialog-content class="dialog-content">
+  <devmx-presentation-search (valueChange)="onSearchChange($event)" />
+
+  <mat-selection-list class="presentations" #presentations>
+    @for (presentation of response.data; track presentation) {
+    <mat-list-option [value]="presentation">
+      {{presentation.title}}
+    </mat-list-option>
+    }
+  </mat-selection-list>
+
+  <devmx-paginator
+    [items]="response.items"
+    (pageChange)="onPageChange($event)"
+  />
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions" align="end">
+  <button
+    mat-raised-button
+    type="button"
+    (click)="close(presentations.selectedOptions.selected)"
+  >
+    Salvar
+  </button>
+  <button mat-button type="button" (click)="ref.close()">Cancelar</button>
+</mat-dialog-actions>
+}

@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableEvent, Event, EventFormat } from '@devmx/shared-api-interfaces';
 import { EventPresentationsForm } from './event-presentation';
-import { FormOption, ImageRefForm, TypedForm } from '@devmx/shared-ui-global/forms';
+import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
 import { EventLeadersForm } from './event-leader';
 
 export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
@@ -54,7 +54,7 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
         nonNullable: true,
       }),
 
-      cover: new ImageRefForm(),
+      cover: new FormControl(),
 
       presentations: new EventPresentationsForm(),
 

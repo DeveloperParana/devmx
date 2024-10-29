@@ -22,3 +22,16 @@
     gap: 0.4em;
   }
 }
+
+::ng-deep .crumb {
+  display: inline-flex;
+  justify-content: flex-start;
+
+  .mdc-button__label {
+    overflow: hidden;
+    max-width: 120px;
+    text-overflow: ellipsis;
+    width: fit-content;
+    white-space: nowrap;
+  }
+}

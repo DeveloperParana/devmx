@@ -1,4 +1,5 @@
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SearchLeaders, SearchPresentations } from '../../dialogs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -13,8 +14,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { JsonPipe } from '@angular/common';
-import { debounceTime, filter, Subject, takeUntil } from 'rxjs';
 import { EventForm } from '../../forms';
+import { take } from 'rxjs';
 import {
   CropImageComponent,
   SelectFileComponent,
@@ -25,7 +26,6 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { SelectCover } from '../../dialogs';
 
 @Component({
   selector: 'devmx-event-admin-event',
@@ -54,84 +54,49 @@ export class EventContainer {
 
   cdr = inject(ChangeDetectorRef);
 
-  // skillFacade = inject(SkillFacade);
-
   eventFacade = inject(EventFacade);
 
-  selectCover = inject(SelectCover);
+  searchPresentations = inject(SearchPresentations);
 
-  // skillDialog = inject(SkillDialog);
+  searchLeaders = inject(SearchLeaders);
 
   form = new EventForm();
-
-  #until = {
-    openSkill: new Subject<void>(),
-    searchSkill: new Subject<void>(),
-  };
 
   constructor() {
     this.route.data.pipe(takeUntilDestroyed()).subscribe(({ event }) => {
       if (event && event['id']) this.form.patch(event);
-
-      this.form.valueChanges
-        .pipe(
-          filter((event) => !!event.id),
-          takeUntilDestroyed(),
-          debounceTime(3000)
-        )
-        .subscribe(() => {
-          this.onSubmit();
-        });
     });
   }
 
-  onCoverFile(file: File) {
-    this.selectCover.open(file).subscribe((cover) => {
-      if (cover) this.form.patchValue({ cover });
-    });
+  openSearchPresentations() {
+    this.searchPresentations
+      .open()
+      .pipe(take(1))
+      .subscribe((presentations) => {
+        if (presentations) {
+          for (const presentation of presentations) {
+            this.form.presentations.add(presentation);
+          }
+
+          this.cdr.detectChanges();
+        }
+      });
   }
 
-  // openSkill(skill: EditableSkill | null = null) {
-  //   return this.skillDialog
-  //     .openSkill(skill)
-  //     .afterClosed()
-  //     .pipe(takeUntil(this.#until.openSkill))
-  //     .subscribe((value) => {
-  //       if (value) {
-  //         if (value.id) this.skillFacade.update(value);
-  //         else this.skillFacade.create(value);
-  //       }
-  //     });
-  // }
+  openSearchLeaders() {
+    this.searchLeaders
+      .open()
+      .pipe(take(1))
+      .subscribe((leaders) => {
+        if (leaders) {
+          for (const presentation of leaders) {
+            this.form.leaders.add(presentation);
+          }
 
-  // openSearchSkills() {
-  //   const dialog$ = this.skillDialog.searchSkills();
-
-  //   dialog$.componentInstance.addSkill$
-  //     .pipe(takeUntil(this.#until.searchSkill))
-  //     .subscribe((state) => {
-  //       if (state) this.openSkill();
-  //       console.log(state);
-  //     });
-
-  //   dialog$
-  //     .afterClosed()
-  //     .pipe(takeUntil(this.#until.searchSkill))
-  //     .subscribe((skills) => {
-  //       if (skills && skills.length) {
-  //         for (const skill of skills) {
-  //           this.form.skills.add({ weight: 50, skill });
-  //         }
-
-  //         this.cdr.detectChanges();
-  //       }
-
-  //       this.#until.openSkill.next();
-  //       this.#until.openSkill.complete();
-  //       this.#until.searchSkill.next();
-  //       this.#until.searchSkill.complete();
-  //     });
-  // }
+          this.cdr.detectChanges();
+        }
+      });
+  }
 
   onSubmit() {
     if (this.form.valid) {

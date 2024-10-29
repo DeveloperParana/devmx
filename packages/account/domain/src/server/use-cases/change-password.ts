@@ -32,7 +32,7 @@ export class ChangePasswordUseCase implements UseCase<ChangePassword, Account> {
 
     const password = this.cryptoService.hash(data.newPassword);
 
-    const changed = await this.accountsService.update(data.id, { password });
+    const changed = await this.accountsService.update(data.id, {password});
 
     if (!changed) {
       throw new PersistenceError('Problema ao persistir nova senha');

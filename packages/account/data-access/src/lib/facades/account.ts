@@ -1,4 +1,3 @@
-import { FindPresentationsUseCase } from '@devmx/presentation-domain/client';
 import { FilterEvent } from '@devmx/event-data-access';
 import { State } from '@devmx/shared-data-access';
 import { FilterAccount } from '../dtos';
@@ -13,7 +12,8 @@ import {
   JobOut,
   EventOut,
   AccountOut,
-  Presentation,
+  QueryParams,
+  QueryFilter,
 } from '@devmx/shared-api-interfaces';
 import {
   RemoveAccountUseCase,
@@ -45,11 +45,11 @@ interface AccountState {
   account: AccountOut | null;
   username: boolean | null;
   filter: FilterAccount;
+  params: QueryParams<FilterAccount>;
   filters: AccountFilters;
 }
 
 export class AccountFacade extends State<AccountState> {
-
   jobs$ = this.select((state) => state.jobs);
 
   events$ = this.select((state) => state.events);
@@ -89,13 +89,20 @@ export class AccountFacade extends State<AccountState> {
         event: { title: '', format: '' },
         job: { mode: '', contract: '', experience: '' },
       },
+      params: { page: 0, size: 10, filter: { name: '', username: '' } },
       account: null,
       username: null,
     });
   }
 
-  setFilter(filter: FilterAccount) {
-    this.setState({ filter });
+  setParams(params: QueryParams<FilterAccount>) {
+    this.setState({ params });
+  }
+
+  setFilter(filter: QueryFilter<FilterAccount>) {
+    const { params } = this.state;
+    params.filter = filter;
+    this.setState({ params });
   }
 
   clearFilter() {
@@ -126,11 +133,8 @@ export class AccountFacade extends State<AccountState> {
     this.setState({ filters });
   }
 
-  load(page = 0, size = 10) {
-    const filter = this.state.filter;
-    const params = { filter, page, size };
-
-    const request$ = this.findAccountsUseCase.execute(params);
+  load() {
+    const request$ = this.findAccountsUseCase.execute(this.state.params);
 
     const onAccounts = (accounts: Page<AccountOut>) => {
       this.setState({ accounts });
@@ -152,11 +156,8 @@ export class AccountFacade extends State<AccountState> {
     request$.pipe(take(1)).subscribe(onSpeakers);
   }
 
-  loadLeaders(page = 0, size = 10) {
-    const filter = this.state.filter;
-    const params = { filter, page, size };
-
-    const request$ = this.findLeadersUseCase.execute(params);
+  loadLeaders() {
+    const request$ = this.findLeadersUseCase.execute(this.state.params);
 
     const onLeaders = (leaders: Page<AccountOut>) => {
       this.setState({ leaders });

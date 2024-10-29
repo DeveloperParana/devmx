@@ -86,11 +86,13 @@ export class AccountsContainer implements OnInit {
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((params: Params) => {
-        const { name = '', username = '' } = params;
-        this.accountFacade.setFilter({ name, username });
-
         const { page = 0, size = 10 } = params;
-        this.accountFacade.load(page, size);
+        const { name = '', username = '' } = params;
+        const filter = { name, username };
+
+        this.accountFacade.setParams({ page, size, filter });
+
+        this.accountFacade.load();
       });
   }
 

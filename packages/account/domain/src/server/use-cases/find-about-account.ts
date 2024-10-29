@@ -6,7 +6,7 @@ export class FindAboutAccountUseCase implements UseCase<string, AccountOut> {
   constructor(private accountsService: AccountsService) {}
 
   async execute(username: string) {
-    const account = await this.accountsService.findOneBy({ username });
+    const account = await this.accountsService.findOneBy({username});
 
     if (!account) {
       throw new NotFoundError('Conta não encontrada');

@@ -19,13 +19,6 @@
           ></textarea>
         </mat-form-field>
 
-        <div class="cover">
-          <devmx-select-file (selectedChange)="onCoverFile($event)" />
-          <h3>Imagem de capa</h3>
-        </div>
-      </section>
-
-      <section>
         <div>
           <mat-form-field>
             <mat-label>Formato</mat-label>
@@ -65,7 +58,9 @@
             <mat-error>Obrigatório</mat-error>
           </mat-form-field>
         </div>
+      </section>
 
+      <section>
         <div class="event-presentations">
           <h3 mat-subheader>Apresentações</h3>
 
@@ -85,7 +80,42 @@
             </mat-list-item>
             }
           </mat-list>
+
+          <button
+            type="button"
+            mat-icon-button
+            (click)="openSearchPresentations()"
+          >
+            <devmx-icon name="plus" />
+          </button>
         </div>
+
+        <h3 mat-subheader>Líderes</h3>
+
+        <mat-list>
+          @for (leader of form.leaders.controls; track
+          leader.value; let index = $index) {
+          <mat-list-item>
+            <span matListItemTitle>{{leader.value.name?.first}}</span>
+            <button
+              type="button"
+              mat-icon-button
+              matListItemMeta
+              (click)="form.leaders.removeAt(index)"
+            >
+              <devmx-icon name="trash" />
+            </button>
+          </mat-list-item>
+          }
+        </mat-list>
+
+        <button
+          type="button"
+          mat-icon-button
+          (click)="openSearchLeaders()"
+        >
+          <devmx-icon name="plus" />
+        </button>
       </section>
     </mat-card-content>
 
@@ -93,7 +123,4 @@
       <button mat-flat-button [disabled]="form.invalid">Salvar</button>
     </mat-card-actions>
   </mat-card>
-
-  <pre>{{ form.leaders.value | json }}</pre>
-  <pre>{{ form.presentations.value | json }}</pre>
 </form>

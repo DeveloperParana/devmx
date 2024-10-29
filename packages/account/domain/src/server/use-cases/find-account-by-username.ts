@@ -7,8 +7,6 @@ export class FindAccountByUsernameUseCase
   constructor(private accountsService: AccountsService) {}
 
   async execute(username: string) {
-    const value = new RegExp(username, 'i');
-    const filter = { username: value };
-    return this.accountsService.findOneBy(filter);
+    return this.accountsService.findOneBy({username});
   }
 }

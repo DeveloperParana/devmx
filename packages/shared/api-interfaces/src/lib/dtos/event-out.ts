@@ -1,6 +1,6 @@
 import { PresentationOut } from './presentation-out';
 import { AccountRef } from './account-ref';
-import { ImageRef, Location } from '../interfaces';
+import { Location } from '../interfaces';
 import { EventFormat } from '../types';
 import { City } from '../entities';
 
@@ -17,7 +17,7 @@ export interface EventOut {
 
   time: string;
 
-  cover: ImageRef;
+  cover: string;
 
   visible: boolean;
 

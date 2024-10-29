@@ -1,4 +1,5 @@
 import { createServiceProvider, MongoService } from '@devmx/shared-data-source';
+import { EditableEntity } from '@devmx/shared-api-interfaces';
 import { EventsService } from '@devmx/event-domain/server';
 import { getModelToken } from '@nestjs/mongoose';
 import { EventCollection } from '../schemas';
@@ -8,8 +9,16 @@ export class EventsMongoServiceImpl extends MongoService<EventCollection> {
   protected override applyPopulate<U>(query: Query<U, EventCollection>) {
     return query
       .populate('owner', 'name username photo')
-      // .populate('presentations')
-      // .populate('leaders');
+      .populate('presentations')
+      .populate('leaders');
+  }
+
+  protected override applyEditableParser<U>(
+    data: EditableEntity<EventCollection>
+  ): U {
+    const presentations = (data.presentations ?? []).map((p) => p.id);
+    const leaders = (data.leaders ?? []).map((p) => p.id);
+    return { ...data, leaders, presentations } as U;
   }
 }
 

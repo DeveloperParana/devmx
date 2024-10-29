@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  width: 24em;
+
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 0;
+  }
+
+  .presentations {
+    margin-top: 0;
+  }
+
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+    // padding-top: 0.6em;
+  }
+
+  .dialog-footer {
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dialog-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-left: -8px;
+  }
+}
