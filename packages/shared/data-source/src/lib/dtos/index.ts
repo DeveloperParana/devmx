@@ -1,5 +1,6 @@
 export * from './account-ref';
 export * from './city-ref';
+export * from './event-ref';
 export * from './find-filter';
 export * from './find-params';
 export * from './image-ref';

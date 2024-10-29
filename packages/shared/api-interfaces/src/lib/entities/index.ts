@@ -8,4 +8,5 @@ export * from './place';
 export * from './presentation-comment';
 export * from './presentation-reaction';
 export * from './presentation';
+export * from './rsvp';
 export * from './skill';

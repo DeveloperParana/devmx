@@ -3,11 +3,11 @@
 @mixin layout-theme($theme) {
   .mat-mdc-nav-list .mat-mdc-list-item.active:not(.disabled) {
     background-color: mat.get-theme-color($theme, secondary-container);
-    color: mat.get-theme-color($theme, on-secondary);
+    color: mat.get-theme-color($theme, on-secondary-container);
   }
 
   .layout-container {
-    background-color: rgba(mat.get-theme-color($theme, surface), 1);
+    background-color: rgba(mat.get-theme-color($theme, surface-variant), 1);
   }
 
   .layout-main-wrapper {

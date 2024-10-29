@@ -4,6 +4,8 @@ import {
   EventSchema,
   provideEvents,
   EventCollection,
+  RSVPCollection,
+  RSVPSchema,
 } from '@devmx/event-data-source';
 
 @Global()
@@ -13,6 +15,10 @@ import {
       {
         name: EventCollection.name,
         schema: EventSchema,
+      },
+      {
+        name: RSVPCollection.name,
+        schema: RSVPSchema,
       },
     ]),
   ],
