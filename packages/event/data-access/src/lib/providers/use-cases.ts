@@ -6,6 +6,8 @@ import {
   FindEventsUseCase,
   DeleteEventUseCase,
   UpdateEventUseCase,
+  CreateRSVPUseCase,
+  FindRSVPByEventUseCase,
 } from '@devmx/event-domain/client';
 
 export function provideCreateEventUseCase() {
@@ -28,6 +30,14 @@ export function provideDeleteEventUseCase() {
   return createUseCaseProvider(DeleteEventUseCase, [EventService]);
 }
 
+export function provideCreateRSVPUseCase() {
+  return createUseCaseProvider(CreateRSVPUseCase, [EventService]);
+}
+
+export function provideFindRSVPByEventUseCase() {
+  return createUseCaseProvider(FindRSVPByEventUseCase, [EventService]);
+}
+
 // export function provideUploadCoverUseCase() {
 //   return createUseCaseProvider(UploadCoverUseCase, [EventService]);
 // }
@@ -39,5 +49,8 @@ export function provideUseCases() {
     provideFindEventByIDUseCase(),
     provideUpdateEventUseCase(),
     provideDeleteEventUseCase(),
+
+    provideCreateRSVPUseCase(),
+    provideFindRSVPByEventUseCase(),
   ];
 }

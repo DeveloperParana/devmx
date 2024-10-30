@@ -9,15 +9,23 @@ export class RSVPsMongoServiceImpl implements RSVPsService {
   constructor(private rsvpModel: Model<RSVPCollection>) {}
 
   async create(account: string, event: string, status: RSVPStatus) {
-    return await this.rsvpModel.findOneAndUpdate(
-      { account, event },
-      { status },
-      { upsert: true, new: true }
-    );
+    return await this.rsvpModel
+      .findOneAndUpdate(
+        { account, event },
+        { status },
+        { upsert: true, new: true }
+      )
+      .exec();
   }
 
   async findByEvent(event: string) {
-    return await this.rsvpModel.find({ event }).populate('account', 'name');
+    const data = await this.rsvpModel
+      .find({ event })
+      .populate('account', 'name photo')
+      .populate('event', 'title')
+      .exec();
+
+    return data.map((item) => item.toJSON());
   }
 }
 

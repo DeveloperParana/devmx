@@ -19,6 +19,7 @@ import {
   UpdateEventDto,
   RSVPsFacade,
   CreateRSVPDto,
+  RSVPDto,
 } from '@devmx/event-data-source';
 import 'multer';
 
@@ -83,7 +84,7 @@ export class EventsController {
   }
 
   @Get(':id/rsvps')
-  @ApiOkResponse({ type: EventDto })
+  @ApiOkResponse({ type: [RSVPDto] })
   async findRSVPs(@User('id') owner: string, @Param('id') id: string) {
     try {
       const event = await this.eventsFacade.findOne(id);
