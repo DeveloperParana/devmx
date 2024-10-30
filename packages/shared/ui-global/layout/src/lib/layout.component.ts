@@ -1,28 +1,24 @@
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutToolbarComponent } from './toolbar/toolbar.component';
 import { LayoutNavbarComponent } from './navbar/navbar.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatBadgeModule } from '@angular/material/badge';
-import { PaginatorComponent } from '@devmx/shared-ui-global';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import { Portal, PortalModule } from '@angular/cdk/portal';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatListModule } from '@angular/material/list';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LayoutFacade } from './layout.facade';
 import { RouterModule } from '@angular/router';
-import { AsyncPipe, NgClass } from '@angular/common';
+import { skip } from 'rxjs';
 import {
   inject,
-  signal,
   Component,
   DestroyRef,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { skip } from 'rxjs';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'devmx-layout',
@@ -33,16 +29,13 @@ import { MatButtonModule } from '@angular/material/button';
     NgClass,
     AsyncPipe,
     LayoutModule,
-    PortalModule,
     RouterModule,
     MatListModule,
     IconComponent,
     MatBadgeModule,
     MatButtonModule,
     MatSidenavModule,
-    MatToolbarModule,
     MatProgressBarModule,
-    PaginatorComponent,
     LayoutToolbarComponent,
     LayoutNavbarComponent,
   ],
@@ -50,11 +43,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class LayoutComponent {
   destroyRef = inject(DestroyRef);
-
-  hideToggleButtonLeft = signal(true);
-  hideToggleButtonRight = signal(true);
-
-  sidenavOutlet?: Portal<unknown>;
 
   layoutFacade;
 
@@ -70,24 +58,5 @@ export class LayoutComponent {
     this.destroyRef.onDestroy(() => {
       this.layoutFacade.destroyListener();
     });
-
-    this.layoutFacade.component$
-      .pipe(takeUntilDestroyed())
-      .subscribe((component) => {
-        if (component) {
-          this.sidenavOutlet = component;
-          this.hideToggleButtonLeft.set(false);
-        }
-      });
-  }
-
-  openLeft(sidenav: MatSidenav) {
-    this.hideToggleButtonLeft.set(false);
-    sidenav.open();
-  }
-
-  closeLeft(sidenav: MatSidenav) {
-    this.hideToggleButtonLeft.set(true);
-    sidenav.close();
   }
 }
