@@ -22,6 +22,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { skip } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'devmx-layout',
@@ -37,6 +38,7 @@ import { skip } from 'rxjs';
     MatListModule,
     IconComponent,
     MatBadgeModule,
+    MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
     MatProgressBarModule,

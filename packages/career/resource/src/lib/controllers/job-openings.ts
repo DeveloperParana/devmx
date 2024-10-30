@@ -1,7 +1,12 @@
-import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { JobOpening } from '@devmx/shared-api-interfaces';
+import {
+  User,
+  Allowed,
+  ApiPage,
+  QueryParamsDto,
+} from '@devmx/shared-data-source';
 import {
   Get,
   Post,
@@ -19,13 +24,13 @@ import {
   UpdateJobOpeningDto,
 } from '@devmx/career-data-source';
 
-@ApiBearerAuth()
 @ApiTags('Vagas de emprego')
 @Controller('job-openings')
 export class JobOpeningsController {
   constructor(private readonly jobOpeningsFacade: JobOpeningsFacade) {}
 
   @Post()
+  @ApiBearerAuth()
   @ApiOkResponse({ type: JobOpeningDto })
   async create(@User('id') owner: string, @Body() data: CreateJobOpeningDto) {
     try {
@@ -36,6 +41,7 @@ export class JobOpeningsController {
   }
 
   @Get()
+  @Allowed()
   @ApiPage(JobOpeningDto)
   async findAll(@Query() params: QueryParamsDto<JobOpening>) {
     try {
@@ -46,16 +52,11 @@ export class JobOpeningsController {
   }
 
   @Get(':id')
+  @Allowed()
   @ApiOkResponse({ type: JobOpeningDto })
-  async findOne(@User('id') owner: string, @Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     try {
-      const jobOpening = await this.jobOpeningsFacade.findOne(id);
-
-      if (!jobOpening.active && jobOpening.owner.id !== owner) {
-        throw exceptionByError({ code: 403, message: 'Acesso negado' });
-      }
-
-      return jobOpening;
+      return await this.jobOpeningsFacade.findOne(id);
     } catch (err) {
       throw exceptionByError({
         code: 404,
@@ -65,6 +66,7 @@ export class JobOpeningsController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: JobOpeningDto })
   async update(
     @User('id') owner: string,
@@ -99,6 +101,7 @@ export class JobOpeningsController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: JobOpeningDto })
   async remove(@User('id') owner: string, @Param('id') id: string) {
     const jobOpening = await this.jobOpeningsFacade.findOne(id);

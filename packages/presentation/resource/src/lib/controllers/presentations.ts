@@ -1,7 +1,12 @@
-import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { exceptionByError } from '@devmx/shared-resource';
+import {
+  User,
+  Allowed,
+  ApiPage,
+  QueryParamsDto,
+} from '@devmx/shared-data-source';
 import {
   PresentationDto,
   PresentationsFacade,
@@ -20,13 +25,13 @@ import {
   Controller,
 } from '@nestjs/common';
 
-@ApiBearerAuth()
 @ApiTags('Apresentações')
 @Controller('presentations')
 export class PresentationsController {
   constructor(private readonly presentationsFacade: PresentationsFacade) {}
 
   @Post()
+  @ApiBearerAuth()
   @ApiOkResponse({ type: CreatedPresentationDto })
   async create(@User('id') owner: string, @Body() data: CreatePresentationDto) {
     try {
@@ -37,6 +42,7 @@ export class PresentationsController {
   }
 
   @Get()
+  @Allowed()
   @ApiPage(PresentationDto)
   async findAll(@Query() params: QueryParamsDto<Presentation>) {
     try {
@@ -47,16 +53,11 @@ export class PresentationsController {
   }
 
   @Get(':id')
+  @Allowed()
   @ApiOkResponse({ type: PresentationDto })
-  async findOne(@User('id') account: string, @Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     try {
-      const presentation = await this.presentationsFacade.findOne(id);
-
-      if (!presentation.visible && presentation.owner.id !== account) {
-        throw exceptionByError({ code: 403, message: 'Acesso negado' });
-      }
-
-      return presentation;
+      return await this.presentationsFacade.findOne(id);
     } catch (err) {
       throw exceptionByError({
         code: 404,
@@ -66,6 +67,7 @@ export class PresentationsController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: PresentationDto })
   async update(
     @User('id') account: string,
@@ -93,6 +95,7 @@ export class PresentationsController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: PresentationDto })
   async remove(@User('id') account: string, @Param('id') id: string) {
     const presentation = await this.presentationsFacade.findOne(id);

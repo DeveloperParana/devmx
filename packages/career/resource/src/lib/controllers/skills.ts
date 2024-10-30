@@ -1,4 +1,9 @@
-import { ApiPage, SkillDto, QueryParamsDto } from '@devmx/shared-data-source';
+import {
+  ApiPage,
+  SkillDto,
+  QueryParamsDto,
+  Allowed,
+} from '@devmx/shared-data-source';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { Skill } from '@devmx/shared-api-interfaces';
@@ -19,13 +24,13 @@ import {
 } from '@devmx/career-data-source';
 import { escapeRegExp } from '@devmx/shared-util-data';
 
-@ApiBearerAuth()
 @ApiTags('Habilidadess')
 @Controller('skills')
 export class SkillsController {
   constructor(private readonly skillsFacade: SkillsFacade) {}
 
   @Post()
+  @ApiBearerAuth()
   @ApiOkResponse({ type: SkillDto })
   async create(@Body() data: CreateSkillDto) {
     try {
@@ -36,6 +41,7 @@ export class SkillsController {
   }
 
   @Get()
+  @Allowed()
   @ApiPage(SkillDto)
   async findAll(@Query() params: QueryParamsDto<Skill>) {
     try {
@@ -49,6 +55,7 @@ export class SkillsController {
   }
 
   @Get(':id')
+  @Allowed()
   @ApiOkResponse({ type: SkillDto })
   async findOne(@Param('id') id: string) {
     try {
@@ -62,6 +69,7 @@ export class SkillsController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: SkillDto })
   async update(
     @Param('id') id: string,
@@ -84,6 +92,7 @@ export class SkillsController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: SkillDto })
   async remove(@Param('id') id: string) {
     const skill = await this.skillsFacade.findOne(id);

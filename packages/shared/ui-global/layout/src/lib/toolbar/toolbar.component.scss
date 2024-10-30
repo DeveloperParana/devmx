@@ -16,6 +16,15 @@
     }
   }
 
+  .devpr {
+    display: flex;
+    gap: 1em;
+    font-size: 0.68em;
+    p {
+      margin: 0;
+      opacity: 0.6;
+    }
+  }
   .devpr-link {
     height: 100%;
     display: inline-flex;

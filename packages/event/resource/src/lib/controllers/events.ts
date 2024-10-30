@@ -1,4 +1,4 @@
-import { ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
+import { Allowed, ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
 import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { Event } from '@devmx/shared-api-interfaces';
@@ -23,7 +23,6 @@ import {
 } from '@devmx/event-data-source';
 import 'multer';
 
-@ApiBearerAuth()
 @ApiTags('Eventos')
 @Controller('events')
 export class EventsController {
@@ -33,6 +32,7 @@ export class EventsController {
   ) {}
 
   @Post()
+  @ApiBearerAuth()
   async create(@User('id') owner: string, @Body() data: CreateEventDto) {
     try {
       return await this.eventsFacade.create({ ...data, owner });
@@ -42,6 +42,7 @@ export class EventsController {
   }
 
   @Get()
+  @Allowed()
   @ApiPage(EventDto)
   async findAll(@Query() params: QueryParamsDto<Event>) {
     try {
@@ -51,17 +52,12 @@ export class EventsController {
     }
   }
 
+  @Allowed()
   @Get(':id')
   @ApiOkResponse({ type: EventDto })
-  async findOne(@User('id') owner: string, @Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     try {
-      const event = await this.eventsFacade.findOne(id);
-
-      if (!event.visible && event.owner.id !== owner) {
-        throw exceptionByError({ code: 403, message: 'Acesso negado' });
-      }
-
-      return event;
+      return await this.eventsFacade.findOne(id);
     } catch (err) {
       throw exceptionByError({
         code: 404,
@@ -70,6 +66,7 @@ export class EventsController {
     }
   }
 
+  @ApiBearerAuth()
   @Post(':id/rsvps')
   async createRSVP(
     @User('id') account: string,
@@ -83,16 +80,11 @@ export class EventsController {
     }
   }
 
+  @Allowed()
   @Get(':id/rsvps')
   @ApiOkResponse({ type: [RSVPDto] })
-  async findRSVPs(@User('id') owner: string, @Param('id') id: string) {
+  async findRSVPs(@Param('id') id: string) {
     try {
-      const event = await this.eventsFacade.findOne(id);
-
-      if (!event.visible && event.owner.id !== owner) {
-        throw exceptionByError({ code: 403, message: 'Acesso negado' });
-      }
-
       return await this.rsvpsFacade.find(id);
     } catch (err) {
       throw exceptionByError({
@@ -103,6 +95,7 @@ export class EventsController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: EventDto })
   async update(
     @User('id') owner: string,
@@ -130,6 +123,7 @@ export class EventsController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @ApiOkResponse({ type: EventDto })
   async remove(@User('id') owner: string, @Param('id') id: string) {
     const event = await this.eventsFacade.findOne(id);
