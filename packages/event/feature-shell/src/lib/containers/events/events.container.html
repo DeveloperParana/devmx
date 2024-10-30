@@ -1,3 +1,7 @@
+<header>
+  <devmx-event-filter (change)="onFilterChange($event)" />
+</header>
+
 @defer { @if (eventFacade.response$ | async; as response) {
 
 <div class="events-container">
@@ -18,7 +22,7 @@
   />
 </footer>
 } } @loading {
-<img src="loader.svg" alt="Carregando..." />
+<img src="/loader.svg" alt="Carregando..." />
 } @placeholder {
 <div class="events-container">
   <devmx-skeleton [rows]="4" />
