@@ -1,0 +1,7 @@
+<mat-chip-listbox (change)="change.emit($event.value)">
+  @for (format of formats; track format.value) {
+  <mat-chip-option [value]="format.value">
+    {{ format.viewValue }}
+  </mat-chip-option>
+  }
+</mat-chip-listbox>

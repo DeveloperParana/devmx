@@ -1,19 +1,14 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
+import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { LayoutFacade } from '@devmx/shared-ui-global/layout';
-import { EventCardComponent } from '@devmx/event-ui-shared';
-import { AuthFacade } from '@devmx/account-data-access';
-import { EventFilterComponent } from '../../components';
 import { EventFacade } from '@devmx/event-data-access';
 import { AsyncPipe } from '@angular/common';
 import {
-  inject,
-  Component,
-  DestroyRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+  EventCardComponent,
+  EventFilterComponent,
+} from '@devmx/event-ui-shared';
 
 @Component({
   selector: 'devmx-events',
@@ -22,6 +17,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     PaginatorComponent,
+    EventFilterComponent,
     EventCardComponent,
     SkeletonComponent,
     RouterModule,
@@ -34,25 +30,12 @@ export class EventsContainer {
 
   route = inject(ActivatedRoute);
 
-  destroyRef = inject(DestroyRef);
-
-  layoutFacade = inject(LayoutFacade);
-
-  authFacade = inject(AuthFacade);
-
   eventFacade = inject(EventFacade);
 
   constructor() {
     this.route.queryParams
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
-
-    this.layoutFacade.setComponent(EventFilterComponent);
-    this.layoutFacade.setSidenav({ start: true });
-
-    this.destroyRef.onDestroy(() => {
-      this.layoutFacade.resetComponent();
-    });
   }
 
   onQueryParams = (params: Params) => {
@@ -66,6 +49,11 @@ export class EventsContainer {
 
     this.eventFacade.load();
   };
+
+  onFilterChange(format: string) {
+    const queryParams = { format };
+    this.router.navigate([], { queryParams });
+  }
 
   onPageChange(queryParams: PageParams) {
     this.router.navigate([], { queryParams });
