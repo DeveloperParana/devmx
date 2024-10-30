@@ -8,6 +8,12 @@
 
   .layout-container {
     background-color: rgba(mat.get-theme-color($theme, surface-variant), 1);
+
+    .layout-content {
+      .mdc-linear-progress__bar-inner {
+        border-color: mat.get-theme-color($theme, secondary, 70);
+      }
+    }
   }
 
   .layout-main-wrapper {
