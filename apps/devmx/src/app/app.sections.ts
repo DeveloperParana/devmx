@@ -55,6 +55,12 @@ export const appSections: SectionHeaderOptions[] = [
         roles: ['manager', 'director'],
       },
       {
+        label: 'Gerenciar eventos',
+        route: ['/eventos', 'administracao', 'gerenciar-eventos'],
+        icon: 'calendar-tasks',
+        roles: ['manager', 'director', 'staff'],
+      },
+      {
         label: 'Dashboard',
         route: ['/conta', 'dashboard'],
         icon: 'menu/layout-6',

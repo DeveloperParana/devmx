@@ -1,8 +1,13 @@
 import { FindFilterDto, FindParamsDto } from '@devmx/shared-data-source';
 import { AccountsService } from '@devmx/account-domain/server';
-import { Account, Role } from '@devmx/shared-api-interfaces';
 import { SignUpDto, UpdateAccountDto } from '../dtos';
 import { Model } from 'mongoose';
+import {
+  Role,
+  Account,
+  AccountRef,
+  FindFilter,
+} from '@devmx/shared-api-interfaces';
 
 export class AccountsServiceImpl implements AccountsService {
   constructor(private accountModel: Model<Account>) {}
@@ -30,6 +35,15 @@ export class AccountsServiceImpl implements AccountsService {
     const pages = Math.ceil(items / size);
 
     return { data, items, pages };
+  }
+
+  async complete(filter: FindFilter<AccountRef>) {
+    const accounts = await this.accountModel
+      .find({ $or: [filter] })
+      .select('name username photo')
+      .exec();
+
+    return accounts.map((item) => item.toJSON());
   }
 
   async findByRole(role: Role, params: FindParamsDto<Account>) {

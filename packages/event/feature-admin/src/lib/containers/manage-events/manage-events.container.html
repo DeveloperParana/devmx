@@ -1,0 +1,46 @@
+@if (eventFacade.response$ | async; as events) {
+
+<div class="events-container">
+  @for (event of events.data; track event.id) {
+
+  <devmx-event-card [data]="event">
+    <button
+      mat-icon-button
+      (click)="openRSVP(event.id)"
+      matTooltip="Lista de presença"
+      matTooltipPosition="before"
+    >
+      <devmx-icon name="doc/check" />
+    </button>
+
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar evento"
+      matTooltipPosition="after"
+      (click)="deleteEvent(event)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-event-card>
+  }
+</div>
+
+@if (!events.items) {
+<div class="no-events-yet">
+  <h2>Não temos nada aqui...</h2>
+</div>
+}
+
+<footer>
+  <button mat-raised-button (click)="openSearchLeader()">
+    Filtrar por líder
+  </button>
+
+  <devmx-paginator
+    [size]="10"
+    [items]="events.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

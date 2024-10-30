@@ -9,6 +9,7 @@ import {
   ApiPage,
   QueryParamsDto,
   QueryByRoleParamsDto,
+  AccountRefDto,
 } from '@devmx/shared-data-source';
 import {
   ApiBody,
@@ -79,6 +80,16 @@ export class AccountsController {
   async findAll(@Query() params: QueryParamsDto<Account>) {
     try {
       return await this.accountsFacade.find(params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
+  @Get('complete/:query')
+  @ApiOkResponse({ type: [AccountRefDto] })
+  async complete(@Param('query') query: string) {
+    try {
+      return await this.accountsFacade.complete(query ?? '');
     } catch (err) {
       throw exceptionByError(err);
     }

@@ -1,12 +1,14 @@
+import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { AuthUser, Event } from '@devmx/shared-api-interfaces';
+import { exceptionByError } from '@devmx/shared-resource';
 import {
+  User,
+  Roles,
   Allowed,
   ApiPage,
+  authIsAdmin,
   QueryParamsDto,
-  User,
 } from '@devmx/shared-data-source';
-import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
-import { exceptionByError } from '@devmx/shared-resource';
-import { Event } from '@devmx/shared-api-interfaces';
 import {
   Get,
   Post,
@@ -19,12 +21,12 @@ import {
 } from '@nestjs/common';
 import {
   EventDto,
+  RSVPDto,
   EventsFacade,
   CreateEventDto,
   UpdateEventDto,
   RSVPsFacade,
   CreateRSVPDto,
-  RSVPDto,
 } from '@devmx/event-data-source';
 import 'multer';
 
@@ -116,8 +118,9 @@ export class EventsController {
   @Patch(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: EventDto })
+  @Roles(['director', 'manager', 'staff', 'leader'])
   async update(
-    @User('id') owner: string,
+    @User() auth: AuthUser,
     @Param('id') id: string,
     @Body() updateEventDto: UpdateEventDto
   ) {
@@ -130,7 +133,7 @@ export class EventsController {
       });
     }
 
-    if (event.owner.id !== owner) {
+    if (event.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 
@@ -144,7 +147,8 @@ export class EventsController {
   @Delete(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: EventDto })
-  async remove(@User('id') owner: string, @Param('id') id: string) {
+  @Roles(['director', 'manager', 'staff', 'leader'])
+  async remove(@User() auth: AuthUser, @Param('id') id: string) {
     const event = await this.eventsFacade.findOne(id);
 
     if (!event) {
@@ -154,7 +158,7 @@ export class EventsController {
       });
     }
 
-    if (event.owner.id !== owner) {
+    if (event.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 
