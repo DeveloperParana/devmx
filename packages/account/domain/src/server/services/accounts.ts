@@ -6,6 +6,7 @@ import {
   Creatable,
   FindFilter,
   FindParams,
+  AccountRef,
 } from '@devmx/shared-api-interfaces';
 
 // prettier-ignore
@@ -13,6 +14,8 @@ export abstract class AccountsService {
   abstract create(data: Creatable<Account>): Promise<Account>;
 
   abstract find(params: FindParams<Account>): Promise<Page<Account>>;
+
+  abstract complete(filter: FindFilter<AccountRef>): Promise<AccountRef[]>;
 
   abstract findByRole(role: Role, params: FindParams<Account>): Promise<Page<Account>>;
 

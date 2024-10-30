@@ -8,6 +8,7 @@ import {
   FindParams,
   FindFilter,
   Role,
+  AccountRef,
 } from '@devmx/shared-api-interfaces';
 
 export class AccountsServiceMock implements AccountsService {
@@ -18,6 +19,10 @@ export class AccountsServiceMock implements AccountsService {
   }
 
   async find(params: FindParams<Account>): Promise<Page<Account>> {
+    throw new Error('Method not implemented.');
+  }
+
+  async complete(params: FindFilter<AccountRef>): Promise<AccountRef[]> {
     throw new Error('Method not implemented.');
   }
 

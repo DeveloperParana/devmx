@@ -1,5 +1,5 @@
 import { EventFeatureShellComponent } from './event-feature-shell.component';
-import { roleGuard } from '@devmx/shared-ui-global/guards';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Event } from '@devmx/shared-api-interfaces';
 import { eventResolver } from './resolvers';
 import { Route } from '@angular/router';
@@ -19,7 +19,7 @@ export const eventFeatureShellRoutes: Route[] = [
     children: [
       {
         path: 'administracao',
-        canActivate: [roleGuard('leader')],
+        canActivate: [rolesGuard('leader', 'director', 'manager', 'staff')],
         loadChildren: () =>
           import('@devmx/event-feature-admin').then(
             (m) => m.eventFeatureAdminRoutes

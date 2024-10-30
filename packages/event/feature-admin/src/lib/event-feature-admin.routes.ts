@@ -1,9 +1,13 @@
 import { EventFeatureAdminComponent } from './event-feature-admin.component';
 import { eventFeatureAdminProviders } from './event-feature-admin.providers';
-import { EventContainer, MyEventsContainer } from './containers';
 import { Event } from '@devmx/shared-api-interfaces';
 import { eventResolver } from './resolvers';
 import { Route } from '@angular/router';
+import {
+  EventContainer,
+  ManageEventsContainer,
+  MyEventsContainer,
+} from './containers';
 
 export const eventFeatureAdminRoutes: Route[] = [
   {
@@ -37,6 +41,13 @@ export const eventFeatureAdminRoutes: Route[] = [
           breadcrumb: 'Meus eventos',
         },
         component: MyEventsContainer,
+      },
+      {
+        path: 'gerenciar-eventos',
+        data: {
+          breadcrumb: 'Gerenciar eventos',
+        },
+        component: ManageEventsContainer,
       },
       {
         path: '',

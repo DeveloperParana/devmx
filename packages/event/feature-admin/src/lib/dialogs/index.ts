@@ -7,5 +7,8 @@ export * from './search-presentations/search-presentations';
 export * from './search-leaders/search-leaders.provider';
 export * from './search-leaders/search-leaders';
 
+export * from './search-leader/search-leader.provider';
+export * from './search-leader/search-leader';
+
 export * from './event-rsvp/event-rsvp.provider';
 export * from './event-rsvp/event-rsvp';

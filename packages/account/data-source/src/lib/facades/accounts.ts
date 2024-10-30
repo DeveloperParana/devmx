@@ -1,4 +1,9 @@
-import { JobDto, PageDto, QueryParamsDto } from '@devmx/shared-data-source';
+import {
+  AccountRefDto,
+  JobDto,
+  PageDto,
+  QueryParamsDto,
+} from '@devmx/shared-data-source';
 import { AuthUser, Presentation, Role } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
@@ -13,6 +18,7 @@ import {
   FindEventsByOwnerUseCase,
   FindAccountsByRoleUseCase,
   FindJobsByOwnerUseCase,
+  CompleteAccountUseCase,
 } from '@devmx/account-domain/server';
 import {
   AccountDto,
@@ -35,7 +41,8 @@ export class AccountsFacade {
     private findPresentationsByOwnerUseCase: FindPresentationsByOwnerUseCase,
     private findJobsByOwnerUseCase: FindJobsByOwnerUseCase,
     private findEventsByOwnerUseCase: FindEventsByOwnerUseCase,
-    private findAccountsByRoleUseCase: FindAccountsByRoleUseCase
+    private findAccountsByRoleUseCase: FindAccountsByRoleUseCase,
+    private completeAccountUseCase: CompleteAccountUseCase
   ) {}
 
   async find(params: QueryParamsDto<AccountDto>) {
@@ -44,6 +51,11 @@ export class AccountsFacade {
     );
     const accounts = plainToInstance(AccountDto, data);
     return new PageDto(accounts, items, pages);
+  }
+
+  async complete(query: string) {
+    const accounts = await this.completeAccountUseCase.execute(query);
+    return plainToInstance(AccountRefDto, accounts);
   }
 
   async findPresentations(owner: string, params: QueryParamsDto<Presentation>) {
