@@ -1,6 +1,4 @@
-import { Provider } from "@angular/core";
-import { provideDialog } from "@devmx/shared-ui-global/dialog";
+import { Provider } from '@angular/core';
+import { provideDialog } from '@devmx/shared-ui-global/dialog';
 
-export const accountFeatureAdminProviders: Provider[] = [
-  provideDialog()
-]
+export const accountFeatureAdminProviders: Provider[] = [provideDialog()];

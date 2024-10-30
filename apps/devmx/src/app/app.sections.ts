@@ -19,7 +19,7 @@ export const appSections: SectionHeaderOptions[] = [
         route: ['/carreiras'],
         icon: 'finance/bullseye',
       },
-    ]
+    ],
   },
   {
     label: 'Configurações',

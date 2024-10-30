@@ -1,14 +1,8 @@
 import { NotFoundError, PersistenceError } from '@devmx/shared-util-errors';
 import { SkillsService } from '../services';
-import {
-  UseCase,
-  Skill,
-  EditableSkill,
-} from '@devmx/shared-api-interfaces';
+import { UseCase, Skill, EditableSkill } from '@devmx/shared-api-interfaces';
 
-export class UpdateSkillUseCase
-  implements UseCase<EditableSkill, Skill>
-{
+export class UpdateSkillUseCase implements UseCase<EditableSkill, Skill> {
   constructor(private skillService: SkillsService) {}
 
   async execute(data: EditableSkill) {

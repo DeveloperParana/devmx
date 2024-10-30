@@ -4,7 +4,7 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreatePresentation } from '@devmx/presentation-domain';
 
 export class CreatePresentationDto implements CreatePresentation {
-  id: string
+  id: string;
 
   @IsString()
   @ApiProperty()

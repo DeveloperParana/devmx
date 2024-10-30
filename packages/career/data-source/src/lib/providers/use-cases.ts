@@ -14,7 +14,6 @@ import {
   DeleteSkillUseCase,
 } from '@devmx/career-domain/server';
 
-
 export function provideCreateJobOpeningUseCase() {
   return createUseCaseProvider(CreateJobOpeningUseCase, [JobOpeningsService]);
 }

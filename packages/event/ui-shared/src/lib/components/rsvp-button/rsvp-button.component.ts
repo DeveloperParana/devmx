@@ -24,7 +24,7 @@ import {
   standalone: true,
 })
 export class RSVPButtonComponent extends DefaultValueAccessor {
-  statusChange = output<void>()
+  statusChange = output<void>();
 
   get control() {
     return this.ngControl.control as FormControl;

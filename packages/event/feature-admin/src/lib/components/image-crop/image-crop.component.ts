@@ -87,7 +87,9 @@ export class ImageCropComponent implements OnInit {
       this.setInitialPosition();
     };
 
-    this.box.addEventListener('touchstart', this.startUpdate.bind(this), { passive: true });
+    this.box.addEventListener('touchstart', this.startUpdate.bind(this), {
+      passive: true,
+    });
 
     this.image.src = src;
   }

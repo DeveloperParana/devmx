@@ -6,9 +6,9 @@ type DetectType<T> = T extends Array<infer U>
   ? FormGroup<TypedForm<T>>
   : T extends false | true
   ? FormControl<boolean>
-  // : T extends string
-  // ? FormControl<T | ''>
-  : FormControl<T>;
+  : // : T extends string
+    // ? FormControl<T | ''>
+    FormControl<T>;
 
 export type TypedForm<T> = {
   [K in keyof T]: DetectType<T[K]>;

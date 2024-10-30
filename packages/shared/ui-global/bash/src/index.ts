@@ -1,1 +1,1 @@
-export * from './lib/bash.component'
+export * from './lib/bash.component';

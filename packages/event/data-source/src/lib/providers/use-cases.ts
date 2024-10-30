@@ -11,7 +11,6 @@ import {
   FindRSVPByEventUseCase,
 } from '@devmx/event-domain/server';
 
-
 export function provideCreateEventUseCase() {
   return createUseCaseProvider(CreateEventUseCase, [EventsService]);
 }

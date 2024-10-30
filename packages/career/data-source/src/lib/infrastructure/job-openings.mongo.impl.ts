@@ -6,7 +6,7 @@ import { Model, Query } from 'mongoose';
 
 export class JobOpeningsMongoServiceImpl extends MongoService<JobOpeningCollection> {
   protected override applyPopulate<U>(query: Query<U, JobOpeningCollection>) {
-    return query.populate('owner', 'name username photo').populate('skills')
+    return query.populate('owner', 'name username photo').populate('skills');
   }
 }
 
@@ -19,4 +19,3 @@ export function provideJobOpeningsMongoService() {
     inject: [getModelToken(JobOpeningCollection.name)],
   };
 }
-

@@ -6,15 +6,16 @@ import { Query } from 'mongoose';
 
 export class PresentationsMongoServiceImpl extends MongoService<PresentationCollection> {
   protected override applyPopulate<U>(query: Query<U, PresentationCollection>) {
-    return query
-      .populate('owner', 'name username photo')
-      // .populate('presentations')
-      // .populate('leaders');
+    return query.populate('owner', 'name username photo');
+    // .populate('presentations')
+    // .populate('leaders');
   }
 }
 
 export function providePresentationsMongoService() {
-  return createServiceProvider(PresentationsService, PresentationsMongoServiceImpl, [
-    getModelToken(PresentationCollection.name),
-  ]);
+  return createServiceProvider(
+    PresentationsService,
+    PresentationsMongoServiceImpl,
+    [getModelToken(PresentationCollection.name)]
+  );
 }

@@ -3,11 +3,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { AsyncPipe } from '@angular/common';
 import { LayoutToolbar } from './toolbar';
-import {
-  inject,
-  Component,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'devmx-layout-toolbar',

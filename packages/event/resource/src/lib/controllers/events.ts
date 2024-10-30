@@ -1,4 +1,9 @@
-import { Allowed, ApiPage, QueryParamsDto, User } from '@devmx/shared-data-source';
+import {
+  Allowed,
+  ApiPage,
+  QueryParamsDto,
+  User,
+} from '@devmx/shared-data-source';
 import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { Event } from '@devmx/shared-api-interfaces';

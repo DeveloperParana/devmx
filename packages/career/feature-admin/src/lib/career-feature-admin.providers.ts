@@ -6,5 +6,5 @@ import { Provider } from '@angular/core';
 export const careerFeatureAdminProviders: Provider[] = [
   provideSkillDialog(),
   provideFormDialog(),
-  provideDialog()
+  provideDialog(),
 ];

@@ -8,7 +8,7 @@ export class FindEventsByOwnerUseCase
   constructor(private eventsService: EventsService) {}
 
   execute({ owner, ...params }: QueryByOwnerParams<EventOut>) {
-    params.filter = {...params.filter, owner}
+    params.filter = { ...params.filter, owner };
     return this.eventsService.find(params);
   }
 }

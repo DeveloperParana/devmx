@@ -14,7 +14,6 @@ import {
   createServerProvider,
 } from '@devmx/shared-data-source';
 
-
 export class EventsFacade {
   constructor(
     private createEventUseCase: CreateEventUseCase,

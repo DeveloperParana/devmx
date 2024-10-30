@@ -7,6 +7,6 @@ export class FindAccountByUsernameUseCase
   constructor(private accountsService: AccountsService) {}
 
   async execute(username: string) {
-    return this.accountsService.findOneBy({username});
+    return this.accountsService.findOneBy({ username });
   }
 }

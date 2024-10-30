@@ -66,6 +66,6 @@ export const appConfig: ApplicationConfig = {
     provideEnv(env),
     ...provideCareer(),
     ...providePresentation(),
-    ...provideEvent()
+    ...provideEvent(),
   ],
 };

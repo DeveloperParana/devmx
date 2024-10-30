@@ -1,4 +1,7 @@
-import { JobOpeningFacade, jobOpeningResolverWrapped } from '@devmx/career-data-access';
+import {
+  JobOpeningFacade,
+  jobOpeningResolverWrapped,
+} from '@devmx/career-data-access';
 import { JobOpening } from '@devmx/shared-api-interfaces';
 import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';

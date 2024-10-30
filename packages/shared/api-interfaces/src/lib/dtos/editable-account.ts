@@ -1,4 +1,4 @@
-import { EditableEntity } from "../types";
-import { Account } from "../entities";
+import { EditableEntity } from '../types';
+import { Account } from '../entities';
 
-export type EditableAccount = EditableEntity<Account>
+export type EditableAccount = EditableEntity<Account>;

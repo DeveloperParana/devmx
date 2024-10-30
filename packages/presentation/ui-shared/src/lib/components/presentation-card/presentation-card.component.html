@@ -5,7 +5,9 @@
 
   <mat-card-header>
     <mat-card-title>{{ presentation.title }}</mat-card-title>
-    <mat-card-subtitle>{{ presentation.format | presentationFormat }}</mat-card-subtitle>
+    <mat-card-subtitle>{{
+      presentation.format | presentationFormat
+    }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content class="presentation-card-content">

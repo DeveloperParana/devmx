@@ -108,7 +108,7 @@ export class JobOpeningContainer {
   }
 
   onSubmit() {
-    this.form.logErrors()
+    this.form.logErrors();
 
     if (this.form.valid) {
       const value = this.form.getRawValue();

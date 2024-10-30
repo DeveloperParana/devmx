@@ -1,8 +1,8 @@
-import { provideEventsMongoService, provideRSVPsMongoService } from '../infrastructure';
+import {
+  provideEventsMongoService,
+  provideRSVPsMongoService,
+} from '../infrastructure';
 
 export function provideServices() {
-  return [
-    provideEventsMongoService(),
-    provideRSVPsMongoService()
-  ]
+  return [provideEventsMongoService(), provideRSVPsMongoService()];
 }

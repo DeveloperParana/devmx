@@ -10,24 +10,21 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './home.container.html',
   styleUrl: './home.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    AsyncPipe
-  ],
+  imports: [AsyncPipe],
   standalone: true,
 })
 export class HomeContainer {
-  httpClient = inject(HttpClient)
+  httpClient = inject(HttpClient);
 
-  #loader = new BehaviorSubject(0)
-  loader$ = this.#loader.asObservable()
+  #loader = new BehaviorSubject(0);
+  loader$ = this.#loader.asObservable();
 
   constructor() {
     const layout = inject(LayoutFacade);
     layout.setSidenav({ start: true });
   }
 
-
   onClick() {
-    this.loader$ = this.httpClient.get<number>('/api/accounts/download')
+    this.loader$ = this.httpClient.get<number>('/api/accounts/download');
   }
 }

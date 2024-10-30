@@ -23,7 +23,6 @@ import {
   FindAboutAccountUseCase,
 } from '@devmx/account-domain/server';
 
-
 export function provideFindAccountsUseCase() {
   return createUseCaseProvider(FindAccountsUseCase, [AccountsService]);
 }

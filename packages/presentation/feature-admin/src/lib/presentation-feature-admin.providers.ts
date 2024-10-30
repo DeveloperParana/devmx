@@ -6,5 +6,5 @@ import { Provider } from '@angular/core';
 export const presentationFeatureAdminProviders: Provider[] = [
   provideFormDialog(),
   provideListItemDialog(),
-  provideDialog()
+  provideDialog(),
 ];

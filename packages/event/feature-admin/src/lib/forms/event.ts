@@ -1,5 +1,9 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EditableEvent, Event, EventFormat } from '@devmx/shared-api-interfaces';
+import {
+  EditableEvent,
+  Event,
+  EventFormat,
+} from '@devmx/shared-api-interfaces';
 import { EventPresentationsForm } from './event-presentation';
 import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
 import { EventLeadersForm } from './event-leader';
@@ -9,7 +13,7 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
     { value: 'in-person', viewValue: 'Presencial' },
     { value: 'mixed', viewValue: 'Híbrido' },
     { value: 'online', viewValue: 'Online' },
-  ]
+  ];
 
   times = [
     '00:00',

@@ -16,7 +16,7 @@ import { PresentationFormatPipe } from '../../pipes';
     MatListModule,
     IconComponent,
     MatChipsModule,
-    PresentationFormatPipe
+    PresentationFormatPipe,
   ],
   standalone: true,
 })

@@ -1,8 +1,8 @@
-import { provideJobOpeningsMongoService, provideSkillsMongoService } from '../infrastructure';
+import {
+  provideJobOpeningsMongoService,
+  provideSkillsMongoService,
+} from '../infrastructure';
 
 export function provideServices() {
-  return [
-    provideSkillsMongoService(),
-    provideJobOpeningsMongoService(),
-  ];
+  return [provideSkillsMongoService(), provideJobOpeningsMongoService()];
 }

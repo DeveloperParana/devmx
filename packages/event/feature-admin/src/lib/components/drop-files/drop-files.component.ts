@@ -1,5 +1,15 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, HostListener, inject, input, output, viewChild } from "@angular/core";
-import { Attachment } from "./attachment";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  HostListener,
+  inject,
+  input,
+  output,
+  viewChild,
+} from '@angular/core';
+import { Attachment } from './attachment';
 
 @Component({
   selector: 'devmx-drop-files',
@@ -7,16 +17,16 @@ import { Attachment } from "./attachment";
   styleUrl: './drop-files.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  standalone: true
+  standalone: true,
 })
 export class DropFilesComponent {
-  destroyRef = inject(DestroyRef)
+  destroyRef = inject(DestroyRef);
 
   directory = input(false);
 
-  fileAttachmentAccept = output<{ attachments: Attachment[] }>()
-  fileAttachmentAccepted = output<{ attachments: Attachment[] }>()
-  fileInput = viewChild<ElementRef<HTMLInputElement>>('fileInput')
+  fileAttachmentAccept = output<{ attachments: Attachment[] }>();
+  fileAttachmentAccepted = output<{ attachments: Attachment[] }>();
+  fileInput = viewChild<ElementRef<HTMLInputElement>>('fileInput');
 
   // @Output() fileAttachmentAccept = new EventEmitter<{ attachments: Attachment[] }>();
   // @Output() fileAttachmentAccepted = new EventEmitter<{ attachments: Attachment[] }>();
@@ -28,14 +38,16 @@ export class DropFilesComponent {
   constructor(private el: ElementRef) {
     this.destroyRef.onDestroy(() => {
       clearTimeout(this.draggingTimeout);
-
-    })
+    });
   }
 
-  async attach(transferred: File[] | Attachment[] | FileList | DataTransfer): Promise<void> {
-    const attachments = transferred instanceof DataTransfer
-      ? await Attachment.traverse(transferred, this.directory())
-      : Attachment.from(transferred);
+  async attach(
+    transferred: File[] | Attachment[] | FileList | DataTransfer
+  ): Promise<void> {
+    const attachments =
+      transferred instanceof DataTransfer
+        ? await Attachment.traverse(transferred, this.directory())
+        : Attachment.from(transferred);
 
     const acceptedEvent = this.fileAttachmentAccept.emit({ attachments });
 

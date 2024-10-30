@@ -1,1 +1,1 @@
-export * from './lib/crop.component'
+export * from './lib/crop.component';

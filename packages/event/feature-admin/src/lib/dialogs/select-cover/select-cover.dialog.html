@@ -1,9 +1,13 @@
-<devmx-crop-image [src]="src" [width]="980" (cropChange)="onCropChange($event)" />
+<devmx-crop-image
+  [src]="src"
+  [width]="980"
+  (cropChange)="onCropChange($event)"
+/>
 
 <form [formGroup]="form" (submit)="onCrop()">
   <mat-form-field>
     <mat-label>Texto alternativo</mat-label>
-    <input matInput formControlName="alt">
+    <input matInput formControlName="alt" />
   </mat-form-field>
   <button mat-icon-button>
     <devmx-icon name="menu/crop" />

@@ -8,7 +8,7 @@ export class FindJobsByOwnerUseCase
   constructor(private jobsService: JobOpeningsService) {}
 
   execute({ owner, ...params }: QueryByOwnerParams<JobOut>) {
-    params.filter = {...params.filter, owner }
+    params.filter = { ...params.filter, owner };
     return this.jobsService.find(params);
   }
 }
