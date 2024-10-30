@@ -8,7 +8,6 @@ import {
   UpdateEventUseCase,
 } from '@devmx/event-domain/client';
 
-
 export class EventFacade extends EntityFacade<Event> {
   constructor(
     private createEventUseCase: CreateEventUseCase,

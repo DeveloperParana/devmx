@@ -55,7 +55,7 @@
   </mat-list>
   } @if (event.leaders.length) {
   <mat-list>
-    <h3 mat-subheader>Apresentações</h3>
+    <h3 mat-subheader>Organizadores</h3>
     @for (leader of event.leaders; track leader) {
     <mat-list-item>
       <devmx-icon matListItemIcon name="user-circle" />
@@ -63,7 +63,25 @@
     </mat-list-item>
     }
   </mat-list>
+  } @if (rsvpFacade.response$ | async; as presences) {
+  <mat-list>
+    <h3 mat-subheader>Presenças</h3>
+
+    @for (rsvp of presences; track rsvp.id) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="user-circle" />
+      <div matListItemTitle>{{ rsvp.account.name.first }}</div>
+    </mat-list-item>
+    }
+  </mat-list>
   }
+
+  <form class="rsvp-button" [formGroup]="rsvpForm">
+    <devmx-rsvp-button
+      formControlName="status"
+      (statusChange)="onStatusChange()"
+    />
+  </form>
 
   <mat-card-header>
     <img

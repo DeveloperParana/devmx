@@ -1,0 +1,9 @@
+<mat-button-toggle-group
+  [formControl]="control"
+  (valueChange)="statusChange.emit()"
+  aria-label="Presença"
+>
+  <mat-button-toggle value="confirmed">Vou!</mat-button-toggle>
+  <mat-button-toggle value="declined">Não vou</mat-button-toggle>
+  <mat-button-toggle value="maybe">Talvez</mat-button-toggle>
+</mat-button-toggle-group>
