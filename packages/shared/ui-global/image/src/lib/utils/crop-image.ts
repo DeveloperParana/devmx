@@ -1,7 +1,7 @@
-import { Canvas } from '@websqnl/elements';
-
 function getCanvasContext({ width, height }: HTMLImageElement | DOMRect) {
-  const canvas = new Canvas({ width, height });
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
   const context = canvas.getContext('2d');
   if (!context) throw `context error`;
   return context;

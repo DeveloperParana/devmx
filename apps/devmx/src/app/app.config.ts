@@ -32,8 +32,9 @@ import {
   LOCALE_ID,
   ErrorHandler,
   ApplicationConfig,
-  provideZoneChangeDetection,
+  provideZoneChangeDetection, isDevMode,
 } from '@angular/core';
+import { provideServiceWorker } from '@angular/service-worker';
 
 registerLocaleData(pt, 'pt-BR', ptBr);
 
@@ -66,6 +67,9 @@ export const appConfig: ApplicationConfig = {
     provideEnv(env),
     ...provideCareer(),
     ...providePresentation(),
-    ...provideEvent(),
+    ...provideEvent(), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          }),
   ],
 };
