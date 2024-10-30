@@ -8,19 +8,16 @@ export const appSections: SectionHeaderOptions[] = [
         label: 'Eventos',
         route: ['/eventos'],
         icon: 'calendar',
-        roles: ['member'],
       },
       {
         label: 'Apresentações',
         route: ['/apresentacoes'],
         icon: 'presentation',
-        roles: ['member'],
       },
       {
         label: 'Vagas',
         route: ['/carreiras'],
         icon: 'finance/bullseye',
-        roles: ['member'],
       },
     ]
   },

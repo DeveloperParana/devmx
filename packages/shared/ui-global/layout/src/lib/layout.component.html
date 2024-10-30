@@ -26,8 +26,6 @@
       class="layout-sidenav-start"
       fixedTopGap="52"
     >
-      <ng-template [cdkPortalOutlet]="sidenavOutlet"></ng-template>
-
       <div class="space-between">
         @for (section of layoutFacade.sections$ | async; track section.label) {
         <mat-nav-list>

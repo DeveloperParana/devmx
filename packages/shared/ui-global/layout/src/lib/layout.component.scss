@@ -127,16 +127,6 @@
       margin: 0 0.6em;
       opacity: 0.8;
     }
-
-    // @include mat.elevation-transition();
-    // @include mat.elevation(2);
-
-    // height: calc(100% - 66px);
-
-    // &:active,
-    // &:hover {
-    //   @include mat.elevation(4);
-    // }
   }
 
   .layout-sidenav-end {
@@ -146,7 +136,6 @@
     @include mat.elevation-transition();
     @include mat.elevation(4);
     max-height: calc(100dvh - 64px * 2);
-    // height: calc(100vh - 64px * 2);
 
     &:active,
     &:hover {
@@ -174,12 +163,9 @@
       flex: 1 0 auto;
     }
 
-    .layout-content {
-      // padding-bottom: 64px;
-    }
-
     .layout-sidenav-start {
-      height: calc(100% - 48px);
+      max-height: calc(100dvh - 64px * 2);
+      @include mat.elevation(2);
     }
 
     .layout-sidenav-end {
