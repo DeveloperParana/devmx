@@ -2,6 +2,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { SearchLeaders, SearchPresentations } from '../../dialogs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { EditableEvent } from '@devmx/shared-api-interfaces';
@@ -36,6 +37,7 @@ import {
   imports: [
     ReactiveFormsModule,
     MatDatepickerModule,
+    EditorComponent,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,

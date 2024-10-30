@@ -40,7 +40,7 @@
   </mat-list>
 
   <mat-card-content>
-    <p>{{event.description}}</p>
+    <div [innerHTML]="event.description | marked | safeHtml"></div>
   </mat-card-content>
 
   @if (event.presentations.length) {

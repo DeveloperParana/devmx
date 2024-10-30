@@ -1,0 +1,22 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <devmx-icon name="software/edit" />
+    </ng-template>
+    <mat-form-field class="editor-text-field">
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="8"
+        cdkAutosizeMaxRows="16"
+        [formControl]="control"
+      ></textarea>
+    </mat-form-field>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <devmx-icon name="text/layout" />
+    </ng-template>
+    <div class="markdown-preview" [innerHTML]="previewHTML | safeHtml"></div>
+  </mat-tab>
+</mat-tab-group>

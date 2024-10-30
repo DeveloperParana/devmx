@@ -8,16 +8,7 @@
           <mat-error>Obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Descrição</mat-label>
-          <textarea
-            matInput
-            formControlName="description"
-            cdkAutosizeMinRows="5"
-            cdkAutosizeMaxRows="10"
-            cdkTextareaAutosize
-          ></textarea>
-        </mat-form-field>
+        <devmx-editor formControlName="description" />
 
         <div>
           <mat-form-field>
