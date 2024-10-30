@@ -4,7 +4,12 @@
   flex-direction: column;
   justify-content: space-between;
 
+  header {
+    padding: 0.4em 0.8em;
+  }
+
   .job-openings-container {
+    flex: 1;
     gap: 1em;
     padding: 1em;
     display: flex;

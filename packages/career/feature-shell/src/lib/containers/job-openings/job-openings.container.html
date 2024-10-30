@@ -1,3 +1,10 @@
+<header>
+  <devmx-job-opening-experience-filter
+    (change)="onExperienceFilterChange($event)"
+  />
+  <devmx-job-opening-mode-filter (change)="onModeFilterChange($event)" />
+</header>
+
 @defer { @if (jobOpeningFacade.response$ | async; as jobs) {
 
 <div class="job-openings-container">

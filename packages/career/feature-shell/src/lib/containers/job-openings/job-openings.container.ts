@@ -1,18 +1,15 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
+import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
-import { JobOpeningCardComponent } from '@devmx/career-ui-shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { JobOpeningFacade } from '@devmx/career-data-access';
-import { JobFilterComponent } from '../../components';
 import { AsyncPipe } from '@angular/common';
 import {
-  inject,
-  Component,
-  DestroyRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+  JobOpeningCardComponent,
+  JobOpeningModeFilterComponent,
+  JobOpeningExperienceFilterComponent,
+} from '@devmx/career-ui-shared';
 
 @Component({
   selector: 'devmx-job-openings',
@@ -20,6 +17,8 @@ import {
   styleUrl: './job-openings.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    JobOpeningExperienceFilterComponent,
+    JobOpeningModeFilterComponent,
     JobOpeningCardComponent,
     PaginatorComponent,
     SkeletonComponent,
@@ -31,10 +30,6 @@ import {
 export class JobOpeningsContainer {
   jobOpeningFacade = inject(JobOpeningFacade);
 
-  layoutFacade = inject(LayoutFacade);
-
-  destroyRef = inject(DestroyRef);
-
   router = inject(Router);
 
   route = inject(ActivatedRoute);
@@ -43,32 +38,33 @@ export class JobOpeningsContainer {
     this.route.queryParams
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
-
-    this.layoutFacade.setComponent(JobFilterComponent);
-    this.layoutFacade.setSidenav({ start: true });
-
-    this.destroyRef.onDestroy(() => {
-      this.layoutFacade.resetComponent();
-    });
   }
 
   onQueryParams = (params: Params) => {
-    const {
-      title = '',
-      description = '',
-      contract = '',
-      experience = '',
-      mode = '',
-    } = params;
-
-    const filter = { title, description, contract, experience, mode };
-
     const { page = 0, size = 10 } = params;
+
+    const { experience = '', mode = '' } = params;
+
+    const filter = { experience, mode };
 
     this.jobOpeningFacade.setParams({ page, size, filter });
 
     this.jobOpeningFacade.load();
   };
+
+  onExperienceFilterChange(experience: string) {
+    const queryParams = this.mergeParams({ experience });
+    this.router.navigate([], { queryParams });
+  }
+
+  onModeFilterChange(mode: string) {
+    const queryParams = this.mergeParams({ mode });
+    this.router.navigate([], { queryParams });
+  }
+
+  mergeParams(params: Params) {
+    return { ...this.route.snapshot.queryParams, ...params };
+  }
 
   onPageChange(queryParams: PageParams) {
     this.router.navigate([], { queryParams });
