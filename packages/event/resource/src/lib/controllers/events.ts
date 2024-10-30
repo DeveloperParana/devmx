@@ -99,6 +99,20 @@ export class EventsController {
     }
   }
 
+  @Allowed()
+  @Get(':id/rsvps/confirmed')
+  @ApiOkResponse({ type: [RSVPDto] })
+  async findRSVPConfirmeds(@Param('id') id: string) {
+    try {
+      return await this.rsvpsFacade.findConfirmed(id);
+    } catch (err) {
+      throw exceptionByError({
+        code: 404,
+        message: 'Evento não encontrado',
+      });
+    }
+  }
+
   @Patch(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: EventDto })

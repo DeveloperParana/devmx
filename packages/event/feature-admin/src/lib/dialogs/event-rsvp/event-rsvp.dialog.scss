@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 0;
+    font-size: 1.6em;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0em 1em;
+    opacity: 0.6;
+  }
+}

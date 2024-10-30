@@ -3,7 +3,7 @@
 @mixin fab-theme($theme) {
   body {
     .mat-mdc-fab {
-      z-index: 10;
+      z-index: 100;
 
       @include mat.elevation-transition();
       @include mat.elevation(4);

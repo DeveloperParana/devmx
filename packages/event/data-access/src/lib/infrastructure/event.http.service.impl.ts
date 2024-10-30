@@ -16,6 +16,11 @@ export class EventHttpServiceImpl
     const url = [this.url, event, 'rsvps'];
     return this.http.get<RSVP[]>(url.join('/'));
   }
+
+  findRSVPConfirmedByEvent(event: string) {
+    const url = [this.url, event, 'rsvps', 'confirmed'];
+    return this.http.get<RSVP[]>(url.join('/'));
+  }
 }
 
 export function provideEventHttpService() {

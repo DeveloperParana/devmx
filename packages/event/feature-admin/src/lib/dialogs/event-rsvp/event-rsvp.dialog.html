@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>{{data.length}} respostas</h2>
+
+<mat-list>
+  @let confirmed = (data | rsvpByStatus: 'confirmed');
+
+  <!--  -->
+
+  <h3 mat-subheader>{{confirmed.length}} confirmado(s)</h3>
+
+  <!--  -->
+
+  @for (item of confirmed; track item.id) {
+  <mat-list-item>
+    <img
+      matListItemAvatar
+      [src]="item.account.photo | photo"
+      [alt]="item.account.name.first"
+    />
+    <span matListItemTitle>
+      {{item.account.name.first}} {{item.account.name.last}}
+    </span>
+    @switch (item.status) { @case ('confirmed') {
+    <devmx-icon matListItemMeta name="emoji/happy" />
+    } @case ('maybe') {
+    <devmx-icon matListItemMeta name="emoji/confused" />
+    } @case ('declined') {
+    <devmx-icon matListItemMeta name="emoji/crying" />
+    } }
+  </mat-list-item>
+  } @let maybe = (data | rsvpByStatus: 'maybe');
+
+  <!--  -->
+
+  <h3 mat-subheader>{{maybe.length}} em dúvida</h3>
+
+  @for (item of maybe; track item.id) {
+  <mat-list-item>
+    <img
+      matListItemAvatar
+      [src]="item.account.photo | photo"
+      [alt]="item.account.name.first"
+    />
+    <span matListItemTitle>
+      {{item.account.name.first}} {{item.account.name.last}}
+    </span>
+    @switch (item.status) { @case ('confirmed') {
+    <devmx-icon matListItemMeta name="emoji/happy" />
+    } @case ('maybe') {
+    <devmx-icon matListItemMeta name="emoji/confused" />
+    } @case ('declined') {
+    <devmx-icon matListItemMeta name="emoji/crying" />
+    } }
+  </mat-list-item>
+  }
+
+  <!--  -->
+
+  @let declined = (data | rsvpByStatus: 'declined');
+
+  <!--  -->
+
+  <h3 mat-subheader>{{declined.length}} declinado(s)</h3>
+
+  @for (item of declined; track item.id) {
+  <mat-list-item>
+    <img
+      matListItemAvatar
+      [src]="item.account.photo | photo"
+      [alt]="item.account.name.first"
+    />
+    <span matListItemTitle>
+      {{item.account.name.first}} {{item.account.name.last}}
+    </span>
+    @switch (item.status) { @case ('confirmed') {
+    <devmx-icon matListItemMeta name="emoji/happy" />
+    } @case ('maybe') {
+    <devmx-icon matListItemMeta name="emoji/confused" />
+    } @case ('declined') {
+    <devmx-icon matListItemMeta name="emoji/crying" />
+    } }
+  </mat-list-item>
+  }
+</mat-list>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>
