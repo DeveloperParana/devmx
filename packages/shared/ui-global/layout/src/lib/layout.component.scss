@@ -13,6 +13,10 @@
     bottom: 0;
     left: 0;
     right: 0;
+
+    &-toggle-menu.cdk-focused devmx-icon {
+      animation: rotate-center 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
   }
 
   h1.layout-app-name {
@@ -67,7 +71,6 @@
           rgba(254, 253, 253, 0) 75%,
           rgba(254, 253, 253, 1) 100%
         );
-
       }
     }
   }
@@ -205,5 +208,14 @@
         var(--mat-app-focus-state-layer-opacity)
       );
     }
+  }
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

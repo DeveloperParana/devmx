@@ -3,13 +3,19 @@
   [class.layout-is-mobile]="layoutFacade.mobile$ | async"
 >
   <!-- Layout Navbar -->
-  <devmx-layout-navbar
-    (toggleLeft)="snav.toggle()"
-    (toggleRight)="enav.toggle()"
-    [sidenavOpened]="snav.opened"
-    [hideToggleButtonLeft]="hideToggleButtonLeft()"
-    [hideToggleButtonRight]="hideToggleButtonRight()"
-  />
+  <devmx-layout-navbar>
+    <button
+      mat-icon-button
+      class="layout-container-toggle-menu"
+      (click)="snav.toggle()"
+    >
+      @if (snav.opened) {
+      <devmx-icon name="menu/hide"></devmx-icon>
+      } @else {
+      <devmx-icon name="menu/show"></devmx-icon>
+      }
+    </button>
+  </devmx-layout-navbar>
 
   <mat-sidenav-container [hasBackdrop]="false" class="layout-sidenav-container">
     <mat-sidenav
@@ -92,5 +98,17 @@
   </mat-sidenav-container>
 
   <!-- Layout Toolbar -->
-  <devmx-layout-toolbar />
+  <devmx-layout-toolbar>
+    <button
+      mat-icon-button
+      class="layout-container-toggle-menu"
+      (click)="snav.toggle()"
+    >
+      @if (snav.opened) {
+      <devmx-icon name="menu/hide"></devmx-icon>
+      } @else {
+      <devmx-icon name="menu/show"></devmx-icon>
+      }
+    </button>
+  </devmx-layout-toolbar>
 </div>

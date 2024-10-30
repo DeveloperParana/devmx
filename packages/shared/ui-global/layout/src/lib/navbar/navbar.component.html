@@ -1,17 +1,11 @@
 <mat-toolbar class="layout-navbar">
+  <div>
+    <ng-content />
+  </div>
+
   <a routerLink="/" class="app-logo">
     <img src="devmx.svg" height="48" alt="DevMX" />
   </a>
-
-  <!-- @if (showToggleButtonLeft) { -->
-  <button mat-icon-button class="layout-navbar-toggle-menu" (click)="toggleLeft.emit()">
-    @if (sidenavIsOpened) {
-    <devmx-icon name="menu/hide"></devmx-icon>
-    } @else {
-    <devmx-icon name="menu/show"></devmx-icon>
-    }
-  </button>
-  <!-- } -->
 
   <h1 class="app-title">{{ title() }}</h1>
 
@@ -27,10 +21,4 @@
   >
     <devmx-icon name="github" />
   </a>
-
-  @if (showToggleButtonRight) {
-  <button mat-icon-button (click)="toggleRight.emit()">
-    <devmx-icon name="menu/dot-menu"></devmx-icon>
-  </button>
-  }
 </mat-toolbar>

@@ -1,24 +1,22 @@
-<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-
 <mat-toolbar class="layout-toolbar">
-  @if (toolbar.auth.user$| async; as user) {
-  <p class="layout-toolbar-account">
-    <devmx-icon name="user-circle" />
-    <span>{{ user.name.first }}</span>
-  </p>
-  }
+  <div>
+    <ng-content />
+
+    @if (toolbar.auth.user$| async; as user) {
+    <p class="layout-toolbar-account">
+      <devmx-icon name="user-circle" />
+      <span>{{ user.name.first }}</span>
+    </p>
+    }
+  </div>
 
   <span class="spacer"></span>
 
-  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-    <a mat-tab-link routerLink="/eventos"> Eventos </a>
-    <a mat-tab-link routerLink="/apresentacoes"> Apresentações </a>
-    <a mat-tab-link routerLink="/carreiras"> Carreiras </a>
-  </nav>
+  <div class="devpr">
+    <p>DevParaná &copy; {{year}}</p>
 
-  <span class="spacer"></span>
-
-  <a class="devpr-link" target="_blank" href="//devpr.org">
-    <img src="devpr.svg" alt="Comunidade DevParaná" />
-  </a>
+    <a class="devpr-link" target="_blank" href="//devpr.org">
+      <img src="devpr.svg" alt="Comunidade DevParaná" />
+    </a>
+  </div>
 </mat-toolbar>

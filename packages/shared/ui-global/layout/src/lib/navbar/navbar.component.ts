@@ -1,16 +1,8 @@
 import { CrumbsComponent, provideCrumbs } from '@devmx/shared-ui-global/crumbs';
+import { input, Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import {
-  input,
-  output,
-  inject,
-  Component,
-  DestroyRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
 
 @Component({
   selector: 'devmx-layout-navbar',
@@ -21,7 +13,6 @@ import {
   imports: [
     RouterLinkActive,
     MatToolbarModule,
-    MatButtonModule,
     CrumbsComponent,
     IconComponent,
     RouterLink,
@@ -29,32 +20,5 @@ import {
   standalone: true,
 })
 export class LayoutNavbarComponent {
-  destroyRef = inject(DestroyRef);
-
-  hideToggleButtonLeft = input<boolean | ''>(false);
-
-  hideToggleButtonRight = input<boolean | ''>(false);
-
-  sidenavOpened = input<boolean | ''>(false);
-
-  get showToggleButtonLeft() {
-    return !(this.hideToggleButtonLeft() || this.hideToggleButtonLeft() === '');
-  }
-
-  get showToggleButtonRight() {
-    return !(
-      this.hideToggleButtonRight() || this.hideToggleButtonRight() === ''
-    );
-  }
-
-  get sidenavIsOpened() {
-    const state = this.sidenavOpened();
-    return state === true || state === '';
-  }
-
   title = input('devparana . mx');
-
-  toggleLeft = output<void>();
-
-  toggleRight = output<void>();
 }
