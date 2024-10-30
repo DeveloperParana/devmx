@@ -8,11 +8,20 @@
   @for (event of events.data; track event.id) {
 
   <devmx-event-card [data]="event">
+    <button
+      mat-icon-button
+      (click)="openRSVP(event.id)"
+      matTooltip="Lista de presença"
+      matTooltipPosition="before"
+    >
+      <devmx-icon name="doc/check" />
+    </button>
+
     <a
       mat-icon-button
       [routerLink]="event.id"
       matTooltip="Editar evento"
-      matTooltipPosition="before"
+      matTooltipPosition="above"
     >
       <devmx-icon name="software/edit" />
     </a>

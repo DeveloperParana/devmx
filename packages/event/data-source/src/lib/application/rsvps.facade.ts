@@ -4,12 +4,14 @@ import { CreateRSVPDto, RSVPDto } from '../dtos';
 import {
   CreateRSVPUseCase,
   FindRSVPByEventUseCase,
+  FindRSVPConfirmedByEventUseCase,
 } from '@devmx/event-domain/server';
 
 export class RSVPsFacade {
   constructor(
     private createRSVPUseCase: CreateRSVPUseCase,
-    private findRSVPByEventUseCase: FindRSVPByEventUseCase
+    private findRSVPByEventUseCase: FindRSVPByEventUseCase,
+    private findRSVPConfirmedByEventUseCase: FindRSVPConfirmedByEventUseCase
   ) {}
 
   async create(data: CreateRSVPDto) {
@@ -21,11 +23,17 @@ export class RSVPsFacade {
     const data = await this.findRSVPByEventUseCase.execute(event);
     return plainToInstance(RSVPDto, data);
   }
+
+  async findConfirmed(event: string) {
+    const data = await this.findRSVPConfirmedByEventUseCase.execute(event);
+    return plainToInstance(RSVPDto, data);
+  }
 }
 
 export function provideRSVPsFacade() {
   return createServerProvider(RSVPsFacade, [
     CreateRSVPUseCase,
     FindRSVPByEventUseCase,
+    FindRSVPConfirmedByEventUseCase,
   ]);
 }

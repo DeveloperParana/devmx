@@ -9,6 +9,7 @@ import {
   CreateRSVPUseCase,
   RSVPsService,
   FindRSVPByEventUseCase,
+  FindRSVPConfirmedByEventUseCase,
 } from '@devmx/event-domain/server';
 
 export function provideCreateEventUseCase() {
@@ -39,6 +40,10 @@ export function provideFindRSVPByEventUseCase() {
   return createUseCaseProvider(FindRSVPByEventUseCase, [RSVPsService]);
 }
 
+export function provideFindRSVPConfirmedByEventUseCase() {
+  return createUseCaseProvider(FindRSVPConfirmedByEventUseCase, [RSVPsService]);
+}
+
 export function provideUseCases() {
   return [
     provideCreateEventUseCase(),
@@ -49,5 +54,6 @@ export function provideUseCases() {
 
     provideCreateRSVPUseCase(),
     provideFindRSVPByEventUseCase(),
+    provideFindRSVPConfirmedByEventUseCase(),
   ];
 }

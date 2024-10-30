@@ -4,14 +4,15 @@ import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { EventCardComponent } from '@devmx/event-ui-shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
-import { EventFacade } from '@devmx/event-data-access';
+import { EventFacade, RSVPFacade } from '@devmx/event-data-access';
+import { combineLatest, filter, map, skip, take } from 'rxjs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthFacade } from '@devmx/account-data-access';
 import { Event } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
-import { AuthFacade } from '@devmx/account-data-access';
-import { combineLatest, filter, map } from 'rxjs';
+import { EventRSVP } from '../../dialogs';
 
 @Component({
   selector: 'devmx-event-admin-my-events',
@@ -40,6 +41,10 @@ export class MyEventsContainer {
 
   eventFacade = inject(EventFacade);
 
+  rsvpFacade = inject(RSVPFacade);
+
+  eventRSVP = inject(EventRSVP);
+
   constructor() {
     const user$ = this.authFacade.user$.pipe(
       filter((user) => !!user),
@@ -66,6 +71,14 @@ export class MyEventsContainer {
 
     this.eventFacade.load();
   };
+
+  openRSVP(event: string) {
+    this.rsvpFacade.load(event);
+
+    this.rsvpFacade.response$.pipe(skip(1), take(1)).subscribe((data) => {
+      if (data) this.eventRSVP.open(data);
+    });
+  }
 
   deleteEvent({ id, title }: Event) {
     this.dialogFacade

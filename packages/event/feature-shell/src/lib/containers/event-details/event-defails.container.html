@@ -48,7 +48,7 @@
     <h3 mat-subheader>Apresentações</h3>
     @for (presentation of event.presentations; track presentation) {
     <mat-list-item>
-      <devmx-icon matListItemIcon name="user-circle" />
+      <devmx-icon matListItemIcon name="presentation" />
       <div matListItemTitle>{{ presentation.title }}</div>
     </mat-list-item>
     }
@@ -58,7 +58,11 @@
     <h3 mat-subheader>Organizadores</h3>
     @for (leader of event.leaders; track leader) {
     <mat-list-item>
-      <devmx-icon matListItemIcon name="user-circle" />
+      <img
+        matListItemAvatar
+        [src]="leader.photo | photo"
+        [alt]="leader.name.first"
+      />
       <div matListItemTitle>{{ leader.name.first }}</div>
     </mat-list-item>
     }
@@ -69,7 +73,11 @@
 
     @for (rsvp of presences; track rsvp.id) {
     <mat-list-item>
-      <devmx-icon matListItemIcon name="user-circle" />
+      <img
+        matListItemAvatar
+        [src]="rsvp.account.photo | photo"
+        [alt]="rsvp.account.name.first"
+      />
       <div matListItemTitle>{{ rsvp.account.name.first }}</div>
     </mat-list-item>
     }

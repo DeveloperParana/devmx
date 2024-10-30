@@ -71,7 +71,7 @@ export class EventDetailsContainer {
 
   setRSVPEvent = (event: string) => {
     this.rsvpForm.patchValue({ event });
-    this.rsvpFacade.load(event);
+    this.rsvpFacade.loadConfirmed(event);
   };
 
   setRSVPStatus({ status }: RSVP) {

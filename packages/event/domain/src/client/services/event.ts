@@ -6,4 +6,6 @@ export abstract class EventService extends EntityService<Event> {
   abstract createRSVP(event: string, status: RSVPStatus): Observable<RSVP>;
 
   abstract findRSVPByEvent(event: string): Observable<RSVP[]>;
+
+  abstract findRSVPConfirmedByEvent(event: string): Observable<RSVP[]>;
 }

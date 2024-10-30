@@ -1,6 +1,6 @@
 <mat-button-toggle-group
   [formControl]="control"
-  (valueChange)="statusChange.emit()"
+  (change)="statusChange.emit()"
   aria-label="Presença"
 >
   <mat-button-toggle value="confirmed">Vou!</mat-button-toggle>

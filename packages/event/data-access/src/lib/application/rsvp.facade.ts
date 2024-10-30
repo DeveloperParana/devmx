@@ -6,6 +6,7 @@ import { take } from 'rxjs';
 import {
   CreateRSVPUseCase,
   FindRSVPByEventUseCase,
+  FindRSVPConfirmedByEventUseCase,
 } from '@devmx/event-domain/client';
 
 interface RSVPState {
@@ -17,7 +18,8 @@ export class RSVPFacade extends State<RSVPState> {
 
   constructor(
     private createRSVPUseCase: CreateRSVPUseCase,
-    private findRSVPByEventUseCase: FindRSVPByEventUseCase
+    private findRSVPByEventUseCase: FindRSVPByEventUseCase,
+    private findRSVPConfirmedByEventUseCase: FindRSVPConfirmedByEventUseCase
   ) {
     super({
       response: [],
@@ -34,10 +36,20 @@ export class RSVPFacade extends State<RSVPState> {
     request$.pipe(take(1)).subscribe(onResponse);
   }
 
+  loadConfirmed(event: string) {
+    const request$ = this.findRSVPConfirmedByEventUseCase.execute(event);
+
+    const onResponse = (response: RSVP[]) => {
+      this.setState({ response });
+    };
+
+    request$.pipe(take(1)).subscribe(onResponse);
+  }
+
   create(data: CreateRSVP) {
     const request$ = this.createRSVPUseCase.execute(data);
 
-    request$.pipe(take(1)).subscribe(() => this.load(data.event));
+    request$.pipe(take(1)).subscribe(() => this.loadConfirmed(data.event));
   }
 }
 
@@ -45,5 +57,6 @@ export function provideRSVPFacade() {
   return createClientProvider(RSVPFacade, [
     CreateRSVPUseCase,
     FindRSVPByEventUseCase,
+    FindRSVPConfirmedByEventUseCase,
   ]);
 }

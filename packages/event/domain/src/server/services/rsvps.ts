@@ -8,4 +8,6 @@ export abstract class RSVPsService {
   ): Promise<RSVP>;
 
   abstract findByEvent(event: string): Promise<RSVP[]>;
+
+  abstract findConfirmedByEvent(event: string): Promise<RSVP[]>;
 }

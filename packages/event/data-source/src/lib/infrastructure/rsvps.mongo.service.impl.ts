@@ -27,6 +27,16 @@ export class RSVPsMongoServiceImpl implements RSVPsService {
 
     return data.map((item) => item.toJSON());
   }
+
+  async findConfirmedByEvent(event: string) {
+    const data = await this.rsvpModel
+      .find({ event, status: 'confirmed' })
+      .populate('account', 'name photo')
+      .populate('event', 'title')
+      .exec();
+
+    return data.map((item) => item.toJSON());
+  }
 }
 
 export function provideRSVPsMongoService() {
