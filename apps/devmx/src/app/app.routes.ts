@@ -24,11 +24,16 @@ export const appRoutes: Route[] = [
       ),
   },
   {
-    path: '',
+    path: 'conta',
     loadChildren: () =>
       import('@devmx/account-feature-shell').then(
         (m) => m.accountFeatureShellRoutes
       ),
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'eventos',
   },
   {
     path: '**',

@@ -17,7 +17,10 @@
     </button>
   </devmx-layout-navbar>
 
-  <mat-sidenav-container [hasBackdrop]="false" class="layout-sidenav-container">
+  <mat-sidenav-container
+    [hasBackdrop]="layoutFacade.mobile$ | async"
+    class="layout-sidenav-container"
+  >
     <mat-sidenav
       #snav
       [mode]="(layoutFacade.mobile$ | async) ? 'over' : 'side'"

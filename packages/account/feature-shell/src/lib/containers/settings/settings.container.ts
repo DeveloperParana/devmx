@@ -3,7 +3,6 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AutoAssignable, UpdateAccountForm } from '../../forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountOut } from '@devmx/shared-api-interfaces';
@@ -62,8 +61,6 @@ import {
 export class SettingsContainer implements OnInit {
   authFacade = inject(AuthFacade);
 
-  layoutFacade = inject(LayoutFacade);
-
   accountFacade = inject(AccountFacade);
 
   autocompleteCitiesService = inject(AutocompleteCitiesService);
@@ -94,8 +91,6 @@ export class SettingsContainer implements OnInit {
   }
 
   ngOnInit() {
-    this.layoutFacade.setSidenav({ start: true });
-
     this.accountFacade.account$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((account) => {

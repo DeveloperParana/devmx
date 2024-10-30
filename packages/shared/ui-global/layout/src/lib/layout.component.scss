@@ -164,13 +164,13 @@
     }
 
     .layout-sidenav-start {
-      max-height: calc(100dvh - 64px * 2);
+      max-height: calc(100dvh - 108px);
       @include mat.elevation(2);
     }
 
     .layout-sidenav-end {
       width: 98vw;
-      max-height: calc(100dvh - 64px * 2);
+      max-height: calc(100dvh - 108px);
       // height: calc(100% - 52px);
     }
   }

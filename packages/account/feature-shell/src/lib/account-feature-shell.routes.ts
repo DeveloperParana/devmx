@@ -1,46 +1,27 @@
+import { AccountFeatureShellComponent } from './account-feature-shell.component';
+import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
+import { SignOutContainer, SettingsContainer } from './containers';
+import { provideFormDialog } from '@devmx/shared-ui-global/forms';
+import { provideLocation } from '@devmx/location-data-access';
+import { Route } from '@angular/router';
 import {
   roleGroupsGuard,
   roleGroupGuard,
   roleGuard,
 } from '@devmx/shared-ui-global/guards';
-import { AccountFeatureShellComponent } from './account-feature-shell.component';
-import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
-import { providePresentation } from '@devmx/presentation-data-access';
-import { provideFormDialog } from '@devmx/shared-ui-global/forms';
-import { provideLocation } from '@devmx/location-data-access';
-import { provideCareer } from '@devmx/career-data-access';
-import { provideAbout } from '@devmx/account-data-access';
-import { provideEvent } from '@devmx/event-data-access';
-import { aboutResolver } from './resolvers';
-import { Route } from '@angular/router';
-import {
-  HomeContainer,
-  AboutContainer,
-  SignOutContainer,
-  SettingsContainer,
-} from './containers';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
-    path: 'conta/auth',
+    path: 'auth',
     loadChildren: () =>
       import('@devmx/account-feature-auth').then(
         (m) => m.accountFeatureAuthRoutes
       ),
   },
   {
-    path: 'sobre/:username',
-    providers: [...provideAbout()],
-    resolve: { account: aboutResolver },
-    component: AboutContainer,
-  },
-  {
-    path: 'conta',
+    path: '',
     providers: [
-      ...providePresentation(),
-      ...provideEvent(),
       ...provideLocation(),
-      ...provideCareer(),
       provideAutocompleteCitiesService(),
       provideFormDialog(),
     ],
@@ -81,13 +62,9 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
-        component: HomeContainer,
+        pathMatch: 'full',
+        redirectTo: 'configuracoes',
       },
     ],
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'conta',
   },
 ];
