@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MarkedPipe, SafeHtmlPipe } from '@devmx/shared-ui-global/editor';
 import { RSVPButtonComponent, RSVPForm } from '@devmx/event-ui-shared';
 import { PhotoPipe, StateNamePipe } from '@devmx/shared-ui-global';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -30,6 +31,8 @@ import { EventFormatPipe } from '../../pipes';
     IconComponent,
     EventFormatPipe,
     StateNamePipe,
+    SafeHtmlPipe,
+    MarkedPipe,
     PhotoPipe,
     AsyncPipe,
     DatePipe,

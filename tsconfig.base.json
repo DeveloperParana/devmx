@@ -140,6 +140,9 @@
       "@devmx/shared-ui-global/dialog": [
         "packages/shared/ui-global/dialog/src/index.ts"
       ],
+      "@devmx/shared-ui-global/editor": [
+        "packages/shared/ui-global/editor/src/index.ts"
+      ],
       "@devmx/shared-ui-global/filter": [
         "packages/shared/ui-global/filter/src/index.ts"
       ],

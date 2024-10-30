@@ -9,6 +9,7 @@ import { DocIcon } from './doc';
 import { MusicIcon } from './music';
 import { TechIcon } from './tech';
 import { FinanceIcon } from './finance';
+import { TextIcon } from './text';
 
 type Root =
   | 'airplay'
@@ -138,4 +139,5 @@ export type Icon =
   | BuildingIcon
   | MusicIcon
   | TechIcon
-  | FinanceIcon;
+  | FinanceIcon
+  | TextIcon
