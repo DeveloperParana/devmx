@@ -1,7 +1,6 @@
 import { JobOpeningsContainer, JobOpeningDetailsContainer } from './containers';
 import { CareerFeatureShellComponent } from './career-feature-shell.component';
-import { roleGroupsGuard } from '@devmx/shared-ui-global/guards';
-import { provideCareer } from '@devmx/career-data-access';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { JobOpening } from '@devmx/shared-api-interfaces';
 import { jobOpeningResolver } from './resolvers';
 import { Route } from '@angular/router';
@@ -12,13 +11,11 @@ export const careerFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Carreiras',
     },
-    providers: [...provideCareer()],
     component: CareerFeatureShellComponent,
     children: [
       {
         path: 'administracao',
-        providers: [...provideCareer()],
-        canActivate: [roleGroupsGuard('worthy', 'board', 'recruiter')],
+        canActivate: [rolesGuard('recruiter', 'director', 'manager', 'staff')],
         loadChildren: () =>
           import('@devmx/career-feature-admin').then(
             (m) => m.careerFeatureAdminRoutes

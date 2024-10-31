@@ -1,10 +1,12 @@
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { AuthUser, JobOpening } from '@devmx/shared-api-interfaces';
 import { exceptionByError } from '@devmx/shared-resource';
-import { JobOpening } from '@devmx/shared-api-interfaces';
 import {
   User,
+  Roles,
   Allowed,
   ApiPage,
+  authIsAdmin,
   QueryParamsDto,
 } from '@devmx/shared-data-source';
 import {
@@ -103,7 +105,8 @@ export class JobOpeningsController {
   @Delete(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: JobOpeningDto })
-  async remove(@User('id') owner: string, @Param('id') id: string) {
+  @Roles(['director', 'manager', 'staff', 'recruiter'])
+  async remove(@User() auth: AuthUser, @Param('id') id: string) {
     const jobOpening = await this.jobOpeningsFacade.findOne(id);
 
     if (!jobOpening) {
@@ -113,7 +116,7 @@ export class JobOpeningsController {
       });
     }
 
-    if (jobOpening.owner.id !== owner) {
+    if (jobOpening.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 

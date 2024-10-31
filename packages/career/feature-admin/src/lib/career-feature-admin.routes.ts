@@ -1,9 +1,14 @@
 import { CareerFeatureAdminComponent } from './career-feature-admin.component';
 import { careerFeatureAdminProviders } from './career-feature-admin.providers';
-import { JobOpeningContainer, MyJobOpeningsContainer } from './containers';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { JobOpening } from '@devmx/shared-api-interfaces';
 import { jobOpeningResolver } from './resolvers';
 import { Route } from '@angular/router';
+import {
+  JobOpeningContainer,
+  ManageJobOpeningsContainer,
+  MyJobOpeningsContainer,
+} from './containers';
 
 export const careerFeatureAdminRoutes: Route[] = [
   {
@@ -30,6 +35,19 @@ export const careerFeatureAdminRoutes: Route[] = [
           breadcrumb: 'Minhas vagas',
         },
         component: MyJobOpeningsContainer,
+      },
+      {
+        path: 'gerenciar-ofertas',
+        data: {
+          breadcrumb: 'Gerenciar ofertas',
+        },
+        canActivate: [rolesGuard('director', 'manager', 'staff')],
+        component: ManageJobOpeningsContainer,
+      },
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'minhas-ofertas',
       },
     ],
   },
