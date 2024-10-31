@@ -20,7 +20,7 @@ export const presentationFeatureShellRoutes: Route[] = [
     children: [
       {
         path: 'administracao',
-        canActivate: [rolesGuard('speaker')],
+        canActivate: [rolesGuard('speaker', 'director', 'manager', 'staff')],
         loadChildren: () =>
           import('@devmx/presentation-feature-admin').then(
             (m) => m.presentationFeatureAdminRoutes

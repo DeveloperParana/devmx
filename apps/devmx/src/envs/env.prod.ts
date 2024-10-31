@@ -1,4 +1,5 @@
 export const env = {
+  prod: true,
   api: {
     url: 'https://api.devparana.mx/api',
   },

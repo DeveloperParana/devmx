@@ -21,6 +21,7 @@ import {
   FindJobsByOwnerUseCase,
   FindAboutAccountUseCase,
   AboutService,
+  FindAccountsByRoleUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideSignInUseCase() {
@@ -37,6 +38,10 @@ export function provideLoadAuthUserUseCase() {
 
 export function provideFindAccountsUseCase() {
   return createUseCaseProvider(FindAccountsUseCase, [AccountService]);
+}
+
+export function provideFindAccountsByRoleUseCase() {
+  return createUseCaseProvider(FindAccountsByRoleUseCase, [AccountService]);
 }
 
 export function provideFindAccountByIDUseCase() {
@@ -97,6 +102,7 @@ export function provideUseCases() {
     provideSignUpUseCase(),
     provideLoadAuthUserUseCase(),
     provideFindAccountsUseCase(),
+    provideFindAccountsByRoleUseCase(),
     provideFindAccountByIDUseCase(),
     provideFindAccountByUsernameUseCase(),
     provideUpdateAccountUseCase(),

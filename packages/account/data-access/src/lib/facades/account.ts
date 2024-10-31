@@ -14,6 +14,7 @@ import {
   AccountOut,
   QueryParams,
   QueryFilter,
+  Role,
 } from '@devmx/shared-api-interfaces';
 import {
   RemoveAccountUseCase,
@@ -28,6 +29,7 @@ import {
   FindSpeakersUseCase,
   FindLeadersUseCase,
   FindJobsByOwnerUseCase,
+  FindAccountsByRoleUseCase,
 } from '@devmx/account-domain/client';
 import { FilterJob } from '@devmx/career-data-access';
 
@@ -76,7 +78,8 @@ export class AccountFacade extends State<AccountState> {
     private changeRolesUseCase: ChangeRolesUseCase,
     private uploadPhotoUseCase: UploadPhotoUseCase,
     private findSpeakersUseCase: FindSpeakersUseCase,
-    private findLeadersUseCase: FindLeadersUseCase
+    private findLeadersUseCase: FindLeadersUseCase,
+    private findAccountsByRoleUseCase: FindAccountsByRoleUseCase
   ) {
     super({
       accounts: { data: [], items: 0, pages: 0 },
@@ -135,6 +138,17 @@ export class AccountFacade extends State<AccountState> {
 
   load() {
     const request$ = this.findAccountsUseCase.execute(this.state.params);
+
+    const onAccounts = (accounts: Page<AccountOut>) => {
+      this.setState({ accounts });
+    };
+
+    request$.pipe(take(1)).subscribe(onAccounts);
+  }
+
+  loadByRole(role: Role) {
+    const params = { role, params: this.state.params }
+    const request$ = this.findAccountsByRoleUseCase.execute(params);
 
     const onAccounts = (accounts: Page<AccountOut>) => {
       this.setState({ accounts });
