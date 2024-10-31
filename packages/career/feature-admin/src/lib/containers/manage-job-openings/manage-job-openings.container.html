@@ -1,0 +1,37 @@
+@if (jobOpeningFacade.response$ | async; as jobOpenings) {
+
+<div class="job-openings-container">
+  @for (job of jobOpenings.data; track job.id) {
+
+  <devmx-job-opening-card [data]="job">
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar vaga"
+      matTooltipPosition="after"
+      (click)="deleteJobOpening(job)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-job-opening-card>
+  }
+</div>
+
+@if (!jobOpenings.items) {
+<div class="no-job-openings-yet">
+  <h2>Não temos nada aqui...</h2>
+</div>
+}
+
+<footer>
+  <button mat-raised-button (click)="openSelectAccount()">
+    Filtrar por recrutador
+  </button>
+
+  <devmx-paginator
+    [size]="10"
+    [items]="jobOpenings.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

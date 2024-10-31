@@ -1,6 +1,6 @@
 import { EditableAccount, Role } from '@devmx/shared-api-interfaces';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import {
   SelectAccountConfig,
   SelectAccountDialog,
@@ -9,9 +9,18 @@ import {
 export class SelectAccount {
   constructor(private dialog: MatDialog) {}
 
-  open(data?: { multiple?: true, onlyRole?: Role }): Observable<EditableAccount[]>;
-  open(data?: { multiple?: false, onlyRole?: Role }): Observable<EditableAccount>;
+  open(data?: {
+    multiple?: true;
+    onlyRole?: Role;
+  }): Observable<EditableAccount[]>;
+  open(data?: {
+    multiple?: false;
+    onlyRole?: Role;
+  }): Observable<EditableAccount>;
   open(data: SelectAccountConfig = {}) {
-    return this.dialog.open(SelectAccountDialog, { data }).afterClosed();
+    return this.dialog
+      .open(SelectAccountDialog, { data })
+      .afterClosed()
+      .pipe(take(1));
   }
 }
