@@ -1,0 +1,23 @@
+{
+  "name": "album-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/album/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/album/domain",
+        "main": "packages/album/domain/src/index.ts",
+        "tsConfig": "packages/album/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/album/domain/src/server.ts",
+          "packages/album/domain/src/client.ts"
+        ]
+      }
+    }
+  }
+}
