@@ -1,5 +1,6 @@
 import { JobOpeningFacade, SkillFacade } from '@devmx/career-data-access';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EditableSkill } from '@devmx/shared-api-interfaces';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -11,16 +12,16 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { SkillDialog } from '../../dialogs';
-import { Subject, takeUntil } from 'rxjs';
 import { JobOpeningForm } from '../../forms';
+import { SkillDialog } from '../../dialogs';
+import { JsonPipe } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 import {
   inject,
   Component,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'devmx-career-admin-job-opening',
@@ -31,6 +32,7 @@ import { JsonPipe } from '@angular/common';
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
+    EditorComponent,
     MatInputModule,
     MatListModule,
     MatButtonModule,

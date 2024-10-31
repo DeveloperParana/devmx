@@ -15,7 +15,6 @@ export * from './like';
 export * from './merge';
 export * from './paginate';
 export * from './predicate';
-export * from './read-image-url';
 export * from './same-keys';
 export * from './values';
 export * from './vector2';

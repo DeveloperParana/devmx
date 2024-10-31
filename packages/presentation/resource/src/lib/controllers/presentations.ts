@@ -1,11 +1,13 @@
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { Presentation } from '@devmx/shared-api-interfaces';
+import { AuthUser, Presentation } from '@devmx/shared-api-interfaces';
 import { exceptionByError } from '@devmx/shared-resource';
 import {
   User,
   Allowed,
   ApiPage,
   QueryParamsDto,
+  authIsAdmin,
+  Roles,
 } from '@devmx/shared-data-source';
 import {
   PresentationDto,
@@ -97,7 +99,8 @@ export class PresentationsController {
   @Delete(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: PresentationDto })
-  async remove(@User('id') account: string, @Param('id') id: string) {
+  @Roles(['director', 'manager', 'staff', 'speaker'])
+  async remove(@User() auth: AuthUser, @Param('id') id: string) {
     const presentation = await this.presentationsFacade.findOne(id);
 
     if (!presentation) {
@@ -107,7 +110,7 @@ export class PresentationsController {
       });
     }
 
-    if (presentation.owner.id !== account) {
+    if (presentation.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 

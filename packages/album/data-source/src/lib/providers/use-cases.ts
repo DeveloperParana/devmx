@@ -5,9 +5,10 @@ import {
   DeleteAlbumUseCase,
   FindAlbumByIDUseCase,
   FindAlbumsUseCase,
+  PhotosService,
+  SavePhotoUseCase,
   UpdateAlbumUseCase,
 } from '@devmx/album-domain/server';
-
 
 export function provideCreateAlbumUseCase() {
   return createUseCaseProvider(CreateAlbumUseCase, [AlbumsService]);
@@ -29,6 +30,10 @@ export function provideDeleteAlbumUseCase() {
   return createUseCaseProvider(DeleteAlbumUseCase, [AlbumsService]);
 }
 
+export function provideSavePhotoUseCase() {
+  return createUseCaseProvider(SavePhotoUseCase, [PhotosService]);
+}
+
 export function provideUseCases() {
   return [
     provideCreateAlbumUseCase(),
@@ -36,5 +41,6 @@ export function provideUseCases() {
     provideFindAlbumByIDUseCase(),
     provideUpdateAlbumUseCase(),
     provideDeleteAlbumUseCase(),
+    provideSavePhotoUseCase(),
   ];
 }

@@ -23,6 +23,12 @@ export class AlbumCollection extends Document implements Album {
   photos: PhotoCollection[];
 
   @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: PhotoCollection.name,
+  })
+  cover?: PhotoCollection;
+
+  @Prop({
     type: [
       {
         type: mongoose.Schema.Types.ObjectId,

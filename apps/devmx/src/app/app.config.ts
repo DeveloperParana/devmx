@@ -1,9 +1,11 @@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
-import { authInterceptor, loaderInterceptor } from './interceptors';
 import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
+import { authInterceptor, loaderInterceptor } from './interceptors';
+import { provideServiceWorker } from '@angular/service-worker';
 import { provideCareer } from '@devmx/career-data-access';
+import { provideAlbum } from '@devmx/album-data-access';
 import { provideEvent } from '@devmx/event-data-access';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/extra/br';
@@ -32,9 +34,11 @@ import {
   LOCALE_ID,
   ErrorHandler,
   ApplicationConfig,
-  provideZoneChangeDetection, isDevMode,
+  provideZoneChangeDetection,
+  isDevMode,
 } from '@angular/core';
-import { provideServiceWorker } from '@angular/service-worker';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
 
 registerLocaleData(pt, 'pt-BR', ptBr);
 
@@ -67,9 +71,15 @@ export const appConfig: ApplicationConfig = {
     provideEnv(env),
     ...provideCareer(),
     ...providePresentation(),
-    ...provideEvent(), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          }),
+    ...provideEvent(),
+    ...provideAlbum(),
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' }
+    }
   ],
 };

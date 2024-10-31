@@ -1,5 +1,11 @@
-import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOkResponse,
+  ApiBearerAuth,
+  ApiConsumes,
+} from '@nestjs/swagger';
 import { AuthUser, Album } from '@devmx/shared-api-interfaces';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { exceptionByError } from '@devmx/shared-resource';
 import {
   User,
@@ -18,6 +24,8 @@ import {
   Query,
   Delete,
   Controller,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   AlbumDto,
@@ -30,10 +38,7 @@ import 'multer';
 @ApiTags('Albums')
 @Controller('albums')
 export class AlbumsController {
-  constructor(
-    private readonly albumsFacade: AlbumsFacade,
-    // private readonly rsvpsFacade: PhotosFacade
-  ) {}
+  constructor(private readonly albumsFacade: AlbumsFacade) {}
 
   @Post()
   @ApiBearerAuth()
@@ -68,6 +73,17 @@ export class AlbumsController {
         message: 'Album não encontrado',
       });
     }
+  }
+
+  @Post(':id/photo')
+  @UseInterceptors(FileInterceptor('photo'))
+  @ApiConsumes('multipart/form-data')
+  uploadFile(
+    @Param('id') album: string,
+    @UploadedFile() photo: Express.Multer.File
+  ) {
+    console.log(photo);
+    this.albumsFacade.savePhoto({ album, photo });
   }
 
   @Patch(':id')

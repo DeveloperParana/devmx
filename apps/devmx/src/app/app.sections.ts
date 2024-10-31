@@ -3,6 +3,7 @@ import { SectionHeaderOptions } from '@devmx/shared-ui-global/layout';
 export const appSections: SectionHeaderOptions[] = [
   {
     label: 'Navegação',
+    expanded: true,
     links: [
       {
         label: 'Eventos',
@@ -48,7 +49,13 @@ export const appSections: SectionHeaderOptions[] = [
         roles: ['leader'],
       },
       {
-        label: 'Vagas',
+        label: 'Meus albuns',
+        route: ['/albuns', 'administracao', 'meus-albuns'],
+        icon: 'camera-shutter',
+        roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'],
+      },
+      {
+        label: 'Minhas vagas',
         route: ['/carreiras', 'administracao'],
         icon: 'music/speaker',
         roles: ['recruiter'],

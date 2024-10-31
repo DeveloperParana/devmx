@@ -5,6 +5,7 @@ export class SectionHeader {
   constructor(
     readonly label: string,
     readonly links: NavLink[],
+    public expanded?: boolean,
     public icon?: Icon
   ) {}
 }

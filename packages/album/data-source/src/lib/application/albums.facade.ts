@@ -6,6 +6,8 @@ import {
   DeleteAlbumUseCase,
   FindAlbumByIDUseCase,
   FindAlbumsUseCase,
+  SavePhoto,
+  SavePhotoUseCase,
   UpdateAlbumUseCase,
 } from '@devmx/album-domain/server';
 import {
@@ -14,19 +16,24 @@ import {
   createServerProvider,
 } from '@devmx/shared-data-source';
 
-
 export class AlbumsFacade {
   constructor(
     private createAlbumUseCase: CreateAlbumUseCase,
     private findAlbumsUseCase: FindAlbumsUseCase,
     private findAlbumByIDUseCase: FindAlbumByIDUseCase,
     private updateAlbumUseCase: UpdateAlbumUseCase,
-    private deleteAlbumUseCase: DeleteAlbumUseCase
+    private deleteAlbumUseCase: DeleteAlbumUseCase,
+    private savePhotoUseCase: SavePhotoUseCase
   ) {}
 
   async create(data: CreateAlbumDto) {
     const event = await this.createAlbumUseCase.execute(data);
     return plainToInstance(AlbumDto, event);
+  }
+
+  async savePhoto(data: SavePhoto) {
+    const photo = await this.savePhotoUseCase.execute(data);
+    return photo;
   }
 
   async find(params: QueryParamsDto<Album>) {
@@ -58,5 +65,6 @@ export function provideAlbumsFacade() {
     FindAlbumByIDUseCase,
     UpdateAlbumUseCase,
     DeleteAlbumUseCase,
+    SavePhotoUseCase,
   ]);
 }

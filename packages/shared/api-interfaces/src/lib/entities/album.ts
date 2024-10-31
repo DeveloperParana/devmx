@@ -8,7 +8,9 @@ export interface Album {
 
   photos: Photo[];
 
-  contributors?: AccountRef[]
+  cover?: Photo;
 
-  createdAt: Date
+  contributors?: AccountRef[];
+
+  createdAt: Date;
 }

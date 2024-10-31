@@ -1,7 +1,7 @@
-import { ImageMimeType, Photo } from '@devmx/shared-api-interfaces';
+import { Album, ImageMimeType, Photo } from '@devmx/shared-api-interfaces';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 function toBase64(type: string, content: string) {
   return `data:${type};base64,${content}`;
@@ -37,6 +37,13 @@ export class PhotoCollection extends Document implements Photo {
 
   @Prop({ type: String })
   caption?: string;
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'AlbumCollection',
+    required: true,
+  })
+  album: Album
 }
 
 export const PhotoSchema = createSchema(PhotoCollection);

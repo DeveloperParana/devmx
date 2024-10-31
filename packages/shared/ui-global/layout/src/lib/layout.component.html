@@ -30,39 +30,48 @@
       fixedTopGap="52"
     >
       <div class="space-between">
-        @for (section of layoutFacade.sections$ | async; track section.label) {
-        <mat-nav-list>
-          <mat-list-item class="section-header" disabled>
-            @if (section.icon) {
-            <devmx-icon matListItemIcon [name]="section.icon" />
-            }
-            <span matListItemtitle>{{ section.label }}</span>
-          </mat-list-item>
+        <!-- <mat-accordion> -->
+          @for (section of layoutFacade.sections$ | async; track section.label)
+          {
+          <mat-expansion-panel [expanded]="section.expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ section.label }}</mat-panel-title>
+              <mat-panel-description>
+                @if (section.icon) {
+                <devmx-icon matListItemIcon [name]="section.icon" />
+                }
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              @for (link of section.links; track link.route) {
+              <a
+                mat-list-item
+                [routerLink]="link.route"
+                routerLinkActive="active"
+                [disabled]="link.disabled"
+                [tabindex]="link.disabled ? -1 : 0"
+                [ngClass]="{ disabled: link.disabled }"
+              >
+                @if (link.icon) {
+                <devmx-icon matListItemIcon [name]="link.icon" />
+                }
 
-          @for (link of section.links; track link.route) {
-          <a
-            mat-list-item
-            [routerLink]="link.route"
-            routerLinkActive="active"
-            [disabled]="link.disabled"
-            [tabindex]="link.disabled ? -1 : 0"
-            [ngClass]="{ disabled: link.disabled }"
-          >
-            @if (link.icon) {
-            <devmx-icon matListItemIcon [name]="link.icon" />
-            }
+                <span
+                  [matBadge]="link.badge | async"
+                  matBadgeDescription="before"
+                >
+                  {{ link.label }}
+                </span>
 
-            <span [matBadge]="link.badge | async" matBadgeDescription="before">
-              {{ link.label }}
-            </span>
-
-            @if (link.showLock) {
-            <devmx-icon matListItemMeta [name]="link.lock" />
-            }
-          </a>
+                @if (link.showLock) {
+                <devmx-icon matListItemMeta [name]="link.lock" />
+                }
+              </a>
+              }
+            </mat-nav-list>
+          </mat-expansion-panel>
           }
-        </mat-nav-list>
-        }
+        <!-- </mat-accordion> -->
       </div>
     </mat-sidenav>
 

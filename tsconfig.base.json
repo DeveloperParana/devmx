@@ -49,10 +49,14 @@
       "@devmx/album-domain": ["packages/album/domain/src/index.ts"],
       "@devmx/album-domain/client": ["packages/album/domain/src/client.ts"],
       "@devmx/album-domain/server": ["packages/album/domain/src/server.ts"],
+      "@devmx/album-feature-admin": [
+        "packages/album/feature-admin/src/index.ts"
+      ],
       "@devmx/album-feature-shell": [
         "packages/album/feature-shell/src/index.ts"
       ],
       "@devmx/album-resource": ["packages/album/resource/src/index.ts"],
+      "@devmx/album-ui-shared": ["packages/album/ui-shared/src/index.ts"],
       "@devmx/career-data-access": ["packages/career/data-access/src/index.ts"],
       "@devmx/career-data-source": ["packages/career/data-source/src/index.ts"],
       "@devmx/career-domain": ["packages/career/domain/src/index.ts"],

@@ -10,7 +10,7 @@ import { QueryMongoParams } from '../interfaces';
 export abstract class MongoService<T extends Entity>
   implements EntityService<T>
 {
-  constructor(private entityModel: Model<T>) {}
+  constructor(protected entityModel: Model<T>) {}
 
   protected applyPopulate<U>(query: Query<U, T>): Query<U, T> {
     return query;

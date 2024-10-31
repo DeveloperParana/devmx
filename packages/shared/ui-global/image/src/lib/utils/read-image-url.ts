@@ -1,4 +1,4 @@
-import { async } from './async';
+import { async } from '@devmx/shared-util-data';
 
 export function readImageURL(file: Blob) {
   return async<string>((resolve, reject) => {

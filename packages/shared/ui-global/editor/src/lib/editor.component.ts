@@ -15,6 +15,7 @@ import {
 } from '@angular/forms';
 import {
   Self,
+  input,
   Optional,
   Renderer2,
   Component,
@@ -43,6 +44,8 @@ import {
 })
 export class EditorComponent extends DefaultValueAccessor {
   textareaRef = viewChild<ElementRef<HTMLTextAreaElement>>('textareaRef');
+
+  label = input('');
 
   get textarea() {
     const ref = this.textareaRef();

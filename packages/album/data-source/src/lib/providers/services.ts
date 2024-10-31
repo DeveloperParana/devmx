@@ -1,5 +1,8 @@
-import { provideAlbumsMongoService } from '../infrastructure';
+import {
+  provideAlbumsMongoService,
+  providePhotosMongoService,
+} from '../infrastructure';
 
 export function provideServices() {
-  return [provideAlbumsMongoService()];
+  return [provideAlbumsMongoService(), providePhotosMongoService()];
 }

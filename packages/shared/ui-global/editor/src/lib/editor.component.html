@@ -4,7 +4,7 @@
       <devmx-icon name="software/edit" />
     </ng-template>
     <div class="editor-textarea">
-      <menu>
+      <menu class="secondary-container-background">
         <button type="button" mat-icon-button (click)="applyBold()">
           <devmx-icon name="text/bold" />
         </button>
@@ -16,6 +16,7 @@
         </button>
       </menu>
       <mat-form-field class="editor-text-field">
+        <mat-label>{{ label() }}</mat-label>
         <textarea
           matInput
           #textareaRef
