@@ -1,11 +1,13 @@
 {
-  "name": "@devmx/album-data-access",
+  "name": "@devmx/album-data-source",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "@devmx/shared-data-access": "0.0.1",
+    "@devmx/album-domain": "0.0.1",
+    "@devmx/shared-data-source": "0.0.1",
     "@devmx/shared-api-interfaces": "0.0.1",
-    "@devmx/album-domain": "0.0.1"
+    "@nestjs/mongoose": "^10.0.10",
+    "mongoose": "^8.6.3"
   },
   "type": "commonjs",
   "main": "./src/index.js",

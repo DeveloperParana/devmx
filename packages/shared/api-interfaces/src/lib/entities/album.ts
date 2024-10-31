@@ -1,3 +1,4 @@
+import { AccountRef } from '../dtos';
 import { Photo } from './photo';
 
 export interface Album {
@@ -6,6 +7,8 @@ export interface Album {
   title: string;
 
   photos: Photo[];
+
+  contributors?: AccountRef[]
 
   createdAt: Date
 }

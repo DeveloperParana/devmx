@@ -1,0 +1,19 @@
+{
+  "name": "album-data-source",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/album/data-source/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/album/data-source",
+        "main": "packages/album/data-source/src/index.ts",
+        "tsConfig": "packages/album/data-source/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

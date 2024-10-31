@@ -1,1 +1,1 @@
-export * from './lib/album-domain';
+export * from './lib/dtos';

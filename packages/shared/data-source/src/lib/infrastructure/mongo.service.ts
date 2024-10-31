@@ -28,7 +28,8 @@ export abstract class MongoService<T extends Entity>
     return (await created.save()).toJSON() as T;
   }
 
-  async find(params: QueryParams<T> | QueryMongoParams<T>) {
+  // async find(params: QueryParams<T> | QueryMongoParams<T>) {
+  async find(params: QueryParams<T>) {
     const { page = 0, size = 10, filter } = params;
 
     const skip = page * size;
