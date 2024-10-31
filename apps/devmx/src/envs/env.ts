@@ -1,4 +1,5 @@
 export const env = {
+  prod: false,
   api: {
     url: '/api',
   },

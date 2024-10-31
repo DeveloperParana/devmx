@@ -8,6 +8,7 @@ import {
   ManageEventsContainer,
   MyEventsContainer,
 } from './containers';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 
 export const eventFeatureAdminRoutes: Route[] = [
   {
@@ -47,6 +48,7 @@ export const eventFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Gerenciar eventos',
         },
+        canActivate: [rolesGuard('director', 'manager', 'staff')],
         component: ManageEventsContainer,
       },
       {

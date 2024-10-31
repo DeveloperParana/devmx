@@ -3,6 +3,7 @@ export * from './change-roles';
 export * from './find-about-account';
 export * from './find-account-by-id';
 export * from './find-account-by-username';
+export * from './find-accounts-by-role';
 export * from './find-accounts';
 export * from './find-events-by-owner';
 export * from './find-jobs-by-owner';

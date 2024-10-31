@@ -12,6 +12,7 @@ import {
   EventOut,
   AccountOut,
   PresentationOut,
+  Role,
 } from '@devmx/shared-api-interfaces';
 
 export class AccountServiceImpl implements AccountService {
@@ -23,6 +24,12 @@ export class AccountServiceImpl implements AccountService {
 
   find(params: URLSearchParams) {
     const url = [this.url, params.toString()];
+    return this.http.get<Page<AccountOut>>(url.join('?'));
+  }
+
+  findByRole(role: Role, params: URLSearchParams) {
+    const endpoint = this.url + '/by-role/' + role
+    const url = [endpoint, params.toString()];
     return this.http.get<Page<AccountOut>>(url.join('?'));
   }
 

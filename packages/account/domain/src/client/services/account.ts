@@ -6,11 +6,14 @@ import {
   EventOut,
   AccountOut,
   PresentationOut,
+  Role,
 } from '@devmx/shared-api-interfaces';
 
 // prettier-ignore
 export abstract class AccountService {
   abstract find(params: URLSearchParams): Observable<Page<AccountOut>>;
+
+  abstract findByRole(role: Role, params: URLSearchParams): Observable<Page<AccountOut>>;
 
   abstract findOne(id: string): Observable<AccountOut>;
 

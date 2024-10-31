@@ -1,9 +1,14 @@
 import { PresentationFeatureAdminComponent } from './presentation-feature-admin.component';
 import { presentationFeatureAdminProviders } from './presentation-feature-admin.providers';
-import { MyPresentationsContainer, PresentationContainer } from './containers';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { presentationResolver } from './resolvers';
 import { Route } from '@angular/router';
+import {
+  ManagePresentationsContainer,
+  MyPresentationsContainer,
+  PresentationContainer,
+} from './containers';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 
 export const presentationFeatureAdminRoutes: Route[] = [
   {
@@ -37,6 +42,14 @@ export const presentationFeatureAdminRoutes: Route[] = [
           breadcrumb: 'Minhas apresentações',
         },
         component: MyPresentationsContainer,
+      },
+      {
+        path: 'gerenciar-apresentacoes',
+        data: {
+          breadcrumb: 'Gerenciar apresentações',
+        },
+        canActivate: [rolesGuard('director', 'manager', 'staff')],
+        component: ManagePresentationsContainer,
       },
       {
         path: '',
