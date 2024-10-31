@@ -1,7 +1,7 @@
-import { Album, Photo } from "@devmx/shared-api-interfaces";
-import { AccountRefDto } from "@devmx/shared-data-source";
-import { ApiProperty } from "@nestjs/swagger";
-import { Type } from "class-transformer";
+import { Album, Photo } from '@devmx/shared-api-interfaces';
+import { AccountRefDto } from '@devmx/shared-data-source';
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 
 export class AlbumDto implements Album {
   @ApiProperty()
@@ -14,9 +14,13 @@ export class AlbumDto implements Album {
 
   @ApiProperty({ type: () => [AccountRefDto] })
   @Type(() => AccountRefDto)
-  contributors?: AccountRefDto[]
+  contributors?: AccountRefDto[];
 
   @ApiProperty({ type: () => Date })
   @Type(() => Date)
   createdAt: Date;
+
+  @ApiProperty({ type: () => AccountRefDto })
+  @Type(() => AccountRefDto)
+  owner: AccountRefDto;
 }
