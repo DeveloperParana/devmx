@@ -19,6 +19,11 @@ export const appSections: SectionHeaderOptions[] = [
         route: ['/carreiras'],
         icon: 'finance/bullseye',
       },
+      {
+        label: 'Albuns',
+        route: ['/albuns'],
+        icon: 'camera-shutter',
+      },
     ],
   },
   {
