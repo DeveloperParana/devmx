@@ -1,0 +1,23 @@
+{
+  "name": "academy-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/academy/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/academy/domain",
+        "main": "packages/academy/domain/src/index.ts",
+        "tsConfig": "packages/academy/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/academy/domain/src/server.ts",
+          "packages/academy/domain/src/client.ts"
+        ]
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
 import { authInterceptor, loaderInterceptor } from './interceptors';
 import { provideServiceWorker } from '@angular/service-worker';
+import { provideAcademy } from '@devmx/academy-data-access';
 import { provideCareer } from '@devmx/career-data-access';
 import { provideAlbum } from '@devmx/album-data-access';
 import { provideEvent } from '@devmx/event-data-access';
@@ -40,6 +41,7 @@ import {
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 
+
 registerLocaleData(pt, 'pt-BR', ptBr);
 
 export const appConfig: ApplicationConfig = {
@@ -73,6 +75,7 @@ export const appConfig: ApplicationConfig = {
     ...providePresentation(),
     ...provideEvent(),
     ...provideAlbum(),
+    ...provideAcademy(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',

@@ -1,7 +1,10 @@
 export * from './account';
-export * from './city';
-export * from './event';
 export * from './album';
+export * from './city';
+export * from './course-subject';
+export * from './course';
+export * from './event';
+export * from './institution';
 export * from './job-opening';
 export * from './job-skill';
 export * from './job';
@@ -12,3 +15,4 @@ export * from './presentation-reaction';
 export * from './presentation';
 export * from './rsvp';
 export * from './skill';
+export * from './subject';

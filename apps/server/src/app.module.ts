@@ -1,6 +1,7 @@
 import { PresentationResourceModule } from '@devmx/presentation-resource';
 import { LocationResourceModule } from '@devmx/location-resource';
 import { AccountResourceModule } from '@devmx/account-resource';
+import { AcademyResourceModule } from '@devmx/academy-resource';
 import { CareerResourceModule } from '@devmx/career-resource';
 import { AlbumResourceModule } from '@devmx/album-resource';
 import { EventResourceModule } from '@devmx/event-resource';
@@ -22,7 +23,8 @@ import {
     LocationResourceModule,
     EventResourceModule,
     CareerResourceModule,
-    AlbumResourceModule
+    AlbumResourceModule,
+    AcademyResourceModule
   ],
 })
 export class AppModule {}

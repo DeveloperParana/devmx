@@ -2,7 +2,8 @@ import { Account, RoleGroup } from '@devmx/shared-api-interfaces';
 
 enum Permission {
   Recruiter = 0b1,
-  Sponsor = 0b1 << Recruiter,
+  Academic = 0b1 << Recruiter,
+  Sponsor = 0b1 << Academic,
   Worthy = 0b1 << Sponsor,
   Board = 0b1 << Worthy,
 }
@@ -32,6 +33,11 @@ export class AccountLevel {
       this.#groups.push('recruiter');
     }
 
+    if (this.isAcademic) {
+      this.#level += Permission.Academic;
+      this.#groups.push('academic');
+    }
+
     if (this.isSponsor) {
       this.#level += Permission.Sponsor;
       this.#groups.push('sponsor');
@@ -50,6 +56,10 @@ export class AccountLevel {
 
   get isRecruiter() {
     return this.roles.recruiter;
+  }
+
+  get isAcademic() {
+    return this.roles.academic;
   }
 
   get isSponsor() {

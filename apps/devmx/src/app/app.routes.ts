@@ -3,6 +3,13 @@ import { NotFoundContainer } from './containers';
 
 export const appRoutes: Route[] = [
   {
+    path: 'academia',
+    loadChildren: () =>
+      import('@devmx/academy-feature-shell').then(
+        (m) => m.academyFeatureShellRoutes
+      ),
+  },
+  {
     path: 'albuns',
     loadChildren: () =>
       import('@devmx/album-feature-shell').then(

@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Encontre instituições</h2>
+
+@if (institutionFacade.response$ | async; as response) {
+
+<mat-dialog-content class="dialog-content">
+  <mat-selection-list
+    class="institutions"
+    [multiple]="data.multiple"
+    #institution
+  >
+    @for (institution of response.data; track institution.id) {
+    <mat-list-option [value]="institution">
+      {{institution.name}}
+    </mat-list-option>
+    }
+  </mat-selection-list>
+
+  <devmx-paginator
+    [items]="response.items"
+    (pageChange)="onPageChange($event)"
+  />
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions" align="end">
+  <button
+    mat-raised-button
+    type="button"
+    (click)="close(institution.selectedOptions.selected)"
+  >
+    Selecionar
+  </button>
+  <button mat-button type="button" (click)="ref.close()">Cancelar</button>
+</mat-dialog-actions>
+}

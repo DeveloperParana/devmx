@@ -18,6 +18,8 @@ export class RolePipe implements PipeTransform {
         return 'palestrante';
       case 'recruiter':
         return 'recrutador';
+      case 'academic':
+        return 'acadêmico';
       case 'staff':
         return 'organizador';
       case 'leader':

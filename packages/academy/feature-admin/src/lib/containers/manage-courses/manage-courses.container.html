@@ -1,0 +1,37 @@
+@if (courseFacade.response$ | async; as courses) {
+
+<div class="courses-container">
+  @for (course of courses.data; track course.id) {
+
+  <devmx-course-card [data]="course">
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar vaga"
+      matTooltipPosition="after"
+      (click)="deleteCourse(course)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-course-card>
+  }
+</div>
+
+@if (!courses.items) {
+<div class="no-courses-yet">
+  <h2>Não temos nada aqui...</h2>
+</div>
+}
+
+<footer>
+  <button mat-raised-button (click)="openSelectAccount()">
+    Filtrar por recrutador
+  </button>
+
+  <devmx-paginator
+    [size]="10"
+    [items]="courses.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

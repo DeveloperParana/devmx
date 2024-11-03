@@ -3,9 +3,9 @@ import { Model, Query, RootFilterQuery } from 'mongoose';
 import {
   Entity,
   QueryParams,
+  QueryFilter,
   EditableEntity,
 } from '@devmx/shared-api-interfaces';
-import { QueryMongoParams } from '../interfaces';
 
 export abstract class MongoService<T extends Entity>
   implements EntityService<T>
@@ -14,6 +14,10 @@ export abstract class MongoService<T extends Entity>
 
   protected applyPopulate<U>(query: Query<U, T>): Query<U, T> {
     return query;
+  }
+
+  protected applyFilter(filter: QueryFilter<T>): RootFilterQuery<T> {
+    return { ...filter };
   }
 
   protected applyEditableParser<U>(data: EditableEntity<T>) {
@@ -33,7 +37,7 @@ export abstract class MongoService<T extends Entity>
     const { page = 0, size = 10, filter } = params;
 
     const skip = page * size;
-    const where = { ...filter };
+    const where = this.applyFilter(filter ?? {});
 
     const query = this.entityModel.find(where).skip(skip).limit(size);
 

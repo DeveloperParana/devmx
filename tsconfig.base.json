@@ -15,6 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@devmx/academy-data-access": [
+        "packages/academy/data-access/src/index.ts"
+      ],
+      "@devmx/academy-data-source": [
+        "packages/academy/data-source/src/index.ts"
+      ],
+      "@devmx/academy-domain": ["packages/academy/domain/src/index.ts"],
+      "@devmx/academy-domain/client": ["packages/academy/domain/src/client.ts"],
+      "@devmx/academy-domain/server": ["packages/academy/domain/src/server.ts"],
+      "@devmx/academy-feature-admin": [
+        "packages/academy/feature-admin/src/index.ts"
+      ],
+      "@devmx/academy-feature-shell": [
+        "packages/academy/feature-shell/src/index.ts"
+      ],
+      "@devmx/academy-resource": ["packages/academy/resource/src/index.ts"],
+      "@devmx/academy-ui-shared": ["packages/academy/ui-shared/src/index.ts"],
       "@devmx/account-api-interfaces": [
         "packages/account/api-interfaces/src/index.ts"
       ],

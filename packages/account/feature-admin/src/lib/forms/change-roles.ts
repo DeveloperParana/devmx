@@ -17,6 +17,9 @@ export class ChangeRolesForm extends FormGroup<TypedForm<ChangeRoles>> {
         speaker: new FormControl(false, {
           nonNullable: true,
         }),
+        academic: new FormControl(false, {
+          nonNullable: true,
+        }),
         recruiter: new FormControl(false, {
           nonNullable: true,
         }),

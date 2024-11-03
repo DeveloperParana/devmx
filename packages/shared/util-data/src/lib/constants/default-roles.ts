@@ -2,6 +2,7 @@ import { Roles } from '@devmx/shared-api-interfaces';
 
 export const DEFAULT_ROLES: Roles = {
   member: false,
+  academic: false,
   recruiter: false,
   speaker: false,
   donor: false,

@@ -1,0 +1,19 @@
+{
+  "name": "academy-data-source",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/academy/data-source/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/academy/data-source",
+        "main": "packages/academy/data-source/src/index.ts",
+        "tsConfig": "packages/academy/data-source/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

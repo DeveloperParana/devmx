@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Encontre assuntos</h2>
+
+@if (subjectFacade.response$ | async; as response) {
+
+<mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <input
+      matInput
+      [formControl]="search"
+      placeholder="Qual assunto procura?"
+    />
+  </mat-form-field>
+
+  <button type="button" class="add-subject" mat-button (click)="addSubject()">
+    <devmx-icon name="plus" [size]="18" />
+    <span>Adicionar assunto</span>
+  </button>
+
+  <mat-selection-list class="subjects" #subjects>
+    @for (item of response.data; track item.id) {
+    <mat-list-option [value]="item"> {{item.name}} </mat-list-option>
+    }
+  </mat-selection-list>
+
+  <devmx-paginator
+    [items]="response.items"
+    (pageChange)="onPageChange($event)"
+  />
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions" align="end">
+  <button
+    mat-raised-button
+    type="button"
+    (click)="close(subjects.selectedOptions.selected)"
+  >
+    Salvar
+  </button>
+  <button mat-button type="button" (click)="ref.close()">Cancelar</button>
+</mat-dialog-actions>
+
+}

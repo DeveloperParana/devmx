@@ -13,6 +13,7 @@ import { TextIcon } from './text';
 
 type Root =
   | 'airplay'
+  | 'academic-cap'
   | 'alarm-clock-alert'
   | 'alert-circle'
   | 'alert-sign'
