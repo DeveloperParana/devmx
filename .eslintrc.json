@@ -4,13 +4,21 @@
   "plugins": ["@nx"],
   "overrides": [
     {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    },
+    {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": ["@devmx/account-data-access", "@devmx/academy-data-access"],
+            "allow": [
+              "@devmx/account-data-access",
+              "@devmx/academy-data-access"
+            ],
             "depConstraints": [
               {
                 "sourceTag": "type:api",

@@ -1,0 +1,3 @@
+import { Editable<%= className %> } from '@devmx/shared-api-interfaces';
+
+export type Create<%= className %> = Editable<%= className %>;

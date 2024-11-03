@@ -1,0 +1,4 @@
+import { EditableEntity } from '../types';
+import { <%= className %> } from '../entities';
+
+export type Editable<%= className %> = EditableEntity<<%= className %>>;
