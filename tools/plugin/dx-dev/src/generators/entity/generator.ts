@@ -1,5 +1,5 @@
-import { Tree, formatFiles, generateFiles, workspaceRoot } from '@nx/devkit';
 import { addFileToBarrel, buildBarrelPaths, normalizeOptions } from './lib';
+import { Tree, formatFiles, generateFiles } from '@nx/devkit';
 import { EntityGeneratorSchema } from './schema';
 import { join } from 'node:path';
 
@@ -9,12 +9,7 @@ export async function entityGenerator(
 ) {
   const normalizedOptions = normalizeOptions(options);
 
-  generateFiles(
-    tree,
-    join(__dirname, 'files'),
-    join(workspaceRoot, 'packages'),
-    normalizedOptions
-  );
+  generateFiles(tree, join(__dirname, 'files'), 'packages', normalizedOptions);
 
   const barrels = buildBarrelPaths(
     normalizedOptions.scope,

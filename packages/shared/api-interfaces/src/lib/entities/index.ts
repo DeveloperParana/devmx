@@ -16,3 +16,5 @@ export * from './presentation';
 export * from './rsvp';
 export * from './skill';
 export * from './subject';
+
+export * from './message';

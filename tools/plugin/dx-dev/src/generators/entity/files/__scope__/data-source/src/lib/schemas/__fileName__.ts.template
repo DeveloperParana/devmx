@@ -1,7 +1,7 @@
 import { <%= className %> } from '@devmx/shared-api-interfaces';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import { Document } from 'mongoose';
 
 @Schema()
 export class <%= className %>Collection extends Document implements <%= className %> {

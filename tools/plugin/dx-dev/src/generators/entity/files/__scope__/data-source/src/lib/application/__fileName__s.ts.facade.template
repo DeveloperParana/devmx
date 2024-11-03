@@ -7,7 +7,7 @@ import {
   Find<%= className %>ByIDUseCase,
   Find<%= className %>sUseCase,
   Update<%= className %>UseCase,
-} from '@devmx/academy-domain/server';
+} from '@devmx/<%= scope %>-domain/server';
 import {
   PageDto,
   QueryParamsDto,

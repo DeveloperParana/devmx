@@ -27,3 +27,5 @@ export * from './presentation-ref';
 export * from './sign-in';
 export * from './sign-up';
 export * from './update-event';
+
+export * from './editable-message';

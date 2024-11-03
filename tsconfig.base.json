@@ -115,6 +115,15 @@
       ],
       "@devmx/location-resource": ["packages/location/resource/src/index.ts"],
       "@devmx/location-ui-forms": ["packages/location/ui-forms/src/index.ts"],
+      "@devmx/message-data-access": [
+        "packages/message/data-access/src/index.ts"
+      ],
+      "@devmx/message-data-source": [
+        "packages/message/data-source/src/index.ts"
+      ],
+      "@devmx/message-domain": ["packages/message/domain/src/index.ts"],
+      "@devmx/message-domain/server": ["packages/message/domain/src/server.ts"],
+      "@devmx/message-domain/client": ["packages/message/domain/src/client.ts"],
       "@devmx/plugin-dx-dev": ["tools/plugin/dx-dev/src/index.ts"],
       "@devmx/presentation-data-access": [
         "packages/presentation/data-access/src/index.ts"

@@ -1,0 +1,23 @@
+{
+  "name": "message-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/message/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/message/domain",
+        "main": "packages/message/domain/src/index.ts",
+        "tsConfig": "packages/message/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/message/domain/src/server.ts",
+          "packages/message/domain/src/client.ts"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "message-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/message/data-access/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/message/data-access",
+        "main": "packages/message/data-access/src/index.ts",
+        "tsConfig": "packages/message/data-access/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

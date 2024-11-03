@@ -6,7 +6,7 @@ import {
   Find<%= className %>ByIDUseCase,
   Find<%= className %>sUseCase,
   Update<%= className %>UseCase,
-} from '@devmx/academy-domain/client';
+} from '@devmx/<%= scope %>-domain/client';
 
 export class <%= className %>Facade extends EntityFacade<<%= className %>> {
   constructor(

@@ -1,8 +1,10 @@
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { Tree } from '@nx/devkit';
 
 export function addFileToBarrel(tree: Tree, path: string, file: string) {
   if (!tree.exists(path)) {
-    throw new Error(`Barrel file ${path} not found.`);
+    mkdirSync(path.replace('/index.ts', ''), { recursive: true });
+    writeFileSync(path, '', 'utf-8');
   }
 
   const currentContent = tree.read(path, 'utf-8');
