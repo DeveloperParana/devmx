@@ -3,6 +3,10 @@ import { BehaviorSubject } from 'rxjs';
 export function observer<T>(value: T) {
   const subject = new BehaviorSubject(value);
 
+  const current = () => {
+    return subject.value
+  }
+
   const update = (value: T) => {
     subject.next(value);
   };
@@ -11,5 +15,5 @@ export function observer<T>(value: T) {
     return subject.asObservable();
   };
 
-  return { update, observe };
+  return { current, update, observe };
 }

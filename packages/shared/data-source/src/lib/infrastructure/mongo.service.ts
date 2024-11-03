@@ -3,17 +3,21 @@ import { Model, Query, RootFilterQuery } from 'mongoose';
 import {
   Entity,
   QueryParams,
+  QueryFilter,
   EditableEntity,
 } from '@devmx/shared-api-interfaces';
-import { QueryMongoParams } from '../interfaces';
 
 export abstract class MongoService<T extends Entity>
   implements EntityService<T>
 {
-  constructor(private entityModel: Model<T>) {}
+  constructor(protected entityModel: Model<T>) {}
 
   protected applyPopulate<U>(query: Query<U, T>): Query<U, T> {
     return query;
+  }
+
+  protected applyFilter(filter: QueryFilter<T>): RootFilterQuery<T> {
+    return { ...filter };
   }
 
   protected applyEditableParser<U>(data: EditableEntity<T>) {
@@ -28,11 +32,12 @@ export abstract class MongoService<T extends Entity>
     return (await created.save()).toJSON() as T;
   }
 
-  async find(params: QueryParams<T> | QueryMongoParams<T>) {
+  // async find(params: QueryParams<T> | QueryMongoParams<T>) {
+  async find(params: QueryParams<T>) {
     const { page = 0, size = 10, filter } = params;
 
     const skip = page * size;
-    const where = { ...filter };
+    const where = this.applyFilter(filter ?? {});
 
     const query = this.entityModel.find(where).skip(skip).limit(size);
 

@@ -9,6 +9,9 @@ export class AccountRoleDto implements AccountRole {
   speaker: boolean;
 
   @ApiProperty()
+  academic: boolean;
+
+  @ApiProperty()
   recruiter: boolean;
 
   @ApiProperty()

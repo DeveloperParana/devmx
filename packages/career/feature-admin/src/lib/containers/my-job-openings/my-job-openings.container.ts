@@ -1,6 +1,6 @@
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { JobOpeningCardComponent } from '@devmx/career-ui-shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
@@ -9,6 +9,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { JobOpening } from '@devmx/shared-api-interfaces';
+import { AuthFacade } from '@devmx/account-data-access';
+import { combineLatest, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -34,18 +36,36 @@ export class MyJobOpeningsContainer {
 
   dialogFacade = inject(DialogFacade);
 
+  authFacade = inject(AuthFacade);
+
   jobOpeningFacade = inject(JobOpeningFacade);
 
   constructor() {
-    this.route.queryParams
-      .pipe(takeUntilDestroyed())
-      .subscribe(({ page = 0, size = 10, open = null, active = null }) => {
-        const filter = { open, active };
-        this.jobOpeningFacade.setParams({ page, size, filter });
+    const user$ = this.authFacade.user$.pipe(
+      filter((user) => !!user),
+      map(({ id }) => id)
+    );
 
-        this.jobOpeningFacade.load();
-      });
+    const params$ = this.route.queryParams.pipe(
+      map(({ page, size, open = null, active = null }) => {
+        return { page, size, open, active };
+      })
+    );
+
+    combineLatest([user$, params$])
+      .pipe(takeUntilDestroyed())
+      .subscribe(this.onQueryParams);
   }
+
+  onQueryParams = ([owner, params]: [string, Params]) => {
+    const { page, size, open, active } = params;
+
+    const filter = { open, active, owner };
+
+    this.jobOpeningFacade.setParams({ page, size, filter });
+
+    this.jobOpeningFacade.load();
+  };
 
   deleteJobOpening({ id, title }: JobOpening) {
     this.dialogFacade

@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .drag-area {
+    margin: 1em;
+    min-height: 32em;
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    border-radius: 16px;
+
+    transition: background-image 600ms ease-in-out;
+
+    &.drag-over {
+      @include mat.elevation(16);
+
+      background-image: url('/figures/drop-photos.svg');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+}

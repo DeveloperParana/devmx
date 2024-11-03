@@ -1,15 +1,17 @@
-import {
-  SharedDatabaseModule,
-  SharedResourceModule,
-} from '@devmx/shared-resource';
 import { PresentationResourceModule } from '@devmx/presentation-resource';
 import { LocationResourceModule } from '@devmx/location-resource';
 import { AccountResourceModule } from '@devmx/account-resource';
+import { AcademyResourceModule } from '@devmx/academy-resource';
 import { CareerResourceModule } from '@devmx/career-resource';
+import { AlbumResourceModule } from '@devmx/album-resource';
 import { EventResourceModule } from '@devmx/event-resource';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { Module } from '@nestjs/common';
 import { env } from './envs/env';
+import {
+  SharedDatabaseModule,
+  SharedResourceModule,
+} from '@devmx/shared-resource';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { env } from './envs/env';
     LocationResourceModule,
     EventResourceModule,
     CareerResourceModule,
+    AlbumResourceModule,
+    AcademyResourceModule
   ],
 })
 export class AppModule {}

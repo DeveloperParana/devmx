@@ -1,0 +1,62 @@
+@if (course$ | async; as course) {
+
+<mat-card class="course-card">
+  <mat-card-header class="course-card-header sticky">
+    <a mat-card-avatar routerLink=".." mat-icon-button>
+      <devmx-icon name="arrow/left" />
+    </a>
+    <mat-card-title>{{course.name}}</mat-card-title>
+    <a routerLink=".." mat-icon-button>
+      <devmx-icon name="close-cross" />
+    </a>
+  </mat-card-header>
+
+  <mat-list>
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="building/school" />
+      <span matListItemTitle>{{course.institution.name}}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-card-content>
+    <h3>Objetivo</h3>
+    <div [innerHTML]="course.goal | marked | safeHtml"></div>
+  </mat-card-content>
+
+  <mat-list>
+    @for (subject of course.subjects; track subject.subject.id) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="arrow/chevron-right" />
+      <span matListItemTitle>{{subject.subject.name}}</span>
+      <span matListItemLine
+        >{{subject.hours}} horas
+        <!--  -->
+        @if (subject.instructor) { com {{subject.instructor}} }
+      </span>
+    </mat-list-item>
+    }
+  </mat-list>
+
+  @if (course.details) {
+  <mat-card-content>
+    <h3>Detalhes</h3>
+    <div [innerHTML]="course.details | marked | safeHtml"></div>
+  </mat-card-content>
+  }
+  <!--  -->
+  @if (course.link) {
+  <mat-card-actions class="course-card-actions">
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      mat-stroked-button
+      [href]="course.link"
+    >
+      <devmx-icon name="external-link" />
+      <span>Inscreva-se</span>
+    </a>
+  </mat-card-actions>
+  }
+</mat-card>
+
+}

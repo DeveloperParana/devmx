@@ -55,6 +55,7 @@ describe('Change Roles UseCase', () => {
         member: true,
         speaker: false,
         neighbor: false,
+        academic: false,
         recruiter: false,
         donor: false,
         leader: false,

@@ -1,0 +1,18 @@
+@if (album$ | async; as album) {
+
+<mat-card class="album-card">
+  <mat-card-header class="album-card-header sticky">
+    <a mat-card-avatar routerLink=".." mat-icon-button>
+      <devmx-icon name="arrow/left" />
+    </a>
+    <mat-card-title>{{album.title}}</mat-card-title>
+    <mat-card-subtitle>{{ album.createdAt | date }}</mat-card-subtitle>
+    <a routerLink=".." mat-icon-button>
+      <devmx-icon name="close-cross" />
+    </a>
+  </mat-card-header>
+
+  <mat-list> </mat-list>
+</mat-card>
+
+}

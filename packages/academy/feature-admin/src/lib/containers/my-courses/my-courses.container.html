@@ -1,0 +1,54 @@
+<a class="add-button tertiary-fab" mat-fab routerLink="novo">
+  <devmx-icon name="plus" />
+</a>
+
+@if (courseFacade.response$ | async; as courses) {
+
+<div class="courses-container">
+  @for (course of courses.data; track course.id) {
+
+  <devmx-course-card [data]="course">
+    <a
+      mat-icon-button
+      [routerLink]="course.id"
+      matTooltip="Editar curso"
+      matTooltipPosition="before"
+    >
+      <devmx-icon name="software/edit" />
+    </a>
+
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Apagar curso"
+      matTooltipPosition="after"
+      (click)="deleteCourse(course)"
+    >
+      <devmx-icon name="trash-alt" />
+    </button>
+  </devmx-course-card>
+  }
+</div>
+
+@if (!courses.items) {
+<div class="no-courses-yet">
+  <h2>Não temos nada aqui...</h2>
+  <h3>
+    Siga nessa direção
+    <devmx-icon color="#3BCE53" name="arrow/up-right" [size]="32" /> <br />
+    até encontrar o botão com um
+    <devmx-icon color="#3BCE53" name="plus" [size]="32" /> <br />
+    e cadastre seus cursos.
+    <devmx-icon color="#3BCE53" name="emoji/smirking-alt" [size]="32" />
+  </h3>
+</div>
+}
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="courses.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

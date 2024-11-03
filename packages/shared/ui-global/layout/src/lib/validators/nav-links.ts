@@ -21,5 +21,5 @@ export const navLinksValidator = (
       return { ...section, links };
     })
     .filter((section) => section.links.length)
-    .map(({ label, links, icon }) => new SectionHeader(label, links, icon));
+    .map(({ label, links, expanded, icon }) => new SectionHeader(label, links, expanded, icon));
 };

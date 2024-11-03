@@ -1,3 +1,28 @@
+:root {
+  --card-grid-gap: 1rem; /* Espaçamento entre os itens */
+  --card-grid-column-count-desktop: 3; /* Colunas no desktop */
+  --card-grid-column-count-tablet: 2; /* Colunas no tablet */
+  --card-grid-column-count-mobile: 1; /* Colunas no celular */
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--card-grid-gap);
+  grid-template-columns: repeat(var(--card-grid-column-count-desktop), 1fr);
+}
+
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(var(--card-grid-column-count-tablet), 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(var(--card-grid-column-count-mobile), 1fr);
+  }
+}
+
 kbd {
   background-color: #f3f3f3;
   border: 1px solid #ccc;

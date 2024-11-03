@@ -1,0 +1,22 @@
+<mat-card class="album-card">
+  @if (album.cover) {
+  <img mat-card-image [src]="album.cover" [alt]="album.title" />
+  }
+
+  <mat-card-header>
+    <mat-card-title>{{ album.title }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @if (album.createdAt) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="calendar" />
+      <div matListItemTitle>{{ album.createdAt | date }}</div>
+    </mat-list-item>
+    }
+  </mat-list>
+
+  <mat-card-actions align="end" class="album-card-actions">
+    <ng-content />
+  </mat-card-actions>
+</mat-card>

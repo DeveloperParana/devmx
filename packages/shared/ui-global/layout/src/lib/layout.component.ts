@@ -1,6 +1,7 @@
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutToolbarComponent } from './toolbar/toolbar.component';
 import { LayoutNavbarComponent } from './navbar/navbar.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -20,6 +21,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
+
 @Component({
   selector: 'devmx-layout',
   templateUrl: './layout.component.html',
@@ -35,6 +37,7 @@ import {
     MatBadgeModule,
     MatButtonModule,
     MatSidenavModule,
+    MatExpansionModule,
     MatProgressBarModule,
     LayoutToolbarComponent,
     LayoutNavbarComponent,

@@ -4,12 +4,21 @@
   </mat-card-header>
 
   <mat-list>
+    @if (jobOpening.company) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="building/building" />
+      <span matListItemTitle>{{ jobOpening.company }}</span>
+    </mat-list-item>
+    }
+
     <mat-list-item>
       <devmx-icon matListItemIcon name="transport/location-pin-alt" />
       <div matListItemTitle>{{ jobOpening.mode | jobMode }}</div>
-      <!-- @if (jobOpening.mode !== 'remote' && jobOpening.city) {
-      <div matListItemLine>em {{ jobOpening.city.name }}</div>
-      } -->
+    </mat-list-item>
+
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="doc/check" />
+      <div matListItemTitle>Contrato {{ jobOpening.contract }}</div>
     </mat-list-item>
 
     <mat-list-item>
@@ -20,11 +29,6 @@
     <mat-list-item>
       <devmx-icon matListItemIcon name="time-loading" />
       <div matListItemTitle>{{ jobOpening.type | jobType }}</div>
-    </mat-list-item>
-
-    <mat-list-item>
-      <devmx-icon matListItemIcon name="doc/check" />
-      <div matListItemTitle>Contrato {{ jobOpening.contract }}</div>
     </mat-list-item>
   </mat-list>
 

@@ -118,7 +118,7 @@ export class EventsController {
   @Patch(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: EventDto })
-  @Roles(['director', 'manager', 'staff', 'leader'])
+  @Roles(['leader'])
   async update(
     @User() auth: AuthUser,
     @Param('id') id: string,

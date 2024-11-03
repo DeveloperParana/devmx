@@ -1,0 +1,9 @@
+{
+  "name": "album-resource",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/album/resource/src",
+  "projectType": "library",
+  "tags": ["type:resource"],
+  "// targets": "to see all targets run: nx show project album-resource --web",
+  "targets": {}
+}

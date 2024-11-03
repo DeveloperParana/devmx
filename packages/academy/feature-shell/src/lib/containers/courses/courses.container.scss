@@ -1,0 +1,53 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  header {
+    padding: 0.4em 0.8em;
+  }
+
+  .courses-container {
+    flex: 1;
+    gap: 1em;
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    > * {
+      flex: 1;
+      max-width: 50%;
+    }
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (min-width: 1920px) {
+    .courses-container {
+      > * {
+        flex: 1;
+        max-width: 33%;
+      }
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .courses-container {
+      align-content: flex-start;
+
+      > * {
+        display: inline-flex;
+        min-width: 100%;
+      }
+      grid-template-columns: 1fr;
+    }
+  }
+}

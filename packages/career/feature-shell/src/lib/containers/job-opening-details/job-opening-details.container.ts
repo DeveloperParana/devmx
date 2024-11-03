@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { AsyncPipe, CurrencyPipe, JsonPipe } from '@angular/common';
+import { MarkedPipe, SafeHtmlPipe } from '@devmx/shared-ui-global/editor';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { JobOpeningOut } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { PhotoPipe } from '@devmx/shared-ui-global';
@@ -25,14 +26,14 @@ import {
     MatListModule,
     MatButtonModule,
     IconComponent,
-    IconComponent,
     CurrencyPipe,
     JobLevelPipe,
     JobModePipe,
     JobTypePipe,
+    SafeHtmlPipe,
+    MarkedPipe,
     PhotoPipe,
     AsyncPipe,
-    JsonPipe,
   ],
   standalone: true,
 })

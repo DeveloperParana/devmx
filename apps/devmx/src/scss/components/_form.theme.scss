@@ -4,6 +4,25 @@
   $primary-color: mat.get-theme-color($theme, primary, 70);
   $secondary-color: mat.get-theme-color($theme, secondary, 70);
 
+  .secondary-container-background {
+    background-color: mat.get-theme-color($theme, secondary-container);
+  }
+
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) {
+    .mat-mdc-notch-piece {
+      border-width: 2px;
+      border-color: rgba(mat.get-theme-color($theme, primary, 80), 0.2);
+    }
+
+    &:not(.mdc-text-field--focused):hover .mat-mdc-notch-piece {
+      border-color: rgba(mat.get-theme-color($theme, primary, 80), 0.6);
+    }
+
+    &.mdc-text-field--focused .mat-mdc-notch-piece {
+      border-color: mat.get-theme-color($theme, primary, 80);
+    }
+  }
+
   .mat-radio-button {
     @include mat.radio-theme(
       (

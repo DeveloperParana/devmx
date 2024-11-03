@@ -1,0 +1,31 @@
+<header></header>
+
+@defer { @if (courseFacade.response$ | async; as courses) {
+
+<div class="courses-container">
+  @for (course of courses.data; track course.id) {
+  <!--  -->
+  @defer (on viewport) {
+  <a [routerLink]="['/', 'academia', { outlets: { right: [course.id] }}]">
+    <devmx-course-card [data]="course" />
+  </a>
+  } @placeholder {
+  <devmx-skeleton [rows]="3" />
+  } }
+</div>
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="courses.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+} } @loading {
+<img src="loader.svg" alt="Carregando..." />
+} @placeholder {
+<div class="courses-container">
+  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+</div>
+}

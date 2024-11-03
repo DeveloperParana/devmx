@@ -27,6 +27,14 @@
     flex: 1;
   }
 
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+
+    ::ng-deep .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+
   .space-between {
     flex: 1;
     display: flex;
@@ -117,6 +125,7 @@
   .layout-sidenav-start {
     width: 16em;
     min-width: 12em;
+    padding-left: 0.4em;
 
     .mat-mdc-subheader {
       font-size: 1.2em;
@@ -143,7 +152,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0 1em;
+    padding: 0 0.4em;
   }
 
   .layout-is-mobile {

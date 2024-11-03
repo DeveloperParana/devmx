@@ -1,0 +1,16 @@
+<mat-card class="course-card">
+  <mat-card-header>
+    <mat-card-title>{{ course.name }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="building/school" />
+      <span matListItemTitle>{{ course.institution.name }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-card-actions align="end" class="course-card-actions">
+    <ng-content />
+  </mat-card-actions>
+</mat-card>

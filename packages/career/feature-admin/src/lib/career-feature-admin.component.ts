@@ -2,9 +2,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'devmx-career-feature-admin',
   template: `<router-outlet />`,
-  styleUrl: './career-feature-admin.component.scss',
+  styles: `
+    :host {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  `,
+  selector: 'devmx-career-feature-admin',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet],
   standalone: true,

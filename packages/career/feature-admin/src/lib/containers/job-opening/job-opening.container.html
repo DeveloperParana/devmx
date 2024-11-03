@@ -1,5 +1,5 @@
 <form id="job" [formGroup]="form" (submit)="onSubmit()">
-  <mat-card class="job-opening-card">
+  <mat-card class="job-opening">
     <mat-card-content class="job-opening-content">
       <section>
         <mat-form-field>
@@ -8,71 +8,9 @@
           <mat-error>Obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Descrição</mat-label>
-          <textarea
-            matInput
-            formControlName="description"
-            cdkAutosizeMinRows="5"
-            cdkAutosizeMaxRows="10"
-            cdkTextareaAutosize
-          ></textarea>
-          <mat-error>Obrigatório</mat-error>
-        </mat-form-field>
+        <devmx-editor label="Descrição" formControlName="description" />
 
-        <mat-form-field>
-          <mat-label>Requisitos</mat-label>
-          <textarea
-            matInput
-            formControlName="requirements"
-            cdkAutosizeMinRows="5"
-            cdkAutosizeMaxRows="10"
-            cdkTextareaAutosize
-          ></textarea>
-          <mat-error>Obrigatório</mat-error>
-        </mat-form-field>
-
-        <div class="job-opening-skills">
-          <h3 mat-subheader>Habilidades</h3>
-
-          <table formArrayName="skills">
-            @for (sh of form.skills.controls; track sh.value; let index =
-            $index) {
-            <tr class="flex" [formGroupName]="index">
-              <td>{{sh.value.skill?.name}}</td>
-              <td class="fill">
-                <mat-slider min="0" max="100" step="1" discrete>
-                  <input matSliderThumb formControlName="weight" />
-                </mat-slider>
-              </td>
-              <td>{{sh.value.weight}}</td>
-              <td>
-                <button
-                  type="button"
-                  mat-icon-button
-                  (click)="form.skills.removeAt(index)"
-                >
-                  <devmx-icon name="close-cross" />
-                </button>
-              </td>
-            </tr>
-            }
-          </table>
-
-          @if (form.skills.touched && form.skills.hasError('required')) {
-          <mat-error>Selecione ou cadastre ao menos uma habilidade</mat-error>
-          }
-
-          <button
-            mat-button
-            type="button"
-            class="add-button"
-            (click)="openSearchSkills()"
-          >
-            <devmx-icon name="search-list" />
-            <span>Encontrar habilidades</span>
-          </button>
-        </div>
+        <devmx-editor label="Requisitos" formControlName="requirements" />
       </section>
 
       <section>
@@ -161,10 +99,52 @@
           <input matInput formControlName="link" />
           <mat-hint>Opcional</mat-hint>
         </mat-form-field>
+
+        <div class="job-opening-skills">
+          <h3 mat-subheader>Habilidades</h3>
+
+          <table formArrayName="skills">
+            @for (sh of form.skills.controls; track sh.value; let index =
+            $index) {
+            <tr class="flex" [formGroupName]="index">
+              <td>{{sh.value.skill?.name}}</td>
+              <td class="fill">
+                <mat-slider min="0" max="100" step="1" discrete>
+                  <input matSliderThumb formControlName="weight" />
+                </mat-slider>
+              </td>
+              <td>{{sh.value.weight}}</td>
+              <td>
+                <button
+                  type="button"
+                  mat-icon-button
+                  (click)="form.skills.removeAt(index)"
+                >
+                  <devmx-icon name="close-cross" />
+                </button>
+              </td>
+            </tr>
+            }
+          </table>
+
+          @if (form.skills.touched && form.skills.hasError('required')) {
+          <mat-error>Selecione ou cadastre ao menos uma habilidade</mat-error>
+          }
+
+          <button
+            mat-button
+            type="button"
+            class="add-button"
+            (click)="openSearchSkills()"
+          >
+            <devmx-icon name="search-list" />
+            <span>Encontrar habilidades</span>
+          </button>
+        </div>
       </section>
     </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions class="job-opening-actions" align="end">
       <button mat-flat-button [disabled]="form.invalid">Salvar</button>
     </mat-card-actions>
   </mat-card>

@@ -11,6 +11,9 @@ export class RolesForm extends FormGroup<TypedForm<AccountRole>> {
       speaker: new FormControl(false, {
         nonNullable: true,
       }),
+      academic: new FormControl(false, {
+        nonNullable: true,
+      }),
       recruiter: new FormControl(false, {
         nonNullable: true,
       }),

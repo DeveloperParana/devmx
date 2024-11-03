@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  // max-width: calc(100vw - 2em);
+  width: 100%;
+
+  .institution-card {
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:active,
+    &:hover {
+      @include mat.elevation(6);
+    }
+
+    &-actions {
+      &:empty {
+        height: 1px;
+        // display: none;
+      }
+    }
+  }
+}

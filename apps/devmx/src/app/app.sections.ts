@@ -3,6 +3,7 @@ import { SectionHeaderOptions } from '@devmx/shared-ui-global/layout';
 export const appSections: SectionHeaderOptions[] = [
   {
     label: 'Navegação',
+    expanded: true,
     links: [
       {
         label: 'Eventos',
@@ -18,6 +19,16 @@ export const appSections: SectionHeaderOptions[] = [
         label: 'Vagas',
         route: ['/carreiras'],
         icon: 'finance/bullseye',
+      },
+      // {
+      //   label: 'Albuns',
+      //   route: ['/albuns'],
+      //   icon: 'camera-shutter',
+      // },
+      {
+        label: 'Academia',
+        route: ['/academia'],
+        icon: 'academic-cap',
       },
     ],
   },
@@ -42,17 +53,23 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'calendar-tasks',
         roles: ['leader'],
       },
+      // {
+      //   label: 'Meus albuns',
+      //   route: ['/albuns', 'administracao', 'meus-albuns'],
+      //   icon: 'camera-shutter',
+      //   roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'],
+      // },
       {
-        label: 'Vagas',
+        label: 'Meus cursos',
+        route: ['/academia', 'administracao', 'meus-cursos'],
+        icon: 'academic-cap',
+        roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'academic'],
+      },
+      {
+        label: 'Minhas vagas',
         route: ['/carreiras', 'administracao'],
         icon: 'music/speaker',
         roles: ['recruiter'],
-      },
-      {
-        label: 'Contas',
-        route: ['/conta', 'administracao', 'contas'],
-        icon: 'gear',
-        roles: ['manager', 'director'],
       },
       {
         label: 'Gerenciar eventos',
@@ -71,6 +88,18 @@ export const appSections: SectionHeaderOptions[] = [
         route: ['/carreiras', 'administracao', 'gerenciar-ofertas'],
         icon: 'music/speaker',
         roles: ['manager', 'director', 'staff'],
+      },
+      {
+        label: 'Gerenciar cursos',
+        route: ['/academia', 'administracao', 'gerenciar-cursos'],
+        icon: 'academic-cap',
+        roles: ['manager', 'director', 'staff'],
+      },
+      {
+        label: 'Gerenciar contas',
+        route: ['/conta', 'administracao', 'contas'],
+        icon: 'gear',
+        roles: ['manager', 'director'],
       },
       {
         label: 'Dashboard',

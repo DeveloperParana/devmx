@@ -15,6 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@devmx/academy-data-access": [
+        "packages/academy/data-access/src/index.ts"
+      ],
+      "@devmx/academy-data-source": [
+        "packages/academy/data-source/src/index.ts"
+      ],
+      "@devmx/academy-domain": ["packages/academy/domain/src/index.ts"],
+      "@devmx/academy-domain/client": ["packages/academy/domain/src/client.ts"],
+      "@devmx/academy-domain/server": ["packages/academy/domain/src/server.ts"],
+      "@devmx/academy-feature-admin": [
+        "packages/academy/feature-admin/src/index.ts"
+      ],
+      "@devmx/academy-feature-shell": [
+        "packages/academy/feature-shell/src/index.ts"
+      ],
+      "@devmx/academy-resource": ["packages/academy/resource/src/index.ts"],
+      "@devmx/academy-ui-shared": ["packages/academy/ui-shared/src/index.ts"],
       "@devmx/account-api-interfaces": [
         "packages/account/api-interfaces/src/index.ts"
       ],
@@ -44,6 +61,19 @@
       ],
       "@devmx/account-resource": ["packages/account/resource/src/index.ts"],
       "@devmx/account-ui-shared": ["packages/account/ui-shared/src/index.ts"],
+      "@devmx/album-data-access": ["packages/album/data-access/src/index.ts"],
+      "@devmx/album-data-source": ["packages/album/data-source/src/index.ts"],
+      "@devmx/album-domain": ["packages/album/domain/src/index.ts"],
+      "@devmx/album-domain/client": ["packages/album/domain/src/client.ts"],
+      "@devmx/album-domain/server": ["packages/album/domain/src/server.ts"],
+      "@devmx/album-feature-admin": [
+        "packages/album/feature-admin/src/index.ts"
+      ],
+      "@devmx/album-feature-shell": [
+        "packages/album/feature-shell/src/index.ts"
+      ],
+      "@devmx/album-resource": ["packages/album/resource/src/index.ts"],
+      "@devmx/album-ui-shared": ["packages/album/ui-shared/src/index.ts"],
       "@devmx/career-data-access": ["packages/career/data-access/src/index.ts"],
       "@devmx/career-data-source": ["packages/career/data-source/src/index.ts"],
       "@devmx/career-domain": ["packages/career/domain/src/index.ts"],

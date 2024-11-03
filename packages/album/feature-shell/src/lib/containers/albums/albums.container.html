@@ -1,0 +1,31 @@
+<header></header>
+
+@defer { @if (albumFacade.response$ | async; as albums) {
+
+<div class="albums-container">
+  @for (album of albums.data; track album.id) {
+  <!--  -->
+  @defer (on viewport) {
+  <a [routerLink]="['/', 'albuns', { outlets: { right: [album.id] }}]">
+    <devmx-album-card [data]="album" />
+  </a>
+  } @placeholder {
+  <devmx-skeleton [rows]="3" />
+  } }
+</div>
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="albums.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+} } @loading {
+<img src="loader.svg" alt="Carregando..." />
+} @placeholder {
+<div class="albums-container">
+  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+</div>
+}

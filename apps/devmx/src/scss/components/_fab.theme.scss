@@ -4,6 +4,9 @@
   body {
     .mat-mdc-fab {
       z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       @include mat.elevation-transition();
       @include mat.elevation(4);
@@ -11,6 +14,33 @@
       &:hover,
       &:active {
         @include mat.elevation(8);
+      }
+
+      &.top,
+      &.right,
+      &.bottom,
+      &.left {
+        position: fixed;
+      }
+
+      &.top {
+        top: 1.6em;
+      }
+
+      &.right {
+        right: 4em;
+      }
+
+      &.bottom {
+        bottom: 2em;
+      }
+
+      &.left {
+        left: 1em;
+      }
+
+      .mdc-button__label {
+        display: flex;
       }
     }
 

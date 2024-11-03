@@ -1,0 +1,133 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-card class="course">
+    <mat-card-content class="course-content">
+      <section>
+        <mat-form-field>
+          <mat-label>Nome do curso</mat-label>
+          <input matInput formControlName="name" autofocus />
+          <mat-error>Obrigatório</mat-error>
+        </mat-form-field>
+
+        <div class="course-subjects">
+          <header>
+            <h3 mat-subheader>Disciplinas</h3>
+            <button
+              type="button"
+              mat-icon-button
+              (click)="openSearchSubjects()"
+            >
+              <devmx-icon name="plus" />
+            </button>
+          </header>
+
+          <mat-accordion formArrayName="subjects">
+            @for (subject of form.subjects.controls; track subject.value; let
+            index = $index) {
+            <mat-expansion-panel [formGroupName]="index">
+              <mat-expansion-panel-header>
+                {{subject.subject.value.name}}
+              </mat-expansion-panel-header>
+              <ng-template matExpansionPanelContent>
+                <mat-form-field>
+                  <mat-label>Professor</mat-label>
+                  <input matInput formControlName="instructor" />
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Carga horária</mat-label>
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="hours"
+                    min="0"
+                  />
+                </mat-form-field>
+
+                <footer class="course-subjects-action">
+                  <button
+                    type="button"
+                    mat-icon-button
+                    (click)="form.subjects.removeAt(index)"
+                  >
+                    <devmx-icon name="trash" />
+                  </button>
+                </footer>
+              </ng-template>
+            </mat-expansion-panel>
+            }
+          </mat-accordion>
+
+          @if (form.subjects.touched && form.subjects.hasError('required')) {
+          <mat-error>Selecione ou cadastre ao menos uma assunto</mat-error>
+          }
+        </div>
+
+        <div class="course-contributors">
+          <header>
+            <h3 mat-subheader>Contribuidores</h3>
+            <button
+              type="button"
+              mat-icon-button
+              (click)="openSelectContributor()"
+            >
+              <devmx-icon name="plus" />
+            </button>
+          </header>
+
+          <mat-list class="contributors" formArrayName="contributors">
+            @for (contributor of form.contributors.controls; track
+            contributor.value.id; let index = $index) {
+            <mat-list-item>
+              <span matListItemTitle>{{contributor.value.name?.first}}</span>
+              <button
+                type="button"
+                mat-icon-button
+                matListItemMeta
+                (click)="form.contributors.removeAt(index)"
+              >
+                <devmx-icon name="trash" />
+              </button>
+            </mat-list-item>
+            }
+          </mat-list>
+        </div>
+
+        <div class="course-institution">
+          <header>
+            <h3 mat-subheader>Instituição</h3>
+            <button
+              type="button"
+              mat-icon-button
+              (click)="openSearchInstitution()"
+            >
+              <devmx-icon name="software/edit" />
+            </button>
+          </header>
+
+          <mat-list>
+            @if (form.institution.valid) {
+            <mat-list-item>
+              <span matListItemTitle>{{form.institution.value.name}}</span>
+            </mat-list-item>
+            }
+          </mat-list>
+        </div>
+      </section>
+
+      <section>
+        <devmx-editor label="Objetivo" formControlName="goal" />
+
+        <devmx-editor label="Detalhes" formControlName="details" />
+
+        <mat-form-field>
+          <mat-label>Link</mat-label>
+          <input matInput formControlName="link" />
+          <mat-hint>Opcional</mat-hint>
+        </mat-form-field>
+      </section>
+    </mat-card-content>
+
+    <mat-card-actions class="course-actions" align="end">
+      <button mat-flat-button [disabled]="form.invalid">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

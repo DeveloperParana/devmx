@@ -1,0 +1,84 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .albums-container {
+    gap: 1em;
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    > * {
+      flex: 1;
+      max-width: 50%;
+    }
+
+    grid-template-columns: repeat(2, 1fr);
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Limita a 3 linhas */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .no-albums-yet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2,
+    h3 {
+      margin: 0;
+      padding: 0;
+      white-space: normal;
+    }
+
+    h2 {
+      font-size: 160%;
+    }
+
+    h3 {
+      font-size: 120%;
+      text-align: end;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (min-width: 1920px) {
+    .albums-container {
+      > * {
+        flex: 1;
+        max-width: 33%;
+      }
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .albums-container {
+      align-content: flex-start;
+
+      > * {
+        display: inline-flex;
+        min-width: 100%;
+      }
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .add-button {
+    position: fixed;
+    right: 4em;
+    top: 2em;
+  }
+}

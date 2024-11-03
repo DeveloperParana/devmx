@@ -10,7 +10,7 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": ["@devmx/account-data-access"],
+            "allow": ["@devmx/account-data-access", "@devmx/academy-data-access"],
             "depConstraints": [
               {
                 "sourceTag": "type:api",
