@@ -1,0 +1,41 @@
+{
+  "name": "dx-dev",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/plugin/dx-dev/src",
+  "projectType": "library",
+  "tags": ["type:dx"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/plugin/dx-dev",
+        "main": "tools/plugin/dx-dev/src/index.ts",
+        "tsConfig": "tools/plugin/dx-dev/tsconfig.lib.json",
+        "assets": [
+          "tools/plugin/dx-dev/*.md",
+          {
+            "input": "./tools/plugin/dx-dev/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/plugin/dx-dev/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/plugin/dx-dev",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/plugin/dx-dev",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

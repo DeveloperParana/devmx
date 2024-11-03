@@ -1,0 +1,4 @@
+import { EntityService } from '@devmx/shared-api-interfaces/server';
+import { <%= className %> } from '@devmx/shared-api-interfaces';
+
+export abstract class <%= className %>sService extends EntityService<<%= className %>> {}

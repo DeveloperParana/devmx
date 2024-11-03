@@ -1,0 +1,63 @@
+import { <%= className %>Dto, Create<%= className %>Dto, Update<%= className %>Dto } from '../dtos';
+import { <%= className %> } from '@devmx/shared-api-interfaces';
+import { plainToInstance } from 'class-transformer';
+import {
+  Create<%= className %>UseCase,
+  Delete<%= className %>UseCase,
+  Find<%= className %>ByIDUseCase,
+  Find<%= className %>sUseCase,
+  Update<%= className %>UseCase,
+} from '@devmx/academy-domain/server';
+import {
+  PageDto,
+  QueryParamsDto,
+  createServerProvider,
+} from '@devmx/shared-data-source';
+
+export class <%= className %>sFacade {
+  constructor(
+    private create<%= className %>UseCase: Create<%= className %>UseCase,
+    private find<%= className %>sUseCase: Find<%= className %>sUseCase,
+    private find<%= className %>ByIDUseCase: Find<%= className %>ByIDUseCase,
+    private update<%= className %>UseCase: Update<%= className %>UseCase,
+    private delete<%= className %>UseCase: Delete<%= className %>UseCase
+  ) {}
+
+  async create(data: Create<%= className %>Dto) {
+    const subject = await this.create<%= className %>UseCase.execute(data);
+    return plainToInstance(<%= className %>Dto, subject);
+  }
+
+  async find(params: QueryParamsDto<<%= className %>>) {
+    const { data, items, pages } = await this.find<%= className %>sUseCase.execute(
+      params
+    );
+    const subjects = plainToInstance(<%= className %>Dto, data);
+    return new PageDto(subjects, items, pages);
+  }
+
+  async findOne(id: string) {
+    const subject = await this.find<%= className %>ByIDUseCase.execute(id);
+    return plainToInstance(<%= className %>Dto, subject);
+  }
+
+  async update(id: string, data: Update<%= className %>Dto) {
+    const subject = await this.update<%= className %>UseCase.execute({ ...data, id });
+    return plainToInstance(<%= className %>Dto, subject);
+  }
+
+  async delete(id: string) {
+    const subject = this.delete<%= className %>UseCase.execute(id);
+    return plainToInstance(<%= className %>Dto, subject);
+  }
+}
+
+export function provide<%= className %>sFacade() {
+  return createServerProvider(<%= className %>sFacade, [
+    Create<%= className %>UseCase,
+    Find<%= className %>sUseCase,
+    Find<%= className %>ByIDUseCase,
+    Update<%= className %>UseCase,
+    Delete<%= className %>UseCase,
+  ]);
+}

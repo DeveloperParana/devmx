@@ -1,0 +1,18 @@
+import { HttpClient, HttpService } from '@devmx/shared-data-access';
+import { <%= className %>Service } from '@devmx/<%scope%>-domain/client';
+import { <%= className %> } from '@devmx/shared-api-interfaces';
+import { Env } from '@devmx/shared-api-interfaces/client';
+
+export class <%= className %>HttpServiceImpl
+  extends HttpService<<%= className %>>
+  implements <%= className %>Service {}
+
+export function provide<%= className %>HttpService() {
+  return {
+    provide: <%= className %>Service,
+    useFactory(http: HttpClient, env: Env) {
+      return new <%= className %>HttpServiceImpl(http, env, '<%= fileName %>s');
+    },
+    deps: [HttpClient, Env],
+  };
+}

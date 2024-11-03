@@ -1,0 +1,10 @@
+import { UseCase, <%= className %>, Editable<%= className %> } from '@devmx/shared-api-interfaces';
+import { <%= className %>Service } from '../services';
+
+export class Update<%= className %>UseCase implements UseCase<Editable<%= className %>, <%= className %>> {
+  constructor(private <%= propertyName %>Service: <%= className %>Service) {}
+
+  execute(data: Editable<%= className %>) {
+    return this.<%= propertyName %>Service.update(data.id, data);
+  }
+}

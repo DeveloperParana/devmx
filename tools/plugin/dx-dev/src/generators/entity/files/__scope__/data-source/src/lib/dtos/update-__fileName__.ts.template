@@ -1,0 +1,6 @@
+import { Create<%= className %>Dto } from './create-<%= fileName %>';
+import { OmitType } from '@nestjs/swagger';
+
+export class Update<%= className %>Dto extends OmitType(Create<%= className %>Dto, ['id']) {
+  id: string;
+}

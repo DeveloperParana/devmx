@@ -1,0 +1,5 @@
+export interface <%= className %> {
+  id: string
+
+  name: string
+}

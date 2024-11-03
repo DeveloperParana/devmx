@@ -1,0 +1,12 @@
+import { Create<%= className %> } from '@devmx/<%= scope %>-domain';
+import { IsString, IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+
+export class Create<%= className %>Dto implements Create<%= className %> {
+  id: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  name: string;
+}

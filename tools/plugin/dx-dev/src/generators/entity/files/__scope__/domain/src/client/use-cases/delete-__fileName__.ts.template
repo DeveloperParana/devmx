@@ -1,0 +1,10 @@
+import { <%= className %>, UseCase } from '@devmx/shared-api-interfaces';
+import { <%= className %>Service } from '../services';
+
+export class Delete<%= className %>UseCase implements UseCase<string, <%= className %> | null> {
+  constructor(private <%= propertyName %>Service: <%= className %>Service) {}
+
+  execute(id: string) {
+    return this.<%= propertyName %>Service.delete(id);
+  }
+}
