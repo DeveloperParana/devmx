@@ -1,11 +1,12 @@
 {
+  "id": "/?source=pwa",
   "name": "DevParaná MX",
   "short_name": "devmx",
   "theme_color": "#3BCE53",
   "background_color": "#E5E2E1",
   "display": "standalone",
-  "scope": "./",
-  "start_url": "./",
+  "scope": "/",
+  "start_url": "/?source=pwa",
   "icons": [
     {
       "src": "icons/icon-72x72.svg",
@@ -58,11 +59,16 @@
   ],
   "screenshots": [
     {
-      "src": "devparana.mx.webp",
-      "sizes": "1280x942",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "Vagas no DevParaná MX"
+      "src": "/screenshots/narrow.webp",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/wide.webp",
+      "type": "image/jpg",
+      "sizes": "720x540",
+      "form_factor": "wide"
     }
   ]
 }
