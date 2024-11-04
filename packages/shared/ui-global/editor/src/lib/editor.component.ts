@@ -47,6 +47,14 @@ export class EditorComponent extends DefaultValueAccessor {
 
   label = input('');
 
+  hint = input('');
+
+  autofocus = input<boolean | ''>();
+
+  get autofocusEnabled() {
+    return this.autofocus() || this.autofocus() === '';
+  }
+
   get textarea() {
     const ref = this.textareaRef();
     return ref ? ref.nativeElement : null;
@@ -72,6 +80,11 @@ export class EditorComponent extends DefaultValueAccessor {
 
   get previewHTML() {
     return marked(this.control.value ?? '', { gfm: true, async: false });
+  }
+
+  onPaste(event: ClipboardEvent) {
+    event.preventDefault();
+    console.log(event.clipboardData);
   }
 
   applyFormat(startTag: string, endTag: string = startTag) {

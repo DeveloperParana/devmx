@@ -1,86 +1,32 @@
 :host {
   flex: 1;
+  padding: 1em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  .presentations-container {
-    gap: 1em;
-    padding: 1em;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+  .presentations-card {
+    overflow: hidden;
 
     > * {
       flex: 1;
       min-width: calc(50% - 1em);
     }
 
-    grid-template-columns: repeat(2, 1fr);
+    &-header {
+      display: flex;
+      justify-content: space-between;
 
-    p {
-      display: -webkit-box;
-      /* Limita a 3 linhas */
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
 
-  .no-presentations-yet {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h2,
-    h3 {
-      margin: 0;
-      padding: 0;
-      white-space: normal;
-    }
-
-    h2 {
-      font-size: 160%;
-    }
-
-    h3 {
-      font-size: 120%;
-      text-align: end;
-    }
-  }
-
-  footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  @media (min-width: 1920px) {
-    .presentations-container {
-      > * {
-        flex: 1;
-        max-width: 33%;
+      div {
+        gap: 2em;
+        display: flex;
+        align-items: baseline;
       }
-      grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  @media (max-width: 767px) {
-    .presentations-container {
-      align-content: flex-start;
-
-      > * {
-        display: inline-flex;
-        min-width: 100%;
-      }
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .add-button {
-    position: fixed;
-    right: 4em;
-    top: 2em;
+  .mat-mdc-table .mat-column-actions {
+    max-width: 3em;
   }
 }

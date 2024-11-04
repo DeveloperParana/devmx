@@ -1,5 +1,5 @@
-import { AccountRefDto, RangeDto } from '@devmx/shared-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { UserRefDto, RangeDto } from '@devmx/shared-data-source';
 import { JobSkillDto } from './job-skill';
 import { Type } from 'class-transformer';
 import {
@@ -77,7 +77,7 @@ export class JobOpeningDto implements JobOpening {
   @ApiPropertyOptional()
   active: boolean;
 
-  @Type(() => AccountRefDto)
-  @ApiProperty({ type: () => AccountRefDto })
-  owner: AccountRefDto;
+  @Type(() => UserRefDto)
+  @ApiProperty({ type: () => UserRefDto })
+  owner: UserRefDto;
 }

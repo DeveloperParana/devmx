@@ -1,6 +1,7 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CourseCardComponent } from '@devmx/academy-ui-shared';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
@@ -8,7 +9,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CourseFacade } from '@devmx/academy-data-access';
-import { AuthFacade } from '@devmx/account-data-access';
 import { MatListModule } from '@angular/material/list';
 import { Course } from '@devmx/shared-api-interfaces';
 import { AsyncPipe, JsonPipe } from '@angular/common';
@@ -39,12 +39,12 @@ export class MyCoursesContainer {
 
   dialogFacade = inject(DialogFacade);
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   courseFacade = inject(CourseFacade);
 
   constructor() {
-    const user$ = this.authFacade.user$.pipe(
+    const user$ = this.authFacade.auth$.pipe(
       filter((user) => !!user),
       map(({ id }) => id)
     );

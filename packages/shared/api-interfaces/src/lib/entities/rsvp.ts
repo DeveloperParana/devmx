@@ -1,10 +1,10 @@
-import { AccountRef, EventRef } from '../dtos';
+import { UserRef, EventRef } from '../dtos';
 import { RSVPStatus } from '../types';
 
 export interface RSVP {
   id: string;
 
-  account: AccountRef;
+  account: UserRef;
 
   event: EventRef;
 

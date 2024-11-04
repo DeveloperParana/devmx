@@ -7,7 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EventOut, RSVP } from '@devmx/shared-api-interfaces';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { combineLatest, filter, map, tap } from 'rxjs';
@@ -44,7 +44,7 @@ export class EventDetailsContainer {
 
   rsvpForm = new RSVPForm();
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   rsvpFacade = inject(RSVPFacade);
 
@@ -55,7 +55,7 @@ export class EventDetailsContainer {
   );
 
   constructor() {
-    const account$ = this.authFacade.user$.pipe(
+    const account$ = this.authFacade.auth$.pipe(
       filter((account) => !!account),
       map((account) => account.id)
     );

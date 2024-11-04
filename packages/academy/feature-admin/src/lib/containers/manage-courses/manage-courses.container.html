@@ -1,37 +1,52 @@
-@if (courseFacade.response$ | async; as courses) {
+<mat-card class="courses-card">
+  <mat-card-header class="courses-card-header">
+    <mat-card-title>Cursos</mat-card-title>
 
-<div class="courses-container">
-  @for (course of courses.data; track course.id) {
+    <div>
+      <button mat-icon-button (click)="openSelectUser()">
+        <devmx-icon name="filter" />
+      </button>
 
-  <devmx-course-card [data]="course">
-    <button
-      type="button"
-      mat-icon-button
-      matTooltip="Apagar vaga"
-      matTooltipPosition="after"
-      (click)="deleteCourse(course)"
-    >
-      <devmx-icon name="trash-alt" />
-    </button>
-  </devmx-course-card>
+      <devmx-search-field
+        (searchChange)="onSearchChange($event)"
+        [debounce]="1000"
+      />
+    </div>
+  </mat-card-header>
+
+  @if (courseFacade.response$ | async; as response) {
+
+  <table mat-table [dataSource]="response.data">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome do curso</th>
+      <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef>Criado por</th>
+      <td mat-cell *matCellDef="let course">{{ course.owner.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let course">
+        <button type="button" mat-icon-button (click)="openDelete(course)">
+          <devmx-icon name="trash" />
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let course; columns: columns"></tr>
+  </table>
+
+  <mat-card-actions align="end">
+    <devmx-paginator
+      [size]="10"
+      [items]="response.items"
+      (pageChange)="onPageChange($event)"
+    />
+  </mat-card-actions>
+
   }
-</div>
-
-@if (!courses.items) {
-<div class="no-courses-yet">
-  <h2>Não temos nada aqui...</h2>
-</div>
-}
-
-<footer>
-  <button mat-raised-button (click)="openSelectAccount()">
-    Filtrar por recrutador
-  </button>
-
-  <devmx-paginator
-    [size]="10"
-    [items]="courses.items"
-    (pageChange)="onPageChange($event)"
-  />
-</footer>
-}
+</mat-card>

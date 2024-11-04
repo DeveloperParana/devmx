@@ -40,17 +40,17 @@
   }
 
   <mat-card-header>
-    <img
+    <!-- <img
       mat-card-avatar
       [src]="presentation.owner.photo | photo"
       [alt]="presentation.owner.name.first"
-    />
+    /> -->
     <mat-card-title>
-      {{ presentation.owner.name.first }} {{ presentation.owner.name.last }}
+      {{ presentation.owner.displayName }}
     </mat-card-title>
     <mat-card-subtitle>
-      <a [routerLink]="['/', 'sobre',presentation.owner.username]">
-        {{presentation.owner.username}}
+      <a [routerLink]="['/', 'sobre',presentation.owner.name]">
+        {{presentation.owner.name}}
       </a>
     </mat-card-subtitle>
   </mat-card-header>

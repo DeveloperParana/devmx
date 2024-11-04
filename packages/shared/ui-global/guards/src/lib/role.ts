@@ -1,4 +1,4 @@
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { Role } from '@devmx/shared-api-interfaces';
 import { CanMatchFn } from '@angular/router';
 import { inject } from '@angular/core';
@@ -6,14 +6,14 @@ import { filter, map } from 'rxjs';
 
 export const roleGuard = (role: Role): CanMatchFn => {
   return () => {
-    const authFacade = inject(AuthFacade);
+    const authenticationFacade = inject(AuthenticationFacade);
 
-    const has$ = authFacade.user$.pipe(
+    const has$ = authenticationFacade.auth$.pipe(
       filter((account) => !!account),
       map((account) => account.roles[role])
     );
 
-    authFacade.loadAuthUser();
+    authenticationFacade.load();
 
     return has$;
   };

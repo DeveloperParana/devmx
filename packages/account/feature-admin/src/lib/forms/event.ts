@@ -2,23 +2,23 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   TypedForm,
   FormOption,
-  AccountRefForm,
+  UserRefForm,
   PresentationRefForm,
 } from '@devmx/shared-ui-global/forms';
 import {
   Event,
-  AccountRef,
+  UserRef,
   EventFormat,
   PresentationRef,
 } from '@devmx/shared-api-interfaces';
 
-export class LeadersForm extends FormArray<AccountRefForm> {
+export class LeadersForm extends FormArray<UserRefForm> {
   constructor() {
     super([]);
   }
 
-  add(leader: AccountRef) {
-    this.push(new AccountRefForm(leader));
+  add(leader: UserRef) {
+    this.push(new UserRefForm(leader));
   }
 }
 
@@ -87,7 +87,7 @@ export class EventForm extends FormGroup<TypedForm<Event>> {
     return this.controls.presentations as PresentationsForm;
   }
 
-  setLeaders(leaders: AccountRef[]) {
+  setLeaders(leaders: UserRef[]) {
     this.leaders.clear();
 
     for (const leader of leaders) {

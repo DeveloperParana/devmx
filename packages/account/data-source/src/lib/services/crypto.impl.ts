@@ -1,9 +1,13 @@
 import { CryptoService } from '@devmx/account-domain/server';
-import { hashSync, compareSync } from 'bcrypt';
+import { hashSync, compareSync, genSaltSync } from 'bcrypt';
 
 export class CryptoServiceImpl implements CryptoService {
-  hash(value: string, salt = 10) {
-    return hashSync(value, salt);
+  genSalt() {
+    return genSaltSync()
+  }
+
+  hash(value: string, salt: string | number = 10) {
+    return hashSync(value, salt + '');
   }
 
   compare(value: string, encrypted: string) {

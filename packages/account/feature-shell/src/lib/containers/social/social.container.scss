@@ -1,0 +1,22 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+
+    .social-card {
+      gap: 2em;
+      display: flex;
+      flex-direction: column;
+
+      &-header {
+        padding-bottom: 1em;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}

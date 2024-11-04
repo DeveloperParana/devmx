@@ -1,7 +1,7 @@
 import { LayoutComponent, LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import {
   inject,
   Component,
@@ -26,11 +26,11 @@ import {
 export class AlbumFeatureShellComponent {
   router = inject(Router);
   destroyRef = inject(DestroyRef);
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
   layoutFacade = inject(LayoutFacade);
 
   constructor() {
-    this.authFacade.user$.pipe(takeUntilDestroyed()).subscribe((user) => {
+    this.authFacade.auth$.pipe(takeUntilDestroyed()).subscribe((user) => {
       if (user) {
         this.layoutFacade.loadNavLinks(user.roles);
 
@@ -38,11 +38,11 @@ export class AlbumFeatureShellComponent {
       }
     });
 
-    this.authFacade.loadAuthUser();
+    this.authFacade.load();
   }
 
   waitingForLogout() {
-    this.authFacade.user$
+    this.authFacade.auth$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
         if (user === null) {

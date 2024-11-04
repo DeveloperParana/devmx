@@ -22,7 +22,7 @@ export class CoursesMongoServiceImpl
 
   protected override applyPopulate<U>(query: Query<U, CourseCollection>) {
     return query
-      .populate('owner', 'name username photo')
+      .populate('owner', 'name displayName profile')
       .populate('institution', 'name')
       .populate('contributors')
       .populate('subjects');

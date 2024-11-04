@@ -9,7 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { JobOpening } from '@devmx/shared-api-interfaces';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { combineLatest, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
@@ -36,12 +36,12 @@ export class MyJobOpeningsContainer {
 
   dialogFacade = inject(DialogFacade);
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   jobOpeningFacade = inject(JobOpeningFacade);
 
   constructor() {
-    const user$ = this.authFacade.user$.pipe(
+    const user$ = this.authFacade.auth$.pipe(
       filter((user) => !!user),
       map(({ id }) => id)
     );

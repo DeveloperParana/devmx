@@ -1,85 +1,18 @@
-<mat-accordion class="settings-headers-align">
-  <mat-expansion-panel
-    hideToggle
-    (closed)="accountComponent.disable()"
-    class="settings-panel"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title> Conta </mat-panel-title>
-      <mat-panel-description>
-        Perfil público
-        <devmx-icon name="user-circle" />
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+<mat-nav-list class="settings-nav-list">
+  <a mat-list-item routerLink="perfil" routerLinkActive="active">
+    <devmx-icon matListItemIcon name="doc/id-card" />
+    <span matListItemTitle>Perfil</span>
+  </a>
+  <a mat-list-item routerLink="social" routerLinkActive="active">
+    <devmx-icon matListItemIcon name="software/window-search" />
+    <span matListItemTitle>Social</span>
+  </a>
+  <a mat-list-item routerLink="seguranca" routerLinkActive="active">
+    <devmx-icon matListItemIcon name="user-security" />
+    <span matListItemTitle>Segurança</span>
+  </a>
+</mat-nav-list>
 
-    <div class="flex row wrap">
-      <aside>
-        @if (accountFacade.account$ | async; as account) { @if (account.photo) {
-        <devmx-image [src]="account.photo" [width]="200" />
-        } }
-        <div>
-          <button mat-raised-button type="button" (click)="changePhoto()">
-            Alterar foto
-          </button>
-        </div>
-      </aside>
-      <form [formGroup]="form.updateAccount" (submit)="onAccountSubmit()">
-        <devmx-editable-account #accountComponent="devmxEditableAccount" />
-      </form>
-    </div>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel
-    hideToggle
-    (closed)="autoRoleComponent.disable()"
-    class="settings-panel"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title> Papéis </mat-panel-title>
-      <mat-panel-description>
-        Alterar funções
-        <devmx-icon name="user-security" />
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <div class="flex row wrap">
-      <aside>
-        <figure>
-          <img src="figures/roles.png" width="128" alt="Password" />
-        </figure>
-      </aside>
-
-      <devmx-auto-assignable-role
-        #autoRoleComponent="devmxAutoAssignableRole"
-        (submitted)="onRolesSubmitted($event)"
-      />
-    </div>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel
-    hideToggle
-    (closed)="passwordComponent.disable()"
-    class="settings-panel"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title> Segurança </mat-panel-title>
-      <mat-panel-description>
-        Alterar senha
-        <devmx-icon name="software/touch-id" />
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <div class="flex row wrap">
-      <aside>
-        <figure>
-          <img src="figures/password.svg" width="128" alt="Password" />
-        </figure>
-      </aside>
-
-      <devmx-editable-password
-        #passwordComponent="devmxEditablePassword"
-        (submitted)="onPasswordSubmitted($event)"
-      />
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+<section>
+  <router-outlet />
+</section>

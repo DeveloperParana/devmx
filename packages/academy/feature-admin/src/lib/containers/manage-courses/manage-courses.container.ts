@@ -1,15 +1,16 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { AccountRef, Course } from '@devmx/shared-api-interfaces';
-import { CourseCardComponent } from '@devmx/academy-ui-shared';
+import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
+import { UserRef, Course } from '@devmx/shared-api-interfaces';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
-import { CourseFacade } from '@devmx/academy-data-access';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SelectAccount } from '@devmx/account-ui-shared';
+import { CourseFacade } from '@devmx/academy-data-access';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { SelectUser } from '@devmx/account-ui-shared';
 import { observer } from '@devmx/shared-util-data';
 import { AsyncPipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
@@ -22,9 +23,10 @@ import { combineLatest, map } from 'rxjs';
   imports: [
     RouterModule,
     MatButtonModule,
-    MatTooltipModule,
-    CourseCardComponent,
+    SearchFieldComponent,
     PaginatorComponent,
+    MatTableModule,
+    MatCardModule,
     IconComponent,
     AsyncPipe,
   ],
@@ -39,18 +41,20 @@ export class ManageCoursesContainer {
 
   courseFacade = inject(CourseFacade);
 
-  selectAccount = inject(SelectAccount);
+  selectUser = inject(SelectUser);
 
-  #accountRef = observer<AccountRef | null>(null);
+  #userRef = observer<UserRef | null>(null);
+
+  columns = ['name', 'owner', 'actions'];
 
   constructor() {
-    const account$ = this.#accountRef
+    const user$ = this.#userRef
       .observe()
       .pipe(map((user) => (user ? user.id : '')));
 
     const params$ = this.route.queryParams;
 
-    combineLatest([account$, params$])
+    combineLatest([user$, params$])
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
   }
@@ -65,7 +69,7 @@ export class ManageCoursesContainer {
     this.courseFacade.load();
   };
 
-  deleteCourse({ id, name }: Course) {
+  openDelete({ id, name }: Course) {
     this.dialogFacade
       .confirm(
         `Confirme que deseja apagar o curso ${name}`,
@@ -78,12 +82,17 @@ export class ManageCoursesContainer {
       });
   }
 
-  openSelectAccount() {
-    this.selectAccount
+  openSelectUser() {
+    this.selectUser
       .open({ onlyRole: 'academic', multiple: false })
-      .subscribe((account) => {
-        if (account) this.#accountRef.update(account);
+      .subscribe((user) => {
+        if (user) this.#userRef.update(user);
       });
+  }
+
+  onSearchChange(name = '') {
+    this.courseFacade.setFilter({ name });
+    this.courseFacade.load();
   }
 
   onPageChange({ page, size }: PageParams) {

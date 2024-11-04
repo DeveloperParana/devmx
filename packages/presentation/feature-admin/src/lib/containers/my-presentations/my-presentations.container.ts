@@ -9,7 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { combineLatest, filter, map } from 'rxjs';
 
@@ -37,12 +37,12 @@ export class MyPresentationsContainer {
 
   dialogFacade = inject(DialogFacade);
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   presentationFacade = inject(PresentationFacade);
 
   constructor() {
-    const account$ = this.authFacade.user$.pipe(
+    const account$ = this.authFacade.auth$.pipe(
       filter((account) => !!account),
       map((account) => account.id)
     );

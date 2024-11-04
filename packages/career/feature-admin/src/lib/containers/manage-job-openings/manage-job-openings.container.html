@@ -1,37 +1,52 @@
-@if (jobOpeningFacade.response$ | async; as jobOpenings) {
+<mat-card class="job-penings-card">
+  <mat-card-header class="job-openings-card-header">
+    <mat-card-title>Vagas</mat-card-title>
 
-<div class="job-openings-container">
-  @for (job of jobOpenings.data; track job.id) {
+    <div>
+      <button mat-icon-button (click)="openSelectUser()">
+        <devmx-icon name="filter" />
+      </button>
 
-  <devmx-job-opening-card [data]="job">
-    <button
-      type="button"
-      mat-icon-button
-      matTooltip="Apagar vaga"
-      matTooltipPosition="after"
-      (click)="deleteJobOpening(job)"
-    >
-      <devmx-icon name="trash-alt" />
-    </button>
-  </devmx-job-opening-card>
+      <devmx-search-field
+        (searchChange)="onSearchChange($event)"
+        [debounce]="1000"
+      />
+    </div>
+  </mat-card-header>
+
+  @if (jobOpeningFacade.response$ | async; as response) {
+
+  <table mat-table [dataSource]="response.data">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Título da vaga</th>
+      <td mat-cell *matCellDef="let jobOpening">{{ jobOpening.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef>Criada por</th>
+      <td mat-cell *matCellDef="let jobOpening">{{ jobOpening.owner.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let jobOpening">
+        <button type="button" mat-icon-button (click)="openDelete(jobOpening)">
+          <devmx-icon name="trash" />
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let jobOpening; columns: columns"></tr>
+  </table>
+
+  <mat-card-actions align="end">
+    <devmx-paginator
+      [size]="10"
+      [items]="response.items"
+      (pageChange)="onPageChange($event)"
+    />
+  </mat-card-actions>
+
   }
-</div>
-
-@if (!jobOpenings.items) {
-<div class="no-job-openings-yet">
-  <h2>Não temos nada aqui...</h2>
-</div>
-}
-
-<footer>
-  <button mat-raised-button (click)="openSelectAccount()">
-    Filtrar por recrutador
-  </button>
-
-  <devmx-paginator
-    [size]="10"
-    [items]="jobOpenings.items"
-    (pageChange)="onPageChange($event)"
-  />
-</footer>
-}
+</mat-card>

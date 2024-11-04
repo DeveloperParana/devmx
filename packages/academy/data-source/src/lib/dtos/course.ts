@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { AccountRefDto } from '@devmx/shared-data-source';
+import { UserRefDto } from '@devmx/shared-data-source';
 import { Course } from '@devmx/shared-api-interfaces';
 import { CourseSubjectDto } from './course-subject';
 import { InstitutionDto } from './institution';
@@ -15,6 +15,9 @@ export class CourseDto implements Course {
   @ApiProperty()
   goal: string;
 
+  @ApiProperty()
+  ead: boolean;
+
   @Type(() => CourseSubjectDto)
   @ApiProperty({ type: () => [CourseSubjectDto] })
   subjects: CourseSubjectDto[] = [];
@@ -29,11 +32,11 @@ export class CourseDto implements Course {
   @ApiPropertyOptional()
   link?: string;
 
-  @Type(() => AccountRefDto)
-  @ApiPropertyOptional({ type: () => [AccountRefDto] })
-  contributors: AccountRefDto[] = [];
+  @Type(() => UserRefDto)
+  @ApiPropertyOptional({ type: () => [UserRefDto] })
+  contributors: UserRefDto[] = [];
 
   @ApiProperty()
-  @Type(() => AccountRefDto)
-  owner: AccountRefDto;
+  @Type(() => UserRefDto)
+  owner: UserRefDto;
 }

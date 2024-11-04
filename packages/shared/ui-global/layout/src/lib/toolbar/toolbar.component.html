@@ -2,10 +2,10 @@
   <div>
     <ng-content />
 
-    @if (toolbar.auth.user$| async; as user) {
+    @if (toolbar.auth.auth$| async; as auth) {
     <p class="layout-toolbar-account">
       <devmx-icon name="user-circle" />
-      <span>{{ user.name.first }}</span>
+      <span>{{ auth.displayName }}</span>
     </p>
     }
   </div>

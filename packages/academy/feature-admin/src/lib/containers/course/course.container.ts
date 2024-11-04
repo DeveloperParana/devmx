@@ -3,11 +3,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { InstitutionDialog, SubjectDialog } from '../../dialogs';
 import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { SelectAccount } from '@devmx/account-ui-shared';
+import { SelectUser } from '@devmx/account-ui-shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +32,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
+
 @Component({
   selector: 'devmx-academy-admin-course',
   templateUrl: './course.container.html',
@@ -39,6 +41,7 @@ import {
   imports: [
     ReactiveFormsModule,
     MatExpansionModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatTooltipModule,
     MatButtonModule,
@@ -64,7 +67,7 @@ export class CourseContainer {
 
   subjectDialog = inject(SubjectDialog);
 
-  selectAccount = inject(SelectAccount);
+  selectAccount = inject(SelectUser);
 
   courseFacade = inject(CourseFacade);
 

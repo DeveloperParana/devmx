@@ -27,7 +27,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     return this.reflector.getAllAndOverride<boolean>(metaKey, targets);
   }
 
-  override handleRequest<AuthUser>(err: Error, user: AuthUser) {
+  override handleRequest<Authentication>(err: Error, user: Authentication) {
     if (err || !user) {
       throw err || new UnauthorizedException();
     }

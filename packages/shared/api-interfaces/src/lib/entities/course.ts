@@ -1,6 +1,6 @@
 import { CourseSubject } from './course-subject';
 import { Institution } from './institution';
-import { AccountRef } from '../dtos';
+import { UserRef } from '../dtos';
 
 export interface Course {
   id: string;
@@ -8,6 +8,8 @@ export interface Course {
   name: string;
 
   goal: string;
+
+  ead: boolean;
 
   subjects: CourseSubject[];
 
@@ -17,5 +19,5 @@ export interface Course {
 
   link?: string;
 
-  contributors: AccountRef[];
+  contributors: UserRef[];
 }

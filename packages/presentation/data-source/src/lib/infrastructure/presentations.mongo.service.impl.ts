@@ -6,7 +6,7 @@ import { Query } from 'mongoose';
 
 export class PresentationsMongoServiceImpl extends MongoService<PresentationCollection> {
   protected override applyPopulate<U>(query: Query<U, PresentationCollection>) {
-    return query.populate('owner', 'name username photo');
+    return query.populate('owner', 'name displayName profile');
     // .populate('presentations')
     // .populate('leaders');
   }

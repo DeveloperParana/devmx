@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+@mixin stepper-theme($theme) {
+  .mat-step-icon-selected {
+    background-color: mat.get-theme-color($theme, primary, 80);
+    color: mat.get-theme-color($theme, on-primary);
+    // background-color: rgba(
+    //   mat.get-theme-color($theme, secondary-container),
+    //   0.75
+    // );
+    // color: mat.get-theme-color($theme, on-secondary-container);
+  }
+}

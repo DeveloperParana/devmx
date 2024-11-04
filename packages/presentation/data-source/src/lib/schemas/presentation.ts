@@ -1,5 +1,5 @@
 import { Presentation, PresentationFormat } from '@devmx/shared-api-interfaces';
-import { AccountCollection } from '@devmx/account-data-source';
+import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
@@ -38,10 +38,10 @@ export class PresentationCollection extends Document implements Presentation {
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: AccountCollection.name,
+    ref: UserCollection.name,
     required: true,
   })
-  owner: AccountCollection;
+  owner: UserCollection;
 }
 
 export const PresentationSchema = createSchema(PresentationCollection);

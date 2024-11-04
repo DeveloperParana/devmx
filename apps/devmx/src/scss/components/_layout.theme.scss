@@ -32,6 +32,17 @@
           0.75
         );
         z-index: 1000;
+
+        .mat-mdc-card-header-text {
+          max-width: calc(100% - 6em);
+          flex: 1;
+        }
+      }
+
+      &-title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
 
       &-content {

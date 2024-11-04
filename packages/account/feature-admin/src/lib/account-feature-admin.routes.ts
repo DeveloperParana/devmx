@@ -1,6 +1,8 @@
 import { AccountFeatureAdminComponent } from './account-feature-admin.component';
 import { accountFeatureAdminProviders } from './account-feature-admin.providers';
-import { AccountsContainer } from './containers';
+import { UserContainer, UsersContainer } from './containers';
+import { User } from '@devmx/shared-api-interfaces';
+import { userResolver } from './resolvers';
 import { Route } from '@angular/router';
 
 export const accountFeatureAdminRoutes: Route[] = [
@@ -13,16 +15,26 @@ export const accountFeatureAdminRoutes: Route[] = [
     component: AccountFeatureAdminComponent,
     children: [
       {
-        path: 'contas',
+        path: 'usuarios',
         data: {
-          breadcrumb: 'Contas',
+          breadcrumb: 'Usuários',
         },
-        component: AccountsContainer,
+        component: UsersContainer,
+      },
+      {
+        path: 'usuarios/:id',
+        data: {
+          breadcrumb: (data: { user: User }) => {
+            return data.user.displayName;
+          },
+        },
+        resolve: { user: userResolver },
+        component: UserContainer,
       },
       {
         path: '',
         pathMatch: 'prefix',
-        redirectTo: 'contas',
+        redirectTo: 'usuarios',
       },
     ],
   },

@@ -1,4 +1,56 @@
-@if (eventFacade.response$ | async; as events) {
+<mat-card class="events-card">
+  <mat-card-header class="events-card-header">
+    <mat-card-title>Eventos</mat-card-title>
+
+    <div>
+      <button mat-icon-button (click)="openSelectUser()">
+        <devmx-icon name="filter" />
+      </button>
+
+      <devmx-search-field
+        (searchChange)="onSearchChange($event)"
+        [debounce]="1000"
+      />
+    </div>
+  </mat-card-header>
+
+  @if (eventFacade.response$ | async; as response) {
+
+  <table mat-table [dataSource]="response.data">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Título do evento</th>
+      <td mat-cell *matCellDef="let event">{{ event.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef>Criado por</th>
+      <td mat-cell *matCellDef="let event">{{ event.owner.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let event">
+        <button type="button" mat-icon-button (click)="openDelete(event)">
+          <devmx-icon name="trash" />
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let event; columns: columns"></tr>
+  </table>
+
+  <mat-card-actions align="end">
+    <devmx-paginator
+      [size]="10"
+      [items]="response.items"
+      (pageChange)="onPageChange($event)"
+    />
+  </mat-card-actions>
+
+  }
+</mat-card>
+<!-- @if (eventFacade.response$ | async; as events) {
 
 <div class="events-container">
   @for (event of events.data; track event.id) {
@@ -43,4 +95,4 @@
     (pageChange)="onPageChange($event)"
   />
 </footer>
-}
+} -->

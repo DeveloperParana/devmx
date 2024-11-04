@@ -26,6 +26,10 @@ export class CourseForm extends FormGroup<TypedForm<Course>> {
         validators: [Validators.required],
       }),
 
+      ead: new FormControl(false, {
+        nonNullable: true,
+      }),
+
       details: new FormControl(),
 
       link: new FormControl(),

@@ -12,6 +12,9 @@ export const env = {
   jwt: {
     secret: process.env.JWT_SECRET,
   },
+  auth: {
+    codeLifeTime: +process.env.CODE_LIFE_TIME,
+  },
   multer: {
     photos: {
       dest: 'assets/photos',
@@ -20,6 +23,15 @@ export const env = {
       covers: {
         dest: 'assets/events/covers',
       },
+    },
+  },
+  smtp: {
+    host: process.env.SMTP_HOST,
+    port: +process.env.SMTP_PORT,
+    // secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
   },
   static: {

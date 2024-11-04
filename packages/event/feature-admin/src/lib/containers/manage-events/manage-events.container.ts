@@ -1,15 +1,16 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
 import { EventFacade, RSVPFacade } from '@devmx/event-data-access';
-import { AccountRef, Event } from '@devmx/shared-api-interfaces';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UserRef, Event } from '@devmx/shared-api-interfaces';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import { EventCardComponent } from '@devmx/event-ui-shared';
 import { MatButtonModule } from '@angular/material/button';
-import { SelectAccount } from '@devmx/account-ui-shared';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { SelectUser } from '@devmx/account-ui-shared';
 import { combineLatest, map, skip, take } from 'rxjs';
 import { observer } from '@devmx/shared-util-data';
 import { AsyncPipe } from '@angular/common';
@@ -23,9 +24,10 @@ import { EventRSVP } from '../../dialogs';
   imports: [
     RouterModule,
     MatButtonModule,
-    MatTooltipModule,
-    EventCardComponent,
+    SearchFieldComponent,
     PaginatorComponent,
+    MatTableModule,
+    MatCardModule,
     IconComponent,
     AsyncPipe,
   ],
@@ -44,12 +46,14 @@ export class ManageEventsContainer {
 
   eventRSVP = inject(EventRSVP);
 
-  selectAccount = inject(SelectAccount);
+  selectUser = inject(SelectUser);
 
-  #accountRef = observer<AccountRef | null>(null);
+  #userRef = observer<UserRef | null>(null);
+
+  columns = ['title', 'owner', 'actions'];
 
   constructor() {
-    const user$ = this.#accountRef
+    const user$ = this.#userRef
       .observe()
       .pipe(map((user) => (user ? user.id : '')));
 
@@ -66,8 +70,8 @@ export class ManageEventsContainer {
     this.eventFacade.load();
   }
 
-  setAccountRef(accountRef: AccountRef | null = null) {
-    this.#accountRef.update(accountRef);
+  setUserRef(userRef: UserRef | null = null) {
+    this.#userRef.update(userRef);
   }
 
   onQueryParams = ([owner, params]: [string, Params]) => {
@@ -80,11 +84,11 @@ export class ManageEventsContainer {
     this.eventFacade.load();
   };
 
-  openSearchLeader() {
-    this.selectAccount
+  openSelectUser() {
+    this.selectUser
       .open({ onlyRole: 'leader', multiple: false })
-      .subscribe((leader) => {
-        if (leader) this.setAccountRef(leader);
+      .subscribe((user) => {
+        if (user) this.#userRef.update(user);
       });
   }
 
@@ -96,10 +100,10 @@ export class ManageEventsContainer {
     });
   }
 
-  deleteEvent({ id, title }: Event) {
+  openDelete({ id, title }: Event) {
     this.dialogFacade
       .confirm(
-        `Confirme que deseja apagar a vaga ${title}`,
+        `Confirme que deseja apagar o evento ${title}`,
         `Esta ação não poderá ser desfeita`
       )
       .subscribe((confirmation) => {
@@ -107,6 +111,11 @@ export class ManageEventsContainer {
           this.eventFacade.delete(id);
         }
       });
+  }
+
+  onSearchChange(title = '') {
+    this.eventFacade.setFilter({ title });
+    this.eventFacade.load();
   }
 
   onPageChange({ page, size }: PageParams) {

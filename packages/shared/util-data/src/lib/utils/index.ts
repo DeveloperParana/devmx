@@ -1,6 +1,8 @@
 export * from './async';
 export * from './by';
+export * from './create-code';
 export * from './create-form-data';
+export * from './create-mail';
 export * from './create-params';
 export * from './create-query-filter';
 export * from './create-query-params';
@@ -8,6 +10,8 @@ export * from './deep-diff';
 export * from './deep-merge';
 export * from './entries';
 export * from './escape-reg-exp';
+export * from './freeze';
+export * from './hide-email';
 export * from './is-same-typeof';
 export * from './is-typeof';
 export * from './keys';

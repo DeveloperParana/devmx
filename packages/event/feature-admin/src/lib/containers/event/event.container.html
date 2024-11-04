@@ -87,7 +87,7 @@
           @for (leader of form.leaders.controls; track leader.value; let index =
           $index) {
           <mat-list-item>
-            <span matListItemTitle>{{leader.value.name?.first}}</span>
+            <span matListItemTitle>{{leader.value.displayName}}</span>
             <button
               type="button"
               mat-icon-button

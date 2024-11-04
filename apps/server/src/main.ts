@@ -21,6 +21,11 @@ async function bootstrap() {
     .setTitle('devpr mx')
     .setDescription('devpr member experience')
     .addBearerAuth()
+    .setContact(
+      'Guilherme Siquinelli',
+      'github.com/guiseek',
+      'guilherme@devpr.org'
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
@@ -29,6 +34,11 @@ async function bootstrap() {
   await app.listen(port);
   const url = `http://localhost:${port}/docs`;
   Logger.log(`🚀 Application is running on: ${url}`);
+
+
+  // console.log(JSON.stringify(document));
 }
+
+
 
 bootstrap();

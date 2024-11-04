@@ -62,7 +62,7 @@ Preparei alguns seeds pra você importar na base de dados, mas primeiro verifiqu
 > [!NOTE]
 > Ele é necessário apenas para importar dados iniciais não obrigatórios, como dados de login com permissões distintas e todas as cidades do brasil com latitude e longitude.
 
-Para importar execute, não se esqueça de colocar seu usuário no `--username=seu-user` configurado no [`.env`](./.env). Ao executar, ele irá solicitar a senha que foi configurada no mesmo arquivo.
+Para importar execute, não se esqueça de colocar seu usuário no `--username=seu-user` configurado no `.env`. Ao executar, ele irá solicitar a senha que foi configurada no mesmo arquivo.
 
 ### Cidades
 
@@ -73,7 +73,7 @@ mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=a
 ### Usuários
 
 ```sh
-mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=accountcollections --file=assets/seeds/account-collection.json
+mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=usercollections --file=assets/seeds/user-collection.json
 ```
 
 Usuários que serão cadastrados
@@ -119,11 +119,27 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
 
 <figure style="display: inline-flex; flex-direction: column">
 
+![TypeScript](./assets/logos/typescript.svg)
+
+  <figcaption style="text-align: center">
+  
+  [TypeScript](https://www.typescriptlang.org)
+
+  `util`, `domain` e `data-*`
+  
+  </figcaption>
+
+</figure>
+
+<figure style="display: inline-flex; flex-direction: column">
+
 ![Angular](./assets/logos/angular.svg)
 
   <figcaption style="text-align: center">
   
   [Angular](https://angular.dev)
+
+  `devmx`, `feature-*` e `ui-*`
   
   </figcaption>
 
@@ -136,6 +152,8 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
   <figcaption style="text-align: center">
   
   [NestJS](https://docs.nestjs.com)
+
+  `server` e `resource`
   
   </figcaption>
 
@@ -148,6 +166,8 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
   <figcaption style="text-align: center">
   
   [Nx Dev Tools](https://nx.dev)
+
+  `tools/**/*`
   
   </figcaption>
 

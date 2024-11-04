@@ -1,0 +1,70 @@
+<div>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <mat-card class="registration-card">
+      <mat-card-header class="registration-card-header">
+        <img mat-card-avatar src="devmx.svg" alt="devmx logo" />
+        <mat-card-title>Acesse a comunidade</mat-card-title>
+        <mat-card-subtitle>Faça parte da DevParaná</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content class="registration-card-content">
+        <mat-form-field>
+          <mat-label>Seu nome</mat-label>
+          <input
+            matInput
+            formControlName="displayName"
+            placeholder="Ex.: Francisco Thiago"
+            autocomplete="name"
+            autofocus
+          />
+          <mat-error>Obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Seu usuário</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            autocomplete="username"
+            placeholder="Ex.: chico"
+          />
+          <mat-error>
+            @if (form.controls.name.hasError('pattern')) { Use apenas letras do
+            alfabeto minúsculas } @if (form.controls.name.hasError('required'))
+            { Obrigatório }
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Seu e-mail</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+          />
+          <mat-error>Endereço inválido</mat-error>
+          <mat-hint>Enviaremos um código para este e-mail</mat-hint>
+        </mat-form-field>
+
+        <div class="registration-roles" formGroupName="roles">
+          <mat-checkbox formControlName="member">Membro</mat-checkbox>
+          @if (form.controls.roles.controls.member.errors) {
+          <mat-error>É obrigatório ser membro</mat-error>
+          }
+          <mat-checkbox formControlName="speaker">Palestrante</mat-checkbox>
+          <mat-checkbox formControlName="recruiter"> Recrutador </mat-checkbox>
+          <mat-checkbox formControlName="academic">Acadêmico</mat-checkbox>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end" class="registratiion-card-actions">
+        <button mat-button>Enviar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+  <footer>
+    <a routerLink=".." mat-button> Já tenho uma conta </a>
+  </footer>
+</div>

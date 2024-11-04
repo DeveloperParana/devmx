@@ -1,0 +1,18 @@
+@if (userFacade.selected$ | async; as user) {
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-card class="user-card">
+    <mat-card-header class="user-card-header">
+      <mat-card-title>{{ user.displayName }}</mat-card-title>
+      <mat-card-subtitle>{{ user.name }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="user-card-content">
+      <devmx-user-roles />
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button>Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+}

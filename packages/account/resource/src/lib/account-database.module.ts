@@ -2,16 +2,16 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Global, Module } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import {
-  AccountSchema,
+  UserSchema,
+  UserCollection,
   provideAccounts,
-  AccountCollection,
 } from '@devmx/account-data-source';
 
 @Global()
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: AccountCollection.name, schema: AccountSchema },
+      { name: UserCollection.name, schema: UserSchema },
     ]),
   ],
   providers: [...provideAccounts(JwtService)],

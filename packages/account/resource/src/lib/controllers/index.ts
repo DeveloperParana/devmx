@@ -1,3 +1,2 @@
-export * from './about';
-export * from './accounts';
-export * from './auth';
+export * from './authentication';
+export * from './users';

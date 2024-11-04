@@ -1,4 +1,8 @@
-<header></header>
+<header>
+  <devmx-course-ead-filter
+    (change)="onEADFilterChange($event)"
+  />
+</header>
 
 @defer { @if (courseFacade.response$ | async; as courses) {
 

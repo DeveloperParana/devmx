@@ -20,11 +20,14 @@
         <textarea
           matInput
           #textareaRef
+          (paste)="onPaste($event)"
           cdkTextareaAutosize
           cdkAutosizeMinRows="8"
           cdkAutosizeMaxRows="16"
           [formControl]="control"
+          [autofocus]="autofocusEnabled"
         ></textarea>
+        <mat-hint> {{ hint() }} </mat-hint>
       </mat-form-field>
     </div>
   </mat-tab>

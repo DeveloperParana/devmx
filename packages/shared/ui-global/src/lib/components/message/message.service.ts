@@ -9,6 +9,7 @@ export class MessageService {
 
   open(data: MessageData) {
     data.type ??= 'info';
+    data.action ??= false;
     const announcementMessage = data.message;
     const options = { data, announcementMessage, duration: 6000 };
     return this.#snackBar.openFromComponent(MessageComponent, options);
