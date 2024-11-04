@@ -1,5 +1,5 @@
 import { HttpClient, HttpService } from '@devmx/shared-data-access';
-import { <%= className %>Service } from '@devmx/<%scope%>-domain/client';
+import { <%= className %>Service } from '@devmx/<%= scope %>-domain/client';
 import { <%= className %> } from '@devmx/shared-api-interfaces';
 import { Env } from '@devmx/shared-api-interfaces/client';
 
