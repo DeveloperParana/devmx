@@ -1,5 +1,5 @@
 {
-  "name": "devmx",
+  "name": "DevParaná MX",
   "short_name": "devmx",
   "theme_color": "#3BCE53",
   "background_color": "#E5E2E1",
@@ -54,6 +54,15 @@
       "sizes": "512x512",
       "type": "image/svg",
       "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "devparana.mx.webp",
+      "sizes": "1280x942",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Vagas no DevParaná MX"
     }
   ]
 }
