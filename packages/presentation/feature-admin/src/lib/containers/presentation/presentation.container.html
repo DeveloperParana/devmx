@@ -2,46 +2,25 @@
   <mat-card class="presentation-card">
     <mat-card-content>
       <section>
-        <mat-form-field>
-          <mat-label>Título da apresentação</mat-label>
-          <input type="text" matInput formControlName="title" />
-          <mat-error>Obrigatório</mat-error>
-        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <mat-label>Título da apresentação</mat-label>
+            <input type="text" matInput formControlName="title" />
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Resenha</mat-label>
-          <textarea
-            matInput
-            formControlName="description"
-            cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="10"
-            cdkTextareaAutosize
-            rows="3"
-          ></textarea>
-          <mat-hint>Introdução com no máximo 512 caracteres</mat-hint>
-          <mat-error>
-            @if (form.controls.description.value.length > 512) { Você usou {{
-            form.controls.description.value.length - 512 }} caracteres acima do
-            máximo aceito } @else { Obrigatório }
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Formato da apresentação</mat-label>
+            <mat-select formControlName="format">
+              @for (format of form.formats; track format) {
+              <mat-option [value]="format.value"
+                >{{ format.viewValue }}</mat-option
+              >
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-        <mat-form-field>
-          <mat-label>Formato da apresentação</mat-label>
-          <mat-select formControlName="format">
-            @for (format of form.formats; track format) {
-            <mat-option [value]="format.value"
-              >{{ format.viewValue }}</mat-option
-            >
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <mat-checkbox formControlName="visible">
-          Visível publicamente
-        </mat-checkbox>
-      </section>
-      <section>
         <mat-list
           class="sortable-list"
           cdkDropList
@@ -116,6 +95,13 @@
           <mat-hint>Use a tecla <kbd>enter</kbd> para adicionar</mat-hint>
           <mat-error>Apenas letras e números</mat-error>
         </mat-form-field>
+
+        <mat-checkbox formControlName="visible">
+          Visível publicamente
+        </mat-checkbox>
+      </section>
+      <section>
+        <devmx-editor label="Resenha" formControlName="description" />
       </section>
     </mat-card-content>
 

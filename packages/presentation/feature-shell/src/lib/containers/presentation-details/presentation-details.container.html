@@ -20,7 +20,7 @@
   </mat-list>
 
   <mat-card-content>
-    <p>{{presentation.description}}</p>
+    <div [innerHTML]="presentation.description | marked | safeHtml"></div>
   </mat-card-content>
 
   @if (presentation.resources.length) {

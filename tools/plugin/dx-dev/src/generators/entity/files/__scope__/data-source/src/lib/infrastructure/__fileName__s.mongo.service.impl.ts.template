@@ -1,5 +1,5 @@
 import { MongoService, createServiceProvider } from '@devmx/shared-data-source';
-import { <%= className %>sService } from '@devmx/academy-domain/server';
+import { <%= className %>sService } from '@devmx/<%= scope %>-domain/server';
 import { <%= className %>Collection } from '../schemas';
 import { getModelToken } from '@nestjs/mongoose';
 

@@ -2,6 +2,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -26,6 +27,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
+
 @Component({
   selector: 'devmx-presentation-admin-presentation',
   templateUrl: './presentation.container.html',
@@ -34,6 +36,7 @@ import {
   imports: [
     ReactiveFormsModule,
     MatCardModule,
+    EditorComponent,
     MatProgressSpinnerModule,
     MatFormFieldModule,
     DragDropModule,

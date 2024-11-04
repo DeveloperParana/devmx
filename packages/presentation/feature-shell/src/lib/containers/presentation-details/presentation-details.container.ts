@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MarkedPipe, SafeHtmlPipe } from '@devmx/shared-ui-global/editor';
 import { PresentationFormatPipe } from '@devmx/presentation-ui-shared';
 import { PhotoPipe, StateNamePipe } from '@devmx/shared-ui-global';
 import { PresentationOut } from '@devmx/shared-api-interfaces';
@@ -23,6 +24,8 @@ import { filter, map } from 'rxjs';
     IconComponent,
     PresentationFormatPipe,
     StateNamePipe,
+    SafeHtmlPipe,
+    MarkedPipe,
     PhotoPipe,
     AsyncPipe,
   ],

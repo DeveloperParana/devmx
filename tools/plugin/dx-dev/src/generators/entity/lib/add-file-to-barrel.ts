@@ -1,9 +1,7 @@
 import { Tree } from '@nx/devkit';
 
 export function addFileToBarrel(tree: Tree, path: string, file: string) {
-  if (!tree.exists(path)) {
-    throw new Error(`Barrel file ${path} not found.`);
-  }
+  if (!tree.exists(path)) tree.write(path, '');
 
   const currentContent = tree.read(path, 'utf-8');
 

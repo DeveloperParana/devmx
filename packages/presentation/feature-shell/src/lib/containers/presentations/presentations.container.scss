@@ -9,7 +9,6 @@
   }
 
   .presentations-container {
-    flex: 1;
     gap: 1em;
     padding: 1em;
     display: flex;
@@ -18,7 +17,7 @@
 
     > * {
       flex: 1;
-      max-width: 50%;
+      min-width: calc(50% - 1em);
     }
 
     grid-template-columns: repeat(2, 1fr);
