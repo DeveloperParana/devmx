@@ -27,17 +27,6 @@
       .mat-mdc-card-avatar {
         margin-bottom: 0;
       }
-
-      .mat-mdc-card-title {
-        max-width: calc(100vw - 160px);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-
-      ::ng-deep .mat-mdc-card-header-text {
-        flex: 1;
-      }
     }
 
     &-actions {

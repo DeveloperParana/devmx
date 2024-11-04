@@ -9,7 +9,7 @@ import { combineLatest, filter, map, skip, take } from 'rxjs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { Event } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
 import { EventRSVP } from '../../dialogs';
@@ -37,7 +37,7 @@ export class MyEventsContainer {
 
   dialogFacade = inject(DialogFacade);
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   eventFacade = inject(EventFacade);
 
@@ -46,7 +46,7 @@ export class MyEventsContainer {
   eventRSVP = inject(EventRSVP);
 
   constructor() {
-    const user$ = this.authFacade.user$.pipe(
+    const user$ = this.authFacade.auth$.pipe(
       filter((user) => !!user),
       map(({ id }) => id)
     );

@@ -1,8 +1,8 @@
-import { AuthUser } from '@devmx/shared-api-interfaces';
+import { Authentication } from '@devmx/shared-api-interfaces';
 import { Observable } from 'rxjs';
 
 export abstract class AuthUserFacade {
-  abstract user$: Observable<AuthUser | null>;
+  abstract auth$: Observable<Authentication | null>;
 
   abstract signOut(): void;
 }

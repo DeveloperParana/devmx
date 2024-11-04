@@ -34,6 +34,36 @@
     );
   }
 
+  .mat-mdc-table {
+    .mat-mdc-header-cell {
+      font-weight: 600;
+      border-bottom-color: rgba(mat.get-theme-color($theme, on-surface), 0.2);
+    }
+
+    .mat-mdc-row {
+      &:hover {
+        background-color: rgba(mat.get-theme-color($theme, on-surface), 0.02);
+      }
+    }
+
+    .mat-mdc-cell {
+      border-bottom-color: rgba(mat.get-theme-color($theme, on-surface), 0.1);
+    }
+  }
+
+  .mat-mdc-checkbox {
+    .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+    .mdc-checkbox__native-control:enabled:indeterminate
+      ~ .mdc-checkbox__background {
+      background-color: mat.get-theme-color($theme, primary, 70);
+      border-color: mat.get-theme-color($theme, primary, 70);
+    }
+
+    .mdc-checkbox__checkmark {
+      color: mat.get-theme-color($theme, on-primary);
+    }
+  }
+
   .mat-checkbox {
     @include mat.checkbox-theme(
       (

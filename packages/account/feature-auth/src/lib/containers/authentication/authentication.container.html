@@ -1,0 +1,55 @@
+<div>
+  <mat-card class="authentication-card">
+    <mat-card-header class="authentication-card-header">
+      <img mat-card-avatar src="devmx.svg" alt="devmx logo" />
+      <mat-card-title>Autenticação</mat-card-title>
+      <mat-card-subtitle>Em dois toques</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-vertical-stepper #stepper (animationDone)="onInteract()">
+      <mat-step
+        [stepControl]="form"
+        label="Enviaremos um código no seu e-mail"
+        state="mail"
+      >
+        <form [formGroup]="form" (submit)="sendUserCode()">
+          <mat-form-field>
+            <mat-label>Nome de usuário</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              autocomplete="username"
+              autofocus
+            />
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+
+          <button mat-button>Enviar</button>
+        </form>
+      </mat-step>
+      <mat-step
+        [stepControl]="form"
+        label="Confirme o código recebido por e-mail"
+        state="code"
+      >
+        <form [formGroup]="form" (submit)="validateUserCode()">
+          <p>{{authenticationFacade.message$ | async}}</p>
+
+          <devmx-code-field formControlName="code" />
+        </form>
+      </mat-step>
+
+      <ng-template matStepperIcon="mail">
+        <devmx-icon name="message/mail" />
+      </ng-template>
+      <ng-template matStepperIcon="code">
+        <devmx-icon name="e-commerce/scan-barcode" />
+      </ng-template>
+    </mat-vertical-stepper>
+  </mat-card>
+
+  <footer>
+    <a routerLink="nova" mat-raised-button> Criar uma conta </a>
+    <a routerLink="recuperar" mat-button> Recuperar conta </a>
+  </footer>
+</div>

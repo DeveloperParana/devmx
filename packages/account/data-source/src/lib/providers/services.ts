@@ -1,18 +1,8 @@
-import { createServiceProvider } from '@devmx/shared-data-source';
-import { Env } from '@devmx/shared-api-interfaces/server';
-import { getModelToken } from '@nestjs/mongoose';
-import { AccountCollection } from '../schemas';
-import {
-  AuthServiceImpl,
-  CryptoServiceImpl,
-  AccountsServiceImpl,
-} from '../services';
-import {
-  JwtService,
-  AuthService,
-  CryptoService,
-  AccountsService,
-} from '@devmx/account-domain/server';
+import { provideUsersMongoService } from '../infrastructure';
+import { JwtService, CryptoService } from '@devmx/account-domain/server';
+import { Type } from '@devmx/shared-api-interfaces';
+import { provideJwtStrategy } from './strategies';
+import { CryptoServiceImpl } from '../services';
 
 export function provideCryptoService() {
   return {
@@ -28,17 +18,11 @@ export function provideJwtService<T>(JwtServiceImpl: T) {
   };
 }
 
-export function provideAccountsService() {
-  return createServiceProvider(AccountsService, AccountsServiceImpl, [
-    getModelToken(AccountCollection.name),
-  ]);
-}
-
-export function provideAuthService() {
-  return createServiceProvider(AuthService, AuthServiceImpl, [
-    AccountsService,
-    CryptoService,
-    JwtService,
-    Env,
-  ]);
+export function provideServices<T>(jwtService: Type<T>) {
+  return [
+    provideCryptoService(),
+    provideJwtService(jwtService),
+    provideJwtStrategy(),
+    provideUsersMongoService(),
+  ];
 }

@@ -1,6 +1,6 @@
 import { LayoutComponent, LayoutFacade } from '@devmx/shared-ui-global/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { Router, RouterModule } from '@angular/router';
 import {
   inject,
@@ -25,11 +25,11 @@ import {
 export class AcademyFeatureShellComponent {
   router = inject(Router);
   destroyRef = inject(DestroyRef);
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
   layoutFacade = inject(LayoutFacade);
 
   constructor() {
-    this.authFacade.user$.pipe(takeUntilDestroyed()).subscribe((user) => {
+    this.authFacade.auth$.pipe(takeUntilDestroyed()).subscribe((user) => {
       if (user) {
         this.layoutFacade.loadNavLinks(user.roles);
 
@@ -37,11 +37,11 @@ export class AcademyFeatureShellComponent {
       }
     });
 
-    this.authFacade.loadAuthUser();
+    this.authFacade.load();
   }
 
   waitingForLogout() {
-    this.authFacade.user$
+    this.authFacade.auth$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
         if (user === null) {

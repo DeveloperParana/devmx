@@ -1,14 +1,17 @@
 <div [ngClass]="data.type">
   <em matSnackBarLabel>{{ data.message }}</em>
+
   <menu matSnackBarActions>
+    @if (data.action) {
     <button
       mat-button
       type="button"
       matSnackBarAction
       color="error"
-      (click)="messageRef.dismissWithAction()"
+      (click)="messageRef.closeWithAction()"
     >
       Fechar
     </button>
+    }
   </menu>
 </div>

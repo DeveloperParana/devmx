@@ -1,5 +1,5 @@
 import { LayoutFacade } from '@devmx/shared-ui-global/layout';
-import { AuthFacade } from '@devmx/account-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { Component, inject, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, inject, OnInit } from '@angular/core';
   standalone: true,
 })
 export class SignOutContainer implements OnInit {
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
   layoutFacade = inject(LayoutFacade);
 
   ngOnInit() {

@@ -1,18 +1,14 @@
 import { AccountFeatureShellComponent } from './account-feature-shell.component';
-import { provideAutocompleteCitiesService } from '@devmx/location-ui-forms';
-import {
-  SignOutContainer,
-  SettingsContainer,
-  ProfileContainer,
-} from './containers';
-import { provideFormDialog } from '@devmx/shared-ui-global/forms';
-import { provideLocation } from '@devmx/location-data-access';
+import { accountFeatureShellProviders } from './account-feature-shell.providers';
+import { roleGuard, rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Route } from '@angular/router';
 import {
-  roleGroupsGuard,
-  roleGroupGuard,
-  roleGuard,
-} from '@devmx/shared-ui-global/guards';
+  ProfileContainer,
+  SecurityContainer,
+  SettingsContainer,
+  SignOutContainer,
+  SocialContainer,
+} from './containers';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
@@ -24,12 +20,8 @@ export const accountFeatureShellRoutes: Route[] = [
   },
   {
     path: '',
-    providers: [
-      ...provideLocation(),
-      provideAutocompleteCitiesService(),
-      provideFormDialog(),
-    ],
     canActivate: [roleGuard('member')],
+    providers: accountFeatureShellProviders,
     component: AccountFeatureShellComponent,
     data: {
       breadcrumb: 'Conta',
@@ -37,7 +29,7 @@ export const accountFeatureShellRoutes: Route[] = [
     children: [
       {
         path: 'administracao',
-        canActivate: [roleGroupsGuard('worthy', 'board')],
+        canActivate: [rolesGuard('manager', 'director', 'staff', 'leader')],
         loadChildren: async () => {
           return import('@devmx/account-feature-admin').then(
             (m) => m.accountFeatureAdminRoutes
@@ -46,7 +38,7 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: 'dashboard',
-        canActivate: [roleGroupGuard('board')],
+        canActivate: [rolesGuard('manager', 'director')],
         loadChildren: async () => {
           return import('@devmx/account-feature-board').then(
             (m) => m.accountFeatureBoardRoutes
@@ -55,17 +47,26 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: 'configuracoes',
-        data: {
-          breadcrumb: 'Configurações',
-        },
         component: SettingsContainer,
-      },
-      {
-        path: 'perfil',
-        data: {
-          breadcrumb: 'Perfil',
-        },
-        component: ProfileContainer,
+        children: [
+          {
+            path: 'perfil',
+            component: ProfileContainer,
+          },
+          {
+            path: 'social',
+            component: SocialContainer,
+          },
+          {
+            path: 'seguranca',
+            component: SecurityContainer,
+          },
+          {
+            path: '',
+            pathMatch: 'prefix',
+            redirectTo: 'perfil',
+          },
+        ],
       },
       {
         path: 'sair',
@@ -74,7 +75,7 @@ export const accountFeatureShellRoutes: Route[] = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'perfil',
+        redirectTo: 'configuracoes',
       },
     ],
   },

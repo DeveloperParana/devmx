@@ -1,4 +1,4 @@
-import { AccessTokenPayload, AuthUser } from '@devmx/shared-api-interfaces';
+import { AccessTokenPayload, Authentication } from '@devmx/shared-api-interfaces';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
@@ -12,15 +12,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  validate(payload: AccessTokenPayload): AuthUser {
+  validate(payload: AccessTokenPayload): Authentication {
     return {
       id: payload.sub,
       name: payload.name,
-      email: payload.email,
-      photo: payload.photo,
+      contact: payload.contact,
       roles: payload.roles,
-      city: payload.city,
-      username: payload.username,
+      displayName: payload.displayName,
     };
   }
 }

@@ -1,5 +1,5 @@
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
-import { AccountDto } from '@devmx/account-data-source';
+import { UserDto } from '@devmx/account-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 
@@ -36,5 +36,5 @@ export class CreatedPresentationDto {
   visible: boolean;
 
   @Exclude()
-  owner: AccountDto;
+  owner: UserDto;
 }

@@ -1,11 +1,20 @@
 import { AccountFeatureAuthComponent } from './account-feature-auth.component';
-import { provideAccount } from '@devmx/account-data-access';
+import { AuthenticationContainer, RegistrationContainer } from './containers';
 import { Route } from '@angular/router';
 
 export const accountFeatureAuthRoutes: Route[] = [
   {
     path: '',
-    providers: [provideAccount()],
     component: AccountFeatureAuthComponent,
+    children: [
+      {
+        path: '',
+        component: AuthenticationContainer,
+      },
+      {
+        path: 'nova',
+        component: RegistrationContainer,
+      },
+    ],
   },
 ];

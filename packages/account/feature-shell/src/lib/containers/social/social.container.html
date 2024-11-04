@@ -1,0 +1,47 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-card class="social-card">
+    <mat-card-header class="social-card-header">
+      <mat-card-title>Social</mat-card-title>
+    </mat-card-header>
+
+    <mat-list>
+      @for (social of form.value.social; track social.type; let index = $index)
+      {
+      <mat-list-item>
+        @switch (social.type) { @case ('whatsApp') {
+        <devmx-icon matListItemIcon name="social/whatsapp" />
+        } @case ('github') {
+        <devmx-icon matListItemIcon name="social/github" />
+        } @case ('linkedIn') {
+        <devmx-icon matListItemIcon name="social/linkedin" />
+        } @case ('instagram') {
+        <devmx-icon matListItemIcon name="social/instagram" />
+        } @case ('notion') {
+        <devmx-icon matListItemIcon name="social/notion" />
+        } @default {
+        <devmx-icon matListItemIcon name="link" />
+        } }
+        <span matListItemTitle>{{social.username}}</span>
+        <button
+          type="button"
+          matListItemMeta
+          mat-icon-button
+          (click)="form.social.removeAt(index)"
+        >
+          <devmx-icon name="trash" />
+        </button>
+      </mat-list-item>
+      }
+    </mat-list>
+    <mat-card-content formArrayName="social">
+      <button type="button" mat-button (click)="add()">
+        @if (form.social.length) { Adicionar outra } @else { Adicione seu
+        primeiro link social }
+      </button>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button>Savar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

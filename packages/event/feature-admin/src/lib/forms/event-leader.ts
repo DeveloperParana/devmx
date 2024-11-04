@@ -1,25 +1,25 @@
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NameForm, TypedForm } from '@devmx/shared-ui-global/forms';
-import { AccountRef } from '@devmx/shared-api-interfaces';
+import { TypedForm } from '@devmx/shared-ui-global/forms';
+import { UserRef } from '@devmx/shared-api-interfaces';
 
-export class EventLeaderForm extends FormGroup<TypedForm<AccountRef>> {
+export class EventLeaderForm extends FormGroup<TypedForm<UserRef>> {
   get name() {
     return this.controls.name.value;
   }
 
-  constructor(account?: AccountRef) {
+  constructor(account?: UserRef) {
     super({
       id: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],
       }),
-      name: new NameForm(),
-      username: new FormControl('', {
+      name: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],
       }),
-      photo: new FormControl('', {
+      displayName: new FormControl('', {
         nonNullable: true,
+        validators: [Validators.required],
       }),
     });
 
@@ -32,7 +32,7 @@ export class EventLeadersForm extends FormArray<EventLeaderForm> {
     super([]);
   }
 
-  add(value?: AccountRef) {
+  add(value?: UserRef) {
     this.push(new EventLeaderForm(value));
   }
 }

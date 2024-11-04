@@ -5,10 +5,13 @@ import { getModelToken } from '@nestjs/mongoose';
 import { EventCollection } from '../schemas';
 import { Query } from 'mongoose';
 
-export class EventsMongoServiceImpl extends MongoService<EventCollection> {
+export class EventsMongoServiceImpl
+  extends MongoService<EventCollection>
+  implements EventsService
+{
   protected override applyPopulate<U>(query: Query<U, EventCollection>) {
     return query
-      .populate('owner', 'name username photo')
+      .populate('owner', 'name displayName profile')
       .populate('presentations')
       .populate('leaders');
   }

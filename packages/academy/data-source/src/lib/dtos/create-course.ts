@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { AccountRefDto } from '@devmx/shared-data-source';
+import { UserRefDto } from '@devmx/shared-data-source';
 import { CreateCourse } from '@devmx/academy-domain';
 import { CourseSubjectDto } from './course-subject';
 import { InstitutionDto } from './institution';
@@ -10,6 +10,7 @@ import {
   IsNotEmpty,
   IsOptional,
   ValidateNested,
+  IsBoolean,
 } from 'class-validator';
 
 export class CreateCourseDto implements CreateCourse {
@@ -24,6 +25,11 @@ export class CreateCourseDto implements CreateCourse {
   @IsNotEmpty()
   @ApiProperty()
   goal: string;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  @ApiProperty()
+  ead: boolean;
 
   @ValidateNested({ each: true })
   @Type(() => CourseSubjectDto)
@@ -47,9 +53,9 @@ export class CreateCourseDto implements CreateCourse {
   link?: string;
 
   @IsOptional()
-  @Type(() => AccountRefDto)
-  @ApiPropertyOptional({ type: () => [AccountRefDto] })
-  contributors: AccountRefDto[] = [];
+  @Type(() => UserRefDto)
+  @ApiPropertyOptional({ type: () => [UserRefDto] })
+  contributors: UserRefDto[] = [];
 
   owner: string;
 }

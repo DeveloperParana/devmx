@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+:host {
+  flex: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+  .user-card {
+    overflow: hidden;
+
+    &-header {
+      padding-bottom: 0.8em;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    }
+
+    &-content {
+      padding-top: 0.8em;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { RSVP, RSVPStatus } from '@devmx/shared-api-interfaces';
-import { AccountCollection } from '@devmx/account-data-source';
+import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
@@ -11,10 +11,10 @@ export class RSVPCollection extends Document implements RSVP {
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: AccountCollection.name,
+    ref: UserCollection.name,
     required: true,
   })
-  account: AccountCollection;
+  account: UserCollection;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,

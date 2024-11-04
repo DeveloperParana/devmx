@@ -1,1 +1,2 @@
-export * from './event.resolver';
+export * from './event';
+export * from './user';

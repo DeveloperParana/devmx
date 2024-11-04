@@ -16,7 +16,7 @@ export enum HttpEventType {
   User = 5,
 }
 
-interface RequestConfig extends Omit<RequestInit, 'method'> {
+export interface RequestConfig extends Omit<RequestInit, 'method'> {
   observe?: 'body' | 'events' | 'response';
   responseType: keyof ResponseTypeMap;
   reportProgress?: boolean;

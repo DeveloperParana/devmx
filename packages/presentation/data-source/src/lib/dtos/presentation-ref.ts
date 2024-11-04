@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { PresentationRef } from '@devmx/shared-api-interfaces';
-import { AccountRefDto } from '@devmx/shared-data-source';
+import { UserRefDto } from '@devmx/shared-data-source';
 import { Type } from 'class-transformer';
 
 export class PresentationRefDto implements PresentationRef {
@@ -16,7 +16,7 @@ export class PresentationRefDto implements PresentationRef {
   @ApiPropertyOptional()
   cover?: string;
 
-  @ApiProperty({ type: () => AccountRefDto })
-  @Type(() => AccountRefDto)
-  owner: AccountRefDto;
+  @ApiProperty({ type: () => UserRefDto })
+  @Type(() => UserRefDto)
+  owner: UserRefDto;
 }

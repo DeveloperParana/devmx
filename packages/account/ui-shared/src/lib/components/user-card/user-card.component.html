@@ -1,0 +1,29 @@
+<mat-card class="user-card">
+  <img
+    mat-card-image
+    [src]="user.profile?.photo| photo"
+    [alt]="user.displayName"
+  />
+
+  <mat-card-header>
+    <mat-card-title>
+      {{ user.displayName }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ user.name }}
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-list>
+    @for (role of user.roles | keyvalue; track role) { @if (role.value) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="check" />
+      <div matListItemTitle>{{ role.key | role }}</div>
+    </mat-list-item>
+    } }
+  </mat-list>
+
+  <mat-card-actions align="end" class="user-card-actions">
+    <ng-content />
+  </mat-card-actions>
+</mat-card>

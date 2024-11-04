@@ -10,6 +10,7 @@ import { Module } from '@nestjs/common';
 import { env } from './envs/env';
 import {
   SharedDatabaseModule,
+  SharedMailerModule,
   SharedResourceModule,
 } from '@devmx/shared-resource';
 
@@ -18,13 +19,14 @@ import {
     ServeStaticModule.forRoot(env.static),
     SharedResourceModule.forRoot(env),
     SharedDatabaseModule,
+    SharedMailerModule,
     AccountResourceModule,
     PresentationResourceModule,
     LocationResourceModule,
     EventResourceModule,
     CareerResourceModule,
     AlbumResourceModule,
-    AcademyResourceModule
+    AcademyResourceModule,
   ],
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { PresentationOut } from './presentation-out';
-import { AccountRef } from './account-ref';
 import { Location } from '../interfaces';
 import { EventFormat } from '../types';
+import { UserRef } from './user-ref';
 import { City } from '../entities';
 
 export interface EventOut {
@@ -23,7 +23,7 @@ export interface EventOut {
 
   presentations: PresentationOut[];
 
-  leaders: AccountRef[];
+  leaders: UserRef[];
 
   address: string;
 
@@ -31,5 +31,5 @@ export interface EventOut {
 
   location?: Location;
 
-  owner: AccountRef;
+  owner: UserRef;
 }

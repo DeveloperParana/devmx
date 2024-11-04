@@ -1,18 +1,20 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { PresentationCardComponent } from '@devmx/presentation-ui-shared';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
+import { UserRef, Presentation } from '@devmx/shared-api-interfaces';
 import { PresentationFacade } from '@devmx/presentation-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import { AccountRef, Presentation } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthFacade } from '@devmx/account-data-access';
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import { BehaviorSubject, combineLatest, filter, map } from 'rxjs';
-import { SelectAccount } from '@devmx/account-ui-shared';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { SelectUser } from '@devmx/account-ui-shared';
+import { observer } from '@devmx/shared-util-data';
+import { AsyncPipe } from '@angular/common';
+import { combineLatest, map } from 'rxjs';
 
 @Component({
   selector: 'devmx-manage-presentations',
@@ -22,12 +24,12 @@ import { SelectAccount } from '@devmx/account-ui-shared';
   imports: [
     RouterModule,
     MatButtonModule,
-    MatTooltipModule,
+    SearchFieldComponent,
     PaginatorComponent,
-    PresentationCardComponent,
+    MatTableModule,
+    MatCardModule,
     IconComponent,
     AsyncPipe,
-    JsonPipe,
   ],
   standalone: true,
 })
@@ -38,42 +40,43 @@ export class ManagePresentationsContainer {
 
   dialogFacade = inject(DialogFacade);
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   presentationFacade = inject(PresentationFacade);
 
-  selectAccount = inject(SelectAccount);
+  selectUser = inject(SelectUser);
 
-  #accountRef = new BehaviorSubject<AccountRef | null>(null);
-  accountRef$ = this.#accountRef.asObservable();
+  #userRef = observer<UserRef | null>(null);
+
+  columns = ['title', 'owner', 'actions'];
 
   constructor() {
-    const account$ = this.accountRef$.pipe(
-      map((user) => (user ? user.id : ''))
-    );
+    const user$ = this.#userRef
+      .observe()
+      .pipe(map((user) => (user ? user.id : '')));
 
     const params$ = this.route.queryParams;
 
-    combineLatest([account$, params$])
+    combineLatest([user$, params$])
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
 
     this.presentationFacade.load()
   }
 
-  setAccountRef(accountRef: AccountRef | null = null) {
-    this.#accountRef.next(accountRef);
+  setUserRef(userRef: UserRef | null = null) {
+    this.#userRef.update(userRef);
   }
 
-  openSelectAccount() {
-    this.selectAccount
+  openSelectUser() {
+    this.selectUser
       .open({ onlyRole: 'speaker', multiple: false })
-      .subscribe((account) => {
-        if (account) this.setAccountRef(account);
+      .subscribe((user) => {
+        if (user) this.setUserRef(user);
       });
   }
 
-  deletePresentation({ id, title }: Presentation) {
+  openDelete({ id, title }: Presentation) {
     this.dialogFacade
       .confirm(
         `Confirme que deseja apagar a apresentação ${title}`,
@@ -97,6 +100,11 @@ export class ManagePresentationsContainer {
 
     this.presentationFacade.load();
   };
+
+  onSearchChange(title = '') {
+    this.presentationFacade.setFilter({ title });
+    this.presentationFacade.load();
+  }
 
   onPageChange({ page, size }: PageParams) {
     const queryParams = { page, size };

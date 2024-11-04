@@ -1,0 +1,45 @@
+@if (authFacade.auth$| async; as auth) {
+
+<mat-card class="users-card">
+  <mat-card-header class="users-card-header">
+    <devmx-search-field (searchChange)="onSearchChange($event)" [debounce]="800" />
+  </mat-card-header>
+
+  @if (userFacade.response$ | async; as response) {
+
+  <table mat-table [dataSource]="response.data">
+    <ng-container matColumnDef="displayName">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let user">{{ user.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Usuário</th>
+      <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user">
+        <a mat-icon-button [routerLink]="user.id">
+          <devmx-icon name="user-box" />
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let user; columns: columns"></tr>
+  </table>
+
+  <mat-card-actions align="end">
+    <devmx-paginator
+      [size]="10"
+      [items]="response.items"
+      (pageChange)="onPageChange($event)"
+    />
+  </mat-card-actions>
+
+  }
+</mat-card>
+
+}

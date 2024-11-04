@@ -2,7 +2,7 @@ import { CityDto, LocationDto } from '@devmx/location-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { PresentationDto } from '@devmx/presentation-data-source';
 import { EventFormat } from '@devmx/shared-api-interfaces';
-import { AccountDto } from '@devmx/account-data-source';
+import { UserDto } from '@devmx/account-data-source';
 import { Exclude, Type } from 'class-transformer';
 
 export class CreatedEventDto {
@@ -50,5 +50,5 @@ export class CreatedEventDto {
   location?: LocationDto;
 
   @Exclude()
-  owner: AccountDto;
+  owner: UserDto;
 }

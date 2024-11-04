@@ -1,5 +1,5 @@
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
-import { AccountDto } from '@devmx/account-data-source';
+import { UserDto } from '@devmx/account-data-source';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
@@ -35,7 +35,7 @@ export class PresentationDto {
   @ApiProperty()
   video: string;
 
-  @Type(() => AccountDto)
-  @ApiProperty({ type: () => AccountDto })
-  owner: AccountDto;
+  @Type(() => UserDto)
+  @ApiProperty({ type: () => UserDto })
+  owner: UserDto;
 }

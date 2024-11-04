@@ -1,3 +1,3 @@
-export * from './select-account/select-account.provider';
-export * from './select-account/select-account.dialog';
-export * from './select-account/select-account';
+export * from './select-user/select-user.provider';
+export * from './select-user/select-user.dialog';
+export * from './select-user/select-user';

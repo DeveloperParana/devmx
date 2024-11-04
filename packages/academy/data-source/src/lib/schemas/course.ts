@@ -1,5 +1,5 @@
 import { Course, CourseSubject } from '@devmx/shared-api-interfaces';
-import { AccountCollection } from '@devmx/account-data-source';
+import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { InstitutionCollection } from './institution';
 import { Prop, raw, Schema } from '@nestjs/mongoose';
@@ -15,6 +15,9 @@ export class CourseCollection extends Document implements Course {
 
   @Prop({ type: String })
   goal: string;
+
+  @Prop({ type: Boolean, default: false })
+  ead: boolean;
 
   @Prop([
     {
@@ -44,18 +47,18 @@ export class CourseCollection extends Document implements Course {
     type: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: AccountCollection.name,
+        ref: UserCollection.name,
       },
     ],
   })
-  contributors: AccountCollection[];
+  contributors: UserCollection[];
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: AccountCollection.name,
+    ref: UserCollection.name,
     required: true,
   })
-  owner: AccountCollection;
+  owner: UserCollection;
 }
 
 export const CourseSchema = createSchema(CourseCollection);

@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  ::ng-deep .search-field {
+    .mat-mdc-form-field-icon-suffix {
+      padding-right: 0.8em;
+    }
+  }
+}

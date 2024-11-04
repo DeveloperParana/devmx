@@ -1,7 +1,7 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { AccountRef, JobOpening } from '@devmx/shared-api-interfaces';
+import { UserRef, JobOpening } from '@devmx/shared-api-interfaces';
 import { JobOpeningCardComponent } from '@devmx/career-ui-shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
@@ -9,10 +9,13 @@ import { JobOpeningFacade } from '@devmx/career-data-access';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SelectAccount } from '@devmx/account-ui-shared';
+import { SelectUser } from '@devmx/account-ui-shared';
 import { observer } from '@devmx/shared-util-data';
 import { AsyncPipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
+import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'devmx-career-admin-manage-job-openings',
@@ -22,6 +25,9 @@ import { combineLatest, map } from 'rxjs';
   imports: [
     RouterModule,
     MatButtonModule,
+    SearchFieldComponent,
+    MatTableModule,
+    MatCardModule,
     MatTooltipModule,
     JobOpeningCardComponent,
     PaginatorComponent,
@@ -39,18 +45,20 @@ export class ManageJobOpeningsContainer {
 
   jobOpeningFacade = inject(JobOpeningFacade);
 
-  selectAccount = inject(SelectAccount);
+  selectUser = inject(SelectUser);
 
-  #accountRef = observer<AccountRef | null>(null);
+  #userRef = observer<UserRef | null>(null);
+
+  columns = ['title', 'owner', 'actions'];
 
   constructor() {
-    const account$ = this.#accountRef
+    const user$ = this.#userRef
       .observe()
       .pipe(map((user) => (user ? user.id : '')));
 
     const params$ = this.route.queryParams;
 
-    combineLatest([account$, params$])
+    combineLatest([user$, params$])
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
   }
@@ -67,7 +75,7 @@ export class ManageJobOpeningsContainer {
     this.jobOpeningFacade.load();
   };
 
-  deleteJobOpening({ id, title }: JobOpening) {
+  openDelete({ id, title }: JobOpening) {
     this.dialogFacade
       .confirm(
         `Confirme que deseja apagar a vaga ${title}`,
@@ -80,12 +88,17 @@ export class ManageJobOpeningsContainer {
       });
   }
 
-  openSelectAccount() {
-    this.selectAccount
+  openSelectUser() {
+    this.selectUser
       .open({ onlyRole: 'recruiter', multiple: false })
-      .subscribe((account) => {
-        if (account) this.#accountRef.update(account);
+      .subscribe((user) => {
+        if (user) this.#userRef.update(user);
       });
+  }
+
+  onSearchChange(title = '') {
+    this.jobOpeningFacade.setFilter({ title });
+    this.jobOpeningFacade.load();
   }
 
   onPageChange({ page, size }: PageParams) {

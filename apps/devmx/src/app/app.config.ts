@@ -1,6 +1,7 @@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AuthenticationFacade, provideAccount } from '@devmx/account-data-access';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
-import { AuthFacade, provideAccount } from '@devmx/account-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
 import { authInterceptor, loaderInterceptor } from './interceptors';
 import { provideServiceWorker } from '@angular/service-worker';
@@ -38,7 +39,7 @@ import {
   provideZoneChangeDetection,
   isDevMode,
 } from '@angular/core';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
 
 
 
@@ -51,7 +52,7 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withViewTransitions(),
       withHashLocation(),
-      withRouterConfig({})
+      withRouterConfig({}),
     ),
     provideAnimationsAsync(),
     {
@@ -63,13 +64,13 @@ export const appConfig: ApplicationConfig = {
       useClass: AuthErrorHandler,
     },
     provideLayout(undefined, appSections),
-    provideAccount(),
-    provideLayoutToolbar(AuthFacade),
     provideHttpClient(
       withFetch(),
       withInterceptors([authInterceptor, loaderInterceptor])
     ),
     provideHttpClientImpl(HttpClient),
+    ...provideAccount(),
+    provideLayoutToolbar(AuthenticationFacade),
     provideEnv(env),
     ...provideCareer(),
     ...providePresentation(),

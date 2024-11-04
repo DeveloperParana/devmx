@@ -1,8 +1,8 @@
+import { UserRefDto } from '@devmx/shared-data-source';
 import { Place } from '@devmx/shared-api-interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { LocationDto } from './location';
 import { Type } from 'class-transformer';
-import { AccountRefDto } from '@devmx/shared-data-source';
 
 export class PlaceDto implements Place {
   @ApiProperty()
@@ -18,7 +18,7 @@ export class PlaceDto implements Place {
   @Type(() => LocationDto)
   location: LocationDto;
 
-  @ApiProperty({ type: () => AccountRefDto })
-  @Type(() => AccountRefDto)
-  creator: AccountRefDto;
+  @ApiProperty({ type: () => UserRefDto })
+  @Type(() => UserRefDto)
+  creator: UserRefDto;
 }

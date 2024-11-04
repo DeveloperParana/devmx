@@ -1,5 +1,5 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { AccountCollection } from '@devmx/account-data-source';
+import { UserCollection } from '@devmx/account-data-source';
 import mongoose, { Document, Types } from 'mongoose';
 import { SkillSchema } from './skill';
 import {
@@ -83,10 +83,10 @@ export class JobOpeningCollection extends Document implements JobOpening {
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: AccountCollection.name,
+    ref: UserCollection.name,
     required: true,
   })
-  owner: AccountCollection;
+  owner: UserCollection;
 }
 
 export const JobOpeningSchema =

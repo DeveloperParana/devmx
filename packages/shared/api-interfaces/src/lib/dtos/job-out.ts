@@ -1,7 +1,7 @@
 import { ExperienceLevel, JobContract, JobType, JobMode } from '../types';
-import { AccountRef } from './account-ref';
 import { Range } from '../interfaces';
 import { CityRef } from './city-ref';
+import { UserRef } from './user-ref';
 
 export interface JobOut {
   id: string;
@@ -34,5 +34,5 @@ export interface JobOut {
 
   active: boolean;
 
-  owner: AccountRef;
+  owner: UserRef;
 }

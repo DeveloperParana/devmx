@@ -1,13 +1,13 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { AlbumCardComponent } from '@devmx/album-ui-shared';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthFacade } from '@devmx/account-data-access';
 import { AlbumFacade } from '@devmx/album-data-access';
 import { Album } from '@devmx/shared-api-interfaces';
 import { combineLatest, filter, map } from 'rxjs';
@@ -36,12 +36,12 @@ export class MyAlbumsContainer {
 
   dialogFacade = inject(DialogFacade);
 
-  authFacade = inject(AuthFacade);
+  authFacade = inject(AuthenticationFacade);
 
   albumFacade = inject(AlbumFacade);
 
   constructor() {
-    const user$ = this.authFacade.user$.pipe(
+    const user$ = this.authFacade.auth$.pipe(
       filter((user) => !!user),
       map(({ id }) => id)
     );

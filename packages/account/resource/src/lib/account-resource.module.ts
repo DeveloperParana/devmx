@@ -9,9 +9,8 @@ import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import {
-  AuthController,
-  AccountsController,
-  AboutController,
+  UsersController,
+  AuthenticationController,
 } from './controllers';
 
 @Module({
@@ -36,7 +35,7 @@ import {
     AccountDatabaseModule,
     PresentationDatabaseModule,
   ],
-  controllers: [AuthController, AboutController, AccountsController],
+  controllers: [AuthenticationController, UsersController],
   providers: [
     {
       provide: APP_GUARD,

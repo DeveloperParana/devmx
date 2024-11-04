@@ -13,7 +13,7 @@ import {
 export abstract class EntityService<T extends Entity>
   implements Create<T>, Find<T>, FindOne<T>, Update<T>, Delete<T>
 {
-  abstract create(data: EditableEntity<T>): Promise<T>;
+  abstract create(data: Omit<EditableEntity<T>, 'id'>): Promise<T>;
 
   abstract find(params: QueryParams<T>): Promise<Page<T>>;
 

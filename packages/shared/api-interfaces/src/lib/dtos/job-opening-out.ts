@@ -1,6 +1,6 @@
-import { AccountRef } from './account-ref';
 import { JobOpening } from '../entities';
+import { UserRef } from './user-ref';
 
 export interface JobOpeningOut extends Omit<JobOpening, 'owner'> {
-  owner: AccountRef;
+  owner: UserRef;
 }

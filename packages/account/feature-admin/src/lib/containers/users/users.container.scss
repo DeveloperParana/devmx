@@ -1,0 +1,19 @@
+:host {
+  flex: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+  .users-card {
+    overflow: hidden;
+
+    &-header {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .mat-mdc-table .mat-column-actions {
+    max-width: 2em;
+  }
+}

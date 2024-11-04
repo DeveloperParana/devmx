@@ -1,14 +1,6 @@
-import { AccountRole } from '../types';
-import { AuthCity } from './auth-user';
-import { Name } from './name';
+import { Authentication } from './authentication';
 
-export interface AccessTokenPayload {
+export interface AccessTokenPayload extends Omit<Authentication, 'id'> {
   sub: string;
-  name: Name;
-  email: string;
-  username: string;
-  photo: string;
-  roles: AccountRole;
-  city?: AuthCity;
   iat: number;
 }

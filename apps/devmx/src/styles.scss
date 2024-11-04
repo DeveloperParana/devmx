@@ -12,6 +12,7 @@
 :root {
   @include mat.all-component-themes(theme.$light);
   @include mat.typography-hierarchy(theme.$light);
+  @include component.stepper-theme(theme.$light);
   @include component.layout-theme(theme.$light);
   @include component.dialog-theme(theme.$light);
   @include component.form-theme(theme.$light);

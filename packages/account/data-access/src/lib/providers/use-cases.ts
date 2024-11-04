@@ -1,121 +1,80 @@
-import { provideFindPresentationsUseCase } from '@devmx/presentation-data-access';
 import { createUseCaseProvider } from '@devmx/shared-data-access';
 import {
-  AuthService,
-  SignInUseCase,
-  SignUpUseCase,
-  AccountService,
-  LoadAuthUserUseCase,
-  RemoveAccountUseCase,
-  UpdateAccountUseCase,
-  FindAccountByIDUseCase,
-  ChangePasswordUseCase,
-  UploadPhotoUseCase,
-  FindAccountByUsernameUseCase,
-  FindAccountsUseCase,
-  ChangeRolesUseCase,
-  FindEventsByOwnerUseCase,
-  FindSpeakersUseCase,
-  FindLeadersUseCase,
-  RequestChallengeUseCase,
-  FindJobsByOwnerUseCase,
-  FindAboutAccountUseCase,
-  AboutService,
-  FindAccountsByRoleUseCase,
+  UserService,
+  FindUsersUseCase,
+  CreateUserUseCase,
+  DeleteUserUseCase,
+  FindUserByIDUseCase,
+  UpdateSocialUseCase,
+  SendUserCodeUseCase,
+  UpdateProfileUseCase,
+  AuthenticationService,
+  UpdatePasswordUseCase,
+  ValidateUserCodeUseCase,
+  LoadAuthenticationUseCase,
+  UpdateRolesUseCase,
 } from '@devmx/account-domain/client';
 
-export function provideSignInUseCase() {
-  return createUseCaseProvider(SignInUseCase, [AuthService]);
+export function provideCreateUserUseCase() {
+  return createUseCaseProvider(CreateUserUseCase, [AuthenticationService]);
 }
 
-export function provideSignUpUseCase() {
-  return createUseCaseProvider(SignUpUseCase, [AuthService]);
+export function provideDeleteUserUseCase() {
+  return createUseCaseProvider(DeleteUserUseCase, [UserService]);
 }
 
-export function provideLoadAuthUserUseCase() {
-  return createUseCaseProvider(LoadAuthUserUseCase, [AuthService]);
+export function provideFindUserByIDUseCase() {
+  return createUseCaseProvider(FindUserByIDUseCase, [UserService]);
 }
 
-export function provideFindAccountsUseCase() {
-  return createUseCaseProvider(FindAccountsUseCase, [AccountService]);
+export function provideFindUsersUseCase() {
+  return createUseCaseProvider(FindUsersUseCase, [UserService]);
 }
 
-export function provideFindAccountsByRoleUseCase() {
-  return createUseCaseProvider(FindAccountsByRoleUseCase, [AccountService]);
+export function provideLoadAuthenticationUseCase() {
+  return createUseCaseProvider(LoadAuthenticationUseCase, [
+    AuthenticationService,
+  ]);
 }
 
-export function provideFindAccountByIDUseCase() {
-  return createUseCaseProvider(FindAccountByIDUseCase, [AccountService]);
+export function provideSendUserCodeUseCase() {
+  return createUseCaseProvider(SendUserCodeUseCase, [AuthenticationService]);
 }
 
-export function provideFindAccountByUsernameUseCase() {
-  return createUseCaseProvider(FindAccountByUsernameUseCase, [AccountService]);
+export function provideUpdatePasswordUseCase() {
+  return createUseCaseProvider(UpdatePasswordUseCase, [UserService]);
 }
 
-export function provideUpdateAccountUseCase() {
-  return createUseCaseProvider(UpdateAccountUseCase, [AccountService]);
+export function provideUpdateProfileUseCase() {
+  return createUseCaseProvider(UpdateProfileUseCase, [UserService]);
 }
 
-export function provideRemoveAccountUseCase() {
-  return createUseCaseProvider(RemoveAccountUseCase, [AccountService]);
+export function provideUpdateSocialUseCase() {
+  return createUseCaseProvider(UpdateSocialUseCase, [UserService]);
 }
 
-export function provideFindJobsByOwnerUseCase() {
-  return createUseCaseProvider(FindJobsByOwnerUseCase, [AccountService]);
+export function provideUpdateRolesUseCase() {
+  return createUseCaseProvider(UpdateRolesUseCase, [UserService]);
 }
 
-export function provideFindEventsByOwnerUseCase() {
-  return createUseCaseProvider(FindEventsByOwnerUseCase, [AccountService]);
-}
-
-export function provideChangePasswordUseCase() {
-  return createUseCaseProvider(ChangePasswordUseCase, [AccountService]);
-}
-
-export function provideChangeRolesUseCase() {
-  return createUseCaseProvider(ChangeRolesUseCase, [AccountService]);
-}
-
-export function provideUploadPhotoUseCase() {
-  return createUseCaseProvider(UploadPhotoUseCase, [AccountService]);
-}
-
-export function provideFindSpeakersUseCase() {
-  return createUseCaseProvider(FindSpeakersUseCase, [AccountService]);
-}
-
-export function provideFindLeadersUseCase() {
-  return createUseCaseProvider(FindLeadersUseCase, [AccountService]);
-}
-
-export function provideRequestChallengeUseCase() {
-  return createUseCaseProvider(RequestChallengeUseCase, [AuthService]);
-}
-
-export function provideFindAboutAccountUseCase() {
-  return createUseCaseProvider(FindAboutAccountUseCase, [AboutService]);
+export function provideValidateUserCodeUseCase() {
+  return createUseCaseProvider(ValidateUserCodeUseCase, [
+    AuthenticationService,
+  ]);
 }
 
 export function provideUseCases() {
   return [
-    provideSignInUseCase(),
-    provideSignUpUseCase(),
-    provideLoadAuthUserUseCase(),
-    provideFindAccountsUseCase(),
-    provideFindAccountsByRoleUseCase(),
-    provideFindAccountByIDUseCase(),
-    provideFindAccountByUsernameUseCase(),
-    provideUpdateAccountUseCase(),
-    provideRemoveAccountUseCase(),
-    provideFindPresentationsUseCase(),
-    provideFindJobsByOwnerUseCase(),
-    provideFindEventsByOwnerUseCase(),
-    provideChangePasswordUseCase(),
-    provideChangeRolesUseCase(),
-    provideUploadPhotoUseCase(),
-    provideFindSpeakersUseCase(),
-    provideFindLeadersUseCase(),
-    provideRequestChallengeUseCase(),
-    provideFindAboutAccountUseCase(),
+    provideCreateUserUseCase(),
+    provideDeleteUserUseCase(),
+    provideFindUserByIDUseCase(),
+    provideFindUsersUseCase(),
+    provideLoadAuthenticationUseCase(),
+    provideSendUserCodeUseCase(),
+    provideUpdatePasswordUseCase(),
+    provideUpdateProfileUseCase(),
+    provideUpdateSocialUseCase(),
+    provideUpdateRolesUseCase(),
+    provideValidateUserCodeUseCase(),
   ];
 }

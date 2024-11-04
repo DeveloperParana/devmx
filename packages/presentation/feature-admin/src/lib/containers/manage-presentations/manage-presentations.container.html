@@ -1,37 +1,52 @@
-@if (presentationFacade.response$ | async; as presentations) {
+<mat-card class="presentations-card">
+  <mat-card-header class="presentations-card-header">
+    <mat-card-title>Apresentações</mat-card-title>
 
-<div class="presentations-container">
-  @for (job of presentations.data; track job.id) {
+    <div>
+      <button mat-icon-button (click)="openSelectUser()">
+        <devmx-icon name="filter" />
+      </button>
 
-  <devmx-presentation-card [data]="job">
-    <button
-      type="button"
-      mat-icon-button
-      matTooltip="Apagar apresentação"
-      matTooltipPosition="after"
-      (click)="deletePresentation(job)"
-    >
-      <devmx-icon name="trash-alt" />
-    </button>
-  </devmx-presentation-card>
+      <devmx-search-field
+        (searchChange)="onSearchChange($event)"
+        [debounce]="1000"
+      />
+    </div>
+  </mat-card-header>
+
+  @if (presentationFacade.response$ | async; as response) {
+
+  <table mat-table [dataSource]="response.data">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Nome do curso</th>
+      <td mat-cell *matCellDef="let presentation">{{ presentation.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef>Criado por</th>
+      <td mat-cell *matCellDef="let presentation">{{ presentation.owner.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let presentation">
+        <button type="button" mat-icon-button (click)="openDelete(presentation)">
+          <devmx-icon name="trash" />
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let presentation; columns: columns"></tr>
+  </table>
+
+  <mat-card-actions align="end">
+    <devmx-paginator
+      [size]="10"
+      [items]="response.items"
+      (pageChange)="onPageChange($event)"
+    />
+  </mat-card-actions>
+
   }
-</div>
-
-@if (!presentations.items) {
-<div class="no-presentations-yet">
-  <h2>Não temos nada aqui...</h2>
-</div>
-}
-
-<footer>
-  <button mat-raised-button (click)="openSelectAccount()">
-    Filtrar por palestrante
-  </button>
-
-  <devmx-paginator
-    [size]="10"
-    [items]="presentations.items"
-    (pageChange)="onPageChange($event)"
-  />
-</footer>
-}
+</mat-card>

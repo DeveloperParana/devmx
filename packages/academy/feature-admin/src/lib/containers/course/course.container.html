@@ -8,6 +8,8 @@
           <mat-error>Obrigatório</mat-error>
         </mat-form-field>
 
+        <mat-checkbox formControlName="ead">Ensino a distância</mat-checkbox>
+
         <div class="course-subjects">
           <header>
             <h3 mat-subheader>Disciplinas</h3>
@@ -77,7 +79,7 @@
             @for (contributor of form.contributors.controls; track
             contributor.value.id; let index = $index) {
             <mat-list-item>
-              <span matListItemTitle>{{contributor.value.name?.first}}</span>
+              <span matListItemTitle>{{contributor.value.name}}</span>
               <button
                 type="button"
                 mat-icon-button

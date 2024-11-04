@@ -1,4 +1,4 @@
-import { AccountCollection } from '@devmx/account-data-source';
+import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Album } from '@devmx/shared-api-interfaces';
 import { Prop, Schema } from '@nestjs/mongoose';
@@ -32,18 +32,18 @@ export class AlbumCollection extends Document implements Album {
     type: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: AccountCollection.name,
+        ref: UserCollection.name,
       },
     ],
   })
-  contributors: AccountCollection[];
+  contributors: UserCollection[];
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: AccountCollection.name,
+    ref: UserCollection.name,
     required: true,
   })
-  owner: AccountCollection;
+  owner: UserCollection;
 
   @Prop({ type: Date })
   createdAt: Date;

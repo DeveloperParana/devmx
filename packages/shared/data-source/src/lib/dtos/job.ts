@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { AccountRefDto } from './account-ref';
 import { Type } from 'class-transformer';
+import { UserRefDto } from './user-ref';
 import { CityRefDto } from './city-ref';
 import { RangeDto } from './range';
 import {
@@ -75,7 +75,7 @@ export class JobDto implements JobOut {
   @ApiProperty({ type: Boolean })
   active: boolean;
 
-  @Type(() => AccountRefDto)
-  @ApiProperty({ type: () => AccountRefDto })
-  owner: AccountRefDto;
+  @Type(() => UserRefDto)
+  @ApiProperty({ type: () => UserRefDto })
+  owner: UserRefDto;
 }

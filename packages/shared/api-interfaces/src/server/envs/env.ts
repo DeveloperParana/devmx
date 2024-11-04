@@ -13,6 +13,10 @@ export abstract class Env {
     secret: string;
   };
 
+  abstract auth: {
+    codeLifeTime: number
+  }
+
   abstract multer: {
     photos: {
       dest: string;
@@ -21,6 +25,16 @@ export abstract class Env {
       covers: {
         dest: string;
       };
+    };
+  };
+
+  abstract smtp: {
+    host: string;
+    port: number;
+    // secure: boolean;
+    auth: {
+      user: string;
+      pass: string;
     };
   };
 

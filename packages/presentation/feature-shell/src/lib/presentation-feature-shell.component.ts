@@ -1,6 +1,6 @@
 import { LayoutComponent, LayoutFacade } from '@devmx/shared-ui-global/layout';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthFacade } from '@devmx/account-data-access';
 import { Router, RouterModule } from '@angular/router';
 import {
   inject,
@@ -27,12 +27,12 @@ import {
 export class PresentationFeatureShellComponent implements OnInit {
   router = inject(Router);
   destroyRef = inject(DestroyRef);
-  authFacade = inject(AuthFacade);
+  authenticationFacade = inject(AuthenticationFacade);
 
   layoutFacade = inject(LayoutFacade);
 
   ngOnInit() {
-    this.authFacade.user$
+    this.authenticationFacade.auth$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
         if (user) {
@@ -42,11 +42,11 @@ export class PresentationFeatureShellComponent implements OnInit {
         }
       });
 
-    this.authFacade.loadAuthUser();
+    this.authenticationFacade.load();
   }
 
   waitingForLogout() {
-    this.authFacade.user$
+    this.authenticationFacade.auth$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user) => {
         if (user === null) {

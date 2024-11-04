@@ -96,8 +96,8 @@ export const appSections: SectionHeaderOptions[] = [
         roles: ['manager', 'director', 'staff'],
       },
       {
-        label: 'Gerenciar contas',
-        route: ['/conta', 'administracao', 'contas'],
+        label: 'Gerenciar usuários',
+        route: ['/conta', 'administracao', 'usuarios'],
         icon: 'gear',
         roles: ['manager', 'director'],
       },
