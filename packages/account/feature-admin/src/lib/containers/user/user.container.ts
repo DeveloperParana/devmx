@@ -44,8 +44,10 @@ export class UserContainer {
       const value = this.form.getRawValue();
       this.userFacade.updateRoles(value);
 
-      const message = 'Alterações salvas';
-      this.messageService.open({ message });
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
+
+    return this.form.markAllAsTouched();
   }
 }

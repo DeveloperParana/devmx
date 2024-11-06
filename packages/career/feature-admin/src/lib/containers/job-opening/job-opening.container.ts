@@ -22,6 +22,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { MessageService } from '@devmx/shared-ui-global';
 
 @Component({
   selector: 'devmx-career-admin-job-opening',
@@ -53,6 +54,8 @@ export class JobOpeningContainer {
   jobFacade = inject(JobOpeningFacade);
 
   skillDialog = inject(SkillDialog);
+
+  messageService = inject(MessageService);
 
   form = new JobOpeningForm();
 
@@ -114,10 +117,13 @@ export class JobOpeningContainer {
 
     if (this.form.valid) {
       const value = this.form.getRawValue();
-      if (value.id) return this.jobFacade.update(value);
-      else return this.jobFacade.create(value);
+      if (value.id) this.jobFacade.update(value);
+      else this.jobFacade.create(value);
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
-    this.form.markAllAsTouched();
+    return this.form.markAllAsTouched();
   }
 }

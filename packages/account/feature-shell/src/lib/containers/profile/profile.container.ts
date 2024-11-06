@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProfileForm } from '../../forms';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'devmx-profile',
@@ -47,7 +48,7 @@ export class ProfileContainer {
       if (data) this.form.patchValue(data);
     });
 
-    this.authFacade.auth$.pipe(takeUntilDestroyed()).subscribe((auth) => {
+    this.authFacade.auth$.pipe(take(1)).subscribe((auth) => {
       if (auth) this.userFacade.loadOne(auth.id);
     });
   }
@@ -55,7 +56,9 @@ export class ProfileContainer {
   onSubmit() {
     if (this.form.valid) {
       this.userFacade.updateProfile(this.form.getProfile());
-      return this.messageService.open({ message: 'Perfil atualizado' });
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
     return this.form.markAllAsTouched();
