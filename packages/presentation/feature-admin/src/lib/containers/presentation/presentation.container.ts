@@ -9,6 +9,7 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MessageService } from '@devmx/shared-ui-global';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +27,6 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-
 
 @Component({
   selector: 'devmx-presentation-admin-presentation',
@@ -57,6 +57,8 @@ export class PresentationContainer {
 
   presentationFacade = inject(PresentationFacade);
 
+  messageService = inject(MessageService);
+
   listItemDialog = inject(ListItemDialog);
 
   form = new PresentationForm();
@@ -86,10 +88,13 @@ export class PresentationContainer {
   onSubmit() {
     if (this.form.valid) {
       const value = this.form.getRawValue();
-      if (value.id) return this.presentationFacade.update(value);
-      else return this.presentationFacade.create(value);
+      if (value.id) this.presentationFacade.update(value);
+      else this.presentationFacade.create(value);
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
-    this.form.markAllAsTouched();
+    return this.form.markAllAsTouched();
   }
 }

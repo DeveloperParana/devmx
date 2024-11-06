@@ -15,6 +15,7 @@ import {
   UpdateSocial,
   UpdateRoles,
 } from '@devmx/account-domain';
+import { take } from 'rxjs';
 
 export class UserFacade extends EntityFacade<User> {
   profile$ = this.select((state) => {
@@ -60,7 +61,7 @@ export class UserFacade extends EntityFacade<User> {
   }
 
   updateProfile(data: UpdateProfile) {
-    this.onUpdate(this.updateProfileUseCase.execute(data));
+    this.updateProfileUseCase.execute(data).pipe(take(1)).subscribe();
   }
 
   updatePassword(data: UpdatePassword) {
@@ -68,7 +69,7 @@ export class UserFacade extends EntityFacade<User> {
   }
 
   updateSocial(data: UpdateSocial) {
-    this.onUpdate(this.updateSocialUseCase.execute(data));
+    this.updateSocialUseCase.execute(data).pipe(take(1)).subscribe();
   }
 
   updateRoles(data: UpdateRoles) {

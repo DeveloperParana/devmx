@@ -82,11 +82,6 @@ export class EditorComponent extends DefaultValueAccessor {
     return marked(this.control.value ?? '', { gfm: true, async: false });
   }
 
-  onPaste(event: ClipboardEvent) {
-    event.preventDefault();
-    console.log(event.clipboardData);
-  }
-
   applyFormat(startTag: string, endTag: string = startTag) {
     if (!this.textarea) return;
 

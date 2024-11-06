@@ -9,9 +9,11 @@ import { EditableEvent } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MessageService } from '@devmx/shared-ui-global';
 import { EventFacade } from '@devmx/event-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { SelectUser } from '@devmx/account-ui-shared';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { JsonPipe } from '@angular/common';
@@ -27,7 +29,6 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { SelectUser } from '@devmx/account-ui-shared';
 
 @Component({
   selector: 'devmx-event-admin-event',
@@ -60,6 +61,8 @@ export class EventContainer {
   eventFacade = inject(EventFacade);
 
   searchPresentations = inject(SearchPresentations);
+
+  messageService = inject(MessageService);
 
   searchLeaders = inject(SelectUser);
 
@@ -104,10 +107,13 @@ export class EventContainer {
   onSubmit() {
     if (this.form.valid) {
       const value = this.form.getRawValue();
-      if (value.id) return this.eventFacade.update(value as EditableEvent);
-      else return this.eventFacade.create(value as EditableEvent);
+      if (value.id) this.eventFacade.update(value as EditableEvent);
+      else this.eventFacade.create(value as EditableEvent);
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
-    this.form.markAllAsTouched();
+    return this.form.markAllAsTouched();
   }
 }

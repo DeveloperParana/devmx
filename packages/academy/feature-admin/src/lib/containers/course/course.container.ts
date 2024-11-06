@@ -31,7 +31,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-
+import { MessageService } from '@devmx/shared-ui-global';
 
 @Component({
   selector: 'devmx-academy-admin-course',
@@ -70,6 +70,8 @@ export class CourseContainer {
   selectAccount = inject(SelectUser);
 
   courseFacade = inject(CourseFacade);
+
+  messageService = inject(MessageService);
 
   form = new CourseForm();
 
@@ -185,10 +187,13 @@ export class CourseContainer {
   onSubmit() {
     if (this.form.valid) {
       const value = this.form.getRawValue();
-      if (value.id) return this.courseFacade.update(value);
-      else return this.courseFacade.create(value);
+      if (value.id) this.courseFacade.update(value);
+      else this.courseFacade.create(value);
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
-    this.form.markAllAsTouched();
+    return this.form.markAllAsTouched();
   }
 }

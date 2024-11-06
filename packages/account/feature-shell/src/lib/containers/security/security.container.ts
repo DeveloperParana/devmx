@@ -49,7 +49,9 @@ export class SecurityContainer {
   onSubmit() {
     if (this.form.valid) {
       this.userFacade.updatePassword(this.form.getPassword());
-      return this.messageService.open({ message: 'Senha atualizada' });
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
     return this.form.markAllAsTouched();

@@ -68,7 +68,9 @@ export class SocialContainer {
   onSubmit() {
     if (this.form.valid) {
       this.userFacade.updateSocial(this.form.getSocial());
-      return this.messageService.open({ message: 'Perfil atualizado' });
+
+      const message = `Armazenando informações`;
+      return this.messageService.open({ message });
     }
 
     return this.form.markAllAsTouched();
