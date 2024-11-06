@@ -1,34 +1,46 @@
-<mat-form-field class="code-field">
-  <input
-    #inputA
-    matInput
-    [formControl]="form.a"
-    minlength="1"
-    maxlength="1"
-    (input)="focusWithin(inputA.value, inputB)"
-    (paste)="onPaste($event, inputD)"
-  />
-</mat-form-field>
-<mat-form-field class="code-field">
-  <input
-    #inputB
-    matInput
-    [formControl]="form.b"
-    minlength="1"
-    maxlength="1"
-    (input)="focusWithin(inputB.value, inputC)"
-  />
-</mat-form-field>
-<mat-form-field class="code-field">
-  <input
-    #inputC
-    matInput
-    [formControl]="form.c"
-    minlength="1"
-    maxlength="1"
-    (input)="focusWithin(inputC.value, inputD)"
-  />
-</mat-form-field>
-<mat-form-field class="code-field">
-  <input #inputD matInput [formControl]="form.d" minlength="1" maxlength="1" />
-</mat-form-field>
+<div [formGroup]="form">
+  <mat-form-field class="code-field">
+    <input
+      #inputA
+      matInput
+      formControlName="a"
+      minlength="1"
+      maxlength="1"
+      (input)="onInput(inputA, inputB)"
+      (paste)="onPaste($event, inputD)"
+    />
+  </mat-form-field>
+  <mat-form-field class="code-field">
+    <input
+      #inputB
+      matInput
+      formControlName="b"
+      minlength="1"
+      maxlength="1"
+      (input)="onInput(inputB, inputC)"
+      (keyup.backspace)="inputA.focus()"
+    />
+  </mat-form-field>
+  <mat-form-field class="code-field">
+    <input
+      #inputC
+      matInput
+      formControlName="c"
+      minlength="1"
+      maxlength="1"
+      (input)="onInput(inputC, inputD)"
+      (keyup.backspace)="inputB.focus()"
+    />
+  </mat-form-field>
+  <mat-form-field class="code-field">
+    <input
+      #inputD
+      matInput
+      formControlName="d"
+      minlength="1"
+      maxlength="1"
+      (input)="onInput(inputD)"
+      (keyup.backspace)="inputC.focus()"
+    />
+  </mat-form-field>
+</div>
