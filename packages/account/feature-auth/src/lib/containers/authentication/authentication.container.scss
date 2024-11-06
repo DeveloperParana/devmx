@@ -13,8 +13,8 @@
   form {
     gap: 0.4em;
     display: flex;
-    margin-top: 0.8em;
     flex-direction: column;
+    margin-top: 0.8em;
   }
 
   .authentication-card {
@@ -34,6 +34,11 @@
       font-size: 80%;
       opacity: 0.8;
     }
+  }
+
+  .auth-resend-button {
+    display: flex;
+    justify-content: flex-end;
   }
 
   footer {

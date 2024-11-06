@@ -82,13 +82,19 @@ export class AuthenticationContainer {
     }
   }
 
-  onInteract() {
+  onInteract(usernameRef: HTMLInputElement, codeFieldRef: CodeFieldComponent) {
     const stepper = this.stepper();
+    if (!stepper) return;
+
     const index = stepper?.selectedIndex;
     const valid = this.form.controls.name.valid;
 
-    if (stepper && index == 1 && !valid) {
-      stepper.previous();
+    if (index == 0) {
+      return usernameRef.focus();
     }
+
+    if (index == 1 && !valid) {
+      stepper.previous();
+    } else codeFieldRef.inputAElm?.focus();
   }
 }
