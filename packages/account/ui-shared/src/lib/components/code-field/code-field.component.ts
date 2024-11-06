@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   NgControl,
+  FormGroup,
   Validators,
   FormControl,
   ReactiveFormsModule,
@@ -19,16 +20,7 @@ import {
 @Component({
   selector: 'devmx-code-field',
   templateUrl: './code-field.component.html',
-  styles: `
-    :host {
-      gap: 1em;
-      display: flex;
-
-      .code-field {
-        width: 2.8em;
-      }
-    }
-  `,
+  styleUrl: './code-field.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   standalone: true,
@@ -45,9 +37,16 @@ export class CodeFieldComponent extends DefaultValueAccessor {
   ) {
     super(renderer, elementRef, true);
     this.ngControl.valueAccessor = this;
+
+    this.form.valueChanges.subscribe(() => {
+      if (this.form.valid) {
+        const { a, b, c, d } = this.form.getRawValue();
+        this.control.setValue(`${a + b + c + d}`.toUpperCase());
+      }
+    });
   }
 
-  form = {
+  form = new FormGroup({
     a: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required],
@@ -64,10 +63,11 @@ export class CodeFieldComponent extends DefaultValueAccessor {
       nonNullable: true,
       validators: [Validators.required],
     }),
-  };
+  });
 
-  focusWithin(value: string, next: HTMLInputElement) {
-    if (value.length === 1) next.focus();
+  onInput(current: HTMLInputElement, next?: HTMLInputElement) {
+    current.value = current.value.toUpperCase();
+    if (current.value.length === 1 && next) next.focus();
   }
 
   onPaste(event: ClipboardEvent, last: HTMLInputElement) {
@@ -77,14 +77,11 @@ export class CodeFieldComponent extends DefaultValueAccessor {
 
     if (code.length === 4) {
       const [a, b, c, d] = code.split('');
-      this.form.a.setValue(a);
-      this.form.b.setValue(b);
-      this.form.c.setValue(c);
-      this.form.d.setValue(d);
 
-      if (this.control) {
-        this.control.setValue(code);
-      }
+      this.form.controls.a.setValue(a);
+      this.form.controls.b.setValue(b);
+      this.form.controls.c.setValue(c);
+      this.form.controls.d.setValue(d);
 
       last.focus();
     }

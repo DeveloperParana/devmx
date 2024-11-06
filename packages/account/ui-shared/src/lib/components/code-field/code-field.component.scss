@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    gap: 1em;
+    display: flex;
+  }
+
+  .code-field {
+    width: 2.8em;
+  }
+}
