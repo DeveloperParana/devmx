@@ -7,6 +7,7 @@ import {
   Renderer2,
   ElementRef,
   ChangeDetectionStrategy,
+  viewChild,
 } from '@angular/core';
 import {
   NgControl,
@@ -18,6 +19,7 @@ import {
 } from '@angular/forms';
 
 @Component({
+  exportAs: 'devmxCodeField',
   selector: 'devmx-code-field',
   templateUrl: './code-field.component.html',
   styleUrl: './code-field.component.scss',
@@ -26,16 +28,22 @@ import {
   standalone: true,
 })
 export class CodeFieldComponent extends DefaultValueAccessor {
+  private inputA = viewChild<ElementRef<HTMLInputElement>>('inputA');
+
+  get inputAElm() {
+    return this.inputA()?.nativeElement;
+  }
+
   get control() {
     return this.ngControl.control as FormControl;
   }
 
   constructor(
     renderer: Renderer2,
-    elementRef: ElementRef,
+    readonly elRef: ElementRef,
     @Optional() @Self() public ngControl: NgControl
   ) {
-    super(renderer, elementRef, true);
+    super(renderer, elRef, true);
     this.ngControl.valueAccessor = this;
 
     this.form.valueChanges.subscribe(() => {

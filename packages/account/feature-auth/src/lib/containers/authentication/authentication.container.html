@@ -6,17 +6,14 @@
       <mat-card-subtitle>Em dois toques</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-vertical-stepper #stepper (animationDone)="onInteract()">
-      <mat-step
-        [stepControl]="form"
-        label="Enviaremos um código no seu e-mail"
-        state="mail"
-      >
+    <mat-vertical-stepper #stepper (animationDone)="onInteract(usernameRef, codeFieldRef)">
+      <mat-step [stepControl]="form" label="Enviaremos um código no seu e-mail">
         <form [formGroup]="form" (submit)="sendUserCode()">
           <mat-form-field>
             <mat-label>Nome de usuário</mat-label>
             <input
               matInput
+              #usernameRef
               formControlName="name"
               autocomplete="username"
               autofocus
@@ -30,26 +27,38 @@
       <mat-step
         [stepControl]="form"
         label="Confirme o código recebido por e-mail"
-        state="code"
       >
         <form [formGroup]="form" (submit)="validateUserCode()">
           <p>{{authenticationFacade.message$ | async}}</p>
 
-          <devmx-code-field formControlName="code" />
+          <devmx-code-field
+            formControlName="code"
+            #codeFieldRef="devmxCodeField"
+          />
+
+          <div class="auth-resend-button">
+            <button type="button" mat-button (click)="sendUserCode()">
+              Reenviar código
+            </button>
+          </div>
         </form>
       </mat-step>
 
-      <ng-template matStepperIcon="mail">
-        <devmx-icon name="message/mail" />
-      </ng-template>
-      <ng-template matStepperIcon="code">
-        <devmx-icon name="e-commerce/scan-barcode" />
+      <ng-template matStepperIcon="edit">
+        <devmx-icon name="message/mail" [size]="16" />
       </ng-template>
     </mat-vertical-stepper>
   </mat-card>
 
   <footer>
     <a routerLink="nova" mat-raised-button> Criar uma conta </a>
-    <a routerLink="recuperar" mat-button> Recuperar conta </a>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://wa.me/5544991422726?text=Gui,%20me%20ajuda!%20Estou%20sem%20acesso%20a%20minha%20conta%20no%20portal%20devparana.mx"
+      mat-button
+    >
+      Recuperar conta
+    </a>
   </footer>
 </div>
