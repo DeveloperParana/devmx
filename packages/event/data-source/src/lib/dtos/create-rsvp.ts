@@ -6,7 +6,7 @@ import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 export class CreateRSVPDto implements CreateRSVP {
   @IsOptional()
   @ApiPropertyOptional()
-  account: string;
+  user: string;
 
   @IsOptional()
   @ApiPropertyOptional()

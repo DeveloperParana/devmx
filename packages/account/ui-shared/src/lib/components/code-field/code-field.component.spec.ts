@@ -1,9 +1,10 @@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UpperDirective } from '@devmx/shared-ui-global/forms';
 import { CodeFieldComponent } from './code-field.component';
-import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
 @Component({
   template: `
@@ -11,7 +12,7 @@ import { By } from '@angular/platform-browser';
       <devmx-code-field formControlName="code" />
     </form>
   `,
-  imports: [ReactiveFormsModule, CodeFieldComponent],
+  imports: [ReactiveFormsModule, UpperDirective, CodeFieldComponent],
   standalone: true,
 })
 class ParentComponent {

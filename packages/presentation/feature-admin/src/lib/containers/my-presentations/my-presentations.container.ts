@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PresentationCardComponent } from '@devmx/presentation-ui-shared';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { PresentationFacade } from '@devmx/presentation-data-access';
+import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthenticationFacade } from '@devmx/account-data-access';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { combineLatest, filter, map } from 'rxjs';
 
@@ -24,6 +25,7 @@ import { combineLatest, filter, map } from 'rxjs';
     MatTooltipModule,
     PaginatorComponent,
     PresentationCardComponent,
+    SkeletonComponent,
     IconComponent,
     AsyncPipe,
     JsonPipe,

@@ -5,7 +5,7 @@ import { RSVPsService } from '../services';
 export class CreateRSVPUseCase implements UseCase<CreateRSVP, RSVP> {
   constructor(private rsvpsService: RSVPsService) {}
 
-  execute({ account, event, status }: CreateRSVP) {
+  execute({ user: account, event, status }: CreateRSVP) {
     return this.rsvpsService.create(account, event, status);
   }
 }

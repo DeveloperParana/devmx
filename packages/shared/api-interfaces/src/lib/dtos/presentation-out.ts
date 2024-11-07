@@ -1,6 +1,10 @@
-import { UserRef } from './user-ref';
-import { Presentation } from '../entities';
+import { Presentation, User } from '../entities';
+
+type UserPresentationRef = Pick<
+  User,
+  'name' | 'displayName' | 'profile' | 'id'
+>;
 
 export interface PresentationOut extends Omit<Presentation, 'owner'> {
-  owner: UserRef;
+  owner: UserPresentationRef;
 }

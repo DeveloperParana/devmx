@@ -6,11 +6,8 @@
     color: mat.get-theme-color($theme, on-secondary-container);
   }
 
-  a[href]:not(.mdc-button) {
+  a:link:not(.mdc-button) {
     color: mat.get-theme-color($theme, secondary, 60);
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   .layout-container {

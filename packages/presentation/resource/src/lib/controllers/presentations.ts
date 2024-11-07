@@ -72,7 +72,7 @@ export class PresentationsController {
   @ApiBearerAuth()
   @ApiOkResponse({ type: PresentationDto })
   async update(
-    @User('id') account: string,
+    @User('id') user: string,
     @Param('id') id: string,
     @Body() updatePresentationDto: UpdatePresentationDto
   ) {
@@ -85,7 +85,7 @@ export class PresentationsController {
       });
     }
 
-    if (presentation.owner.id !== account) {
+    if (presentation.owner.id !== user) {
       throw exceptionByError({ code: 403, message: 'Acesso negado' });
     }
 

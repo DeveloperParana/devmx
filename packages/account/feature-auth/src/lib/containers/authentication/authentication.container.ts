@@ -1,10 +1,10 @@
+import { LowerDirective, TrimDirective } from '@devmx/shared-ui-global/forms';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Validators, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CodeFieldComponent } from '@devmx/account-ui-shared';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -31,16 +31,17 @@ import {
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    IconComponent,
+    LowerDirective,
+    TrimDirective,
     RouterLink,
     AsyncPipe,
   ],
   standalone: true,
 })
 export class AuthenticationContainer {
-  stepper = viewChild(MatStepper);
-
   router = inject(Router);
+
+  stepper = viewChild(MatStepper);
 
   authenticationFacade = inject(AuthenticationFacade);
 
@@ -69,9 +70,6 @@ export class AuthenticationContainer {
 
       const validators = [Validators.required];
       this.form.controls.code.addValidators(validators);
-
-      const stepper = this.stepper();
-      if (stepper) stepper.next();
     }
   }
 
@@ -82,19 +80,16 @@ export class AuthenticationContainer {
     }
   }
 
-  onInteract(usernameRef: HTMLInputElement, codeFieldRef: CodeFieldComponent) {
+  onAnimationDone(codeField: CodeFieldComponent, nameInput: HTMLInputElement) {
     const stepper = this.stepper();
     if (!stepper) return;
 
-    const index = stepper?.selectedIndex;
-    const valid = this.form.controls.name.valid;
-
-    if (index == 0) {
-      return usernameRef.focus();
+    switch (stepper.selectedIndex) {
+      case 0:
+        return nameInput.focus();
+      case 1:
+      default:
+        return codeField.inputAElm?.focus();
     }
-
-    if (index == 1 && !valid) {
-      stepper.previous();
-    } else codeFieldRef.inputAElm?.focus();
   }
 }

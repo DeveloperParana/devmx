@@ -7,24 +7,18 @@
   .presentations-container {
     gap: 1em;
     padding: 1em;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
 
-    > * {
-      flex: 1;
-      min-width: calc(50% - 1em);
+    display: grid;
+    grid-auto-flow: dense;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 1278px) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    grid-template-columns: repeat(2, 1fr);
-
-    p {
-      display: -webkit-box;
-      /* Limita a 3 linhas */
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 
@@ -53,33 +47,5 @@
   footer {
     display: flex;
     justify-content: flex-end;
-  }
-
-  @media (min-width: 1920px) {
-    .presentations-container {
-      > * {
-        flex: 1;
-        max-width: 33%;
-      }
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (max-width: 767px) {
-    .presentations-container {
-      align-content: flex-start;
-
-      > * {
-        display: inline-flex;
-        min-width: 100%;
-      }
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .add-button {
-    position: fixed;
-    right: 4em;
-    top: 2em;
   }
 }

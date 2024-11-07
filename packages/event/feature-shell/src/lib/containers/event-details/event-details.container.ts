@@ -11,7 +11,7 @@ import { AuthenticationFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { combineLatest, filter, map, tap } from 'rxjs';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, JsonPipe } from '@angular/common';
 import { RSVPFacade } from '@devmx/event-data-access';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventFormatPipe } from '../../pipes';
@@ -36,6 +36,7 @@ import { EventFormatPipe } from '../../pipes';
     PhotoPipe,
     AsyncPipe,
     DatePipe,
+    JsonPipe
   ],
   standalone: true,
 })
@@ -55,19 +56,19 @@ export class EventDetailsContainer {
   );
 
   constructor() {
-    const account$ = this.authFacade.auth$.pipe(
-      filter((account) => !!account),
-      map((account) => account.id)
+    const user$ = this.authFacade.auth$.pipe(
+      filter((user) => !!user),
+      map((user) => user.id)
     );
 
     const rsvp$ = this.rsvpFacade.response$.pipe(
       filter((rsvp) => rsvp.length > 0)
     );
 
-    combineLatest([account$, rsvp$])
+    combineLatest([user$, rsvp$])
       .pipe(takeUntilDestroyed())
       .subscribe(([id, rsvp]) => {
-        const item = rsvp.find((item) => item.account.id === id);
+        const item = rsvp.find((item) => item.user.id === id);
         if (item) this.setRSVPStatus(item);
       });
   }

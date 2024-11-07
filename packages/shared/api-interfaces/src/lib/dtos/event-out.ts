@@ -1,8 +1,10 @@
 import { PresentationOut } from './presentation-out';
 import { Location } from '../interfaces';
+import { City, User } from '../entities';
 import { EventFormat } from '../types';
-import { UserRef } from './user-ref';
-import { City } from '../entities';
+
+export type LeaderRef = Pick<User, 'displayName' | 'name' | 'profile' | 'id'>;
+
 
 export interface EventOut {
   id: string;
@@ -23,7 +25,7 @@ export interface EventOut {
 
   presentations: PresentationOut[];
 
-  leaders: UserRef[];
+  leaders: LeaderRef[];
 
   address: string;
 
@@ -31,5 +33,5 @@ export interface EventOut {
 
   location?: Location;
 
-  owner: UserRef;
+  owner: LeaderRef;
 }

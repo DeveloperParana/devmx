@@ -3,9 +3,10 @@
     <input
       #inputA
       matInput
-      formControlName="a"
+      devmxUpper
       minlength="1"
       maxlength="1"
+      formControlName="a"
       (input)="onInput(inputA, inputB)"
       (paste)="onPaste($event, inputD)"
     />
@@ -14,9 +15,10 @@
     <input
       #inputB
       matInput
-      formControlName="b"
+      devmxUpper
       minlength="1"
       maxlength="1"
+      formControlName="b"
       (input)="onInput(inputB, inputC)"
       (keyup.backspace)="inputA.focus()"
     />
@@ -25,9 +27,10 @@
     <input
       #inputC
       matInput
-      formControlName="c"
+      devmxUpper
       minlength="1"
       maxlength="1"
+      formControlName="c"
       (input)="onInput(inputC, inputD)"
       (keyup.backspace)="inputB.focus()"
     />
@@ -36,9 +39,10 @@
     <input
       #inputD
       matInput
-      formControlName="d"
+      devmxUpper
       minlength="1"
       maxlength="1"
+      formControlName="d"
       (input)="onInput(inputD)"
       (keyup.backspace)="inputC.focus()"
     />

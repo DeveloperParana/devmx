@@ -19,8 +19,8 @@ export const accountFeatureAuthRoutes: Route[] = [
       },
       {
         path: '',
+        redirectTo: 'acessar',
         pathMatch: 'full',
-        redirectTo: 'cadastrar',
       },
     ],
   },

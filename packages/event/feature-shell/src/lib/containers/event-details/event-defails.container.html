@@ -58,31 +58,16 @@
     <h3 mat-subheader>Organizadores</h3>
     @for (leader of event.leaders; track leader) {
     <mat-list-item>
-      <!-- <img
+      <img
         matListItemAvatar
-        [src]="leader.photo | photo"
-        [alt]="leader.name.first"
-      /> -->
-      <div matListItemTitle>{{ leader.name }}</div>
+        [src]="leader?.profile?.photo | photo"
+        [alt]="leader.displayName"
+      />
+      <div matListItemTitle>{{ leader.displayName }}</div>
     </mat-list-item>
     }
   </mat-list>
   } @if (rsvpFacade.response$ | async; as presences) {
-  <mat-list>
-    <h3 mat-subheader>Presenças</h3>
-
-    @for (rsvp of presences; track rsvp.id) {
-    <mat-list-item>
-      <!-- <img
-        matListItemAvatar
-        [src]="rsvp.account.photo | photo"
-        [alt]="rsvp.account.name.first"
-      /> -->
-      <!-- <div matListItemTitle>{{ rsvp.account.name }}</div> -->
-    </mat-list-item>
-    }
-  </mat-list>
-  }
 
   <form class="rsvp-button" [formGroup]="rsvpForm">
     <devmx-rsvp-button
@@ -91,16 +76,31 @@
     />
   </form>
 
-  <!-- <mat-card-header>
-    <mat-card-title>
-      {{ event.owner.displayName }}
-    </mat-card-title>
-    <mat-card-subtitle>
-      <a [routerLink]="['/', 'sobre',event.owner.name]">
-        {{event.owner.name}}
-      </a>
-    </mat-card-subtitle>
-  </mat-card-header> -->
+  <mat-list>
+    <h3 mat-subheader>Presenças</h3>
+
+    @for (rsvp of presences; track rsvp) {
+    <mat-list-item>
+      <img
+        matListItemAvatar
+        [src]="rsvp.user.profile?.photo | photo"
+        [alt]="rsvp.user.displayName"
+      />
+      <div matListItemTitle>{{ rsvp.user.displayName }}</div>
+    </mat-list-item>
+    }
+  </mat-list>
+  }
+
+  <mat-card-header>
+    <img
+      mat-card-avatar
+      [src]="event.owner.profile?.photo | photo"
+      [alt]="event.owner.displayName"
+    />
+    <mat-card-title> {{ event.owner.displayName }} </mat-card-title>
+    <mat-card-subtitle> Organizador </mat-card-subtitle>
+  </mat-card-header>
 </mat-card>
 
 }

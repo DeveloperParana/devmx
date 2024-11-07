@@ -8,10 +8,10 @@ import { Model } from 'mongoose';
 export class RSVPsMongoServiceImpl implements RSVPsService {
   constructor(private rsvpModel: Model<RSVPCollection>) {}
 
-  async create(account: string, event: string, status: RSVPStatus) {
+  async create(user: string, event: string, status: RSVPStatus) {
     return await this.rsvpModel
       .findOneAndUpdate(
-        { account, event },
+        { user, event },
         { status },
         { upsert: true, new: true }
       )
@@ -21,7 +21,14 @@ export class RSVPsMongoServiceImpl implements RSVPsService {
   async findByEvent(event: string) {
     const data = await this.rsvpModel
       .find({ event })
-      .populate('account', 'name photo')
+      .populate({
+        path: 'user',
+        select: 'name displayName profile',
+        populate: {
+          path: 'profile',
+          select: 'photo',
+        },
+      })
       .populate('event', 'title')
       .exec();
 
@@ -31,7 +38,14 @@ export class RSVPsMongoServiceImpl implements RSVPsService {
   async findConfirmedByEvent(event: string) {
     const data = await this.rsvpModel
       .find({ event, status: 'confirmed' })
-      .populate('account', 'name photo')
+      .populate({
+        path: 'user',
+        select: 'name displayName profile',
+        populate: {
+          path: 'profile',
+          select: 'photo',
+        },
+      })
       .populate('event', 'title')
       .exec();
 

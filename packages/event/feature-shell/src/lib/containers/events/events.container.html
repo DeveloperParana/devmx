@@ -2,7 +2,9 @@
   <devmx-event-filter (change)="onFilterChange($event)" />
 </header>
 
-@defer { @if (eventFacade.response$ | async; as response) {
+@defer (on timer(500ms)) {
+<!--  -->
+@if (eventFacade.response$ | async; as response) {
 
 <div class="events-container">
   @for (event of response.data; track event.id) { @defer (on viewport) {
@@ -14,6 +16,8 @@
   } }
 </div>
 
+<div class="spacer"></div>
+
 <footer>
   <devmx-paginator
     [size]="10"
@@ -21,11 +25,12 @@
     (pageChange)="onPageChange($event)"
   />
 </footer>
-} } @loading {
-<img src="/loader.svg" alt="Carregando..." />
+}
+<!--  -->
 } @placeholder {
 <div class="events-container">
-  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
   <devmx-skeleton [rows]="3" />
 </div>
 }

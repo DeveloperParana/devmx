@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class FindInRSVPPipe implements PipeTransform {
-  transform(list: RSVP[], account: string) {
-    return list.find((item) => item.account.id === account) ?? null;
+  transform(list: RSVP[], user: string) {
+    return list.find((item) => item.user.id === user) ?? null;
   }
 }

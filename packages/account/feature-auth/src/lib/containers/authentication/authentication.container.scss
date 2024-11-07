@@ -30,6 +30,10 @@
       }
     }
 
+    &-content {
+      padding: 0em 3.8em 0;
+    }
+
     p {
       font-size: 80%;
       opacity: 0.8;
@@ -44,6 +48,6 @@
   footer {
     margin: 1em;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 }

@@ -1,13 +1,14 @@
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UpperDirective } from '@devmx/shared-ui-global/forms';
 import { MatInputModule } from '@angular/material/input';
 import {
   Self,
   Optional,
   Component,
   Renderer2,
+  viewChild,
   ElementRef,
   ChangeDetectionStrategy,
-  viewChild,
 } from '@angular/core';
 import {
   NgControl,
@@ -24,12 +25,21 @@ import {
   templateUrl: './code-field.component.html',
   styleUrl: './code-field.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    UpperDirective,
+  ],
   standalone: true,
 })
 export class CodeFieldComponent extends DefaultValueAccessor {
   private inputA = viewChild<ElementRef<HTMLInputElement>>('inputA');
 
+  /**
+   * Usado no componente pai para
+   * dar foco no primeiro campo
+   */
   get inputAElm() {
     return this.inputA()?.nativeElement;
   }
@@ -74,7 +84,6 @@ export class CodeFieldComponent extends DefaultValueAccessor {
   });
 
   onInput(current: HTMLInputElement, next?: HTMLInputElement) {
-    current.value = current.value.toUpperCase();
     if (current.value.length === 1 && next) next.focus();
   }
 
