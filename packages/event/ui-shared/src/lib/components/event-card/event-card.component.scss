@@ -9,6 +9,8 @@
     @include mat.elevation-transition();
     @include mat.elevation(2);
 
+    max-width: calc(100vw - 3em);
+
     &:active,
     &:hover {
       @include mat.elevation(6);

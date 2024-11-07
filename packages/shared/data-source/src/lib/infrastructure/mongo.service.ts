@@ -1,11 +1,12 @@
 import { EntityService } from '@devmx/shared-api-interfaces/server';
-import { Model, Query, RootFilterQuery } from 'mongoose';
+import { Model, Query, RootFilterQuery, SortOrder } from 'mongoose';
 import {
   Entity,
   QueryParams,
   QueryFilter,
   EditableEntity,
 } from '@devmx/shared-api-interfaces';
+import { entries } from '@devmx/shared-util-data';
 
 export abstract class MongoService<T extends Entity>
   implements EntityService<T>
@@ -34,12 +35,16 @@ export abstract class MongoService<T extends Entity>
 
   // async find(params: QueryParams<T> | QueryMongoParams<T>) {
   async find(params: QueryParams<T>) {
-    const { page = 0, size = 10, filter } = params;
+    const { page = 0, size = 10, filter, sort } = params;
 
     const skip = page * size;
     const where = this.applyFilter(filter ?? {});
 
-    const query = this.entityModel.find(where).skip(skip).limit(size);
+    let query = this.entityModel.find(where).skip(skip).limit(size);
+
+    if (sort) {
+      query = query.sort(entries(sort) as [string, SortOrder][]);
+    }
 
     const entities = await this.applyPopulate(query).exec();
 

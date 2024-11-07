@@ -198,6 +198,9 @@
       "@devmx/shared-ui-global/skeleton": [
         "packages/shared/ui-global/skeleton/src/index.ts"
       ],
+      "@devmx/shared-ui-global/sort": [
+        "packages/shared/ui-global/sort/src/index.ts"
+      ],
       "@devmx/shared-util-authn": ["packages/shared/util-authn/src/index.ts"],
       "@devmx/shared-util-authn/client": [
         "packages/shared/util-authn/src/client.ts"

@@ -5,6 +5,9 @@
   justify-content: space-between;
 
   header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
     padding: 0.4em 0.8em;
   }
 
@@ -22,6 +25,12 @@
 
     @media (max-width: 767px) {
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    .event-card {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
   }
 

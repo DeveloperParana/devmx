@@ -12,10 +12,9 @@
           <mat-form-field>
             <mat-label>Formato</mat-label>
             <mat-select formControlName="format">
-              @for (format of form.formats; track format) {
-              <mat-option [value]="format.value"
-                >{{format.viewValue}}</mat-option
-              >
+              @for (format of form.formats; track format.value) {
+              <mat-option [value]="format.value">
+                {{format.viewValue}}</mat-option>
               }
             </mat-select>
             <mat-error>Obrigatório</mat-error>

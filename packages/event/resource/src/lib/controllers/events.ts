@@ -59,6 +59,17 @@ export class EventsController {
     }
   }
 
+  @Get('passado')
+  @Allowed()
+  @ApiPage(EventDto)
+  async findPast(@Query() params: QueryParamsDto<Event>) {
+    try {
+      return await this.eventsFacade.find(params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
   @Allowed()
   @Get(':id')
   @ApiOkResponse({ type: EventDto })

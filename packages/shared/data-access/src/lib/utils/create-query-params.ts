@@ -4,6 +4,7 @@ export function createQueryParams<T>({
   page = 0,
   size = 10,
   filter = {},
+  sort = {},
   location,
 }: QueryParams<T> = {}) {
   const params = new URLSearchParams();
@@ -13,6 +14,10 @@ export function createQueryParams<T>({
 
   for (const [key, value] of Object.entries(filter)) {
     params.append(`filter[${key}]`, `${value}`);
+  }
+
+  for (const [key, value] of Object.entries(sort)) {
+    params.append(`sort[${key}]`, `${value}`);
   }
 
   if (location) {

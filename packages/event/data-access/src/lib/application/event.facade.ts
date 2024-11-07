@@ -22,6 +22,7 @@ export class EventFacade extends EntityFacade<Event> {
         page: 0,
         size: 10,
         filter: { title: '', format: '' },
+        sort: { date: 'asc' },
       },
       selected: null,
     });
