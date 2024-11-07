@@ -1,6 +1,7 @@
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { SortDirectionComponent } from '@devmx/shared-ui-global/sort';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EventFacade } from '@devmx/event-data-access';
@@ -18,6 +19,7 @@ import {
   imports: [
     PaginatorComponent,
     EventFilterComponent,
+    SortDirectionComponent,
     EventCardComponent,
     SkeletonComponent,
     RouterModule,
@@ -39,19 +41,26 @@ export class EventsContainer {
   }
 
   onQueryParams = (params: Params) => {
-    const { title = '', format = '' } = params;
+    const { title = '', format = '', date = 'asc' } = params;
 
     const { page = 0, size = 10 } = params;
 
     const filter = { title, format };
 
-    this.eventFacade.setParams({ page, size, filter });
+    const sort = { date }
+
+    this.eventFacade.setParams({ page, size, filter, sort });
 
     this.eventFacade.load();
   };
 
   onFilterChange(format: string) {
     const queryParams = { format };
+    this.router.navigate([], { queryParams });
+  }
+
+  onOrderChange(sort: string) {
+    const queryParams = { sort };
     this.router.navigate([], { queryParams });
   }
 

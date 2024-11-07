@@ -1,0 +1,8 @@
+@use '@angular/material' as mat;
+
+@mixin layout-theme($theme) {
+  .mdc-list-item--with-two-lines .mdc-list-item__primary-text,
+  .mdc-list-item--with-three-lines .mdc-list-item__primary-text {
+
+  }
+}

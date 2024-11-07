@@ -1,5 +1,5 @@
 import { CityService } from '@devmx/location-domain/client';
-import { City, Page } from '@devmx/shared-api-interfaces';
+import { City, Page, QueryParams } from '@devmx/shared-api-interfaces';
 import { Env } from '@devmx/shared-api-interfaces/client';
 import { LocationFilter } from '@devmx/location-domain';
 import { HttpClient } from '@devmx/shared-data-access';
@@ -12,7 +12,7 @@ export class CityServiceImpl implements CityService {
 
   constructor(private http: HttpClient, private env: Env) {}
 
-  find(params: URLSearchParams) {
+  find(params: QueryParams<City>) {
     const url = [this.url, 'cities', params.toString()];
     return this.http.get<Page<City>>(url.join('?'));
   }

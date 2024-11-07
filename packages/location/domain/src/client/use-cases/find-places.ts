@@ -1,4 +1,3 @@
-import { createQueryParams } from '@devmx/shared-util-data';
 import { PlaceService } from '../services';
 import {
   Page,
@@ -13,6 +12,6 @@ export class FindPlacesUseCase
   constructor(private placeService: PlaceService) {}
 
   execute(params: QueryParams<Place>) {
-    return this.placeService.find(createQueryParams(params));
+    return this.placeService.find(params);
   }
 }

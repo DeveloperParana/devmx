@@ -5,6 +5,7 @@ import {
   Entity,
   QueryFilter,
   QueryParams,
+  QuerySort,
 } from '@devmx/shared-api-interfaces';
 
 interface EntityState<T> {
@@ -29,6 +30,12 @@ export abstract class EntityFacade<T extends Entity> extends State<
   setFilter(filter: QueryFilter<T>) {
     const { params } = this.state;
     params.filter = filter;
+    this.setState({ params });
+  }
+
+  setSort(sort: QuerySort<T>) {
+    const { params } = this.state;
+    params.sort = sort;
     this.setState({ params });
   }
 

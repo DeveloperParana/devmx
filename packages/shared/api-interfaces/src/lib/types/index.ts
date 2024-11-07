@@ -22,6 +22,7 @@ export * from './params';
 export * from './presentation-format';
 export * from './presentation-reaction-type';
 export * from './query-filter';
+export * from './query-sort';
 export * from './roles';
 export * from './rsvp-status';
 export * from './sort-direction';

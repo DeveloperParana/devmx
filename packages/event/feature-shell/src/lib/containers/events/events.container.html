@@ -1,5 +1,11 @@
 <header>
   <devmx-event-filter (change)="onFilterChange($event)" />
+
+  <devmx-sort-direction
+    ascText="Chegando"
+    descText="Passado"
+    (change)="onOrderChange($event)"
+  />
 </header>
 
 @defer (on timer(500ms)) {
@@ -9,7 +15,7 @@
 <div class="events-container">
   @for (event of response.data; track event.id) { @defer (on viewport) {
   <a [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]">
-    <devmx-event-card [data]="event" />
+    <devmx-event-card class="event-card" [data]="event" />
   </a>
   } @placeholder {
   <devmx-skeleton [rows]="3" />
