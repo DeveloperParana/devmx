@@ -76,12 +76,12 @@ export class EventsController {
   @ApiBearerAuth()
   @Post(':id/rsvps')
   async createRSVP(
-    @User('id') account: string,
+    @User('id') user: string,
     @Param('id') event: string,
     @Body() data: CreateRSVPDto
   ) {
     try {
-      return await this.rsvpsFacade.create({ ...data, event, account });
+      return await this.rsvpsFacade.create({ ...data, event, user });
     } catch (err) {
       throw exceptionByError(err);
     }

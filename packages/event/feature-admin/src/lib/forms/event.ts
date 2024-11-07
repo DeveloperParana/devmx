@@ -1,45 +1,18 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EventPresentationsForm } from './event-presentation';
+import { TypedForm, FormOption } from '@devmx/shared-ui-global/forms';
+import { EventLeadersForm } from './event-leader';
 import {
-  EditableEvent,
   Event,
   EventFormat,
+  EditableEvent,
 } from '@devmx/shared-api-interfaces';
-import { EventPresentationsForm } from './event-presentation';
-import { FormOption, TypedForm } from '@devmx/shared-ui-global/forms';
-import { EventLeadersForm } from './event-leader';
 
 export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
   formats: FormOption<EventFormat>[] = [
     { value: 'in-person', viewValue: 'Presencial' },
     { value: 'mixed', viewValue: 'Híbrido' },
     { value: 'online', viewValue: 'Online' },
-  ];
-
-  times = [
-    '00:00',
-    '00:30',
-    '01:00',
-    '01:30',
-    '02:00',
-    '02:30',
-    '03:00',
-    '03:30',
-    '04:00',
-    '04:30',
-    '05:00',
-    '05:30',
-    '06:00',
-    '06:30',
-    '07:00',
-    '07:30',
-    '08:00',
-    '08:30',
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
   ];
 
   constructor() {
@@ -58,17 +31,17 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
         nonNullable: true,
       }),
 
-      cover: new FormControl(),
-
       presentations: new EventPresentationsForm(),
 
       leaders: new EventLeadersForm(),
 
       date: new FormControl('', {
         nonNullable: true,
+        validators: [Validators.required],
       }),
       time: new FormControl('', {
         nonNullable: true,
+        validators: [Validators.required],
       }),
       address: new FormControl('', {
         nonNullable: true,

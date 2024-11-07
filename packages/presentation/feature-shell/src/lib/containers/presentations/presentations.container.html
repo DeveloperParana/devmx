@@ -2,11 +2,14 @@
   <devmx-presentation-filter (change)="onFilterChange($event)" />
 </header>
 
-@defer { @if (presentationFacade.response$ | async; as response) {
+@defer (on timer(500ms)) {
+<!--  -->
+@if (presentationFacade.response$ | async; as response) {
 
 <div class="presentations-container">
-  @for (presentation of response.data; track presentation.id) { @defer (on
-  viewport) {
+  @for (presentation of response.data; track presentation.id) {
+  <!--  -->
+  @defer (on viewport) {
   <a
     [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] } }]"
   >
@@ -14,8 +17,12 @@
   </a>
   } @placeholder {
   <devmx-skeleton [rows]="3" />
-  } }
+  }
+  <!--  -->
+  }
 </div>
+
+<div class="spacer"></div>
 
 <footer>
   <devmx-paginator
@@ -24,11 +31,12 @@
     (pageChange)="onPageChange($event)"
   />
 </footer>
-} } @loading {
-<img src="loader.svg" width="36" alt="Carregando..." />
+}
+<!--  -->
 } @placeholder {
 <div class="presentations-container">
-  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
   <devmx-skeleton [rows]="3" />
 </div>
 }

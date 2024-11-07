@@ -12,14 +12,15 @@
 
   form {
     gap: 1em;
-    width: 26em;
+    margin: 1em;
+    max-width: 24em;
     display: flex;
     margin-top: 0.8em;
     flex-direction: column;
   }
 
   .registration-card {
-    min-width: 26em;
+    min-width: 22em;
     overflow: hidden;
 
     &-header {

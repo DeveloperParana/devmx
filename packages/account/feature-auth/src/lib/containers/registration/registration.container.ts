@@ -50,7 +50,6 @@ export class RegistrationContainer {
     this.dialog
       .readMe(
         `https://raw.githubusercontent.com/DeveloperParana/conduta/refs/heads/master/README.md`
-        // `https://api.github.com/repos/DeveloperParana/conduta/contents/README.md`
       )
       .subscribe();
   }

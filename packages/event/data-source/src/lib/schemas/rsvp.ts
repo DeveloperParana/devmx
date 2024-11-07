@@ -14,7 +14,7 @@ export class RSVPCollection extends Document implements RSVP {
     ref: UserCollection.name,
     required: true,
   })
-  account: UserCollection;
+  user: UserCollection;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
@@ -33,4 +33,4 @@ export class RSVPCollection extends Document implements RSVP {
 
 export const RSVPSchema = createSchema(RSVPCollection);
 
-RSVPSchema.index({ account: 1, event: 1 }, { unique: true });
+RSVPSchema.index({ user: 1, event: 1 }, { unique: true });

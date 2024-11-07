@@ -9,7 +9,7 @@ export class RSVPDto implements RSVP {
 
   @ApiProperty({ type: () => UserRefDto })
   @Type(() => UserRefDto)
-  account: UserRefDto;
+  user: UserRefDto;
 
   @ApiProperty({ type: () => EventRefDto })
   @Type(() => EventRefDto)

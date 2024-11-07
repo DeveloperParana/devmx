@@ -1,16 +1,18 @@
-<a class="add-button tertiary-fab" mat-fab routerLink="nova">
+<a class="tertiary-fab top right" mat-fab routerLink="nova">
   <devmx-icon name="plus" />
 </a>
 
-@if (presentationFacade.response$ | async; as presentations) {
+@defer (on timer(500ms)) {
+<!--  -->
+@if (presentationFacade.response$ | async; as response) {
 
 <div class="presentations-container">
-  @for (job of presentations.data; track job.id) {
+  @for (presentation of response.data; track presentation.id) {
 
-  <devmx-presentation-card [data]="job">
+  <devmx-presentation-card [data]="presentation">
     <a
       mat-icon-button
-      [routerLink]="job.id"
+      [routerLink]="presentation.id"
       matTooltip="Editar apresentação"
       matTooltipPosition="before"
     >
@@ -22,7 +24,7 @@
       mat-icon-button
       matTooltip="Apagar apresentação"
       matTooltipPosition="after"
-      (click)="deletePresentation(job)"
+      (click)="deletePresentation(presentation)"
     >
       <devmx-icon name="trash-alt" />
     </button>
@@ -30,7 +32,7 @@
   }
 </div>
 
-@if (!presentations.items) {
+@if (!response.items) {
 <div class="no-presentations-yet">
   <h2>Não temos nada aqui...</h2>
   <h3>
@@ -47,8 +49,15 @@
 <footer>
   <devmx-paginator
     [size]="10"
-    [items]="presentations.items"
+    [items]="response.items"
     (pageChange)="onPageChange($event)"
   />
 </footer>
+}
+<!--  -->
+} @placeholder {
+<div class="presentations-container">
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
+</div>
 }

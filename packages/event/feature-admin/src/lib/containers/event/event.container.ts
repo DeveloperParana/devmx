@@ -1,9 +1,9 @@
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { SearchPresentations } from '../../dialogs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TimeDirective } from '@devmx/shared-ui-global/forms';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { EditableEvent } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SelectUser } from '@devmx/account-ui-shared';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchPresentations } from '../../dialogs';
 import { ActivatedRoute } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 import { EventForm } from '../../forms';
@@ -29,6 +30,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+
 
 @Component({
   selector: 'devmx-event-admin-event',
@@ -46,6 +48,7 @@ import {
     MatSelectModule,
     MatCardModule,
     MatListModule,
+    TimeDirective,
     SelectFileComponent,
     CropImageComponent,
     IconComponent,

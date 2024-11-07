@@ -12,8 +12,8 @@ export class EventsMongoServiceImpl
   protected override applyPopulate<U>(query: Query<U, EventCollection>) {
     return query
       .populate('owner', 'name displayName profile')
-      .populate('presentations')
-      .populate('leaders');
+      .populate('leaders', 'name displayName profile')
+      .populate('presentations', 'title');
   }
 
   protected override applyEditableParser<U>(

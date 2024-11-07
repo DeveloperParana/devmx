@@ -8,8 +8,6 @@
           <mat-error>Obrigatório</mat-error>
         </mat-form-field>
 
-        <devmx-editor formControlName="description" />
-
         <div>
           <mat-form-field>
             <mat-label>Formato</mat-label>
@@ -24,20 +22,23 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date" />
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="date"
+              tabindex="-1"
+              readonly
+            />
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Obrigatório</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Hora</mat-label>
-            <mat-select formControlName="time">
-              @for (time of form.times; track time) {
-              <mat-option [value]="time"> {{time}} </mat-option>
-              }
-            </mat-select>
+            <input matInput formControlName="time" devmxTime />
             <mat-error>Obrigatório</mat-error>
           </mat-form-field>
         </div>
@@ -49,9 +50,7 @@
             <mat-error>Obrigatório</mat-error>
           </mat-form-field>
         </div>
-      </section>
 
-      <section>
         <div class="event-presentations">
           <h3 mat-subheader>Apresentações</h3>
 
@@ -104,10 +103,18 @@
           <devmx-icon name="plus" />
         </button>
       </section>
+
+      <section>
+        <devmx-editor
+          label="Descreva o evento"
+          hint="Compatível com markdown do Github"
+          formControlName="description"
+        />
+      </section>
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-flat-button [disabled]="form.invalid">Salvar</button>
+      <button mat-button>Salvar</button>
     </mat-card-actions>
   </mat-card>
 </form>

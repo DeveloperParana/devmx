@@ -1,7 +1,7 @@
 import { RSVPStatus } from '@devmx/shared-api-interfaces';
 
 export interface CreateRSVP {
-  account: string;
+  user: string;
 
   event: string;
 

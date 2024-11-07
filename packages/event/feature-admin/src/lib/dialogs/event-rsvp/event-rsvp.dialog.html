@@ -11,12 +11,7 @@
 
   @for (item of confirmed; track item.id) {
   <mat-list-item>
-    <!-- <img
-      matListItemAvatar
-      [src]="item.account.photo | photo"
-      [alt]="item.account.name.first"
-    /> -->
-    <span matListItemTitle> {{item.account.name}} {{item.account.name}} </span>
+    <span matListItemTitle> {{item.user.displayName}} </span>
     @switch (item.status) { @case ('confirmed') {
     <devmx-icon matListItemMeta name="emoji/happy" />
     } @case ('maybe') {
@@ -36,9 +31,9 @@
     <!-- <img
       matListItemAvatar
       [src]="item.account.photo | photo"
-      [alt]="item.account.name.first"
+      [alt]="item.user.displayName.first"
     /> -->
-    <span matListItemTitle> {{item.account.name}} </span>
+    <span matListItemTitle> {{item.user.displayName}} </span>
     @switch (item.status) { @case ('confirmed') {
     <devmx-icon matListItemMeta name="emoji/happy" />
     } @case ('maybe') {
@@ -62,9 +57,9 @@
     <!-- <img
       matListItemAvatar
       [src]="item.account.photo | photo"
-      [alt]="item.account.name.first"
+      [alt]="item.user.displayName.first"
     /> -->
-    <span matListItemTitle> {{item.account.name}} </span>
+    <span matListItemTitle> {{item.user.displayName}} </span>
     @switch (item.status) { @case ('confirmed') {
     <devmx-icon matListItemMeta name="emoji/happy" />
     } @case ('maybe') {
