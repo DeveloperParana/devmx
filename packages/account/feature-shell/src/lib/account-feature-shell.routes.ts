@@ -12,7 +12,7 @@ import {
 
 export const accountFeatureShellRoutes: Route[] = [
   {
-    path: 'auth',
+    path: 'autenticacao',
     loadChildren: () =>
       import('@devmx/account-feature-auth').then(
         (m) => m.accountFeatureAuthRoutes

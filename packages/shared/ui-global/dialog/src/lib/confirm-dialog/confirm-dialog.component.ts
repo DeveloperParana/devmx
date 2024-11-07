@@ -12,7 +12,7 @@ export interface ConfirmDialogData {
 @Component({
   selector: 'devmx-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
-  styleUrl: './confirm-dialog.component.scss',
+  styleUrl: '../dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DialogModule, MatButtonModule, IconComponent],
   standalone: true,

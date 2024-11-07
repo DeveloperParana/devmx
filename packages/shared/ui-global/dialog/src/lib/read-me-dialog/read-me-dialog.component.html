@@ -1,0 +1,11 @@
+<article #contentRef class="devmx-dialog-content" [innerHTML]="data | marked | safeHtml"></article>
+
+<footer class="devmx-dialog-footer">
+  <button type="button" mat-button color="warn" (click)="close(false)">
+    Não, cancelar
+  </button>
+
+  <button type="button" mat-raised-button (click)="close(true)">
+    Sim, continuar
+  </button>
+</footer>

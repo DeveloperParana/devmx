@@ -50,7 +50,7 @@ export class EventFeatureShellComponent implements OnInit {
       .subscribe((user) => {
         if (user === null) {
           this.layoutFacade.resetNavLinks();
-          this.router.navigateByUrl('/conta/auth');
+          this.router.navigateByUrl('/conta/autenticacao');
         }
       });
   }

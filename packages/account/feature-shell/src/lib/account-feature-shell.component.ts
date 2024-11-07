@@ -50,7 +50,7 @@ export class AccountFeatureShellComponent implements OnInit {
       .subscribe((user) => {
         if (!user) {
           this.layoutFacade.resetNavLinks();
-          this.router.navigateByUrl('/conta/auth');
+          this.router.navigateByUrl('/conta/autenticacao');
         }
       });
   }

@@ -1,6 +1,7 @@
 import { ConfirmDialogComponent, ConfirmDialogData } from './confirm-dialog';
+import { ReadMeDialogComponent } from './read-me-dialog';
 import { Dialog } from '@angular/cdk/dialog';
-import { take } from 'rxjs';
+import { from, switchMap, take } from 'rxjs';
 
 export class DialogFacade {
   constructor(private dialog: Dialog) {}
@@ -20,5 +21,21 @@ export class DialogFacade {
         { data, panelClass, disableClose }
       )
       .closed.pipe(take(1));
+  }
+
+  readMe(url: string) {
+    const panelClass = 'devmx-read-me-dialog';
+
+    const disableClose = true;
+
+    return from(fetch(url).then((result) => result.text())).pipe(
+      switchMap((data) => {
+        const config = { data, panelClass, disableClose };
+
+        return this.dialog
+          .open<boolean, string>(ReadMeDialogComponent, config)
+          .closed.pipe(take(1));
+      })
+    );
   }
 }
