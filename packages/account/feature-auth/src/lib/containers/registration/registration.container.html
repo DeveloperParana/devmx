@@ -47,23 +47,36 @@
         </mat-form-field>
 
         <div class="registration-roles" formGroupName="roles">
-          <mat-checkbox formControlName="member">Membro</mat-checkbox>
+          <mat-checkbox formControlName="member">
+            Sou membro da comunidade
+          </mat-checkbox>
           @if (form.controls.roles.controls.member.errors) {
           <mat-error>É obrigatório ser membro</mat-error>
           }
-          <mat-checkbox formControlName="speaker">Palestrante</mat-checkbox>
-          <mat-checkbox formControlName="recruiter"> Recrutador </mat-checkbox>
-          <mat-checkbox formControlName="academic">Acadêmico</mat-checkbox>
+          <mat-checkbox formControlName="speaker">
+            Sou ou quero ser palestrante
+          </mat-checkbox>
+          <mat-checkbox formControlName="recruiter">
+            Sou recrutador de talentos
+          </mat-checkbox>
+          <mat-checkbox formControlName="academic">
+            Sou da área acadêmica
+          </mat-checkbox>
         </div>
       </mat-card-content>
 
-      <mat-card-actions align="end" class="registratiion-card-actions">
-        <button mat-button>Enviar</button>
+      <mat-card-actions class="registration-card-actions">
+        <a routerLink="../acessar" mat-button> Já tenho uma conta </a>
+
+        <button mat-flat-button>Cadastrar</button>
       </mat-card-actions>
     </mat-card>
-  </form>
 
-  <footer>
-    <a routerLink=".." mat-button> Já tenho uma conta </a>
-  </footer>
+    <footer>
+      Ao continuar, você concorda com nossos
+      <a href="#">Termos de Serviço</a>, reconhece nossa
+      <a href="#">Política de Privacidade</a> e
+      <a href="javascript:void(0)" (click)="openConduteCode()">Código de Conduta</a>.
+    </footer>
+  </form>
 </div>

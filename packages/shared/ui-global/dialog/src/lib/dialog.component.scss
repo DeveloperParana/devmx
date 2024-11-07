@@ -21,6 +21,8 @@
 
   .devmx-dialog-content {
     padding: 0 1em 0;
+    max-height: 50vh;
+    overflow: auto;
   }
 
   .devmx-dialog-footer {
