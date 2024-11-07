@@ -4,6 +4,6 @@ import { NavLinkOptions } from './nav-link-options';
 export interface SectionHeaderOptions {
   label: string;
   icon?: Icon;
-  expanded?: boolean
+  expanded?: boolean;
   links: NavLinkOptions[];
 }

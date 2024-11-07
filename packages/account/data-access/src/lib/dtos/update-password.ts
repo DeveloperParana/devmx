@@ -1,1 +1,1 @@
-export { UpdatePassword } from '@devmx/account-domain'
+export { UpdatePassword } from '@devmx/account-domain';

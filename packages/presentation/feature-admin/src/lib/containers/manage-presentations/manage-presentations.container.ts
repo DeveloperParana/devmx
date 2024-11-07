@@ -61,7 +61,7 @@ export class ManagePresentationsContainer {
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
 
-    this.presentationFacade.load()
+    this.presentationFacade.load();
   }
 
   setUserRef(userRef: UserRef | null = null) {

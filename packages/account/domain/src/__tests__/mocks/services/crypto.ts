@@ -4,7 +4,7 @@ export class CryptoServiceMock implements CryptoService {
   #salt = 0;
 
   genSalt(): string {
-    return ''
+    return '';
   }
 
   hash(value: string, salt = 10): string {

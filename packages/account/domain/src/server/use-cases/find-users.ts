@@ -17,7 +17,7 @@ export class FindUsersUseCase
       if (params.filter.roles) {
         const role = `roles.${params.filter.roles}`;
         params.filter[role as 'roles'] = true;
-        delete params.filter.roles
+        delete params.filter.roles;
       } else {
         delete params.filter.roles;
       }

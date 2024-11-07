@@ -20,7 +20,7 @@ import { filter, map } from 'rxjs';
     MatButtonModule,
     IconComponent,
     AsyncPipe,
-    DatePipe
+    DatePipe,
   ],
   standalone: true,
 })

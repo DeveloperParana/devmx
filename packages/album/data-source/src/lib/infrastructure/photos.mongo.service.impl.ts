@@ -10,8 +10,12 @@ export class PhotosMongoServiceImpl
   implements PhotosService
 {
   savePhoto(album: string, file: PhotoFile) {
-    const photo = new this.entityModel({ content: file.buffer, album, type: file.mimetype })
-    return photo.save()
+    const photo = new this.entityModel({
+      content: file.buffer,
+      album,
+      type: file.mimetype,
+    });
+    return photo.save();
   }
 
   protected override applyPopulate<U>(query: Query<U, PhotoCollection>) {

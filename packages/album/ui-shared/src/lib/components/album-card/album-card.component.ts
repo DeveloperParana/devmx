@@ -10,12 +10,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './album-card.component.html',
   styleUrl: './album-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    MatListModule,
-    IconComponent,
-    DatePipe,
-  ],
+  imports: [MatCardModule, MatListModule, IconComponent, DatePipe],
   standalone: true,
 })
 export class AlbumCardComponent {

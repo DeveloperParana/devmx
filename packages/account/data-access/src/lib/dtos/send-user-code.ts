@@ -1,1 +1,1 @@
-export { SendUserCode } from '@devmx/account-domain'
+export { SendUserCode } from '@devmx/account-domain';

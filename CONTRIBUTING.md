@@ -125,8 +125,8 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
   
   [TypeScript](https://www.typescriptlang.org)
 
-  `util`, `domain` e `data-*`
-  
+`util`, `domain` e `data-*`
+
   </figcaption>
 
 </figure>
@@ -139,8 +139,8 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
   
   [Angular](https://angular.dev)
 
-  `devmx`, `feature-*` e `ui-*`
-  
+`devmx`, `feature-*` e `ui-*`
+
   </figcaption>
 
 </figure>
@@ -153,8 +153,8 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
   
   [NestJS](https://docs.nestjs.com)
 
-  `server` e `resource`
-  
+`server` e `resource`
+
   </figcaption>
 
 </figure>
@@ -167,8 +167,8 @@ Os commits podem ser feitos em português, mas use inglês para termos técnicos
   
   [Nx Dev Tools](https://nx.dev)
 
-  `tools/**/*`
-  
+`tools/**/*`
+
   </figcaption>
 
 </figure>

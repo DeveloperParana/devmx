@@ -17,12 +17,24 @@
     border-radius: 16px;
     overflow: hidden;
 
-    h1 { font-size: calc(6 * 0.2em); }
-    h2 { font-size: calc(5 * 0.3em); }
-    h3 { font-size: calc(4 * 0.4em); }
-    h4 { font-size: calc(3 * 0.5em); }
-    h5 { font-size: calc(2 * 0.6em); }
-    h6 { font-size: calc(1 * 0.7em); }
+    h1 {
+      font-size: calc(6 * 0.2em);
+    }
+    h2 {
+      font-size: calc(5 * 0.3em);
+    }
+    h3 {
+      font-size: calc(4 * 0.4em);
+    }
+    h4 {
+      font-size: calc(3 * 0.5em);
+    }
+    h5 {
+      font-size: calc(2 * 0.6em);
+    }
+    h6 {
+      font-size: calc(1 * 0.7em);
+    }
 
     background-color: mat.get-theme-color($theme, surface-container-lowest);
   }

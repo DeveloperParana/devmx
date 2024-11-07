@@ -4,8 +4,8 @@ export function observer<T>(value: T) {
   const subject = new BehaviorSubject(value);
 
   const current = () => {
-    return subject.value
-  }
+    return subject.value;
+  };
 
   const update = (value: T) => {
     subject.next(value);

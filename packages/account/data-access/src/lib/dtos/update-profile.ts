@@ -1,1 +1,1 @@
-export { UpdateProfile } from '@devmx/account-domain'
+export { UpdateProfile } from '@devmx/account-domain';

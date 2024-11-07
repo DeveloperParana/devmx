@@ -14,7 +14,7 @@ export class UserRefForm extends FormGroup<TypedForm<UserRef>> {
         validators: [Validators.required],
       }),
       name: new FormControl('', {
-        nonNullable: true
+        nonNullable: true,
       }),
       displayName: new FormControl('', {
         nonNullable: true,

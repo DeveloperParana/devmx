@@ -47,7 +47,7 @@ interface ResourceMap {
 //   'RSVP',
 // ] as const;
 
-export type Resource = keyof ResourceMap | `*`
+export type Resource = keyof ResourceMap | `*`;
 
 interface ResourceValidator<T> {
   (resource: T): boolean;

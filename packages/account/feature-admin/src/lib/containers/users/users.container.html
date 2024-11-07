@@ -2,7 +2,10 @@
 
 <mat-card class="users-card">
   <mat-card-header class="users-card-header">
-    <devmx-search-field (searchChange)="onSearchChange($event)" [debounce]="800" />
+    <devmx-search-field
+      (searchChange)="onSearchChange($event)"
+      [debounce]="800"
+    />
   </mat-card-header>
 
   @if (userFacade.response$ | async; as response) {

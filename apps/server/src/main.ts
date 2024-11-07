@@ -35,10 +35,7 @@ async function bootstrap() {
   const url = `http://localhost:${port}/docs`;
   Logger.log(`🚀 Application is running on: ${url}`);
 
-
   // console.log(JSON.stringify(document));
 }
-
-
 
 bootstrap();

@@ -1,5 +1,8 @@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AuthenticationFacade, provideAccount } from '@devmx/account-data-access';
+import {
+  AuthenticationFacade,
+  provideAccount,
+} from '@devmx/account-data-access';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
@@ -40,9 +43,6 @@ import {
   isDevMode,
 } from '@angular/core';
 
-
-
-
 registerLocaleData(pt, 'pt-BR', ptBr);
 
 export const appConfig: ApplicationConfig = {
@@ -52,7 +52,7 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withViewTransitions(),
       withHashLocation(),
-      withRouterConfig({}),
+      withRouterConfig({})
     ),
     provideAnimationsAsync(),
     {
@@ -83,7 +83,7 @@ export const appConfig: ApplicationConfig = {
     }),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline' }
-    }
+      useValue: { appearance: 'outline' },
+    },
   ],
 };

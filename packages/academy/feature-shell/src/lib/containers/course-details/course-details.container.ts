@@ -24,7 +24,7 @@ import { filter, map } from 'rxjs';
     SafeHtmlPipe,
     MarkedPipe,
     AsyncPipe,
-    JsonPipe
+    JsonPipe,
   ],
   standalone: true,
 })

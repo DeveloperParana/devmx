@@ -35,7 +35,7 @@ export class CourseSubjectForm extends FormGroup<TypedForm<CourseSubject>> {
   }
 
   get subject() {
-    return this.controls.subject as SubjectForm
+    return this.controls.subject as SubjectForm;
   }
 }
 

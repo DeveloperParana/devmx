@@ -9,5 +9,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [AsyncPipe],
   standalone: true,
 })
-export class HomeContainer {
-}
+export class HomeContainer {}

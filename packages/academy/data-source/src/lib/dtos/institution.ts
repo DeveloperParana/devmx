@@ -7,5 +7,4 @@ export class InstitutionDto implements Institution {
 
   @ApiProperty()
   name: string;
-
 }

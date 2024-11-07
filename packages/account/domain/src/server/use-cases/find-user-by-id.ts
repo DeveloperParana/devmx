@@ -1,9 +1,7 @@
 import { UseCase, User } from '@devmx/shared-api-interfaces';
 import { UsersService } from '../services';
 
-export class FindUserByIDUseCase
-  implements UseCase<string, User | null>
-{
+export class FindUserByIDUseCase implements UseCase<string, User | null> {
   constructor(private usersService: UsersService) {}
 
   async execute(id: string) {

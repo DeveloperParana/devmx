@@ -32,7 +32,13 @@
 
         <mat-form-field>
           <mat-label>Data de nascimento</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="birthday" readonly tabindex="-1" />
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthday"
+            readonly
+            tabindex="-1"
+          />
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"

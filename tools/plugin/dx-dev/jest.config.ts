@@ -6,5 +6,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/tools/plugin/dx-dev',
-  passWithNoTests: true
+  passWithNoTests: true,
 };

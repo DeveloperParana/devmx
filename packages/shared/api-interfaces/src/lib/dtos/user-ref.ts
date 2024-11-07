@@ -1,3 +1,3 @@
-import { User } from "../entities";
+import { User } from '../entities';
 
-export type UserRef = Pick<User, 'displayName' | 'name' | 'id'>
+export type UserRef = Pick<User, 'displayName' | 'name' | 'id'>;
