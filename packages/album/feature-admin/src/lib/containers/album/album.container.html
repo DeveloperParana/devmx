@@ -27,7 +27,10 @@
       </ol>
     </mat-card-content>
 
-    <mat-progress-bar mode="determinate" [value]="progress$ | async"></mat-progress-bar>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progress$ | async"
+    ></mat-progress-bar>
 
     <mat-card-actions align="end">
       <button mat-flat-button>Salvar</button>

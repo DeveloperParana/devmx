@@ -13,7 +13,7 @@
       position: absolute;
       padding: 1em 0.4em;
       z-index: 1000;
-      opacity: .4;
+      opacity: 0.4;
       right: 0em;
       padding: 0;
       margin: 0;
@@ -39,6 +39,6 @@
 
   .editor-preview {
     padding: 1em;
-    white-space: pre-line
+    white-space: pre-line;
   }
 }

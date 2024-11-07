@@ -1,16 +1,16 @@
 export interface EntityGeneratorSchema {
   name: string;
-  scope: string
+  scope: string;
 }
 
 export interface NormalizedEntityGeneratorSchema extends EntityGeneratorSchema {
-  constantName: string
-  propertyName: string
-  className: string
-  fileName: string
+  constantName: string;
+  propertyName: string;
+  className: string;
+  fileName: string;
 }
 
 export interface Barrel {
-  path: string
-  file: string
+  path: string;
+  file: string;
 }

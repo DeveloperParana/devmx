@@ -31,7 +31,6 @@ export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
 
     console.log(message);
 
-
     return { message: `Enviado para ${hideEmail(user.contact.email)}` };
   }
 }

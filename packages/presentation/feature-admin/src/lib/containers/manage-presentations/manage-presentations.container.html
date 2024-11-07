@@ -24,13 +24,19 @@
 
     <ng-container matColumnDef="owner">
       <th mat-header-cell *matHeaderCellDef>Criado por</th>
-      <td mat-cell *matCellDef="let presentation">{{ presentation.owner.displayName }}</td>
+      <td mat-cell *matCellDef="let presentation">
+        {{ presentation.owner.displayName }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let presentation">
-        <button type="button" mat-icon-button (click)="openDelete(presentation)">
+        <button
+          type="button"
+          mat-icon-button
+          (click)="openDelete(presentation)"
+        >
           <devmx-icon name="trash" />
         </button>
       </td>

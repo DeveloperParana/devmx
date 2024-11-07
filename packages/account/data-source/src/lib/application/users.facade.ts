@@ -30,7 +30,7 @@ export class UsersFacade {
     private updateProfileUseCase: UpdateProfileUseCase,
     private updateSocialUseCase: UpdateSocialUseCase,
     private updatePasswordUseCase: UpdatePasswordUseCase,
-    private updateRolesUseCase: UpdateRolesUseCase,
+    private updateRolesUseCase: UpdateRolesUseCase
   ) {}
 
   async find(params: QueryParamsDto<User>) {
@@ -73,6 +73,6 @@ export function provideUsersFacade() {
     UpdateProfileUseCase,
     UpdateSocialUseCase,
     UpdatePasswordUseCase,
-    UpdateRolesUseCase
+    UpdateRolesUseCase,
   ]);
 }

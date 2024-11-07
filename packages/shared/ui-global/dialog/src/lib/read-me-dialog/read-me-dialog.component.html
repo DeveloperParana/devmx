@@ -1,4 +1,8 @@
-<article #contentRef class="devmx-dialog-content" [innerHTML]="data | marked | safeHtml"></article>
+<article
+  #contentRef
+  class="devmx-dialog-content"
+  [innerHTML]="data | marked | safeHtml"
+></article>
 
 <footer class="devmx-dialog-footer">
   <button type="button" mat-button color="warn" (click)="close(false)">

@@ -1,11 +1,11 @@
-import { Subject } from "./subject"
+import { Subject } from './subject';
 
 export interface CourseSubject {
   // id: string
 
-  subject: Subject
+  subject: Subject;
 
-  instructor?: string
+  instructor?: string;
 
-  hours?: number
+  hours?: number;
 }

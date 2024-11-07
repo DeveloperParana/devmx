@@ -21,7 +21,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-
 @Component({
   selector: 'devmx-layout',
   templateUrl: './layout.component.html',

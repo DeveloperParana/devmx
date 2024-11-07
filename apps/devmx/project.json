@@ -4,22 +4,16 @@
   "projectType": "application",
   "prefix": "devmx",
   "sourceRoot": "apps/devmx/src",
-  "tags": [
-    "type:app"
-  ],
+  "tags": ["type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/devmx",
         "index": "apps/devmx/src/index.html",
         "browser": "apps/devmx/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/devmx/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -29,9 +23,7 @@
             "input": "apps/devmx/public"
           }
         ],
-        "styles": [
-          "apps/devmx/src/styles.scss"
-        ],
+        "styles": ["apps/devmx/src/styles.scss"],
         "scripts": []
       },
       "configurations": {

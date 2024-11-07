@@ -1,1 +1,1 @@
-export { ValidateUserCode } from '@devmx/account-domain'
+export { ValidateUserCode } from '@devmx/account-domain';

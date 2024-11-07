@@ -3,7 +3,7 @@ import { hashSync, compareSync, genSaltSync } from 'bcrypt';
 
 export class CryptoServiceImpl implements CryptoService {
   genSalt() {
-    return genSaltSync()
+    return genSaltSync();
   }
 
   hash(value: string, salt: string | number = 10) {

@@ -5,9 +5,7 @@ import {
   EditableSubject,
 } from '@devmx/shared-api-interfaces';
 
-export class CreateSubjectUseCase
-  implements UseCase<EditableSubject, Subject>
-{
+export class CreateSubjectUseCase implements UseCase<EditableSubject, Subject> {
   constructor(private subjectService: SubjectService) {}
 
   execute(data: EditableSubject) {

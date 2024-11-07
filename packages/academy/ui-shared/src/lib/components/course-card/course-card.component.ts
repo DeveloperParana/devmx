@@ -9,11 +9,7 @@ import { Course } from '@devmx/shared-api-interfaces';
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    MatListModule,
-    IconComponent,
-  ],
+  imports: [MatCardModule, MatListModule, IconComponent],
   standalone: true,
 })
 export class CourseCardComponent {

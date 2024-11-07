@@ -12,5 +12,4 @@ export class UserRefDto implements UserRef {
   displayName: string;
 }
 
-
 console.log(getSchemaPath(UserRefDto));

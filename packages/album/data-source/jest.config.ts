@@ -7,5 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/album/data-source',
-  passWithNoTests: true
+  passWithNoTests: true,
 };

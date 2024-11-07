@@ -43,7 +43,7 @@ export class PhotoCollection extends Document implements Photo {
     ref: 'AlbumCollection',
     required: true,
   })
-  album: Album
+  album: Album;
 }
 
 export const PhotoSchema = createSchema(PhotoCollection);

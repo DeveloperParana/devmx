@@ -16,5 +16,4 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   imports: [ReactiveFormsModule, MatCheckboxModule],
   standalone: true,
 })
-export class UserRolesComponent {
-}
+export class UserRolesComponent {}

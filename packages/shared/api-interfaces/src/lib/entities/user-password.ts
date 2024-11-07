@@ -1,5 +1,5 @@
 export interface UserPassword {
-  hash: string
+  hash: string;
 
-  salt: number | string
+  salt: number | string;
 }

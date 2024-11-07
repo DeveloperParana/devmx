@@ -6,7 +6,10 @@
       <mat-card-subtitle>Em dois toques</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-vertical-stepper #stepper (animationDone)="onInteract(usernameRef, codeFieldRef)">
+    <mat-vertical-stepper
+      #stepper
+      (animationDone)="onInteract(usernameRef, codeFieldRef)"
+    >
       <mat-step [stepControl]="form" label="Enviaremos um código no seu e-mail">
         <form [formGroup]="form" (submit)="sendUserCode()">
           <mat-form-field>

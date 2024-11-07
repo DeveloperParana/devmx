@@ -1,7 +1,7 @@
-import { UserSocialType } from "../types";
+import { UserSocialType } from '../types';
 
 export interface UserSocial {
-  type: UserSocialType
+  type: UserSocialType;
 
-  username: string
+  username: string;
 }

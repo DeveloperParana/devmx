@@ -1,1 +1,1 @@
-export { UpdateSocial } from '@devmx/account-domain'
+export { UpdateSocial } from '@devmx/account-domain';

@@ -15,7 +15,7 @@ declare namespace NodeJS {
     SMTP_USER: string;
     SMTP_PASS: string;
 
-    CODE_LIFE_TIME: string
+    CODE_LIFE_TIME: string;
 
     NODE_ENV: 'production' | 'development';
   }

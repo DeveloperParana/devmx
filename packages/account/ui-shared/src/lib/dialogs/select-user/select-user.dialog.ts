@@ -58,7 +58,7 @@ export class SelectUserDialog {
   }
 
   onSearchChange(displayName: string) {
-    this.search = displayName
+    this.search = displayName;
     this.load();
   }
 

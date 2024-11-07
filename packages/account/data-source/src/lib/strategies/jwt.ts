@@ -1,4 +1,7 @@
-import { AccessTokenPayload, Authentication } from '@devmx/shared-api-interfaces';
+import {
+  AccessTokenPayload,
+  Authentication,
+} from '@devmx/shared-api-interfaces';
 import { Env } from '@devmx/shared-api-interfaces/server';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';

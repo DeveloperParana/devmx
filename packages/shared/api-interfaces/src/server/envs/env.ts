@@ -14,8 +14,8 @@ export abstract class Env {
   };
 
   abstract auth: {
-    codeLifeTime: number
-  }
+    codeLifeTime: number;
+  };
 
   abstract multer: {
     photos: {

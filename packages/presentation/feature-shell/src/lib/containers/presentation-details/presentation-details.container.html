@@ -45,9 +45,7 @@
       [src]="presentation.owner.photo | photo"
       [alt]="presentation.owner.name.first"
     /> -->
-    <mat-card-title>
-      {{ presentation.owner.displayName }}
-    </mat-card-title>
+    <mat-card-title> {{ presentation.owner.displayName }} </mat-card-title>
     <mat-card-subtitle>
       <a [routerLink]="['/', 'sobre',presentation.owner.name]">
         {{presentation.owner.name}}

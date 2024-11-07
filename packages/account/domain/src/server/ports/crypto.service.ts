@@ -1,5 +1,5 @@
 export abstract class CryptoService {
-  abstract genSalt(): string
+  abstract genSalt(): string;
 
   abstract hash(value: string, salt?: string | number): string;
 

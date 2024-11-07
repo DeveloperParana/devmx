@@ -10,7 +10,13 @@ export type WorthyRole = 'leader' | 'staff' | 'fellow';
 
 export type BoardRole = 'manager' | 'director';
 
-export type RoleGroup = 'auto' | 'academic' | 'recruiter' | 'sponsor' | 'worthy' | 'board';
+export type RoleGroup =
+  | 'auto'
+  | 'academic'
+  | 'recruiter'
+  | 'sponsor'
+  | 'worthy'
+  | 'board';
 
 export type Role =
   | AutoAssignableRole
