@@ -59,8 +59,8 @@ export class EventsContainer {
     this.router.navigate([], { queryParams });
   }
 
-  onOrderChange(sort: string) {
-    const queryParams = { sort };
+  onSortChange(date: string) {
+    const queryParams = { date };
     this.router.navigate([], { queryParams });
   }
 

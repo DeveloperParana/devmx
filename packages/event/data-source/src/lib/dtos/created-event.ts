@@ -23,7 +23,8 @@ export class CreatedEventDto {
   format: EventFormat;
 
   @ApiProperty()
-  date: string;
+  @Type(() => Date)
+  date: Date;
 
   @ApiProperty()
   time: string;

@@ -2,11 +2,11 @@ import { EntityService } from '@devmx/shared-api-interfaces/server';
 import { Model, Query, RootFilterQuery, SortOrder } from 'mongoose';
 import {
   Entity,
+  QuerySort,
   QueryParams,
   QueryFilter,
   EditableEntity,
 } from '@devmx/shared-api-interfaces';
-import { entries } from '@devmx/shared-util-data';
 
 export abstract class MongoService<T extends Entity>
   implements EntityService<T>
@@ -19,6 +19,16 @@ export abstract class MongoService<T extends Entity>
 
   protected applyFilter(filter: QueryFilter<T>): RootFilterQuery<T> {
     return { ...filter };
+  }
+
+  protected applySort(sort: QuerySort<T>) {
+    const normalizedSort = {} as { [key: string]: SortOrder };
+
+    for (const [key, direction] of Object.entries(sort)) {
+      normalizedSort[key] = direction === 'asc' ? 1 : -1;
+    }
+
+    return normalizedSort;
   }
 
   protected applyEditableParser<U>(data: EditableEntity<T>) {
@@ -39,12 +49,13 @@ export abstract class MongoService<T extends Entity>
 
     const skip = page * size;
     const where = this.applyFilter(filter ?? {});
+    const order = this.applySort(sort ?? {});
 
-    let query = this.entityModel.find(where).skip(skip).limit(size);
-
-    if (sort) {
-      query = query.sort(entries(sort) as [string, SortOrder][]);
-    }
+    const query = this.entityModel
+      .find(where)
+      .sort(order)
+      .skip(skip)
+      .limit(size);
 
     const entities = await this.applyPopulate(query).exec();
 
