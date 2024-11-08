@@ -9,7 +9,15 @@
     @include mat.elevation-transition();
     @include mat.elevation(2);
 
-    max-width: calc(100vw - 3em);
+    max-width: calc(33vw - 1em);
+
+    @media (max-width: 1278px) {
+      max-width: calc(50vw - 2em);
+    }
+
+    @media (max-width: 767px) {
+      max-width: calc(100vw - 3em);
+    }
 
     &:active,
     &:hover {

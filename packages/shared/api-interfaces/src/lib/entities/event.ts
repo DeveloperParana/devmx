@@ -12,7 +12,7 @@ export interface Event {
 
   description?: string;
 
-  date?: string;
+  date?: Date;
 
   time?: string;
 

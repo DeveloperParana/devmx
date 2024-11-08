@@ -28,8 +28,8 @@ export class EventCollection extends Document implements Event {
   @Prop({ type: String, default: '' })
   description: string;
 
-  @Prop({ type: String, default: '' })
-  date?: string;
+  @Prop({ type: Date })
+  date?: Date;
 
   @Prop({ type: String, default: '' })
   time?: string;

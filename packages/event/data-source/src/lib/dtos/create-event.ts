@@ -1,7 +1,13 @@
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { EventFormat } from '@devmx/shared-api-interfaces';
 import { CreateEvent } from '@devmx/event-domain';
+import {
+  IsBoolean,
+  IsDateString,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateEventDto implements CreateEvent {
   id: string;
@@ -25,10 +31,10 @@ export class CreateEventDto implements CreateEvent {
   })
   format: EventFormat;
 
-  @IsString()
+  @IsDateString()
   @IsOptional()
   @ApiPropertyOptional()
-  date: string;
+  date: Date;
 
   @IsString()
   @IsOptional()

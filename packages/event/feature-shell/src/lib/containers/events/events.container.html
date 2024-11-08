@@ -1,11 +1,7 @@
 <header>
   <devmx-event-filter (change)="onFilterChange($event)" />
 
-  <devmx-sort-direction
-    ascText="Chegando"
-    descText="Passado"
-    (change)="onOrderChange($event)"
-  />
+  <devmx-sort-direction (change)="onSortChange($event)" />
 </header>
 
 @defer (on timer(500ms)) {
