@@ -47,7 +47,7 @@ export class LayoutFacade extends State<LayoutState> {
       component: null,
       sections: [],
       sidenav: {
-        start: false,
+        start: true,
         end: false,
       },
     });
