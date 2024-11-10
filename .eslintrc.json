@@ -17,7 +17,8 @@
             "enforceBuildableLibDependency": true,
             "allow": [
               "@devmx/account-data-access",
-              "@devmx/academy-data-access"
+              "@devmx/academy-data-access",
+              "@devmx/learn-data-access"
             ],
             "depConstraints": [
               {

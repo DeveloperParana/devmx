@@ -5,7 +5,6 @@ import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
-import { UserCardComponent } from '@devmx/account-ui-shared';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
@@ -21,7 +20,6 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     PaginatorComponent,
     SearchFieldComponent,
-    UserCardComponent,
     MatButtonModule,
     MatTableModule,
     MatCardModule,

@@ -1,0 +1,58 @@
+<button mat-fab class="tertiary-fab top right" (click)="createSkill()">
+  <devmx-icon name="plus" />
+</button>
+
+<mat-card class="skills-card">
+  <mat-card-header class="skills-card-header">
+    <devmx-search-field
+      (searchChange)="onSearchChange($event)"
+      [debounce]="800"
+    />
+  </mat-card-header>
+  @if (skillFacade.response$ | async; as response) {
+
+  <table
+    mat-table
+    matSort
+    [dataSource]="response.data"
+    (matSortChange)="onSortChange($event)"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell mat-sort-header="name" *matHeaderCellDef>
+        Habilidade
+      </th>
+      <td mat-cell *matCellDef="let skill">{{ skill.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let skill">
+        <button mat-icon-button (click)="editSkill(skill)">
+          <devmx-icon name="software/edit" />
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let skill; columns: columns"></tr>
+  </table>
+
+  <mat-card-actions class="skills-card-actions">
+    <form [formGroup]="form" #skillForm="ngForm" (submit)="onSubmit(skillForm)">
+      <mat-form-field>
+        <input matInput formControlName="name" />
+        <button mat-icon-button matIconSuffix>
+          <devmx-icon name="send" />
+        </button>
+      </mat-form-field>
+    </form>
+
+    <devmx-paginator
+      [size]="10"
+      [items]="response.items"
+      (pageChange)="onPageChange($event)"
+    />
+  </mat-card-actions>
+
+  }
+</mat-card>

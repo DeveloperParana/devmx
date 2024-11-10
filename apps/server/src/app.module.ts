@@ -3,6 +3,7 @@ import { LocationResourceModule } from '@devmx/location-resource';
 import { AccountResourceModule } from '@devmx/account-resource';
 import { AcademyResourceModule } from '@devmx/academy-resource';
 import { CareerResourceModule } from '@devmx/career-resource';
+import { LearnResourceModule } from '@devmx/learn-resource';
 import { AlbumResourceModule } from '@devmx/album-resource';
 import { EventResourceModule } from '@devmx/event-resource';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -14,12 +15,14 @@ import {
   SharedResourceModule,
 } from '@devmx/shared-resource';
 
+
 @Module({
   imports: [
     ServeStaticModule.forRoot(env.static),
     SharedResourceModule.forRoot(env),
     SharedDatabaseModule,
     SharedMailerModule,
+    LearnResourceModule,
     AccountResourceModule,
     PresentationResourceModule,
     LocationResourceModule,

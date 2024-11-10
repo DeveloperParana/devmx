@@ -100,6 +100,19 @@
       ],
       "@devmx/event-resource": ["packages/event/resource/src/index.ts"],
       "@devmx/event-ui-shared": ["packages/event/ui-shared/src/index.ts"],
+      "@devmx/learn-data-access": ["packages/learn/data-access/src/index.ts"],
+      "@devmx/learn-data-source": ["packages/learn/data-source/src/index.ts"],
+      "@devmx/learn-domain": ["packages/learn/domain/src/index.ts"],
+      "@devmx/learn-domain/client": ["packages/learn/domain/src/client.ts"],
+      "@devmx/learn-domain/server": ["packages/learn/domain/src/server.ts"],
+      "@devmx/learn-feature-admin": [
+        "packages/learn/feature-admin/src/index.ts"
+      ],
+      "@devmx/learn-feature-shell": [
+        "packages/learn/feature-shell/src/index.ts"
+      ],
+      "@devmx/learn-resource": ["packages/learn/resource/src/index.ts"],
+      "@devmx/learn-ui-shared": ["packages/learn/ui-shared/src/index.ts"],
       "@devmx/location-data-access": [
         "packages/location/data-access/src/index.ts"
       ],
@@ -194,6 +207,9 @@
       ],
       "@devmx/shared-ui-global/search": [
         "packages/shared/ui-global/search/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/shell": [
+        "packages/shared/ui-global/shell/src/index.ts"
       ],
       "@devmx/shared-ui-global/skeleton": [
         "packages/shared/ui-global/skeleton/src/index.ts"

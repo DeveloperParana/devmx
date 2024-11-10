@@ -24,31 +24,31 @@ export class <%= className %>sFacade {
   ) {}
 
   async create(data: Create<%= className %>Dto) {
-    const subject = await this.create<%= className %>UseCase.execute(data);
-    return plainToInstance(<%= className %>Dto, subject);
+    const <%= propertyName %> = await this.create<%= className %>UseCase.execute(data);
+    return plainToInstance(<%= className %>Dto, <%= propertyName %>);
   }
 
   async find(params: QueryParamsDto<<%= className %>>) {
     const { data, items, pages } = await this.find<%= className %>sUseCase.execute(
       params
     );
-    const subjects = plainToInstance(<%= className %>Dto, data);
-    return new PageDto(subjects, items, pages);
+    const <%= propertyName %>s = plainToInstance(<%= className %>Dto, data);
+    return new PageDto(<%= propertyName %>s, items, pages);
   }
 
   async findOne(id: string) {
-    const subject = await this.find<%= className %>ByIDUseCase.execute(id);
-    return plainToInstance(<%= className %>Dto, subject);
+    const <%= propertyName %> = await this.find<%= className %>ByIDUseCase.execute(id);
+    return plainToInstance(<%= className %>Dto, <%= propertyName %>);
   }
 
   async update(id: string, data: Update<%= className %>Dto) {
-    const subject = await this.update<%= className %>UseCase.execute({ ...data, id });
-    return plainToInstance(<%= className %>Dto, subject);
+    const <%= propertyName %> = await this.update<%= className %>UseCase.execute({ ...data, id });
+    return plainToInstance(<%= className %>Dto, <%= propertyName %>);
   }
 
   async delete(id: string) {
-    const subject = this.delete<%= className %>UseCase.execute(id);
-    return plainToInstance(<%= className %>Dto, subject);
+    const <%= propertyName %> = this.delete<%= className %>UseCase.execute(id);
+    return plainToInstance(<%= className %>Dto, <%= propertyName %>);
   }
 }
 

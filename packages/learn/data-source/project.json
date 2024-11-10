@@ -1,0 +1,19 @@
+{
+  "name": "learn-data-source",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/learn/data-source/src",
+  "projectType": "library",
+  "tags": ["type:data"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/learn/data-source",
+        "main": "packages/learn/data-source/src/index.ts",
+        "tsConfig": "packages/learn/data-source/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

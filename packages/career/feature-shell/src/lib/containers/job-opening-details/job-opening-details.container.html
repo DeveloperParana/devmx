@@ -5,7 +5,9 @@
     <a mat-card-avatar routerLink=".." mat-icon-button>
       <devmx-icon name="arrow/left" />
     </a>
-    <mat-card-title>{{job.title}}</mat-card-title>
+    <mat-card-title class="event-card-header-title">
+      {{job.title}}
+    </mat-card-title>
     <mat-card-subtitle
       >Vaga {{ job.active ? 'aberta' : 'fechada' }}</mat-card-subtitle
     >
@@ -88,15 +90,13 @@
   }
 
   <mat-card-header>
-    <!-- <img
+    <img
       mat-card-avatar
-      [src]="job.owner. | photo"
-      [alt]="job.owner.name.first"
-    /> -->
-    <mat-card-title> {{ job.owner.name }} </mat-card-title>
-    <mat-card-subtitle>
-      <a [routerLink]="['/', 'sobre',job.owner.name]"> {{job.owner.name}} </a>
-    </mat-card-subtitle>
+      [src]="job.owner.profile?.photo | photo"
+      [alt]="job.owner.displayName"
+    />
+    <mat-card-title> {{ job.owner.displayName }} </mat-card-title>
+    <mat-card-subtitle> Organizador </mat-card-subtitle>
   </mat-card-header>
 </mat-card>
 

@@ -1,7 +1,7 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { UserCollection } from '@devmx/account-data-source';
 import mongoose, { Document, Types } from 'mongoose';
-import { SkillSchema } from './skill';
+import { SkillSchema } from '@devmx/learn-data-source';
 import {
   Range,
   JobMode,

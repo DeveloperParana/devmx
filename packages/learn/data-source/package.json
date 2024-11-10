@@ -1,0 +1,19 @@
+{
+  "name": "@devmx/learn-data-source",
+  "version": "0.0.1",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "@devmx/shared-api-interfaces": "0.0.1",
+    "class-transformer": "^0.5.1",
+    "@devmx/learn-domain": "0.0.1",
+    "@devmx/shared-data-source": "0.0.1",
+    "class-validator": "^0.14.1",
+    "@nestjs/swagger": "^7.4.2",
+    "@nestjs/mongoose": "^10.0.10",
+    "mongoose": "^8.6.3"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}

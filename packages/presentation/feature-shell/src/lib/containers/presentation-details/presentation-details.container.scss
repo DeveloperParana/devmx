@@ -9,18 +9,28 @@
 
     h3 {
       margin: 0 16px;
-      font-weight: 600;
       font-size: 1.2em;
-    }
-
-    a:link:hover {
-      text-decoration: underline;
+      font-weight: 500;
+      opacity: 0.6;
     }
 
     p {
       white-space: pre-line;
       line-height: 1.2em;
       word-wrap: break-word;
+    }
+
+    a:link:hover {
+      text-decoration: underline;
+    }
+
+    &-header {
+      justify-content: space-between;
+      align-items: center;
+
+      .mat-mdc-card-avatar {
+        margin-bottom: 0;
+      }
     }
   }
 }

@@ -1,0 +1,19 @@
+:host {
+  flex: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+  .mat-mdc-table .mat-column-actions {
+    width: 4em;
+  }
+
+  .skills-card {
+
+    &-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 1em;
+    }
+  }
+}
