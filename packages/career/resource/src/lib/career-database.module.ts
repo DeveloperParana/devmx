@@ -2,8 +2,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Global, Module } from '@nestjs/common';
 import {
   provideCareers,
-  SkillCollection,
-  SkillSchema,
   JobOpeningCollection,
   JobOpeningSchema,
 } from '@devmx/career-data-source';
@@ -12,10 +10,6 @@ import {
 @Module({
   imports: [
     MongooseModule.forFeature([
-      {
-        name: SkillCollection.name,
-        schema: SkillSchema,
-      },
       {
         name: JobOpeningCollection.name,
         schema: JobOpeningSchema,

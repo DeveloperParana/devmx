@@ -19,6 +19,15 @@
       line-height: 1.2em;
       word-wrap: break-word;
     }
+
+    &-header {
+      justify-content: space-between;
+      align-items: center;
+
+      .mat-mdc-card-avatar {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .rsvp-button {

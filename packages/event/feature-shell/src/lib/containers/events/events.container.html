@@ -9,13 +9,17 @@
 @if (eventFacade.response$ | async; as response) {
 
 <div class="events-container">
-  @for (event of response.data; track event.id) { @defer (on viewport) {
+  @for (event of response.data; track event.id) {
+  <!--  -->
+  @defer (on viewport) {
   <a [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]">
     <devmx-event-card class="event-card" [data]="event" />
   </a>
   } @placeholder {
   <devmx-skeleton [rows]="3" />
-  } }
+  }
+  <!--  -->
+  }
 </div>
 
 <div class="spacer"></div>

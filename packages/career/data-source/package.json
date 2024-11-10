@@ -12,7 +12,8 @@
     "@devmx/account-data-source": "0.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^10.0.10",
-    "mongoose": "^8.6.3"
+    "mongoose": "^8.6.3",
+    "@devmx/learn-data-source": "0.0.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

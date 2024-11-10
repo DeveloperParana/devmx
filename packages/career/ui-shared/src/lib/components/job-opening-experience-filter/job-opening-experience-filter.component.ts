@@ -17,7 +17,7 @@ export class JobOpeningExperienceFilterComponent {
   experiences: FormOption<ExperienceLevel>[] = [
     { value: 'internship', viewValue: 'Estágio' },
     { value: 'junior', viewValue: 'Junior' },
-    { value: 'mid', viewValue: 'Plano' },
+    { value: 'mid', viewValue: 'Pleno' },
     { value: 'senior', viewValue: 'Senior' },
   ];
 }

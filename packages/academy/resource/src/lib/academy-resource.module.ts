@@ -1,4 +1,4 @@
-import { InstitutionDatabaseModule } from './academy-database.module';
+import { AcademyDatabaseModule } from './academy-database.module';
 import { Module } from '@nestjs/common';
 import {
   CoursesController,
@@ -7,7 +7,7 @@ import {
 } from './controllers';
 
 @Module({
-  imports: [InstitutionDatabaseModule],
+  imports: [AcademyDatabaseModule],
   controllers: [InstitutionsController, SubjectsController, CoursesController],
 })
 export class AcademyResourceModule {}

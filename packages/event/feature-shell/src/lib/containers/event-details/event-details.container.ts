@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MarkedPipe, SafeHtmlPipe } from '@devmx/shared-ui-global/editor';
 import { RSVPButtonComponent, RSVPForm } from '@devmx/event-ui-shared';
-import { PhotoPipe, StateNamePipe } from '@devmx/shared-ui-global';
+import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EventOut, RSVP } from '@devmx/shared-api-interfaces';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthenticationFacade } from '@devmx/account-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { combineLatest, filter, map, tap } from 'rxjs';
-import { AsyncPipe, DatePipe, JsonPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { RSVPFacade } from '@devmx/event-data-access';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PhotoPipe } from '@devmx/shared-ui-global';
 import { EventFormatPipe } from '../../pipes';
 
 @Component({
@@ -30,13 +30,10 @@ import { EventFormatPipe } from '../../pipes';
     MatButtonModule,
     IconComponent,
     EventFormatPipe,
-    StateNamePipe,
-    SafeHtmlPipe,
-    MarkedPipe,
+    MarkdownComponent,
     PhotoPipe,
     AsyncPipe,
     DatePipe,
-    JsonPipe
   ],
   standalone: true,
 })

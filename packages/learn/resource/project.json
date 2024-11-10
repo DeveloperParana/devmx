@@ -1,0 +1,9 @@
+{
+  "name": "learn-resource",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/learn/resource/src",
+  "projectType": "library",
+  "tags": ["type:resource"],
+  "// targets": "to see all targets run: nx show project learn-resource --web",
+  "targets": {}
+}

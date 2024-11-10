@@ -1,9 +1,5 @@
 <span>{{ current() === 'asc' ? ascText() : descText() }}</span>
 
 <button mat-icon-button [ngClass]="current()" (click)="toggle()">
-  @if (current() === 'asc') {
   <devmx-icon name="arrow/up" />
-  } @else {
-  <devmx-icon name="arrow/down" />
-  }
 </button>

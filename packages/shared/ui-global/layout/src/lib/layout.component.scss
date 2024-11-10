@@ -183,27 +183,6 @@
   }
 }
 
-::ng-deep .layout-sidenav-start {
-  .mat-drawer-inner-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .mdc-list-item.mdc-list-item--disabled {
-    &::before {
-      background-color: transparent;
-    }
-
-    .mat-mdc-list-item-meta {
-      opacity: var(
-        --mdc-list-list-item-disabled-state-layer-opacity,
-        var(--mat-app-focus-state-layer-opacity)
-      );
-    }
-  }
-}
-
 @keyframes rotate-center {
   0% {
     transform: rotate(0);

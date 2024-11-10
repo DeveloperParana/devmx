@@ -1,0 +1,23 @@
+{
+  "name": "learn-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/learn/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/learn/domain",
+        "main": "packages/learn/domain/src/index.ts",
+        "tsConfig": "packages/learn/domain/tsconfig.lib.json",
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/learn/domain/src/server.ts",
+          "packages/learn/domain/src/client.ts"
+        ]
+      }
+    }
+  }
+}

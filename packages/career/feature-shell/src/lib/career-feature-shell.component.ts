@@ -18,7 +18,7 @@ import {
       display: flex;
       flex-direction: column;
     }
-    `,
+  `,
   selector: 'devmx-career-feature-shell',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, LayoutComponent],

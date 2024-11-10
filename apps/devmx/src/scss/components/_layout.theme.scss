@@ -10,6 +10,12 @@
     color: mat.get-theme-color($theme, secondary, 60);
   }
 
+  .mat-mdc-form-field {
+    .mat-mdc-form-field-icon-suffix {
+      padding-right: 0.8em;
+    }
+  }
+
   .layout-container {
     background-color: rgba(mat.get-theme-color($theme, surface-variant), 1);
 
@@ -73,8 +79,17 @@
     }
   }
 
+  .mat-expansion-panel-header-title {
+    opacity: 0.4;
+  }
+
   .mat-expansion-panel-header {
-    padding: 0 16px;
+    padding: 0 1.4em;
+    margin: 0;
+
+    &.mat-expanded {
+      height: 3em;
+    }
   }
 
   .layout-main-wrapper {

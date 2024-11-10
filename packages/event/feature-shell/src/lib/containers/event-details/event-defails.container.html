@@ -1,11 +1,13 @@
 @if (event$ | async; as event) {
 
 <mat-card class="event-card">
-  <mat-card-header>
+  <mat-card-header class="event-card-header sticky">
     <a mat-card-avatar routerLink=".." mat-icon-button>
       <devmx-icon name="arrow/left" />
     </a>
-    <mat-card-title>{{event.title}}</mat-card-title>
+    <mat-card-title class="event-card-header-title">
+      {{event.title}}
+    </mat-card-title>
     <a routerLink=".." mat-icon-button>
       <devmx-icon name="close-cross" />
     </a>
@@ -40,7 +42,7 @@
   </mat-list>
 
   <mat-card-content>
-    <div [innerHTML]="event.description | marked | safeHtml"></div>
+    <devmx-markdown [content]="event.description" />
   </mat-card-content>
 
   @if (event.presentations.length) {

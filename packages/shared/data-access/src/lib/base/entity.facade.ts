@@ -27,6 +27,18 @@ export abstract class EntityFacade<T extends Entity> extends State<
     this.setState({ params });
   }
 
+  patchParams(newParams: QueryParams<T>) {
+    const params = { ...this.state.params, ...newParams };
+    this.setState({ params });
+  }
+
+  setPage(page: number, size = 10) {
+    const { params } = this.state;
+    params.page = page;
+    params.size = size;
+    this.setState({ params });
+  }
+
   setFilter(filter: QueryFilter<T>) {
     const { params } = this.state;
     params.filter = filter;

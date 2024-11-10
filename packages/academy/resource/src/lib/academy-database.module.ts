@@ -31,4 +31,4 @@ import {
   providers: [...provideAcademies()],
   exports: [...provideAcademies()],
 })
-export class InstitutionDatabaseModule {}
+export class AcademyDatabaseModule {}

@@ -1,4 +1,4 @@
-import { JobOpeningFacade, SkillFacade } from '@devmx/career-data-access';
+import { JobOpeningFacade } from '@devmx/career-data-access';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -13,9 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { JobOpeningForm } from '../../forms';
-import { SkillDialog } from '../../dialogs';
-import { JsonPipe } from '@angular/common';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import {
   inject,
   Component,
@@ -23,6 +21,9 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { MessageService } from '@devmx/shared-ui-global';
+import { SkillDialogService } from '@devmx/learn-ui-shared';
+import { SkillFacade } from '@devmx/learn-data-access';
+import { EntityFacade } from '@devmx/shared-data-access';
 
 @Component({
   selector: 'devmx-career-admin-job-opening',
@@ -40,7 +41,6 @@ import { MessageService } from '@devmx/shared-ui-global';
     MatSelectModule,
     MatSliderModule,
     IconComponent,
-    JsonPipe,
   ],
   standalone: true,
 })
@@ -53,7 +53,7 @@ export class JobOpeningContainer {
 
   jobFacade = inject(JobOpeningFacade);
 
-  skillDialog = inject(SkillDialog);
+  skillDialog = inject(SkillDialogService);
 
   messageService = inject(MessageService);
 
@@ -70,46 +70,32 @@ export class JobOpeningContainer {
     });
   }
 
-  openSkill(skill: EditableSkill | null = null) {
-    return this.skillDialog
-      .openSkill(skill)
-      .afterClosed()
-      .pipe(takeUntil(this.#until.openSkill))
-      .subscribe((value) => {
-        if (value) {
-          if (value.id) this.skillFacade.update(value);
-          else this.skillFacade.create(value);
-        }
-      });
+  openSkill(skill?: EditableSkill) {
+    return this.skillDialog.open(skill).subscribe((value) => {
+      if (value) {
+        if (value.id) this.skillFacade.update(value);
+        else this.skillFacade.create(value);
+      }
+    });
   }
 
   openSearchSkills() {
-    const dialog$ = this.skillDialog.searchSkills();
+    const dialog$ = this.skillDialog.select({ multiple: true });
 
-    dialog$.componentInstance.addSkill$
-      .pipe(takeUntil(this.#until.searchSkill))
-      .subscribe((state) => {
-        if (state) this.openSkill();
-        console.log(state);
-      });
-
-    dialog$
-      .afterClosed()
-      .pipe(takeUntil(this.#until.searchSkill))
-      .subscribe((skills) => {
-        if (skills && skills.length) {
-          for (const skill of skills) {
-            this.form.skills.add({ weight: 50, skill });
-          }
-
-          this.cdr.detectChanges();
+    dialog$.subscribe((skills) => {
+      if (skills && skills.length) {
+        for (const skill of skills) {
+          this.form.skills.add({ weight: 50, skill });
         }
 
-        this.#until.openSkill.next();
-        this.#until.openSkill.complete();
-        this.#until.searchSkill.next();
-        this.#until.searchSkill.complete();
-      });
+        this.cdr.detectChanges();
+      }
+
+      this.#until.openSkill.next();
+      this.#until.openSkill.complete();
+      this.#until.searchSkill.next();
+      this.#until.searchSkill.complete();
+    });
   }
 
   onSubmit() {

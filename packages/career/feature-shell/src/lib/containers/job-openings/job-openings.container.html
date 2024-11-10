@@ -1,36 +1,45 @@
 <header>
-  <devmx-job-opening-experience-filter
-    (change)="onExperienceFilterChange($event)"
-  />
-  <devmx-job-opening-mode-filter (change)="onModeFilterChange($event)" />
+  <div>
+    <devmx-job-opening-experience-filter
+      (change)="onExperienceFilterChange($event)"
+    />
+    <devmx-job-opening-mode-filter (change)="onModeFilterChange($event)" />
+  </div>
 </header>
 
-@defer { @if (jobOpeningFacade.response$ | async; as jobs) {
+@defer (on timer(500ms)) {
+<!--  -->
+@if (jobOpeningFacade.response$ | async; as response) {
 
 <div class="job-openings-container">
-  @for (job of jobs.data; track job.id) {
+  @for (jobOpening of response.data; track jobOpening.id) {
   <!--  -->
   @defer (on viewport) {
-  <a [routerLink]="['/', 'carreiras', { outlets: { right: [job.id] }}]">
-    <devmx-job-opening-card [data]="job" />
+  <a [routerLink]="['/', 'carreiras', { outlets: { right: [jobOpening.id] }}]">
+    <devmx-job-opening-card class="job-opening-card" [data]="jobOpening" />
   </a>
   } @placeholder {
-  <devmx-skeleton [rows]="3" />
-  } }
+  <devmx-skeleton [rows]="4" />
+  }
+  <!--  -->
+  }
 </div>
+
+<div class="spacer"></div>
 
 <footer>
   <devmx-paginator
     [size]="10"
-    [items]="jobs.items"
+    [items]="response.items"
     (pageChange)="onPageChange($event)"
   />
 </footer>
-} } @loading {
-<img src="loader.svg" alt="Carregando..." />
+}
+<!--  -->
 } @placeholder {
-<div class="jobs-container">
-  <devmx-skeleton [rows]="4" />
+<div class="events-container">
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
   <devmx-skeleton [rows]="3" />
 </div>
 }

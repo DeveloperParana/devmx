@@ -3,11 +3,10 @@ import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { MatListModule, MatListOption } from '@angular/material/list';
 import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
 import { EditableUser, Role } from '@devmx/shared-api-interfaces';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UserFacade } from '@devmx/account-data-access';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
 import {
   MatDialogRef,
   MatDialogTitle,
@@ -34,10 +33,8 @@ export interface SelectUserConfig {
     MatDialogContent,
     MatDialogActions,
     MatButtonModule,
-    IconComponent,
     MatListModule,
     AsyncPipe,
-    JsonPipe,
   ],
   standalone: true,
 })

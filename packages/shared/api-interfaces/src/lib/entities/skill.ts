@@ -1,5 +1,5 @@
-import { Entity } from '../interfaces';
+export interface Skill {
+  id: string;
 
-export interface Skill extends Entity {
   name: string;
 }

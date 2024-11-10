@@ -1,5 +1,5 @@
-import { provideSkillsFacade, provideJobOpeningsFacade } from '../application';
+import { provideJobOpeningsFacade } from '../application';
 
 export function provideFacades() {
-  return [provideSkillsFacade(), provideJobOpeningsFacade()];
+  return [provideJobOpeningsFacade()];
 }
