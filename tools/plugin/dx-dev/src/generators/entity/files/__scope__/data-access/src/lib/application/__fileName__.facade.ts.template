@@ -4,14 +4,14 @@ import {
   Create<%= className %>UseCase,
   Delete<%= className %>UseCase,
   Find<%= className %>ByIDUseCase,
-  Find<%= className %>sUseCase,
+  Find<%= classNamePlural %>UseCase,
   Update<%= className %>UseCase,
 } from '@devmx/<%= scope %>-domain/client';
 
 export class <%= className %>Facade extends EntityFacade<<%= className %>> {
   constructor(
     private create<%= className %>UseCase: Create<%= className %>UseCase,
-    private find<%= className %>sUseCase: Find<%= className %>sUseCase,
+    private find<%= classNamePlural %>UseCase: Find<%= classNamePlural %>UseCase,
     private find<%= className %>ByIdUseCase: Find<%= className %>ByIDUseCase,
     private update<%= className %>UseCase: Update<%= className %>UseCase,
     private delete<%= className %>UseCase: Delete<%= className %>UseCase
@@ -28,7 +28,7 @@ export class <%= className %>Facade extends EntityFacade<<%= className %>> {
   }
 
   load() {
-    this.onLoad(this.find<%= className %>sUseCase.execute(this.state.params));
+    this.onLoad(this.find<%= classNamePlural %>UseCase.execute(this.state.params));
   }
 
   loadOne(id: string) {
@@ -51,7 +51,7 @@ export class <%= className %>Facade extends EntityFacade<<%= className %>> {
 export function provide<%= className %>Facade() {
   return createClientProvider(<%= className %>Facade, [
     Create<%= className %>UseCase,
-    Find<%= className %>sUseCase,
+    Find<%= classNamePlural %>UseCase,
     Find<%= className %>ByIDUseCase,
     Update<%= className %>UseCase,
     Delete<%= className %>UseCase,

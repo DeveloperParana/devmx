@@ -1,10 +1,10 @@
 import { UseCase, <%= className %>, Editable<%= className %> } from '@devmx/shared-api-interfaces';
-import { <%= className %>sService } from '../services';
+import { <%= classNamePlural %>Service } from '../services';
 
 export class Update<%= className %>UseCase implements UseCase<Editable<%= className %>, <%= className %>> {
-  constructor(private <%= propertyName %>sService: <%= className %>sService) {}
+  constructor(private <%= propertyNamePlural %>Service: <%= classNamePlural %>Service) {}
 
   async execute(data: Editable<%= className %>) {
-    return this.<%= propertyName %>sService.update(data.id, data);
+    return this.<%= propertyNamePlural %>Service.update(data.id, data);
   }
 }

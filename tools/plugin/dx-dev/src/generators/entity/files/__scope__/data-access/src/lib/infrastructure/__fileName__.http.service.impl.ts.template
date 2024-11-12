@@ -11,7 +11,7 @@ export function provide<%= className %>HttpService() {
   return {
     provide: <%= className %>Service,
     useFactory(http: HttpClient, env: Env) {
-      return new <%= className %>HttpServiceImpl(http, env, '<%= fileName %>s');
+      return new <%= className %>HttpServiceImpl(http, env, '<%= fileNamePlural %>');
     },
     deps: [HttpClient, Env],
   };

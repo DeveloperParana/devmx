@@ -1,0 +1,17 @@
+import { <%= classNamePlural %>Service } from '../services';
+import {
+  Page,
+  UseCase,
+  <%= className %>,
+  QueryParams,
+} from '@devmx/shared-api-interfaces';
+
+export class Find<%= classNamePlural %>UseCase
+  implements UseCase<QueryParams<<%= className %>>, Page<<%= className %>>>
+{
+  constructor(private <%= propertyNamePlural %>Service: <%= classNamePlural %>Service) {}
+
+  async execute(params: QueryParams<<%= className %>>) {
+    return this.<%= propertyNamePlural %>Service.find(params);
+  }
+}
