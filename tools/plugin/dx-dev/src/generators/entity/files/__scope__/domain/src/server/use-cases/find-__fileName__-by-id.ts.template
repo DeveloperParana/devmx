@@ -1,10 +1,10 @@
 import { <%= className %>, UseCase } from '@devmx/shared-api-interfaces';
-import { <%= className %>sService } from '../services';
+import { <%= classNamePlural %>Service } from '../services';
 
 export class Find<%= className %>ByIDUseCase implements UseCase<string, <%= className %> | null> {
-  constructor(private <%= propertyName %>sService: <%= className %>sService) {}
+  constructor(private <%= propertyNamePlural %>Service: <%= classNamePlural %>Service) {}
 
   async execute(id: string) {
-    return this.<%= propertyName %>sService.findOne(id);
+    return this.<%= propertyNamePlural %>Service.findOne(id);
   }
 }

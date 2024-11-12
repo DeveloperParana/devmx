@@ -1,0 +1,15 @@
+import { MongoService, createServiceProvider } from '@devmx/shared-data-source';
+import { <%= classNamePlural %>Service } from '@devmx/<%= scope %>-domain/server';
+import { <%= className %>Collection } from '../schemas';
+import { getModelToken } from '@nestjs/mongoose';
+
+export class <%= classNamePlural %>MongoServiceImpl
+  extends MongoService<<%= className %>Collection>
+  implements <%= classNamePlural %>Service
+{ }
+
+export function provide<%= classNamePlural %>MongoService() {
+  return createServiceProvider(<%= classNamePlural %>Service, <%= classNamePlural %>MongoServiceImpl, [
+    getModelToken(<%= className %>Collection.name),
+  ]);
+}

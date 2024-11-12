@@ -5,7 +5,7 @@ import {
   Create<%= className %>UseCase,
   Delete<%= className %>UseCase,
   Find<%= className %>ByIDUseCase,
-  Find<%= className %>sUseCase,
+  Find<%= classNamePlural %>UseCase,
   Update<%= className %>UseCase,
 } from '@devmx/<%= scope %>-domain/server';
 import {
@@ -14,10 +14,10 @@ import {
   createServerProvider,
 } from '@devmx/shared-data-source';
 
-export class <%= className %>sFacade {
+export class <%= classNamePlural %>Facade {
   constructor(
     private create<%= className %>UseCase: Create<%= className %>UseCase,
-    private find<%= className %>sUseCase: Find<%= className %>sUseCase,
+    private find<%= classNamePlural %>UseCase: Find<%= classNamePlural %>UseCase,
     private find<%= className %>ByIDUseCase: Find<%= className %>ByIDUseCase,
     private update<%= className %>UseCase: Update<%= className %>UseCase,
     private delete<%= className %>UseCase: Delete<%= className %>UseCase
@@ -29,11 +29,11 @@ export class <%= className %>sFacade {
   }
 
   async find(params: QueryParamsDto<<%= className %>>) {
-    const { data, items, pages } = await this.find<%= className %>sUseCase.execute(
+    const { data, items, pages } = await this.find<%= classNamePlural %>UseCase.execute(
       params
     );
-    const <%= propertyName %>s = plainToInstance(<%= className %>Dto, data);
-    return new PageDto(<%= propertyName %>s, items, pages);
+    const <%= propertyNamePlural %> = plainToInstance(<%= className %>Dto, data);
+    return new PageDto(<%= propertyNamePlural %>, items, pages);
   }
 
   async findOne(id: string) {
@@ -52,10 +52,10 @@ export class <%= className %>sFacade {
   }
 }
 
-export function provide<%= className %>sFacade() {
-  return createServerProvider(<%= className %>sFacade, [
+export function provide<%= classNamePlural %>Facade() {
+  return createServerProvider(<%= classNamePlural %>Facade, [
     Create<%= className %>UseCase,
-    Find<%= className %>sUseCase,
+    Find<%= classNamePlural %>UseCase,
     Find<%= className %>ByIDUseCase,
     Update<%= className %>UseCase,
     Delete<%= className %>UseCase,
