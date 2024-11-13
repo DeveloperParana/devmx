@@ -53,13 +53,13 @@ export class EventsController {
   @ApiPage(EventDto)
   async findAll(@Query() params: QueryParamsDto<Event>) {
     try {
-      return await this.eventsFacade.find(params);
+      return await this.eventsFacade.findFrom(new Date(), params);
     } catch (err) {
       throw exceptionByError(err);
     }
   }
 
-  @Get('passado')
+  @Get('all')
   @Allowed()
   @ApiPage(EventDto)
   async findPast(@Query() params: QueryParamsDto<Event>) {

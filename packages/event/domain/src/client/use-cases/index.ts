@@ -1,6 +1,7 @@
 export * from './create-event';
 export * from './create-rsvp';
 export * from './delete-event';
+export * from './find-all-events';
 export * from './find-event-by-id';
 export * from './find-events';
 export * from './find-rsvp-by-event';

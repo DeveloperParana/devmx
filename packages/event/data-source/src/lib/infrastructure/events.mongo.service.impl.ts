@@ -1,5 +1,5 @@
 import { createServiceProvider, MongoService } from '@devmx/shared-data-source';
-import { EditableEntity } from '@devmx/shared-api-interfaces';
+import { EditableEntity, QueryParams } from '@devmx/shared-api-interfaces';
 import { EventsService } from '@devmx/event-domain/server';
 import { getModelToken } from '@nestjs/mongoose';
 import { EventCollection } from '../schemas';
@@ -9,6 +9,28 @@ export class EventsMongoServiceImpl
   extends MongoService<EventCollection>
   implements EventsService
 {
+  async findFrom(date: Date, params: QueryParams<EventCollection>) {
+    const { page = 0, size = 10, filter, sort } = params;
+
+    const skip = page * size;
+    const where = this.applyFilter(filter ?? {});
+    const order = this.applySort(sort ?? {});
+
+    const query = this.entityModel
+      .find({ ...where, date: { $gte: date } })
+      .sort(order)
+      .skip(skip)
+      .limit(size);
+
+    const entities = await this.applyPopulate(query).exec();
+
+    const data = entities.map((item) => item.toJSON());
+    const items = await this.entityModel.countDocuments(where).exec();
+    const pages = Math.ceil(items / size);
+
+    return { data, items, pages };
+  }
+
   protected override applyPopulate<U>(query: Query<U, EventCollection>) {
     return query
       .populate('owner', 'name displayName profile')

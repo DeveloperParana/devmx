@@ -1,12 +1,24 @@
-import { Event, RSVP, RSVPStatus } from '@devmx/shared-api-interfaces';
 import { HttpClient, HttpService } from '@devmx/shared-data-access';
 import { EventService } from '@devmx/event-domain/client';
 import { Env } from '@devmx/shared-api-interfaces/client';
+import { createQueryParams } from '@devmx/shared-util-data';
+import {
+  Page,
+  RSVP,
+  Event,
+  RSVPStatus,
+  QueryParams,
+} from '@devmx/shared-api-interfaces';
 
 export class EventHttpServiceImpl
   extends HttpService<Event>
   implements EventService
 {
+  findAll(params: QueryParams<Event>) {
+    const url = [`${this.url}/all`, createQueryParams(params)];
+    return this.http.get<Page<Event>>(url.join('?'));
+  }
+
   createRSVP(event: string, status: RSVPStatus) {
     const url = [this.url, event, 'rsvps'];
     return this.http.post<RSVP>(url.join('/'), { status });

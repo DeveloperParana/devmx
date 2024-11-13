@@ -5,6 +5,7 @@ import {
   CreateEventUseCase,
   DeleteEventUseCase,
   FindEventByIDUseCase,
+  FindEventsFromUseCase,
   FindEventsUseCase,
   UpdateEventUseCase,
 } from '@devmx/event-domain/server';
@@ -18,6 +19,7 @@ export class EventsFacade {
   constructor(
     private createEventUseCase: CreateEventUseCase,
     private findEventsUseCase: FindEventsUseCase,
+    private findEventsFromUseCase: FindEventsFromUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
     private deleteEventUseCase: DeleteEventUseCase
@@ -30,6 +32,12 @@ export class EventsFacade {
 
   async find(params: QueryParamsDto<Event>) {
     const { data, items, pages } = await this.findEventsUseCase.execute(params);
+    const events = plainToInstance(EventDto, data);
+    return new PageDto(events, items, pages);
+  }
+
+  async findFrom(date: Date, params: QueryParamsDto<Event>) {
+    const { data, items, pages } = await this.findEventsFromUseCase.execute([date, params]);
     const events = plainToInstance(EventDto, data);
     return new PageDto(events, items, pages);
   }
@@ -54,6 +62,7 @@ export function provideEventsFacade() {
   return createServerProvider(EventsFacade, [
     CreateEventUseCase,
     FindEventsUseCase,
+    FindEventsFromUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
     DeleteEventUseCase,

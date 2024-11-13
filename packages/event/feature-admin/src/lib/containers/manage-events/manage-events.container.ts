@@ -67,7 +67,7 @@ export class ManageEventsContainer {
       .pipe(takeUntilDestroyed())
       .subscribe(this.onQueryParams);
 
-    this.eventFacade.load();
+    this.eventFacade.loadAll();
   }
 
   setUserRef(userRef: UserRef | null = null) {
@@ -115,7 +115,7 @@ export class ManageEventsContainer {
 
   onSearchChange(title = '') {
     this.eventFacade.setFilter({ title });
-    this.eventFacade.load();
+    this.eventFacade.loadAll();
   }
 
   onPageChange({ page, size }: PageParams) {
