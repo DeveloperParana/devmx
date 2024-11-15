@@ -20,7 +20,9 @@ export const navLinksValidator = (
 
       return { ...section, links };
     })
-    .filter((section) => section.links.length)
+    .filter((section) => {
+      return section.links.some((link) => !link.disabled);
+    })
     .map(
       ({ label, links, expanded, icon }) =>
         new SectionHeader(label, links, expanded, icon)
