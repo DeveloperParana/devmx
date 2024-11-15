@@ -11,6 +11,7 @@ export const academyFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Academia',
     },
+    canActivate: [rolesGuard('member')],
     component: AcademyFeatureShellComponent,
     children: [
       {

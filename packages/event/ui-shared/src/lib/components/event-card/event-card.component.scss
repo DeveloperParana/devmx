@@ -4,8 +4,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex: 1;
 
   .event-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
     @include mat.elevation-transition();
     @include mat.elevation(2);
 

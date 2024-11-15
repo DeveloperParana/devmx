@@ -11,6 +11,7 @@ export const careerFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Carreiras',
     },
+    canActivate: [rolesGuard('member')],
     component: CareerFeatureShellComponent,
     children: [
       {
@@ -23,9 +24,6 @@ export const careerFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
-        data: {
-          breadcrumb: 'Carreiras',
-        },
         component: JobOpeningsContainer,
       },
       {

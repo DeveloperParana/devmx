@@ -16,6 +16,7 @@ export const presentationFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Apresentações',
     },
+    canActivate: [rolesGuard('member')],
     component: PresentationFeatureShellComponent,
     children: [
       {
