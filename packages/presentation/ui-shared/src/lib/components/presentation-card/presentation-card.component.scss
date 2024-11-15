@@ -4,10 +4,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex: 1;
 
   .presentation-card {
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     @include mat.elevation-transition();
     @include mat.elevation(2);

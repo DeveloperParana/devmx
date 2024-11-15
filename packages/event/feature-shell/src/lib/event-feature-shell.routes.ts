@@ -15,6 +15,7 @@ export const eventFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Eventos',
     },
+    canActivate: [rolesGuard('member')],
     component: EventFeatureShellComponent,
     children: [
       {

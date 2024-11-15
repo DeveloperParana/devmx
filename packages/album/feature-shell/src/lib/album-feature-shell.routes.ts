@@ -1,5 +1,6 @@
 import { AlbumFeatureShellComponent } from './album-feature-shell.component';
 import { AlbumDetailsContainer, AlbumsContainer } from './containers';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Album } from '@devmx/shared-api-interfaces';
 import { albumResolver } from './resolvers';
 import { Route } from '@angular/router';
@@ -10,6 +11,7 @@ export const albumFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Albuns',
     },
+    canActivate: [rolesGuard('member')],
     component: AlbumFeatureShellComponent,
     children: [
       {

@@ -2,7 +2,9 @@
   <devmx-course-ead-filter (change)="onEADFilterChange($event)" />
 </header>
 
-@defer { @if (courseFacade.response$ | async; as courses) {
+@defer (on timer(500ms)) {
+<!--  -->
+@if (courseFacade.response$ | async; as courses) {
 
 <div class="courses-container">
   @for (course of courses.data; track course.id) {
@@ -13,8 +15,12 @@
   </a>
   } @placeholder {
   <devmx-skeleton [rows]="3" />
-  } }
+  }
+  <!--  -->
+  }
 </div>
+
+<div class="spacer"></div>
 
 <footer>
   <devmx-paginator
@@ -23,11 +29,12 @@
     (pageChange)="onPageChange($event)"
   />
 </footer>
-} } @loading {
-<img src="loader.svg" alt="Carregando..." />
+}
+<!--  -->
 } @placeholder {
 <div class="courses-container">
-  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
   <devmx-skeleton [rows]="3" />
 </div>
 }

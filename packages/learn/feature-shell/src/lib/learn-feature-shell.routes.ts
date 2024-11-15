@@ -1,12 +1,14 @@
-import { Route } from '@angular/router';
 import { LearnFeatureShellComponent } from './learn-feature-shell.component';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
+import { Route } from '@angular/router';
 
 export const learnFeatureShellRoutes: Route[] = [
   {
     path: '',
     data: {
-      breadcrumb: 'Aprenda'
+      breadcrumb: 'Aprenda',
     },
+    canActivate: [rolesGuard('member')],
     component: LearnFeatureShellComponent,
     children: [
       {
