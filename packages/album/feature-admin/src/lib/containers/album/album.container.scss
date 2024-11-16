@@ -18,6 +18,11 @@
       }
     }
 
+    &-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
     &-content {
       gap: 1em;
       display: grid;

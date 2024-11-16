@@ -1,6 +1,7 @@
 import { HttpProgressEvent } from '@devmx/shared-api-interfaces/client';
-import { Album, EditableAlbum } from '@devmx/shared-api-interfaces';
+import { Album, EditableAlbum, Photo } from '@devmx/shared-api-interfaces';
 import { AlbumFacade, PhotoFacade } from '@devmx/album-data-access';
+import { combineLatest, concatMap, from, take, tap } from 'rxjs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { SheetFacade } from '@devmx/shared-ui-global/sheet';
@@ -10,7 +11,6 @@ import { UploadQueueComponent } from '../../components';
 import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HttpEventType } from '@angular/common/http';
-import { combineLatest, concat, concatMap, from, take, tap } from 'rxjs';
 import { percent } from '@devmx/shared-util-data';
 import { AlbumDetailsSheet } from '../../sheets';
 import { ActivatedRoute } from '@angular/router';
@@ -108,6 +108,18 @@ export class AlbumContainer {
     };
 
     from(upload.queue()).pipe(concatMap(onQueueProgress)).subscribe();
+  }
+
+  isAllSelected(photos: Photo[], selected: string[]) {
+    return selected.length === photos.length;
+  }
+
+  toggleAll(photos: Photo[], selected: string[]) {
+    if (this.isAllSelected(photos, selected)) {
+      return this.selection.clear();
+    }
+
+    this.selection.select(...photos.map(({ id }) => id));
   }
 
   deleteSelection(ids: string[], albumId: string) {

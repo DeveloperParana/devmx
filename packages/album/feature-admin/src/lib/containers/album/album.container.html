@@ -11,7 +11,14 @@
     </button>
   </mat-card-header>
 
-  <mat-card-actions align="end">
+  <mat-card-actions class="album-card-actions">
+    <mat-checkbox
+      class="photo-checkbox"
+      [indeterminate]="selection.hasValue() && !isAllSelected(album.photos, selection.selected)"
+      [checked]="selection.hasValue() && isAllSelected(album.photos, selection.selected)"
+      (change)="$event ? toggleAll(album.photos, selection.selected) : null"
+    ></mat-checkbox>
+
     <button
       color="warn"
       type="button"
