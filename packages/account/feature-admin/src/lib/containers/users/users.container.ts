@@ -1,16 +1,16 @@
+import { HasRolePipe, PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { AuthenticationFacade, UserFacade } from '@devmx/account-data-access';
 import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
-import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { SearchFieldComponent } from '@devmx/shared-ui-global/search';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 import { User } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'devmx-users',
@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     IconComponent,
     RouterModule,
+    HasRolePipe,
     AsyncPipe,
   ],
   standalone: true,

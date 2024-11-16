@@ -27,6 +27,12 @@
         <a mat-icon-button [routerLink]="user.id">
           <devmx-icon name="user-box" />
         </a>
+
+        @if (auth | hasRole: 'director':'manager') {
+        <button mat-icon-button color="warn" (click)="openDelete(user)">
+          <devmx-icon name="trash" />
+        </button>
+        }
       </td>
     </ng-container>
 

@@ -31,4 +31,14 @@ export class AlbumForm extends FormGroup<TypedForm<EditableAlbum>> {
   get contributors() {
     return this.controls.contributors as ContributorsForm;
   }
+
+  patch(album: EditableAlbum) {
+    this.patchValue(album);
+
+    if (album.contributors && album.contributors.length > 0) {
+      for (const contributor of album.contributors) {
+        this.contributors.add(contributor);
+      }
+    }
+  }
 }

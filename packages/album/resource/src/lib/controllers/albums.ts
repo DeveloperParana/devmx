@@ -40,7 +40,6 @@ import {
 } from '@devmx/album-data-source';
 import 'multer';
 
-
 @ApiTags('Albuns')
 @Controller('albums')
 export class AlbumsController {
@@ -108,7 +107,7 @@ export class AlbumsController {
   async update(
     @User() auth: Authentication,
     @Param('id') id: string,
-    @Body() updateAlbumDto: UpdateAlbumDto
+    @Body() data: UpdateAlbumDto
   ) {
     const album = await this.albumsFacade.findOne(id);
 
@@ -120,8 +119,10 @@ export class AlbumsController {
       throw new ForbiddenException('Acesso negado');
     }
 
+    data.owner = auth.id;
+
     try {
-      return await this.albumsFacade.update(id, updateAlbumDto);
+      return await this.albumsFacade.update(id, data);
     } catch (err) {
       throw new BadRequestException(err);
     }
@@ -135,10 +136,7 @@ export class AlbumsController {
     const album = await this.albumsFacade.findOne(id);
 
     if (!album) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Album não encontrado',
-      });
+      throw new NotFoundException('Album não encontrado');
     }
 
     if (album.owner.id !== auth.id && !authIsAdmin(auth.roles)) {

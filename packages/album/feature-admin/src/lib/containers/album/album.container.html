@@ -2,7 +2,9 @@
 <mat-card class="album-card">
   <mat-card-header class="album-card-header">
     <mat-card-title>{{album.title}}</mat-card-title>
-    <mat-card-subtitle>{{album.createdAt | date}}</mat-card-subtitle>
+    <mat-card-subtitle>
+      Criado dia {{album.createdAt | date}}
+    </mat-card-subtitle>
 
     <button mat-icon-button (click)="editAlbum(album)">
       <devmx-icon name="software/edit" />
@@ -25,6 +27,14 @@
 
     }
   </mat-card-content>
+  @if (album.contributors && album.contributors.length > 0) {
+  <mat-card-content>
+    @for (contributor of album.contributors; track contributor.id; let isLast =
+    $last) {
+    <strong>{{contributor.displayName}}{{ isLast ? '' : ', '}}</strong>
+    } tem permissão para contribuir neste album.
+  </mat-card-content>
+  }
 </mat-card>
 
 <devmx-upload-queue #uploadQueue="devmxUploadQueue" />

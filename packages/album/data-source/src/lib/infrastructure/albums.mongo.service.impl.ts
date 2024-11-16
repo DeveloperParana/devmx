@@ -20,13 +20,13 @@ export class AlbumsMongoServiceImpl
   }
 
   protected override applyEditableParser<U>(
-    data: EditableEntity<AlbumCollection>
+    {photos: photosAux, ...data}: EditableEntity<AlbumCollection>
   ): U {
     const contributors = (data.contributors ?? []).map((contributor) => {
       return typeof contributor === 'string' ? contributor : contributor.id;
     });
 
-    const photos = (data.photos ?? []).map((photo) => {
+    const photos = (photosAux ?? []).map((photo) => {
       return typeof photo === 'string' ? photo : photo.id;
     });
 
