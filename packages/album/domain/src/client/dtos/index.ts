@@ -1,1 +1,1 @@
-export * from './save-photo';
+export * from './upload-photo';

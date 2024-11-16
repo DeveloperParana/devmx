@@ -1,10 +1,13 @@
+import { MimeType } from '@devmx/shared-api-interfaces';
 import {
+  input,
   inject,
   output,
   Directive,
   ElementRef,
   HostListener,
 } from '@angular/core';
+import { readMimeType } from '../utils/read-mime-type';
 
 @Directive({
   selector: '[devmxDropZone]',
@@ -16,6 +19,8 @@ export class DropZoneDirective {
   get el() {
     return this.elRef.nativeElement;
   }
+
+  accept = input<MimeType[]>([]);
 
   enter = output<DragEvent>();
 
@@ -57,7 +62,7 @@ export class DropZoneDirective {
   }
 
   @HostListener('drop', ['$event'])
-  onDrop(event: DragEvent) {
+  async onDrop(event: DragEvent) {
     if (event instanceof DragEvent) {
       event.preventDefault();
 
@@ -66,7 +71,15 @@ export class DropZoneDirective {
       const fileList = event.dataTransfer?.files;
 
       if (fileList && fileList.length) {
-        const files = Array.from(fileList);
+        const list = Array.from(fileList);
+        const files: File[] = [];
+
+        for (const file of list) {
+          const mimeType = await readMimeType(file);
+          if (mimeType && this.accept().includes(mimeType)) {
+            files.push(file);
+          }
+        }
 
         this.files.emit(files);
       }

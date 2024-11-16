@@ -1,25 +1,35 @@
-import { DropZoneDirective, resizeImage } from '@devmx/shared-ui-global/image';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { HttpProgressEvent } from '@devmx/shared-api-interfaces/client';
+import { Album, EditableAlbum } from '@devmx/shared-api-interfaces';
+import { AlbumFacade, PhotoFacade } from '@devmx/album-data-access';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { SheetFacade } from '@devmx/shared-ui-global/sheet';
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { UploadQueueComponent } from '../../components';
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { AlbumFacade } from '@devmx/album-data-access';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { HttpEventType } from '@angular/common/http';
+import { concatMap, from, take, tap } from 'rxjs';
+import { percent } from '@devmx/shared-util-data';
+import { AlbumDetailsSheet } from '../../sheets';
 import { ActivatedRoute } from '@angular/router';
-import { AlbumForm } from '../../forms';
+import {
+  resizeImage,
+  ResizedImage,
+  DropZoneDirective,
+} from '@devmx/shared-ui-global/image';
 import {
   inject,
   signal,
   Component,
+  WritableSignal,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { asyncAll, observer } from '@devmx/shared-util-data';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { from, map, mergeMap, of, scan, switchMap, tap } from 'rxjs';
+
+
+interface PhotoProgress {
+  photo: ResizedImage;
+  progress: WritableSignal<number>;
+}
 
 @Component({
   selector: 'devmx-admin-album',
@@ -27,65 +37,86 @@ import { from, map, mergeMap, of, scan, switchMap, tap } from 'rxjs';
   styleUrl: './album.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ReactiveFormsModule,
-    MatProgressBarModule,
-    MatFormFieldModule,
+    UploadQueueComponent,
     DropZoneDirective,
     MatButtonModule,
-    MatInputModule,
     MatCardModule,
-    MatListModule,
     IconComponent,
     AsyncPipe,
-    JsonPipe,
-    NgClass,
+    DatePipe,
   ],
   standalone: true,
 })
 export class AlbumContainer {
   route = inject(ActivatedRoute);
 
-  form = new AlbumForm();
-
   albumFacade = inject(AlbumFacade);
 
-  dragOver = signal(false);
+  photoFacade = inject(PhotoFacade);
 
-  files = signal<File[]>([]);
-  images = signal<File[]>([]);
-  resizeProccess = signal(0);
+  sheetFacade = inject(SheetFacade);
 
-  progress = observer(0);
-  progress$ = this.progress.observe();
+  async onDrop(album: string, files: File[], upload: UploadQueueComponent) {
+    const total = files.length * 2;
 
-  constructor() {
-    this.route.data.pipe(takeUntilDestroyed()).subscribe(({ album }) => {
-      if (album && album['id']) this.form.patchValue(album);
-    });
-  }
+    let loaded = 0;
 
-  onDragEnter(event: DragEvent) {
-    console.log(event);
-  }
+    upload.opened.set(true);
 
-  // onDrop(files: File[]) {
+    for (const file of files) {
+      loaded += 1;
 
-  // }
+      upload.resizing.set(percent(loaded, total));
 
-  onDragLeave(event: DragEvent) {
-    console.log(event);
-  }
+      const progress = signal(0);
 
-  onDragOver(event: DragEvent) {
-    console.log(event);
-  }
+      const photo = await resizeImage(file, 1280);
 
-  onSubmit() {
-    if (this.form.valid) {
-      const value = this.form.getRawValue();
-      return this.albumFacade.create(value);
+      upload.queue.set([...upload.queue(), { photo, progress }]);
+
+      loaded += 1;
+
+      upload.resizing.set(percent(loaded, total));
     }
 
-    this.form.markAllAsTouched();
+    let completed = 0;
+
+    const onQueueProgress = ({ photo, progress }: PhotoProgress) => {
+      const onUploadProgress = ({ loaded, total, type }: HttpProgressEvent) => {
+        if (type === HttpEventType.UploadProgress) {
+          progress.set(percent(loaded, total ?? photo.size));
+        }
+
+        if (type === HttpEventType.Response) {
+          completed += 1;
+
+          if (completed >= upload.total()) {
+            this.albumFacade.loadOne(album);
+          }
+        }
+      };
+
+      const { width, height } = photo;
+
+      const data = { album, width, height, photo };
+
+      return this.photoFacade.upload(data).pipe(tap(onUploadProgress));
+    };
+
+    from(upload.queue()).pipe(concatMap(onQueueProgress)).subscribe();
+  }
+
+  editAlbum(album: Album) {
+    const sheet$ = this.sheetFacade.open<
+      AlbumDetailsSheet,
+      Album,
+      EditableAlbum
+    >(AlbumDetailsSheet, album);
+
+    sheet$.pipe(take(1)).subscribe((result) => {
+      if (result) {
+        this.albumFacade.update(result);
+      }
+    });
   }
 }

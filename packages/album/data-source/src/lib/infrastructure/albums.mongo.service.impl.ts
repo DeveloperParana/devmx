@@ -11,23 +11,32 @@ export class AlbumsMongoServiceImpl
 {
   protected override applyPopulate<U>(query: Query<U, AlbumCollection>) {
     return query
-      .populate('owner', 'name username photo')
-      .populate('contributors')
-      .populate('photos');
+      .populate({
+        path: 'owner',
+        select: 'name displayName',
+      })
+      .populate('contributors', 'name displayName')
+      .populate('photos', 'type content caption createdAt');
   }
 
   protected override applyEditableParser<U>(
     data: EditableEntity<AlbumCollection>
   ): U {
-    const contributors = (data.contributors ?? []).map((p) => {
-      return typeof p === 'string' ? p : p.id;
+    const contributors = (data.contributors ?? []).map((contributor) => {
+      return typeof contributor === 'string' ? contributor : contributor.id;
     });
 
-    const photos = (data.photos ?? []).map((p) => {
-      return typeof p === 'string' ? p : p.id;
+    const photos = (data.photos ?? []).map((photo) => {
+      return typeof photo === 'string' ? photo : photo.id;
     });
 
-    return { ...data, photos, contributors } as U;
+    if (photos.length || !data.id) {
+      data = Object.assign(data, { photos });
+    }
+
+    const owner = typeof data.owner === 'string' ? data.owner : data.owner.id;
+
+    return { ...data, owner, contributors } as U;
   }
 }
 

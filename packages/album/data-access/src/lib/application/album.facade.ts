@@ -5,11 +5,8 @@ import {
   DeleteAlbumUseCase,
   FindAlbumByIDUseCase,
   FindAlbumsUseCase,
-  SavePhoto,
-  SavePhotoUseCase,
   UpdateAlbumUseCase,
 } from '@devmx/album-domain/client';
-import { take } from 'rxjs';
 
 export class AlbumFacade extends EntityFacade<Album> {
   constructor(
@@ -17,8 +14,7 @@ export class AlbumFacade extends EntityFacade<Album> {
     private findAlbumsUseCase: FindAlbumsUseCase,
     private findAlbumByIdUseCase: FindAlbumByIDUseCase,
     private updateAlbumUseCase: UpdateAlbumUseCase,
-    private deleteAlbumUseCase: DeleteAlbumUseCase,
-    private savePhotoUseCase: SavePhotoUseCase
+    private deleteAlbumUseCase: DeleteAlbumUseCase
   ) {
     super({
       response: { data: [], items: 0, pages: 0 },
@@ -35,21 +31,22 @@ export class AlbumFacade extends EntityFacade<Album> {
     this.onLoad(this.findAlbumsUseCase.execute(this.state.params));
   }
 
-  savePhoto(data: SavePhoto) {
-    const request$ = this.savePhotoUseCase.execute(data);
-    request$.pipe(take(1)).subscribe(() => this.loadOne(data.album));
-  }
-
   loadOne(id: string) {
     this.onLoadOne(this.findAlbumByIdUseCase.execute(id));
   }
 
   create(data: EditableAlbum) {
-    this.onCreate(this.createAlbumUseCase.execute(data));
+    return this.createAlbumUseCase.execute(data);
   }
 
   update(data: EditableAlbum) {
-    this.onUpdate(this.updateAlbumUseCase.execute(data));
+    const request$ = this.updateAlbumUseCase.execute(data);
+
+    this.onUpdate(request$);
+
+    this.loadOne(data.id);
+
+    return request$;
   }
 
   delete(id: string) {
@@ -64,6 +61,5 @@ export function provideAlbumFacade() {
     FindAlbumByIDUseCase,
     UpdateAlbumUseCase,
     DeleteAlbumUseCase,
-    SavePhotoUseCase,
   ]);
 }

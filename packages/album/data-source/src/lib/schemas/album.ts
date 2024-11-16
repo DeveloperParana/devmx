@@ -1,9 +1,9 @@
 import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
+import { PhotoCollection, PhotoSchema } from './photo';
 import { Album } from '@devmx/shared-api-interfaces';
 import { Prop, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { PhotoCollection } from './photo';
 
 @Schema({ timestamps: { createdAt: true } })
 export class AlbumCollection extends Document implements Album {
@@ -13,28 +13,17 @@ export class AlbumCollection extends Document implements Album {
   title: string;
 
   @Prop({
-    type: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: PhotoCollection.name,
-      },
-    ],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: PhotoCollection.name }],
   })
   photos: PhotoCollection[];
 
   @Prop({
-    type: mongoose.Schema.Types.ObjectId,
-    ref: PhotoCollection.name,
+    type: PhotoSchema,
   })
   cover?: PhotoCollection;
 
   @Prop({
-    type: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: UserCollection.name,
-      },
-    ],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: UserCollection.name }],
   })
   contributors: UserCollection[];
 

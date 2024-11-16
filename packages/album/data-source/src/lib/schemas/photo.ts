@@ -1,4 +1,5 @@
 import { Album, ImageMimeType, Photo } from '@devmx/shared-api-interfaces';
+import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
@@ -7,7 +8,7 @@ function toBase64(type: string, content: string) {
   return `data:${type};base64,${content}`;
 }
 
-@Schema()
+@Schema({ timestamps: { createdAt: true } })
 export class PhotoCollection extends Document implements Photo {
   override id: string;
 
@@ -15,9 +16,18 @@ export class PhotoCollection extends Document implements Photo {
   content: Buffer;
 
   get data() {
-    const hasPhoto = this.content && this.type;
-    return hasPhoto ? toBase64(this.type, this.content.toString('base64')) : '';
+    if (!this.content || !this.type) {
+      return '';
+    }
+
+    return toBase64(this.type, this.content.toString('base64'));
   }
+
+  @Prop({ required: true, type: Number })
+  width: number;
+
+  @Prop({ required: true, type: Number })
+  height: number;
 
   @Prop({
     type: String,
@@ -39,11 +49,26 @@ export class PhotoCollection extends Document implements Photo {
   caption?: string;
 
   @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: UserCollection.name }],
+  })
+  tagged: UserCollection[];
+
+  @Prop({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'AlbumCollection',
     required: true,
   })
   album: Album;
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: UserCollection.name,
+    required: true,
+  })
+  owner: UserCollection;
+
+  @Prop({ type: Date })
+  createdAt: Date;
 }
 
 export const PhotoSchema = createSchema(PhotoCollection);

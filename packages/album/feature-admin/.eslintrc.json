@@ -28,7 +28,7 @@
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": ["Component", "Container", "Dialog"]
+            "suffixes": ["Component", "Container", "Dialog", "Sheet"]
           }
         ]
       }

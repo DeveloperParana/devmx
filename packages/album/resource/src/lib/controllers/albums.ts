@@ -1,12 +1,12 @@
-import {
-  ApiTags,
-  ApiOkResponse,
-  ApiBearerAuth,
-  ApiConsumes,
-} from '@nestjs/swagger';
-import { AuthUser, Album } from '@devmx/shared-api-interfaces';
+import { Authentication, Album } from '@devmx/shared-api-interfaces';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { exceptionByError } from '@devmx/shared-resource';
+import {
+  ApiTags,
+  ApiConsumes,
+  ApiOkResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import {
   User,
   Roles,
@@ -26,19 +26,28 @@ import {
   Controller,
   UploadedFile,
   UseInterceptors,
+  NotFoundException,
+  ForbiddenException,
+  BadRequestException,
 } from '@nestjs/common';
 import {
   AlbumDto,
+  PhotosFacade,
   AlbumsFacade,
-  CreateAlbumDto,
   UpdateAlbumDto,
+  CreateAlbumDto,
+  CreatePhotoDto,
 } from '@devmx/album-data-source';
 import 'multer';
 
-@ApiTags('Albums')
+
+@ApiTags('Albuns')
 @Controller('albums')
 export class AlbumsController {
-  constructor(private readonly albumsFacade: AlbumsFacade) {}
+  constructor(
+    private readonly albumsFacade: AlbumsFacade,
+    private readonly photosFacade: PhotosFacade
+  ) {}
 
   @Post()
   @ApiBearerAuth()
@@ -46,7 +55,7 @@ export class AlbumsController {
     try {
       return await this.albumsFacade.create({ ...data, owner });
     } catch (err) {
-      throw exceptionByError(err);
+      throw new BadRequestException(err);
     }
   }
 
@@ -57,7 +66,7 @@ export class AlbumsController {
     try {
       return await this.albumsFacade.find(params);
     } catch (err) {
-      throw exceptionByError(err);
+      throw new BadRequestException(err);
     }
   }
 
@@ -68,50 +77,53 @@ export class AlbumsController {
     try {
       return await this.albumsFacade.findOne(id);
     } catch (err) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Album não encontrado',
-      });
+      throw new NotFoundException('Album não encontrado');
     }
   }
 
-  @Post(':id/photo')
-  @UseInterceptors(FileInterceptor('photo'))
+  @Post(':id/upload')
+  @ApiBearerAuth()
   @ApiConsumes('multipart/form-data')
-  uploadFile(
+  @UseInterceptors(FileInterceptor('file'))
+  async upload(
+    @User('id') owner: string,
     @Param('id') album: string,
-    @UploadedFile() photo: Express.Multer.File
+    @Body() data: CreatePhotoDto,
+    @UploadedFile() file: Express.Multer.File
   ) {
-    console.log(photo);
-    this.albumsFacade.savePhoto({ album, photo });
+    try {
+      const content = file.buffer;
+      const value = { ...data, album, content, owner };
+      const photo = await this.photosFacade.create(value);
+
+      return await this.albumsFacade.addPhoto(album, photo);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
   @Patch(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: AlbumDto })
-  @Roles(['director', 'manager', 'staff', 'leader'])
   async update(
-    @User() auth: AuthUser,
+    @User() auth: Authentication,
     @Param('id') id: string,
     @Body() updateAlbumDto: UpdateAlbumDto
   ) {
     const album = await this.albumsFacade.findOne(id);
 
     if (!album) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Album não encontrado',
-      });
+      throw new NotFoundException('Album não encontrado');
     }
 
     if (album.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
-      throw exceptionByError({ code: 403, message: 'Acesso negado' });
+      throw new ForbiddenException('Acesso negado');
     }
 
     try {
       return await this.albumsFacade.update(id, updateAlbumDto);
     } catch (err) {
-      throw exceptionByError({ code: 400, message: 'Solicitação incorreta' });
+      throw new BadRequestException(err);
     }
   }
 
@@ -119,7 +131,7 @@ export class AlbumsController {
   @ApiBearerAuth()
   @ApiOkResponse({ type: AlbumDto })
   @Roles(['director', 'manager', 'staff', 'leader'])
-  async remove(@User() auth: AuthUser, @Param('id') id: string) {
+  async remove(@User() auth: Authentication, @Param('id') id: string) {
     const album = await this.albumsFacade.findOne(id);
 
     if (!album) {
@@ -130,13 +142,13 @@ export class AlbumsController {
     }
 
     if (album.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
-      throw exceptionByError({ code: 403, message: 'Acesso negado' });
+      throw new ForbiddenException('Acesso negado');
     }
 
     try {
       return await this.albumsFacade.delete(id);
     } catch (err) {
-      throw exceptionByError({ code: 400, message: 'Solicitação incorreta' });
+      throw new BadRequestException(err);
     }
   }
 }

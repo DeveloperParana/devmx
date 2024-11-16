@@ -1,5 +1,8 @@
-import { provideAlbumHttpService } from '../infrastrucure';
+import {
+  provideAlbumHttpService,
+  providePhotoHttpService,
+} from '../infrastrucure';
 
 export function provideServices() {
-  return [provideAlbumHttpService()];
+  return [provideAlbumHttpService(), providePhotoHttpService()];
 }

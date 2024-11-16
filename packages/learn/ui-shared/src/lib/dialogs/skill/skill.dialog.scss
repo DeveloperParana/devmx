@@ -2,6 +2,8 @@
   display: block;
   width: 24em;
 
+  max-width: calc(98vw - 32px);
+
   h2 {
     font-size: 1.2em;
     margin-bottom: 0;

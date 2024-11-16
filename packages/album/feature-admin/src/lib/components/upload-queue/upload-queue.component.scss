@@ -1,0 +1,27 @@
+:host {
+  position: fixed;
+  bottom: 64px;
+  right: 12px;
+
+  .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-height: 60vh;
+    overflow: auto;
+    position: relative;
+
+    padding-bottom: 3em;
+
+    footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  }
+}

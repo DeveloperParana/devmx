@@ -1,5 +1,5 @@
-import { provideAlbumFacade } from '../application';
+import { provideAlbumFacade, providePhotoFacade } from '../application';
 
 export function provideFacades() {
-  return [provideAlbumFacade()];
+  return [provideAlbumFacade(), providePhotoFacade()];
 }

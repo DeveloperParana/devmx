@@ -1,5 +1,6 @@
+import { albumFeatureShellProviders } from './album-feature-shell.providers';
 import { AlbumFeatureShellComponent } from './album-feature-shell.component';
-import { AlbumDetailsContainer, AlbumsContainer } from './containers';
+import { AlbumContainer, AlbumsContainer } from './containers';
 import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Album } from '@devmx/shared-api-interfaces';
 import { albumResolver } from './resolvers';
@@ -12,6 +13,7 @@ export const albumFeatureShellRoutes: Route[] = [
       breadcrumb: 'Albuns',
     },
     canActivate: [rolesGuard('member')],
+    providers: albumFeatureShellProviders,
     component: AlbumFeatureShellComponent,
     children: [
       {
@@ -24,7 +26,7 @@ export const albumFeatureShellRoutes: Route[] = [
       {
         path: '',
         data: {
-          breadcrumb: 'Alguns',
+          breadcrumb: 'Albuns',
         },
         component: AlbumsContainer,
       },
@@ -36,9 +38,19 @@ export const albumFeatureShellRoutes: Route[] = [
           },
         },
         resolve: { album: albumResolver },
-        component: AlbumDetailsContainer,
-        outlet: 'right',
+        component: AlbumContainer,
       },
+      // {
+      //   path: ':id',
+      //   data: {
+      //     breadcrumb: (data: { album: Album }) => {
+      //       return data.album.title;
+      //     },
+      //   },
+      //   resolve: { album: albumResolver },
+      //   component: AlbumDetailsContainer,
+      //   outlet: 'right',
+      // },
     ],
   },
 ];

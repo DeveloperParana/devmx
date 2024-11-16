@@ -15,13 +15,6 @@ export const albumFeatureAdminRoutes: Route[] = [
     component: AlbumFeatureAdminComponent,
     children: [
       {
-        path: 'meus-albuns/novo',
-        data: {
-          breadcrumb: 'Novo',
-        },
-        component: AlbumContainer,
-      },
-      {
         path: 'meus-albuns/:id',
         data: {
           breadcrumb: (data: { album: Album }) => {

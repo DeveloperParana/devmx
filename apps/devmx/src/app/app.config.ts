@@ -31,7 +31,6 @@ import {
   withViewTransitions,
 } from '@angular/router';
 import {
-  withFetch,
   HttpClient,
   provideHttpClient,
   withInterceptors,
@@ -44,7 +43,6 @@ import {
   isDevMode,
 } from '@angular/core';
 
-
 registerLocaleData(pt, 'pt-BR', ptBr);
 
 export const appConfig: ApplicationConfig = {
@@ -54,7 +52,10 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withViewTransitions(),
       withHashLocation(),
-      withRouterConfig({})
+      withRouterConfig({
+        onSameUrlNavigation: 'ignore',
+        urlUpdateStrategy: 'deferred'
+      })
     ),
     provideAnimationsAsync(),
     {
@@ -65,11 +66,8 @@ export const appConfig: ApplicationConfig = {
       provide: ErrorHandler,
       useClass: AuthErrorHandler,
     },
-    provideLayout(undefined, appSections),
-    provideHttpClient(
-      withFetch(),
-      withInterceptors([authInterceptor, loaderInterceptor])
-    ),
+    provideLayout(appSections),
+    provideHttpClient(withInterceptors([authInterceptor, loaderInterceptor])),
     provideHttpClientImpl(HttpClient),
     ...provideAccount(),
     provideLayoutToolbar(AuthenticationFacade),

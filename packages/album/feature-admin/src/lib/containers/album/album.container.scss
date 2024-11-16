@@ -2,25 +2,91 @@
 
 :host {
   flex: 1;
+  padding: 1em;
   display: flex;
   flex-direction: column;
 
-  .drag-area {
-    margin: 1em;
-    min-height: 32em;
-    @include mat.elevation-transition();
-    @include mat.elevation(2);
+  .album-card {
+    gap: 1em;
 
-    border-radius: 16px;
+    &-header {
+      justify-content: space-between;
 
-    transition: background-image 600ms ease-in-out;
+      ::ng-deep .mat-mdc-card-header-text {
+        flex: 1;
+        justify-self: flex-start;
+      }
+    }
 
-    &.drag-over {
-      @include mat.elevation(16);
+    &-content {
+      gap: 1em;
+      display: grid;
+      grid-auto-flow: dense;
 
-      background-image: url('/figures/drop-photos.svg');
-      background-position: center center;
-      background-repeat: no-repeat;
+      grid-template-columns: repeat(4, 1fr);
+
+      @media (max-width: 1918px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 1278px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      figure {
+        margin: 0;
+        box-sizing: border-box;
+        border-radius: 0.4em;
+        position: relative;
+        overflow: hidden;
+
+        background-color: rgba(0, 0, 0, 0.04);
+
+        img {
+          width: 100%;
+          display: flex;
+          object-fit: cover;
+          height: 24em;
+        }
+
+        figcaption {
+          display: flex;
+          width: 100%;
+          padding: 0.4em;
+          position: absolute;
+          bottom: 0;
+
+          background-color: rgba(0, 0, 0, 0.4);
+          color: rgba(255, 255, 255, 0.6);
+
+          z-index: 100;
+
+          &:empty {
+            display: none;
+          }
+        }
+      }
+
+      &.drag-area {
+        min-height: 32em;
+
+        @include mat.elevation-transition();
+
+        transition: background-image 600ms ease-in-out;
+
+        &.drag-over {
+          @include mat.elevation(4);
+
+          background-color: rgba(255, 255, 255, 0.4);
+          background-image: url('/figures/drop-photos.svg');
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+      }
     }
   }
 }

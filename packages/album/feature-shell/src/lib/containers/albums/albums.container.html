@@ -1,23 +1,35 @@
 <header></header>
 
-@defer { @if (albumFacade.response$ | async; as albums) {
+@defer (on timer(500ms)) {
+<!--  -->
+@if (albumFacade.response$ | async; as response) {
+
+<!-- <pre>{{response | json}}</pre> -->
 
 <div class="albums-container">
-  @for (album of albums.data; track album.id) {
+  @for (album of response.data; track album.id) {
   <!--  -->
   @defer (on viewport) {
-  <a [routerLink]="['/', 'albuns', { outlets: { right: [album.id] }}]">
+  <a [routerLink]="['.', album.id]">
     <devmx-album-card [data]="album" />
   </a>
+
+  <!-- <a [routerLink]="['/', 'albuns', { outlets: { right: [album.id] }}]">
+    <devmx-album-card [data]="album" />
+  </a> -->
   } @placeholder {
   <devmx-skeleton [rows]="3" />
-  } }
+  }
+  <!--  -->
+  }
 </div>
+
+<div class="spacer"></div>
 
 <footer>
   <devmx-paginator
     [size]="10"
-    [items]="albums.items"
+    [items]="response.items"
     (pageChange)="onPageChange($event)"
   />
 </footer>
@@ -25,7 +37,8 @@
 <!--  -->
 } @placeholder {
 <div class="albums-container">
-  <devmx-skeleton [rows]="4" />
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
   <devmx-skeleton [rows]="3" />
 </div>
 }

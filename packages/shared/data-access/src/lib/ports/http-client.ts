@@ -7,15 +7,6 @@ interface ResponseTypeMap<T = void> {
   json: T;
 }
 
-export enum HttpEventType {
-  Sent = 0,
-  UploadProgress = 1,
-  ResponseHeader = 2,
-  DownloadProgress = 3,
-  Response = 4,
-  User = 5,
-}
-
 export interface RequestConfig extends Omit<RequestInit, 'method'> {
   observe?: 'body' | 'events' | 'response';
   responseType: keyof ResponseTypeMap;

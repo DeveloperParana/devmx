@@ -2,11 +2,23 @@
   display: block;
   padding: 1em;
 
+  form {
+    display: flex;
+    flex-flow: row wrap;
+
+    > div {
+      gap: 2em;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   .event-content {
     flex: 1;
     gap: 1.6em;
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
+    // flex-flow: row wrap;
 
     section {
       flex: 1;
@@ -22,6 +34,17 @@
 
       .mat-mdc-form-field {
         width: 100%;
+      }
+
+      .event-field {
+
+        &-date {
+          max-width: 10em;
+        }
+
+        &-time {
+          max-width: 7em;
+        }
       }
 
       .add-button {
