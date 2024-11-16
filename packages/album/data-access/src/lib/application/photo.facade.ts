@@ -57,7 +57,7 @@ export class PhotoFacade extends EntityFacade<Photo> {
   }
 
   delete(id: string) {
-    this.onDelete(this.deletePhotoUseCase.execute(id));
+    return this.deletePhotoUseCase.execute(id);
   }
 }
 

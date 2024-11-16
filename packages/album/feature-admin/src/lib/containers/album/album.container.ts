@@ -1,14 +1,16 @@
 import { HttpProgressEvent } from '@devmx/shared-api-interfaces/client';
 import { Album, EditableAlbum } from '@devmx/shared-api-interfaces';
 import { AlbumFacade, PhotoFacade } from '@devmx/album-data-access';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { SheetFacade } from '@devmx/shared-ui-global/sheet';
 import { MatButtonModule } from '@angular/material/button';
+import { SelectionModel } from '@angular/cdk/collections';
 import { UploadQueueComponent } from '../../components';
 import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HttpEventType } from '@angular/common/http';
-import { concatMap, from, take, tap } from 'rxjs';
+import { combineLatest, concat, concatMap, from, take, tap } from 'rxjs';
 import { percent } from '@devmx/shared-util-data';
 import { AlbumDetailsSheet } from '../../sheets';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +27,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-
 interface PhotoProgress {
   photo: ResizedImage;
   progress: WritableSignal<number>;
@@ -39,6 +40,7 @@ interface PhotoProgress {
   imports: [
     UploadQueueComponent,
     DropZoneDirective,
+    MatCheckboxModule,
     MatButtonModule,
     MatCardModule,
     IconComponent,
@@ -56,6 +58,8 @@ export class AlbumContainer {
 
   sheetFacade = inject(SheetFacade);
 
+  selection = new SelectionModel<string>(true);
+
   async onDrop(album: string, files: File[], upload: UploadQueueComponent) {
     const total = files.length * 2;
 
@@ -70,7 +74,7 @@ export class AlbumContainer {
 
       const progress = signal(0);
 
-      const photo = await resizeImage(file, 1280);
+      const photo = await resizeImage(file, 640);
 
       upload.queue.set([...upload.queue(), { photo, progress }]);
 
@@ -104,6 +108,15 @@ export class AlbumContainer {
     };
 
     from(upload.queue()).pipe(concatMap(onQueueProgress)).subscribe();
+  }
+
+  deleteSelection(ids: string[], albumId: string) {
+    combineLatest(
+      ids.map((id) => {
+        this.selection.deselect(id);
+        return this.photoFacade.delete(id);
+      })
+    ).subscribe(() => this.albumFacade.loadOne(albumId));
   }
 
   editAlbum(album: Album) {

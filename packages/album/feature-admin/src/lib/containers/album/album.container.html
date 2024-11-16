@@ -11,6 +11,18 @@
     </button>
   </mat-card-header>
 
+  <mat-card-actions align="end">
+    <button
+      color="warn"
+      type="button"
+      mat-flat-button
+      [disabled]="selection.selected.length === 0"
+      (click)="deleteSelection(selection.selected, album.id)"
+    >
+      Remover {{selection.selected.length}} foto(s)
+    </button>
+  </mat-card-actions>
+
   <mat-card-content
     devmxDropZone
     [accept]="['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']"
@@ -23,6 +35,12 @@
       <img [src]="photo.data" [alt]="photo.caption" />
 
       <figcaption>{{photo.caption}}</figcaption>
+
+      <mat-checkbox
+        class="photo-checkbox"
+        [checked]="selection.isSelected(photo.id)"
+        (change)="$event ? selection.toggle(photo.id) : null"
+      ></mat-checkbox>
     </figure>
 
     }
