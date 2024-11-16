@@ -23,7 +23,7 @@
     }
   }
 
-  .mat-mdc-unelevated-button:not(:disabled) {
+  .mat-mdc-unelevated-button:not(.mat-warn):not(:disabled) {
     background-color: mat.get-theme-color($theme, secondary, 60);
     color: mat.get-theme-color($theme, on-secondary);
   }

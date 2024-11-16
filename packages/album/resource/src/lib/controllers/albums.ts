@@ -1,6 +1,5 @@
 import { Authentication, Album } from '@devmx/shared-api-interfaces';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { exceptionByError } from '@devmx/shared-resource';
 import {
   ApiTags,
   ApiConsumes,
@@ -12,7 +11,6 @@ import {
   Roles,
   Allowed,
   ApiPage,
-  authIsAdmin,
   QueryParamsDto,
 } from '@devmx/shared-data-source';
 import {
@@ -83,19 +81,32 @@ export class AlbumsController {
   @Post(':id/upload')
   @ApiBearerAuth()
   @ApiConsumes('multipart/form-data')
+  @Roles(['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'])
   @UseInterceptors(FileInterceptor('file'))
   async upload(
-    @User('id') owner: string,
-    @Param('id') album: string,
+    @User() auth: Authentication,
+    @Param('id') id: string,
     @Body() data: CreatePhotoDto,
     @UploadedFile() file: Express.Multer.File
   ) {
+    const album = await this.albumsFacade.findOne(id);
+
+    if (!album) {
+      throw new NotFoundException('Album não encontrado');
+    }
+
+    if (!this.#checkPermission(auth, album)) {
+      throw new ForbiddenException('Acesso negado');
+    }
+
     try {
+      const owner = auth.id;
       const content = file.buffer;
-      const value = { ...data, album, content, owner };
+      const value = { ...data, album: id, content, owner };
+
       const photo = await this.photosFacade.create(value);
 
-      return await this.albumsFacade.addPhoto(album, photo);
+      return await this.albumsFacade.addPhoto(id, photo);
     } catch (err) {
       throw new BadRequestException(err);
     }
@@ -104,6 +115,7 @@ export class AlbumsController {
   @Patch(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: AlbumDto })
+  @Roles(['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'])
   async update(
     @User() auth: Authentication,
     @Param('id') id: string,
@@ -115,7 +127,7 @@ export class AlbumsController {
       throw new NotFoundException('Album não encontrado');
     }
 
-    if (album.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
+    if (!this.#checkPermission(auth, album)) {
       throw new ForbiddenException('Acesso negado');
     }
 
@@ -131,7 +143,7 @@ export class AlbumsController {
   @Delete(':id')
   @ApiBearerAuth()
   @ApiOkResponse({ type: AlbumDto })
-  @Roles(['director', 'manager', 'staff', 'leader'])
+  @Roles(['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'])
   async remove(@User() auth: Authentication, @Param('id') id: string) {
     const album = await this.albumsFacade.findOne(id);
 
@@ -139,7 +151,7 @@ export class AlbumsController {
       throw new NotFoundException('Album não encontrado');
     }
 
-    if (album.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
+    if (!this.#checkPermission(auth, album)) {
       throw new ForbiddenException('Acesso negado');
     }
 
@@ -148,5 +160,19 @@ export class AlbumsController {
     } catch (err) {
       throw new BadRequestException(err);
     }
+  }
+
+  #checkPermission(auth: Authentication, entity: AlbumDto) {
+    let isContributor = false;
+
+    if (entity.contributors && entity.contributors.length) {
+      const contributor = entity.contributors.find(
+        (contributor) => contributor.id === auth.id
+      );
+
+      isContributor = !!contributor;
+    }
+
+    return entity.owner.id === auth.id || isContributor;
   }
 }

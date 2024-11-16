@@ -69,6 +69,27 @@
             display: none;
           }
         }
+
+        .photo-checkbox {
+          background-color: rgba(255, 255, 255, 1);
+          position: absolute;
+          border-radius: 50%;
+          opacity: 0;
+          right: 1em;
+          top: -2em;
+
+          transition: top 250ms ease-in-out, opacity 250ms ease-in-out;
+        }
+
+        &:hover .photo-checkbox {
+          opacity: 1;
+          top: 1em;
+        }
+
+        .photo-checkbox.mat-mdc-checkbox-checked {
+          opacity: 1;
+          top: 1em;
+        }
       }
 
       &.drag-area {
