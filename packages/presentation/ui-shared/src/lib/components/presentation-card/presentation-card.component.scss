@@ -24,6 +24,21 @@
       max-width: calc(100vw - 3em);
     }
 
+    &-header {
+      padding-bottom: 1em;
+
+      mat-card-subtitle {
+        gap: 0.4em;
+        display: flex;
+        line-height: 1;
+        align-items: center;
+      }
+    }
+
+    &-content {
+      flex: 1;
+    }
+
     &:active,
     &:hover {
       @include mat.elevation(6);

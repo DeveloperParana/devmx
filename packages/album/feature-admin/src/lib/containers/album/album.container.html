@@ -1,39 +1,31 @@
-<form [formGroup]="form" (submit)="onSubmit()">
-  <mat-card>
-    <mat-card-content>
-      <mat-form-field>
-        <mat-label>Título do album</mat-label>
-        <input matInput formControlName="title" autofocus />
-      </mat-form-field>
-    </mat-card-content>
+@if (albumFacade.selected$ | async; as album) {
+<mat-card class="album-card">
+  <mat-card-header class="album-card-header">
+    <mat-card-title>{{album.title}}</mat-card-title>
+    <mat-card-subtitle>{{album.createdAt | date}}</mat-card-subtitle>
 
-    <!-- <mat-card-content
-      class="drag-area"
-      devmxDropZone
-      (files)="onDrop($event)"
-    ></mat-card-content> -->
+    <button mat-icon-button (click)="editAlbum(album)">
+      <devmx-icon name="software/edit" />
+    </button>
+  </mat-card-header>
 
-    <mat-card-content>
-      <ol>
-        @for (file of files(); track file.name) {
-        <li>{{file.name}} ({{file.type}}) - {{file.size}}</li>
-        }
-      </ol>
+  <mat-card-content
+    devmxDropZone
+    [accept]="['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']"
+    (files)="onDrop(album.id, $event, uploadQueue)"
+    class="album-card-content drag-area"
+  >
+    @for (photo of album.photos; track photo.id) {
 
-      <ol>
-        @for (image of images(); track image.name) {
-        <li>{{image.name}} ({{image.type}}) - {{image.size}}</li>
-        }
-      </ol>
-    </mat-card-content>
+    <figure>
+      <img [src]="photo.data" [alt]="photo.caption" />
 
-    <mat-progress-bar
-      mode="determinate"
-      [value]="progress$ | async"
-    ></mat-progress-bar>
+      <figcaption>{{photo.caption}}</figcaption>
+    </figure>
 
-    <mat-card-actions align="end">
-      <button mat-flat-button>Salvar</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+    }
+  </mat-card-content>
+</mat-card>
+
+<devmx-upload-queue #uploadQueue="devmxUploadQueue" />
+}

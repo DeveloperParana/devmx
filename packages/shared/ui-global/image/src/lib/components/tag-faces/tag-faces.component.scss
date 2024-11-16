@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  canvas {
+    position: absolute;
+  }
+}

@@ -18,6 +18,14 @@
     </mat-chip-set>
   </mat-card-content>
 
+  <mat-card-header class="presentation-card-header">
+    <mat-card-subtitle>
+      <devmx-icon name="user-circle" [size]="18" />
+      <span>{{ presentation.owner.displayName }}</span>
+    </mat-card-subtitle>
+    <!-- <mat-card-title>  </mat-card-title> -->
+  </mat-card-header>
+
   <mat-card-actions align="end" class="presentation-card-actions">
     <ng-content />
   </mat-card-actions>

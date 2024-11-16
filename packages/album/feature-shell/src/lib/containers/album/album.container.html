@@ -1,0 +1,17 @@
+@if (album$ | async; as album) {
+
+<!--  -->
+
+@for (photo of album.photos; track photo.id) {
+
+<figure>
+  <img loading="lazy" [src]="photo.data" [alt]="photo.caption" />
+
+  <figcaption>{{ photo.caption }}</figcaption>
+</figure>
+
+}
+
+<!--  -->
+
+}

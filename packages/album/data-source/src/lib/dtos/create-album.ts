@@ -1,7 +1,9 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { Photo } from '@devmx/shared-api-interfaces';
 import { CreateAlbum } from '@devmx/album-domain';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { UserRefDto } from '@devmx/shared-data-source';
 
 export class CreateAlbumDto implements CreateAlbum {
   id: string;
@@ -11,7 +13,12 @@ export class CreateAlbumDto implements CreateAlbum {
   @ApiProperty()
   title: string;
 
-  photos: Photo[] = [];
+  photos: Photo[];
+
+  @IsOptional()
+  @ApiPropertyOptional()
+  @Type(() => UserRefDto)
+  contributors?: UserRefDto[];
 
   // @IsString()
   // @IsOptional()

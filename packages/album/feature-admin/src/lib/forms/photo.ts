@@ -11,6 +11,12 @@ export class PhotoForm extends FormGroup<TypedForm<Photo>> {
       data: new FormControl('', {
         nonNullable: true,
       }),
+      width: new FormControl(0, {
+        nonNullable: true,
+      }),
+      height: new FormControl(0, {
+        nonNullable: true,
+      }),
       type: new FormControl('image/webp', {
         nonNullable: true,
       }),

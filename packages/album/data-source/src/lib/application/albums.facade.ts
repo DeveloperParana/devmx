@@ -1,13 +1,12 @@
 import { AlbumDto, CreateAlbumDto, UpdateAlbumDto } from '../dtos';
-import { Album } from '@devmx/shared-api-interfaces';
+import { Album, Photo } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
+  AddPhotoUseCase,
   CreateAlbumUseCase,
   DeleteAlbumUseCase,
   FindAlbumByIDUseCase,
   FindAlbumsUseCase,
-  SavePhoto,
-  SavePhotoUseCase,
   UpdateAlbumUseCase,
 } from '@devmx/album-domain/server';
 import {
@@ -23,7 +22,7 @@ export class AlbumsFacade {
     private findAlbumByIDUseCase: FindAlbumByIDUseCase,
     private updateAlbumUseCase: UpdateAlbumUseCase,
     private deleteAlbumUseCase: DeleteAlbumUseCase,
-    private savePhotoUseCase: SavePhotoUseCase
+    private addPhotoUseCase: AddPhotoUseCase
   ) {}
 
   async create(data: CreateAlbumDto) {
@@ -31,30 +30,30 @@ export class AlbumsFacade {
     return plainToInstance(AlbumDto, event);
   }
 
-  async savePhoto(data: SavePhoto) {
-    const photo = await this.savePhotoUseCase.execute(data);
-    return photo;
+  async addPhoto(id: string, photo: Photo) {
+    const album = await this.addPhotoUseCase.execute({ id, photo });
+    return plainToInstance(AlbumDto, album);
   }
 
   async find(params: QueryParamsDto<Album>) {
     const { data, items, pages } = await this.findAlbumsUseCase.execute(params);
-    const events = plainToInstance(AlbumDto, data);
-    return new PageDto(events, items, pages);
+    const albums = plainToInstance(AlbumDto, data);
+    return new PageDto(albums, items, pages);
   }
 
   async findOne(id: string) {
-    const event = await this.findAlbumByIDUseCase.execute(id);
-    return plainToInstance(AlbumDto, event);
+    const album = await this.findAlbumByIDUseCase.execute(id);
+    return plainToInstance(AlbumDto, album);
   }
 
   async update(id: string, data: UpdateAlbumDto) {
-    const event = await this.updateAlbumUseCase.execute({ ...data, id });
-    return plainToInstance(AlbumDto, event);
+    const album = await this.updateAlbumUseCase.execute({ ...data, id });
+    return plainToInstance(AlbumDto, album);
   }
 
   async delete(id: string) {
-    const event = this.deleteAlbumUseCase.execute(id);
-    return plainToInstance(AlbumDto, event);
+    const album = this.deleteAlbumUseCase.execute(id);
+    return plainToInstance(AlbumDto, album);
   }
 }
 
@@ -65,6 +64,6 @@ export function provideAlbumsFacade() {
     FindAlbumByIDUseCase,
     UpdateAlbumUseCase,
     DeleteAlbumUseCase,
-    SavePhotoUseCase,
+    AddPhotoUseCase,
   ]);
 }

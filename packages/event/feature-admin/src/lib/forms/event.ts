@@ -1,6 +1,10 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventPresentationsForm } from './event-presentation';
-import { TypedForm, FormOption } from '@devmx/shared-ui-global/forms';
+import {
+  TypedForm,
+  FormOption,
+  invalidTimeValidator,
+} from '@devmx/shared-ui-global/forms';
 import { EventLeadersForm } from './event-leader';
 import {
   Event,
@@ -41,7 +45,10 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
       }),
       time: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [
+          Validators.required,
+          invalidTimeValidator(/^([01]\d|2[0-3]):[0-5]\d$/),
+        ],
       }),
       address: new FormControl('', {
         nonNullable: true,

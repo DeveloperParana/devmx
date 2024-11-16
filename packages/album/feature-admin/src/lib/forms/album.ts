@@ -1,7 +1,17 @@
-import { EditableAlbum } from '@devmx/shared-api-interfaces';
-import { TypedForm } from '@devmx/shared-ui-global/forms';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TypedForm, UserRefForm } from '@devmx/shared-ui-global/forms';
+import { EditableAlbum, UserRef } from '@devmx/shared-api-interfaces';
 import { PhotosForm } from './photo';
+
+class ContributorsForm extends FormArray<UserRefForm> {
+  constructor() {
+    super([]);
+  }
+
+  add(value?: UserRef) {
+    this.push(new UserRefForm(value));
+  }
+}
 
 export class AlbumForm extends FormGroup<TypedForm<EditableAlbum>> {
   constructor() {
@@ -9,11 +19,16 @@ export class AlbumForm extends FormGroup<TypedForm<EditableAlbum>> {
       id: new FormControl('', {
         nonNullable: true,
       }),
-      title: new FormControl('', {
+      title: new FormControl(new Date().toLocaleDateString(), {
         nonNullable: true,
         validators: [Validators.required],
       }),
+      contributors: new ContributorsForm(),
       photos: new PhotosForm(),
     });
+  }
+
+  get contributors() {
+    return this.controls.contributors as ContributorsForm;
   }
 }

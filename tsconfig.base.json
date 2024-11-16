@@ -208,6 +208,9 @@
       "@devmx/shared-ui-global/search": [
         "packages/shared/ui-global/search/src/index.ts"
       ],
+      "@devmx/shared-ui-global/sheet": [
+        "packages/shared/ui-global/sheet/src/index.ts"
+      ],
       "@devmx/shared-ui-global/shell": [
         "packages/shared/ui-global/shell/src/index.ts"
       ],

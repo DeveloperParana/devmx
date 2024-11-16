@@ -20,21 +20,21 @@ export const appSections: SectionHeaderOptions[] = [
         route: ['/carreiras'],
         icon: 'finance/bullseye',
       },
-      // {
-      //   label: 'Albuns',
-      //   route: ['/albuns'],
-      //   icon: 'camera-shutter',
-      // },
+      {
+        label: 'Albuns',
+        route: ['/albuns'],
+        icon: 'camera-shutter',
+      },
       {
         label: 'Academia',
         route: ['/academia'],
         icon: 'academic-cap',
       },
-      {
-        label: 'Aprenda',
-        route: ['/aprenda'],
-        icon: 'book-opened',
-      },
+      // {
+      //   label: 'Aprenda',
+      //   route: ['/aprenda'],
+      //   icon: 'book-opened',
+      // },
     ],
   },
   {
@@ -53,12 +53,12 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'presentation',
         roles: ['speaker'],
       },
-      // {
-      //   label: 'Meus albuns',
-      //   route: ['/albuns', 'administracao', 'meus-albuns'],
-      //   icon: 'camera-shutter',
-      //   roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'],
-      // },
+      {
+        label: 'Meus albuns',
+        route: ['/albuns', 'administracao', 'meus-albuns'],
+        icon: 'camera-shutter',
+        roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'],
+      },
       {
         label: 'Academia',
         route: ['/academia', 'administracao', 'meus-cursos'],
@@ -81,6 +81,7 @@ export const appSections: SectionHeaderOptions[] = [
   },
   {
     label: 'Gerenciamento',
+    expanded: true,
     links: [
       {
         label: 'Eventos',

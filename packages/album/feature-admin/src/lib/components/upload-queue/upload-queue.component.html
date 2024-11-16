@@ -1,0 +1,43 @@
+<mat-expansion-panel [expanded]="opened()" [hideToggle]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title> Enviando </mat-panel-title>
+    <mat-panel-description>
+      {{ completed() }} de {{ total() }}
+      <devmx-icon name="arrow/chevron-down" />
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <section>
+    <mat-list>
+      @for (item of queue(); track item.photo.name) {
+      <mat-list-item>
+        <span matListItemTitle>
+          {{ item.photo.size | fileSize }} - {{ item.progress() }}%
+        </span>
+        <br />
+        <mat-progress-bar mode="determinate" [value]="item.progress()" />
+        <!-- <img
+          matListItemAvatar
+          [src]="item.photo | imageFileUrl"
+          [alt]="item.photo.name"
+        />
+        <span matListItemTitle>{{ item.photo.name }}</span>
+        <span matListItemLine>
+          <span>{{ item.photo.size | fileSize }}</span>
+          <br />
+          <mat-progress-bar mode="determinate" [value]="item.progress()" />
+        </span> -->
+      </mat-list-item>
+      }
+    </mat-list>
+
+    @if (resizing(); as resizing) {
+    <footer>
+      <mat-progress-bar mode="determinate" [value]="resizing" />
+      <p>
+        <strong>{{ resizing }}%</strong> processados
+      </p>
+    </footer>
+    }
+  </section>
+</mat-expansion-panel>

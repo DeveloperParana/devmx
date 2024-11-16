@@ -1,6 +1,6 @@
-import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
 import { UserRef } from '@devmx/shared-api-interfaces';
 import { UserProfileDto } from './user-profile';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UserRefDto implements UserRef {
   @ApiProperty()
@@ -12,8 +12,6 @@ export class UserRefDto implements UserRef {
   @ApiProperty()
   displayName: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   profile?: UserProfileDto;
 }
-
-console.log(getSchemaPath(UserRefDto));

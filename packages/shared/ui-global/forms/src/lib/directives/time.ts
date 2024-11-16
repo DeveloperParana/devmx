@@ -1,12 +1,24 @@
 import { Directive, HostListener } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import {
+  NgControl,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
+
+export function invalidTimeValidator(timeRegExp: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const invalid = timeRegExp.test(control.value);
+    return invalid ? null : { invalidTime: { value: control.value } };
+  };
+}
 
 @Directive({
   selector: 'input[devmxTime]',
   standalone: true,
 })
 export class TimeDirective {
-  constructor(private ngControl: NgControl) {}
+  constructor(public ngControl: NgControl) {}
 
   @HostListener('input', ['$event.target'])
   onInput(target: HTMLInputElement) {

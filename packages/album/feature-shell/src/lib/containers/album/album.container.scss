@@ -1,0 +1,62 @@
+:host {
+  gap: 1em;
+  padding: 1em;
+  display: grid;
+  grid-auto-flow: dense;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1918px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1278px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  figure {
+    margin: 0;
+    // width: calc(100% - 1em);
+    box-sizing: border-box;
+    border-radius: 0.4em;
+    position: relative;
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, 0.04);
+
+    transition: width 300ms ease-in-out;
+
+    &.selected {
+      width: 16em;
+      transition: width 300ms ease-in-out;
+    }
+
+    img {
+      width: 100%;
+      display: flex;
+      object-fit: cover;
+      height: 24em;
+    }
+
+    figcaption {
+      display: flex;
+      width: 100%;
+      padding: 0.4em;
+      position: absolute;
+      bottom: 0;
+
+      background-color: rgba(0, 0, 0, 0.4);
+      color: rgba(255, 255, 255, 0.6);
+
+      z-index: 100;
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
+}

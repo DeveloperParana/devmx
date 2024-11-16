@@ -15,7 +15,6 @@ import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, take, takeUntil } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 import { CourseForm } from '../../forms';
 import {
   CourseFacade,
@@ -50,7 +49,6 @@ import {
     MatCardModule,
     MatListModule,
     IconComponent,
-    AsyncPipe,
   ],
   standalone: true,
 })

@@ -12,6 +12,16 @@
     </a>
   </mat-card-header>
 
+  <mat-card-content class="album-card-content">
+    @for (photo of album.photos; track photo.id) {
+    <figure #figureRef (click)="figureRef.classList.toggle('selected')">
+      <img [src]="photo.data" [alt]="photo.caption" />
+
+      <figcaption>{{ photo.caption || '...' }}</figcaption>
+    </figure>
+    }
+  </mat-card-content>
+
   <mat-list> </mat-list>
 </mat-card>
 

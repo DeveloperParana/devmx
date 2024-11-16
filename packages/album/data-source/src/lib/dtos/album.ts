@@ -1,7 +1,8 @@
-import { Album, Photo } from '@devmx/shared-api-interfaces';
 import { UserRefDto } from '@devmx/shared-data-source';
+import { Album } from '@devmx/shared-api-interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
+import { PhotoDto } from './photo';
 
 export class AlbumDto implements Album {
   @ApiProperty()
@@ -10,7 +11,8 @@ export class AlbumDto implements Album {
   @ApiProperty()
   title: string;
 
-  photos: Photo[];
+  @Type(() => PhotoDto)
+  photos: PhotoDto[];
 
   @ApiProperty({ type: () => [UserRefDto] })
   @Type(() => UserRefDto)

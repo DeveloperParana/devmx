@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import { Presentation } from '@devmx/shared-api-interfaces';
+import { Presentation, PresentationOut } from '@devmx/shared-api-interfaces';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
@@ -26,6 +26,6 @@ export class PresentationCardComponent {
   discrete = input<boolean | ''>(false);
 
   get presentation() {
-    return this.data();
+    return this.data() as PresentationOut;
   }
 }

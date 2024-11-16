@@ -1,11 +1,16 @@
-<a class="top right tertiary-fab" mat-fab routerLink="novo">
+<button class="top right tertiary-fab" mat-fab (click)="createAlbum()">
   <devmx-icon name="plus" />
-</a>
+</button>
 
-@if (albumFacade.response$ | async; as albums) {
+@if (albumFacade.response$ | async; as response) {
 
-<div class="albums-container">
-  @for (album of albums.data; track album.id) {
+<div
+  devmxDropZone
+  class="albums-container drag-area"
+  [accept]="['image/jpeg', 'image/png', 'image/webp']"
+  (files)="onDropFiles($event)"
+>
+  @for (album of response.data; track album.id) {
 
   <devmx-album-card [data]="album">
     <a
@@ -30,7 +35,7 @@
   }
 </div>
 
-@if (!albums.items) {
+@if (!response.items) {
 <div class="no-albums-yet">
   <h2>Não temos nada aqui...</h2>
   <h3>
@@ -47,7 +52,7 @@
 <footer>
   <devmx-paginator
     [size]="10"
-    [items]="albums.items"
+    [items]="response.items"
     (pageChange)="onPageChange($event)"
   />
 </footer>

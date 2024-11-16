@@ -1,3 +1,4 @@
+import { UserRef } from '../dtos';
 import { ImageMimeType } from '../types';
 
 export interface Photo {
@@ -5,7 +6,13 @@ export interface Photo {
 
   data: string;
 
+  width: number;
+
+  height: number;
+
   type: ImageMimeType;
 
   caption?: string;
+
+  tagged?: UserRef[];
 }

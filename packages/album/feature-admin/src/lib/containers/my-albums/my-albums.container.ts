@@ -2,16 +2,18 @@ import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { AuthenticationFacade } from '@devmx/account-data-access';
+import { DropZoneDirective } from '@devmx/shared-ui-global/image';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { AlbumCardComponent } from '@devmx/album-ui-shared';
 import { MatButtonModule } from '@angular/material/button';
+import { combineLatest, filter, map, take } from 'rxjs';
 import { AlbumFacade } from '@devmx/album-data-access';
 import { Album } from '@devmx/shared-api-interfaces';
-import { combineLatest, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { AlbumForm } from '../../forms';
 
 @Component({
   selector: 'devmx-admin-my-albums',
@@ -24,6 +26,7 @@ import { AsyncPipe } from '@angular/common';
     MatTooltipModule,
     PaginatorComponent,
     AlbumCardComponent,
+    DropZoneDirective,
     IconComponent,
     AsyncPipe,
   ],
@@ -66,6 +69,22 @@ export class MyAlbumsContainer {
 
     this.albumFacade.load();
   };
+
+  onDropFiles(files: File[]) {
+    console.log(files);
+  }
+
+  createAlbum() {
+    const form = new AlbumForm();
+
+    form.patchValue({ title: new Date().toLocaleDateString() });
+
+    const request$ = this.albumFacade.create(form.getRawValue());
+
+    request$.pipe(take(1)).subscribe((album) => {
+      this.router.navigate([album.id], { relativeTo: this.route });
+    });
+  }
 
   deleteAlbum({ id, title }: Album) {
     this.dialogFacade

@@ -1,46 +1,26 @@
-import { AlbumService } from '@devmx/album-domain/client';
-import { Env } from '@devmx/shared-api-interfaces/client';
+import { Env, HttpProgressEvent } from '@devmx/shared-api-interfaces/client';
+import { AlbumService, UploadPhoto } from '@devmx/album-domain/client';
+import { HttpClient, HttpService } from '@devmx/shared-data-access';
 import { Album } from '@devmx/shared-api-interfaces';
-import { observer } from '@devmx/shared-util-data';
-import { Observable, tap } from 'rxjs';
-import {
-  HttpClient,
-  HttpService,
-  HttpEventType,
-} from '@devmx/shared-data-access';
 
 export class AlbumHttpServiceImpl
   extends HttpService<Album>
   implements AlbumService
 {
-  progressMap = new Map<File, Observable<number>>();
-
-  savePhoto(album: string, photo: File) {
-    const url = [this.url, album, 'photo'];
+  upload({ album, photo, width, height, caption }: UploadPhoto) {
     const data = new FormData();
-    data.append('photo', photo);
+    data.append('file', photo);
+    data.append('album', album);
+    data.append('width', String(width));
+    data.append('height', String(height));
+    data.append('caption', caption ?? '');
 
-    const progress = observer(0);
+    const url = [this.url, album, 'upload'];
 
-    this.progressMap.set(photo, progress.observe());
-
-    return this.http
-      .post<ProgressEvent>(url.join('/'), data, {
-        reportProgress: true,
-        observe: 'events',
-      })
-      .pipe(
-        tap((event) => {
-          if (typeof event.type === 'number') {
-            if (event.type === HttpEventType.UploadProgress) {
-              const value = event.total
-                ? Math.round((100 * event.loaded) / event.total)
-                : 0;
-              progress.update(value);
-            }
-          }
-        })
-      );
+    return this.http.post<HttpProgressEvent>(url.join('/'), data, {
+      reportProgress: true,
+      observe: 'events',
+    });
   }
 }
 

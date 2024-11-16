@@ -1,13 +1,18 @@
 import { createUseCaseProvider } from '@devmx/shared-data-source';
 import {
+  AddPhotoUseCase,
   AlbumsService,
   CreateAlbumUseCase,
+  CreatePhotoUseCase,
   DeleteAlbumUseCase,
+  DeletePhotoUseCase,
   FindAlbumByIDUseCase,
   FindAlbumsUseCase,
+  FindPhotoByIDUseCase,
+  FindPhotosUseCase,
   PhotosService,
-  SavePhotoUseCase,
   UpdateAlbumUseCase,
+  UpdatePhotoUseCase,
 } from '@devmx/album-domain/server';
 
 export function provideCreateAlbumUseCase() {
@@ -30,8 +35,28 @@ export function provideDeleteAlbumUseCase() {
   return createUseCaseProvider(DeleteAlbumUseCase, [AlbumsService]);
 }
 
-export function provideSavePhotoUseCase() {
-  return createUseCaseProvider(SavePhotoUseCase, [PhotosService]);
+export function provideAddPhotoUseCase() {
+  return createUseCaseProvider(AddPhotoUseCase, [AlbumsService]);
+}
+
+export function provideCreatePhotoUseCase() {
+  return createUseCaseProvider(CreatePhotoUseCase, [PhotosService]);
+}
+
+export function provideFindPhotosUseCase() {
+  return createUseCaseProvider(FindPhotosUseCase, [PhotosService]);
+}
+
+export function provideFindPhotoByIDUseCase() {
+  return createUseCaseProvider(FindPhotoByIDUseCase, [PhotosService]);
+}
+
+export function provideUpdatePhotoUseCase() {
+  return createUseCaseProvider(UpdatePhotoUseCase, [PhotosService]);
+}
+
+export function provideDeletePhotoUseCase() {
+  return createUseCaseProvider(DeletePhotoUseCase, [PhotosService]);
 }
 
 export function provideUseCases() {
@@ -41,6 +66,12 @@ export function provideUseCases() {
     provideFindAlbumByIDUseCase(),
     provideUpdateAlbumUseCase(),
     provideDeleteAlbumUseCase(),
-    provideSavePhotoUseCase(),
+    provideAddPhotoUseCase(),
+
+    provideCreatePhotoUseCase(),
+    provideFindPhotosUseCase(),
+    provideFindPhotoByIDUseCase(),
+    provideUpdatePhotoUseCase(),
+    provideDeletePhotoUseCase(),
   ];
 }
