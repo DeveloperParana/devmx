@@ -28,14 +28,12 @@ export function detectFaces(element: HTMLImageElement) {
 
   const image = context.getImageData(0, 0, canvas.width, canvas.height);
 
-  // Inicializando uma lista para armazenar os retângulos dos rostos
+
   const faceRects: DOMRect[] = [];
 
-  // Melhorando o algoritmo para detecção de características faciais
   const visited: boolean[] = new Array(width * height).fill(false);
 
   for (let y = 0; y < height; y += 5) {
-    // Reduz o passo para aumentar a precisão
     for (let x = 0; x < width; x += 5) {
       const index = (y * width + x) * 4;
       const red = image.data[index];
@@ -51,16 +49,13 @@ export function detectFaces(element: HTMLImageElement) {
     }
   }
 
-  // Filtrando e ajustando os retângulos detectados para evitar redundâncias
   return mergeOverlappingRects(faceRects);
 }
 
-// Função auxiliar para determinar se a cor do pixel está dentro da faixa de tons de pele
 function isSkinTone(r: number, g: number, b: number): boolean {
   return r > 95 && g > 40 && b > 20 && r > g && r > b && Math.abs(r - g) > 15;
 }
 
-// Função auxiliar para encontrar os limites de um rosto usando uma abordagem BFS/DFS
 function findFaceBounds(
   startX: number,
   startY: number,
@@ -93,7 +88,10 @@ function findFaceBounds(
       maxX = Math.max(maxX, x);
       maxY = Math.max(maxY, y);
 
-      // Adiciona os vizinhos à fila para expandir a área
+      /**
+       * Adiciona os vizinhos à
+       * fila para expandir a área
+       */
       queue.push([x + 1, y]);
       queue.push([x - 1, y]);
       queue.push([x, y + 1]);
@@ -101,7 +99,9 @@ function findFaceBounds(
     }
   }
 
-  // Se o tamanho do retângulo for significativo, retorna o DOMRect
+  /**
+   * Se o tamanho do retângulo for significativo, retorna o DOMRect
+   */
   if (maxX - minX > 20 && maxY - minY > 20) {
     return new DOMRect(minX, minY, maxX - minX, maxY - minY);
   }
@@ -109,7 +109,9 @@ function findFaceBounds(
   return null;
 }
 
-// Função auxiliar para mesclar retângulos sobrepostos
+/**
+ * Mescla retângulos sobrepostos
+ */
 function mergeOverlappingRects(rects: DOMRect[]) {
   const mergedRects: DOMRect[] = [];
 
@@ -130,7 +132,7 @@ function mergeOverlappingRects(rects: DOMRect[]) {
   return mergedRects;
 }
 
-// Função auxiliar para verificar se dois retângulos se sobrepõem
+// Verifica retângulos sobrepostos
 function isOverlapping(rect1: DOMRect, rect2: DOMRect) {
   return (
     rect1.left < rect2.right &&

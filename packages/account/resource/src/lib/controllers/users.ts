@@ -154,7 +154,7 @@ export class UsersController {
       throw new NotFoundException('Usuário não encontrado');
     }
 
-    if (user.id !== auth.id && authIsAdmin(auth.roles)) {
+    if (user.id !== auth.id && !authIsAdmin(auth.roles)) {
       throw new ForbiddenException('Acesso negado');
     }
 

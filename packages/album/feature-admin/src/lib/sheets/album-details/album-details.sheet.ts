@@ -13,11 +13,10 @@ import {
   inject,
   OnInit,
   Component,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { take } from 'rxjs';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'devmx-album-details',
@@ -33,7 +32,6 @@ import { JsonPipe } from '@angular/common';
     MatInputModule,
     MatListModule,
     IconComponent,
-    JsonPipe
   ],
   standalone: true,
 })
@@ -49,7 +47,7 @@ export class AlbumDetailsSheet
 
   ngOnInit() {
     if (this.data) {
-      this.form.patchValue(this.data);
+      this.form.patch(this.data);
     }
   }
 
@@ -70,6 +68,8 @@ export class AlbumDetailsSheet
   onSubmit() {
     if (this.form.valid) {
       const result = this.form.getRawValue();
+      console.log(result);
+
       return this.close(result);
     }
 

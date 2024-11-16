@@ -7,6 +7,7 @@ import {
   FindAlbumsUseCase,
   UpdateAlbumUseCase,
 } from '@devmx/album-domain/client';
+import { tap } from 'rxjs';
 
 export class AlbumFacade extends EntityFacade<Album> {
   constructor(
@@ -40,11 +41,11 @@ export class AlbumFacade extends EntityFacade<Album> {
   }
 
   update(data: EditableAlbum) {
-    const request$ = this.updateAlbumUseCase.execute(data);
+    const request$ = this.updateAlbumUseCase
+      .execute(data)
+      .pipe(tap(() => this.loadOne(data.id)));
 
     this.onUpdate(request$);
-
-    this.loadOne(data.id);
 
     return request$;
   }

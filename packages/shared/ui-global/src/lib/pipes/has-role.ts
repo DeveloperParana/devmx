@@ -1,4 +1,4 @@
-import { AuthUser, Role } from '@devmx/shared-api-interfaces';
+import { Authentication, Role } from '@devmx/shared-api-interfaces';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class HasRolePipe implements PipeTransform {
-  transform(authUser: AuthUser | null, ...roles: Role[]) {
-    return roles.some((role) => authUser?.roles[role]);
+  transform(auth: Authentication | null, ...roles: Role[]) {
+    return roles.some((role) => auth?.roles[role]);
   }
 }
