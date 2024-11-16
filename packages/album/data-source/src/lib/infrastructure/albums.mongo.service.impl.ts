@@ -9,19 +9,30 @@ export class AlbumsMongoServiceImpl
   extends MongoService<AlbumCollection>
   implements AlbumsService
 {
-  protected override applyPopulate<U>(query: Query<U, AlbumCollection>) {
-    return query
+  protected override applyPopulate<U>(
+    query: Query<U, AlbumCollection>,
+    method: 'find' | 'findOne'
+  ) {
+    query = query
       .populate({
         path: 'owner',
         select: 'name displayName',
       })
-      .populate('contributors', 'name displayName')
-      .populate('photos', 'type content caption createdAt');
+      .populate('contributors', 'name displayName');
+
+    if (method === 'findOne') {
+      query = query.populate('photos', 'type content caption createdAt');
+    } else {
+      query = query.select('-photos')
+    }
+
+    return query;
   }
 
-  protected override applyEditableParser<U>(
-    {photos: photosAux, ...data}: EditableEntity<AlbumCollection>
-  ): U {
+  protected override applyEditableParser<U>({
+    photos: photosAux,
+    ...data
+  }: EditableEntity<AlbumCollection>): U {
     const contributors = (data.contributors ?? []).map((contributor) => {
       return typeof contributor === 'string' ? contributor : contributor.id;
     });

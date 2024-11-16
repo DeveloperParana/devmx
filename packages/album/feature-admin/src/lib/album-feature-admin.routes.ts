@@ -1,9 +1,14 @@
 import { AlbumFeatureAdminComponent } from './album-feature-admin.component';
 import { albumFeatureAdminProviders } from './album-feature-admin.providers';
-import { AlbumContainer, MyAlbumsContainer } from './containers';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Album } from '@devmx/shared-api-interfaces';
 import { albumResolver } from './resolvers';
 import { Route } from '@angular/router';
+import {
+  AlbumContainer,
+  MyAlbumsContainer,
+  ManageAlbumsContainer,
+} from './containers';
 
 export const albumFeatureAdminRoutes: Route[] = [
   {
@@ -30,6 +35,14 @@ export const albumFeatureAdminRoutes: Route[] = [
           breadcrumb: 'Meus albuns',
         },
         component: MyAlbumsContainer,
+      },
+      {
+        path: 'gerenciar-albuns',
+        data: {
+          breadcrumb: 'Gerenciar albuns',
+        },
+        canActivate: [rolesGuard('director', 'manager', 'staff')],
+        component: ManageAlbumsContainer,
       },
       {
         path: '',

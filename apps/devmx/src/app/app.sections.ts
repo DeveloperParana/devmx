@@ -96,6 +96,12 @@ export const appSections: SectionHeaderOptions[] = [
         roles: ['manager', 'director', 'staff'],
       },
       {
+        label: 'Albuns',
+        route: ['/albuns', 'administracao', 'gerenciar-albuns'],
+        icon: 'camera-shutter',
+        roles: ['director', 'manager', 'staff'],
+      },
+      {
         label: 'Vagas',
         route: ['/carreiras', 'administracao', 'gerenciar-ofertas'],
         icon: 'music/speaker',

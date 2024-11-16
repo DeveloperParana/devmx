@@ -13,7 +13,7 @@ export abstract class MongoService<T extends Entity>
 {
   constructor(protected entityModel: Model<T>) {}
 
-  protected applyPopulate<U>(query: Query<U, T>): Query<U, T> {
+  protected applyPopulate<U>(query: Query<U, T>, method?: 'find' | 'findOne'): Query<U, T> {
     return query;
   }
 
@@ -57,7 +57,7 @@ export abstract class MongoService<T extends Entity>
       .skip(skip)
       .limit(size);
 
-    const entities = await this.applyPopulate(query).exec();
+    const entities = await this.applyPopulate(query, 'find').exec();
 
     const data = entities.map((item) => item.toJSON() as T);
     const items = await this.entityModel.countDocuments(where).exec();
@@ -69,7 +69,7 @@ export abstract class MongoService<T extends Entity>
   async findOne(id: string) {
     const query = this.entityModel.findById(id);
 
-    const entity = await this.applyPopulate(query).exec();
+    const entity = await this.applyPopulate(query, 'findOne').exec();
 
     return entity ? (entity.toJSON() as T) : null;
   }

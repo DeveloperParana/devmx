@@ -1,0 +1,27 @@
+:host {
+  flex: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+  .albums-card {
+    overflow: hidden;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+
+      div {
+        gap: 2em;
+        display: flex;
+        align-items: baseline;
+      }
+    }
+  }
+
+  .mat-mdc-table .mat-column-actions {
+    max-width: 3em;
+  }
+}
