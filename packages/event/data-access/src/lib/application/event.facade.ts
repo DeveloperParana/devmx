@@ -1,15 +1,24 @@
 import { createClientProvider, EntityFacade } from '@devmx/shared-data-access';
 import { EditableEvent, Event } from '@devmx/shared-api-interfaces';
+import { toEventPage, toEventSchema } from '../mappers';
+import { filter, map } from 'rxjs';
 import {
-  CreateEventUseCase,
-  FindEventByIDUseCase,
   FindEventsUseCase,
   DeleteEventUseCase,
+  CreateEventUseCase,
   UpdateEventUseCase,
+  FindEventByIDUseCase,
   FindAllEventsUseCase,
 } from '@devmx/event-domain/client';
 
 export class EventFacade extends EntityFacade<Event> {
+  page$ = this.select((state) => state.selected).pipe(
+    filter((event) => !!event),
+    map((event) => toEventPage(event))
+  );
+
+  schema$ = this.page$.pipe(map((event) => toEventSchema(event)));
+
   constructor(
     private createEventUseCase: CreateEventUseCase,
     private findEventsUseCase: FindEventsUseCase,

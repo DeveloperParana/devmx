@@ -1,4 +1,5 @@
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SelectPresentation } from '@devmx/presentation-ui-shared';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { EditorComponent } from '@devmx/shared-ui-global/editor';
@@ -15,7 +16,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SelectUser } from '@devmx/account-ui-shared';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SearchPresentations } from '../../dialogs';
 import { ActivatedRoute } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 import { EventForm } from '../../forms';
@@ -63,11 +63,15 @@ export class EventContainer {
 
   eventFacade = inject(EventFacade);
 
-  searchPresentations = inject(SearchPresentations);
+  // searchPresentations = inject(SearchPresentations);
 
   messageService = inject(MessageService);
 
   searchLeaders = inject(SelectUser);
+
+  selectUser = inject(SelectUser);
+
+  selectPresentation = inject(SelectPresentation);
 
   form = new EventForm();
 
@@ -77,35 +81,83 @@ export class EventContainer {
     });
   }
 
-  openSearchPresentations() {
-    this.searchPresentations
-      .open()
-      .pipe(take(1))
-      .subscribe((presentations) => {
-        if (presentations) {
-          for (const presentation of presentations) {
-            this.form.presentations.add(presentation);
-          }
+  onFormatChange(format = '') {
+    if (format === 'in-person') {
+      this.form.controls.address?.enable();
+      this.form.controls.link?.disable();
+    }
 
-          this.cdr.detectChanges();
-        }
-      });
+    if (format === 'online') {
+      this.form.controls.address?.disable();
+      this.form.controls.link?.enable();
+    }
+
+    if (format === 'mixed') {
+      this.form.controls.link?.enable();
+      this.form.controls.address?.enable();
+    }
   }
 
-  openSearchLeaders() {
-    this.searchLeaders
-      .open()
-      .pipe(take(1))
-      .subscribe((leaders) => {
-        if (leaders) {
-          for (const presentation of leaders) {
-            this.form.leaders.add(presentation);
-          }
+  selectPresentations() {
+    const select$ = this.selectPresentation.open({ multiple: true });
 
-          this.cdr.detectChanges();
+    select$.pipe(take(1)).subscribe((presentations) => {
+      if (presentations) {
+        for (const presentation of presentations) {
+          this.form.presentations.add(presentation);
         }
-      });
+
+        this.cdr.detectChanges();
+      }
+    });
   }
+
+  selectLeaders() {
+    const select$ = this.selectUser.open({
+      multiple: true,
+      onlyRole: 'leader',
+    });
+
+    select$.pipe(take(1)).subscribe((leaders) => {
+      if (leaders) {
+        for (const leader of leaders) {
+          this.form.leaders.add(leader);
+        }
+
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  // selectPresentations() {
+  //   this.searchPresentations
+  //     .open()
+  //     .pipe(take(1))
+  //     .subscribe((presentations) => {
+  //       if (presentations) {
+  //         for (const presentation of presentations) {
+  //           this.form.presentations.add(presentation);
+  //         }
+
+  //         this.cdr.detectChanges();
+  //       }
+  //     });
+  // }
+
+  // selectLeaders() {
+  //   this.searchLeaders
+  //     .open()
+  //     .pipe(take(1))
+  //     .subscribe((leaders) => {
+  //       if (leaders) {
+  //         for (const presentation of leaders) {
+  //           this.form.leaders.add(presentation);
+  //         }
+
+  //         this.cdr.detectChanges();
+  //       }
+  //     });
+  // }
 
   onSubmit() {
     if (this.form.valid) {

@@ -1,7 +1,12 @@
-import { Route } from '@angular/router';
 import { NotFoundContainer } from './containers';
+import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
+  {
+    path: 'evento',
+    loadChildren: () =>
+      import('@devmx/event-feature-page').then((m) => m.eventFeaturePageRoutes),
+  },
   {
     path: 'albuns',
     loadChildren: () =>

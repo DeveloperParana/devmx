@@ -2,6 +2,8 @@
   <devmx-icon name="plus" />
 </a>
 
+@defer (on timer(500ms)) {
+<!--  -->
 @if (eventFacade.response$ | async; as events) {
 
 <div class="events-container">
@@ -52,7 +54,6 @@
   </h3>
 </div>
 }
-
 <div class="spacer"></div>
 
 <footer>
@@ -62,4 +63,10 @@
     (pageChange)="onPageChange($event)"
   />
 </footer>
+} } @placeholder {
+<div class="events-container">
+  <devmx-skeleton [rows]="3" />
+  <devmx-skeleton [rows]="2" />
+  <devmx-skeleton [rows]="3" />
+</div>
 }

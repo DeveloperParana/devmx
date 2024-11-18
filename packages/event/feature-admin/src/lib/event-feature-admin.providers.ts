@@ -1,14 +1,11 @@
-import { provideSelectUser } from '@devmx/account-ui-shared';
+import { provideSelectPresentation } from '@devmx/presentation-ui-shared';
+import { provideEventRSVP, provideSelectCover } from './dialogs';
 import { provideDialog } from '@devmx/shared-ui-global/dialog';
+import { provideSelectUser } from '@devmx/account-ui-shared';
 import { Provider } from '@angular/core';
-import {
-  provideEventRSVP,
-  provideSearchPresentations,
-  provideSelectCover,
-} from './dialogs';
 
 export const eventFeatureAdminProviders: Provider[] = [
-  provideSearchPresentations(),
+  provideSelectPresentation(),
   provideSelectUser(),
   provideSelectCover(),
   provideEventRSVP(),

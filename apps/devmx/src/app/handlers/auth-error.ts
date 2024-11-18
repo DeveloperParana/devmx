@@ -13,7 +13,9 @@ export class AuthErrorHandler implements ErrorHandler {
 
     this.messageService = inject(MessageService);
 
-    onstorage = this.#onTokenChanged;
+    if (localStorage.getItem('accessToken')) {
+      onstorage = this.#onTokenChanged;
+    }
   }
 
   #onTokenChanged = ({ key, newValue }: StorageEvent) => {

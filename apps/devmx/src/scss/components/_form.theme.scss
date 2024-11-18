@@ -11,7 +11,7 @@
   .mdc-text-field--outlined:not(.mdc-text-field--disabled) {
     .mat-mdc-notch-piece {
       border-width: 2px;
-      border-color: rgba(mat.get-theme-color($theme, primary, 80), 0.2);
+      border-color: rgba(mat.get-theme-color($theme, primary, 80), 0.4);
     }
 
     &:not(.mdc-text-field--focused):hover .mat-mdc-notch-piece {

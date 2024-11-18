@@ -95,6 +95,7 @@
       "@devmx/event-feature-admin": [
         "packages/event/feature-admin/src/index.ts"
       ],
+      "@devmx/event-feature-page": ["packages/event/feature-page/src/index.ts"],
       "@devmx/event-feature-shell": [
         "packages/event/feature-shell/src/index.ts"
       ],
@@ -204,6 +205,9 @@
       ],
       "@devmx/shared-ui-global/layout": [
         "packages/shared/ui-global/layout/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/script": [
+        "packages/shared/ui-global/script/src/index.ts"
       ],
       "@devmx/shared-ui-global/search": [
         "packages/shared/ui-global/search/src/index.ts"

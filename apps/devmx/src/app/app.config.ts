@@ -54,7 +54,7 @@ export const appConfig: ApplicationConfig = {
       withHashLocation(),
       withRouterConfig({
         onSameUrlNavigation: 'ignore',
-        urlUpdateStrategy: 'deferred'
+        urlUpdateStrategy: 'deferred',
       })
     ),
     provideAnimationsAsync(),

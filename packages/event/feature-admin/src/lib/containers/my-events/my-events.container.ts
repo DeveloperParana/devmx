@@ -13,6 +13,7 @@ import { AuthenticationFacade } from '@devmx/account-data-access';
 import { Event } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
 import { EventRSVP } from '../../dialogs';
+import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 
 @Component({
   selector: 'devmx-event-admin-my-events',
@@ -25,6 +26,7 @@ import { EventRSVP } from '../../dialogs';
     MatTooltipModule,
     EventCardComponent,
     PaginatorComponent,
+    SkeletonComponent,
     IconComponent,
     AsyncPipe,
   ],

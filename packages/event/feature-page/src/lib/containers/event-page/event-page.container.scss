@@ -1,0 +1,53 @@
+:host {
+  gap: 2em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 1.8em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+
+  header {
+
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+
+    section {
+      gap: 1em;
+      display: flex;
+      flex-flow: row wrap;
+
+      div {
+        gap: 0.4em;
+        display: flex;
+        align-items: center;
+
+        time {
+          text-transform: capitalize;
+          // line-height: 26px;
+          font-weight: 500;
+          font-size: 1.1em;
+        }
+
+        address {
+          font-style: normal;
+        }
+      }
+    }
+  }
+
+  main {
+    gap: 1em;
+    display: flex;
+    flex-flow: row wrap;
+
+    .event-card {
+      flex: 1;
+    }
+  }
+}

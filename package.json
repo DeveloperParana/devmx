@@ -114,6 +114,7 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
+    "schema-dts": "^1.1.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

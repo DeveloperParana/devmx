@@ -11,6 +11,11 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'calendar',
       },
       {
+        label: 'Fotos',
+        route: ['/albuns'],
+        icon: 'camera-shutter',
+      },
+      {
         label: 'Apresentações',
         route: ['/apresentacoes'],
         icon: 'presentation',
@@ -19,11 +24,6 @@ export const appSections: SectionHeaderOptions[] = [
         label: 'Vagas',
         route: ['/carreiras'],
         icon: 'finance/bullseye',
-      },
-      {
-        label: 'Albuns',
-        route: ['/albuns'],
-        icon: 'camera-shutter',
       },
       {
         label: 'Academia',
@@ -48,16 +48,16 @@ export const appSections: SectionHeaderOptions[] = [
         roles: ['leader'],
       },
       {
+        label: 'Fotos',
+        route: ['/albuns', 'administracao', 'meus-albuns'],
+        icon: 'camera-shutter',
+        roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'],
+      },
+      {
         label: 'Apresentações',
         route: ['/apresentacoes', 'administracao'],
         icon: 'presentation',
         roles: ['speaker'],
-      },
-      {
-        label: 'Meus albuns',
-        route: ['/albuns', 'administracao', 'meus-albuns'],
-        icon: 'camera-shutter',
-        roles: ['leader', 'fellow', 'director', 'manager', 'staff', 'speaker'],
       },
       {
         label: 'Academia',
@@ -90,16 +90,16 @@ export const appSections: SectionHeaderOptions[] = [
         roles: ['manager', 'director', 'staff'],
       },
       {
+        label: 'Fotos',
+        route: ['/albuns', 'administracao', 'gerenciar-albuns'],
+        icon: 'camera-shutter',
+        roles: ['director', 'manager', 'staff'],
+      },
+      {
         label: 'Apresentações',
         route: ['/apresentacoes', 'administracao', 'gerenciar-apresentacoes'],
         icon: 'presentation',
         roles: ['manager', 'director', 'staff'],
-      },
-      {
-        label: 'Albuns',
-        route: ['/albuns', 'administracao', 'gerenciar-albuns'],
-        icon: 'camera-shutter',
-        roles: ['director', 'manager', 'staff'],
       },
       {
         label: 'Vagas',
