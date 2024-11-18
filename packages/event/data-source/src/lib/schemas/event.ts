@@ -1,5 +1,5 @@
+import { DurationTime, Event, EventFormat } from '@devmx/shared-api-interfaces';
 import { PresentationCollection } from '@devmx/presentation-data-source';
-import { Event, EventFormat } from '@devmx/shared-api-interfaces';
 import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
@@ -34,6 +34,12 @@ export class EventCollection extends Document implements Event {
   @Prop({ type: String, default: '' })
   time?: string;
 
+  @Prop({ type: String, default: '2h' })
+  duration?: DurationTime;
+
+  @Prop({ type: Number })
+  maxAttendees?: number
+
   @Prop()
   cover: string;
 
@@ -49,6 +55,11 @@ export class EventCollection extends Document implements Event {
     ],
   })
   presentations: PresentationCollection[];
+
+  @Prop({
+    type: String,
+  })
+  link?: string;
 
   @Prop({
     type: String,

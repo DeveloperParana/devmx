@@ -14,14 +14,25 @@
     @include mat.elevation-transition();
     @include mat.elevation(2);
 
-    max-width: calc(33vw - 1em);
+    max-width: 100%;
 
-    @media (max-width: 1278px) {
-      max-width: calc(50vw - 2em);
+    .event-address .mdc-list-item__primary-text {
+      max-width: calc(100% - 4em);
     }
 
-    @media (max-width: 767px) {
-      max-width: calc(100vw - 3em);
+    &-header {
+      padding-bottom: 1em;
+
+      mat-card-subtitle {
+        gap: 0.4em;
+        display: flex;
+        line-height: 1;
+        align-items: center;
+      }
+    }
+
+    &-content {
+      flex: 1;
     }
 
     &:active,

@@ -1,10 +1,9 @@
 import { PresentationOut } from './presentation-out';
+import { DurationTime, EventFormat } from '../types';
 import { Location } from '../interfaces';
 import { City, User } from '../entities';
-import { EventFormat } from '../types';
 
 export type LeaderRef = Pick<User, 'displayName' | 'name' | 'profile' | 'id'>;
-
 
 export interface EventOut {
   id: string;
@@ -19,6 +18,10 @@ export interface EventOut {
 
   time: string;
 
+  duration?: DurationTime;
+
+  maxAttendees?: number;
+
   cover: string;
 
   visible: boolean;
@@ -28,6 +31,8 @@ export interface EventOut {
   leaders: LeaderRef[];
 
   address: string;
+
+  link?: string;
 
   city?: City;
 

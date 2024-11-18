@@ -1,6 +1,6 @@
 import { UserRef, PresentationRef } from '../dtos';
 import { Location } from '../interfaces';
-import { EventFormat } from '../types';
+import { DurationTime, EventFormat } from '../types';
 import { City } from './city';
 
 export interface Event {
@@ -16,6 +16,10 @@ export interface Event {
 
   time?: string;
 
+  duration?: DurationTime
+
+  maxAttendees?: number
+
   cover?: string;
 
   visible: boolean;
@@ -23,6 +27,8 @@ export interface Event {
   presentations?: PresentationRef[];
 
   leaders?: UserRef[];
+
+  link?: string;
 
   address?: string;
 

@@ -12,32 +12,26 @@
       @for (item of queue(); track item.photo.name) {
       <mat-list-item>
         <span matListItemTitle>
-          {{ item.photo.size | fileSize }} - {{ item.progress() }}%
+          {{ item.photo.size | fileSize }}
         </span>
-        <br />
+
+        <span matListItemMeta> {{ item.progress() }}% </span>
+
         <mat-progress-bar mode="determinate" [value]="item.progress()" />
-        <!-- <img
-          matListItemAvatar
-          [src]="item.photo | imageFileUrl"
-          [alt]="item.photo.name"
-        />
-        <span matListItemTitle>{{ item.photo.name }}</span>
-        <span matListItemLine>
-          <span>{{ item.photo.size | fileSize }}</span>
-          <br />
-          <mat-progress-bar mode="determinate" [value]="item.progress()" />
-        </span> -->
+      </mat-list-item>
+      }
+      <!--  -->
+      @if (resizing(); as resizing) {
+      <mat-list-item>
+        <span matListItemTitle>
+          @if (resizing < 100) { Preparando imagens } @else { Enviando imagens }
+        </span>
+
+        <span matListItemMeta> {{ resizing }}% </span>
+
+        <mat-progress-bar mode="determinate" [value]="resizing" />
       </mat-list-item>
       }
     </mat-list>
-
-    @if (resizing(); as resizing) {
-    <footer>
-      <mat-progress-bar mode="determinate" [value]="resizing" />
-      <p>
-        <strong>{{ resizing }}%</strong> processados
-      </p>
-    </footer>
-    }
   </section>
 </mat-expansion-panel>

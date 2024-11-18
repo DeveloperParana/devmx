@@ -1,4 +1,189 @@
 <form id="event" [formGroup]="form" (submit)="onSubmit()">
+  <mat-card class="event-card">
+    <mat-card-content class="event-card-content">
+      <section>
+        <devmx-editor
+          label="Descreva o evento"
+          hint="Compatível com markdown do Github"
+          formControlName="description"
+          autofocus
+        />
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="event-card">
+    <mat-card-content class="event-card-content">
+      <section>
+        @if (form.presentations.controls.length) {
+
+        <mat-list formArrayName="presentations">
+          <p mat-subheader>Palestras</p>
+
+          @for (control of form.presentations.controls; track control.value; let
+          index = $index) {
+          <mat-list-item>
+            <devmx-icon matListItemIcon name="presentation" />
+
+            <span matListItemTitle>{{control.value.title}}</span>
+
+            <button
+              type="button"
+              mat-icon-button
+              matListItemMeta
+              (click)="form.presentations.removeAt(index)"
+            >
+              <devmx-icon name="trash" />
+            </button>
+          </mat-list-item>
+          }
+        </mat-list>
+        }
+
+        <button type="button" mat-button (click)="selectPresentations()">
+          Encontrar uma palestra para o evento
+        </button>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="event-card">
+    <mat-card-content class="event-card-content">
+      <section>
+        @if (form.leaders.controls.length) {
+
+        <mat-list formArrayName="leaders">
+          <p mat-subheader>Líderes</p>
+
+          @for (control of form.leaders.controls; track control.value; let index
+          = $index) {
+          <mat-list-item>
+            <devmx-icon matListItemIcon name="user-circle" />
+
+            <span matListItemTitle>{{control.value.displayName}}</span>
+
+            <button
+              type="button"
+              mat-icon-button
+              matListItemMeta
+              (click)="form.leaders.removeAt(index)"
+            >
+              <devmx-icon name="trash" />
+            </button>
+          </mat-list-item>
+          }
+        </mat-list>
+        }
+
+        <button type="button" mat-button (click)="selectLeaders()">
+          Adicionar outros líderes ao evento
+        </button>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="event-card">
+    <mat-card-content class="event-card-content">
+      <section>
+        <mat-form-field>
+          <mat-label>Qual nome ou título do evento?</mat-label>
+          <input
+            matInput
+            formControlName="title"
+            placeholder="Ex.: 10º Meetup Maringá Agile"
+          />
+          <mat-error>Obrigatório</mat-error>
+        </mat-form-field>
+
+        <div>
+          <mat-form-field class="event-date">
+            <mat-label>Data</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="date"
+              (focus)="picker.open()"
+              tabindex="-1"
+              readonly
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="event-time">
+            <mat-label>Hora</mat-label>
+            <input matInput formControlName="time" devmxTime />
+            <devmx-icon matIconSuffix name="alarm-clock-alert" />
+            <mat-error>
+              @if (form.controls.time?.hasError('invalidTime')) { Inválido }
+              @else { Obrigatório }
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="event-duration">
+            <mat-label>Duração</mat-label>
+            <mat-select formControlName="duration">
+              @for (duration of form.durations; track duration.value) {
+              <mat-option [value]="duration.value">
+                {{duration.viewValue}}
+              </mat-option>
+              }
+            </mat-select>
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="event-max">
+            <mat-label>Máximo de</mat-label>
+            <input
+              matInput
+              type="number"
+              min="0"
+              formControlName="maxAttendees"
+            />
+            <span matTextSuffix>pessoas</span>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="event-format">
+            <mat-label>Formato</mat-label>
+            <mat-select
+              formControlName="format"
+              (selectionChange)="onFormatChange(form.format.value)"
+            >
+              @for (format of form.formats; track format.value) {
+              <mat-option [value]="format.value">
+                {{format.viewValue}}
+              </mat-option>
+              }
+            </mat-select>
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="event-address">
+            <mat-label>Endereço</mat-label>
+            <input matInput formControlName="address" />
+          </mat-form-field>
+
+          <mat-form-field class="event-link">
+            <mat-label>Link</mat-label>
+            <input matInput type="url" formControlName="link" />
+            <mat-error>Obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+      </section>
+    </mat-card-content>
+
+    <mat-card-actions align="end" class="event-card-actions">
+      <button mat-flat-button>Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+<!-- <form id="event" [formGroup]="form" (submit)="onSubmit()">
   <div>
     <mat-card class="event-card">
       <mat-card-content class="event-content">
@@ -141,4 +326,4 @@
   </div>
 
   <mat-card class="tips-card"> </mat-card>
-</form>
+</form> -->

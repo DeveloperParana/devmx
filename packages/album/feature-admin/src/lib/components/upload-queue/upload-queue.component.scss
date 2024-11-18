@@ -1,4 +1,7 @@
 :host {
+  display: flex;
+  flex-direction: column;
+  width: 18em;
   position: fixed;
   bottom: 64px;
   right: 12px;
@@ -8,20 +11,15 @@
     align-items: center;
   }
 
+  ::ng-deep .mat-expansion-panel-content .mat-expansion-panel-body {
+    padding: 0;
+  }
+
   section {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    max-height: 60vh;
+    max-height: 80vh;
     overflow: auto;
-    position: relative;
-
-    padding-bottom: 3em;
-
-    footer {
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-    }
   }
 }

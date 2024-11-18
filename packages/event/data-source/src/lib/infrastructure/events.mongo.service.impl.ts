@@ -35,7 +35,14 @@ export class EventsMongoServiceImpl
     return query
       .populate('owner', 'name displayName profile')
       .populate('leaders', 'name displayName profile')
-      .populate('presentations', 'title');
+      .populate({
+        path: 'presentations',
+        select: 'title owner',
+        populate: {
+          path: 'owner',
+          select: 'displayName profile'
+        },
+      });
   }
 
   protected override applyEditableParser<U>(

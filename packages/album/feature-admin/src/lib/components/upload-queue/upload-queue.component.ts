@@ -1,13 +1,8 @@
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FileSizePipe, ResizedImage } from '@devmx/shared-ui-global/image';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatListModule } from '@angular/material/list';
-import {
-  FileSizePipe,
-  ResizedImage,
-  ImageFileURLPipe,
-} from '@devmx/shared-ui-global/image';
 import {
   effect,
   signal,
@@ -29,13 +24,11 @@ export interface UploadItem {
   styleUrl: './upload-queue.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatProgressSpinnerModule,
     MatProgressBarModule,
     MatExpansionModule,
-    ImageFileURLPipe,
-    FileSizePipe,
     MatListModule,
     IconComponent,
+    FileSizePipe,
   ],
   standalone: true,
 })

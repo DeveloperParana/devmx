@@ -18,6 +18,7 @@
             "allow": [
               "@devmx/account-data-access",
               "@devmx/academy-data-access",
+              "@devmx/presentation-data-access",
               "@devmx/learn-data-access"
             ],
             "depConstraints": [

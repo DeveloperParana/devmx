@@ -19,6 +19,8 @@ export * from './editable-skill';
 export * from './editable-subject';
 export * from './editable-user';
 export * from './event-out';
+export * from './event-page-schema';
+export * from './event-page';
 export * from './event-ref';
 export * from './job-opening-out';
 export * from './job-out';
