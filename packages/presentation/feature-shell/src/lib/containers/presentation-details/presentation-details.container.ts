@@ -12,22 +12,21 @@ import { AsyncPipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-presentation-details',
-  templateUrl: './presentation-details.container.html',
-  styleUrl: './presentation-details.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatCardModule,
-    MatListModule,
-    MatButtonModule,
-    IconComponent,
-    MarkdownComponent,
-    PresentationFormatPipe,
-    PhotoPipe,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-presentation-details',
+    templateUrl: './presentation-details.container.html',
+    styleUrl: './presentation-details.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatCardModule,
+        MatListModule,
+        MatButtonModule,
+        IconComponent,
+        MarkdownComponent,
+        PresentationFormatPipe,
+        PhotoPipe,
+        AsyncPipe,
+    ]
 })
 export class PresentationDetailsContainer {
   route = inject(ActivatedRoute);

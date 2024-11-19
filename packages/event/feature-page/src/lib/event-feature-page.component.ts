@@ -6,11 +6,10 @@ import { filter, map } from 'rxjs';
 
 
 @Component({
-  selector: 'devmx-event-feature-page',
-  template: `<router-outlet />`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule],
-  standalone: true,
+    selector: 'devmx-event-feature-page',
+    template: `<router-outlet />`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterModule]
 })
 export class EventFeaturePageComponent {
   route = inject(ActivatedRoute);

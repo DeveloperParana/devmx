@@ -3,11 +3,10 @@ import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { MatListModule, MatListOption } from '@angular/material/list';
 import { EditableInstitution } from '@devmx/shared-api-interfaces';
 import { InstitutionFacade } from '@devmx/academy-data-access';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstitutionSearch } from '../../forms';
+import { AsyncPipe } from '@angular/common';
 import {
   MatDialogRef,
   MatDialogTitle,
@@ -21,23 +20,20 @@ export interface SelectInstitutionConfig {
 }
 
 @Component({
-  selector: 'devmx-select-institution',
-  templateUrl: './select-institution.dialog.html',
-  styleUrl: './select-institution.dialog.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    PaginatorComponent,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatButtonModule,
-    IconComponent,
-    MatListModule,
-    AsyncPipe,
-    JsonPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-select-institution',
+    templateUrl: './select-institution.dialog.html',
+    styleUrl: './select-institution.dialog.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        PaginatorComponent,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatButtonModule,
+        MatListModule,
+        AsyncPipe,
+    ]
 })
 export class SelectInstitutionDialog {
   institutionFacade = inject(InstitutionFacade);

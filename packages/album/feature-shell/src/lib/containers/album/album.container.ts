@@ -5,15 +5,14 @@ import { AsyncPipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-album',
-  templateUrl: './album.container.html',
-  styleUrl: './album.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-album',
+    templateUrl: './album.container.html',
+    styleUrl: './album.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        AsyncPipe,
+    ]
 })
 export class AlbumContainer {
   route = inject(ActivatedRoute);

@@ -21,22 +21,21 @@ export interface SelectUserConfig {
 }
 
 @Component({
-  selector: 'devmx-select-user',
-  templateUrl: './select-user.dialog.html',
-  styleUrl: './select-user.dialog.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    PaginatorComponent,
-    SearchFieldComponent,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatButtonModule,
-    MatListModule,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-select-user',
+    templateUrl: './select-user.dialog.html',
+    styleUrl: './select-user.dialog.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        PaginatorComponent,
+        SearchFieldComponent,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatButtonModule,
+        MatListModule,
+        AsyncPipe,
+    ]
 })
 export class SelectUserDialog {
   userFacade = inject(UserFacade);

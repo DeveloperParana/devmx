@@ -22,26 +22,25 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-layout',
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgClass,
-    AsyncPipe,
-    LayoutModule,
-    RouterModule,
-    MatListModule,
-    IconComponent,
-    MatBadgeModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatExpansionModule,
-    MatProgressBarModule,
-    LayoutToolbarComponent,
-    LayoutNavbarComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-layout',
+    templateUrl: './layout.component.html',
+    styleUrl: './layout.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgClass,
+        AsyncPipe,
+        LayoutModule,
+        RouterModule,
+        MatListModule,
+        IconComponent,
+        MatBadgeModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatProgressBarModule,
+        LayoutToolbarComponent,
+        LayoutNavbarComponent,
+    ]
 })
 export class LayoutComponent {
   destroyRef = inject(DestroyRef);

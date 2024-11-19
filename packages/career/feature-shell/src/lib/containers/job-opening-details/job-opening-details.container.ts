@@ -16,26 +16,25 @@ import {
 } from '@devmx/career-ui-shared';
 
 @Component({
-  selector: 'devmx-job-opening-details',
-  templateUrl: './job-opening-details.container.html',
-  styleUrl: './job-opening-details.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatCardModule,
-    MatListModule,
-    MatButtonModule,
-    IconComponent,
-    CurrencyPipe,
-    JobLevelPipe,
-    JobModePipe,
-    JobTypePipe,
-    SafeHtmlPipe,
-    MarkedPipe,
-    PhotoPipe,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-job-opening-details',
+    templateUrl: './job-opening-details.container.html',
+    styleUrl: './job-opening-details.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatCardModule,
+        MatListModule,
+        MatButtonModule,
+        IconComponent,
+        CurrencyPipe,
+        JobLevelPipe,
+        JobModePipe,
+        JobTypePipe,
+        SafeHtmlPipe,
+        MarkedPipe,
+        PhotoPipe,
+        AsyncPipe,
+    ]
 })
 export class JobOpeningDetailsContainer {
   route = inject(ActivatedRoute);

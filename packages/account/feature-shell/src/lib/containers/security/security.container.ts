@@ -3,7 +3,6 @@ import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CodeFieldComponent } from '@devmx/account-ui-shared';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MessageService } from '@devmx/shared-ui-global';
 import { MatInputModule } from '@angular/material/input';
@@ -12,20 +11,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdatePasswordForm } from '../../forms';
 
 @Component({
-  selector: 'devmx-security',
-  templateUrl: './security.container.html',
-  styleUrl: './security.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    CodeFieldComponent,
-    MatButtonModule,
-    MatInputModule,
-    MatCardModule,
-    IconComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-security',
+    templateUrl: './security.container.html',
+    styleUrl: './security.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        CodeFieldComponent,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+    ]
 })
 export class SecurityContainer {
   userFacade = inject(UserFacade);

@@ -8,19 +8,18 @@ import { KeyValuePipe } from '@angular/common';
 import { Datepicker } from '../../fields';
 
 @Component({
-  selector: 'devmx-datepicker',
-  templateUrl: './datepicker.component.html',
-  styleUrl: './datepicker.component.scss',
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    KeyValuePipe,
-  ],
-  providers: [provideNativeDateAdapter()],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+    selector: 'devmx-datepicker',
+    templateUrl: './datepicker.component.html',
+    styleUrl: './datepicker.component.scss',
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatInputModule,
+        KeyValuePipe,
+    ],
+    providers: [provideNativeDateAdapter()],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerComponent<T> {
   field = input.required<Datepicker<T>>();

@@ -5,12 +5,11 @@ import { SortDirection } from "@devmx/shared-api-interfaces";
 import { IconComponent } from "@devmx/shared-ui-global/icon";
 
 @Component({
-  exportAs: 'sortDirection',
-  selector: 'devmx-sort-direction',
-  templateUrl: './sort-direction.component.html',
-  styleUrl: './sort-direction.component.scss',
-  imports: [MatButtonModule, IconComponent, NgClass],
-  standalone: true
+    exportAs: 'sortDirection',
+    selector: 'devmx-sort-direction',
+    templateUrl: './sort-direction.component.html',
+    styleUrl: './sort-direction.component.scss',
+    imports: [MatButtonModule, IconComponent, NgClass]
 })
 export class SortDirectionComponent {
   ascText = input('')

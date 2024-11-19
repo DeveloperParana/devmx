@@ -11,19 +11,18 @@ import {
 } from '@devmx/academy-ui-shared';
 
 @Component({
-  selector: 'devmx-courses',
-  templateUrl: './courses.container.html',
-  styleUrl: './courses.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    PaginatorComponent,
-    CourseEADFilterComponent,
-    CourseCardComponent,
-    SkeletonComponent,
-    RouterModule,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-courses',
+    templateUrl: './courses.container.html',
+    styleUrl: './courses.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        PaginatorComponent,
+        CourseEADFilterComponent,
+        CourseCardComponent,
+        SkeletonComponent,
+        RouterModule,
+        AsyncPipe,
+    ]
 })
 export class CoursesContainer {
   courseFacade = inject(CourseFacade);

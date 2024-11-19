@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
+import { MatListModule, MatListOption } from '@angular/material/list';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { EditablePresentation } from '@devmx/shared-api-interfaces';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatListModule, MatListOption } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   PresentationSearch,
   PresentationSearchComponent,
@@ -19,24 +18,21 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'devmx-admin-search-presentations',
-  templateUrl: './search-presentations.dialog.html',
-  styleUrl: './search-presentations.dialog.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    PaginatorComponent,
-    PresentationSearchComponent,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatButtonModule,
-    IconComponent,
-    MatListModule,
-    AsyncPipe,
-    JsonPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-admin-search-presentations',
+    templateUrl: './search-presentations.dialog.html',
+    styleUrl: './search-presentations.dialog.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        PaginatorComponent,
+        PresentationSearchComponent,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatButtonModule,
+        MatListModule,
+        AsyncPipe
+    ]
 })
 export class SearchPresentationsDialog {
   presentationFacade = inject(PresentationFacade);

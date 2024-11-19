@@ -12,20 +12,19 @@ import { RouterLink } from '@angular/router';
 import { CreateUserForm } from '../../forms';
 
 @Component({
-  selector: 'devmx-registration',
-  templateUrl: './registration.container.html',
-  styleUrl: './registration.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatInputModule,
-    MatCardModule,
-    RouterLink,
-  ],
-  standalone: true,
+    selector: 'devmx-registration',
+    templateUrl: './registration.container.html',
+    styleUrl: './registration.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatCheckboxModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        RouterLink,
+    ]
 })
 export class RegistrationContainer {
   message = inject(MessageService);

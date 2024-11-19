@@ -19,21 +19,20 @@ import {
 import { take } from 'rxjs';
 
 @Component({
-  selector: 'devmx-album-details',
-  templateUrl: './album-details.sheet.html',
-  styleUrl: './album-details.sheet.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideSelectUser()],
-  imports: [
-    MatBottomSheetModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatListModule,
-    IconComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-album-details',
+    templateUrl: './album-details.sheet.html',
+    styleUrl: './album-details.sheet.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideSelectUser()],
+    imports: [
+        MatBottomSheetModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatListModule,
+        IconComponent,
+    ]
 })
 export class AlbumDetailsSheet
   extends SheetComponent<EditableAlbum, AlbumDetailsSheet, EditableAlbum | null>

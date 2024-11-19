@@ -13,19 +13,18 @@ export abstract class UserCompleteService {
 }
 
 @Component({
-  selector: 'devmx-user-complete',
-  templateUrl: './user-complete.component.html',
-  styleUrl: './user-complete.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-user-complete',
+    templateUrl: './user-complete.component.html',
+    styleUrl: './user-complete.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatInputModule,
+        IconComponent,
+        AsyncPipe,
+    ]
 })
 export class UserCompleteComponent {
   service = inject(UserCompleteService);

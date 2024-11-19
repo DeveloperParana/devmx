@@ -16,21 +16,20 @@ import { EventRSVP } from '../../dialogs';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 
 @Component({
-  selector: 'devmx-event-admin-my-events',
-  templateUrl: './my-events.container.html',
-  styleUrl: './my-events.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    MatTooltipModule,
-    EventCardComponent,
-    PaginatorComponent,
-    SkeletonComponent,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-event-admin-my-events',
+    templateUrl: './my-events.container.html',
+    styleUrl: './my-events.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatButtonModule,
+        MatTooltipModule,
+        EventCardComponent,
+        PaginatorComponent,
+        SkeletonComponent,
+        IconComponent,
+        AsyncPipe,
+    ]
 })
 export class MyEventsContainer {
   router = inject(Router);

@@ -16,12 +16,11 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'devmx-rsvp-button',
-  templateUrl: './rsvp-button.component.html',
-  styleUrl: './rsvp-button.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, MatButtonToggleModule],
-  standalone: true,
+    selector: 'devmx-rsvp-button',
+    templateUrl: './rsvp-button.component.html',
+    styleUrl: './rsvp-button.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [ReactiveFormsModule, MatButtonToggleModule]
 })
 export class RSVPButtonComponent extends DefaultValueAccessor {
   statusChange = output<void>();

@@ -10,17 +10,17 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    grid-template-columns: repeat(2, 1fr);
 
     > * {
       flex: 1;
       max-width: 50%;
     }
 
-    grid-template-columns: repeat(2, 1fr);
 
     p {
       display: -webkit-box;
-      -webkit-line-clamp: 3; /* Limita a 3 linhas */
+      line-clamp: 3; /* Limita a 3 linhas */
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -56,23 +56,24 @@
 
   @media (min-width: 1920px) {
     .albums-container {
+      grid-template-columns: repeat(3, 1fr);
+
       > * {
         flex: 1;
         max-width: 33%;
       }
-      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   @media (max-width: 767px) {
     .albums-container {
       align-content: flex-start;
+      grid-template-columns: 1fr;
 
       > * {
         display: inline-flex;
         min-width: 100%;
       }
-      grid-template-columns: 1fr;
     }
   }
 

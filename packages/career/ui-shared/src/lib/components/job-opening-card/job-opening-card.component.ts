@@ -6,19 +6,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 
 @Component({
-  selector: 'devmx-job-opening-card',
-  templateUrl: './job-opening-card.component.html',
-  styleUrl: './job-opening-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    MatListModule,
-    IconComponent,
-    JobModePipe,
-    JobTypePipe,
-    JobLevelPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-job-opening-card',
+    templateUrl: './job-opening-card.component.html',
+    styleUrl: './job-opening-card.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatCardModule,
+        MatListModule,
+        IconComponent,
+        JobModePipe,
+        JobTypePipe,
+        JobLevelPipe,
+    ]
 })
 export class JobOpeningCardComponent {
   data = input.required<JobOpening>();

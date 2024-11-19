@@ -13,22 +13,21 @@ import { User } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'devmx-users',
-  templateUrl: './users.container.html',
-  styleUrl: './users.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    PaginatorComponent,
-    SearchFieldComponent,
-    MatButtonModule,
-    MatTableModule,
-    MatCardModule,
-    IconComponent,
-    RouterModule,
-    HasRolePipe,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-users',
+    templateUrl: './users.container.html',
+    styleUrl: './users.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        PaginatorComponent,
+        SearchFieldComponent,
+        MatButtonModule,
+        MatTableModule,
+        MatCardModule,
+        IconComponent,
+        RouterModule,
+        HasRolePipe,
+        AsyncPipe,
+    ]
 })
 export class UsersContainer {
   router = inject(Router);

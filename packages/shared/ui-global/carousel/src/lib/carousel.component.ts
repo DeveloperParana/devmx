@@ -20,20 +20,19 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-carousel',
-  exportAs: 'devmxCarousel',
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CarouselElementDirective,
-    CarouselItemDirective,
-    NgTemplateOutlet,
-    MatButtonModule,
-    IconComponent,
-    NgStyle,
-  ],
-  standalone: true,
+    selector: 'devmx-carousel',
+    exportAs: 'devmxCarousel',
+    templateUrl: './carousel.component.html',
+    styleUrl: './carousel.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CarouselElementDirective,
+        CarouselItemDirective,
+        NgTemplateOutlet,
+        MatButtonModule,
+        IconComponent,
+        NgStyle,
+    ]
 })
 export class CarouselComponent implements AfterViewInit {
   #builder = inject(AnimationBuilder);

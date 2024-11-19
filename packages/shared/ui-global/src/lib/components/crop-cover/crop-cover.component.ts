@@ -13,12 +13,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-crop-cover',
-  templateUrl: './crop-cover.component.html',
-  styleUrl: './crop-cover.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, IconComponent, FileComponent],
-  standalone: true,
+    selector: 'devmx-crop-cover',
+    templateUrl: './crop-cover.component.html',
+    styleUrl: './crop-cover.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatButtonModule, IconComponent, FileComponent]
 })
 export class CropCoverComponent implements AfterViewInit {
   cropped = output<Blob>();

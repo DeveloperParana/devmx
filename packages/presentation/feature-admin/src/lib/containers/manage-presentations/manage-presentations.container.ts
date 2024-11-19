@@ -17,21 +17,20 @@ import { AsyncPipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-manage-presentations',
-  templateUrl: './manage-presentations.container.html',
-  styleUrl: './manage-presentations.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    SearchFieldComponent,
-    PaginatorComponent,
-    MatTableModule,
-    MatCardModule,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-manage-presentations',
+    templateUrl: './manage-presentations.container.html',
+    styleUrl: './manage-presentations.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatButtonModule,
+        SearchFieldComponent,
+        PaginatorComponent,
+        MatTableModule,
+        MatCardModule,
+        IconComponent,
+        AsyncPipe,
+    ]
 })
 export class ManagePresentationsContainer {
   router = inject(Router);

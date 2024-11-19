@@ -11,19 +11,18 @@ import {
 } from '@devmx/presentation-ui-shared';
 
 @Component({
-  selector: 'devmx-presentations',
-  templateUrl: './presentations.container.html',
-  styleUrl: './presentations.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    SkeletonComponent,
-    PaginatorComponent,
-    PresentationFilterComponent,
-    PresentationCardComponent,
-    RouterModule,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-presentations',
+    templateUrl: './presentations.container.html',
+    styleUrl: './presentations.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        SkeletonComponent,
+        PaginatorComponent,
+        PresentationFilterComponent,
+        PresentationCardComponent,
+        RouterModule,
+        AsyncPipe,
+    ]
 })
 export class PresentationsContainer {
   presentationFacade = inject(PresentationFacade);

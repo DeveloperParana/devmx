@@ -11,17 +11,16 @@ import {
 } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'devmx-message',
-  templateUrl: './message.component.html',
-  styleUrl: './message.component.scss',
-  imports: [
-    NgClass,
-    MatButtonModule,
-    MatSnackBarLabel,
-    MatSnackBarActions,
-    MatSnackBarAction,
-  ],
-  standalone: true,
+    selector: 'devmx-message',
+    templateUrl: './message.component.html',
+    styleUrl: './message.component.scss',
+    imports: [
+        NgClass,
+        MatButtonModule,
+        MatSnackBarLabel,
+        MatSnackBarActions,
+        MatSnackBarAction,
+    ]
 })
 export class MessageComponent {
   data = inject<MessageData>(MAT_SNACK_BAR_DATA);

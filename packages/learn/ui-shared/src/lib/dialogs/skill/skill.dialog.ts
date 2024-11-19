@@ -19,18 +19,17 @@ import {
 export type SkillDialogRef = MatDialogRef<SkillDialog, EditableSkill>;
 
 @Component({
-  selector: 'devmx-skill',
-  templateUrl: './skill.dialog.html',
-  styleUrl: './skill.dialog.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-  ],
-  standalone: true,
+    selector: 'devmx-skill',
+    templateUrl: './skill.dialog.html',
+    styleUrl: './skill.dialog.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+    ]
 })
 export class SkillDialog implements OnInit {
   ref = inject<SkillDialogRef>(MatDialogRef);

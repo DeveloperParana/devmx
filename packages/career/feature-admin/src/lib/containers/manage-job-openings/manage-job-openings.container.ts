@@ -2,7 +2,6 @@ import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
 import { UserRef, JobOpening } from '@devmx/shared-api-interfaces';
-import { JobOpeningCardComponent } from '@devmx/career-ui-shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { JobOpeningFacade } from '@devmx/career-data-access';
@@ -18,23 +17,21 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'devmx-career-admin-manage-job-openings',
-  templateUrl: './manage-job-openings.container.html',
-  styleUrl: './manage-job-openings.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    SearchFieldComponent,
-    MatTableModule,
-    MatCardModule,
-    MatTooltipModule,
-    JobOpeningCardComponent,
-    PaginatorComponent,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-career-admin-manage-job-openings',
+    templateUrl: './manage-job-openings.container.html',
+    styleUrl: './manage-job-openings.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatButtonModule,
+        SearchFieldComponent,
+        MatTableModule,
+        MatCardModule,
+        MatTooltipModule,
+        PaginatorComponent,
+        IconComponent,
+        AsyncPipe,
+    ]
 })
 export class ManageJobOpeningsContainer {
   router = inject(Router);

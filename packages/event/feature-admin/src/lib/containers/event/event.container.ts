@@ -17,13 +17,8 @@ import { MatCardModule } from '@angular/material/card';
 import { SelectUser } from '@devmx/account-ui-shared';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { JsonPipe } from '@angular/common';
 import { EventForm } from '../../forms';
 import { take } from 'rxjs';
-import {
-  CropImageComponent,
-  SelectFileComponent,
-} from '@devmx/shared-ui-global/image';
 import {
   inject,
   Component,
@@ -33,28 +28,24 @@ import {
 
 
 @Component({
-  selector: 'devmx-event-admin-event',
-  templateUrl: './event.container.html',
-  styleUrl: './event.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideNativeDateAdapter()],
-  imports: [
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    EditorComponent,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
-    MatListModule,
-    TimeDirective,
-    SelectFileComponent,
-    CropImageComponent,
-    IconComponent,
-    JsonPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-event-admin-event',
+    templateUrl: './event.container.html',
+    styleUrl: './event.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideNativeDateAdapter()],
+    imports: [
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        EditorComponent,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCardModule,
+        MatListModule,
+        TimeDirective,
+        IconComponent,
+    ]
 })
 export class EventContainer {
   route = inject(ActivatedRoute);

@@ -22,23 +22,21 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-form-group',
-  templateUrl: './form-group.component.html',
-  styleUrl: './form-group.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    TextboxComponent,
-    DropdownComponent,
-    CheckboxComponent,
-    RadioComponent,
-    DatepickerComponent,
-    RangeComponent,
-    SliderComponent,
-    KeyValuePipe,
-    OrderByPipe
-  ],
-  standalone: true,
+    selector: 'devmx-form-group',
+    templateUrl: './form-group.component.html',
+    styleUrl: './form-group.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        TextboxComponent,
+        DropdownComponent,
+        CheckboxComponent,
+        DatepickerComponent,
+        RadioComponent,
+        SliderComponent,
+        KeyValuePipe,
+        OrderByPipe
+    ]
 })
 export class FormGroupComponent<T = object> implements OnInit {
   #destroyRef = inject(DestroyRef);

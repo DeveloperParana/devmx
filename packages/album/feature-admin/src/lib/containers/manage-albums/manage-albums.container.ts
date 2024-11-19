@@ -16,21 +16,20 @@ import { AsyncPipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-album-admin-manage-albums',
-  templateUrl: './manage-albums.container.html',
-  styleUrl: './manage-albums.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    SearchFieldComponent,
-    PaginatorComponent,
-    MatTableModule,
-    MatCardModule,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-album-admin-manage-albums',
+    templateUrl: './manage-albums.container.html',
+    styleUrl: './manage-albums.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatButtonModule,
+        SearchFieldComponent,
+        PaginatorComponent,
+        MatTableModule,
+        MatCardModule,
+        IconComponent,
+        AsyncPipe,
+    ]
 })
 export class ManageAlbumsContainer {
   router = inject(Router);
