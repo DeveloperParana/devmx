@@ -18,18 +18,18 @@ export interface UploadItem {
 }
 
 @Component({
-    exportAs: 'devmxUploadQueue',
-    selector: 'devmx-upload-queue',
-    templateUrl: './upload-queue.component.html',
-    styleUrl: './upload-queue.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatProgressBarModule,
-        MatExpansionModule,
-        MatListModule,
-        IconComponent,
-        FileSizePipe,
-    ]
+  exportAs: 'devmxUploadQueue',
+  selector: 'devmx-upload-queue',
+  templateUrl: './upload-queue.component.html',
+  styleUrl: './upload-queue.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatListModule,
+    IconComponent,
+    FileSizePipe,
+  ],
 })
 export class UploadQueueComponent {
   queue = signal<UploadItem[]>([]);

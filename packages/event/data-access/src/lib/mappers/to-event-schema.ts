@@ -13,8 +13,8 @@ export function toEventSchema(event: EventPage): EventPageSchema {
     eventAttendanceMode: toEventAttendanceModeEnumeration(event.format),
     eventSchedule: [
       {
-        "@type": "Schedule"
-      }
-    ]
+        '@type': 'Schedule',
+      },
+    ],
   };
 }

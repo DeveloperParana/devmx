@@ -26,26 +26,25 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-
 @Component({
-    selector: 'devmx-event-admin-event',
-    templateUrl: './event.container.html',
-    styleUrl: './event.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideNativeDateAdapter()],
-    imports: [
-        ReactiveFormsModule,
-        MatDatepickerModule,
-        EditorComponent,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatCardModule,
-        MatListModule,
-        TimeDirective,
-        IconComponent,
-    ]
+  selector: 'devmx-event-admin-event',
+  templateUrl: './event.container.html',
+  styleUrl: './event.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideNativeDateAdapter()],
+  imports: [
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    EditorComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCardModule,
+    MatListModule,
+    TimeDirective,
+    IconComponent,
+  ],
 })
 export class EventContainer {
   route = inject(ActivatedRoute);

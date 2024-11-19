@@ -52,7 +52,7 @@ export class PhotosController {
     @UploadedFile() file: Express.Multer.File
   ) {
     try {
-      const content = file.buffer
+      const content = file.buffer;
       return await this.photosFacade.create({ ...data, content, owner });
     } catch (err) {
       throw new BadRequestException(err);

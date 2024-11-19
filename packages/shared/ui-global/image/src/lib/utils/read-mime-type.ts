@@ -13,7 +13,6 @@ export function readMimeType(file: File) {
 
     console.log(dec2Hex(magic));
 
-
     switch (magic) {
       case 0x89504e47:
         return resolve('image/png');

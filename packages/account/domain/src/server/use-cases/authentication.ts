@@ -19,7 +19,6 @@ export class AuthenticationUseCase
 
     console.log(user);
 
-
     if (!user || !user.code) {
       throw new AuthenticationError('Não autorizado, já criou sua conta?');
     }

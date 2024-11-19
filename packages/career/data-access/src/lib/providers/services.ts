@@ -1,6 +1,4 @@
-import {
-  provideJobOpeningHttpService,
-} from '../infrastructure';
+import { provideJobOpeningHttpService } from '../infrastructure';
 
 export function provideServices() {
   return [provideJobOpeningHttpService()];

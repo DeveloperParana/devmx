@@ -1,1 +1,1 @@
-export * from './lib/script'
+export * from './lib/script';

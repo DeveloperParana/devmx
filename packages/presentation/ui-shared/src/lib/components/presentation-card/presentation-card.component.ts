@@ -7,17 +7,17 @@ import { MatChipsModule } from '@angular/material/chips';
 import { PresentationFormatPipe } from '../../pipes';
 
 @Component({
-    selector: 'devmx-presentation-card',
-    templateUrl: './presentation-card.component.html',
-    styleUrl: './presentation-card.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatCardModule,
-        MatListModule,
-        IconComponent,
-        MatChipsModule,
-        PresentationFormatPipe,
-    ]
+  selector: 'devmx-presentation-card',
+  templateUrl: './presentation-card.component.html',
+  styleUrl: './presentation-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatCardModule,
+    MatListModule,
+    IconComponent,
+    MatChipsModule,
+    PresentationFormatPipe,
+  ],
 })
 export class PresentationCardComponent {
   data = input.required<Presentation>();

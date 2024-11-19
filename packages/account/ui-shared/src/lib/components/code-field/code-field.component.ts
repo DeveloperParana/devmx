@@ -20,17 +20,17 @@ import {
 } from '@angular/forms';
 
 @Component({
-    exportAs: 'devmxCodeField',
-    selector: 'devmx-code-field',
-    templateUrl: './code-field.component.html',
-    styleUrl: './code-field.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        UpperDirective,
-    ]
+  exportAs: 'devmxCodeField',
+  selector: 'devmx-code-field',
+  templateUrl: './code-field.component.html',
+  styleUrl: './code-field.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    UpperDirective,
+  ],
 })
 export class CodeFieldComponent extends DefaultValueAccessor {
   private inputA = viewChild<ElementRef<HTMLInputElement>>('inputA');

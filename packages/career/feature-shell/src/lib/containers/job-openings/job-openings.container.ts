@@ -12,19 +12,19 @@ import {
 } from '@devmx/career-ui-shared';
 
 @Component({
-    selector: 'devmx-job-openings',
-    templateUrl: './job-openings.container.html',
-    styleUrl: './job-openings.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        JobOpeningExperienceFilterComponent,
-        JobOpeningModeFilterComponent,
-        JobOpeningCardComponent,
-        PaginatorComponent,
-        SkeletonComponent,
-        RouterModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-job-openings',
+  templateUrl: './job-openings.container.html',
+  styleUrl: './job-openings.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    JobOpeningExperienceFilterComponent,
+    JobOpeningModeFilterComponent,
+    JobOpeningCardComponent,
+    PaginatorComponent,
+    SkeletonComponent,
+    RouterModule,
+    AsyncPipe,
+  ],
 })
 export class JobOpeningsContainer {
   jobOpeningFacade = inject(JobOpeningFacade);

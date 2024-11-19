@@ -15,20 +15,20 @@ import { combineLatest, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-academy-admin-my-courses',
-    templateUrl: './my-courses.container.html',
-    styleUrl: './my-courses.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatListModule,
-        MatButtonModule,
-        MatTooltipModule,
-        PaginatorComponent,
-        CourseCardComponent,
-        IconComponent,
-        AsyncPipe
-    ]
+  selector: 'devmx-academy-admin-my-courses',
+  templateUrl: './my-courses.container.html',
+  styleUrl: './my-courses.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatListModule,
+    MatButtonModule,
+    MatTooltipModule,
+    PaginatorComponent,
+    CourseCardComponent,
+    IconComponent,
+    AsyncPipe,
+  ],
 })
 export class MyCoursesContainer {
   router = inject(Router);

@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'devmx-not-found',
-    template: `
+  selector: 'devmx-not-found',
+  template: `
     <div>
       <img src="devmx.svg" />
 
@@ -16,8 +16,8 @@ import { RouterLink } from '@angular/router';
       <img src="devpr.svg" width="100" />
     </div>
   `,
-    styleUrl: './not-found.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterLink]
+  styleUrl: './not-found.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink],
 })
 export class NotFoundContainer {}

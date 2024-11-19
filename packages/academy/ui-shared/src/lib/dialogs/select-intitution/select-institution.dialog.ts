@@ -20,20 +20,20 @@ export interface SelectInstitutionConfig {
 }
 
 @Component({
-    selector: 'devmx-select-institution',
-    templateUrl: './select-institution.dialog.html',
-    styleUrl: './select-institution.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        PaginatorComponent,
-        MatDialogTitle,
-        MatDialogContent,
-        MatDialogActions,
-        MatButtonModule,
-        MatListModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-select-institution',
+  templateUrl: './select-institution.dialog.html',
+  styleUrl: './select-institution.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    PaginatorComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    MatListModule,
+    AsyncPipe,
+  ],
 })
 export class SelectInstitutionDialog {
   institutionFacade = inject(InstitutionFacade);

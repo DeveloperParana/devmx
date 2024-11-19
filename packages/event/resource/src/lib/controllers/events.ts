@@ -53,8 +53,8 @@ export class EventsController {
   @Allowed()
   @ApiPage(EventDto)
   async findAll(@Query() params: QueryParamsDto<Event>) {
-    let date = new Date()
-    date = subDays(date, 1)
+    let date = new Date();
+    date = subDays(date, 1);
 
     try {
       return await this.eventsFacade.findFrom(date, params);

@@ -16,9 +16,9 @@ export interface Event {
 
   time?: string;
 
-  duration?: DurationTime
+  duration?: DurationTime;
 
-  maxAttendees?: number
+  maxAttendees?: number;
 
   cover?: string;
 

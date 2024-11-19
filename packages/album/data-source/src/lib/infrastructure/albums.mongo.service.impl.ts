@@ -23,7 +23,7 @@ export class AlbumsMongoServiceImpl
     if (method === 'findOne') {
       query = query.populate('photos', 'type content caption createdAt');
     } else {
-      query = query.select('-photos')
+      query = query.select('-photos');
     }
 
     return query;

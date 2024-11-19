@@ -1,1 +1,1 @@
-export * from './lib/sort-direction/sort-direction.component'
+export * from './lib/sort-direction/sort-direction.component';

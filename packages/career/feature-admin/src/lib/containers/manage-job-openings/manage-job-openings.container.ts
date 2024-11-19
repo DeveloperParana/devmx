@@ -17,21 +17,21 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-    selector: 'devmx-career-admin-manage-job-openings',
-    templateUrl: './manage-job-openings.container.html',
-    styleUrl: './manage-job-openings.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatButtonModule,
-        SearchFieldComponent,
-        MatTableModule,
-        MatCardModule,
-        MatTooltipModule,
-        PaginatorComponent,
-        IconComponent,
-        AsyncPipe,
-    ]
+  selector: 'devmx-career-admin-manage-job-openings',
+  templateUrl: './manage-job-openings.container.html',
+  styleUrl: './manage-job-openings.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatButtonModule,
+    SearchFieldComponent,
+    MatTableModule,
+    MatCardModule,
+    MatTooltipModule,
+    PaginatorComponent,
+    IconComponent,
+    AsyncPipe,
+  ],
 })
 export class ManageJobOpeningsContainer {
   router = inject(Router);

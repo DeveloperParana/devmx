@@ -5,11 +5,11 @@ import { MatListModule } from '@angular/material/list';
 import { Course } from '@devmx/shared-api-interfaces';
 
 @Component({
-    selector: 'devmx-course-card',
-    templateUrl: './course-card.component.html',
-    styleUrl: './course-card.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatCardModule, MatListModule, IconComponent]
+  selector: 'devmx-course-card',
+  templateUrl: './course-card.component.html',
+  styleUrl: './course-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatCardModule, MatListModule, IconComponent],
 })
 export class CourseCardComponent {
   data = input.required<Course>();

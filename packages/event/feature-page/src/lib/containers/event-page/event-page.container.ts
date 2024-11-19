@@ -16,24 +16,24 @@ import {
 } from '@devmx/event-ui-shared';
 
 @Component({
-    selector: 'devmx-event-page',
-    templateUrl: './event-page.container.html',
-    styleUrl: './event-page.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MarkdownComponent,
-        ShowEventAddressPipe,
-        ShowEventLinkPipe,
-        MatTooltipModule,
-        EventFormatPipe,
-        MatButtonModule,
-        MatCardModule,
-        MatListModule,
-        IconComponent,
-        AsyncPipe,
-        DatePipe,
-    ]
+  selector: 'devmx-event-page',
+  templateUrl: './event-page.container.html',
+  styleUrl: './event-page.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MarkdownComponent,
+    ShowEventAddressPipe,
+    ShowEventLinkPipe,
+    MatTooltipModule,
+    EventFormatPipe,
+    MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    IconComponent,
+    AsyncPipe,
+    DatePipe,
+  ],
 })
 export class EventPageContainer {
   route = inject(ActivatedRoute);

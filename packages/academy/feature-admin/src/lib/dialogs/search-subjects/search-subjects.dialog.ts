@@ -19,23 +19,23 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-    selector: 'devmx-admin-search-subjects',
-    templateUrl: './search-subjects.dialog.html',
-    styleUrl: './search-subjects.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        PaginatorComponent,
-        MatDialogTitle,
-        MatDialogContent,
-        MatDialogActions,
-        MatButtonModule,
-        MatInputModule,
-        IconComponent,
-        MatListModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-admin-search-subjects',
+  templateUrl: './search-subjects.dialog.html',
+  styleUrl: './search-subjects.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    PaginatorComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    MatInputModule,
+    IconComponent,
+    MatListModule,
+    AsyncPipe,
+  ],
 })
 export class SearchSubjectsDialog {
   subjectFacade = inject(SubjectFacade);

@@ -19,23 +19,23 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-    selector: 'devmx-admin-search-institution',
-    templateUrl: './search-institution.dialog.html',
-    styleUrl: './search-institution.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        PaginatorComponent,
-        MatDialogTitle,
-        MatDialogContent,
-        MatDialogActions,
-        MatButtonModule,
-        MatInputModule,
-        IconComponent,
-        MatListModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-admin-search-institution',
+  templateUrl: './search-institution.dialog.html',
+  styleUrl: './search-institution.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    PaginatorComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    MatInputModule,
+    IconComponent,
+    MatListModule,
+    AsyncPipe,
+  ],
 })
 export class SearchInstitutionDialog {
   institutionFacade = inject(InstitutionFacade);

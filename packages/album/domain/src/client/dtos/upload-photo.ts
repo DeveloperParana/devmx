@@ -1,11 +1,11 @@
 export interface UploadPhoto {
   album: string;
 
-  caption?: string
+  caption?: string;
 
-  width: number
+  width: number;
 
-  height: number
+  height: number;
 
   photo: File;
 }

@@ -18,18 +18,18 @@ export interface CoverResult {
 }
 
 @Component({
-    selector: 'devmx-select-cover',
-    templateUrl: './select-cover.dialog.html',
-    styleUrl: './select-cover.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        CropImageComponent,
-        MatInputModule,
-        MatButtonModule,
-        IconComponent,
-    ]
+  selector: 'devmx-select-cover',
+  templateUrl: './select-cover.dialog.html',
+  styleUrl: './select-cover.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CropImageComponent,
+    MatInputModule,
+    MatButtonModule,
+    IconComponent,
+  ],
 })
 export class SelectCoverDialog {
   ref = inject<DialogRef<CoverResult, SelectCoverDialog>>(DialogRef);

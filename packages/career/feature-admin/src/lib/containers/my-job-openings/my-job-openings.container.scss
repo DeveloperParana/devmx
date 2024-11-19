@@ -17,7 +17,6 @@
       max-width: 50%;
     }
 
-
     p {
       display: -webkit-box;
       line-clamp: 3; /* Limita a 3 linhas */
@@ -65,7 +64,6 @@
   }
 
   @media (max-width: 767px) {
-
     .job-openings-container {
       align-content: flex-start;
       grid-template-columns: 1fr;

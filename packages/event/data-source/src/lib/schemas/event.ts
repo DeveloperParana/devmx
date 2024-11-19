@@ -38,7 +38,7 @@ export class EventCollection extends Document implements Event {
   duration?: DurationTime;
 
   @Prop({ type: Number })
-  maxAttendees?: number
+  maxAttendees?: number;
 
   @Prop()
   cover: string;

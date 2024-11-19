@@ -15,20 +15,20 @@ import { combineLatest, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-my-presentations',
-    templateUrl: './my-presentations.container.html',
-    styleUrl: './my-presentations.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatButtonModule,
-        MatTooltipModule,
-        PaginatorComponent,
-        PresentationCardComponent,
-        SkeletonComponent,
-        IconComponent,
-        AsyncPipe
-    ]
+  selector: 'devmx-my-presentations',
+  templateUrl: './my-presentations.container.html',
+  styleUrl: './my-presentations.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatButtonModule,
+    MatTooltipModule,
+    PaginatorComponent,
+    PresentationCardComponent,
+    SkeletonComponent,
+    IconComponent,
+    AsyncPipe,
+  ],
 })
 export class MyPresentationsContainer {
   router = inject(Router);

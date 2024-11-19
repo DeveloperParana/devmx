@@ -4,11 +4,11 @@ import { FormOption } from '@devmx/shared-ui-global/forms';
 import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
-    selector: 'devmx-presentation-filter',
-    templateUrl: './presentation-filter.component.html',
-    styleUrl: './presentation-filter.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatChipsModule]
+  selector: 'devmx-presentation-filter',
+  templateUrl: './presentation-filter.component.html',
+  styleUrl: './presentation-filter.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatChipsModule],
 })
 export class PresentationFilterComponent {
   change = output<PresentationFormat>();
