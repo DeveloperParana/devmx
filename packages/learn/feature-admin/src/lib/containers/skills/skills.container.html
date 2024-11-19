@@ -40,7 +40,11 @@
   <mat-card-actions class="skills-card-actions">
     <form [formGroup]="form" #skillForm="ngForm" (submit)="onSubmit(skillForm)">
       <mat-form-field>
-        <input matInput formControlName="name" placeholder="Adicionar nova habilidade" />
+        <input
+          matInput
+          formControlName="name"
+          placeholder="Adicionar nova habilidade"
+        />
         <button mat-icon-button matIconSuffix>
           <devmx-icon name="send" />
         </button>

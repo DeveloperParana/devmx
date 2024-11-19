@@ -18,21 +18,21 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-    selector: 'devmx-admin-search-presentations',
-    templateUrl: './search-presentations.dialog.html',
-    styleUrl: './search-presentations.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        PaginatorComponent,
-        PresentationSearchComponent,
-        MatDialogTitle,
-        MatDialogContent,
-        MatDialogActions,
-        MatButtonModule,
-        MatListModule,
-        AsyncPipe
-    ]
+  selector: 'devmx-admin-search-presentations',
+  templateUrl: './search-presentations.dialog.html',
+  styleUrl: './search-presentations.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    PaginatorComponent,
+    PresentationSearchComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    MatListModule,
+    AsyncPipe,
+  ],
 })
 export class SearchPresentationsDialog {
   presentationFacade = inject(PresentationFacade);

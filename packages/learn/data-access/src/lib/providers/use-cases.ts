@@ -28,7 +28,6 @@ export function provideDeleteSkillUseCase() {
   return createUseCaseProvider(DeleteSkillUseCase, [SkillService]);
 }
 
-
 export function provideUseCases() {
   return [
     provideCreateSkillUseCase(),

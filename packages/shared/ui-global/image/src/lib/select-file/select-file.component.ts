@@ -3,11 +3,11 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'devmx-select-file',
-    templateUrl: './select-file.component.html',
-    styleUrl: './select-file.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatButtonModule, IconComponent]
+  selector: 'devmx-select-file',
+  templateUrl: './select-file.component.html',
+  styleUrl: './select-file.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, IconComponent],
 })
 export class SelectFileComponent {
   selectedChange = output<File>();

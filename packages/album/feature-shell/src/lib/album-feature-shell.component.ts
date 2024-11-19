@@ -10,17 +10,17 @@ import {
 } from '@angular/core';
 
 @Component({
-    template: `<devmx-layout />`,
-    styles: `
+  template: `<devmx-layout />`,
+  styles: `
     :host {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
     `,
-    selector: 'devmx-album-feature-shell',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterModule, LayoutComponent]
+  selector: 'devmx-album-feature-shell',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule, LayoutComponent],
 })
 export class AlbumFeatureShellComponent {
   router = inject(Router);

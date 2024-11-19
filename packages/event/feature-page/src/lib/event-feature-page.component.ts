@@ -4,12 +4,11 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Script } from '@devmx/shared-ui-global/script';
 import { filter, map } from 'rxjs';
 
-
 @Component({
-    selector: 'devmx-event-feature-page',
-    template: `<router-outlet />`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterModule]
+  selector: 'devmx-event-feature-page',
+  template: `<router-outlet />`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule],
 })
 export class EventFeaturePageComponent {
   route = inject(ActivatedRoute);
@@ -24,9 +23,12 @@ export class EventFeaturePageComponent {
         takeUntilDestroyed()
       )
       .subscribe((schema) => {
-        this.script.addScript({
-          type: 'application/ld+json',
-        }, JSON.stringify(schema, null, 2));
+        this.script.addScript(
+          {
+            type: 'application/ld+json',
+          },
+          JSON.stringify(schema, null, 2)
+        );
       });
   }
 }

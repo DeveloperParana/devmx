@@ -17,20 +17,20 @@ import { AsyncPipe } from '@angular/common';
 import { EventRSVP } from '../../dialogs';
 
 @Component({
-    selector: 'devmx-event-admin-manage-events',
-    templateUrl: './manage-events.container.html',
-    styleUrl: './manage-events.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatButtonModule,
-        SearchFieldComponent,
-        PaginatorComponent,
-        MatTableModule,
-        MatCardModule,
-        IconComponent,
-        AsyncPipe,
-    ]
+  selector: 'devmx-event-admin-manage-events',
+  templateUrl: './manage-events.container.html',
+  styleUrl: './manage-events.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatButtonModule,
+    SearchFieldComponent,
+    PaginatorComponent,
+    MatTableModule,
+    MatCardModule,
+    IconComponent,
+    AsyncPipe,
+  ],
 })
 export class ManageEventsContainer {
   router = inject(Router);

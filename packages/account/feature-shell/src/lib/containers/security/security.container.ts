@@ -11,18 +11,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdatePasswordForm } from '../../forms';
 
 @Component({
-    selector: 'devmx-security',
-    templateUrl: './security.container.html',
-    styleUrl: './security.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        CodeFieldComponent,
-        MatButtonModule,
-        MatInputModule,
-        MatCardModule,
-    ]
+  selector: 'devmx-security',
+  templateUrl: './security.container.html',
+  styleUrl: './security.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CodeFieldComponent,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+  ],
 })
 export class SecurityContainer {
   userFacade = inject(UserFacade);

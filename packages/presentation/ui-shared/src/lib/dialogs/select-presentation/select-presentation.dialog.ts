@@ -20,21 +20,21 @@ export interface SelectPresentationConfig {
 }
 
 @Component({
-    selector: 'devmx-select-presentation',
-    templateUrl: './select-presentation.dialog.html',
-    styleUrl: './select-presentation.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        PaginatorComponent,
-        SearchFieldComponent,
-        MatDialogTitle,
-        MatDialogContent,
-        MatDialogActions,
-        MatButtonModule,
-        MatListModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-select-presentation',
+  templateUrl: './select-presentation.dialog.html',
+  styleUrl: './select-presentation.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    PaginatorComponent,
+    SearchFieldComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButtonModule,
+    MatListModule,
+    AsyncPipe,
+  ],
 })
 export class SelectPresentationDialog {
   presentationFacade = inject(PresentationFacade);

@@ -16,15 +16,15 @@ export interface FormDialogData<T> {
 }
 
 @Component({
-    selector: 'devmx-form',
-    templateUrl: './form.dialog.html',
-    styleUrl: './form.dialog.scss',
-    imports: [
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatButtonModule,
-        FormGroupComponent,
-    ]
+  selector: 'devmx-form',
+  templateUrl: './form.dialog.html',
+  styleUrl: './form.dialog.scss',
+  imports: [
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    FormGroupComponent,
+  ],
 })
 export class FormDialog<T = unknown> {
   ref = inject<MatDialogRef<FormDialog<T>, T>>(MatDialogRef);

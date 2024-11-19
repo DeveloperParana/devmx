@@ -1,120 +1,120 @@
 @if (event$ | async; as event) {
 
-  <mat-card>
-    <mat-card-content>
-      <h1>{{ event.title }}</h1>
-    </mat-card-content>
+<mat-card>
+  <mat-card-content>
+    <h1>{{ event.title }}</h1>
+  </mat-card-content>
+</mat-card>
+
+<header>
+  <section>
+    <div>
+      <devmx-icon name="calendar" />
+      <time [dateTime]="event.date | date : 'fullDate'">
+        {{ event.date | date : 'fullDate' }}
+      </time>
+    </div>
+
+    <div>
+      <devmx-icon name="alarm-clock-alert" />
+      <time [dateTime]="event.start | date : 'shortTime'">
+        {{ event.start | date : 'shortTime' }}
+      </time>
+      ~
+      <time [dateTime]="event.end | date : 'shortTime'">
+        {{ event.end | date : 'shortTime' }}
+      </time>
+    </div>
+
+    <div>
+      <span>{{ event.format | eventFormat }}</span>
+    </div>
+  </section>
+
+  <section>
+    @if (event.address && (event.format | showEventAddress)) {
+    <div>
+      <devmx-icon name="transport/map" />
+
+      <address>{{ event.address }}</address>
+
+      <a
+        matTooltip="Abrir no Google Maps"
+        rel="noopener noreferrer"
+        [href]="'//google.com/maps/search/' + event.address"
+        target="_blank"
+        mat-icon-button
+      >
+        <devmx-icon name="external-link" />
+      </a>
+    </div>
+    }
+
+    <!--  -->
+
+    @if (event.link && (event.format | showEventLink)) {
+    <div>
+      <devmx-icon name="link" />
+
+      <span>{{ event.link }}</span>
+
+      <a
+        matTooltip="Abrir em outra aba"
+        rel="noopener noreferrer"
+        [href]="event.link"
+        target="_blank"
+        mat-icon-button
+      >
+        <devmx-icon name="external-link" />
+      </a>
+    </div>
+    }
+  </section>
+</header>
+
+<main>
+  <mat-card class="event-card">
+    <mat-card-header>
+      <mat-card-title>Apresentações</mat-card-title>
+    </mat-card-header>
+    @if (event.presentations.length) {
+    <mat-list>
+      @for (presentation of event.presentations; track presentation) {
+      <mat-list-item>
+        <devmx-icon matListItemIcon name="presentation" />
+        <div matListItemTitle>{{ presentation.title }}</div>
+        <div matListItemLine>{{ presentation.owner.displayName }}</div>
+      </mat-list-item>
+      }
+    </mat-list>
+    }
   </mat-card>
 
-  <header>
-    <section>
-      <div>
-        <devmx-icon name="calendar" />
-        <time [dateTime]="event.date | date : 'fullDate'">
-          {{ event.date | date : 'fullDate' }}
-        </time>
-      </div>
-
-      <div>
-        <devmx-icon name="alarm-clock-alert" />
-        <time [dateTime]="event.start | date : 'shortTime'">
-          {{ event.start | date : 'shortTime' }}
-        </time>
-        ~
-        <time [dateTime]="event.end | date : 'shortTime'">
-          {{ event.end | date : 'shortTime' }}
-        </time>
-      </div>
-
-      <div>
-        <span>{{ event.format | eventFormat }}</span>
-      </div>
-    </section>
-
-    <section>
-      @if (event.address && (event.format | showEventAddress)) {
-      <div>
-        <devmx-icon name="transport/map" />
-
-        <address>{{ event.address }}</address>
-
-        <a
-          matTooltip="Abrir no Google Maps"
-          rel="noopener noreferrer"
-          [href]="'//google.com/maps/search/' + event.address"
-          target="_blank"
-          mat-icon-button
-        >
-          <devmx-icon name="external-link" />
-        </a>
-      </div>
-      }
-
+  <mat-card class="event-card">
+    <mat-card-header>
+      <mat-card-title>Organizadores</mat-card-title>
+    </mat-card-header>
+    <mat-list>
+      <mat-list-item>
+        <devmx-icon matListItemIcon name="user-circle" />
+        <div matListItemTitle>{{ event.owner.displayName }}</div>
+      </mat-list-item>
+      @if (event.leaders.length) {
       <!--  -->
-
-      @if (event.link && (event.format | showEventLink)) {
-      <div>
-        <devmx-icon name="link" />
-
-        <span>{{ event.link }}</span>
-
-        <a
-          matTooltip="Abrir em outra aba"
-          rel="noopener noreferrer"
-          [href]="event.link"
-          target="_blank"
-          mat-icon-button
-        >
-          <devmx-icon name="external-link" />
-        </a>
-      </div>
+      @for (leader of event.leaders; track leader) {
+      <mat-list-item>
+        <devmx-icon matListItemIcon name="user-circle" />
+        <div matListItemTitle>{{ leader.displayName }}</div>
+      </mat-list-item>
       }
-    </section>
-  </header>
-
-  <main>
-    <mat-card class="event-card">
-      <mat-card-header>
-        <mat-card-title>Apresentações</mat-card-title>
-      </mat-card-header>
-      @if (event.presentations.length) {
-      <mat-list>
-        @for (presentation of event.presentations; track presentation) {
-        <mat-list-item>
-          <devmx-icon matListItemIcon name="presentation" />
-          <div matListItemTitle>{{ presentation.title }}</div>
-          <div matListItemLine>{{ presentation.owner.displayName }}</div>
-        </mat-list-item>
-        }
-      </mat-list>
+      <!--  -->
       }
-    </mat-card>
+    </mat-list>
+  </mat-card>
+</main>
 
-    <mat-card class="event-card">
-      <mat-card-header>
-        <mat-card-title>Organizadores</mat-card-title>
-      </mat-card-header>
-      <mat-list>
-        <mat-list-item>
-          <devmx-icon matListItemIcon name="user-circle" />
-          <div matListItemTitle>{{ event.owner.displayName }}</div>
-        </mat-list-item>
-        @if (event.leaders.length) {
-        <!--  -->
-        @for (leader of event.leaders; track leader) {
-        <mat-list-item>
-          <devmx-icon matListItemIcon name="user-circle" />
-          <div matListItemTitle>{{ leader.displayName }}</div>
-        </mat-list-item>
-        }
-        <!--  -->
-        }
-      </mat-list>
-    </mat-card>
-  </main>
+<footer>
+  <devmx-markdown [content]="event.description" />
+</footer>
 
-  <footer>
-    <devmx-markdown [content]="event.description" />
-  </footer>
-
-  }
+}

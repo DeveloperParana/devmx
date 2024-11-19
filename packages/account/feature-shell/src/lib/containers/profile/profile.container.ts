@@ -15,21 +15,21 @@ import { UpdateProfileForm } from '../../forms';
 import { take } from 'rxjs';
 
 @Component({
-    selector: 'devmx-profile',
-    templateUrl: './profile.container.html',
-    styleUrl: './profile.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideNativeDateAdapter()],
-    imports: [
-        ReactiveFormsModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        EditorComponent,
-        MatSelectModule,
-        MatButtonModule,
-        MatInputModule,
-        MatCardModule,
-    ]
+  selector: 'devmx-profile',
+  templateUrl: './profile.container.html',
+  styleUrl: './profile.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideNativeDateAdapter()],
+  imports: [
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    EditorComponent,
+    MatSelectModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+  ],
 })
 export class ProfileContainer {
   userFacade = inject(UserFacade);

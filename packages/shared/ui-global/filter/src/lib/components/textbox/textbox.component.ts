@@ -10,17 +10,17 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'devmx-textbox',
-    templateUrl: './textbox.component.html',
-    styleUrl: './textbox.component.scss',
-    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [
-        {
-            provide: ControlContainer,
-            useFactory: () => inject(ControlContainer, { skipSelf: true }),
-        },
-    ]
+  selector: 'devmx-textbox',
+  templateUrl: './textbox.component.html',
+  styleUrl: './textbox.component.scss',
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [
+    {
+      provide: ControlContainer,
+      useFactory: () => inject(ControlContainer, { skipSelf: true }),
+    },
+  ],
 })
 export class TextboxComponent<T extends string | number> {
   options = input.required<TextboxFormField<T>>();

@@ -19,24 +19,24 @@ import { SortMapper } from '@devmx/shared-data-access';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-admin-skills',
-    templateUrl: './skills.container.html',
-    styleUrl: './skills.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatTableModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        SearchFieldComponent,
-        PaginatorComponent,
-        MatInputModule,
-        MatSortModule,
-        IconComponent,
-        MatCardModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-admin-skills',
+  templateUrl: './skills.container.html',
+  styleUrl: './skills.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatTableModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    SearchFieldComponent,
+    PaginatorComponent,
+    MatInputModule,
+    MatSortModule,
+    IconComponent,
+    MatCardModule,
+    AsyncPipe,
+  ],
 })
 export class SkillsContainer {
   router = inject(Router);
@@ -71,7 +71,6 @@ export class SkillsContainer {
     this.skillFacade.load();
 
     console.log(this.route.snapshot.toString());
-
   };
 
   onSearchChange(name: string) {

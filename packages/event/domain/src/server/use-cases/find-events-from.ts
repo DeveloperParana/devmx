@@ -7,11 +7,11 @@ import {
 } from '@devmx/shared-api-interfaces';
 
 export class FindEventsFromUseCase
-  implements UseCase<[Date,QueryParams<Event>], Page<Event>>
+  implements UseCase<[Date, QueryParams<Event>], Page<Event>>
 {
   constructor(private eventsService: EventsService) {}
 
-  async execute([date, params]: [Date,QueryParams<Event>]) {
+  async execute([date, params]: [Date, QueryParams<Event>]) {
     if (params.filter) {
       if (params.filter.format) {
         params.filter.format = new RegExp(params.filter.format, 'i');

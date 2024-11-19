@@ -40,7 +40,7 @@ export class EventsMongoServiceImpl
         select: 'title owner',
         populate: {
           path: 'owner',
-          select: 'displayName profile'
+          select: 'displayName profile',
         },
       });
   }

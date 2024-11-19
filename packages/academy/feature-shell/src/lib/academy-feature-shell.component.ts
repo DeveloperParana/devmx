@@ -10,16 +10,16 @@ import {
 } from '@angular/core';
 
 @Component({
-    template: `<devmx-layout />`,
-    styles: `
+  template: `<devmx-layout />`,
+  styles: `
     :host {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterModule, LayoutComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule, LayoutComponent],
 })
 export class AcademyFeatureShellComponent {
   router = inject(Router);

@@ -6,11 +6,11 @@ import { Album } from '@devmx/shared-api-interfaces';
 import { DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-album-card',
-    templateUrl: './album-card.component.html',
-    styleUrl: './album-card.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatCardModule, MatListModule, IconComponent, DatePipe]
+  selector: 'devmx-album-card',
+  templateUrl: './album-card.component.html',
+  styleUrl: './album-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatCardModule, MatListModule, IconComponent, DatePipe],
 })
 export class AlbumCardComponent {
   data = input.required<Album>();

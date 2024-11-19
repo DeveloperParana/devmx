@@ -37,7 +37,10 @@ export class EventsFacade {
   }
 
   async findFrom(date: Date, params: QueryParamsDto<Event>) {
-    const { data, items, pages } = await this.findEventsFromUseCase.execute([date, params]);
+    const { data, items, pages } = await this.findEventsFromUseCase.execute([
+      date,
+      params,
+    ]);
     const events = plainToInstance(EventDto, data);
     return new PageDto(events, items, pages);
   }

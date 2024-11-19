@@ -10,21 +10,21 @@ import { AsyncPipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 
 @Component({
-    selector: 'devmx-course-details',
-    templateUrl: './course-details.container.html',
-    styleUrl: './course-details.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    imports: [
-        RouterModule,
-        MatCardModule,
-        MatListModule,
-        MatButtonModule,
-        IconComponent,
-        SafeHtmlPipe,
-        MarkedPipe,
-        AsyncPipe,
-    ]
+  selector: 'devmx-course-details',
+  templateUrl: './course-details.container.html',
+  styleUrl: './course-details.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  imports: [
+    RouterModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    IconComponent,
+    SafeHtmlPipe,
+    MarkedPipe,
+    AsyncPipe,
+  ],
 })
 export class CourseDetailsContainer {
   route = inject(ActivatedRoute);

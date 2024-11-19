@@ -22,18 +22,18 @@ export type SelectSkillDialogRef = MatDialogRef<
 >;
 
 @Component({
-    selector: 'devmx-select-skill',
-    templateUrl: './select-skill.dialog.html',
-    styleUrl: './select-skill.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        PaginatorComponent,
-        SearchFieldComponent,
-        MatDialogModule,
-        MatButtonModule,
-        MatListModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-select-skill',
+  templateUrl: './select-skill.dialog.html',
+  styleUrl: './select-skill.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    PaginatorComponent,
+    SearchFieldComponent,
+    MatDialogModule,
+    MatButtonModule,
+    MatListModule,
+    AsyncPipe,
+  ],
 })
 export class SelectSkillDialog {
   ref = inject<SelectSkillDialogRef>(MatDialogRef);

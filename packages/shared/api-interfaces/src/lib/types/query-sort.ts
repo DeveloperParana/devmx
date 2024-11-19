@@ -1,4 +1,4 @@
-import { SortDirection } from "./sort-direction";
+import { SortDirection } from './sort-direction';
 
 type NonObjectKeys<T> = {
   [K in keyof T]: T[K] extends object ? never : K;

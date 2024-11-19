@@ -7,17 +7,17 @@ import { EventFormatPipe } from '../../pipes';
 import { DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-event-card',
-    templateUrl: './event-card.component.html',
-    styleUrl: './event-card.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatCardModule,
-        MatListModule,
-        EventFormatPipe,
-        IconComponent,
-        DatePipe,
-    ]
+  selector: 'devmx-event-card',
+  templateUrl: './event-card.component.html',
+  styleUrl: './event-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatCardModule,
+    MatListModule,
+    EventFormatPipe,
+    IconComponent,
+    DatePipe,
+  ],
 })
 export class EventCardComponent {
   data = input.required<Event>();

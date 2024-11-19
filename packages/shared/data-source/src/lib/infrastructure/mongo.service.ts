@@ -13,7 +13,10 @@ export abstract class MongoService<T extends Entity>
 {
   constructor(protected entityModel: Model<T>) {}
 
-  protected applyPopulate<U>(query: Query<U, T>, method?: 'find' | 'findOne'): Query<U, T> {
+  protected applyPopulate<U>(
+    query: Query<U, T>,
+    method?: 'find' | 'findOne'
+  ): Query<U, T> {
     return query;
   }
 

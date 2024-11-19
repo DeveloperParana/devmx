@@ -15,7 +15,6 @@ import {
   SharedResourceModule,
 } from '@devmx/shared-resource';
 
-
 @Module({
   imports: [
     ServeStaticModule.forRoot(env.static),

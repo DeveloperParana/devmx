@@ -29,16 +29,16 @@ export type FormField<T = any> =
   | DropdownFormField<T>;
 
 @Component({
-    selector: 'devmx-filter',
-    templateUrl: './filter.component.html',
-    styleUrl: './filter.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        TextboxComponent,
-        CheckboxComponent,
-        DropdownComponent,
-    ]
+  selector: 'devmx-filter',
+  templateUrl: './filter.component.html',
+  styleUrl: './filter.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    TextboxComponent,
+    CheckboxComponent,
+    DropdownComponent,
+  ],
 })
 export class FilterComponent<T> implements OnInit {
   #destroyRef = inject(DestroyRef);

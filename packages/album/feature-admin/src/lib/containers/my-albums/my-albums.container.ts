@@ -16,20 +16,20 @@ import { AsyncPipe } from '@angular/common';
 import { AlbumForm } from '../../forms';
 
 @Component({
-    selector: 'devmx-admin-my-albums',
-    templateUrl: './my-albums.container.html',
-    styleUrl: './my-albums.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatButtonModule,
-        MatTooltipModule,
-        PaginatorComponent,
-        AlbumCardComponent,
-        DropZoneDirective,
-        IconComponent,
-        AsyncPipe,
-    ]
+  selector: 'devmx-admin-my-albums',
+  templateUrl: './my-albums.container.html',
+  styleUrl: './my-albums.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatButtonModule,
+    MatTooltipModule,
+    PaginatorComponent,
+    AlbumCardComponent,
+    DropZoneDirective,
+    IconComponent,
+    AsyncPipe,
+  ],
 })
 export class MyAlbumsContainer {
   router = inject(Router);

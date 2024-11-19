@@ -9,19 +9,19 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 
 @Component({
-    selector: 'devmx-album-details',
-    templateUrl: './album-details.container.html',
-    styleUrl: './album-details.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatCardModule,
-        MatListModule,
-        MatButtonModule,
-        IconComponent,
-        AsyncPipe,
-        DatePipe,
-    ]
+  selector: 'devmx-album-details',
+  templateUrl: './album-details.container.html',
+  styleUrl: './album-details.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    IconComponent,
+    AsyncPipe,
+    DatePipe,
+  ],
 })
 export class AlbumDetailsContainer {
   route = inject(ActivatedRoute);

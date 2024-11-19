@@ -28,7 +28,6 @@ export function detectFaces(element: HTMLImageElement) {
 
   const image = context.getImageData(0, 0, canvas.width, canvas.height);
 
-
   const faceRects: DOMRect[] = [];
 
   const visited: boolean[] = new Array(width * height).fill(false);
@@ -65,10 +64,10 @@ function findFaceBounds(
   visited: boolean[]
 ): DOMRect | null {
   const queue: [number, number][] = [[startX, startY]];
-  let minX = startX
-  let minY = startY
-  let maxX = startX
-  let maxY = startY
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
 
   while (queue.length > 0) {
     const [x, y] = queue.shift() ?? [0, 0];

@@ -1,4 +1,4 @@
-import { provideSkillsFacade } from "../application";
+import { provideSkillsFacade } from '../application';
 
 export function provideFacades() {
   return [provideSkillsFacade()];

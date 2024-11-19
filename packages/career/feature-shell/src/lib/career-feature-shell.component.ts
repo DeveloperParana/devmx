@@ -11,17 +11,17 @@ import {
 } from '@angular/core';
 
 @Component({
-    template: `<devmx-layout />`,
-    styles: `
+  template: `<devmx-layout />`,
+  styles: `
     :host {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
   `,
-    selector: 'devmx-career-feature-shell',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterModule, LayoutComponent]
+  selector: 'devmx-career-feature-shell',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule, LayoutComponent],
 })
 export class CareerFeatureShellComponent implements OnInit {
   router = inject(Router);

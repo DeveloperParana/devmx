@@ -10,6 +10,6 @@ export class DetectFacesDirective {
     afterRender(() => {
       const faces = detectFaces(elRef.nativeElement);
       console.log(faces);
-    })
+    });
   }
 }

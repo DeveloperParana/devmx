@@ -6,11 +6,11 @@ import { LayoutToolbar } from './toolbar';
 import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'devmx-layout-toolbar',
-    templateUrl: './toolbar.component.html',
-    styleUrl: './toolbar.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatToolbarModule, IconComponent, MatListModule, AsyncPipe]
+  selector: 'devmx-layout-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrl: './toolbar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatToolbarModule, IconComponent, MatListModule, AsyncPipe],
 })
 export class LayoutToolbarComponent {
   toolbar = inject(LayoutToolbar);

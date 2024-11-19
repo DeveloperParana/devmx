@@ -19,23 +19,23 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'devmx-authentication',
-    templateUrl: './authentication.container.html',
-    styleUrl: './authentication.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        CodeFieldComponent,
-        MatStepperModule,
-        MatButtonModule,
-        MatInputModule,
-        MatCardModule,
-        LowerDirective,
-        TrimDirective,
-        RouterLink,
-        AsyncPipe,
-    ]
+  selector: 'devmx-authentication',
+  templateUrl: './authentication.container.html',
+  styleUrl: './authentication.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CodeFieldComponent,
+    MatStepperModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    LowerDirective,
+    TrimDirective,
+    RouterLink,
+    AsyncPipe,
+  ],
 })
 export class AuthenticationContainer {
   router = inject(Router);

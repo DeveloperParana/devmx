@@ -14,19 +14,19 @@ import { combineLatest, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-career-admin-my-job-openings',
-    templateUrl: './my-job-openings.container.html',
-    styleUrl: './my-job-openings.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        MatButtonModule,
-        MatTooltipModule,
-        JobOpeningCardComponent,
-        PaginatorComponent,
-        IconComponent,
-        AsyncPipe,
-    ]
+  selector: 'devmx-career-admin-my-job-openings',
+  templateUrl: './my-job-openings.container.html',
+  styleUrl: './my-job-openings.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    MatButtonModule,
+    MatTooltipModule,
+    JobOpeningCardComponent,
+    PaginatorComponent,
+    IconComponent,
+    AsyncPipe,
+  ],
 })
 export class MyJobOpeningsContainer {
   router = inject(Router);

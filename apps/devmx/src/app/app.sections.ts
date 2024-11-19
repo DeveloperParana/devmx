@@ -75,7 +75,7 @@ export const appSections: SectionHeaderOptions[] = [
         label: 'Aprenda',
         route: ['/aprenda', 'administracao'],
         icon: 'book-opened',
-        roles: ['member']
+        roles: ['member'],
       },
     ],
   },

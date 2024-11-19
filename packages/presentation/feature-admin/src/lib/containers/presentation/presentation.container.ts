@@ -28,24 +28,24 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'devmx-presentation-admin-presentation',
-    templateUrl: './presentation.container.html',
-    styleUrl: './presentation.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        MatCardModule,
-        EditorComponent,
-        MatProgressSpinnerModule,
-        MatFormFieldModule,
-        DragDropModule,
-        MatCheckboxModule,
-        MatInputModule,
-        MatListModule,
-        MatButtonModule,
-        MatSelectModule,
-        IconComponent,
-    ]
+  selector: 'devmx-presentation-admin-presentation',
+  templateUrl: './presentation.container.html',
+  styleUrl: './presentation.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MatCardModule,
+    EditorComponent,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    DragDropModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatListModule,
+    MatButtonModule,
+    MatSelectModule,
+    IconComponent,
+  ],
 })
 export class PresentationContainer {
   route = inject(ActivatedRoute);

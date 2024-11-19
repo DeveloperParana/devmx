@@ -14,19 +14,19 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-    selector: 'devmx-event-rsvp',
-    templateUrl: './event-rsvp.dialog.html',
-    styleUrl: './event-rsvp.dialog.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatDialogTitle,
-        MatDialogActions,
-        MatDialogClose,
-        MatButtonModule,
-        MatListModule,
-        IconComponent,
-        RSVPByStatusPipe,
-    ]
+  selector: 'devmx-event-rsvp',
+  templateUrl: './event-rsvp.dialog.html',
+  styleUrl: './event-rsvp.dialog.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatDialogTitle,
+    MatDialogActions,
+    MatDialogClose,
+    MatButtonModule,
+    MatListModule,
+    IconComponent,
+    RSVPByStatusPipe,
+  ],
 })
 export class EventRSVPDialog {
   ref = inject<MatDialogRef<EventRSVPDialog, void>>(MatDialogRef);

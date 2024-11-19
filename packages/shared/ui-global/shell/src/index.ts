@@ -1,1 +1,1 @@
-export * from './lib/shell.container'
+export * from './lib/shell.container';

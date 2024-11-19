@@ -8,17 +8,17 @@ import { AlbumFacade } from '@devmx/album-data-access';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'devmx-admin-albums',
-    templateUrl: './albums.container.html',
-    styleUrl: './albums.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        AlbumCardComponent,
-        PaginatorComponent,
-        SkeletonComponent,
-        RouterModule,
-        AsyncPipe,
-    ]
+  selector: 'devmx-admin-albums',
+  templateUrl: './albums.container.html',
+  styleUrl: './albums.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    AlbumCardComponent,
+    PaginatorComponent,
+    SkeletonComponent,
+    RouterModule,
+    AsyncPipe,
+  ],
 })
 export class AlbumsContainer {
   albumFacade = inject(AlbumFacade);

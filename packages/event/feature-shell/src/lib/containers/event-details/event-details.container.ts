@@ -17,24 +17,24 @@ import { PhotoPipe } from '@devmx/shared-ui-global';
 import { EventFormatPipe } from '../../pipes';
 
 @Component({
-    selector: 'devmx-event-details',
-    templateUrl: './event-defails.container.html',
-    styleUrl: './event-defails.container.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterModule,
-        ReactiveFormsModule,
-        RSVPButtonComponent,
-        MatCardModule,
-        MatListModule,
-        MatButtonModule,
-        IconComponent,
-        EventFormatPipe,
-        MarkdownComponent,
-        PhotoPipe,
-        AsyncPipe,
-        DatePipe,
-    ]
+  selector: 'devmx-event-details',
+  templateUrl: './event-defails.container.html',
+  styleUrl: './event-defails.container.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    RSVPButtonComponent,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    IconComponent,
+    EventFormatPipe,
+    MarkdownComponent,
+    PhotoPipe,
+    AsyncPipe,
+    DatePipe,
+  ],
 })
 export class EventDetailsContainer {
   route = inject(ActivatedRoute);

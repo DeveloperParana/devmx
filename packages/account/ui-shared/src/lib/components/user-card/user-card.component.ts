@@ -8,18 +8,18 @@ import { KeyValuePipe } from '@angular/common';
 import { RolePipe } from '../../pipes';
 
 @Component({
-    selector: 'devmx-user-card',
-    templateUrl: './user-card.component.html',
-    styleUrl: './user-card.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatCardModule,
-        MatListModule,
-        IconComponent,
-        KeyValuePipe,
-        PhotoPipe,
-        RolePipe,
-    ]
+  selector: 'devmx-user-card',
+  templateUrl: './user-card.component.html',
+  styleUrl: './user-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatCardModule,
+    MatListModule,
+    IconComponent,
+    KeyValuePipe,
+    PhotoPipe,
+    RolePipe,
+  ],
 })
 export class UserCardComponent {
   data = input.required<User>();
