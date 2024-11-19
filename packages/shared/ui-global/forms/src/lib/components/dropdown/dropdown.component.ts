@@ -6,17 +6,16 @@ import { KeyValuePipe } from '@angular/common';
 import { Dropdown } from '../../fields';
 
 @Component({
-  selector: 'devmx-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss',
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    KeyValuePipe,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+    selector: 'devmx-dropdown',
+    templateUrl: './dropdown.component.html',
+    styleUrl: './dropdown.component.scss',
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        KeyValuePipe,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent<T> {
   field = input.required<Dropdown<T>>();

@@ -13,12 +13,11 @@ export interface PageParams {
 }
 
 @Component({
-  selector: 'devmx-paginator',
-  templateUrl: './paginator.component.html',
-  styleUrl: './paginator.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatPaginatorModule],
-  standalone: true,
+    selector: 'devmx-paginator',
+    templateUrl: './paginator.component.html',
+    styleUrl: './paginator.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatPaginatorModule]
 })
 export class PaginatorComponent {
   items = input(0);

@@ -9,12 +9,11 @@ import {
 import { create, detectFaces } from '@devmx/shared-util-data';
 
 @Component({
-  selector: 'devmx-tag-faces,figure[devmx-tag-faces]',
-  template: `<ng-content /> <canvas #canvas></canvas>`,
-  styleUrl: './tag-faces.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
-  standalone: true,
+    selector: 'devmx-tag-faces,figure[devmx-tag-faces]',
+    template: `<ng-content /> <canvas #canvas></canvas>`,
+    styleUrl: './tag-faces.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: []
 })
 export class TagFacesComponent implements AfterViewInit {
   imgRef = contentChild<ElementRef<HTMLImageElement>>('img');

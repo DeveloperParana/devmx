@@ -12,17 +12,16 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-search-field',
-  templateUrl: './search-field.component.html',
-  styleUrl: './search-field.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    IconComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-search-field',
+    templateUrl: './search-field.component.html',
+    styleUrl: './search-field.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        IconComponent,
+    ]
 })
 export class SearchFieldComponent {
   control = new FormControl('', {

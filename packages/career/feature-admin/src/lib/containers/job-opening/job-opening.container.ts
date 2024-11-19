@@ -26,23 +26,22 @@ import { SkillFacade } from '@devmx/learn-data-access';
 import { EntityFacade } from '@devmx/shared-data-access';
 
 @Component({
-  selector: 'devmx-career-admin-job-opening',
-  templateUrl: './job-opening.container.html',
-  styleUrl: './job-opening.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    EditorComponent,
-    MatInputModule,
-    MatListModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatSliderModule,
-    IconComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-career-admin-job-opening',
+    templateUrl: './job-opening.container.html',
+    styleUrl: './job-opening.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        EditorComponent,
+        MatInputModule,
+        MatListModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatSliderModule,
+        IconComponent,
+    ]
 })
 export class JobOpeningContainer {
   route = inject(ActivatedRoute);

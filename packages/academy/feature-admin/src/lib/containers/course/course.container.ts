@@ -33,24 +33,23 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-academy-admin-course',
-  templateUrl: './course.container.html',
-  styleUrl: './course.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatExpansionModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatButtonModule,
-    EditorComponent,
-    MatInputModule,
-    MatCardModule,
-    MatListModule,
-    IconComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-academy-admin-course',
+    templateUrl: './course.container.html',
+    styleUrl: './course.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatExpansionModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatTooltipModule,
+        MatButtonModule,
+        EditorComponent,
+        MatInputModule,
+        MatCardModule,
+        MatListModule,
+        IconComponent,
+    ]
 })
 export class CourseContainer {
   route = inject(ActivatedRoute);

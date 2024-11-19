@@ -10,18 +10,17 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatSelectModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [
-    {
-      provide: ControlContainer,
-      useFactory: () => inject(ControlContainer, { skipSelf: true }),
-    },
-  ],
-  standalone: true,
+    selector: 'devmx-dropdown',
+    templateUrl: './dropdown.component.html',
+    styleUrl: './dropdown.component.scss',
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatSelectModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [
+        {
+            provide: ControlContainer,
+            useFactory: () => inject(ControlContainer, { skipSelf: true }),
+        },
+    ]
 })
 export class DropdownComponent<T> {
   options = input.required<DropdownFormField<T>>();

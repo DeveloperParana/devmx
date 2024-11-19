@@ -12,20 +12,19 @@ import {
 } from '@devmx/event-ui-shared';
 
 @Component({
-  selector: 'devmx-events',
-  templateUrl: './events.container.html',
-  styleUrl: './events.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    PaginatorComponent,
-    EventFilterComponent,
-    SortDirectionComponent,
-    EventCardComponent,
-    SkeletonComponent,
-    RouterModule,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-events',
+    templateUrl: './events.container.html',
+    styleUrl: './events.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        PaginatorComponent,
+        EventFilterComponent,
+        SortDirectionComponent,
+        EventCardComponent,
+        SkeletonComponent,
+        RouterModule,
+        AsyncPipe,
+    ]
 })
 export class EventsContainer {
   router = inject(Router);

@@ -16,21 +16,20 @@ import { AsyncPipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-career-admin-manage-courses',
-  templateUrl: './manage-courses.container.html',
-  styleUrl: './manage-courses.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    SearchFieldComponent,
-    PaginatorComponent,
-    MatTableModule,
-    MatCardModule,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-career-admin-manage-courses',
+    templateUrl: './manage-courses.container.html',
+    styleUrl: './manage-courses.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatButtonModule,
+        SearchFieldComponent,
+        PaginatorComponent,
+        MatTableModule,
+        MatCardModule,
+        IconComponent,
+        AsyncPipe,
+    ]
 })
 export class ManageCoursesContainer {
   router = inject(Router);

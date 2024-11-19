@@ -29,6 +29,7 @@ import {
   CreateRSVPDto,
 } from '@devmx/event-data-source';
 import 'multer';
+import { subDays } from 'date-fns/subDays';
 
 @ApiTags('Eventos')
 @Controller('events')
@@ -52,8 +53,11 @@ export class EventsController {
   @Allowed()
   @ApiPage(EventDto)
   async findAll(@Query() params: QueryParamsDto<Event>) {
+    let date = new Date()
+    date = subDays(date, 1)
+
     try {
-      return await this.eventsFacade.findFrom(new Date(), params);
+      return await this.eventsFacade.findFrom(date, params);
     } catch (err) {
       throw exceptionByError(err);
     }

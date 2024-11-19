@@ -15,7 +15,6 @@ import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
 import { ListItemDialog } from '../../dialogs';
 import { PresentationForm } from '../../forms';
-import { AsyncPipe } from '@angular/common';
 import {
   CdkDragDrop,
   DragDropModule,
@@ -29,26 +28,24 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-presentation-admin-presentation',
-  templateUrl: './presentation.container.html',
-  styleUrl: './presentation.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatCardModule,
-    EditorComponent,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    DragDropModule,
-    MatCheckboxModule,
-    MatInputModule,
-    MatListModule,
-    MatButtonModule,
-    MatSelectModule,
-    IconComponent,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-presentation-admin-presentation',
+    templateUrl: './presentation.container.html',
+    styleUrl: './presentation.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatCardModule,
+        EditorComponent,
+        MatProgressSpinnerModule,
+        MatFormFieldModule,
+        DragDropModule,
+        MatCheckboxModule,
+        MatInputModule,
+        MatListModule,
+        MatButtonModule,
+        MatSelectModule,
+        IconComponent,
+    ]
 })
 export class PresentationContainer {
   route = inject(ActivatedRoute);

@@ -33,21 +33,20 @@ interface PhotoProgress {
 }
 
 @Component({
-  selector: 'devmx-admin-album',
-  templateUrl: './album.container.html',
-  styleUrl: './album.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    UploadQueueComponent,
-    DropZoneDirective,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatCardModule,
-    IconComponent,
-    AsyncPipe,
-    DatePipe,
-  ],
-  standalone: true,
+    selector: 'devmx-admin-album',
+    templateUrl: './album.container.html',
+    styleUrl: './album.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        UploadQueueComponent,
+        DropZoneDirective,
+        MatCheckboxModule,
+        MatButtonModule,
+        MatCardModule,
+        IconComponent,
+        AsyncPipe,
+        DatePipe,
+    ]
 })
 export class AlbumContainer {
   route = inject(ActivatedRoute);

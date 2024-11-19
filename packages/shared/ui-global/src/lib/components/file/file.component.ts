@@ -9,12 +9,11 @@ import { MimeType } from '@devmx/shared-api-interfaces';
 import { Icon, IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
-  selector: 'devmx-file',
-  templateUrl: './file.component.html',
-  styleUrl: './file.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, IconComponent],
-  standalone: true,
+    selector: 'devmx-file',
+    templateUrl: './file.component.html',
+    styleUrl: './file.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatButtonModule, IconComponent]
 })
 export class FileComponent {
   icon = input<Icon>('tech/folder-opened');

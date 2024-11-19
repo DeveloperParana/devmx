@@ -10,12 +10,11 @@ export interface ConfirmDialogData {
 }
 
 @Component({
-  selector: 'devmx-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrl: '../dialog.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DialogModule, MatButtonModule, IconComponent],
-  standalone: true,
+    selector: 'devmx-confirm-dialog',
+    templateUrl: './confirm-dialog.component.html',
+    styleUrl: '../dialog.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [DialogModule, MatButtonModule, IconComponent]
 })
 export class ConfirmDialogComponent extends DialogComponent<
   boolean,

@@ -2,12 +2,12 @@
   "name": "@devmx/event-ui-shared",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^18.2.0",
-    "@angular/core": "^18.2.0",
+    "@angular/common": "19.0.0",
+    "@angular/core": "19.0.0",
     "@devmx/shared-ui-global": "0.0.1",
     "@devmx/shared-api-interfaces": "0.0.1",
-    "@angular/material": "18.2.5",
-    "@angular/forms": "~18.2.0"
+    "@angular/material": "19.0.0",
+    "@angular/forms": "19.0.0"
   },
   "sideEffects": false
 }

@@ -11,26 +11,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { CourseFacade } from '@devmx/academy-data-access';
 import { MatListModule } from '@angular/material/list';
 import { Course } from '@devmx/shared-api-interfaces';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { combineLatest, filter, map } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'devmx-academy-admin-my-courses',
-  templateUrl: './my-courses.container.html',
-  styleUrl: './my-courses.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatListModule,
-    MatButtonModule,
-    MatTooltipModule,
-    PaginatorComponent,
-    CourseCardComponent,
-    IconComponent,
-    AsyncPipe,
-    JsonPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-academy-admin-my-courses',
+    templateUrl: './my-courses.container.html',
+    styleUrl: './my-courses.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatListModule,
+        MatButtonModule,
+        MatTooltipModule,
+        PaginatorComponent,
+        CourseCardComponent,
+        IconComponent,
+        AsyncPipe
+    ]
 })
 export class MyCoursesContainer {
   router = inject(Router);

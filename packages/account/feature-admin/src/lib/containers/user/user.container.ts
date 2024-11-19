@@ -10,19 +10,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'devmx-admin-user',
-  templateUrl: './user.container.html',
-  styleUrl: './user.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    UserRolesComponent,
-    MatButtonModule,
-    MatCardModule,
-    RouterModule,
-    AsyncPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-admin-user',
+    templateUrl: './user.container.html',
+    styleUrl: './user.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        UserRolesComponent,
+        MatButtonModule,
+        MatCardModule,
+        RouterModule,
+        AsyncPipe,
+    ]
 })
 export class UserContainer {
   route = inject(ActivatedRoute);

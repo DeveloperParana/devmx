@@ -2,10 +2,10 @@
   "name": "@devmx/career-ui-shared",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/core": "^18.2.0",
+    "@angular/core": "19.0.0",
     "@devmx/shared-ui-global": "0.0.1",
     "@devmx/shared-api-interfaces": "0.0.1",
-    "@angular/material": "18.2.5"
+    "@angular/material": "19.0.0"
   },
   "sideEffects": false
 }

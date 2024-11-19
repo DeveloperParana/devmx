@@ -18,18 +18,17 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-social',
-  templateUrl: './social.container.html',
-  styleUrl: './social.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatListModule,
-    IconComponent,
-  ],
-  standalone: true,
+    selector: 'devmx-social',
+    templateUrl: './social.container.html',
+    styleUrl: './social.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatListModule,
+        IconComponent,
+    ]
 })
 export class SocialContainer {
   userFacade = inject(UserFacade);

@@ -12,12 +12,11 @@ import {
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 
 @Component({
-  selector: 'devmx-photo',
-  templateUrl: './photo.component.html',
-  styleUrl: './photo.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, IconComponent, FileComponent],
-  standalone: true,
+    selector: 'devmx-photo',
+    templateUrl: './photo.component.html',
+    styleUrl: './photo.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatButtonModule, IconComponent, FileComponent]
 })
 export class PhotoComponent implements AfterViewInit {
   cropped = output<Blob>();

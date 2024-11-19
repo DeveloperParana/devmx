@@ -4,12 +4,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Checkbox } from '../../fields';
 
 @Component({
-  selector: 'devmx-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrl: './checkbox.component.scss',
-  imports: [ReactiveFormsModule, MatCheckboxModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+    selector: 'devmx-checkbox',
+    templateUrl: './checkbox.component.html',
+    styleUrl: './checkbox.component.scss',
+    imports: [ReactiveFormsModule, MatCheckboxModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent<T> {
   field = input.required<Checkbox<T>>();

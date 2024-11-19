@@ -6,27 +6,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { Course } from '@devmx/shared-api-interfaces';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 
 @Component({
-  selector: 'devmx-course-details',
-  templateUrl: './course-details.container.html',
-  styleUrl: './course-details.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  imports: [
-    RouterModule,
-    MatCardModule,
-    MatListModule,
-    MatButtonModule,
-    IconComponent,
-    SafeHtmlPipe,
-    MarkedPipe,
-    AsyncPipe,
-    JsonPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-course-details',
+    templateUrl: './course-details.container.html',
+    styleUrl: './course-details.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    imports: [
+        RouterModule,
+        MatCardModule,
+        MatListModule,
+        MatButtonModule,
+        IconComponent,
+        SafeHtmlPipe,
+        MarkedPipe,
+        AsyncPipe,
+    ]
 })
 export class CourseDetailsContainer {
   route = inject(ActivatedRoute);

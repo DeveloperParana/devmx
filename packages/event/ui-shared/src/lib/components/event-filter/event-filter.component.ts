@@ -4,12 +4,11 @@ import { FormOption } from '@devmx/shared-ui-global/forms';
 import { EventFormat } from '@devmx/shared-api-interfaces';
 
 @Component({
-  selector: 'devmx-event-filter',
-  templateUrl: './event-filter.component.html',
-  styleUrl: './event-filter.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatChipsModule],
-  standalone: true,
+    selector: 'devmx-event-filter',
+    templateUrl: './event-filter.component.html',
+    styleUrl: './event-filter.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatChipsModule]
 })
 export class EventFilterComponent {
   change = output<EventFormat>();

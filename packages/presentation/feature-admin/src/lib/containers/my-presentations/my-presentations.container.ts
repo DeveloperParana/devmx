@@ -11,26 +11,24 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { combineLatest, filter, map } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'devmx-my-presentations',
-  templateUrl: './my-presentations.container.html',
-  styleUrl: './my-presentations.container.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    MatTooltipModule,
-    PaginatorComponent,
-    PresentationCardComponent,
-    SkeletonComponent,
-    IconComponent,
-    AsyncPipe,
-    JsonPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-my-presentations',
+    templateUrl: './my-presentations.container.html',
+    styleUrl: './my-presentations.container.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterModule,
+        MatButtonModule,
+        MatTooltipModule,
+        PaginatorComponent,
+        PresentationCardComponent,
+        SkeletonComponent,
+        IconComponent,
+        AsyncPipe
+    ]
 })
 export class MyPresentationsContainer {
   router = inject(Router);

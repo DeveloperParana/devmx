@@ -25,22 +25,21 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-editor',
-  templateUrl: './editor.component.html',
-  styleUrl: './editor.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonToggleModule,
-    TextFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatTabsModule,
-    IconComponent,
-    SafeHtmlPipe,
-  ],
-  standalone: true,
+    selector: 'devmx-editor',
+    templateUrl: './editor.component.html',
+    styleUrl: './editor.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonToggleModule,
+        TextFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatTabsModule,
+        IconComponent,
+        SafeHtmlPipe,
+    ]
 })
 export class EditorComponent extends DefaultValueAccessor {
   textareaRef = viewChild<ElementRef<HTMLTextAreaElement>>('textareaRef');

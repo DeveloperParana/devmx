@@ -4,12 +4,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { Radio } from '../../fields';
 
 @Component({
-  selector: 'devmx-radio',
-  templateUrl: './radio.component.html',
-  styleUrl: './radio.component.scss',
-  imports: [ReactiveFormsModule, MatRadioModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+    selector: 'devmx-radio',
+    templateUrl: './radio.component.html',
+    styleUrl: './radio.component.scss',
+    imports: [ReactiveFormsModule, MatRadioModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RadioComponent<T> {
   field = input.required<Radio<T>>();

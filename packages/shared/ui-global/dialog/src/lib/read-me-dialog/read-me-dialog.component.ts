@@ -11,12 +11,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'devmx-readme-dialog',
-  templateUrl: './read-me-dialog.component.html',
-  styleUrl: '../dialog.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DialogModule, MatButtonModule, MarkedPipe, SafeHtmlPipe],
-  standalone: true,
+    selector: 'devmx-readme-dialog',
+    templateUrl: './read-me-dialog.component.html',
+    styleUrl: '../dialog.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [DialogModule, MatButtonModule, MarkedPipe, SafeHtmlPipe]
 })
 export class ReadMeDialogComponent extends DialogComponent<
   boolean,
