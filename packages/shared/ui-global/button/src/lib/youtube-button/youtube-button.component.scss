@@ -1,7 +1,11 @@
 :host {
+  flex: 1;
+  min-width: 202px;
   display: inline-flex;
+  flex-direction: column;
 
   a[href] {
+    width: 100%;
     padding-left: 0.8em;
     padding-right: 0.8em;
     border-radius: 8px;
