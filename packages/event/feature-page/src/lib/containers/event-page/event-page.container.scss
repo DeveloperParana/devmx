@@ -12,6 +12,26 @@
   }
 
   header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+
+    width: 1248px;
+    height: 164px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) -12.1%,
+      rgba(78, 78, 78, 0.25) 28.23%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    background-blend-mode: multiply;
+  }
+
+  header {
     gap: 1em;
     display: flex;
     flex-direction: column;

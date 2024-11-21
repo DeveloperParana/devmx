@@ -10,9 +10,9 @@ import { MatListModule } from '@angular/material/list';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 import {
-  EventFormatPipe,
   ShowEventLinkPipe,
   ShowEventAddressPipe,
+  CalendarButtonComponent,
 } from '@devmx/event-ui-shared';
 
 @Component({
@@ -24,9 +24,9 @@ import {
     RouterModule,
     MarkdownComponent,
     ShowEventAddressPipe,
+    CalendarButtonComponent,
     ShowEventLinkPipe,
     MatTooltipModule,
-    EventFormatPipe,
     MatButtonModule,
     MatCardModule,
     MatListModule,
