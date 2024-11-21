@@ -1,0 +1,33 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  .sidenav-container {
+    background-color: mat.get-theme-color($theme, surface-container);
+  }
+
+  .sidenav-scroll-wrapper {
+    background-color: rgba(
+      mat.get-theme-color($theme, surface-container-lowest),
+      0.75
+    );
+  }
+
+  .sidenav-toolbar  {
+    background-color: mat.get-theme-color($theme, surface-container);
+  }
+
+  .layout-main-wrapper {
+    background-color: rgba(
+      mat.get-theme-color($theme, surface-container-lowest),
+      0.75
+    );
+  }
+
+  .sidenav-content {
+    @media (pointer: fine) {
+      &::-webkit-scrollbar-thumb {
+        background-color: mat.get-theme-color($theme, primary);
+      }
+    }
+  }
+}

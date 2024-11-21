@@ -1,5 +1,6 @@
 // @use '@angular/cdk/overlay-prebuilt.css';
 @use '@angular/material' as mat;
+@use './scss/theming/app-shell' as app-shell;
 @use './scss/theme' as theme;
 @use './scss/overrides';
 @use './scss/component';
@@ -17,6 +18,8 @@
   @include component.dialog-theme(theme.$light);
   @include component.form-theme(theme.$light);
   @include component.fab-theme(theme.$light);
+
+  @include app-shell.theme(theme.$light);
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
