@@ -25,26 +25,13 @@
 
   <nav>
     <devmx-calendar-button [data]="event" />
+
+    @if (event.format === 'in-person' && event.address) {
+    <devmx-maps-button [data]="event" />
+    }
   </nav>
 
   <section>
-    @if (event.address && (event.format | showEventAddress)) {
-    <div>
-      <devmx-icon name="transport/map" />
-
-      <address>{{ event.address }}</address>
-
-      <a
-        matTooltip="Abrir no Google Maps"
-        rel="noopener noreferrer"
-        [href]="'//google.com/maps/search/' + event.address"
-        target="_blank"
-        mat-icon-button
-      >
-        <devmx-icon name="external-link" />
-      </a>
-    </div>
-    }
 
     <!--  -->
 
