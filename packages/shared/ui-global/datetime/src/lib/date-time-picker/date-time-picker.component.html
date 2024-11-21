@@ -1,0 +1,15 @@
+<section [formGroup]="form" class="date-time-picker">
+  <mat-form-field class="date-picker">
+    <mat-label>Dia</mat-label>
+    <input matInput [matDatepicker]="datepicker" formControlName="date" />
+    <mat-datepicker #datepicker />
+    <mat-datepicker-toggle [for]="datepicker" matSuffix />
+  </mat-form-field>
+
+  <mat-form-field class="time-picker">
+    <mat-label>Horário</mat-label>
+    <input matInput [matTimepicker]="timepicker" formControlName="time" />
+    <mat-timepicker #timepicker />
+    <mat-timepicker-toggle [for]="timepicker" matSuffix />
+  </mat-form-field>
+</section>
