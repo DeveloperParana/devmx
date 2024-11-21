@@ -11,7 +11,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 import {
   ShowEventLinkPipe,
-  ShowEventAddressPipe,
+  MapsButtonComponent,
   CalendarButtonComponent,
 } from '@devmx/event-ui-shared';
 
@@ -23,8 +23,8 @@ import {
   imports: [
     RouterModule,
     MarkdownComponent,
-    ShowEventAddressPipe,
     CalendarButtonComponent,
+    MapsButtonComponent,
     ShowEventLinkPipe,
     MatTooltipModule,
     MatButtonModule,
