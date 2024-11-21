@@ -1,35 +1,31 @@
 @if (event$ | async; as event) {
 
-<mat-card>
-  <mat-card-content>
-    <h1>{{ event.title }}</h1>
-  </mat-card-content>
-</mat-card>
-
 <header>
-  <section>
-    <div>
-      <devmx-icon name="calendar" />
-      <time [dateTime]="event.date | date : 'fullDate'">
-        {{ event.date | date : 'fullDate' }}
-      </time>
-    </div>
+  <hgroup>
+    <h1>{{ event.title }}</h1>
+    <h3>
+      <span>
+        <devmx-icon name="calendar" />
+        <time [dateTime]="event.date | date : 'fullDate'">
+          {{ event.date | date : 'fullDate' }}
+        </time>
+      </span>
+      <span>
+        <devmx-icon name="alarm-clock-alert" />
+        <time [dateTime]="event.start | date : 'shortTime'">
+          {{ event.start | date : 'shortTime' }}
+        </time>
+        ~
+        <time [dateTime]="event.end | date : 'shortTime'">
+          {{ event.end | date : 'shortTime' }}
+        </time>
+      </span>
+    </h3>
+  </hgroup>
 
-    <div>
-      <devmx-icon name="alarm-clock-alert" />
-      <time [dateTime]="event.start | date : 'shortTime'">
-        {{ event.start | date : 'shortTime' }}
-      </time>
-      ~
-      <time [dateTime]="event.end | date : 'shortTime'">
-        {{ event.end | date : 'shortTime' }}
-      </time>
-    </div>
-
-    <div>
-      <span>{{ event.format | eventFormat }}</span>
-    </div>
-  </section>
+  <nav>
+    <devmx-calendar-button [data]="event" />
+  </nav>
 
   <section>
     @if (event.address && (event.format | showEventAddress)) {
