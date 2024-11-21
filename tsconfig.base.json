@@ -185,6 +185,9 @@
       "@devmx/shared-ui-global/crumbs": [
         "packages/shared/ui-global/crumbs/src/index.ts"
       ],
+      "@devmx/shared-ui-global/datetime": [
+        "packages/shared/ui-global/datetime/src/index.ts"
+      ],
       "@devmx/shared-ui-global/dialog": [
         "packages/shared/ui-global/dialog/src/index.ts"
       ],
