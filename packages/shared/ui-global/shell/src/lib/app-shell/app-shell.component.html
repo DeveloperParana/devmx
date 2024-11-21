@@ -1,0 +1,10 @@
+<mat-sidenav-container class="app-shell-container">
+  <mat-sidenav-content>
+    <ng-content select="mat-toolbar" />
+    <div class="app-shell-scroll-wrapper">
+      <div class="app-shell-content">
+        <ng-content select="router-outlet" />
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
