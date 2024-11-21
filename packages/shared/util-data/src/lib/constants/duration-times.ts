@@ -1,0 +1,72 @@
+import { DurationTime } from '@devmx/shared-api-interfaces';
+
+export const DURATION_TIMES: DurationTime[] = [
+  '10m',
+  '20m',
+  '30m',
+  '40m',
+  '50m',
+
+  '1h',
+  '1h e 10m',
+  '1h e 20m',
+  '1h e 30m',
+  '1h e 40m',
+  '1h e 50m',
+
+  '2h',
+  '2h e 10m',
+  '2h e 20m',
+  '2h e 30m',
+  '2h e 40m',
+  '2h e 50m',
+
+  '3h',
+  '3h e 10m',
+  '3h e 20m',
+  '3h e 30m',
+  '3h e 40m',
+  '3h e 50m',
+
+  '4h',
+  '4h e 10m',
+  '4h e 20m',
+  '4h e 30m',
+  '4h e 40m',
+  '4h e 50m',
+
+  '5h',
+  '5h e 10m',
+  '5h e 20m',
+  '5h e 30m',
+  '5h e 40m',
+  '5h e 50m',
+
+  '6h',
+  '6h e 10m',
+  '6h e 20m',
+  '6h e 30m',
+  '6h e 40m',
+  '6h e 50m',
+
+  '7h',
+  '7h e 10m',
+  '7h e 20m',
+  '7h e 30m',
+  '7h e 40m',
+  '7h e 50m',
+
+  '8h',
+  '8h e 10m',
+  '8h e 20m',
+  '8h e 30m',
+  '8h e 40m',
+  '8h e 50m',
+
+  '9h',
+  '9h e 10m',
+  '9h e 20m',
+  '9h e 30m',
+  '9h e 40m',
+  '9h e 50m',
+];
