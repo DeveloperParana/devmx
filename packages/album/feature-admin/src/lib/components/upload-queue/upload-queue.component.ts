@@ -45,14 +45,11 @@ export class UploadQueueComponent {
   completed = signal(0);
 
   constructor() {
-    effect(
-      () => {
-        const { length } = this.queue().filter(
-          ({ progress }) => progress() >= 90
-        );
-        this.completed.set(length);
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      const { length } = this.queue().filter(
+        ({ progress }) => progress() >= 90
+      );
+      this.completed.set(length);
+    });
   }
 }
