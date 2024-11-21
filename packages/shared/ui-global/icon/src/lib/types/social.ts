@@ -3,6 +3,7 @@ export type Social =
   | 'whatsapp'
   | 'linkedin'
   | 'instagram'
-  | 'notion';
+  | 'notion'
+  | 'youtube';
 
 export type SocialIcon = `social/${Social}`;

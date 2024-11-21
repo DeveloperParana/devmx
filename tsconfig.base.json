@@ -173,6 +173,9 @@
       "@devmx/shared-ui-global/bash": [
         "packages/shared/ui-global/bash/src/index.ts"
       ],
+      "@devmx/shared-ui-global/button": [
+        "packages/shared/ui-global/button/src/index.ts"
+      ],
       "@devmx/shared-ui-global/carousel": [
         "packages/shared/ui-global/carousel/src/index.ts"
       ],
