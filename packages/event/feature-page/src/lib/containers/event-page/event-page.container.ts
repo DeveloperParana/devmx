@@ -1,18 +1,31 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { EventPage } from '@devmx/shared-api-interfaces';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 import {
-  ShowEventLinkPipe,
+  inject,
+  Inject,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import {
   MapsButtonComponent,
   CalendarButtonComponent,
+  YoutubeButtonComponent,
+  HeartButtonComponent,
+} from '@devmx/shared-ui-global/button';
+import {
+  ShowEventLinkPipe,
+  ShowEventAddressPipe,
 } from '@devmx/event-ui-shared';
 
 @Component({
@@ -24,9 +37,14 @@ import {
     RouterModule,
     MarkdownComponent,
     CalendarButtonComponent,
+    YoutubeButtonComponent,
     MapsButtonComponent,
+    HeartButtonComponent,
+    ShowEventAddressPipe,
     ShowEventLinkPipe,
-    MatTooltipModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTabsModule,
     MatButtonModule,
     MatCardModule,
     MatListModule,
@@ -36,6 +54,8 @@ import {
   ],
 })
 export class EventPageContainer {
+  authFacade = Inject(AuthenticationFacade);
+
   route = inject(ActivatedRoute);
 
   event$ = this.route.data.pipe(

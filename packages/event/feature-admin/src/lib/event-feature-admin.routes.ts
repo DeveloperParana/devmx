@@ -1,5 +1,6 @@
 import { EventFeatureAdminComponent } from './event-feature-admin.component';
 import { eventFeatureAdminProviders } from './event-feature-admin.providers';
+import { rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Event } from '@devmx/shared-api-interfaces';
 import { eventResolver } from './resolvers';
 import { Route } from '@angular/router';
@@ -8,7 +9,6 @@ import {
   ManageEventsContainer,
   MyEventsContainer,
 } from './containers';
-import { rolesGuard } from '@devmx/shared-ui-global/guards';
 
 export const eventFeatureAdminRoutes: Route[] = [
   {

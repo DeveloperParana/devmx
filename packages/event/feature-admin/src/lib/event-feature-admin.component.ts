@@ -3,8 +3,14 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'devmx-event-feature-admin',
-  templateUrl: './event-feature-admin.component.html',
-  styleUrl: './event-feature-admin.component.scss',
+  template: `<router-outlet />`,
+  styles: `
+    :host {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet],
 })
