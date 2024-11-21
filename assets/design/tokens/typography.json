@@ -1,0 +1,706 @@
+{
+  "typography": {
+    "devmx": {
+      "display": {
+        "medium": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 45
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 52
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "small": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 36
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 44
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "large": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 57
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": -0.25
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 64
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "headline": {
+        "large": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 32
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 40
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "medium": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 28
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 36
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "small": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 24
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 32
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "body": {
+        "large": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 16
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.5
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 24
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "medium": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 14
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.25
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 20
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "small": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 12
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.4
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 16
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "label": {
+        "large": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 14
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 500
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.1
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 20
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "medium": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 12
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 500
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.5
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 16
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "small": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 11
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 500
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.5
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 16
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "title": {
+        "large": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 22
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 400
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 28
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "medium": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 16
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 500
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.15
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 24
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "small": {
+          "fontSize": {
+            "$type": "dimension",
+            "$value": 14
+          },
+          "textDecoration": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "fontFamily": {
+            "$type": "string",
+            "$value": "Roboto"
+          },
+          "fontWeight": {
+            "$type": "number",
+            "$value": 500
+          },
+          "fontStyle": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "fontStretch": {
+            "$type": "string",
+            "$value": "normal"
+          },
+          "letterSpacing": {
+            "$type": "dimension",
+            "$value": 0.1
+          },
+          "lineHeight": {
+            "$type": "dimension",
+            "$value": 20
+          },
+          "paragraphIndent": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "paragraphSpacing": {
+            "$type": "dimension",
+            "$value": 0
+          },
+          "textCase": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      }
+    }
+  }
+}
