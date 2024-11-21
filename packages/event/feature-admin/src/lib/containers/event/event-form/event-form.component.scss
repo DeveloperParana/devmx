@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  div {
+    gap: 2em;
+    display: flex;
+    flex-flow: row wrap;
+
+    > section {
+      flex: 1;
+    }
+  }
+
+  .event {
+    &-duration {
+      max-width: 8em;
+    }
+
+    &-max {
+      max-width: 10em;
+    }
+
+    &-format {
+      max-width: 9em;
+    }
+
+    &-address {
+      flex: 2;
+    }
+
+    &-link {
+      width: 18em;
+    }
+  }
+}

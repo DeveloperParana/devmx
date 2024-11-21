@@ -21,6 +21,15 @@
 
     <a
       mat-icon-button
+      [routerLink]="['/', 'evento', event.id]"
+      matTooltip="Página pública"
+      matTooltipPosition="above"
+    >
+      <devmx-icon name="software/web-info" />
+    </a>
+
+    <a
+      mat-icon-button
       [routerLink]="event.id"
       matTooltip="Editar evento"
       matTooltipPosition="above"

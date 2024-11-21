@@ -1,0 +1,61 @@
+<ng-container [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Qual nome ou título do evento?</mat-label>
+    <input
+      matInput
+      formControlName="title"
+      placeholder="Ex.: 10º Meetup Maringá Agile"
+    />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <div>
+    <devmx-date-time-picker formControlName="date" />
+
+    <mat-form-field class="event-duration">
+      <mat-label>Duração</mat-label>
+      <mat-select formControlName="duration">
+        @for (duration of form.durations; track duration.value) {
+        <mat-option [value]="duration.value">
+          {{ duration.viewValue }}
+        </mat-option>
+        }
+      </mat-select>
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="event-max">
+      <mat-label>Máximo de</mat-label>
+      <input matInput type="number" min="0" formControlName="maxAttendees" />
+      <span matTextSuffix>pessoas</span>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="event-format">
+      <mat-label>Formato</mat-label>
+      <mat-select
+        formControlName="format"
+        (selectionChange)="form.onFormatChange(form.format.value)"
+      >
+        @for (format of form.formats; track format.value) {
+        <mat-option [value]="format.value">
+          {{ format.viewValue }}
+        </mat-option>
+        }
+      </mat-select>
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="event-address">
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <mat-form-field class="event-link">
+      <mat-label>Link</mat-label>
+      <input matInput type="url" formControlName="link" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+  </div>
+</ng-container>

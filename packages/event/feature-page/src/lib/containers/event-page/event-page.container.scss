@@ -1,13 +1,15 @@
 :host {
+  flex: 1;
   gap: 2em;
-  padding: 1em;
   display: flex;
   flex-direction: column;
 
   h1 {
+    margin: 0;
     font-size: 1.8em;
   }
   h3 {
+    margin: 0;
     font-size: 1.2em;
   }
 
@@ -16,57 +18,32 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    padding: 24px;
+    padding: 2em;
     gap: 8px;
-
-    width: 1248px;
-    height: 164px;
 
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0) -12.1%,
-      rgba(78, 78, 78, 0.25) 28.23%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgba(255, 255, 255, 0) -12.12%,
+      rgba(78, 78, 78, 0.25) 23.23%,
+      rgba(0, 0, 0, 0.2) 100%
     );
     background-blend-mode: multiply;
-  }
 
-  header {
-    gap: 1em;
-    display: flex;
-    flex-direction: column;
-
-    section {
-      gap: 1em;
+    nav {
       display: flex;
-      flex-flow: row wrap;
-
-      div {
-        gap: 0.4em;
-        display: flex;
-        align-items: center;
-
-        time {
-          text-transform: capitalize;
-          // line-height: 26px;
-          font-weight: 500;
-          font-size: 1.1em;
-        }
-
-        address {
-          font-style: normal;
-        }
-      }
+      flex-direction: row;
+      gap: 1em;
     }
   }
 
-  main {
-    gap: 1em;
-    display: flex;
-    flex-flow: row wrap;
+  article {
+    padding: 1em;
+  }
 
-    .event-card {
-      flex: 1;
+  @media (max-width: 600px) {
+    header nav {
+      width: 100%;
+      flex-direction: column;
     }
   }
 }

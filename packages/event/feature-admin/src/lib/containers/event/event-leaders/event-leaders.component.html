@@ -1,0 +1,27 @@
+<ng-container [formGroup]="form">
+  @if (form.leaders.controls.length) {
+
+  <mat-list formArrayName="leaders">
+    <p mat-subheader>Líderes</p>
+
+    @for (control of form.leaders.controls; track control.value; let index =
+    $index) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="user-circle" />
+
+      <span matListItemTitle>{{ control.value.displayName }}</span>
+
+      <button
+        type="button"
+        mat-icon-button
+        matListItemMeta
+        (click)="form.leaders.removeAt(index)"
+      >
+        <devmx-icon name="trash" />
+      </button>
+    </mat-list-item>
+    }
+  </mat-list>
+
+  }
+</ng-container>

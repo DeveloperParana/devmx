@@ -1,132 +1,27 @@
+@use '@angular/material' as mat;
+
 :host {
   padding: 1em;
   display: flex;
   flex-direction: column;
 
   form {
-    gap: 2em;
+    gap: 1em;
     display: flex;
     flex-direction: column;
 
-    .event-card {
+    .event-tab {
+      border-radius: 0.8em;
+      @include mat.elevation(2);
+
       &-content {
-        gap: 3em;
-        display: flex;
-        flex-direction: column;
-
-        > section {
-          display: flex;
-          flex-direction: column;
-          gap: 2em;
-
-          div {
-            gap: 2em;
-            display: flex;
-            flex-flow: row wrap;
-
-            > section {
-              flex: 1;
-            }
-          }
-
-          .event {
-            &-date {
-              max-width: 10em;
-            }
-
-            &-time {
-              max-width: 7em;
-            }
-
-            &-duration {
-              max-width: 7em;
-            }
-
-            &-max {
-              max-width: 10em;
-            }
-
-            &-format {
-              max-width: 9em;
-            }
-
-            &-address {
-              flex: 2;
-            }
-
-            &-link {
-              width: 18em;
-            }
-          }
-        }
+        padding: 2em 1em;
       }
     }
+
+    .event-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
-  // form {
-  //   display: flex;
-  //   flex-flow: row wrap;
-
-  //   > div {
-  //     gap: 2em;
-  //     display: flex;
-  //     flex-direction: column;
-  //   }
-  // }
-
-  // .event-content {
-  //   flex: 1;
-  //   gap: 1.6em;
-  //   display: flex;
-  //   flex-direction: column;
-  //   // flex-flow: row wrap;
-
-  //   section {
-  //     flex: 1;
-  //     display: flex;
-  //     flex-direction: column;
-  //     gap: 0.6em;
-
-  //     h3 {
-  //       font-size: 100%;
-  //       opacity: 0.72;
-  //       margin-bottom: 0;
-  //     }
-
-  //     .mat-mdc-form-field {
-  //       width: 100%;
-  //     }
-
-  //     .event-field {
-
-  //       &-date {
-  //         max-width: 10em;
-  //       }
-
-  //       &-time {
-  //         max-width: 7em;
-  //       }
-  //     }
-
-  //     .add-button {
-  //       align-self: flex-start;
-  //     }
-
-  //     div {
-  //       gap: 1em;
-  //       display: flex;
-  //       flex-flow: row wrap;
-
-  //       .mat-mdc-form-field {
-  //         flex: 1;
-  //       }
-
-  //       &.event-leaders,
-  //       &.event-presentations {
-  //         display: flex;
-  //         flex-direction: column;
-  //         margin-bottom: 1em;
-  //       }
-  //     }
-  //   }
-  // }
 }

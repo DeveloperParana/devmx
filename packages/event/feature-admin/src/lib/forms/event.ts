@@ -1,12 +1,9 @@
+import { TypedForm, FormOption } from '@devmx/shared-ui-global/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventPresentationsForm } from './event-presentation';
+import { DURATION_TIMES } from '@devmx/shared-util-data';
 import { EventLeadersForm } from './event-leader';
 import { addDays } from 'date-fns/addDays';
-import {
-  TypedForm,
-  FormOption,
-  invalidTimeValidator,
-} from '@devmx/shared-ui-global/forms';
 import {
   Event,
   EventFormat,
@@ -21,78 +18,11 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
     { value: 'online', viewValue: 'Online' },
   ];
 
-  durations: FormOption<DurationTime>[] = [
-    { value: '10m', viewValue: '10m' },
-    { value: '20m', viewValue: '20m' },
-    { value: '30m', viewValue: '30m' },
-    { value: '40m', viewValue: '40m' },
-    { value: '50m', viewValue: '50m' },
+  durations: FormOption<DurationTime>[] = DURATION_TIMES.map((value) => {
+    return { value, viewValue: value };
+  });
 
-    { value: '1h', viewValue: '1h' },
-    { value: '1h e 10m', viewValue: '1h e 10m' },
-    { value: '1h e 20m', viewValue: '1h e 20m' },
-    { value: '1h e 30m', viewValue: '1h e 30m' },
-    { value: '1h e 40m', viewValue: '1h e 40m' },
-    { value: '1h e 50m', viewValue: '1h e 50m' },
-
-    { value: '2h', viewValue: '2h' },
-    { value: '2h e 10m', viewValue: '2h e 10m' },
-    { value: '2h e 20m', viewValue: '2h e 20m' },
-    { value: '2h e 30m', viewValue: '2h e 30m' },
-    { value: '2h e 40m', viewValue: '2h e 40m' },
-    { value: '2h e 50m', viewValue: '2h e 50m' },
-
-    { value: '3h', viewValue: '3h' },
-    { value: '3h e 10m', viewValue: '3h e 10m' },
-    { value: '3h e 20m', viewValue: '3h e 20m' },
-    { value: '3h e 30m', viewValue: '3h e 30m' },
-    { value: '3h e 40m', viewValue: '3h e 40m' },
-    { value: '3h e 50m', viewValue: '3h e 50m' },
-
-    { value: '4h', viewValue: '4h' },
-    { value: '4h e 10m', viewValue: '4h e 10m' },
-    { value: '4h e 20m', viewValue: '4h e 20m' },
-    { value: '4h e 30m', viewValue: '4h e 30m' },
-    { value: '4h e 40m', viewValue: '4h e 40m' },
-    { value: '4h e 50m', viewValue: '4h e 50m' },
-
-    { value: '5h', viewValue: '5h' },
-    { value: '5h e 10m', viewValue: '5h e 10m' },
-    { value: '5h e 20m', viewValue: '5h e 20m' },
-    { value: '5h e 30m', viewValue: '5h e 30m' },
-    { value: '5h e 40m', viewValue: '5h e 40m' },
-    { value: '5h e 50m', viewValue: '5h e 50m' },
-
-    { value: '6h', viewValue: '6h' },
-    { value: '6h e 10m', viewValue: '6h e 10m' },
-    { value: '6h e 20m', viewValue: '6h e 20m' },
-    { value: '6h e 30m', viewValue: '6h e 30m' },
-    { value: '6h e 40m', viewValue: '6h e 40m' },
-    { value: '6h e 50m', viewValue: '6h e 50m' },
-
-    { value: '7h', viewValue: '7h' },
-    { value: '7h e 10m', viewValue: '7h e 10m' },
-    { value: '7h e 20m', viewValue: '7h e 20m' },
-    { value: '7h e 30m', viewValue: '7h e 30m' },
-    { value: '7h e 40m', viewValue: '7h e 40m' },
-    { value: '7h e 50m', viewValue: '7h e 50m' },
-
-    { value: '8h', viewValue: '8h' },
-    { value: '8h e 10m', viewValue: '8h e 10m' },
-    { value: '8h e 20m', viewValue: '8h e 20m' },
-    { value: '8h e 30m', viewValue: '8h e 30m' },
-    { value: '8h e 40m', viewValue: '8h e 40m' },
-    { value: '8h e 50m', viewValue: '8h e 50m' },
-
-    { value: '9h', viewValue: '9h' },
-    { value: '9h e 10m', viewValue: '9h e 10m' },
-    { value: '9h e 20m', viewValue: '9h e 20m' },
-    { value: '9h e 30m', viewValue: '9h e 30m' },
-    { value: '9h e 40m', viewValue: '9h e 40m' },
-    { value: '9h e 50m', viewValue: '9h e 50m' },
-  ];
-
-  private static date = addDays(new Date(), 10);
+  static date = addDays(new Date(), 10);
 
   constructor() {
     super({
@@ -108,14 +38,12 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
       date: new FormControl(EventForm.date, {
         nonNullable: true,
         validators: [Validators.required],
+        updateOn: 'blur',
       }),
 
       time: new FormControl('', {
         nonNullable: true,
-        validators: [
-          Validators.required,
-          invalidTimeValidator(/^([01]\d|2[0-3]):[0-5]\d$/),
-        ],
+        validators: [Validators.required],
       }),
 
       duration: new FormControl('2h', {
@@ -134,7 +62,7 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
 
       leaders: new EventLeadersForm(),
 
-      format: new FormControl('in-person', {
+      format: new FormControl('', {
         nonNullable: true,
       }),
 
@@ -183,6 +111,23 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
       for (const skill of value.leaders) {
         this.leaders.add(skill);
       }
+    }
+  }
+
+  onFormatChange(format = '') {
+    if (format === 'in-person') {
+      this.controls.address?.enable();
+      this.controls.link?.disable();
+    }
+
+    if (format === 'online') {
+      this.controls.address?.disable();
+      this.controls.link?.enable();
+    }
+
+    if (format === 'mixed') {
+      this.controls.link?.enable();
+      this.controls.address?.enable();
     }
   }
 }
