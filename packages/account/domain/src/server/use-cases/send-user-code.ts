@@ -1,13 +1,14 @@
 import { createCode, createMail, hideEmail } from '@devmx/shared-util-data';
 import { ResponseMessage, UseCase } from '@devmx/shared-api-interfaces';
-import { MailerService } from '@devmx/shared-api-interfaces/server';
+import { Env, MailerService } from '@devmx/shared-api-interfaces/server';
 import { AuthenticationError } from '@devmx/shared-util-errors';
 import { UsersService } from '../services';
 
 export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
   constructor(
     private usersService: UsersService,
-    private mailerService: MailerService
+    private mailerService: MailerService,
+    private env: Env
   ) {}
 
   async execute(name: string) {
@@ -27,10 +28,11 @@ export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
       `Código de autenticação`
     );
 
-    const message = await this.mailerService.send(mail);
-
-    console.log(message);
-
-    return { message: `Enviado para ${hideEmail(user.contact.email)}` };
+    if (this.env.production) {
+      await this.mailerService.send(mail);
+      return { message: `Enviado para ${hideEmail(user.contact.email)}` };
+    } else {
+      return { message: `Fala Dev! Usa esse código aqui: ${code.value}` };
+    }
   }
 }

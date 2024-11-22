@@ -17,8 +17,6 @@ export class AuthenticationUseCase
   async execute(data: ValidateUserCode) {
     const user = await this.usersService.findOneBy('name', data.name);
 
-    console.log(user);
-
     if (!user || !user.code) {
       throw new AuthenticationError('Não autorizado, já criou sua conta?');
     }
@@ -37,11 +35,9 @@ export class AuthenticationUseCase
       throw new AuthenticationError();
     }
 
-    const { code, ...userWithoutCode } = user;
+    delete user['code'];
 
-    console.log(`throw away used code, `, code);
-
-    await this.usersService.update(user.id, userWithoutCode);
+    await this.usersService.update(user.id, user);
 
     const { name, displayName, contact, roles, id: sub } = user;
 
