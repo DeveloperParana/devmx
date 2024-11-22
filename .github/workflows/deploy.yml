@@ -40,7 +40,9 @@ jobs:
       - run: pnpm exec nx build devmx --configuration=production
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./dist/apps/server
+        run: |
+          zip --version
+          zip -r release.zip dist/apps/server
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
