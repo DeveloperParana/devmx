@@ -20,6 +20,7 @@ export function provideSendUserCodeUseCase() {
   return createUseCaseProvider(SendUserCodeUseCase, [
     UsersService,
     MailerService,
+    Env
   ]);
 }
 
