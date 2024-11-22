@@ -2,9 +2,9 @@
 
 Trata-se de responsabilidade e relacionamentos, ou seja, qual a responsabilidade de cada camada e quais camadas podem depender diretamente uma das outras. Esta é uma convenção chamada [enforce module boundaries](https://nx.dev/features/enforce-module-boundaries#enforce-module-boundaries) e quem permite que as regras sejam aplicadas é o [nx](https://nx.dev).
 
-### Responsabilidades e relacionamentos
+### Tipos de bibliotecas
 
-Isso é feito por tipos de bibliotecas
+Trata-se de responsabilidades e relacionamentos
 
 A tabela a seguir representa a configuração no arquivo [`.eslintrc.json`](.eslintrc.json).
 

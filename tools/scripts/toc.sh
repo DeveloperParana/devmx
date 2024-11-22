@@ -4,10 +4,10 @@
 DIR=${1:-.}
 
 # Arquivo de saída do TOC
-OUTPUT="docs/readme.md"
+OUTPUT="README.md"
 
 # Inicia o TOC
-echo "# Documentação" >"$OUTPUT"
+echo "# devparana.mx" >"$OUTPUT"
 
 # Loop pelos arquivos Markdown
 for file in "$DIR"/*.md; do
@@ -20,6 +20,9 @@ for file in "$DIR"/*.md; do
 
   # Remove barras duplicadas no caminho do arquivo
   normalized_file=$(echo "$file" | sed 's|//|/|g')
+
+  # Adiciona a barra inicial ao caminho do arquivo
+  normalized_file="/${normalized_file}"
 
   # Extrai os cabeçalhos (linhas que começam com #)
   while IFS= read -r line; do
@@ -37,3 +40,5 @@ for file in "$DIR"/*.md; do
     fi
   done <"$file"
 done
+
+cat $OUTPUT >docs/readme.md
