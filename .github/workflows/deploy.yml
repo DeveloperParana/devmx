@@ -42,7 +42,7 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           zip --version
-          ls dist
+          ls dist/apps
           zip -r release.zip dist/apps/server
 
       - name: Upload artifact for deployment job
