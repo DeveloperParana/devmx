@@ -39,6 +39,13 @@ jobs:
       - uses: nrwl/nx-set-shas@v4
       - run: pnpm exec nx build devmx --configuration=production
 
+      - name: (TEST) Status Machine
+        run: |
+          echo "Quais arquivos existem?"
+          ls -a
+          echo "Onde estou?"
+          pwd
+
       - name: Zip artifact for deployment
         run: zip release.zip ./dist/apps/server -r
 
