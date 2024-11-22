@@ -8,6 +8,7 @@
     "build:server": "pnpm nx build server --verbose",
     "dev:mx": "nx serve devmx",
     "affected": "pnpm exec nx affected -t lint test build --parallel=10",
+    "lint:fix": "pnpm exec nx run-many -t lint --fix",
     "commit": "czg"
   },
   "private": true,
