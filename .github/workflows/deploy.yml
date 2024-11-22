@@ -77,5 +77,5 @@ jobs:
         with:
           app-name: 'devpr'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1F7ACD836E4D4E3BB80E15F4319ABDB5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AF340B23D99E4DE5BE0B99FA4D5BFB80 }}
           package: .
