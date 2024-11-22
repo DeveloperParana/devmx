@@ -37,7 +37,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - uses: nrwl/nx-set-shas@v4
-      - run: pnpm exec nx run-many -t build --projects server,devmx --configuration=production
+      - run: pnpm exec nx run-many -t build --projects server,devmx --configuration=production --parallel 1
 
       - name: Zip artifact for deployment
         run: |
