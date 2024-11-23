@@ -48,7 +48,7 @@ jobs:
   
       - name: Zip artifact for deployment
         run: |
-          zip release.zip ./dist/apps/devmx/server/*
+          zip release.zip ./dist/apps/devmx/server/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
