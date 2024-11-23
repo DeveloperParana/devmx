@@ -22,6 +22,14 @@ export class PresentationForm extends Form<Presentation> {
         nonNullable: true,
         validators: [Validators.required, Validators.maxLength(512)],
       }),
+      link: new FormControl('', {
+        nonNullable: true,
+        validators: [
+          Validators.pattern(
+            '^https://slides\\.com/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+$'
+          ),
+        ],
+      }),
       format: new FormControl('talk', {
         nonNullable: true,
         validators: [Validators.required],

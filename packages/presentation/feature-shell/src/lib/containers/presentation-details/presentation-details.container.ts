@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { PresentationFormatPipe } from '@devmx/presentation-ui-shared';
 import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
 import { PresentationOut } from '@devmx/shared-api-interfaces';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -10,6 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { PhotoPipe } from '@devmx/shared-ui-global';
 import { AsyncPipe } from '@angular/common';
 import { filter, map } from 'rxjs';
+import {
+  PresentationFormatPipe,
+  PresentationEmbedComponent,
+} from '@devmx/presentation-ui-shared';
 
 @Component({
   selector: 'devmx-presentation-details',
@@ -23,6 +26,7 @@ import { filter, map } from 'rxjs';
     MatButtonModule,
     IconComponent,
     MarkdownComponent,
+    PresentationEmbedComponent,
     PresentationFormatPipe,
     PhotoPipe,
     AsyncPipe,
