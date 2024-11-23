@@ -48,13 +48,13 @@ jobs:
   
       - name: Zip artifact for deployment
         run: |
-          zip release.zip ./dist/apps/devmx/server/* -r
+            cd ./dist/apps/devmx/server && zip -r release.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: ./dist/apps/devmx/server/release.zip
 
   deploy:
     runs-on: ubuntu-latest
