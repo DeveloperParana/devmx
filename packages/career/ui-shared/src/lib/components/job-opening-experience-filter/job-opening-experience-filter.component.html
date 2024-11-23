@@ -1,4 +1,4 @@
-<mat-chip-listbox (change)="change.emit($event.value)">
+<mat-chip-listbox (change)="filterChange.emit($event.value)">
   @for (experience of experiences; track experience.value) {
   <mat-chip-option [value]="experience.value">
     {{ experience.viewValue }}

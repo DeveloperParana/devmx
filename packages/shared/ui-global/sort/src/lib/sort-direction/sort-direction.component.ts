@@ -16,7 +16,7 @@ export class SortDirectionComponent {
 
   descText = input('');
 
-  change = output<SortDirection>();
+  sortChange = output<SortDirection>();
 
   current = signal<SortDirection>('asc');
 
@@ -27,6 +27,6 @@ export class SortDirectionComponent {
       this.current.set('asc');
     }
 
-    this.change.emit(this.current());
+    this.sortChange.emit(this.current());
   }
 }

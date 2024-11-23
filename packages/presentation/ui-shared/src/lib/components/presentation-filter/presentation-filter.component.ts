@@ -11,7 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
   imports: [MatChipsModule],
 })
 export class PresentationFilterComponent {
-  change = output<PresentationFormat>();
+  filterChange = output<PresentationFormat>();
 
   formats: FormOption<PresentationFormat>[] = [
     { value: 'talk', viewValue: 'Palestra' },

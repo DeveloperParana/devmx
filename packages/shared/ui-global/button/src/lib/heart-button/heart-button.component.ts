@@ -20,7 +20,7 @@ import { IconComponent } from '@devmx/shared-ui-global/icon';
 export class HeartButtonComponent {
   loved = input(false);
 
-  onLove = output<boolean>();
+  loveChange = output<boolean>();
 
   disabled = input<boolean | ''>(false);
 
@@ -33,6 +33,6 @@ export class HeartButtonComponent {
   }
 
   onClick() {
-    this.onLove.emit(!this.loved());
+    this.loveChange.emit(!this.loved());
   }
 }

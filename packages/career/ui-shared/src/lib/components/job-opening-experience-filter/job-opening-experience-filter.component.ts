@@ -11,7 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
   imports: [MatChipsModule],
 })
 export class JobOpeningExperienceFilterComponent {
-  change = output<ExperienceLevel>();
+  filterChange = output<ExperienceLevel>();
 
   experiences: FormOption<ExperienceLevel>[] = [
     { value: 'internship', viewValue: 'Estágio' },

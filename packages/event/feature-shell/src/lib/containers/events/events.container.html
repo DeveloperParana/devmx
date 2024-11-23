@@ -1,7 +1,7 @@
 <header>
-  <devmx-event-filter (change)="onFilterChange($event)" />
+  <devmx-event-filter (filterChange)="onFilterChange($event)" />
 
-  <devmx-sort-direction (change)="onSortChange($event)" />
+  <devmx-sort-direction (sortChange)="onSortChange($event)" />
 </header>
 
 @defer (on timer(500ms)) {
