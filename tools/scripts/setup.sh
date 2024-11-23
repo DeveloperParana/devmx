@@ -34,7 +34,13 @@ if command -v node &>/dev/null; then
 
   if version_less_than "$node_version" "22.5.1"; then
     echo "Versão não compatível 22.5.1"
-    echo "Atualize em echo https://nodejs.org/pt/download"
+    echo "Atualizando Node.js para a versão 22"
+    if command -v nvm &>/dev/null; then
+      nvm install 22
+      nvm use 22
+    else
+      echo "NVM não está instalado. Instale o NVM primeiro."
+    fi
   else
     if ! command -v pnpm &>/dev/null; then
       echo "pnpm não está instalado."
@@ -48,7 +54,6 @@ else
   echo "Node.js não está instalado."
   echo "https://nodejs.org/pt/download"
 fi
-
 
 cat assets/ascii/logo-devparana.txt
 echo "
