@@ -41,7 +41,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip release.zip ./dist/apps/server/* -r
+          zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -53,7 +53,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/devmx/browser
+          publish_dir: ./dist/
 
   deploy:
     runs-on: ubuntu-latest
