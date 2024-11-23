@@ -36,10 +36,13 @@ if command -v node &>/dev/null; then
     echo "Versão não compatível 22.5.1"
     echo "Atualizando Node.js para a versão 22"
     if command -v nvm &>/dev/null; then
-      nvm install 22
-      nvm use 22
+      echo "NVM detectado. Instalando Node.js versão 22.5"
+      nvm install 22.5
+      nvm use 22.5
+      echo "Node.js atualizado para a versão 22.5"
     else
-      echo "NVM não está instalado. Instale o NVM primeiro."
+      echo "Você pode instalar diretamente o Node.js (22): https://nodejs.org/pt/download"
+      echo "Ou instalar via NVM: https://github.com/nvm-sh/nvm"
     fi
   else
     if ! command -v pnpm &>/dev/null; then

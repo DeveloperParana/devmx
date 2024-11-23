@@ -14,6 +14,14 @@ git clone https://github.com/DeveloperParana/devmx
 1. [pnpm](https://pnpm.io/installation) v8.14
 1. [docker](https://docs.docker.com/engine/install)
 
+> [!TIP]
+> Se você já tem o Node.js instalado, mas não na versão 22, considere usar o [NVM](https://github.com/nvm-sh/nvm). Ele permite gerenciar múltiplas versões do Node.js, o que é útil para projetos diferentes que requerem versões distintas. Isso pode evitar problemas futuros em outros projetos que utilizem versões diferentes do Node.js.
+
+#### Uso do NVM
+
+O NVM (Node Version Manager) permite gerenciar múltiplas versões do Node.js no mesmo ambiente de desenvolvimento. Isso é especialmente útil quando você trabalha em diferentes projetos que requerem versões distintas do Node.js.
+Para mais informações, consulte a [documentação oficial do NVM](https://github.com/nvm-sh/nvm).
+
 ---
 
 Para preparar o ambiente execute:
