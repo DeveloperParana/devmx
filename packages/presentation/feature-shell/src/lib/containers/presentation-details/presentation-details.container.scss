@@ -33,4 +33,42 @@
       }
     }
   }
+
+  .presentation-placeholder {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - 2em);
+      height: calc(100% - 2em);
+      border: 0;
+      aspect-ratio: 16 / 9;
+      padding-top: 0;
+
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      blockquote {
+        p {
+          margin: 0;
+          font-size: 1.2em;
+          line-height: 1.2em;
+          opacity: 0.8;
+        }
+        cite {
+          margin: 0.4em;
+          display: flex;
+          font-size: 1em;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
 }

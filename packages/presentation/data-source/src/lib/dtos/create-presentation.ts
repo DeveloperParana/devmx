@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsOptional, IsString, IsUrl } from 'class-validator';
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreatePresentation } from '@devmx/presentation-domain';
@@ -36,6 +36,11 @@ export class CreatePresentationDto implements CreatePresentation {
   @IsOptional()
   @ApiPropertyOptional()
   visible = false;
+
+  @IsUrl()
+  @IsOptional()
+  @ApiPropertyOptional()
+  link?: string;
 
   @IsString()
   @IsOptional()

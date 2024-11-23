@@ -21,6 +21,13 @@
           </mat-form-field>
         </div>
 
+        <mat-form-field>
+          <mat-label>URL da palestra</mat-label>
+          <input matInput type="url" formControlName="link" />
+          <mat-hint>Apenas URL do slides.com são suportadas</mat-hint>
+          <mat-error>URL inválida</mat-error>
+        </mat-form-field>
+
         <mat-list
           class="sortable-list"
           cdkDropList

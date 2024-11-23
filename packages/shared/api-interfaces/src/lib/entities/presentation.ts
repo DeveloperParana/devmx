@@ -13,6 +13,8 @@ export interface Presentation {
 
   resources: string[];
 
+  link?: string;
+
   cover?: string;
 
   video?: string;

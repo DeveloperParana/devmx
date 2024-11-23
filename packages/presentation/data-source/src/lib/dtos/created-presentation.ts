@@ -27,6 +27,9 @@ export class CreatedPresentationDto {
   resources: string[];
 
   @ApiPropertyOptional()
+  link: string;
+
+  @ApiPropertyOptional()
   cover: string;
 
   @ApiPropertyOptional()

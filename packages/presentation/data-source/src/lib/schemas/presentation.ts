@@ -28,6 +28,9 @@ export class PresentationCollection extends Document implements Presentation {
   resources: string[];
 
   @Prop({ default: '' })
+  link?: string;
+
+  @Prop({ default: '' })
   cover: string;
 
   @Prop({ default: '' })

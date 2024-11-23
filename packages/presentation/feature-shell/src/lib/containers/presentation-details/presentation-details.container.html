@@ -24,6 +24,20 @@
     </mat-list-item>
   </mat-list>
 
+  @if (presentation.link) { @defer (on hover) {
+  <!--   -->
+  <devmx-presentation-embed [data]="presentation" />
+  } @placeholder {
+  <div class="presentation-placeholder">
+    <div>
+      <blockquote>
+        <p>"O conhecimento sem fronteiras transcende barreiras"</p>
+        <cite>— Guilherme Siquinelli</cite>
+      </blockquote>
+    </div>
+  </div>
+  } }
+
   <mat-card-content>
     <devmx-markdown [content]="presentation.description" />
   </mat-card-content>

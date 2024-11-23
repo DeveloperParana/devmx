@@ -1,6 +1,6 @@
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
 import { UserDto } from '@devmx/account-data-source';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
 export class PresentationDto {
@@ -29,7 +29,10 @@ export class PresentationDto {
   @ApiProperty()
   visible: boolean;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
+  link?: string;
+
+  @ApiPropertyOptional()
   cover: string;
 
   @ApiProperty()
