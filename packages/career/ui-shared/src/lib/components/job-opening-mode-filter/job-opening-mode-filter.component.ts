@@ -11,7 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
   imports: [MatChipsModule],
 })
 export class JobOpeningModeFilterComponent {
-  change = output<JobMode>();
+  filterChange = output<JobMode>();
 
   modes: FormOption<JobMode>[] = [
     { value: 'remote', viewValue: 'Remoto' },

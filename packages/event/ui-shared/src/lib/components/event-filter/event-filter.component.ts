@@ -11,7 +11,7 @@ import { EventFormat } from '@devmx/shared-api-interfaces';
   imports: [MatChipsModule],
 })
 export class EventFilterComponent {
-  change = output<EventFormat>();
+  filterChange = output<EventFormat>();
 
   formats: FormOption<EventFormat>[] = [
     { value: 'in-person', viewValue: 'Presencial' },

@@ -1,3 +1,4 @@
+import { Vector2 } from '@devmx/shared-util-data';
 import {
   input,
   output,
@@ -8,8 +9,6 @@ import {
   HostListener,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { CropResult } from './crop.interfaces';
-import { Vector2 } from '@devmx/shared-util-data';
 
 const px = (value: number | string) => `${value}px`;
 

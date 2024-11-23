@@ -9,5 +9,5 @@ import { MatChipsModule } from '@angular/material/chips';
   imports: [MatChipsModule],
 })
 export class CourseEADFilterComponent {
-  change = output<boolean>();
+  filterChange = output<boolean>();
 }

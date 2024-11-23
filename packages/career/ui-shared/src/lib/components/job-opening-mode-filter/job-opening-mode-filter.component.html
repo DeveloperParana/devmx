@@ -1,4 +1,4 @@
-<mat-chip-listbox (change)="change.emit($event.value)">
+<mat-chip-listbox (change)="filterChange.emit($event.value)">
   @for (mode of modes; track mode.value) {
   <mat-chip-option [value]="mode.value">
     {{ mode.viewValue }}
