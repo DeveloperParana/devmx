@@ -194,6 +194,9 @@
       "@devmx/shared-ui-global/forms": [
         "packages/shared/ui-global/forms/src/index.ts"
       ],
+      "@devmx/shared-ui-global/graph": [
+        "packages/shared/ui-global/graph/src/index.ts"
+      ],
       "@devmx/shared-ui-global/guards": [
         "packages/shared/ui-global/guards/src/index.ts"
       ],
