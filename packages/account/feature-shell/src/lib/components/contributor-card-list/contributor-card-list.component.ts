@@ -8,10 +8,7 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './contributor-card-list.component.html',
   styleUrl: './contributor-card-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    MatListModule,
-  ],
+  imports: [MatCardModule, MatListModule],
   standalone: true,
 })
 export class ContributorCardListComponent {

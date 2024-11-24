@@ -23,7 +23,7 @@ $_palettes: (
     95: token.$devmx-palettes-primary-95,
     98: token.$devmx-palettes-primary-98,
     99: token.$devmx-palettes-primary-99,
-    100:token.$devmx-palettes-primary-100,
+    100: token.$devmx-palettes-primary-100,
   ),
   secondary: (
     0: token.$devmx-palettes-secondary-0,
@@ -41,7 +41,7 @@ $_palettes: (
     95: token.$devmx-palettes-secondary-95,
     98: token.$devmx-palettes-secondary-98,
     99: token.$devmx-palettes-secondary-99,
-    100:token.$devmx-palettes-secondary-100,
+    100: token.$devmx-palettes-secondary-100,
   ),
   tertiary: (
     0: token.$devmx-palettes-tertiary-0,
@@ -59,7 +59,7 @@ $_palettes: (
     95: token.$devmx-palettes-tertiary-95,
     98: token.$devmx-palettes-tertiary-98,
     99: token.$devmx-palettes-tertiary-99,
-    100:token.$devmx-palettes-tertiary-100,
+    100: token.$devmx-palettes-tertiary-100,
   ),
   neutral: (
     0: token.$devmx-palettes-neutral-0,
@@ -130,7 +130,7 @@ $_palettes: (
 $_rest: (
   secondary: map.get($_palettes, secondary),
   neutral: map.get($_palettes, neutral),
-  neutral-variant: map.get($_palettes,  neutral-variant),
+  neutral-variant: map.get($_palettes, neutral-variant),
   error: map.get($_palettes, error),
 );
 

@@ -20,5 +20,3 @@ A tabela a seguir representa a configuração no arquivo [`.eslintrc.json`](.esl
 |      `app` |  ✓  |  ✓   |   𝘅    |  ✓   |  ✓  |    ✓    |    ✓     |  𝘅  |
 
 Caso tenha interesse em aprofundar neste assunto e descobrir os motivos, recomendo que leia um conteúdo que escrevi ano passado, você pode fazer download através do link [Arquitetura em camadas, uma abordagem sobre responsabilidades e relacionamentos](https://conteudode.dev/pdf/nx).
-
-

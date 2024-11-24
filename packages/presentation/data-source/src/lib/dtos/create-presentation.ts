@@ -1,4 +1,10 @@
-import { IsArray, IsBoolean, IsOptional, IsString, IsUrl } from 'class-validator';
+import {
+  IsArray,
+  IsBoolean,
+  IsOptional,
+  IsString,
+  IsUrl,
+} from 'class-validator';
 import { PresentationFormat } from '@devmx/shared-api-interfaces';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreatePresentation } from '@devmx/presentation-domain';

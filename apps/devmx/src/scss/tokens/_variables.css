@@ -1330,25 +1330,75 @@
   --color-devmx-surfaces-dark-high-contrast-surface5-0: #141313;
   --color-devmx-surfaces-dark-high-contrast-surface5-1: rgba(82, 225, 99, 0.14);
   --color-devmx-surfaces-light-medium-contrast-surface1-0: #fdf8f8;
-  --color-devmx-surfaces-light-medium-contrast-surface1-1: rgba(0, 110, 32, 0.05);
+  --color-devmx-surfaces-light-medium-contrast-surface1-1: rgba(
+    0,
+    110,
+    32,
+    0.05
+  );
   --color-devmx-surfaces-light-medium-contrast-surface2-0: #fdf8f8;
-  --color-devmx-surfaces-light-medium-contrast-surface2-1: rgba(0, 110, 32, 0.08);
+  --color-devmx-surfaces-light-medium-contrast-surface2-1: rgba(
+    0,
+    110,
+    32,
+    0.08
+  );
   --color-devmx-surfaces-light-medium-contrast-surface3-0: #fdf8f8;
-  --color-devmx-surfaces-light-medium-contrast-surface3-1: rgba(0, 110, 32, 0.11);
+  --color-devmx-surfaces-light-medium-contrast-surface3-1: rgba(
+    0,
+    110,
+    32,
+    0.11
+  );
   --color-devmx-surfaces-light-medium-contrast-surface4-0: #fdf8f8;
-  --color-devmx-surfaces-light-medium-contrast-surface4-1: rgba(0, 110, 32, 0.12);
+  --color-devmx-surfaces-light-medium-contrast-surface4-1: rgba(
+    0,
+    110,
+    32,
+    0.12
+  );
   --color-devmx-surfaces-light-medium-contrast-surface5-0: #fdf8f8;
-  --color-devmx-surfaces-light-medium-contrast-surface5-1: rgba(0, 110, 32, 0.14);
+  --color-devmx-surfaces-light-medium-contrast-surface5-1: rgba(
+    0,
+    110,
+    32,
+    0.14
+  );
   --color-devmx-surfaces-dark-medium-contrast-surface1-0: #141313;
-  --color-devmx-surfaces-dark-medium-contrast-surface1-1: rgba(82, 225, 99, 0.05);
+  --color-devmx-surfaces-dark-medium-contrast-surface1-1: rgba(
+    82,
+    225,
+    99,
+    0.05
+  );
   --color-devmx-surfaces-dark-medium-contrast-surface2-0: #141313;
-  --color-devmx-surfaces-dark-medium-contrast-surface2-1: rgba(82, 225, 99, 0.08);
+  --color-devmx-surfaces-dark-medium-contrast-surface2-1: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
   --color-devmx-surfaces-dark-medium-contrast-surface3-0: #141313;
-  --color-devmx-surfaces-dark-medium-contrast-surface3-1: rgba(82, 225, 99, 0.11);
+  --color-devmx-surfaces-dark-medium-contrast-surface3-1: rgba(
+    82,
+    225,
+    99,
+    0.11
+  );
   --color-devmx-surfaces-dark-medium-contrast-surface4-0: #141313;
-  --color-devmx-surfaces-dark-medium-contrast-surface4-1: rgba(82, 225, 99, 0.12);
+  --color-devmx-surfaces-dark-medium-contrast-surface4-1: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
   --color-devmx-surfaces-dark-medium-contrast-surface5-0: #141313;
-  --color-devmx-surfaces-dark-medium-contrast-surface5-1: rgba(82, 225, 99, 0.14);
+  --color-devmx-surfaces-dark-medium-contrast-surface5-1: rgba(
+    82,
+    225,
+    99,
+    0.14
+  );
   --color-devmx-ref-primary-primary100: #ffffff;
   --color-devmx-ref-primary-primary99: #f6fff0;
   --color-devmx-ref-primary-primary98: #ebffe5;
@@ -1465,885 +1515,5145 @@
   --color-devmx-state-layers-light-primary-opacity-0-08: rgba(0, 110, 32, 0.08);
   --color-devmx-state-layers-light-primary-opacity-0-12: rgba(0, 110, 32, 0.12);
   --color-devmx-state-layers-light-primary-opacity-0-16: rgba(0, 110, 32, 0.16);
-  --color-devmx-state-layers-light-surfacetint-opacity-0-08: rgba(0, 110, 32, 0.08);
-  --color-devmx-state-layers-light-surfacetint-opacity-0-12: rgba(0, 110, 32, 0.12);
-  --color-devmx-state-layers-light-surfacetint-opacity-0-16: rgba(0, 110, 32, 0.16);
-  --color-devmx-state-layers-light-onprimary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-onprimary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-onprimary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-primarycontainer-opacity-0-08: rgba(72, 217, 92, 0.08);
-  --color-devmx-state-layers-light-primarycontainer-opacity-0-12: rgba(72, 217, 92, 0.12);
-  --color-devmx-state-layers-light-primarycontainer-opacity-0-16: rgba(72, 217, 92, 0.16);
-  --color-devmx-state-layers-light-onprimarycontainer-opacity-0-08: rgba(0, 57, 13, 0.08);
-  --color-devmx-state-layers-light-onprimarycontainer-opacity-0-12: rgba(0, 57, 13, 0.12);
-  --color-devmx-state-layers-light-onprimarycontainer-opacity-0-16: rgba(0, 57, 13, 0.16);
-  --color-devmx-state-layers-light-secondary-opacity-0-08: rgba(0, 110, 32, 0.08);
-  --color-devmx-state-layers-light-secondary-opacity-0-12: rgba(0, 110, 32, 0.12);
-  --color-devmx-state-layers-light-secondary-opacity-0-16: rgba(0, 110, 32, 0.16);
-  --color-devmx-state-layers-light-onsecondary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-onsecondary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-onsecondary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-secondarycontainer-opacity-0-08: rgba(72, 217, 92, 0.08);
-  --color-devmx-state-layers-light-secondarycontainer-opacity-0-12: rgba(72, 217, 92, 0.12);
-  --color-devmx-state-layers-light-secondarycontainer-opacity-0-16: rgba(72, 217, 92, 0.16);
-  --color-devmx-state-layers-light-onsecondarycontainer-opacity-0-08: rgba(0, 57, 13, 0.08);
-  --color-devmx-state-layers-light-onsecondarycontainer-opacity-0-12: rgba(0, 57, 13, 0.12);
-  --color-devmx-state-layers-light-onsecondarycontainer-opacity-0-16: rgba(0, 57, 13, 0.16);
-  --color-devmx-state-layers-light-tertiary-opacity-0-08: rgba(0, 78, 159, 0.08);
-  --color-devmx-state-layers-light-tertiary-opacity-0-12: rgba(0, 78, 159, 0.12);
-  --color-devmx-state-layers-light-tertiary-opacity-0-16: rgba(0, 78, 159, 0.16);
-  --color-devmx-state-layers-light-ontertiary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-ontertiary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-ontertiary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-tertiarycontainer-opacity-0-08: rgba(0, 114, 227, 0.08);
-  --color-devmx-state-layers-light-tertiarycontainer-opacity-0-12: rgba(0, 114, 227, 0.12);
-  --color-devmx-state-layers-light-tertiarycontainer-opacity-0-16: rgba(0, 114, 227, 0.16);
-  --color-devmx-state-layers-light-ontertiarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-ontertiarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-ontertiarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
+  --color-devmx-state-layers-light-surfacetint-opacity-0-08: rgba(
+    0,
+    110,
+    32,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacetint-opacity-0-12: rgba(
+    0,
+    110,
+    32,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacetint-opacity-0-16: rgba(
+    0,
+    110,
+    32,
+    0.16
+  );
+  --color-devmx-state-layers-light-onprimary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-onprimary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-onprimary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-primarycontainer-opacity-0-08: rgba(
+    72,
+    217,
+    92,
+    0.08
+  );
+  --color-devmx-state-layers-light-primarycontainer-opacity-0-12: rgba(
+    72,
+    217,
+    92,
+    0.12
+  );
+  --color-devmx-state-layers-light-primarycontainer-opacity-0-16: rgba(
+    72,
+    217,
+    92,
+    0.16
+  );
+  --color-devmx-state-layers-light-onprimarycontainer-opacity-0-08: rgba(
+    0,
+    57,
+    13,
+    0.08
+  );
+  --color-devmx-state-layers-light-onprimarycontainer-opacity-0-12: rgba(
+    0,
+    57,
+    13,
+    0.12
+  );
+  --color-devmx-state-layers-light-onprimarycontainer-opacity-0-16: rgba(
+    0,
+    57,
+    13,
+    0.16
+  );
+  --color-devmx-state-layers-light-secondary-opacity-0-08: rgba(
+    0,
+    110,
+    32,
+    0.08
+  );
+  --color-devmx-state-layers-light-secondary-opacity-0-12: rgba(
+    0,
+    110,
+    32,
+    0.12
+  );
+  --color-devmx-state-layers-light-secondary-opacity-0-16: rgba(
+    0,
+    110,
+    32,
+    0.16
+  );
+  --color-devmx-state-layers-light-onsecondary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-onsecondary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-onsecondary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-secondarycontainer-opacity-0-08: rgba(
+    72,
+    217,
+    92,
+    0.08
+  );
+  --color-devmx-state-layers-light-secondarycontainer-opacity-0-12: rgba(
+    72,
+    217,
+    92,
+    0.12
+  );
+  --color-devmx-state-layers-light-secondarycontainer-opacity-0-16: rgba(
+    72,
+    217,
+    92,
+    0.16
+  );
+  --color-devmx-state-layers-light-onsecondarycontainer-opacity-0-08: rgba(
+    0,
+    57,
+    13,
+    0.08
+  );
+  --color-devmx-state-layers-light-onsecondarycontainer-opacity-0-12: rgba(
+    0,
+    57,
+    13,
+    0.12
+  );
+  --color-devmx-state-layers-light-onsecondarycontainer-opacity-0-16: rgba(
+    0,
+    57,
+    13,
+    0.16
+  );
+  --color-devmx-state-layers-light-tertiary-opacity-0-08: rgba(
+    0,
+    78,
+    159,
+    0.08
+  );
+  --color-devmx-state-layers-light-tertiary-opacity-0-12: rgba(
+    0,
+    78,
+    159,
+    0.12
+  );
+  --color-devmx-state-layers-light-tertiary-opacity-0-16: rgba(
+    0,
+    78,
+    159,
+    0.16
+  );
+  --color-devmx-state-layers-light-ontertiary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-ontertiary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-ontertiary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-tertiarycontainer-opacity-0-08: rgba(
+    0,
+    114,
+    227,
+    0.08
+  );
+  --color-devmx-state-layers-light-tertiarycontainer-opacity-0-12: rgba(
+    0,
+    114,
+    227,
+    0.12
+  );
+  --color-devmx-state-layers-light-tertiarycontainer-opacity-0-16: rgba(
+    0,
+    114,
+    227,
+    0.16
+  );
+  --color-devmx-state-layers-light-ontertiarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-ontertiarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-ontertiarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
   --color-devmx-state-layers-light-error-opacity-0-08: rgba(186, 26, 26, 0.08);
   --color-devmx-state-layers-light-error-opacity-0-12: rgba(186, 26, 26, 0.12);
   --color-devmx-state-layers-light-error-opacity-0-16: rgba(186, 26, 26, 0.16);
-  --color-devmx-state-layers-light-onerror-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-onerror-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-onerror-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-errorcontainer-opacity-0-08: rgba(255, 218, 214, 0.08);
-  --color-devmx-state-layers-light-errorcontainer-opacity-0-12: rgba(255, 218, 214, 0.12);
-  --color-devmx-state-layers-light-errorcontainer-opacity-0-16: rgba(255, 218, 214, 0.16);
-  --color-devmx-state-layers-light-onerrorcontainer-opacity-0-08: rgba(65, 0, 2, 0.08);
-  --color-devmx-state-layers-light-onerrorcontainer-opacity-0-12: rgba(65, 0, 2, 0.12);
-  --color-devmx-state-layers-light-onerrorcontainer-opacity-0-16: rgba(65, 0, 2, 0.16);
-  --color-devmx-state-layers-light-background-opacity-0-08: rgba(243, 252, 237, 0.08);
-  --color-devmx-state-layers-light-background-opacity-0-12: rgba(243, 252, 237, 0.12);
-  --color-devmx-state-layers-light-background-opacity-0-16: rgba(243, 252, 237, 0.16);
-  --color-devmx-state-layers-light-onbackground-opacity-0-08: rgba(22, 30, 21, 0.08);
-  --color-devmx-state-layers-light-onbackground-opacity-0-12: rgba(22, 30, 21, 0.12);
-  --color-devmx-state-layers-light-onbackground-opacity-0-16: rgba(22, 30, 21, 0.16);
-  --color-devmx-state-layers-light-surface-opacity-0-08: rgba(253, 248, 248, 0.08);
-  --color-devmx-state-layers-light-surface-opacity-0-12: rgba(253, 248, 248, 0.12);
-  --color-devmx-state-layers-light-surface-opacity-0-16: rgba(253, 248, 248, 0.16);
-  --color-devmx-state-layers-light-onsurface-opacity-0-08: rgba(28, 27, 27, 0.08);
-  --color-devmx-state-layers-light-onsurface-opacity-0-12: rgba(28, 27, 27, 0.12);
-  --color-devmx-state-layers-light-onsurface-opacity-0-16: rgba(28, 27, 27, 0.16);
-  --color-devmx-state-layers-light-surfacevariant-opacity-0-08: rgba(216, 231, 210, 0.08);
-  --color-devmx-state-layers-light-surfacevariant-opacity-0-12: rgba(216, 231, 210, 0.12);
-  --color-devmx-state-layers-light-surfacevariant-opacity-0-16: rgba(216, 231, 210, 0.16);
-  --color-devmx-state-layers-light-onsurfacevariant-opacity-0-08: rgba(61, 74, 59, 0.08);
-  --color-devmx-state-layers-light-onsurfacevariant-opacity-0-12: rgba(61, 74, 59, 0.12);
-  --color-devmx-state-layers-light-onsurfacevariant-opacity-0-16: rgba(61, 74, 59, 0.16);
-  --color-devmx-state-layers-light-outline-opacity-0-08: rgba(109, 123, 106, 0.08);
-  --color-devmx-state-layers-light-outline-opacity-0-12: rgba(109, 123, 106, 0.12);
-  --color-devmx-state-layers-light-outline-opacity-0-16: rgba(109, 123, 106, 0.16);
-  --color-devmx-state-layers-light-outlinevariant-opacity-0-08: rgba(188, 203, 183, 0.08);
-  --color-devmx-state-layers-light-outlinevariant-opacity-0-12: rgba(188, 203, 183, 0.12);
-  --color-devmx-state-layers-light-outlinevariant-opacity-0-16: rgba(188, 203, 183, 0.16);
+  --color-devmx-state-layers-light-onerror-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-onerror-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-onerror-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-errorcontainer-opacity-0-08: rgba(
+    255,
+    218,
+    214,
+    0.08
+  );
+  --color-devmx-state-layers-light-errorcontainer-opacity-0-12: rgba(
+    255,
+    218,
+    214,
+    0.12
+  );
+  --color-devmx-state-layers-light-errorcontainer-opacity-0-16: rgba(
+    255,
+    218,
+    214,
+    0.16
+  );
+  --color-devmx-state-layers-light-onerrorcontainer-opacity-0-08: rgba(
+    65,
+    0,
+    2,
+    0.08
+  );
+  --color-devmx-state-layers-light-onerrorcontainer-opacity-0-12: rgba(
+    65,
+    0,
+    2,
+    0.12
+  );
+  --color-devmx-state-layers-light-onerrorcontainer-opacity-0-16: rgba(
+    65,
+    0,
+    2,
+    0.16
+  );
+  --color-devmx-state-layers-light-background-opacity-0-08: rgba(
+    243,
+    252,
+    237,
+    0.08
+  );
+  --color-devmx-state-layers-light-background-opacity-0-12: rgba(
+    243,
+    252,
+    237,
+    0.12
+  );
+  --color-devmx-state-layers-light-background-opacity-0-16: rgba(
+    243,
+    252,
+    237,
+    0.16
+  );
+  --color-devmx-state-layers-light-onbackground-opacity-0-08: rgba(
+    22,
+    30,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-onbackground-opacity-0-12: rgba(
+    22,
+    30,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-onbackground-opacity-0-16: rgba(
+    22,
+    30,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-surface-opacity-0-08: rgba(
+    253,
+    248,
+    248,
+    0.08
+  );
+  --color-devmx-state-layers-light-surface-opacity-0-12: rgba(
+    253,
+    248,
+    248,
+    0.12
+  );
+  --color-devmx-state-layers-light-surface-opacity-0-16: rgba(
+    253,
+    248,
+    248,
+    0.16
+  );
+  --color-devmx-state-layers-light-onsurface-opacity-0-08: rgba(
+    28,
+    27,
+    27,
+    0.08
+  );
+  --color-devmx-state-layers-light-onsurface-opacity-0-12: rgba(
+    28,
+    27,
+    27,
+    0.12
+  );
+  --color-devmx-state-layers-light-onsurface-opacity-0-16: rgba(
+    28,
+    27,
+    27,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacevariant-opacity-0-08: rgba(
+    216,
+    231,
+    210,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacevariant-opacity-0-12: rgba(
+    216,
+    231,
+    210,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacevariant-opacity-0-16: rgba(
+    216,
+    231,
+    210,
+    0.16
+  );
+  --color-devmx-state-layers-light-onsurfacevariant-opacity-0-08: rgba(
+    61,
+    74,
+    59,
+    0.08
+  );
+  --color-devmx-state-layers-light-onsurfacevariant-opacity-0-12: rgba(
+    61,
+    74,
+    59,
+    0.12
+  );
+  --color-devmx-state-layers-light-onsurfacevariant-opacity-0-16: rgba(
+    61,
+    74,
+    59,
+    0.16
+  );
+  --color-devmx-state-layers-light-outline-opacity-0-08: rgba(
+    109,
+    123,
+    106,
+    0.08
+  );
+  --color-devmx-state-layers-light-outline-opacity-0-12: rgba(
+    109,
+    123,
+    106,
+    0.12
+  );
+  --color-devmx-state-layers-light-outline-opacity-0-16: rgba(
+    109,
+    123,
+    106,
+    0.16
+  );
+  --color-devmx-state-layers-light-outlinevariant-opacity-0-08: rgba(
+    188,
+    203,
+    183,
+    0.08
+  );
+  --color-devmx-state-layers-light-outlinevariant-opacity-0-12: rgba(
+    188,
+    203,
+    183,
+    0.12
+  );
+  --color-devmx-state-layers-light-outlinevariant-opacity-0-16: rgba(
+    188,
+    203,
+    183,
+    0.16
+  );
   --color-devmx-state-layers-light-shadow-opacity-0-08: rgba(0, 0, 0, 0.08);
   --color-devmx-state-layers-light-shadow-opacity-0-12: rgba(0, 0, 0, 0.12);
   --color-devmx-state-layers-light-shadow-opacity-0-16: rgba(0, 0, 0, 0.16);
   --color-devmx-state-layers-light-scrim-opacity-0-08: rgba(0, 0, 0, 0.08);
   --color-devmx-state-layers-light-scrim-opacity-0-12: rgba(0, 0, 0, 0.12);
   --color-devmx-state-layers-light-scrim-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-light-inversesurface-opacity-0-08: rgba(49, 48, 48, 0.08);
-  --color-devmx-state-layers-light-inversesurface-opacity-0-12: rgba(49, 48, 48, 0.12);
-  --color-devmx-state-layers-light-inversesurface-opacity-0-16: rgba(49, 48, 48, 0.16);
-  --color-devmx-state-layers-light-inverseonsurface-opacity-0-08: rgba(244, 240, 239, 0.08);
-  --color-devmx-state-layers-light-inverseonsurface-opacity-0-12: rgba(244, 240, 239, 0.12);
-  --color-devmx-state-layers-light-inverseonsurface-opacity-0-16: rgba(244, 240, 239, 0.16);
-  --color-devmx-state-layers-light-inverseprimary-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-light-inverseprimary-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-light-inverseprimary-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-light-primaryfixed-opacity-0-08: rgba(112, 255, 124, 0.08);
-  --color-devmx-state-layers-light-primaryfixed-opacity-0-12: rgba(112, 255, 124, 0.12);
-  --color-devmx-state-layers-light-primaryfixed-opacity-0-16: rgba(112, 255, 124, 0.16);
-  --color-devmx-state-layers-light-onprimaryfixed-opacity-0-08: rgba(0, 33, 5, 0.08);
-  --color-devmx-state-layers-light-onprimaryfixed-opacity-0-12: rgba(0, 33, 5, 0.12);
-  --color-devmx-state-layers-light-onprimaryfixed-opacity-0-16: rgba(0, 33, 5, 0.16);
-  --color-devmx-state-layers-light-primaryfixeddim-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-light-primaryfixeddim-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-light-primaryfixeddim-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-light-onprimaryfixedvariant-opacity-0-08: rgba(0, 83, 22, 0.08);
-  --color-devmx-state-layers-light-onprimaryfixedvariant-opacity-0-12: rgba(0, 83, 22, 0.12);
-  --color-devmx-state-layers-light-onprimaryfixedvariant-opacity-0-16: rgba(0, 83, 22, 0.16);
-  --color-devmx-state-layers-light-secondaryfixed-opacity-0-08: rgba(112, 255, 124, 0.08);
-  --color-devmx-state-layers-light-secondaryfixed-opacity-0-12: rgba(112, 255, 124, 0.12);
-  --color-devmx-state-layers-light-secondaryfixed-opacity-0-16: rgba(112, 255, 124, 0.16);
-  --color-devmx-state-layers-light-onsecondaryfixed-opacity-0-08: rgba(0, 33, 5, 0.08);
-  --color-devmx-state-layers-light-onsecondaryfixed-opacity-0-12: rgba(0, 33, 5, 0.12);
-  --color-devmx-state-layers-light-onsecondaryfixed-opacity-0-16: rgba(0, 33, 5, 0.16);
-  --color-devmx-state-layers-light-secondaryfixeddim-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-light-secondaryfixeddim-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-light-secondaryfixeddim-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-light-onsecondaryfixedvariant-opacity-0-08: rgba(0, 83, 22, 0.08);
-  --color-devmx-state-layers-light-onsecondaryfixedvariant-opacity-0-12: rgba(0, 83, 22, 0.12);
-  --color-devmx-state-layers-light-onsecondaryfixedvariant-opacity-0-16: rgba(0, 83, 22, 0.16);
-  --color-devmx-state-layers-light-tertiaryfixed-opacity-0-08: rgba(215, 227, 255, 0.08);
-  --color-devmx-state-layers-light-tertiaryfixed-opacity-0-12: rgba(215, 227, 255, 0.12);
-  --color-devmx-state-layers-light-tertiaryfixed-opacity-0-16: rgba(215, 227, 255, 0.16);
-  --color-devmx-state-layers-light-ontertiaryfixed-opacity-0-08: rgba(0, 27, 62, 0.08);
-  --color-devmx-state-layers-light-ontertiaryfixed-opacity-0-12: rgba(0, 27, 62, 0.12);
-  --color-devmx-state-layers-light-ontertiaryfixed-opacity-0-16: rgba(0, 27, 62, 0.16);
-  --color-devmx-state-layers-light-tertiaryfixeddim-opacity-0-08: rgba(170, 199, 255, 0.08);
-  --color-devmx-state-layers-light-tertiaryfixeddim-opacity-0-12: rgba(170, 199, 255, 0.12);
-  --color-devmx-state-layers-light-tertiaryfixeddim-opacity-0-16: rgba(170, 199, 255, 0.16);
-  --color-devmx-state-layers-light-ontertiaryfixedvariant-opacity-0-08: rgba(0, 69, 142, 0.08);
-  --color-devmx-state-layers-light-ontertiaryfixedvariant-opacity-0-12: rgba(0, 69, 142, 0.12);
-  --color-devmx-state-layers-light-ontertiaryfixedvariant-opacity-0-16: rgba(0, 69, 142, 0.16);
-  --color-devmx-state-layers-light-surfacedim-opacity-0-08: rgba(221, 217, 216, 0.08);
-  --color-devmx-state-layers-light-surfacedim-opacity-0-12: rgba(221, 217, 216, 0.12);
-  --color-devmx-state-layers-light-surfacedim-opacity-0-16: rgba(221, 217, 216, 0.16);
-  --color-devmx-state-layers-light-surfacebright-opacity-0-08: rgba(253, 248, 248, 0.08);
-  --color-devmx-state-layers-light-surfacebright-opacity-0-12: rgba(253, 248, 248, 0.12);
-  --color-devmx-state-layers-light-surfacebright-opacity-0-16: rgba(253, 248, 248, 0.16);
-  --color-devmx-state-layers-light-surfacecontainerlowest-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-surfacecontainerlowest-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-surfacecontainerlowest-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-surfacecontainerlow-opacity-0-08: rgba(247, 243, 242, 0.08);
-  --color-devmx-state-layers-light-surfacecontainerlow-opacity-0-12: rgba(247, 243, 242, 0.12);
-  --color-devmx-state-layers-light-surfacecontainerlow-opacity-0-16: rgba(247, 243, 242, 0.16);
-  --color-devmx-state-layers-light-surfacecontainer-opacity-0-08: rgba(241, 237, 236, 0.08);
-  --color-devmx-state-layers-light-surfacecontainer-opacity-0-12: rgba(241, 237, 236, 0.12);
-  --color-devmx-state-layers-light-surfacecontainer-opacity-0-16: rgba(241, 237, 236, 0.16);
-  --color-devmx-state-layers-light-surfacecontainerhigh-opacity-0-08: rgba(235, 231, 231, 0.08);
-  --color-devmx-state-layers-light-surfacecontainerhigh-opacity-0-12: rgba(235, 231, 231, 0.12);
-  --color-devmx-state-layers-light-surfacecontainerhigh-opacity-0-16: rgba(235, 231, 231, 0.16);
-  --color-devmx-state-layers-light-surfacecontainerhighest-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-light-surfacecontainerhighest-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-light-surfacecontainerhighest-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-primary-opacity-0-08: rgba(99, 242, 113, 0.08);
-  --color-devmx-state-layers-dark-primary-opacity-0-12: rgba(99, 242, 113, 0.12);
-  --color-devmx-state-layers-dark-primary-opacity-0-16: rgba(99, 242, 113, 0.16);
-  --color-devmx-state-layers-dark-surfacetint-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-surfacetint-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-surfacetint-opacity-0-16: rgba(82, 225, 99, 0.16);
+  --color-devmx-state-layers-light-inversesurface-opacity-0-08: rgba(
+    49,
+    48,
+    48,
+    0.08
+  );
+  --color-devmx-state-layers-light-inversesurface-opacity-0-12: rgba(
+    49,
+    48,
+    48,
+    0.12
+  );
+  --color-devmx-state-layers-light-inversesurface-opacity-0-16: rgba(
+    49,
+    48,
+    48,
+    0.16
+  );
+  --color-devmx-state-layers-light-inverseonsurface-opacity-0-08: rgba(
+    244,
+    240,
+    239,
+    0.08
+  );
+  --color-devmx-state-layers-light-inverseonsurface-opacity-0-12: rgba(
+    244,
+    240,
+    239,
+    0.12
+  );
+  --color-devmx-state-layers-light-inverseonsurface-opacity-0-16: rgba(
+    244,
+    240,
+    239,
+    0.16
+  );
+  --color-devmx-state-layers-light-inverseprimary-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-light-inverseprimary-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-light-inverseprimary-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-light-primaryfixed-opacity-0-08: rgba(
+    112,
+    255,
+    124,
+    0.08
+  );
+  --color-devmx-state-layers-light-primaryfixed-opacity-0-12: rgba(
+    112,
+    255,
+    124,
+    0.12
+  );
+  --color-devmx-state-layers-light-primaryfixed-opacity-0-16: rgba(
+    112,
+    255,
+    124,
+    0.16
+  );
+  --color-devmx-state-layers-light-onprimaryfixed-opacity-0-08: rgba(
+    0,
+    33,
+    5,
+    0.08
+  );
+  --color-devmx-state-layers-light-onprimaryfixed-opacity-0-12: rgba(
+    0,
+    33,
+    5,
+    0.12
+  );
+  --color-devmx-state-layers-light-onprimaryfixed-opacity-0-16: rgba(
+    0,
+    33,
+    5,
+    0.16
+  );
+  --color-devmx-state-layers-light-primaryfixeddim-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-light-primaryfixeddim-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-light-primaryfixeddim-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-light-onprimaryfixedvariant-opacity-0-08: rgba(
+    0,
+    83,
+    22,
+    0.08
+  );
+  --color-devmx-state-layers-light-onprimaryfixedvariant-opacity-0-12: rgba(
+    0,
+    83,
+    22,
+    0.12
+  );
+  --color-devmx-state-layers-light-onprimaryfixedvariant-opacity-0-16: rgba(
+    0,
+    83,
+    22,
+    0.16
+  );
+  --color-devmx-state-layers-light-secondaryfixed-opacity-0-08: rgba(
+    112,
+    255,
+    124,
+    0.08
+  );
+  --color-devmx-state-layers-light-secondaryfixed-opacity-0-12: rgba(
+    112,
+    255,
+    124,
+    0.12
+  );
+  --color-devmx-state-layers-light-secondaryfixed-opacity-0-16: rgba(
+    112,
+    255,
+    124,
+    0.16
+  );
+  --color-devmx-state-layers-light-onsecondaryfixed-opacity-0-08: rgba(
+    0,
+    33,
+    5,
+    0.08
+  );
+  --color-devmx-state-layers-light-onsecondaryfixed-opacity-0-12: rgba(
+    0,
+    33,
+    5,
+    0.12
+  );
+  --color-devmx-state-layers-light-onsecondaryfixed-opacity-0-16: rgba(
+    0,
+    33,
+    5,
+    0.16
+  );
+  --color-devmx-state-layers-light-secondaryfixeddim-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-light-secondaryfixeddim-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-light-secondaryfixeddim-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-light-onsecondaryfixedvariant-opacity-0-08: rgba(
+    0,
+    83,
+    22,
+    0.08
+  );
+  --color-devmx-state-layers-light-onsecondaryfixedvariant-opacity-0-12: rgba(
+    0,
+    83,
+    22,
+    0.12
+  );
+  --color-devmx-state-layers-light-onsecondaryfixedvariant-opacity-0-16: rgba(
+    0,
+    83,
+    22,
+    0.16
+  );
+  --color-devmx-state-layers-light-tertiaryfixed-opacity-0-08: rgba(
+    215,
+    227,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-tertiaryfixed-opacity-0-12: rgba(
+    215,
+    227,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-tertiaryfixed-opacity-0-16: rgba(
+    215,
+    227,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-ontertiaryfixed-opacity-0-08: rgba(
+    0,
+    27,
+    62,
+    0.08
+  );
+  --color-devmx-state-layers-light-ontertiaryfixed-opacity-0-12: rgba(
+    0,
+    27,
+    62,
+    0.12
+  );
+  --color-devmx-state-layers-light-ontertiaryfixed-opacity-0-16: rgba(
+    0,
+    27,
+    62,
+    0.16
+  );
+  --color-devmx-state-layers-light-tertiaryfixeddim-opacity-0-08: rgba(
+    170,
+    199,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-tertiaryfixeddim-opacity-0-12: rgba(
+    170,
+    199,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-tertiaryfixeddim-opacity-0-16: rgba(
+    170,
+    199,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-ontertiaryfixedvariant-opacity-0-08: rgba(
+    0,
+    69,
+    142,
+    0.08
+  );
+  --color-devmx-state-layers-light-ontertiaryfixedvariant-opacity-0-12: rgba(
+    0,
+    69,
+    142,
+    0.12
+  );
+  --color-devmx-state-layers-light-ontertiaryfixedvariant-opacity-0-16: rgba(
+    0,
+    69,
+    142,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacedim-opacity-0-08: rgba(
+    221,
+    217,
+    216,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacedim-opacity-0-12: rgba(
+    221,
+    217,
+    216,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacedim-opacity-0-16: rgba(
+    221,
+    217,
+    216,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacebright-opacity-0-08: rgba(
+    253,
+    248,
+    248,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacebright-opacity-0-12: rgba(
+    253,
+    248,
+    248,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacebright-opacity-0-16: rgba(
+    253,
+    248,
+    248,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacecontainerlowest-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacecontainerlowest-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacecontainerlowest-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacecontainerlow-opacity-0-08: rgba(
+    247,
+    243,
+    242,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacecontainerlow-opacity-0-12: rgba(
+    247,
+    243,
+    242,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacecontainerlow-opacity-0-16: rgba(
+    247,
+    243,
+    242,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacecontainer-opacity-0-08: rgba(
+    241,
+    237,
+    236,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacecontainer-opacity-0-12: rgba(
+    241,
+    237,
+    236,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacecontainer-opacity-0-16: rgba(
+    241,
+    237,
+    236,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacecontainerhigh-opacity-0-08: rgba(
+    235,
+    231,
+    231,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacecontainerhigh-opacity-0-12: rgba(
+    235,
+    231,
+    231,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacecontainerhigh-opacity-0-16: rgba(
+    235,
+    231,
+    231,
+    0.16
+  );
+  --color-devmx-state-layers-light-surfacecontainerhighest-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-light-surfacecontainerhighest-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-light-surfacecontainerhighest-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-primary-opacity-0-08: rgba(
+    99,
+    242,
+    113,
+    0.08
+  );
+  --color-devmx-state-layers-dark-primary-opacity-0-12: rgba(
+    99,
+    242,
+    113,
+    0.12
+  );
+  --color-devmx-state-layers-dark-primary-opacity-0-16: rgba(
+    99,
+    242,
+    113,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacetint-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacetint-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacetint-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
   --color-devmx-state-layers-dark-onprimary-opacity-0-08: rgba(0, 57, 13, 0.08);
   --color-devmx-state-layers-dark-onprimary-opacity-0-12: rgba(0, 57, 13, 0.12);
   --color-devmx-state-layers-dark-onprimary-opacity-0-16: rgba(0, 57, 13, 0.16);
-  --color-devmx-state-layers-dark-primarycontainer-opacity-0-08: rgba(48, 198, 76, 0.08);
-  --color-devmx-state-layers-dark-primarycontainer-opacity-0-12: rgba(48, 198, 76, 0.12);
-  --color-devmx-state-layers-dark-primarycontainer-opacity-0-16: rgba(48, 198, 76, 0.16);
-  --color-devmx-state-layers-dark-onprimarycontainer-opacity-0-08: rgba(0, 41, 7, 0.08);
-  --color-devmx-state-layers-dark-onprimarycontainer-opacity-0-12: rgba(0, 41, 7, 0.12);
-  --color-devmx-state-layers-dark-onprimarycontainer-opacity-0-16: rgba(0, 41, 7, 0.16);
-  --color-devmx-state-layers-dark-secondary-opacity-0-08: rgba(99, 242, 113, 0.08);
-  --color-devmx-state-layers-dark-secondary-opacity-0-12: rgba(99, 242, 113, 0.12);
-  --color-devmx-state-layers-dark-secondary-opacity-0-16: rgba(99, 242, 113, 0.16);
-  --color-devmx-state-layers-dark-onsecondary-opacity-0-08: rgba(0, 57, 13, 0.08);
-  --color-devmx-state-layers-dark-onsecondary-opacity-0-12: rgba(0, 57, 13, 0.12);
-  --color-devmx-state-layers-dark-onsecondary-opacity-0-16: rgba(0, 57, 13, 0.16);
-  --color-devmx-state-layers-dark-secondarycontainer-opacity-0-08: rgba(48, 198, 76, 0.08);
-  --color-devmx-state-layers-dark-secondarycontainer-opacity-0-12: rgba(48, 198, 76, 0.12);
-  --color-devmx-state-layers-dark-secondarycontainer-opacity-0-16: rgba(48, 198, 76, 0.16);
-  --color-devmx-state-layers-dark-onsecondarycontainer-opacity-0-08: rgba(0, 41, 7, 0.08);
-  --color-devmx-state-layers-dark-onsecondarycontainer-opacity-0-12: rgba(0, 41, 7, 0.12);
-  --color-devmx-state-layers-dark-onsecondarycontainer-opacity-0-16: rgba(0, 41, 7, 0.16);
-  --color-devmx-state-layers-dark-tertiary-opacity-0-08: rgba(170, 199, 255, 0.08);
-  --color-devmx-state-layers-dark-tertiary-opacity-0-12: rgba(170, 199, 255, 0.12);
-  --color-devmx-state-layers-dark-tertiary-opacity-0-16: rgba(170, 199, 255, 0.16);
-  --color-devmx-state-layers-dark-ontertiary-opacity-0-08: rgba(0, 47, 101, 0.08);
-  --color-devmx-state-layers-dark-ontertiary-opacity-0-12: rgba(0, 47, 101, 0.12);
-  --color-devmx-state-layers-dark-ontertiary-opacity-0-16: rgba(0, 47, 101, 0.16);
-  --color-devmx-state-layers-dark-tertiarycontainer-opacity-0-08: rgba(0, 114, 227, 0.08);
-  --color-devmx-state-layers-dark-tertiarycontainer-opacity-0-12: rgba(0, 114, 227, 0.12);
-  --color-devmx-state-layers-dark-tertiarycontainer-opacity-0-16: rgba(0, 114, 227, 0.16);
-  --color-devmx-state-layers-dark-ontertiarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-dark-ontertiarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-dark-ontertiarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
+  --color-devmx-state-layers-dark-primarycontainer-opacity-0-08: rgba(
+    48,
+    198,
+    76,
+    0.08
+  );
+  --color-devmx-state-layers-dark-primarycontainer-opacity-0-12: rgba(
+    48,
+    198,
+    76,
+    0.12
+  );
+  --color-devmx-state-layers-dark-primarycontainer-opacity-0-16: rgba(
+    48,
+    198,
+    76,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onprimarycontainer-opacity-0-08: rgba(
+    0,
+    41,
+    7,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onprimarycontainer-opacity-0-12: rgba(
+    0,
+    41,
+    7,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onprimarycontainer-opacity-0-16: rgba(
+    0,
+    41,
+    7,
+    0.16
+  );
+  --color-devmx-state-layers-dark-secondary-opacity-0-08: rgba(
+    99,
+    242,
+    113,
+    0.08
+  );
+  --color-devmx-state-layers-dark-secondary-opacity-0-12: rgba(
+    99,
+    242,
+    113,
+    0.12
+  );
+  --color-devmx-state-layers-dark-secondary-opacity-0-16: rgba(
+    99,
+    242,
+    113,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onsecondary-opacity-0-08: rgba(
+    0,
+    57,
+    13,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onsecondary-opacity-0-12: rgba(
+    0,
+    57,
+    13,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onsecondary-opacity-0-16: rgba(
+    0,
+    57,
+    13,
+    0.16
+  );
+  --color-devmx-state-layers-dark-secondarycontainer-opacity-0-08: rgba(
+    48,
+    198,
+    76,
+    0.08
+  );
+  --color-devmx-state-layers-dark-secondarycontainer-opacity-0-12: rgba(
+    48,
+    198,
+    76,
+    0.12
+  );
+  --color-devmx-state-layers-dark-secondarycontainer-opacity-0-16: rgba(
+    48,
+    198,
+    76,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onsecondarycontainer-opacity-0-08: rgba(
+    0,
+    41,
+    7,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onsecondarycontainer-opacity-0-12: rgba(
+    0,
+    41,
+    7,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onsecondarycontainer-opacity-0-16: rgba(
+    0,
+    41,
+    7,
+    0.16
+  );
+  --color-devmx-state-layers-dark-tertiary-opacity-0-08: rgba(
+    170,
+    199,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-tertiary-opacity-0-12: rgba(
+    170,
+    199,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-tertiary-opacity-0-16: rgba(
+    170,
+    199,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-ontertiary-opacity-0-08: rgba(
+    0,
+    47,
+    101,
+    0.08
+  );
+  --color-devmx-state-layers-dark-ontertiary-opacity-0-12: rgba(
+    0,
+    47,
+    101,
+    0.12
+  );
+  --color-devmx-state-layers-dark-ontertiary-opacity-0-16: rgba(
+    0,
+    47,
+    101,
+    0.16
+  );
+  --color-devmx-state-layers-dark-tertiarycontainer-opacity-0-08: rgba(
+    0,
+    114,
+    227,
+    0.08
+  );
+  --color-devmx-state-layers-dark-tertiarycontainer-opacity-0-12: rgba(
+    0,
+    114,
+    227,
+    0.12
+  );
+  --color-devmx-state-layers-dark-tertiarycontainer-opacity-0-16: rgba(
+    0,
+    114,
+    227,
+    0.16
+  );
+  --color-devmx-state-layers-dark-ontertiarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-ontertiarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-ontertiarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
   --color-devmx-state-layers-dark-error-opacity-0-08: rgba(255, 180, 171, 0.08);
   --color-devmx-state-layers-dark-error-opacity-0-12: rgba(255, 180, 171, 0.12);
   --color-devmx-state-layers-dark-error-opacity-0-16: rgba(255, 180, 171, 0.16);
   --color-devmx-state-layers-dark-onerror-opacity-0-08: rgba(105, 0, 5, 0.08);
   --color-devmx-state-layers-dark-onerror-opacity-0-12: rgba(105, 0, 5, 0.12);
   --color-devmx-state-layers-dark-onerror-opacity-0-16: rgba(105, 0, 5, 0.16);
-  --color-devmx-state-layers-dark-errorcontainer-opacity-0-08: rgba(147, 0, 10, 0.08);
-  --color-devmx-state-layers-dark-errorcontainer-opacity-0-12: rgba(147, 0, 10, 0.12);
-  --color-devmx-state-layers-dark-errorcontainer-opacity-0-16: rgba(147, 0, 10, 0.16);
-  --color-devmx-state-layers-dark-onerrorcontainer-opacity-0-08: rgba(255, 218, 214, 0.08);
-  --color-devmx-state-layers-dark-onerrorcontainer-opacity-0-12: rgba(255, 218, 214, 0.12);
-  --color-devmx-state-layers-dark-onerrorcontainer-opacity-0-16: rgba(255, 218, 214, 0.16);
-  --color-devmx-state-layers-dark-background-opacity-0-08: rgba(14, 21, 13, 0.08);
-  --color-devmx-state-layers-dark-background-opacity-0-12: rgba(14, 21, 13, 0.12);
-  --color-devmx-state-layers-dark-background-opacity-0-16: rgba(14, 21, 13, 0.16);
-  --color-devmx-state-layers-dark-onbackground-opacity-0-08: rgba(220, 229, 215, 0.08);
-  --color-devmx-state-layers-dark-onbackground-opacity-0-12: rgba(220, 229, 215, 0.12);
-  --color-devmx-state-layers-dark-onbackground-opacity-0-16: rgba(220, 229, 215, 0.16);
+  --color-devmx-state-layers-dark-errorcontainer-opacity-0-08: rgba(
+    147,
+    0,
+    10,
+    0.08
+  );
+  --color-devmx-state-layers-dark-errorcontainer-opacity-0-12: rgba(
+    147,
+    0,
+    10,
+    0.12
+  );
+  --color-devmx-state-layers-dark-errorcontainer-opacity-0-16: rgba(
+    147,
+    0,
+    10,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onerrorcontainer-opacity-0-08: rgba(
+    255,
+    218,
+    214,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onerrorcontainer-opacity-0-12: rgba(
+    255,
+    218,
+    214,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onerrorcontainer-opacity-0-16: rgba(
+    255,
+    218,
+    214,
+    0.16
+  );
+  --color-devmx-state-layers-dark-background-opacity-0-08: rgba(
+    14,
+    21,
+    13,
+    0.08
+  );
+  --color-devmx-state-layers-dark-background-opacity-0-12: rgba(
+    14,
+    21,
+    13,
+    0.12
+  );
+  --color-devmx-state-layers-dark-background-opacity-0-16: rgba(
+    14,
+    21,
+    13,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onbackground-opacity-0-08: rgba(
+    220,
+    229,
+    215,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onbackground-opacity-0-12: rgba(
+    220,
+    229,
+    215,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onbackground-opacity-0-16: rgba(
+    220,
+    229,
+    215,
+    0.16
+  );
   --color-devmx-state-layers-dark-surface-opacity-0-08: rgba(20, 19, 19, 0.08);
   --color-devmx-state-layers-dark-surface-opacity-0-12: rgba(20, 19, 19, 0.12);
   --color-devmx-state-layers-dark-surface-opacity-0-16: rgba(20, 19, 19, 0.16);
-  --color-devmx-state-layers-dark-onsurface-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-dark-onsurface-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-dark-onsurface-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-surfacevariant-opacity-0-08: rgba(61, 74, 59, 0.08);
-  --color-devmx-state-layers-dark-surfacevariant-opacity-0-12: rgba(61, 74, 59, 0.12);
-  --color-devmx-state-layers-dark-surfacevariant-opacity-0-16: rgba(61, 74, 59, 0.16);
-  --color-devmx-state-layers-dark-onsurfacevariant-opacity-0-08: rgba(188, 203, 183, 0.08);
-  --color-devmx-state-layers-dark-onsurfacevariant-opacity-0-12: rgba(188, 203, 183, 0.12);
-  --color-devmx-state-layers-dark-onsurfacevariant-opacity-0-16: rgba(188, 203, 183, 0.16);
-  --color-devmx-state-layers-dark-outline-opacity-0-08: rgba(135, 149, 130, 0.08);
-  --color-devmx-state-layers-dark-outline-opacity-0-12: rgba(135, 149, 130, 0.12);
-  --color-devmx-state-layers-dark-outline-opacity-0-16: rgba(135, 149, 130, 0.16);
-  --color-devmx-state-layers-dark-outlinevariant-opacity-0-08: rgba(61, 74, 59, 0.08);
-  --color-devmx-state-layers-dark-outlinevariant-opacity-0-12: rgba(61, 74, 59, 0.12);
-  --color-devmx-state-layers-dark-outlinevariant-opacity-0-16: rgba(61, 74, 59, 0.16);
+  --color-devmx-state-layers-dark-onsurface-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onsurface-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onsurface-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacevariant-opacity-0-08: rgba(
+    61,
+    74,
+    59,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacevariant-opacity-0-12: rgba(
+    61,
+    74,
+    59,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacevariant-opacity-0-16: rgba(
+    61,
+    74,
+    59,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onsurfacevariant-opacity-0-08: rgba(
+    188,
+    203,
+    183,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onsurfacevariant-opacity-0-12: rgba(
+    188,
+    203,
+    183,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onsurfacevariant-opacity-0-16: rgba(
+    188,
+    203,
+    183,
+    0.16
+  );
+  --color-devmx-state-layers-dark-outline-opacity-0-08: rgba(
+    135,
+    149,
+    130,
+    0.08
+  );
+  --color-devmx-state-layers-dark-outline-opacity-0-12: rgba(
+    135,
+    149,
+    130,
+    0.12
+  );
+  --color-devmx-state-layers-dark-outline-opacity-0-16: rgba(
+    135,
+    149,
+    130,
+    0.16
+  );
+  --color-devmx-state-layers-dark-outlinevariant-opacity-0-08: rgba(
+    61,
+    74,
+    59,
+    0.08
+  );
+  --color-devmx-state-layers-dark-outlinevariant-opacity-0-12: rgba(
+    61,
+    74,
+    59,
+    0.12
+  );
+  --color-devmx-state-layers-dark-outlinevariant-opacity-0-16: rgba(
+    61,
+    74,
+    59,
+    0.16
+  );
   --color-devmx-state-layers-dark-shadow-opacity-0-08: rgba(0, 0, 0, 0.08);
   --color-devmx-state-layers-dark-shadow-opacity-0-12: rgba(0, 0, 0, 0.12);
   --color-devmx-state-layers-dark-shadow-opacity-0-16: rgba(0, 0, 0, 0.16);
   --color-devmx-state-layers-dark-scrim-opacity-0-08: rgba(0, 0, 0, 0.08);
   --color-devmx-state-layers-dark-scrim-opacity-0-12: rgba(0, 0, 0, 0.12);
   --color-devmx-state-layers-dark-scrim-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-inversesurface-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-dark-inversesurface-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-dark-inversesurface-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-inverseonsurface-opacity-0-08: rgba(49, 48, 48, 0.08);
-  --color-devmx-state-layers-dark-inverseonsurface-opacity-0-12: rgba(49, 48, 48, 0.12);
-  --color-devmx-state-layers-dark-inverseonsurface-opacity-0-16: rgba(49, 48, 48, 0.16);
-  --color-devmx-state-layers-dark-inverseprimary-opacity-0-08: rgba(0, 110, 32, 0.08);
-  --color-devmx-state-layers-dark-inverseprimary-opacity-0-12: rgba(0, 110, 32, 0.12);
-  --color-devmx-state-layers-dark-inverseprimary-opacity-0-16: rgba(0, 110, 32, 0.16);
-  --color-devmx-state-layers-dark-primaryfixed-opacity-0-08: rgba(112, 255, 124, 0.08);
-  --color-devmx-state-layers-dark-primaryfixed-opacity-0-12: rgba(112, 255, 124, 0.12);
-  --color-devmx-state-layers-dark-primaryfixed-opacity-0-16: rgba(112, 255, 124, 0.16);
-  --color-devmx-state-layers-dark-onprimaryfixed-opacity-0-08: rgba(0, 33, 5, 0.08);
-  --color-devmx-state-layers-dark-onprimaryfixed-opacity-0-12: rgba(0, 33, 5, 0.12);
-  --color-devmx-state-layers-dark-onprimaryfixed-opacity-0-16: rgba(0, 33, 5, 0.16);
-  --color-devmx-state-layers-dark-primaryfixeddim-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-primaryfixeddim-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-primaryfixeddim-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-dark-onprimaryfixedvariant-opacity-0-08: rgba(0, 83, 22, 0.08);
-  --color-devmx-state-layers-dark-onprimaryfixedvariant-opacity-0-12: rgba(0, 83, 22, 0.12);
-  --color-devmx-state-layers-dark-onprimaryfixedvariant-opacity-0-16: rgba(0, 83, 22, 0.16);
-  --color-devmx-state-layers-dark-secondaryfixed-opacity-0-08: rgba(112, 255, 124, 0.08);
-  --color-devmx-state-layers-dark-secondaryfixed-opacity-0-12: rgba(112, 255, 124, 0.12);
-  --color-devmx-state-layers-dark-secondaryfixed-opacity-0-16: rgba(112, 255, 124, 0.16);
-  --color-devmx-state-layers-dark-onsecondaryfixed-opacity-0-08: rgba(0, 33, 5, 0.08);
-  --color-devmx-state-layers-dark-onsecondaryfixed-opacity-0-12: rgba(0, 33, 5, 0.12);
-  --color-devmx-state-layers-dark-onsecondaryfixed-opacity-0-16: rgba(0, 33, 5, 0.16);
-  --color-devmx-state-layers-dark-secondaryfixeddim-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-secondaryfixeddim-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-secondaryfixeddim-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-dark-onsecondaryfixedvariant-opacity-0-08: rgba(0, 83, 22, 0.08);
-  --color-devmx-state-layers-dark-onsecondaryfixedvariant-opacity-0-12: rgba(0, 83, 22, 0.12);
-  --color-devmx-state-layers-dark-onsecondaryfixedvariant-opacity-0-16: rgba(0, 83, 22, 0.16);
-  --color-devmx-state-layers-dark-tertiaryfixed-opacity-0-08: rgba(215, 227, 255, 0.08);
-  --color-devmx-state-layers-dark-tertiaryfixed-opacity-0-12: rgba(215, 227, 255, 0.12);
-  --color-devmx-state-layers-dark-tertiaryfixed-opacity-0-16: rgba(215, 227, 255, 0.16);
-  --color-devmx-state-layers-dark-ontertiaryfixed-opacity-0-08: rgba(0, 27, 62, 0.08);
-  --color-devmx-state-layers-dark-ontertiaryfixed-opacity-0-12: rgba(0, 27, 62, 0.12);
-  --color-devmx-state-layers-dark-ontertiaryfixed-opacity-0-16: rgba(0, 27, 62, 0.16);
-  --color-devmx-state-layers-dark-tertiaryfixeddim-opacity-0-08: rgba(170, 199, 255, 0.08);
-  --color-devmx-state-layers-dark-tertiaryfixeddim-opacity-0-12: rgba(170, 199, 255, 0.12);
-  --color-devmx-state-layers-dark-tertiaryfixeddim-opacity-0-16: rgba(170, 199, 255, 0.16);
-  --color-devmx-state-layers-dark-ontertiaryfixedvariant-opacity-0-08: rgba(0, 69, 142, 0.08);
-  --color-devmx-state-layers-dark-ontertiaryfixedvariant-opacity-0-12: rgba(0, 69, 142, 0.12);
-  --color-devmx-state-layers-dark-ontertiaryfixedvariant-opacity-0-16: rgba(0, 69, 142, 0.16);
-  --color-devmx-state-layers-dark-surfacedim-opacity-0-08: rgba(20, 19, 19, 0.08);
-  --color-devmx-state-layers-dark-surfacedim-opacity-0-12: rgba(20, 19, 19, 0.12);
-  --color-devmx-state-layers-dark-surfacedim-opacity-0-16: rgba(20, 19, 19, 0.16);
-  --color-devmx-state-layers-dark-surfacebright-opacity-0-08: rgba(58, 57, 57, 0.08);
-  --color-devmx-state-layers-dark-surfacebright-opacity-0-12: rgba(58, 57, 57, 0.12);
-  --color-devmx-state-layers-dark-surfacebright-opacity-0-16: rgba(58, 57, 57, 0.16);
-  --color-devmx-state-layers-dark-surfacecontainerlowest-opacity-0-08: rgba(14, 14, 14, 0.08);
-  --color-devmx-state-layers-dark-surfacecontainerlowest-opacity-0-12: rgba(14, 14, 14, 0.12);
-  --color-devmx-state-layers-dark-surfacecontainerlowest-opacity-0-16: rgba(14, 14, 14, 0.16);
-  --color-devmx-state-layers-dark-surfacecontainerlow-opacity-0-08: rgba(28, 27, 27, 0.08);
-  --color-devmx-state-layers-dark-surfacecontainerlow-opacity-0-12: rgba(28, 27, 27, 0.12);
-  --color-devmx-state-layers-dark-surfacecontainerlow-opacity-0-16: rgba(28, 27, 27, 0.16);
-  --color-devmx-state-layers-dark-surfacecontainer-opacity-0-08: rgba(32, 31, 31, 0.08);
-  --color-devmx-state-layers-dark-surfacecontainer-opacity-0-12: rgba(32, 31, 31, 0.12);
-  --color-devmx-state-layers-dark-surfacecontainer-opacity-0-16: rgba(32, 31, 31, 0.16);
-  --color-devmx-state-layers-dark-surfacecontainerhigh-opacity-0-08: rgba(43, 42, 42, 0.08);
-  --color-devmx-state-layers-dark-surfacecontainerhigh-opacity-0-12: rgba(43, 42, 42, 0.12);
-  --color-devmx-state-layers-dark-surfacecontainerhigh-opacity-0-16: rgba(43, 42, 42, 0.16);
-  --color-devmx-state-layers-dark-surfacecontainerhighest-opacity-0-08: rgba(53, 52, 52, 0.08);
-  --color-devmx-state-layers-dark-surfacecontainerhighest-opacity-0-12: rgba(53, 52, 52, 0.12);
-  --color-devmx-state-layers-dark-surfacecontainerhighest-opacity-0-16: rgba(53, 52, 52, 0.16);
-  --color-devmx-state-layers-light-high-contrast-primary-opacity-0-08: rgba(0, 41, 7, 0.08);
-  --color-devmx-state-layers-light-high-contrast-primary-opacity-0-12: rgba(0, 41, 7, 0.12);
-  --color-devmx-state-layers-light-high-contrast-primary-opacity-0-16: rgba(0, 41, 7, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacetint-opacity-0-08: rgba(0, 110, 32, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacetint-opacity-0-12: rgba(0, 110, 32, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacetint-opacity-0-16: rgba(0, 110, 32, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onprimary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onprimary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onprimary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-primarycontainer-opacity-0-08: rgba(0, 78, 21, 0.08);
-  --color-devmx-state-layers-light-high-contrast-primarycontainer-opacity-0-12: rgba(0, 78, 21, 0.12);
-  --color-devmx-state-layers-light-high-contrast-primarycontainer-opacity-0-16: rgba(0, 78, 21, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onprimarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onprimarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onprimarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-secondary-opacity-0-08: rgba(0, 41, 7, 0.08);
-  --color-devmx-state-layers-light-high-contrast-secondary-opacity-0-12: rgba(0, 41, 7, 0.12);
-  --color-devmx-state-layers-light-high-contrast-secondary-opacity-0-16: rgba(0, 41, 7, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onsecondary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onsecondary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onsecondary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-secondarycontainer-opacity-0-08: rgba(0, 78, 21, 0.08);
-  --color-devmx-state-layers-light-high-contrast-secondarycontainer-opacity-0-12: rgba(0, 78, 21, 0.12);
-  --color-devmx-state-layers-light-high-contrast-secondarycontainer-opacity-0-16: rgba(0, 78, 21, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onsecondarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onsecondarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onsecondarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-tertiary-opacity-0-08: rgba(0, 33, 75, 0.08);
-  --color-devmx-state-layers-light-high-contrast-tertiary-opacity-0-12: rgba(0, 33, 75, 0.12);
-  --color-devmx-state-layers-light-high-contrast-tertiary-opacity-0-16: rgba(0, 33, 75, 0.16);
-  --color-devmx-state-layers-light-high-contrast-ontertiary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-ontertiary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-ontertiary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-tertiarycontainer-opacity-0-08: rgba(0, 65, 135, 0.08);
-  --color-devmx-state-layers-light-high-contrast-tertiarycontainer-opacity-0-12: rgba(0, 65, 135, 0.12);
-  --color-devmx-state-layers-light-high-contrast-tertiarycontainer-opacity-0-16: rgba(0, 65, 135, 0.16);
-  --color-devmx-state-layers-light-high-contrast-ontertiarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-ontertiarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-ontertiarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-error-opacity-0-08: rgba(78, 0, 2, 0.08);
-  --color-devmx-state-layers-light-high-contrast-error-opacity-0-12: rgba(78, 0, 2, 0.12);
-  --color-devmx-state-layers-light-high-contrast-error-opacity-0-16: rgba(78, 0, 2, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onerror-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onerror-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onerror-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-errorcontainer-opacity-0-08: rgba(140, 0, 9, 0.08);
-  --color-devmx-state-layers-light-high-contrast-errorcontainer-opacity-0-12: rgba(140, 0, 9, 0.12);
-  --color-devmx-state-layers-light-high-contrast-errorcontainer-opacity-0-16: rgba(140, 0, 9, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onerrorcontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onerrorcontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onerrorcontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-background-opacity-0-08: rgba(243, 252, 237, 0.08);
-  --color-devmx-state-layers-light-high-contrast-background-opacity-0-12: rgba(243, 252, 237, 0.12);
-  --color-devmx-state-layers-light-high-contrast-background-opacity-0-16: rgba(243, 252, 237, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onbackground-opacity-0-08: rgba(22, 30, 21, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onbackground-opacity-0-12: rgba(22, 30, 21, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onbackground-opacity-0-16: rgba(22, 30, 21, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surface-opacity-0-08: rgba(253, 248, 248, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surface-opacity-0-12: rgba(253, 248, 248, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surface-opacity-0-16: rgba(253, 248, 248, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onsurface-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onsurface-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onsurface-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacevariant-opacity-0-08: rgba(216, 231, 210, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacevariant-opacity-0-12: rgba(216, 231, 210, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacevariant-opacity-0-16: rgba(216, 231, 210, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onsurfacevariant-opacity-0-08: rgba(27, 39, 26, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onsurfacevariant-opacity-0-12: rgba(27, 39, 26, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onsurfacevariant-opacity-0-16: rgba(27, 39, 26, 0.16);
-  --color-devmx-state-layers-light-high-contrast-outline-opacity-0-08: rgba(57, 70, 55, 0.08);
-  --color-devmx-state-layers-light-high-contrast-outline-opacity-0-12: rgba(57, 70, 55, 0.12);
-  --color-devmx-state-layers-light-high-contrast-outline-opacity-0-16: rgba(57, 70, 55, 0.16);
-  --color-devmx-state-layers-light-high-contrast-outlinevariant-opacity-0-08: rgba(57, 70, 55, 0.08);
-  --color-devmx-state-layers-light-high-contrast-outlinevariant-opacity-0-12: rgba(57, 70, 55, 0.12);
-  --color-devmx-state-layers-light-high-contrast-outlinevariant-opacity-0-16: rgba(57, 70, 55, 0.16);
-  --color-devmx-state-layers-light-high-contrast-shadow-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-light-high-contrast-shadow-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-light-high-contrast-shadow-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-light-high-contrast-scrim-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-light-high-contrast-scrim-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-light-high-contrast-scrim-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-light-high-contrast-inversesurface-opacity-0-08: rgba(49, 48, 48, 0.08);
-  --color-devmx-state-layers-light-high-contrast-inversesurface-opacity-0-12: rgba(49, 48, 48, 0.12);
-  --color-devmx-state-layers-light-high-contrast-inversesurface-opacity-0-16: rgba(49, 48, 48, 0.16);
-  --color-devmx-state-layers-light-high-contrast-inverseonsurface-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-inverseonsurface-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-inverseonsurface-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-inverseprimary-opacity-0-08: rgba(176, 255, 173, 0.08);
-  --color-devmx-state-layers-light-high-contrast-inverseprimary-opacity-0-12: rgba(176, 255, 173, 0.12);
-  --color-devmx-state-layers-light-high-contrast-inverseprimary-opacity-0-16: rgba(176, 255, 173, 0.16);
-  --color-devmx-state-layers-light-high-contrast-primaryfixed-opacity-0-08: rgba(0, 78, 21, 0.08);
-  --color-devmx-state-layers-light-high-contrast-primaryfixed-opacity-0-12: rgba(0, 78, 21, 0.12);
-  --color-devmx-state-layers-light-high-contrast-primaryfixed-opacity-0-16: rgba(0, 78, 21, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onprimaryfixed-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onprimaryfixed-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onprimaryfixed-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-primaryfixeddim-opacity-0-08: rgba(0, 53, 11, 0.08);
-  --color-devmx-state-layers-light-high-contrast-primaryfixeddim-opacity-0-12: rgba(0, 53, 11, 0.12);
-  --color-devmx-state-layers-light-high-contrast-primaryfixeddim-opacity-0-16: rgba(0, 53, 11, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-secondaryfixed-opacity-0-08: rgba(0, 78, 21, 0.08);
-  --color-devmx-state-layers-light-high-contrast-secondaryfixed-opacity-0-12: rgba(0, 78, 21, 0.12);
-  --color-devmx-state-layers-light-high-contrast-secondaryfixed-opacity-0-16: rgba(0, 78, 21, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onsecondaryfixed-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onsecondaryfixed-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onsecondaryfixed-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-secondaryfixeddim-opacity-0-08: rgba(0, 53, 11, 0.08);
-  --color-devmx-state-layers-light-high-contrast-secondaryfixeddim-opacity-0-12: rgba(0, 53, 11, 0.12);
-  --color-devmx-state-layers-light-high-contrast-secondaryfixeddim-opacity-0-16: rgba(0, 53, 11, 0.16);
-  --color-devmx-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-tertiaryfixed-opacity-0-08: rgba(0, 65, 135, 0.08);
-  --color-devmx-state-layers-light-high-contrast-tertiaryfixed-opacity-0-12: rgba(0, 65, 135, 0.12);
-  --color-devmx-state-layers-light-high-contrast-tertiaryfixed-opacity-0-16: rgba(0, 65, 135, 0.16);
-  --color-devmx-state-layers-light-high-contrast-ontertiaryfixed-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-ontertiaryfixed-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-ontertiaryfixed-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-tertiaryfixeddim-opacity-0-08: rgba(0, 44, 94, 0.08);
-  --color-devmx-state-layers-light-high-contrast-tertiaryfixeddim-opacity-0-12: rgba(0, 44, 94, 0.12);
-  --color-devmx-state-layers-light-high-contrast-tertiaryfixeddim-opacity-0-16: rgba(0, 44, 94, 0.16);
-  --color-devmx-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacedim-opacity-0-08: rgba(221, 217, 216, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacedim-opacity-0-12: rgba(221, 217, 216, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacedim-opacity-0-16: rgba(221, 217, 216, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacebright-opacity-0-08: rgba(253, 248, 248, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacebright-opacity-0-12: rgba(253, 248, 248, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacebright-opacity-0-16: rgba(253, 248, 248, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerlowest-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerlowest-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerlowest-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerlow-opacity-0-08: rgba(247, 243, 242, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerlow-opacity-0-12: rgba(247, 243, 242, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerlow-opacity-0-16: rgba(247, 243, 242, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainer-opacity-0-08: rgba(241, 237, 236, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainer-opacity-0-12: rgba(241, 237, 236, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainer-opacity-0-16: rgba(241, 237, 236, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerhigh-opacity-0-08: rgba(235, 231, 231, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerhigh-opacity-0-12: rgba(235, 231, 231, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerhigh-opacity-0-16: rgba(235, 231, 231, 0.16);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerhighest-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerhighest-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-light-high-contrast-surfacecontainerhighest-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-primary-opacity-0-08: rgba(241, 255, 234, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-primary-opacity-0-12: rgba(241, 255, 234, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-primary-opacity-0-16: rgba(241, 255, 234, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacetint-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacetint-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacetint-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onprimary-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onprimary-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onprimary-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-primarycontainer-opacity-0-08: rgba(86, 230, 103, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-primarycontainer-opacity-0-12: rgba(86, 230, 103, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-primarycontainer-opacity-0-16: rgba(86, 230, 103, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onprimarycontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onprimarycontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onprimarycontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-secondary-opacity-0-08: rgba(241, 255, 234, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-secondary-opacity-0-12: rgba(241, 255, 234, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-secondary-opacity-0-16: rgba(241, 255, 234, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onsecondary-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onsecondary-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onsecondary-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-secondarycontainer-opacity-0-08: rgba(86, 230, 103, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-secondarycontainer-opacity-0-12: rgba(86, 230, 103, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-secondarycontainer-opacity-0-16: rgba(86, 230, 103, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onsecondarycontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onsecondarycontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onsecondarycontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-tertiary-opacity-0-08: rgba(251, 250, 255, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-tertiary-opacity-0-12: rgba(251, 250, 255, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-tertiary-opacity-0-16: rgba(251, 250, 255, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-ontertiary-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-ontertiary-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-ontertiary-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-tertiarycontainer-opacity-0-08: rgba(177, 203, 255, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-tertiarycontainer-opacity-0-12: rgba(177, 203, 255, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-tertiarycontainer-opacity-0-16: rgba(177, 203, 255, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-ontertiarycontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-ontertiarycontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-ontertiarycontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-error-opacity-0-08: rgba(255, 249, 249, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-error-opacity-0-12: rgba(255, 249, 249, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-error-opacity-0-16: rgba(255, 249, 249, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onerror-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onerror-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onerror-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-errorcontainer-opacity-0-08: rgba(255, 186, 177, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-errorcontainer-opacity-0-12: rgba(255, 186, 177, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-errorcontainer-opacity-0-16: rgba(255, 186, 177, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onerrorcontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onerrorcontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onerrorcontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-background-opacity-0-08: rgba(14, 21, 13, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-background-opacity-0-12: rgba(14, 21, 13, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-background-opacity-0-16: rgba(14, 21, 13, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onbackground-opacity-0-08: rgba(220, 229, 215, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onbackground-opacity-0-12: rgba(220, 229, 215, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onbackground-opacity-0-16: rgba(220, 229, 215, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surface-opacity-0-08: rgba(20, 19, 19, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surface-opacity-0-12: rgba(20, 19, 19, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surface-opacity-0-16: rgba(20, 19, 19, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onsurface-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onsurface-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onsurface-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacevariant-opacity-0-08: rgba(61, 74, 59, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacevariant-opacity-0-12: rgba(61, 74, 59, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacevariant-opacity-0-16: rgba(61, 74, 59, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onsurfacevariant-opacity-0-08: rgba(241, 255, 234, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onsurfacevariant-opacity-0-12: rgba(241, 255, 234, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onsurfacevariant-opacity-0-16: rgba(241, 255, 234, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-outline-opacity-0-08: rgba(192, 207, 187, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-outline-opacity-0-12: rgba(192, 207, 187, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-outline-opacity-0-16: rgba(192, 207, 187, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-outlinevariant-opacity-0-08: rgba(192, 207, 187, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-outlinevariant-opacity-0-12: rgba(192, 207, 187, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-outlinevariant-opacity-0-16: rgba(192, 207, 187, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-shadow-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-shadow-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-shadow-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-scrim-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-scrim-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-scrim-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-inversesurface-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-inversesurface-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-inversesurface-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-inverseonsurface-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-inverseonsurface-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-inverseonsurface-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-inverseprimary-opacity-0-08: rgba(0, 50, 10, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-inverseprimary-opacity-0-12: rgba(0, 50, 10, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-inverseprimary-opacity-0-16: rgba(0, 50, 10, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-primaryfixed-opacity-0-08: rgba(145, 255, 147, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-primaryfixed-opacity-0-12: rgba(145, 255, 147, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-primaryfixed-opacity-0-16: rgba(145, 255, 147, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onprimaryfixed-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onprimaryfixed-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onprimaryfixed-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-primaryfixeddim-opacity-0-08: rgba(86, 230, 103, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-primaryfixeddim-opacity-0-12: rgba(86, 230, 103, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-primaryfixeddim-opacity-0-16: rgba(86, 230, 103, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-0-08: rgba(0, 27, 3, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-0-12: rgba(0, 27, 3, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-0-16: rgba(0, 27, 3, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-secondaryfixed-opacity-0-08: rgba(145, 255, 147, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-secondaryfixed-opacity-0-12: rgba(145, 255, 147, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-secondaryfixed-opacity-0-16: rgba(145, 255, 147, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixed-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixed-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixed-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-secondaryfixeddim-opacity-0-08: rgba(86, 230, 103, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-secondaryfixeddim-opacity-0-12: rgba(86, 230, 103, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-secondaryfixeddim-opacity-0-16: rgba(86, 230, 103, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(0, 27, 3, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(0, 27, 3, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(0, 27, 3, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-tertiaryfixed-opacity-0-08: rgba(221, 231, 255, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-tertiaryfixed-opacity-0-12: rgba(221, 231, 255, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-tertiaryfixed-opacity-0-16: rgba(221, 231, 255, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixed-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixed-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixed-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-0-08: rgba(177, 203, 255, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-0-12: rgba(177, 203, 255, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-0-16: rgba(177, 203, 255, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(0, 22, 53, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(0, 22, 53, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(0, 22, 53, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacedim-opacity-0-08: rgba(20, 19, 19, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacedim-opacity-0-12: rgba(20, 19, 19, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacedim-opacity-0-16: rgba(20, 19, 19, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacebright-opacity-0-08: rgba(58, 57, 57, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacebright-opacity-0-12: rgba(58, 57, 57, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacebright-opacity-0-16: rgba(58, 57, 57, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-0-08: rgba(14, 14, 14, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-0-12: rgba(14, 14, 14, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-0-16: rgba(14, 14, 14, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlow-opacity-0-08: rgba(28, 27, 27, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlow-opacity-0-12: rgba(28, 27, 27, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlow-opacity-0-16: rgba(28, 27, 27, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainer-opacity-0-08: rgba(32, 31, 31, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainer-opacity-0-12: rgba(32, 31, 31, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainer-opacity-0-16: rgba(32, 31, 31, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-0-08: rgba(43, 42, 42, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-0-12: rgba(43, 42, 42, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-0-16: rgba(43, 42, 42, 0.16);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-0-08: rgba(53, 52, 52, 0.08);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-0-12: rgba(53, 52, 52, 0.12);
-  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-0-16: rgba(53, 52, 52, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-primary-opacity-0-08: rgba(0, 78, 21, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-primary-opacity-0-12: rgba(0, 78, 21, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-primary-opacity-0-16: rgba(0, 78, 21, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacetint-opacity-0-08: rgba(0, 110, 32, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacetint-opacity-0-12: rgba(0, 110, 32, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacetint-opacity-0-16: rgba(0, 110, 32, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onprimary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onprimary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onprimary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-primarycontainer-opacity-0-08: rgba(0, 135, 42, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-primarycontainer-opacity-0-12: rgba(0, 135, 42, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-primarycontainer-opacity-0-16: rgba(0, 135, 42, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onprimarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onprimarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onprimarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-secondary-opacity-0-08: rgba(0, 78, 21, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-secondary-opacity-0-12: rgba(0, 78, 21, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-secondary-opacity-0-16: rgba(0, 78, 21, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onsecondary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onsecondary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onsecondary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-secondarycontainer-opacity-0-08: rgba(0, 135, 42, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-secondarycontainer-opacity-0-12: rgba(0, 135, 42, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-secondarycontainer-opacity-0-16: rgba(0, 135, 42, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onsecondarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onsecondarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onsecondarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-tertiary-opacity-0-08: rgba(0, 65, 135, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-tertiary-opacity-0-12: rgba(0, 65, 135, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-tertiary-opacity-0-16: rgba(0, 65, 135, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-ontertiary-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-ontertiary-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-ontertiary-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-tertiarycontainer-opacity-0-08: rgba(0, 114, 227, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-tertiarycontainer-opacity-0-12: rgba(0, 114, 227, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-tertiarycontainer-opacity-0-16: rgba(0, 114, 227, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-ontertiarycontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-ontertiarycontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-ontertiarycontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-error-opacity-0-08: rgba(140, 0, 9, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-error-opacity-0-12: rgba(140, 0, 9, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-error-opacity-0-16: rgba(140, 0, 9, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onerror-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onerror-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onerror-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-errorcontainer-opacity-0-08: rgba(218, 52, 46, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-errorcontainer-opacity-0-12: rgba(218, 52, 46, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-errorcontainer-opacity-0-16: rgba(218, 52, 46, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onerrorcontainer-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onerrorcontainer-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onerrorcontainer-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-background-opacity-0-08: rgba(243, 252, 237, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-background-opacity-0-12: rgba(243, 252, 237, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-background-opacity-0-16: rgba(243, 252, 237, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onbackground-opacity-0-08: rgba(22, 30, 21, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onbackground-opacity-0-12: rgba(22, 30, 21, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onbackground-opacity-0-16: rgba(22, 30, 21, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surface-opacity-0-08: rgba(253, 248, 248, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surface-opacity-0-12: rgba(253, 248, 248, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surface-opacity-0-16: rgba(253, 248, 248, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onsurface-opacity-0-08: rgba(28, 27, 27, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onsurface-opacity-0-12: rgba(28, 27, 27, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onsurface-opacity-0-16: rgba(28, 27, 27, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacevariant-opacity-0-08: rgba(216, 231, 210, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacevariant-opacity-0-12: rgba(216, 231, 210, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacevariant-opacity-0-16: rgba(216, 231, 210, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onsurfacevariant-opacity-0-08: rgba(57, 70, 55, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onsurfacevariant-opacity-0-12: rgba(57, 70, 55, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onsurfacevariant-opacity-0-16: rgba(57, 70, 55, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-outline-opacity-0-08: rgba(85, 99, 82, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-outline-opacity-0-12: rgba(85, 99, 82, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-outline-opacity-0-16: rgba(85, 99, 82, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-outlinevariant-opacity-0-08: rgba(113, 127, 109, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-outlinevariant-opacity-0-12: rgba(113, 127, 109, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-outlinevariant-opacity-0-16: rgba(113, 127, 109, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-shadow-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-shadow-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-shadow-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-scrim-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-scrim-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-scrim-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-inversesurface-opacity-0-08: rgba(49, 48, 48, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-inversesurface-opacity-0-12: rgba(49, 48, 48, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-inversesurface-opacity-0-16: rgba(49, 48, 48, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-inverseonsurface-opacity-0-08: rgba(244, 240, 239, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-inverseonsurface-opacity-0-12: rgba(244, 240, 239, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-inverseonsurface-opacity-0-16: rgba(244, 240, 239, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-inverseprimary-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-inverseprimary-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-inverseprimary-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-primaryfixed-opacity-0-08: rgba(0, 135, 42, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-primaryfixed-opacity-0-12: rgba(0, 135, 42, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-primaryfixed-opacity-0-16: rgba(0, 135, 42, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onprimaryfixed-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onprimaryfixed-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onprimaryfixed-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-primaryfixeddim-opacity-0-08: rgba(0, 107, 31, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-primaryfixeddim-opacity-0-12: rgba(0, 107, 31, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-primaryfixeddim-opacity-0-16: rgba(0, 107, 31, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-secondaryfixed-opacity-0-08: rgba(0, 135, 42, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-secondaryfixed-opacity-0-12: rgba(0, 135, 42, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-secondaryfixed-opacity-0-16: rgba(0, 135, 42, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixed-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixed-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixed-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-secondaryfixeddim-opacity-0-08: rgba(0, 107, 31, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-secondaryfixeddim-opacity-0-12: rgba(0, 107, 31, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-secondaryfixeddim-opacity-0-16: rgba(0, 107, 31, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-tertiaryfixed-opacity-0-08: rgba(0, 114, 227, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-tertiaryfixed-opacity-0-12: rgba(0, 114, 227, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-tertiaryfixed-opacity-0-16: rgba(0, 114, 227, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixed-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixed-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixed-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-0-08: rgba(0, 90, 181, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-0-12: rgba(0, 90, 181, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-0-16: rgba(0, 90, 181, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacedim-opacity-0-08: rgba(221, 217, 216, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacedim-opacity-0-12: rgba(221, 217, 216, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacedim-opacity-0-16: rgba(221, 217, 216, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacebright-opacity-0-08: rgba(253, 248, 248, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacebright-opacity-0-12: rgba(253, 248, 248, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacebright-opacity-0-16: rgba(253, 248, 248, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-0-08: rgba(255, 255, 255, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-0-12: rgba(255, 255, 255, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-0-16: rgba(255, 255, 255, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlow-opacity-0-08: rgba(247, 243, 242, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlow-opacity-0-12: rgba(247, 243, 242, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlow-opacity-0-16: rgba(247, 243, 242, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainer-opacity-0-08: rgba(241, 237, 236, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainer-opacity-0-12: rgba(241, 237, 236, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainer-opacity-0-16: rgba(241, 237, 236, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-0-08: rgba(235, 231, 231, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-0-12: rgba(235, 231, 231, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-0-16: rgba(235, 231, 231, 0.16);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-primary-opacity-0-08: rgba(99, 242, 113, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-primary-opacity-0-12: rgba(99, 242, 113, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-primary-opacity-0-16: rgba(99, 242, 113, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacetint-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacetint-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacetint-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onprimary-opacity-0-08: rgba(0, 39, 6, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onprimary-opacity-0-12: rgba(0, 39, 6, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onprimary-opacity-0-16: rgba(0, 39, 6, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-primarycontainer-opacity-0-08: rgba(48, 198, 76, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-primarycontainer-opacity-0-12: rgba(48, 198, 76, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-primarycontainer-opacity-0-16: rgba(48, 198, 76, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onprimarycontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onprimarycontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onprimarycontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-secondary-opacity-0-08: rgba(99, 242, 113, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-secondary-opacity-0-12: rgba(99, 242, 113, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-secondary-opacity-0-16: rgba(99, 242, 113, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondary-opacity-0-08: rgba(0, 39, 6, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondary-opacity-0-12: rgba(0, 39, 6, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondary-opacity-0-16: rgba(0, 39, 6, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-secondarycontainer-opacity-0-08: rgba(48, 198, 76, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-secondarycontainer-opacity-0-12: rgba(48, 198, 76, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-secondarycontainer-opacity-0-16: rgba(48, 198, 76, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-tertiary-opacity-0-08: rgba(177, 203, 255, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-tertiary-opacity-0-12: rgba(177, 203, 255, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-tertiary-opacity-0-16: rgba(177, 203, 255, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiary-opacity-0-08: rgba(0, 22, 53, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiary-opacity-0-12: rgba(0, 22, 53, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiary-opacity-0-16: rgba(0, 22, 53, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-tertiarycontainer-opacity-0-08: rgba(65, 143, 255, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-tertiarycontainer-opacity-0-12: rgba(65, 143, 255, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-tertiarycontainer-opacity-0-16: rgba(65, 143, 255, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-error-opacity-0-08: rgba(255, 186, 177, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-error-opacity-0-12: rgba(255, 186, 177, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-error-opacity-0-16: rgba(255, 186, 177, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onerror-opacity-0-08: rgba(55, 0, 1, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onerror-opacity-0-12: rgba(55, 0, 1, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onerror-opacity-0-16: rgba(55, 0, 1, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-errorcontainer-opacity-0-08: rgba(255, 84, 73, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-errorcontainer-opacity-0-12: rgba(255, 84, 73, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-errorcontainer-opacity-0-16: rgba(255, 84, 73, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onerrorcontainer-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onerrorcontainer-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onerrorcontainer-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-background-opacity-0-08: rgba(14, 21, 13, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-background-opacity-0-12: rgba(14, 21, 13, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-background-opacity-0-16: rgba(14, 21, 13, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onbackground-opacity-0-08: rgba(220, 229, 215, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onbackground-opacity-0-12: rgba(220, 229, 215, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onbackground-opacity-0-16: rgba(220, 229, 215, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surface-opacity-0-08: rgba(20, 19, 19, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surface-opacity-0-12: rgba(20, 19, 19, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surface-opacity-0-16: rgba(20, 19, 19, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onsurface-opacity-0-08: rgba(254, 250, 249, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onsurface-opacity-0-12: rgba(254, 250, 249, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onsurface-opacity-0-16: rgba(254, 250, 249, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacevariant-opacity-0-08: rgba(61, 74, 59, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacevariant-opacity-0-12: rgba(61, 74, 59, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacevariant-opacity-0-16: rgba(61, 74, 59, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onsurfacevariant-opacity-0-08: rgba(192, 207, 187, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onsurfacevariant-opacity-0-12: rgba(192, 207, 187, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onsurfacevariant-opacity-0-16: rgba(192, 207, 187, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-outline-opacity-0-08: rgba(153, 167, 148, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-outline-opacity-0-12: rgba(153, 167, 148, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-outline-opacity-0-16: rgba(153, 167, 148, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-outlinevariant-opacity-0-08: rgba(121, 135, 117, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-outlinevariant-opacity-0-12: rgba(121, 135, 117, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-outlinevariant-opacity-0-16: rgba(121, 135, 117, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-shadow-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-shadow-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-shadow-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-scrim-opacity-0-08: rgba(0, 0, 0, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-scrim-opacity-0-12: rgba(0, 0, 0, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-scrim-opacity-0-16: rgba(0, 0, 0, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-inversesurface-opacity-0-08: rgba(229, 226, 225, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-inversesurface-opacity-0-12: rgba(229, 226, 225, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-inversesurface-opacity-0-16: rgba(229, 226, 225, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-inverseonsurface-opacity-0-08: rgba(43, 42, 42, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-inverseonsurface-opacity-0-12: rgba(43, 42, 42, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-inverseonsurface-opacity-0-16: rgba(43, 42, 42, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-inverseprimary-opacity-0-08: rgba(0, 84, 23, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-inverseprimary-opacity-0-12: rgba(0, 84, 23, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-inverseprimary-opacity-0-16: rgba(0, 84, 23, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-primaryfixed-opacity-0-08: rgba(112, 255, 124, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-primaryfixed-opacity-0-12: rgba(112, 255, 124, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-primaryfixed-opacity-0-16: rgba(112, 255, 124, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixed-opacity-0-08: rgba(0, 22, 2, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixed-opacity-0-12: rgba(0, 22, 2, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixed-opacity-0-16: rgba(0, 22, 2, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-primaryfixeddim-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-primaryfixeddim-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-primaryfixeddim-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-0-08: rgba(0, 64, 15, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-0-12: rgba(0, 64, 15, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-0-16: rgba(0, 64, 15, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-secondaryfixed-opacity-0-08: rgba(112, 255, 124, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-secondaryfixed-opacity-0-12: rgba(112, 255, 124, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-secondaryfixed-opacity-0-16: rgba(112, 255, 124, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-0-08: rgba(0, 22, 2, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-0-12: rgba(0, 22, 2, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-0-16: rgba(0, 22, 2, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-0-08: rgba(82, 225, 99, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-0-12: rgba(82, 225, 99, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-0-16: rgba(82, 225, 99, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(0, 64, 15, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(0, 64, 15, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(0, 64, 15, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixed-opacity-0-08: rgba(215, 227, 255, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixed-opacity-0-12: rgba(215, 227, 255, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixed-opacity-0-16: rgba(215, 227, 255, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-0-08: rgba(0, 17, 43, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-0-12: rgba(0, 17, 43, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-0-16: rgba(0, 17, 43, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-0-08: rgba(170, 199, 255, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-0-12: rgba(170, 199, 255, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-0-16: rgba(170, 199, 255, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(0, 53, 112, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(0, 53, 112, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(0, 53, 112, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacedim-opacity-0-08: rgba(20, 19, 19, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacedim-opacity-0-12: rgba(20, 19, 19, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacedim-opacity-0-16: rgba(20, 19, 19, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacebright-opacity-0-08: rgba(58, 57, 57, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacebright-opacity-0-12: rgba(58, 57, 57, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacebright-opacity-0-16: rgba(58, 57, 57, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-0-08: rgba(14, 14, 14, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-0-12: rgba(14, 14, 14, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-0-16: rgba(14, 14, 14, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-0-08: rgba(28, 27, 27, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-0-12: rgba(28, 27, 27, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-0-16: rgba(28, 27, 27, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainer-opacity-0-08: rgba(32, 31, 31, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainer-opacity-0-12: rgba(32, 31, 31, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainer-opacity-0-16: rgba(32, 31, 31, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-0-08: rgba(43, 42, 42, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-0-12: rgba(43, 42, 42, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-0-16: rgba(43, 42, 42, 0.16);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-0-08: rgba(53, 52, 52, 0.08);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-0-12: rgba(53, 52, 52, 0.12);
-  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-0-16: rgba(53, 52, 52, 0.16);
+  --color-devmx-state-layers-dark-inversesurface-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-dark-inversesurface-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-dark-inversesurface-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-inverseonsurface-opacity-0-08: rgba(
+    49,
+    48,
+    48,
+    0.08
+  );
+  --color-devmx-state-layers-dark-inverseonsurface-opacity-0-12: rgba(
+    49,
+    48,
+    48,
+    0.12
+  );
+  --color-devmx-state-layers-dark-inverseonsurface-opacity-0-16: rgba(
+    49,
+    48,
+    48,
+    0.16
+  );
+  --color-devmx-state-layers-dark-inverseprimary-opacity-0-08: rgba(
+    0,
+    110,
+    32,
+    0.08
+  );
+  --color-devmx-state-layers-dark-inverseprimary-opacity-0-12: rgba(
+    0,
+    110,
+    32,
+    0.12
+  );
+  --color-devmx-state-layers-dark-inverseprimary-opacity-0-16: rgba(
+    0,
+    110,
+    32,
+    0.16
+  );
+  --color-devmx-state-layers-dark-primaryfixed-opacity-0-08: rgba(
+    112,
+    255,
+    124,
+    0.08
+  );
+  --color-devmx-state-layers-dark-primaryfixed-opacity-0-12: rgba(
+    112,
+    255,
+    124,
+    0.12
+  );
+  --color-devmx-state-layers-dark-primaryfixed-opacity-0-16: rgba(
+    112,
+    255,
+    124,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onprimaryfixed-opacity-0-08: rgba(
+    0,
+    33,
+    5,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onprimaryfixed-opacity-0-12: rgba(
+    0,
+    33,
+    5,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onprimaryfixed-opacity-0-16: rgba(
+    0,
+    33,
+    5,
+    0.16
+  );
+  --color-devmx-state-layers-dark-primaryfixeddim-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-primaryfixeddim-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-primaryfixeddim-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onprimaryfixedvariant-opacity-0-08: rgba(
+    0,
+    83,
+    22,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onprimaryfixedvariant-opacity-0-12: rgba(
+    0,
+    83,
+    22,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onprimaryfixedvariant-opacity-0-16: rgba(
+    0,
+    83,
+    22,
+    0.16
+  );
+  --color-devmx-state-layers-dark-secondaryfixed-opacity-0-08: rgba(
+    112,
+    255,
+    124,
+    0.08
+  );
+  --color-devmx-state-layers-dark-secondaryfixed-opacity-0-12: rgba(
+    112,
+    255,
+    124,
+    0.12
+  );
+  --color-devmx-state-layers-dark-secondaryfixed-opacity-0-16: rgba(
+    112,
+    255,
+    124,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onsecondaryfixed-opacity-0-08: rgba(
+    0,
+    33,
+    5,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onsecondaryfixed-opacity-0-12: rgba(
+    0,
+    33,
+    5,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onsecondaryfixed-opacity-0-16: rgba(
+    0,
+    33,
+    5,
+    0.16
+  );
+  --color-devmx-state-layers-dark-secondaryfixeddim-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-secondaryfixeddim-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-secondaryfixeddim-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-dark-onsecondaryfixedvariant-opacity-0-08: rgba(
+    0,
+    83,
+    22,
+    0.08
+  );
+  --color-devmx-state-layers-dark-onsecondaryfixedvariant-opacity-0-12: rgba(
+    0,
+    83,
+    22,
+    0.12
+  );
+  --color-devmx-state-layers-dark-onsecondaryfixedvariant-opacity-0-16: rgba(
+    0,
+    83,
+    22,
+    0.16
+  );
+  --color-devmx-state-layers-dark-tertiaryfixed-opacity-0-08: rgba(
+    215,
+    227,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-tertiaryfixed-opacity-0-12: rgba(
+    215,
+    227,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-tertiaryfixed-opacity-0-16: rgba(
+    215,
+    227,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-ontertiaryfixed-opacity-0-08: rgba(
+    0,
+    27,
+    62,
+    0.08
+  );
+  --color-devmx-state-layers-dark-ontertiaryfixed-opacity-0-12: rgba(
+    0,
+    27,
+    62,
+    0.12
+  );
+  --color-devmx-state-layers-dark-ontertiaryfixed-opacity-0-16: rgba(
+    0,
+    27,
+    62,
+    0.16
+  );
+  --color-devmx-state-layers-dark-tertiaryfixeddim-opacity-0-08: rgba(
+    170,
+    199,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-tertiaryfixeddim-opacity-0-12: rgba(
+    170,
+    199,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-tertiaryfixeddim-opacity-0-16: rgba(
+    170,
+    199,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-ontertiaryfixedvariant-opacity-0-08: rgba(
+    0,
+    69,
+    142,
+    0.08
+  );
+  --color-devmx-state-layers-dark-ontertiaryfixedvariant-opacity-0-12: rgba(
+    0,
+    69,
+    142,
+    0.12
+  );
+  --color-devmx-state-layers-dark-ontertiaryfixedvariant-opacity-0-16: rgba(
+    0,
+    69,
+    142,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacedim-opacity-0-08: rgba(
+    20,
+    19,
+    19,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacedim-opacity-0-12: rgba(
+    20,
+    19,
+    19,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacedim-opacity-0-16: rgba(
+    20,
+    19,
+    19,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacebright-opacity-0-08: rgba(
+    58,
+    57,
+    57,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacebright-opacity-0-12: rgba(
+    58,
+    57,
+    57,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacebright-opacity-0-16: rgba(
+    58,
+    57,
+    57,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacecontainerlowest-opacity-0-08: rgba(
+    14,
+    14,
+    14,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacecontainerlowest-opacity-0-12: rgba(
+    14,
+    14,
+    14,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacecontainerlowest-opacity-0-16: rgba(
+    14,
+    14,
+    14,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacecontainerlow-opacity-0-08: rgba(
+    28,
+    27,
+    27,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacecontainerlow-opacity-0-12: rgba(
+    28,
+    27,
+    27,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacecontainerlow-opacity-0-16: rgba(
+    28,
+    27,
+    27,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacecontainer-opacity-0-08: rgba(
+    32,
+    31,
+    31,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacecontainer-opacity-0-12: rgba(
+    32,
+    31,
+    31,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacecontainer-opacity-0-16: rgba(
+    32,
+    31,
+    31,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacecontainerhigh-opacity-0-08: rgba(
+    43,
+    42,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacecontainerhigh-opacity-0-12: rgba(
+    43,
+    42,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacecontainerhigh-opacity-0-16: rgba(
+    43,
+    42,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-dark-surfacecontainerhighest-opacity-0-08: rgba(
+    53,
+    52,
+    52,
+    0.08
+  );
+  --color-devmx-state-layers-dark-surfacecontainerhighest-opacity-0-12: rgba(
+    53,
+    52,
+    52,
+    0.12
+  );
+  --color-devmx-state-layers-dark-surfacecontainerhighest-opacity-0-16: rgba(
+    53,
+    52,
+    52,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-primary-opacity-0-08: rgba(
+    0,
+    41,
+    7,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-primary-opacity-0-12: rgba(
+    0,
+    41,
+    7,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-primary-opacity-0-16: rgba(
+    0,
+    41,
+    7,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacetint-opacity-0-08: rgba(
+    0,
+    110,
+    32,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacetint-opacity-0-12: rgba(
+    0,
+    110,
+    32,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacetint-opacity-0-16: rgba(
+    0,
+    110,
+    32,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-primarycontainer-opacity-0-08: rgba(
+    0,
+    78,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-primarycontainer-opacity-0-12: rgba(
+    0,
+    78,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-primarycontainer-opacity-0-16: rgba(
+    0,
+    78,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-secondary-opacity-0-08: rgba(
+    0,
+    41,
+    7,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-secondary-opacity-0-12: rgba(
+    0,
+    41,
+    7,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-secondary-opacity-0-16: rgba(
+    0,
+    41,
+    7,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-secondarycontainer-opacity-0-08: rgba(
+    0,
+    78,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-secondarycontainer-opacity-0-12: rgba(
+    0,
+    78,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-secondarycontainer-opacity-0-16: rgba(
+    0,
+    78,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiary-opacity-0-08: rgba(
+    0,
+    33,
+    75,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiary-opacity-0-12: rgba(
+    0,
+    33,
+    75,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiary-opacity-0-16: rgba(
+    0,
+    33,
+    75,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiarycontainer-opacity-0-08: rgba(
+    0,
+    65,
+    135,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiarycontainer-opacity-0-12: rgba(
+    0,
+    65,
+    135,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiarycontainer-opacity-0-16: rgba(
+    0,
+    65,
+    135,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-error-opacity-0-08: rgba(
+    78,
+    0,
+    2,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-error-opacity-0-12: rgba(
+    78,
+    0,
+    2,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-error-opacity-0-16: rgba(
+    78,
+    0,
+    2,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onerror-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onerror-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onerror-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-errorcontainer-opacity-0-08: rgba(
+    140,
+    0,
+    9,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-errorcontainer-opacity-0-12: rgba(
+    140,
+    0,
+    9,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-errorcontainer-opacity-0-16: rgba(
+    140,
+    0,
+    9,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onerrorcontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onerrorcontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onerrorcontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-background-opacity-0-08: rgba(
+    243,
+    252,
+    237,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-background-opacity-0-12: rgba(
+    243,
+    252,
+    237,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-background-opacity-0-16: rgba(
+    243,
+    252,
+    237,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onbackground-opacity-0-08: rgba(
+    22,
+    30,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onbackground-opacity-0-12: rgba(
+    22,
+    30,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onbackground-opacity-0-16: rgba(
+    22,
+    30,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surface-opacity-0-08: rgba(
+    253,
+    248,
+    248,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surface-opacity-0-12: rgba(
+    253,
+    248,
+    248,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surface-opacity-0-16: rgba(
+    253,
+    248,
+    248,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onsurface-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onsurface-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onsurface-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacevariant-opacity-0-08: rgba(
+    216,
+    231,
+    210,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacevariant-opacity-0-12: rgba(
+    216,
+    231,
+    210,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacevariant-opacity-0-16: rgba(
+    216,
+    231,
+    210,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onsurfacevariant-opacity-0-08: rgba(
+    27,
+    39,
+    26,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onsurfacevariant-opacity-0-12: rgba(
+    27,
+    39,
+    26,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onsurfacevariant-opacity-0-16: rgba(
+    27,
+    39,
+    26,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-outline-opacity-0-08: rgba(
+    57,
+    70,
+    55,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-outline-opacity-0-12: rgba(
+    57,
+    70,
+    55,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-outline-opacity-0-16: rgba(
+    57,
+    70,
+    55,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-outlinevariant-opacity-0-08: rgba(
+    57,
+    70,
+    55,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-outlinevariant-opacity-0-12: rgba(
+    57,
+    70,
+    55,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-outlinevariant-opacity-0-16: rgba(
+    57,
+    70,
+    55,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-shadow-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-shadow-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-shadow-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-scrim-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-scrim-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-scrim-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-inversesurface-opacity-0-08: rgba(
+    49,
+    48,
+    48,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-inversesurface-opacity-0-12: rgba(
+    49,
+    48,
+    48,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-inversesurface-opacity-0-16: rgba(
+    49,
+    48,
+    48,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-inverseonsurface-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-inverseonsurface-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-inverseonsurface-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-inverseprimary-opacity-0-08: rgba(
+    176,
+    255,
+    173,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-inverseprimary-opacity-0-12: rgba(
+    176,
+    255,
+    173,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-inverseprimary-opacity-0-16: rgba(
+    176,
+    255,
+    173,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-primaryfixed-opacity-0-08: rgba(
+    0,
+    78,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-primaryfixed-opacity-0-12: rgba(
+    0,
+    78,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-primaryfixed-opacity-0-16: rgba(
+    0,
+    78,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimaryfixed-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimaryfixed-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimaryfixed-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-primaryfixeddim-opacity-0-08: rgba(
+    0,
+    53,
+    11,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-primaryfixeddim-opacity-0-12: rgba(
+    0,
+    53,
+    11,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-primaryfixeddim-opacity-0-16: rgba(
+    0,
+    53,
+    11,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-secondaryfixed-opacity-0-08: rgba(
+    0,
+    78,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-secondaryfixed-opacity-0-12: rgba(
+    0,
+    78,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-secondaryfixed-opacity-0-16: rgba(
+    0,
+    78,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondaryfixed-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondaryfixed-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondaryfixed-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-secondaryfixeddim-opacity-0-08: rgba(
+    0,
+    53,
+    11,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-secondaryfixeddim-opacity-0-12: rgba(
+    0,
+    53,
+    11,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-secondaryfixeddim-opacity-0-16: rgba(
+    0,
+    53,
+    11,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiaryfixed-opacity-0-08: rgba(
+    0,
+    65,
+    135,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiaryfixed-opacity-0-12: rgba(
+    0,
+    65,
+    135,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiaryfixed-opacity-0-16: rgba(
+    0,
+    65,
+    135,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiaryfixed-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiaryfixed-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiaryfixed-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiaryfixeddim-opacity-0-08: rgba(
+    0,
+    44,
+    94,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiaryfixeddim-opacity-0-12: rgba(
+    0,
+    44,
+    94,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-tertiaryfixeddim-opacity-0-16: rgba(
+    0,
+    44,
+    94,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacedim-opacity-0-08: rgba(
+    221,
+    217,
+    216,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacedim-opacity-0-12: rgba(
+    221,
+    217,
+    216,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacedim-opacity-0-16: rgba(
+    221,
+    217,
+    216,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacebright-opacity-0-08: rgba(
+    253,
+    248,
+    248,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacebright-opacity-0-12: rgba(
+    253,
+    248,
+    248,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacebright-opacity-0-16: rgba(
+    253,
+    248,
+    248,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerlowest-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerlowest-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerlowest-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerlow-opacity-0-08: rgba(
+    247,
+    243,
+    242,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerlow-opacity-0-12: rgba(
+    247,
+    243,
+    242,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerlow-opacity-0-16: rgba(
+    247,
+    243,
+    242,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainer-opacity-0-08: rgba(
+    241,
+    237,
+    236,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainer-opacity-0-12: rgba(
+    241,
+    237,
+    236,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainer-opacity-0-16: rgba(
+    241,
+    237,
+    236,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerhigh-opacity-0-08: rgba(
+    235,
+    231,
+    231,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerhigh-opacity-0-12: rgba(
+    235,
+    231,
+    231,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerhigh-opacity-0-16: rgba(
+    235,
+    231,
+    231,
+    0.16
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerhighest-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerhighest-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-light-high-contrast-surfacecontainerhighest-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-primary-opacity-0-08: rgba(
+    241,
+    255,
+    234,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-primary-opacity-0-12: rgba(
+    241,
+    255,
+    234,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-primary-opacity-0-16: rgba(
+    241,
+    255,
+    234,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacetint-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacetint-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacetint-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimary-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimary-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimary-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-primarycontainer-opacity-0-08: rgba(
+    86,
+    230,
+    103,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-primarycontainer-opacity-0-12: rgba(
+    86,
+    230,
+    103,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-primarycontainer-opacity-0-16: rgba(
+    86,
+    230,
+    103,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimarycontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimarycontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimarycontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondary-opacity-0-08: rgba(
+    241,
+    255,
+    234,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondary-opacity-0-12: rgba(
+    241,
+    255,
+    234,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondary-opacity-0-16: rgba(
+    241,
+    255,
+    234,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondary-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondary-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondary-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondarycontainer-opacity-0-08: rgba(
+    86,
+    230,
+    103,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondarycontainer-opacity-0-12: rgba(
+    86,
+    230,
+    103,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondarycontainer-opacity-0-16: rgba(
+    86,
+    230,
+    103,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondarycontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondarycontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondarycontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiary-opacity-0-08: rgba(
+    251,
+    250,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiary-opacity-0-12: rgba(
+    251,
+    250,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiary-opacity-0-16: rgba(
+    251,
+    250,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiary-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiary-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiary-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiarycontainer-opacity-0-08: rgba(
+    177,
+    203,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiarycontainer-opacity-0-12: rgba(
+    177,
+    203,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiarycontainer-opacity-0-16: rgba(
+    177,
+    203,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiarycontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiarycontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiarycontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-error-opacity-0-08: rgba(
+    255,
+    249,
+    249,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-error-opacity-0-12: rgba(
+    255,
+    249,
+    249,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-error-opacity-0-16: rgba(
+    255,
+    249,
+    249,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onerror-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onerror-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onerror-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-errorcontainer-opacity-0-08: rgba(
+    255,
+    186,
+    177,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-errorcontainer-opacity-0-12: rgba(
+    255,
+    186,
+    177,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-errorcontainer-opacity-0-16: rgba(
+    255,
+    186,
+    177,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onerrorcontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onerrorcontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onerrorcontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-background-opacity-0-08: rgba(
+    14,
+    21,
+    13,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-background-opacity-0-12: rgba(
+    14,
+    21,
+    13,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-background-opacity-0-16: rgba(
+    14,
+    21,
+    13,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onbackground-opacity-0-08: rgba(
+    220,
+    229,
+    215,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onbackground-opacity-0-12: rgba(
+    220,
+    229,
+    215,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onbackground-opacity-0-16: rgba(
+    220,
+    229,
+    215,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surface-opacity-0-08: rgba(
+    20,
+    19,
+    19,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surface-opacity-0-12: rgba(
+    20,
+    19,
+    19,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surface-opacity-0-16: rgba(
+    20,
+    19,
+    19,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsurface-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsurface-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsurface-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacevariant-opacity-0-08: rgba(
+    61,
+    74,
+    59,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacevariant-opacity-0-12: rgba(
+    61,
+    74,
+    59,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacevariant-opacity-0-16: rgba(
+    61,
+    74,
+    59,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsurfacevariant-opacity-0-08: rgba(
+    241,
+    255,
+    234,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsurfacevariant-opacity-0-12: rgba(
+    241,
+    255,
+    234,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsurfacevariant-opacity-0-16: rgba(
+    241,
+    255,
+    234,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-outline-opacity-0-08: rgba(
+    192,
+    207,
+    187,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-outline-opacity-0-12: rgba(
+    192,
+    207,
+    187,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-outline-opacity-0-16: rgba(
+    192,
+    207,
+    187,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-outlinevariant-opacity-0-08: rgba(
+    192,
+    207,
+    187,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-outlinevariant-opacity-0-12: rgba(
+    192,
+    207,
+    187,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-outlinevariant-opacity-0-16: rgba(
+    192,
+    207,
+    187,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-shadow-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-shadow-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-shadow-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-scrim-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-scrim-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-scrim-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-inversesurface-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-inversesurface-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-inversesurface-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-inverseonsurface-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-inverseonsurface-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-inverseonsurface-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-inverseprimary-opacity-0-08: rgba(
+    0,
+    50,
+    10,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-inverseprimary-opacity-0-12: rgba(
+    0,
+    50,
+    10,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-inverseprimary-opacity-0-16: rgba(
+    0,
+    50,
+    10,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-primaryfixed-opacity-0-08: rgba(
+    145,
+    255,
+    147,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-primaryfixed-opacity-0-12: rgba(
+    145,
+    255,
+    147,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-primaryfixed-opacity-0-16: rgba(
+    145,
+    255,
+    147,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimaryfixed-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimaryfixed-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimaryfixed-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-primaryfixeddim-opacity-0-08: rgba(
+    86,
+    230,
+    103,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-primaryfixeddim-opacity-0-12: rgba(
+    86,
+    230,
+    103,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-primaryfixeddim-opacity-0-16: rgba(
+    86,
+    230,
+    103,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-0-08: rgba(
+    0,
+    27,
+    3,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-0-12: rgba(
+    0,
+    27,
+    3,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-0-16: rgba(
+    0,
+    27,
+    3,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondaryfixed-opacity-0-08: rgba(
+    145,
+    255,
+    147,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondaryfixed-opacity-0-12: rgba(
+    145,
+    255,
+    147,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondaryfixed-opacity-0-16: rgba(
+    145,
+    255,
+    147,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixed-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixed-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixed-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondaryfixeddim-opacity-0-08: rgba(
+    86,
+    230,
+    103,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondaryfixeddim-opacity-0-12: rgba(
+    86,
+    230,
+    103,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-secondaryfixeddim-opacity-0-16: rgba(
+    86,
+    230,
+    103,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(
+    0,
+    27,
+    3,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(
+    0,
+    27,
+    3,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(
+    0,
+    27,
+    3,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiaryfixed-opacity-0-08: rgba(
+    221,
+    231,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiaryfixed-opacity-0-12: rgba(
+    221,
+    231,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiaryfixed-opacity-0-16: rgba(
+    221,
+    231,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixed-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixed-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixed-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-0-08: rgba(
+    177,
+    203,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-0-12: rgba(
+    177,
+    203,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-0-16: rgba(
+    177,
+    203,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(
+    0,
+    22,
+    53,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(
+    0,
+    22,
+    53,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(
+    0,
+    22,
+    53,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacedim-opacity-0-08: rgba(
+    20,
+    19,
+    19,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacedim-opacity-0-12: rgba(
+    20,
+    19,
+    19,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacedim-opacity-0-16: rgba(
+    20,
+    19,
+    19,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacebright-opacity-0-08: rgba(
+    58,
+    57,
+    57,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacebright-opacity-0-12: rgba(
+    58,
+    57,
+    57,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacebright-opacity-0-16: rgba(
+    58,
+    57,
+    57,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-0-08: rgba(
+    14,
+    14,
+    14,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-0-12: rgba(
+    14,
+    14,
+    14,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-0-16: rgba(
+    14,
+    14,
+    14,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlow-opacity-0-08: rgba(
+    28,
+    27,
+    27,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlow-opacity-0-12: rgba(
+    28,
+    27,
+    27,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerlow-opacity-0-16: rgba(
+    28,
+    27,
+    27,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainer-opacity-0-08: rgba(
+    32,
+    31,
+    31,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainer-opacity-0-12: rgba(
+    32,
+    31,
+    31,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainer-opacity-0-16: rgba(
+    32,
+    31,
+    31,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-0-08: rgba(
+    43,
+    42,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-0-12: rgba(
+    43,
+    42,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-0-16: rgba(
+    43,
+    42,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-0-08: rgba(
+    53,
+    52,
+    52,
+    0.08
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-0-12: rgba(
+    53,
+    52,
+    52,
+    0.12
+  );
+  --color-devmx-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-0-16: rgba(
+    53,
+    52,
+    52,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-primary-opacity-0-08: rgba(
+    0,
+    78,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-primary-opacity-0-12: rgba(
+    0,
+    78,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-primary-opacity-0-16: rgba(
+    0,
+    78,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacetint-opacity-0-08: rgba(
+    0,
+    110,
+    32,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacetint-opacity-0-12: rgba(
+    0,
+    110,
+    32,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacetint-opacity-0-16: rgba(
+    0,
+    110,
+    32,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-primarycontainer-opacity-0-08: rgba(
+    0,
+    135,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-primarycontainer-opacity-0-12: rgba(
+    0,
+    135,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-primarycontainer-opacity-0-16: rgba(
+    0,
+    135,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondary-opacity-0-08: rgba(
+    0,
+    78,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondary-opacity-0-12: rgba(
+    0,
+    78,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondary-opacity-0-16: rgba(
+    0,
+    78,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondarycontainer-opacity-0-08: rgba(
+    0,
+    135,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondarycontainer-opacity-0-12: rgba(
+    0,
+    135,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondarycontainer-opacity-0-16: rgba(
+    0,
+    135,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiary-opacity-0-08: rgba(
+    0,
+    65,
+    135,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiary-opacity-0-12: rgba(
+    0,
+    65,
+    135,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiary-opacity-0-16: rgba(
+    0,
+    65,
+    135,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiary-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiary-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiary-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiarycontainer-opacity-0-08: rgba(
+    0,
+    114,
+    227,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiarycontainer-opacity-0-12: rgba(
+    0,
+    114,
+    227,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiarycontainer-opacity-0-16: rgba(
+    0,
+    114,
+    227,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiarycontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiarycontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiarycontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-error-opacity-0-08: rgba(
+    140,
+    0,
+    9,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-error-opacity-0-12: rgba(
+    140,
+    0,
+    9,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-error-opacity-0-16: rgba(
+    140,
+    0,
+    9,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onerror-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onerror-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onerror-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-errorcontainer-opacity-0-08: rgba(
+    218,
+    52,
+    46,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-errorcontainer-opacity-0-12: rgba(
+    218,
+    52,
+    46,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-errorcontainer-opacity-0-16: rgba(
+    218,
+    52,
+    46,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onerrorcontainer-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onerrorcontainer-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onerrorcontainer-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-background-opacity-0-08: rgba(
+    243,
+    252,
+    237,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-background-opacity-0-12: rgba(
+    243,
+    252,
+    237,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-background-opacity-0-16: rgba(
+    243,
+    252,
+    237,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onbackground-opacity-0-08: rgba(
+    22,
+    30,
+    21,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onbackground-opacity-0-12: rgba(
+    22,
+    30,
+    21,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onbackground-opacity-0-16: rgba(
+    22,
+    30,
+    21,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surface-opacity-0-08: rgba(
+    253,
+    248,
+    248,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surface-opacity-0-12: rgba(
+    253,
+    248,
+    248,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surface-opacity-0-16: rgba(
+    253,
+    248,
+    248,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsurface-opacity-0-08: rgba(
+    28,
+    27,
+    27,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsurface-opacity-0-12: rgba(
+    28,
+    27,
+    27,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsurface-opacity-0-16: rgba(
+    28,
+    27,
+    27,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacevariant-opacity-0-08: rgba(
+    216,
+    231,
+    210,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacevariant-opacity-0-12: rgba(
+    216,
+    231,
+    210,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacevariant-opacity-0-16: rgba(
+    216,
+    231,
+    210,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsurfacevariant-opacity-0-08: rgba(
+    57,
+    70,
+    55,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsurfacevariant-opacity-0-12: rgba(
+    57,
+    70,
+    55,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsurfacevariant-opacity-0-16: rgba(
+    57,
+    70,
+    55,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-outline-opacity-0-08: rgba(
+    85,
+    99,
+    82,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-outline-opacity-0-12: rgba(
+    85,
+    99,
+    82,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-outline-opacity-0-16: rgba(
+    85,
+    99,
+    82,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-outlinevariant-opacity-0-08: rgba(
+    113,
+    127,
+    109,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-outlinevariant-opacity-0-12: rgba(
+    113,
+    127,
+    109,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-outlinevariant-opacity-0-16: rgba(
+    113,
+    127,
+    109,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-shadow-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-shadow-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-shadow-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-scrim-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-scrim-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-scrim-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-inversesurface-opacity-0-08: rgba(
+    49,
+    48,
+    48,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-inversesurface-opacity-0-12: rgba(
+    49,
+    48,
+    48,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-inversesurface-opacity-0-16: rgba(
+    49,
+    48,
+    48,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-inverseonsurface-opacity-0-08: rgba(
+    244,
+    240,
+    239,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-inverseonsurface-opacity-0-12: rgba(
+    244,
+    240,
+    239,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-inverseonsurface-opacity-0-16: rgba(
+    244,
+    240,
+    239,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-inverseprimary-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-inverseprimary-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-inverseprimary-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-primaryfixed-opacity-0-08: rgba(
+    0,
+    135,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-primaryfixed-opacity-0-12: rgba(
+    0,
+    135,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-primaryfixed-opacity-0-16: rgba(
+    0,
+    135,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimaryfixed-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimaryfixed-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimaryfixed-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-primaryfixeddim-opacity-0-08: rgba(
+    0,
+    107,
+    31,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-primaryfixeddim-opacity-0-12: rgba(
+    0,
+    107,
+    31,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-primaryfixeddim-opacity-0-16: rgba(
+    0,
+    107,
+    31,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondaryfixed-opacity-0-08: rgba(
+    0,
+    135,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondaryfixed-opacity-0-12: rgba(
+    0,
+    135,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondaryfixed-opacity-0-16: rgba(
+    0,
+    135,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixed-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixed-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixed-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondaryfixeddim-opacity-0-08: rgba(
+    0,
+    107,
+    31,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondaryfixeddim-opacity-0-12: rgba(
+    0,
+    107,
+    31,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-secondaryfixeddim-opacity-0-16: rgba(
+    0,
+    107,
+    31,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiaryfixed-opacity-0-08: rgba(
+    0,
+    114,
+    227,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiaryfixed-opacity-0-12: rgba(
+    0,
+    114,
+    227,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiaryfixed-opacity-0-16: rgba(
+    0,
+    114,
+    227,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixed-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixed-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixed-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-0-08: rgba(
+    0,
+    90,
+    181,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-0-12: rgba(
+    0,
+    90,
+    181,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-0-16: rgba(
+    0,
+    90,
+    181,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacedim-opacity-0-08: rgba(
+    221,
+    217,
+    216,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacedim-opacity-0-12: rgba(
+    221,
+    217,
+    216,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacedim-opacity-0-16: rgba(
+    221,
+    217,
+    216,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacebright-opacity-0-08: rgba(
+    253,
+    248,
+    248,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacebright-opacity-0-12: rgba(
+    253,
+    248,
+    248,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacebright-opacity-0-16: rgba(
+    253,
+    248,
+    248,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-0-08: rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-0-12: rgba(
+    255,
+    255,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-0-16: rgba(
+    255,
+    255,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlow-opacity-0-08: rgba(
+    247,
+    243,
+    242,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlow-opacity-0-12: rgba(
+    247,
+    243,
+    242,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerlow-opacity-0-16: rgba(
+    247,
+    243,
+    242,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainer-opacity-0-08: rgba(
+    241,
+    237,
+    236,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainer-opacity-0-12: rgba(
+    241,
+    237,
+    236,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainer-opacity-0-16: rgba(
+    241,
+    237,
+    236,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-0-08: rgba(
+    235,
+    231,
+    231,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-0-12: rgba(
+    235,
+    231,
+    231,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-0-16: rgba(
+    235,
+    231,
+    231,
+    0.16
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primary-opacity-0-08: rgba(
+    99,
+    242,
+    113,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primary-opacity-0-12: rgba(
+    99,
+    242,
+    113,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primary-opacity-0-16: rgba(
+    99,
+    242,
+    113,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacetint-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacetint-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacetint-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimary-opacity-0-08: rgba(
+    0,
+    39,
+    6,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimary-opacity-0-12: rgba(
+    0,
+    39,
+    6,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimary-opacity-0-16: rgba(
+    0,
+    39,
+    6,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primarycontainer-opacity-0-08: rgba(
+    48,
+    198,
+    76,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primarycontainer-opacity-0-12: rgba(
+    48,
+    198,
+    76,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primarycontainer-opacity-0-16: rgba(
+    48,
+    198,
+    76,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimarycontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimarycontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimarycontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondary-opacity-0-08: rgba(
+    99,
+    242,
+    113,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondary-opacity-0-12: rgba(
+    99,
+    242,
+    113,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondary-opacity-0-16: rgba(
+    99,
+    242,
+    113,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondary-opacity-0-08: rgba(
+    0,
+    39,
+    6,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondary-opacity-0-12: rgba(
+    0,
+    39,
+    6,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondary-opacity-0-16: rgba(
+    0,
+    39,
+    6,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondarycontainer-opacity-0-08: rgba(
+    48,
+    198,
+    76,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondarycontainer-opacity-0-12: rgba(
+    48,
+    198,
+    76,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondarycontainer-opacity-0-16: rgba(
+    48,
+    198,
+    76,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiary-opacity-0-08: rgba(
+    177,
+    203,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiary-opacity-0-12: rgba(
+    177,
+    203,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiary-opacity-0-16: rgba(
+    177,
+    203,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiary-opacity-0-08: rgba(
+    0,
+    22,
+    53,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiary-opacity-0-12: rgba(
+    0,
+    22,
+    53,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiary-opacity-0-16: rgba(
+    0,
+    22,
+    53,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiarycontainer-opacity-0-08: rgba(
+    65,
+    143,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiarycontainer-opacity-0-12: rgba(
+    65,
+    143,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiarycontainer-opacity-0-16: rgba(
+    65,
+    143,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-error-opacity-0-08: rgba(
+    255,
+    186,
+    177,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-error-opacity-0-12: rgba(
+    255,
+    186,
+    177,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-error-opacity-0-16: rgba(
+    255,
+    186,
+    177,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onerror-opacity-0-08: rgba(
+    55,
+    0,
+    1,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onerror-opacity-0-12: rgba(
+    55,
+    0,
+    1,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onerror-opacity-0-16: rgba(
+    55,
+    0,
+    1,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-errorcontainer-opacity-0-08: rgba(
+    255,
+    84,
+    73,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-errorcontainer-opacity-0-12: rgba(
+    255,
+    84,
+    73,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-errorcontainer-opacity-0-16: rgba(
+    255,
+    84,
+    73,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onerrorcontainer-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onerrorcontainer-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onerrorcontainer-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-background-opacity-0-08: rgba(
+    14,
+    21,
+    13,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-background-opacity-0-12: rgba(
+    14,
+    21,
+    13,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-background-opacity-0-16: rgba(
+    14,
+    21,
+    13,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onbackground-opacity-0-08: rgba(
+    220,
+    229,
+    215,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onbackground-opacity-0-12: rgba(
+    220,
+    229,
+    215,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onbackground-opacity-0-16: rgba(
+    220,
+    229,
+    215,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surface-opacity-0-08: rgba(
+    20,
+    19,
+    19,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surface-opacity-0-12: rgba(
+    20,
+    19,
+    19,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surface-opacity-0-16: rgba(
+    20,
+    19,
+    19,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsurface-opacity-0-08: rgba(
+    254,
+    250,
+    249,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsurface-opacity-0-12: rgba(
+    254,
+    250,
+    249,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsurface-opacity-0-16: rgba(
+    254,
+    250,
+    249,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacevariant-opacity-0-08: rgba(
+    61,
+    74,
+    59,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacevariant-opacity-0-12: rgba(
+    61,
+    74,
+    59,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacevariant-opacity-0-16: rgba(
+    61,
+    74,
+    59,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsurfacevariant-opacity-0-08: rgba(
+    192,
+    207,
+    187,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsurfacevariant-opacity-0-12: rgba(
+    192,
+    207,
+    187,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsurfacevariant-opacity-0-16: rgba(
+    192,
+    207,
+    187,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-outline-opacity-0-08: rgba(
+    153,
+    167,
+    148,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-outline-opacity-0-12: rgba(
+    153,
+    167,
+    148,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-outline-opacity-0-16: rgba(
+    153,
+    167,
+    148,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-outlinevariant-opacity-0-08: rgba(
+    121,
+    135,
+    117,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-outlinevariant-opacity-0-12: rgba(
+    121,
+    135,
+    117,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-outlinevariant-opacity-0-16: rgba(
+    121,
+    135,
+    117,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-shadow-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-shadow-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-shadow-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-scrim-opacity-0-08: rgba(
+    0,
+    0,
+    0,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-scrim-opacity-0-12: rgba(
+    0,
+    0,
+    0,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-scrim-opacity-0-16: rgba(
+    0,
+    0,
+    0,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inversesurface-opacity-0-08: rgba(
+    229,
+    226,
+    225,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inversesurface-opacity-0-12: rgba(
+    229,
+    226,
+    225,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inversesurface-opacity-0-16: rgba(
+    229,
+    226,
+    225,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inverseonsurface-opacity-0-08: rgba(
+    43,
+    42,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inverseonsurface-opacity-0-12: rgba(
+    43,
+    42,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inverseonsurface-opacity-0-16: rgba(
+    43,
+    42,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inverseprimary-opacity-0-08: rgba(
+    0,
+    84,
+    23,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inverseprimary-opacity-0-12: rgba(
+    0,
+    84,
+    23,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-inverseprimary-opacity-0-16: rgba(
+    0,
+    84,
+    23,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primaryfixed-opacity-0-08: rgba(
+    112,
+    255,
+    124,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primaryfixed-opacity-0-12: rgba(
+    112,
+    255,
+    124,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primaryfixed-opacity-0-16: rgba(
+    112,
+    255,
+    124,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixed-opacity-0-08: rgba(
+    0,
+    22,
+    2,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixed-opacity-0-12: rgba(
+    0,
+    22,
+    2,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixed-opacity-0-16: rgba(
+    0,
+    22,
+    2,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primaryfixeddim-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primaryfixeddim-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-primaryfixeddim-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-0-08: rgba(
+    0,
+    64,
+    15,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-0-12: rgba(
+    0,
+    64,
+    15,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-0-16: rgba(
+    0,
+    64,
+    15,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondaryfixed-opacity-0-08: rgba(
+    112,
+    255,
+    124,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondaryfixed-opacity-0-12: rgba(
+    112,
+    255,
+    124,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondaryfixed-opacity-0-16: rgba(
+    112,
+    255,
+    124,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-0-08: rgba(
+    0,
+    22,
+    2,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-0-12: rgba(
+    0,
+    22,
+    2,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-0-16: rgba(
+    0,
+    22,
+    2,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-0-08: rgba(
+    82,
+    225,
+    99,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-0-12: rgba(
+    82,
+    225,
+    99,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-0-16: rgba(
+    82,
+    225,
+    99,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-0-08: rgba(
+    0,
+    64,
+    15,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-0-12: rgba(
+    0,
+    64,
+    15,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-0-16: rgba(
+    0,
+    64,
+    15,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixed-opacity-0-08: rgba(
+    215,
+    227,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixed-opacity-0-12: rgba(
+    215,
+    227,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixed-opacity-0-16: rgba(
+    215,
+    227,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-0-08: rgba(
+    0,
+    17,
+    43,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-0-12: rgba(
+    0,
+    17,
+    43,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-0-16: rgba(
+    0,
+    17,
+    43,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-0-08: rgba(
+    170,
+    199,
+    255,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-0-12: rgba(
+    170,
+    199,
+    255,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-0-16: rgba(
+    170,
+    199,
+    255,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-0-08: rgba(
+    0,
+    53,
+    112,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-0-12: rgba(
+    0,
+    53,
+    112,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-0-16: rgba(
+    0,
+    53,
+    112,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacedim-opacity-0-08: rgba(
+    20,
+    19,
+    19,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacedim-opacity-0-12: rgba(
+    20,
+    19,
+    19,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacedim-opacity-0-16: rgba(
+    20,
+    19,
+    19,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacebright-opacity-0-08: rgba(
+    58,
+    57,
+    57,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacebright-opacity-0-12: rgba(
+    58,
+    57,
+    57,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacebright-opacity-0-16: rgba(
+    58,
+    57,
+    57,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-0-08: rgba(
+    14,
+    14,
+    14,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-0-12: rgba(
+    14,
+    14,
+    14,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-0-16: rgba(
+    14,
+    14,
+    14,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-0-08: rgba(
+    28,
+    27,
+    27,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-0-12: rgba(
+    28,
+    27,
+    27,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-0-16: rgba(
+    28,
+    27,
+    27,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainer-opacity-0-08: rgba(
+    32,
+    31,
+    31,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainer-opacity-0-12: rgba(
+    32,
+    31,
+    31,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainer-opacity-0-16: rgba(
+    32,
+    31,
+    31,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-0-08: rgba(
+    43,
+    42,
+    42,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-0-12: rgba(
+    43,
+    42,
+    42,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-0-16: rgba(
+    43,
+    42,
+    42,
+    0.16
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-0-08: rgba(
+    53,
+    52,
+    52,
+    0.08
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-0-12: rgba(
+    53,
+    52,
+    52,
+    0.12
+  );
+  --color-devmx-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-0-16: rgba(
+    53,
+    52,
+    52,
+    0.16
+  );
   --devmx-schemes-primary: #63f271;
   --devmx-schemes-surface-tint: #52e163;
   --devmx-schemes-on-primary: #00390d;
