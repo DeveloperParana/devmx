@@ -9,7 +9,7 @@
       mat-list-item
       [routerLink]="['/', 'albuns', { outlets: { right: [album.id] } }]"
     >
-      <devmx-icon matListItemIcon name="calendar" />
+      <devmx-icon matListItemIcon name="photo" />
       <div matListItemTitle>{{ album.title }}</div>
       <div matListItemLine>{{ album.createdAt | date : 'longDate' }}</div>
     </a>

@@ -9,7 +9,7 @@
       mat-list-item
       [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] } }]"
     >
-      <devmx-icon matListItemIcon name="calendar" />
+      <devmx-icon matListItemIcon name="presentation" />
       <div matListItemTitle>{{ presentation.title }}</div>
       <div matListItemLine>{{ presentation.format | presentationFormat }}</div>
     </a>
