@@ -9,6 +9,7 @@
     "dev:mx": "nx serve devmx",
     "affected": "pnpm exec nx affected -t lint test build --parallel=10",
     "lint:fix": "pnpm exec nx run-many -t lint --fix",
+    "dev:setup": "./tools/scripts/setup.sh",
     "commit": "czg"
   },
   "private": true,
