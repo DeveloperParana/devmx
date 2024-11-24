@@ -37,15 +37,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - uses: nrwl/nx-set-shas@v4
-      
-      - run: pnpm exec nx run-many -t build --projects server,devmx --configuration=production --parallel 1
+
+      - run: pnpm exec nx run-many -t build --projects server,devmx --configuration=production --parallel 10
 
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/apps/devmx/browser
-  
+
       - name: Zip artifact for deployment
         run: |
             cd dist/apps/server && zip -r release.zip ./*
