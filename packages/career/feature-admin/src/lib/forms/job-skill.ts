@@ -28,9 +28,7 @@ export class JobSkillForm extends FormGroup<TypedForm<JobSkill>> {
 
 export class SkillsForm extends FormArray<JobSkillForm> {
   constructor() {
-    super([], {
-      validators: [Validators.required],
-    });
+    super([]);
   }
 
   add(value?: EditableJobSkill) {

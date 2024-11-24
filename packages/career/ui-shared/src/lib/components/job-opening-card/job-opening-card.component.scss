@@ -1,29 +1,14 @@
-@use '@angular/material' as mat;
-
 :host {
   display: flex;
   flex-direction: column;
-  // max-width: calc(100vw - 2em);
-  width: 100%;
-  flex: 1;
 
   .job-opening-card {
     flex: 1;
     display: flex;
     flex-direction: column;
 
-    @include mat.elevation-transition();
-    @include mat.elevation(2);
-
-    &:active,
-    &:hover {
-      @include mat.elevation(6);
-    }
-
-    &-actions {
-      &:empty {
-        display: none;
-      }
+    .job-opening-list {
+      flex: 1;
     }
   }
 }
