@@ -32,12 +32,6 @@
       ],
       "@devmx/academy-resource": ["packages/academy/resource/src/index.ts"],
       "@devmx/academy-ui-shared": ["packages/academy/ui-shared/src/index.ts"],
-      "@devmx/account-api-interfaces": [
-        "packages/account/api-interfaces/src/index.ts"
-      ],
-      "@devmx/account-api-interfaces/client": [
-        "packages/account/api-interfaces/src/client.ts"
-      ],
       "@devmx/account-data-access": [
         "packages/account/data-access/src/index.ts"
       ],
