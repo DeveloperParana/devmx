@@ -1,0 +1,1 @@
+import{a as n}from"./chunk-4BW4N276.js";import{F as e,ka as a,t as o}from"./chunk-UAGQGKX7.js";var d=(...i)=>()=>{let r=a(n),c=r.auth$.pipe(e(t=>!!t),o(t=>i.some(m=>t.roles[m])));return r.load(),c};export{d as a};

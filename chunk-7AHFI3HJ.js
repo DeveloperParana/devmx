@@ -1,1 +1,0 @@
-import{a}from"./chunk-LK4I4OYB.js";import{yb as t}from"./chunk-UAGQGKX7.js";var n=(()=>{class r{transform(e){return a(e??"",{gfm:!0,async:!1})}static \u0275fac=function(i){return new(i||r)};static \u0275pipe=t({name:"marked",type:r,pure:!0})}return r})();export{n as a};
