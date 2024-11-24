@@ -2,9 +2,11 @@
 @use './theme-colors' as colors;
 
 html {
-  @include mat.theme((
-    color: colors.$primary-palette,
-    tertiary: colors.$tertiary-palette,
-    density: 0
-  ))
+  @include mat.theme(
+    (
+      color: colors.$primary-palette,
+      tertiary: colors.$tertiary-palette,
+      density: 0,
+    )
+  );
 }

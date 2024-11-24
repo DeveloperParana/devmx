@@ -38,7 +38,6 @@ Para começar execute:
 pnpm dev
 ```
 
-
 ---
 
 ### Docker
@@ -50,9 +49,7 @@ Garanta que o arquivo `.env` está preenchido com as variáveis corretamente
 
 Para executar o mongodb com docker: `docker compose up -d`
 
-
 ### Tecnologiass
-
 
 **TypeScript**
 

@@ -7,7 +7,11 @@
     @for (presentation of data(); track presentation.id) {
     <a
       mat-list-item
-      [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] } }]"
+      [routerLink]="[
+        '/',
+        'apresentacoes',
+        { outlets: { right: [presentation.id] } }
+      ]"
     >
       <devmx-icon matListItemIcon name="presentation" />
       <div matListItemTitle>{{ presentation.title }}</div>
