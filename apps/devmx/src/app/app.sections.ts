@@ -6,6 +6,11 @@ export const appSections: SectionHeaderOptions[] = [
     expanded: true,
     links: [
       {
+        label: 'Conta',
+        route: ['/conta'],
+        icon: 'menu/home-4',
+      },
+      {
         label: 'Eventos',
         route: ['/eventos'],
         icon: 'calendar',

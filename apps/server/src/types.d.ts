@@ -17,6 +17,8 @@ declare namespace NodeJS {
 
     CODE_LIFE_TIME: string;
 
+    GITHUB_TOKEN: string
+
     NODE_ENV: 'production' | 'development';
   }
 }

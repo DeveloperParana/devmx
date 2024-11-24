@@ -12,6 +12,9 @@ export const env = {
   jwt: {
     secret: process.env.JWT_SECRET,
   },
+  github: {
+    token: process.env.GITHUB_TOKEN ?? '',
+  },
   auth: {
     codeLifeTime: +process.env.CODE_LIFE_TIME,
   },

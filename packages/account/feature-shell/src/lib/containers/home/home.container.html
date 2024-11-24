@@ -1,20 +1,65 @@
-<!-- <devmx-carousel [auto]="5000" duration="0.5s" class="account-banner">
-  <section *devmxCarouselItem>
-    <h2>Conte sobre você no seu perfil</h2>
-    <figure>
-      <img src="illustrations/perfil.svg" alt="Preencha seu perfil" />
-    </figure>
+<header class="banner">
+
+</header>
+
+<div class="cards">
+  <section class="event-container">
+    @defer (on timer(500ms)) {
+    <!--  -->
+    @if (eventFacade.response$ | async; as response) {
+    <devmx-event-card-list [data]="response.data" />
+    }
+    <!--  -->
+    } @placeholder {
+    <devmx-skeleton [rows]="4" />
+    }
+
+    <!--  -->
+
+    @defer (on timer(500ms)) {
+    <!--  -->
+    @if (albumFacade.response$ | async; as response) {
+    <devmx-album-card-list [data]="response.data" />
+    }
+    <!--  -->
+    } @placeholder {
+    <devmx-skeleton [rows]="4" />
+    }
   </section>
-  <section *devmxCarouselItem>
-    <h2>Acompanhe nosso calendário de eventos</h2>
-    <figure>
-      <img src="illustrations/calendario.svg" alt="Calendário de eventos" />
-    </figure>
+
+  <section class="skill-cards">
+    @defer (on timer(500ms)) {
+    <!--  -->
+    @if (jobOpeningFacade.response$ | async; as response) {
+    <devmx-job-opening-card-list [data]="response.data" />
+    }
+    <!--  -->
+    } @placeholder {
+    <devmx-skeleton [rows]="3" />
+    }
+
+    <!--  -->
+
+    @defer (on timer(500ms)) {
+    <!--  -->
+    @if (presentationFacade.response$ | async; as response) {
+    <devmx-presentation-card-list [data]="response.data" />
+    }
+    <!--  -->
+    } @placeholder {
+    <devmx-skeleton [rows]="4" />
+    }
   </section>
-  <section *devmxCarouselItem>
-    <h2>Divulgue seus projetos</h2>
-    <figure>
-      <img src="illustrations/projetos.svg" alt="Divulgue seus projetos" />
-    </figure>
+
+  <section class="contribution-cards">
+    @defer (on timer(500ms)) {
+    <!--  -->
+    @if (githubFacade.contributors$ | async; as contributors) {
+    <devmx-contributor-card-list [data]="contributors" />
+    }
+    <!--  -->
+    } @placeholder {
+    <devmx-skeleton [rows]="3" />
+    }
   </section>
-</devmx-carousel> -->
+</div>

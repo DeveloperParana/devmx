@@ -1,0 +1,18 @@
+<mat-card class="albums-card">
+  <mat-card-header>
+    <mat-card-title>Fotos</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (album of data(); track album.id) {
+    <a
+      mat-list-item
+      [routerLink]="['/', 'albuns', { outlets: { right: [album.id] } }]"
+    >
+      <devmx-icon matListItemIcon name="calendar" />
+      <div matListItemTitle>{{ album.title }}</div>
+      <div matListItemLine>{{ album.createdAt | date : 'longDate' }}</div>
+    </a>
+    }
+  </mat-list>
+</mat-card>

@@ -1,0 +1,18 @@
+<mat-card class="events-card">
+  <mat-card-header>
+    <mat-card-title>Eventos</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (event of data(); track event.id) {
+    <a
+      mat-list-item
+      [routerLink]="['/', 'eventos', { outlets: { right: [event.id] } }]"
+    >
+      <devmx-icon matListItemIcon name="calendar" />
+      <div matListItemTitle>{{ event.title }}</div>
+      <div matListItemLine>{{ event.date | date : 'longDate' }}</div>
+    </a>
+    }
+  </mat-list>
+</mat-card>

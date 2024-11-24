@@ -1,0 +1,24 @@
+<mat-card class="contributors-card">
+  <mat-card-header>
+    <mat-card-title>Contribuidores</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (contributor of data(); track contributor.id) {
+    <a
+      mat-list-item
+      target="_blank"
+      rel="noopener noreferrer"
+      [href]="contributor.html_url"
+    >
+      <img
+        matListItemAvatar
+        [src]="contributor.avatar_url"
+        [alt]="contributor.login"
+      />
+      <div matListItemTitle>{{ contributor.login }}</div>
+      <div matListItemLine>{{ contributor.contributions }} contribuições</div>
+    </a>
+    }
+  </mat-list>
+</mat-card>

@@ -59,7 +59,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'eventos',
+    redirectTo: 'conta',
   },
   {
     path: '**',
