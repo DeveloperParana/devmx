@@ -1,8 +1,12 @@
-import { Type, TypeConstructorParams } from '@devmx/shared-api-interfaces';
+import {
+  Type,
+  TypeConstructorParams,
+  AbstractConstructorParams,
+} from '@devmx/shared-api-interfaces';
 
 export function createClientProvider<T extends Type>(
   constructor: T,
-  dependencies: TypeConstructorParams<T>
+  dependencies: TypeConstructorParams<T> | AbstractConstructorParams<T>
 ) {
   return {
     provide: constructor,

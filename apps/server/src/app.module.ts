@@ -12,6 +12,7 @@ import { env } from './envs/env';
 import {
   SharedDatabaseModule,
   SharedMailerModule,
+  SharedGithubModule,
   SharedResourceModule,
 } from '@devmx/shared-resource';
 
@@ -21,6 +22,7 @@ import {
     SharedResourceModule.forRoot(env),
     SharedDatabaseModule,
     SharedMailerModule,
+    SharedGithubModule,
     LearnResourceModule,
     AccountResourceModule,
     PresentationResourceModule,

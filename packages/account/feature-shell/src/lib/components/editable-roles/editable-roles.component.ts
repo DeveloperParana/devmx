@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { RolesForm } from '../../forms';
+// import { RolesForm } from '../../forms';
 
 @Component({
   selector: 'devmx-editable-roles',
@@ -12,5 +12,5 @@ import { RolesForm } from '../../forms';
   standalone: true,
 })
 export class EditableRolesComponent {
-  form = new RolesForm();
+  // form = new RolesForm();
 }

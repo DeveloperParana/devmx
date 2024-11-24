@@ -37,10 +37,10 @@ import {
 } from '@angular/common/http';
 import {
   LOCALE_ID,
+  isDevMode,
   ErrorHandler,
   ApplicationConfig,
   provideZoneChangeDetection,
-  isDevMode,
 } from '@angular/core';
 
 registerLocaleData(pt, 'pt-BR', ptBr);

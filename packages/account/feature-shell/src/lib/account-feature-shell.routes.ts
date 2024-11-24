@@ -3,6 +3,7 @@ import { accountFeatureShellProviders } from './account-feature-shell.providers'
 import { roleGuard, rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Route } from '@angular/router';
 import {
+  HomeContainer,
   ProfileContainer,
   SecurityContainer,
   SettingsContainer,
@@ -74,9 +75,13 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'configuracoes',
+        component: HomeContainer,
       },
+      // {
+      //   path: '**',
+      //   pathMatch: 'full',
+      //   redirectTo: 'configuracoes',
+      // },
     ],
   },
 ];

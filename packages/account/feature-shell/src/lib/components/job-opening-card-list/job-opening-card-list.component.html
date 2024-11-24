@@ -1,0 +1,18 @@
+<mat-card class="job-openings-card">
+  <mat-card-header>
+    <mat-card-title>Vagas</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (job of data(); track job.id) {
+    <a
+      mat-list-item
+      [routerLink]="['/', 'carreiras', { outlets: { right: [job.id] } }]"
+    >
+      <devmx-icon matListItemIcon name="finance/bullseye" />
+      <div matListItemTitle>{{ job.title }}</div>
+      <div matListItemLine>{{ job.mode | jobMode }}</div>
+    </a>
+    }
+  </mat-list>
+</mat-card>

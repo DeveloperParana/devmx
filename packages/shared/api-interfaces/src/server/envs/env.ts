@@ -17,6 +17,10 @@ export abstract class Env {
     codeLifeTime: number;
   };
 
+  abstract github: {
+    token: string;
+  };
+
   abstract multer: {
     photos: {
       dest: string;

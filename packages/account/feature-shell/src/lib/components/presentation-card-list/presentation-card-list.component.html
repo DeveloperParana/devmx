@@ -1,0 +1,18 @@
+<mat-card class="presentations-card">
+  <mat-card-header>
+    <mat-card-title>Apresentações</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (presentation of data(); track presentation.id) {
+    <a
+      mat-list-item
+      [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] } }]"
+    >
+      <devmx-icon matListItemIcon name="calendar" />
+      <div matListItemTitle>{{ presentation.title }}</div>
+      <div matListItemLine>{{ presentation.format | presentationFormat }}</div>
+    </a>
+    }
+  </mat-list>
+</mat-card>
