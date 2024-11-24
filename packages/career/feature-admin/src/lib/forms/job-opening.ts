@@ -124,10 +124,4 @@ export class JobOpeningForm extends FormGroup<TypedForm<JobOpening>> {
       }
     }
   }
-
-  logErrors() {
-    console.log(this.errors);
-    console.log(this.skills.errors);
-    console.log(this.skills.childrenErrors());
-  }
 }

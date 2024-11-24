@@ -20,6 +20,13 @@ export const careerFeatureAdminRoutes: Route[] = [
     component: CareerFeatureAdminComponent,
     children: [
       {
+        path: 'minhas-ofertas/nova',
+        data: {
+          breadcrumb: 'Nova',
+        },
+        component: JobOpeningContainer,
+      },
+      {
         path: 'minhas-ofertas/:id',
         data: {
           breadcrumb: (data: { jobOpening: JobOpening }) => {

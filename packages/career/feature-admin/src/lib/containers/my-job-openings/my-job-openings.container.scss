@@ -2,19 +2,26 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   .job-openings-container {
     gap: 1em;
     padding: 1em;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-auto-flow: dense;
 
-    > * {
-      flex: 1;
-      max-width: 50%;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 1918px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1278px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(1, 1fr);
     }
 
     p {
@@ -51,33 +58,5 @@
   footer {
     display: flex;
     justify-content: flex-end;
-  }
-
-  @media (min-width: 1920px) {
-    .job-openings-container {
-      grid-template-columns: repeat(3, 1fr);
-      > * {
-        flex: 1;
-        max-width: 33%;
-      }
-    }
-  }
-
-  @media (max-width: 767px) {
-    .job-openings-container {
-      align-content: flex-start;
-      grid-template-columns: 1fr;
-
-      > * {
-        display: inline-flex;
-        min-width: 100%;
-      }
-    }
-  }
-
-  .add-button {
-    position: fixed;
-    right: 4em;
-    top: 2em;
   }
 }

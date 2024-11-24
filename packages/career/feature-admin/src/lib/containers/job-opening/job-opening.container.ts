@@ -4,26 +4,25 @@ import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EditableSkill } from '@devmx/shared-api-interfaces';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { SkillDialogService } from '@devmx/learn-ui-shared';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
+import { MessageService } from '@devmx/shared-ui-global';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
+import { SkillFacade } from '@devmx/learn-data-access';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { JobOpeningForm } from '../../forms';
-import { Subject } from 'rxjs';
+import { Subject, take } from 'rxjs';
 import {
   inject,
   Component,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { MessageService } from '@devmx/shared-ui-global';
-import { SkillDialogService } from '@devmx/learn-ui-shared';
-import { SkillFacade } from '@devmx/learn-data-access';
-import { EntityFacade } from '@devmx/shared-data-access';
 
 @Component({
   selector: 'devmx-career-admin-job-opening',
@@ -45,6 +44,8 @@ import { EntityFacade } from '@devmx/shared-data-access';
 })
 export class JobOpeningContainer {
   route = inject(ActivatedRoute);
+
+  router = inject(Router);
 
   cdr = inject(ChangeDetectorRef);
 
@@ -98,17 +99,29 @@ export class JobOpeningContainer {
   }
 
   onSubmit() {
-    this.form.logErrors();
-
     if (this.form.valid) {
       const value = this.form.getRawValue();
-      if (value.id) this.jobFacade.update(value);
-      else this.jobFacade.create(value);
+      if (value.id) {
+        const update$ = this.jobFacade.update(value);
+        update$.pipe(take(1)).subscribe(() => {
+          const path = ['/', 'carreiras', 'administracao', 'minhas-ofertas'];
+          this.router.navigate(path);
+        });
+      } else {
+        const redirect$ = this.jobFacade.create(value);
+        redirect$.pipe(take(1)).subscribe(({ id }) => {
+          this.router.navigate(this.#getPath(id));
+        });
+      }
 
       const message = `Armazenando informações`;
       return this.messageService.open({ message });
     }
 
     return this.form.markAllAsTouched();
+  }
+
+  #getPath(id: string) {
+    return ['/', 'carreiras', 'administracao', 'minhas-ofertas', id];
   }
 }

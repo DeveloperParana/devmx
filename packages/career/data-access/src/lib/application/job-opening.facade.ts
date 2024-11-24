@@ -7,6 +7,7 @@ import {
   DeleteJobOpeningUseCase,
   UpdateJobOpeningUseCase,
 } from '@devmx/career-domain/client';
+import { take, tap } from 'rxjs';
 
 export class JobOpeningFacade extends EntityFacade<JobOpening> {
   constructor(
@@ -36,11 +37,23 @@ export class JobOpeningFacade extends EntityFacade<JobOpening> {
   }
 
   create(data: EditableJobOpening) {
-    this.onCreate(this.createJobOpeningUseCase.execute(data));
+    const request$ = this.createJobOpeningUseCase.execute(data);
+
+    const onCreate = (selected: JobOpening) => this.setState({ selected });
+
+    this.onCreate(request$.pipe(tap(onCreate)));
+
+    return request$.pipe(take(1));
   }
 
   update(data: EditableJobOpening) {
-    this.onUpdate(this.updateJobOpeningUseCase.execute(data));
+    const request$ = this.updateJobOpeningUseCase.execute(data);
+
+    const onUpdate = (selected: JobOpening) => this.setState({ selected });
+
+    this.onUpdate(request$.pipe(tap(onUpdate)));
+
+    return request$.pipe(take(1));
   }
 
   delete(id: string) {
