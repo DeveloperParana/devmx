@@ -1,1 +1,0 @@
-import{yb as t}from"./chunk-UAGQGKX7.js";var a=(()=>{class e{transform(r){switch(r){case"hybrid":return"H\xEDbrido";case"office":return"Presencial";case"remote":return"Remoto"}}static \u0275fac=function(i){return new(i||e)};static \u0275pipe=t({name:"jobMode",type:e,pure:!0})}return e})();export{a};
