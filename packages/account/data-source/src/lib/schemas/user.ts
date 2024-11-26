@@ -13,7 +13,7 @@ import { Document } from 'mongoose';
 export class UserCollection extends Document implements User {
   override id: string;
 
-  @Prop({ required: true, unique: true, index: 'text', type: String })
+  @Prop({ required: true, unique: true, index: true, type: String })
   name: string;
 
   @Prop({ required: true, type: String })

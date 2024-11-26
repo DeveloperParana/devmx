@@ -7,7 +7,8 @@
     "@devmx/shared-ui-global": "0.0.1",
     "@devmx/shared-api-interfaces": "0.0.1",
     "@angular/material": "19.0.0",
-    "@angular/forms": "19.0.0"
+    "@angular/forms": "19.0.0",
+    "@angular/router": "19.0.0"
   },
   "sideEffects": false
 }

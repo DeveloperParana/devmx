@@ -8,6 +8,7 @@ import {
   FindUserByIDUseCase,
   DeleteUserUseCase,
   UpdateRolesUseCase,
+  FindUserByNameUseCase,
 } from '@devmx/account-domain/server';
 import {
   UserDto,
@@ -30,7 +31,8 @@ export class UsersFacade {
     private updateProfileUseCase: UpdateProfileUseCase,
     private updateSocialUseCase: UpdateSocialUseCase,
     private updatePasswordUseCase: UpdatePasswordUseCase,
-    private updateRolesUseCase: UpdateRolesUseCase
+    private updateRolesUseCase: UpdateRolesUseCase,
+    private findUserByNameUseCase: FindUserByNameUseCase
   ) {}
 
   async find(params: QueryParamsDto<User>) {
@@ -41,6 +43,11 @@ export class UsersFacade {
 
   async findOne(id: string) {
     const user = await this.findUserByIDUseCase.execute(id);
+    return plainToInstance(UserDto, user);
+  }
+
+  async findOneByName(name: string) {
+    const user = await this.findUserByNameUseCase.execute(name);
     return plainToInstance(UserDto, user);
   }
 
@@ -74,5 +81,6 @@ export function provideUsersFacade() {
     UpdateSocialUseCase,
     UpdatePasswordUseCase,
     UpdateRolesUseCase,
+    FindUserByNameUseCase,
   ]);
 }

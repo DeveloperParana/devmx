@@ -9,6 +9,8 @@ import {
 } from '../../lib/dtos';
 
 export abstract class UserService extends EntityService<User> {
+  abstract findOneByName(name: string): Observable<User>;
+
   abstract updatePassword(data: UpdatePassword): Observable<User | null>;
 
   abstract updateProfile(data: UpdateProfile): Observable<User | null>;

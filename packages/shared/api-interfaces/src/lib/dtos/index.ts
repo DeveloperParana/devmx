@@ -1,3 +1,4 @@
+export * from './about-user-schema';
 export * from './access-token';
 export * from './account-out';
 export * from './account-ref';

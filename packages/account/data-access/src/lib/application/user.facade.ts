@@ -1,5 +1,7 @@
 import { createClientProvider, EntityFacade } from '@devmx/shared-data-access';
 import { User } from '@devmx/shared-api-interfaces';
+import { toAboutUserSchema } from '../mappers';
+import { filter, map, take } from 'rxjs';
 import {
   FindUsersUseCase,
   DeleteUserUseCase,
@@ -8,6 +10,7 @@ import {
   UpdateProfileUseCase,
   UpdatePasswordUseCase,
   UpdateRolesUseCase,
+  FindUserByNameUseCase,
 } from '@devmx/account-domain/client';
 import {
   UpdateProfile,
@@ -15,7 +18,6 @@ import {
   UpdateSocial,
   UpdateRoles,
 } from '@devmx/account-domain';
-import { take } from 'rxjs';
 
 export class UserFacade extends EntityFacade<User> {
   profile$ = this.select((state) => {
@@ -36,6 +38,11 @@ export class UserFacade extends EntityFacade<User> {
     return null;
   });
 
+  schema$ = this.selected$.pipe(
+    filter((selected) => !!selected),
+    map((selected) => toAboutUserSchema(selected))
+  );
+
   constructor(
     private findUsersUseCase: FindUsersUseCase,
     private findUserByIDUseCase: FindUserByIDUseCase,
@@ -43,7 +50,8 @@ export class UserFacade extends EntityFacade<User> {
     private updatePasswordUseCase: UpdatePasswordUseCase,
     private updateSocialUseCase: UpdateSocialUseCase,
     private updateRolesUseCase: UpdateRolesUseCase,
-    private deleteUserUseCase: DeleteUserUseCase
+    private deleteUserUseCase: DeleteUserUseCase,
+    private findUserByNameUseCase: FindUserByNameUseCase
   ) {
     super({
       response: { data: [], items: 0, pages: 0 },
@@ -58,6 +66,10 @@ export class UserFacade extends EntityFacade<User> {
 
   loadOne(id: string) {
     this.onLoadOne(this.findUserByIDUseCase.execute(id));
+  }
+
+  loadOneByName(name: string) {
+    this.onLoadOne(this.findUserByNameUseCase.execute(name));
   }
 
   updateProfile(data: UpdateProfile) {
@@ -90,5 +102,6 @@ export function provideUserFacade() {
     UpdateSocialUseCase,
     UpdateRolesUseCase,
     DeleteUserUseCase,
+    FindUserByNameUseCase
   ]);
 }

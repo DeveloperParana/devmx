@@ -9,7 +9,8 @@
     "@angular/forms": "19.0.0",
     "rxjs": "^7.8.0",
     "@devmx/presentation-data-access": "0.0.1",
-    "@angular/common": "19.0.0"
+    "@angular/common": "19.0.0",
+    "@angular/router": "19.0.0"
   },
   "sideEffects": false
 }

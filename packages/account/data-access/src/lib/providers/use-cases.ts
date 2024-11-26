@@ -13,6 +13,7 @@ import {
   ValidateUserCodeUseCase,
   LoadAuthenticationUseCase,
   UpdateRolesUseCase,
+  FindUserByNameUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideCreateUserUseCase() {
@@ -25,6 +26,10 @@ export function provideDeleteUserUseCase() {
 
 export function provideFindUserByIDUseCase() {
   return createUseCaseProvider(FindUserByIDUseCase, [UserService]);
+}
+
+export function provideFindUserByNameUseCase() {
+  return createUseCaseProvider(FindUserByNameUseCase, [UserService]);
 }
 
 export function provideFindUsersUseCase() {
@@ -68,6 +73,7 @@ export function provideUseCases() {
     provideCreateUserUseCase(),
     provideDeleteUserUseCase(),
     provideFindUserByIDUseCase(),
+    provideFindUserByNameUseCase(),
     provideFindUsersUseCase(),
     provideLoadAuthenticationUseCase(),
     provideSendUserCodeUseCase(),

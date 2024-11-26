@@ -3,6 +3,13 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
+    path: 'sobre',
+    loadChildren: () =>
+      import('@devmx/account-feature-about').then(
+        (m) => m.accountFeatureAboutRoutes
+      ),
+  },
+  {
     path: 'evento',
     loadChildren: () =>
       import('@devmx/event-feature-page').then((m) => m.eventFeaturePageRoutes),
