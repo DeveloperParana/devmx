@@ -1,6 +1,7 @@
 export * from './create-user';
 export * from './delete-user';
 export * from './find-user-by-id';
+export * from './find-user-by-name';
 export * from './find-users';
 export * from './load-authentication';
 export * from './send-user-code';

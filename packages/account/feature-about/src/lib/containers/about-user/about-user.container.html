@@ -1,0 +1,29 @@
+@if (user$ | async; as user) {
+<header>
+  <h2>{{user.displayName}}</h2>
+  <h3>{{'@' + user.name}}</h3>
+</header>
+
+@if (user.profile && user.profile.minibio) {
+<mat-card>
+  <mat-card-content>
+    <devmx-markdown [content]="user.profile.minibio" />
+  </mat-card-content>
+</mat-card>
+}
+<!--  -->
+}
+
+<!--  -->
+
+<section>
+  @if (eventFacade.response$ | async; as response) {
+  <devmx-event-card-list [data]="response.data" />
+  }
+
+  <!--  -->
+
+  @if (presentationFacade.response$ | async; as response) {
+  <devmx-presentation-card-list [data]="response.data" />
+  }
+</section>

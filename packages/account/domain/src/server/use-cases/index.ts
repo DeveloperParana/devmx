@@ -2,6 +2,7 @@ export * from './authentication';
 export * from './create-user';
 export * from './delete-user';
 export * from './find-user-by-id';
+export * from './find-user-by-name';
 export * from './find-users';
 export * from './send-user-code';
 export * from './update-password';

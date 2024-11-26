@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { PresentationFormatPipe } from '@devmx/presentation-ui-shared';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { Presentation } from '@devmx/shared-api-interfaces';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { PresentationFormatPipe } from '../../pipes';
 import { RouterLink } from '@angular/router';
 
 @Component({

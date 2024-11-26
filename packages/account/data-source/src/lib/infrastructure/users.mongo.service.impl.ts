@@ -9,10 +9,17 @@ import {
   UserProfile,
   UserSocial,
 } from '@devmx/shared-api-interfaces';
+
 export class UsersMongoServiceImpl
   extends MongoService<UserCollection>
   implements UsersService
 {
+  async findByName(value: string) {
+    const name = new RegExp(value);
+    const entity = await this.entityModel.findOne({ name }).exec();
+    return entity ? (entity.toJSON() as UserCollection) : null;
+  }
+
   async updateCode(id: string, code: UserCode) {
     const updated = await this.entityModel
       .findByIdAndUpdate(id, { code })

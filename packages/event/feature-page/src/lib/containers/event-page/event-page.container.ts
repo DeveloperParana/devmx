@@ -13,7 +13,6 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { filter, map } from 'rxjs';
 import {
   inject,
-  Inject,
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
@@ -54,7 +53,7 @@ import {
   ],
 })
 export class EventPageContainer {
-  authFacade = Inject(AuthenticationFacade);
+  authFacade = inject(AuthenticationFacade);
 
   route = inject(ActivatedRoute);
 

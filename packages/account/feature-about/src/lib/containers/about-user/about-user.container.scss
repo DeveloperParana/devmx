@@ -1,0 +1,14 @@
+:host {
+  flex: 1;
+  gap: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  & > section {
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+  }
+}

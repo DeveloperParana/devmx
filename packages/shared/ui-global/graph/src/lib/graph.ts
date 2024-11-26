@@ -46,6 +46,6 @@ export class Graph {
   }
 
   #getSelector(property: string) {
-    return `meta[property="og:${property}"]`;
+    return `property="og:${property}"`;
   }
 }

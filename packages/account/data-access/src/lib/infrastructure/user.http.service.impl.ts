@@ -13,6 +13,12 @@ export class UserHttpServiceImpl
   extends HttpService<User>
   implements UserService
 {
+  findOneByName(name: string) {
+    const url = [this.url, 'about', name];
+
+    return this.http.get<User>(url.join('/'));
+  }
+
   updatePassword(data: UpdatePassword) {
     const url = [this.url, data.id, 'password'];
 

@@ -46,6 +46,19 @@ export class UsersController {
     }
   }
 
+  @Get('about/:name')
+  @Allowed()
+  @ApiOkResponse({ type: UserDto })
+  async findOneByName(@Param('name') name: string) {
+    const user = await this.usersFacade.findOneByName(name);
+
+    if (!user) {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+
+    return user;
+  }
+
   @Get(':id')
   @Allowed()
   @ApiOkResponse({ type: UserDto })

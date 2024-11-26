@@ -1,6 +1,8 @@
+import { PresentationCardListComponent } from '@devmx/presentation-ui-shared';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
+import { EventCardListComponent } from '@devmx/event-ui-shared';
 import { JobOpeningFacade } from '@devmx/career-data-access';
 import { GithubFacade } from '@devmx/shared-data-access';
 import { MatCardModule } from '@angular/material/card';
@@ -9,10 +11,8 @@ import { EventFacade } from '@devmx/event-data-access';
 import { AsyncPipe } from '@angular/common';
 import {
   AlbumCardListComponent,
-  EventCardListComponent,
   JobOpeningCardListComponent,
   ContributorCardListComponent,
-  PresentationCardListComponent,
 } from '../../components';
 @Component({
   selector: 'devmx-home',

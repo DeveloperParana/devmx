@@ -25,6 +25,7 @@ import {
   Param,
   Delete,
   Controller,
+  NotFoundException,
 } from '@nestjs/common';
 
 @ApiTags('Apresentações')
@@ -61,10 +62,7 @@ export class PresentationsController {
     try {
       return await this.presentationsFacade.findOne(id);
     } catch (err) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Apresentação não encontrada',
-      });
+      throw new NotFoundException('Apresentação não encontrada');
     }
   }
 
@@ -79,10 +77,7 @@ export class PresentationsController {
     const presentation = await this.presentationsFacade.findOne(id);
 
     if (!presentation) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Apresentação não encontrada',
-      });
+      throw new NotFoundException('Apresentação não encontrada');
     }
 
     if (presentation.owner.id !== user) {
@@ -104,10 +99,7 @@ export class PresentationsController {
     const presentation = await this.presentationsFacade.findOne(id);
 
     if (!presentation) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Apresentação não encontrada',
-      });
+      throw new NotFoundException('Apresentação não encontrada');
     }
 
     if (presentation.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
