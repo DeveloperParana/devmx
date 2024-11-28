@@ -1,0 +1,12 @@
+<div formGroupName="contact">
+  <mat-form-field>
+    <mat-label>E-mail</mat-label>
+    <input matInput type="email" formControlName="email" autocomplete="email" />
+    <mat-error>Inválido</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Telefone</mat-label>
+    <input matInput formControlName="phone" autocomplete="mobile" devmxPhone />
+    <mat-error>Inválido</mat-error>
+  </mat-form-field>
+</div>

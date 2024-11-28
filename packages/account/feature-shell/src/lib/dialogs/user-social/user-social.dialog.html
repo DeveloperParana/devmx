@@ -1,0 +1,26 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-dialog-content class="user-social-dialog-content">
+    <mat-form-field>
+      <mat-select formControlName="type">
+        @for (option of options(); track option.value) {
+        <mat-option [value]="option.value"> {{option.viewValue}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    @if (form.value.type === 'whatsApp') {
+    <mat-form-field>
+      <input matInput formControlName="username" devmxPhone maxlength="15" />
+      <mat-error>Inválido</mat-error>
+    </mat-form-field>
+    } @else {
+    <mat-form-field>
+      <input matInput formControlName="username" />
+      <mat-error>Inválido</mat-error>
+    </mat-form-field>
+    }
+  </mat-dialog-content>
+  <mat-dialog-actions class="user-social-dialog-actions">
+    <button type="button" mat-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button>Salvar</button>
+  </mat-dialog-actions>
+</form>

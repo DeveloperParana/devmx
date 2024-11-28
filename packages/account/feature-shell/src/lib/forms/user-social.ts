@@ -1,9 +1,9 @@
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TypedForm } from '@devmx/shared-ui-global/forms';
-import { UserSocial } from '@devmx/shared-api-interfaces';
+import { UserSocial, UserSocialType } from '@devmx/shared-api-interfaces';
 
-export class UserSocialForm extends FormGroup<TypedForm<UserSocial>> {
-  constructor(value?: UserSocial) {
+export class UserSocialItemForm extends FormGroup<TypedForm<UserSocial>> {
+  constructor(value?: Partial<UserSocial>) {
     super({
       type: new FormControl('website', {
         nonNullable: true,
@@ -21,12 +21,27 @@ export class UserSocialForm extends FormGroup<TypedForm<UserSocial>> {
   }
 }
 
-export class UserSocialList extends FormArray<UserSocialForm> {
+export class UserSocialForm extends FormArray<UserSocialItemForm> {
   constructor() {
     super([]);
   }
 
   add(value?: UserSocial) {
-    this.push(new UserSocialForm(value));
+    this.push(new UserSocialItemForm(value));
+  }
+
+  has(type?: UserSocialType) {
+    return this.value.some((item) => item.type === type);
+  }
+
+  override patchValue(
+    value: Partial<UserSocial>[],
+    options?: { onlySelf?: boolean; emitEvent?: boolean }
+  ): void {
+    for (const item of value) {
+      if (!this.has(item.type)) {
+        this.push(new UserSocialItemForm(item), options);
+      }
+    }
   }
 }

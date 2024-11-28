@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1em;
+  overflow: hidden;
+  background-color: white;
+
+  .canvas-wrapper {
+    position: relative;
+  }
+
+  .canvas-overlay {
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    // background: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .canvas-overlay::before {
+    content: '';
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: calc(100% - 2em);
+    height: calc(100% - 2em);
+    // transform: translate(-50%, -50%);
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
+  }
+
+  footer  {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

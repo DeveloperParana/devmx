@@ -191,6 +191,9 @@
       "@devmx/shared-ui-global/editor": [
         "packages/shared/ui-global/editor/src/index.ts"
       ],
+      "@devmx/shared-ui-global/empty": [
+        "packages/shared/ui-global/empty/src/index.ts"
+      ],
       "@devmx/shared-ui-global/filter": [
         "packages/shared/ui-global/filter/src/index.ts"
       ],
@@ -211,6 +214,9 @@
       ],
       "@devmx/shared-ui-global/layout": [
         "packages/shared/ui-global/layout/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/markdown": [
+        "packages/shared/ui-global/markdown/src/index.ts"
       ],
       "@devmx/shared-ui-global/script": [
         "packages/shared/ui-global/script/src/index.ts"

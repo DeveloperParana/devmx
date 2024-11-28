@@ -1,0 +1,20 @@
+<div class="canvas-wrapper">
+  <canvas devmxCropPhoto width="400" height="400"></canvas>
+  <div class="canvas-overlay"></div>
+</div>
+
+<footer>
+  <div>
+    <button type="button" mat-icon-button (click)="zoomIn()">
+      <devmx-icon name="zoom-plus" />
+    </button>
+
+    <button type="button" mat-icon-button (click)="zoomOut()">
+      <devmx-icon name="zoom-minus" />
+    </button>
+  </div>
+
+  <button mat-icon-button (click)="crop()">
+    <devmx-icon name="menu/crop" />
+  </button>
+</footer>

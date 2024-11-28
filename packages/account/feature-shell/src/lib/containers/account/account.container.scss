@@ -1,0 +1,46 @@
+:host {
+  flex: 1;
+  gap: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  max-width: 980px;
+
+  form {
+    gap: 2em;
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .user-avatar {
+    width: 12em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside {
+    gap: 2em;
+    width: 16em;
+    display: flex;
+    padding: 0 2em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section {
+    flex: 1;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2em;
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

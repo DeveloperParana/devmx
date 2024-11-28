@@ -9,6 +9,7 @@ import {
   DeleteUserUseCase,
   UpdateRolesUseCase,
   FindUserByNameUseCase,
+  UpdateUserUseCase,
 } from '@devmx/account-domain/server';
 import {
   UserDto,
@@ -16,6 +17,7 @@ import {
   UpdateProfileDto,
   UpdatePasswordDto,
   UpdateRolesDto,
+  UpdateUserDto,
 } from '../dtos';
 import {
   PageDto,
@@ -29,6 +31,7 @@ export class UsersFacade {
     private findUserByIDUseCase: FindUserByIDUseCase,
     private deleteUserUseCase: DeleteUserUseCase,
     private updateProfileUseCase: UpdateProfileUseCase,
+    private updateUserUseCase: UpdateUserUseCase,
     private updateSocialUseCase: UpdateSocialUseCase,
     private updatePasswordUseCase: UpdatePasswordUseCase,
     private updateRolesUseCase: UpdateRolesUseCase,
@@ -49,6 +52,10 @@ export class UsersFacade {
   async findOneByName(name: string) {
     const user = await this.findUserByNameUseCase.execute(name);
     return plainToInstance(UserDto, user);
+  }
+
+  async update(data: UpdateUserDto) {
+    return await this.updateUserUseCase.execute(data);
   }
 
   async updateProfile(data: UpdateProfileDto) {
@@ -78,6 +85,7 @@ export function provideUsersFacade() {
     FindUserByIDUseCase,
     DeleteUserUseCase,
     UpdateProfileUseCase,
+    UpdateUserUseCase,
     UpdateSocialUseCase,
     UpdatePasswordUseCase,
     UpdateRolesUseCase,

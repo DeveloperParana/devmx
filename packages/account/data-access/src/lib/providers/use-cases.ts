@@ -14,6 +14,8 @@ import {
   LoadAuthenticationUseCase,
   UpdateRolesUseCase,
   FindUserByNameUseCase,
+  UpdatePhotoUseCase,
+  UpdateUserUseCase,
 } from '@devmx/account-domain/client';
 
 export function provideCreateUserUseCase() {
@@ -54,6 +56,14 @@ export function provideUpdateProfileUseCase() {
   return createUseCaseProvider(UpdateProfileUseCase, [UserService]);
 }
 
+export function provideUpdateUserUseCase() {
+  return createUseCaseProvider(UpdateUserUseCase, [UserService]);
+}
+
+export function provideUpdatePhotoUseCase() {
+  return createUseCaseProvider(UpdatePhotoUseCase, [UserService]);
+}
+
 export function provideUpdateSocialUseCase() {
   return createUseCaseProvider(UpdateSocialUseCase, [UserService]);
 }
@@ -78,7 +88,9 @@ export function provideUseCases() {
     provideLoadAuthenticationUseCase(),
     provideSendUserCodeUseCase(),
     provideUpdatePasswordUseCase(),
+    provideUpdatePhotoUseCase(),
     provideUpdateProfileUseCase(),
+    provideUpdateUserUseCase(),
     provideUpdateSocialUseCase(),
     provideUpdateRolesUseCase(),
     provideValidateUserCodeUseCase(),

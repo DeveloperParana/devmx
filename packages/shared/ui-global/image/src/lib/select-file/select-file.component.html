@@ -3,7 +3,7 @@
   hidden
   type="file"
   name="file"
-  accept="image/png,image/jpg,image/svg,image/webp"
+  [accept]="accept()"
   (change)="onFilesChange(input.files)"
 />
 

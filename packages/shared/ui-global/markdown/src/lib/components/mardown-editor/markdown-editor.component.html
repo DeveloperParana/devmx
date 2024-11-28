@@ -1,0 +1,15 @@
+<mat-form-field>
+  <mat-label>{{ label() }}</mat-label>
+  <textarea
+    matInput
+    #textareaRef
+    cdkTextareaAutosize
+    [formControl]="control"
+    #autosize="cdkTextareaAutosize"
+    [cdkAutosizeMinRows]="minRows()"
+    [cdkAutosizeMaxRows]="maxRows()"
+    (keydown)="handleKeydown($event)"
+  ></textarea>
+  <mat-hint>{{ hint() }}</mat-hint>
+  <mat-error>{{ error() }}</mat-error>
+</mat-form-field>

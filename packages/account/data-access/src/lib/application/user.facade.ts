@@ -11,12 +11,16 @@ import {
   UpdatePasswordUseCase,
   UpdateRolesUseCase,
   FindUserByNameUseCase,
+  UpdatePhotoUseCase,
+  UpdateUserUseCase,
 } from '@devmx/account-domain/client';
 import {
   UpdateProfile,
   UpdatePassword,
   UpdateSocial,
   UpdateRoles,
+  UpdatePhoto,
+  UpdateUser,
 } from '@devmx/account-domain';
 
 export class UserFacade extends EntityFacade<User> {
@@ -47,6 +51,8 @@ export class UserFacade extends EntityFacade<User> {
     private findUsersUseCase: FindUsersUseCase,
     private findUserByIDUseCase: FindUserByIDUseCase,
     private updateProfileUseCase: UpdateProfileUseCase,
+    private updateUserUseCase: UpdateUserUseCase,
+    private updatePhotoUseCase: UpdatePhotoUseCase,
     private updatePasswordUseCase: UpdatePasswordUseCase,
     private updateSocialUseCase: UpdateSocialUseCase,
     private updateRolesUseCase: UpdateRolesUseCase,
@@ -72,8 +78,16 @@ export class UserFacade extends EntityFacade<User> {
     this.onLoadOne(this.findUserByNameUseCase.execute(name));
   }
 
+  update(data: UpdateUser) {
+    this.updateUserUseCase.execute(data).pipe(take(1)).subscribe();
+  }
+
   updateProfile(data: UpdateProfile) {
     this.updateProfileUseCase.execute(data).pipe(take(1)).subscribe();
+  }
+
+  updatePhoto(data: UpdatePhoto) {
+    this.updatePhotoUseCase.execute(data).pipe(take(1)).subscribe();
   }
 
   updatePassword(data: UpdatePassword) {
@@ -98,10 +112,12 @@ export function provideUserFacade() {
     FindUsersUseCase,
     FindUserByIDUseCase,
     UpdateProfileUseCase,
+    UpdateUserUseCase,
+    UpdatePhotoUseCase,
     UpdatePasswordUseCase,
     UpdateSocialUseCase,
     UpdateRolesUseCase,
     DeleteUserUseCase,
-    FindUserByNameUseCase
+    FindUserByNameUseCase,
   ]);
 }

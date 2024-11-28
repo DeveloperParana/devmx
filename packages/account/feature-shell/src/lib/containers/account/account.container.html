@@ -1,0 +1,25 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <section>
+    <devmx-account-user />
+
+    <devmx-account-contact />
+
+    <devmx-account-profile />
+
+    <footer>
+      <button mat-flat-button>Salvar</button>
+    </footer>
+  </section>
+
+  <aside>
+    <div class="user-avatar">
+      <devmx-avatar [src]="photo()" />
+      <devmx-select-file
+        class="select-file"
+        (selectChange)="changePhoto($event)"
+      />
+    </div>
+
+    <devmx-account-social />
+  </aside>
+</form>
