@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { Icon, IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MimeType } from '@devmx/shared-api-interfaces';
+import {
+  input,
+  output,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'devmx-select-file',
@@ -10,11 +16,20 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatButtonModule, IconComponent],
 })
 export class SelectFileComponent {
-  selectedChange = output<File>();
+  icon = input<Icon>('tech/folder-opened');
+
+  accept = input<MimeType[]>([
+    'image/png',
+    'image/jpeg',
+    'image/svg+xml',
+    'image/webp',
+  ]);
+
+  selectChange = output<File>();
 
   onFilesChange(files: FileList | null) {
     const [file] = Array.from(files ?? []);
 
-    if (file) this.selectedChange.emit(file);
+    if (file) this.selectChange.emit(file);
   }
 }

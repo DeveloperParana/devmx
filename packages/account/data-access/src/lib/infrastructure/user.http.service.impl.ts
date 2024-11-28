@@ -4,6 +4,7 @@ import { Env } from '@devmx/shared-api-interfaces/client';
 import { User } from '@devmx/shared-api-interfaces';
 import {
   UpdatePassword,
+  UpdatePhoto,
   UpdateProfile,
   UpdateRoles,
   UpdateSocial,
@@ -29,6 +30,18 @@ export class UserHttpServiceImpl
     const url = [this.url, data.id, 'profile'];
 
     return this.http.patch<User>(url.join('/'), data);
+  }
+
+  updatePhoto({id, ...data}: UpdatePhoto) {
+    const form = new FormData();
+    form.append('photo', data.photo);
+    form.append('gender', data.gender ?? '');
+    form.append('minibio', data.minibio ?? '');
+    form.append('birthday', data.birthday ?? '');
+
+    const url = [this.url, id, 'photo'];
+
+    return this.http.post<User>(url.join('/'), form);
   }
 
   updateSocial(data: UpdateSocial) {

@@ -1,0 +1,25 @@
+:host {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-view {
+  padding: 1em;
+  gap: 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  p {
+    margin-bottom: 24px !important;
+    line-height: 24px;
+    padding: 0;
+    white-space: pre-wrap;
+  }
+}

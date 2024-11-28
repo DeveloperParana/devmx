@@ -2,4 +2,11 @@
   display: inline-flex;
   border-radius: 50%;
   overflow: hidden;
+  width: inherit;
+  height: auto;
+
+  img {
+    width: inherit;
+    height: auto;
+  }
 }

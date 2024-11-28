@@ -15,6 +15,7 @@ import {
   DeleteUserUseCase,
   UpdateRolesUseCase,
   FindUserByNameUseCase,
+  UpdateUserUseCase,
 } from '@devmx/account-domain/server';
 
 export function provideSendUserCodeUseCase() {
@@ -61,6 +62,10 @@ export function provideUpdatePasswordUseCase() {
   ]);
 }
 
+export function provideUpdateUserUseCase() {
+  return createUseCaseProvider(UpdateUserUseCase, [UsersService]);
+}
+
 export function provideUpdateProfileUseCase() {
   return createUseCaseProvider(UpdateProfileUseCase, [UsersService]);
 }
@@ -85,6 +90,7 @@ export function provideUseCases() {
     provideDeleteUserUseCase(),
     provideUpdatePasswordUseCase(),
     provideUpdateProfileUseCase(),
+    provideUpdateUserUseCase(),
     provideUpdateSocialUseCase(),
     provideUpdateRolesUseCase(),
   ];

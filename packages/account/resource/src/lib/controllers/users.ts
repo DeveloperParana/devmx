@@ -1,4 +1,9 @@
-import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiConsumes,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { exceptionByError } from '@devmx/shared-resource';
 import { AuthUser } from '@devmx/shared-api-interfaces';
 import {
@@ -16,6 +21,7 @@ import {
   UpdateProfileDto,
   UpdatePasswordDto,
   UpdateRolesDto,
+  UpdateUserDto,
 } from '@devmx/account-data-source';
 import {
   Get,
@@ -28,7 +34,11 @@ import {
   NotFoundException,
   ForbiddenException,
   BadRequestException,
+  Post,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Usuários')
 @Controller('users')
@@ -70,6 +80,31 @@ export class UsersController {
     }
 
     return user;
+  }
+
+  @ApiBearerAuth()
+  @Patch(':id')
+  @ApiOkResponse({ type: UserDto })
+  async update(
+    @User('id') auth: string,
+    @Param('id') id: string,
+    @Body() data: UpdateUserDto
+  ) {
+    const user = await this.usersFacade.findOne(id);
+
+    if (!user) {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+
+    if (user.id !== auth) {
+      throw new ForbiddenException('Acesso negado');
+    }
+
+    try {
+      return await this.usersFacade.update(data);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
   @ApiBearerAuth()
@@ -117,6 +152,34 @@ export class UsersController {
 
     try {
       return await this.usersFacade.updateSocial(data);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
+  }
+
+  @Post(':id/photo')
+  @UseInterceptors(FileInterceptor('photo'))
+  @ApiConsumes('multipart/form-data')
+  async updatePhotoFile(
+    @User('id') auth: string,
+    @Param('id') id: string,
+    @Body() data: UpdateProfileDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    const user = await this.usersFacade.findOne(id);
+
+    if (!user) {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+
+    if (auth != id) {
+      throw new ForbiddenException('Acesso negado');
+    }
+
+    data.photo = file.filename;
+
+    try {
+      return await this.usersFacade.updateProfile({ ...data, id });
     } catch (err) {
       throw new BadRequestException(err);
     }

@@ -1,0 +1,20 @@
+<mat-form-field>
+  <mat-label>Seu nome</mat-label>
+  <input
+    matInput
+    formControlName="displayName"
+    autocomplete="name"
+    autofocus
+  />
+  <mat-error>Obrigatório</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Seu usuário</mat-label>
+  <input matInput formControlName="name" autocomplete="username" />
+  <mat-error>
+    @if (form.controls.name.hasError('pattern')) { Use apenas letras do
+    alfabeto minúsculas } @if (form.controls.name.hasError('required')) {
+    Obrigatório }
+  </mat-error>
+</mat-form-field>

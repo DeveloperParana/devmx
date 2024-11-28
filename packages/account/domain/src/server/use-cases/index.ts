@@ -9,3 +9,4 @@ export * from './update-password';
 export * from './update-profile';
 export * from './update-roles';
 export * from './update-social';
+export * from './update-user';

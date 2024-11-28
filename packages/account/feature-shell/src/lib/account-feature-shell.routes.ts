@@ -3,12 +3,9 @@ import { accountFeatureShellProviders } from './account-feature-shell.providers'
 import { roleGuard, rolesGuard } from '@devmx/shared-ui-global/guards';
 import { Route } from '@angular/router';
 import {
+  AccountContainer,
   HomeContainer,
-  ProfileContainer,
-  SecurityContainer,
-  SettingsContainer,
   SignOutContainer,
-  SocialContainer,
 } from './containers';
 
 export const accountFeatureShellRoutes: Route[] = [
@@ -48,26 +45,7 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: 'configuracoes',
-        component: SettingsContainer,
-        children: [
-          {
-            path: 'perfil',
-            component: ProfileContainer,
-          },
-          {
-            path: 'social',
-            component: SocialContainer,
-          },
-          {
-            path: 'seguranca',
-            component: SecurityContainer,
-          },
-          {
-            path: '',
-            pathMatch: 'prefix',
-            redirectTo: 'perfil',
-          },
-        ],
+        component: AccountContainer,
       },
       {
         path: 'sair',
@@ -77,11 +55,11 @@ export const accountFeatureShellRoutes: Route[] = [
         path: '',
         component: HomeContainer,
       },
-      // {
-      //   path: '**',
-      //   pathMatch: 'full',
-      //   redirectTo: 'configuracoes',
-      // },
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: 'configuracoes',
+      },
     ],
   },
 ];

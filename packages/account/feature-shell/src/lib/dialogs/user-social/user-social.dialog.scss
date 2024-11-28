@@ -1,0 +1,15 @@
+:host {
+
+  .user-social-dialog {
+    &-content {
+      gap: 1em;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

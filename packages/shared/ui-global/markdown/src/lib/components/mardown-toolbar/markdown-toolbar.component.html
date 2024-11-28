@@ -1,0 +1,31 @@
+<div>
+  <mat-checkbox [checked]="preview()" (change)="togglePreview()">
+    Visualização
+  </mat-checkbox>
+  <menu>
+    <button type="button" mat-mini-fab (click)="applyFormat('### ', '')">
+      <devmx-icon name="text/heading" />
+    </button>
+    <button type="button" mat-mini-fab (click)="applyFormat('**')">
+      <devmx-icon name="text/bold" />
+    </button>
+    <button type="button" mat-mini-fab (click)="applyFormat('_')">
+      <devmx-icon name="text/italic" />
+    </button>
+    <button type="button" mat-mini-fab (click)="applyFormat('`')">
+      <devmx-icon name="software/code" />
+    </button>
+    <button type="button" mat-mini-fab (click)="applyFormat('1. ', '')">
+      <devmx-icon name="text/ordered-list" />
+    </button>
+    <button type="button" mat-mini-fab (click)="applyFormat('- ', '')">
+      <devmx-icon name="text/unordered-list" />
+    </button>
+  </menu>
+</div>
+
+@if (preview()) {
+<ng-content select="devmx-markdown-view" />
+} @else {
+<ng-content select="devmx-markdown-editor" />
+}

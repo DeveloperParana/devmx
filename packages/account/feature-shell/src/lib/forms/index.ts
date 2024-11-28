@@ -1,3 +1,4 @@
-export * from './update-password';
-export * from './update-profile';
-export * from './update-social';
+export * from './user-contact';
+export * from './user-profile';
+export * from './user-social';
+export * from './user';
