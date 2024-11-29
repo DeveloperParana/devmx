@@ -12,6 +12,7 @@ export * from './update-user';
 export * from './user-contact';
 export * from './user-profile';
 export * from './user-roles';
+export * from './user-skill';
 export * from './user-social';
 export * from './user';
 export * from './validate-user-code';

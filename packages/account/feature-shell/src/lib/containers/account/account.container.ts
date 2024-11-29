@@ -2,6 +2,7 @@ import { SelectFileComponent } from '@devmx/shared-ui-global/image';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { SkillsComponent } from './skills/skills.component';
 import { SocialComponent } from './social/social.component';
 import { UserPhoto, provideUserPhoto } from '../../dialogs';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,6 +24,7 @@ import {
   AuthenticationFacade,
 } from '@devmx/account-data-access';
 
+
 @Component({
   selector: 'devmx-account',
   templateUrl: './account.container.html',
@@ -35,6 +37,7 @@ import {
     ProfileComponent,
     ContactComponent,
     SocialComponent,
+    SkillsComponent,
     SelectFileComponent,
     MatButtonModule,
     AvatarComponent,

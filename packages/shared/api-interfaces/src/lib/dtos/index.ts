@@ -18,6 +18,7 @@ export * from './editable-photo';
 export * from './editable-presentation';
 export * from './editable-skill';
 export * from './editable-subject';
+export * from './editable-user-skill';
 export * from './editable-user';
 export * from './event-out';
 export * from './event-page-schema';

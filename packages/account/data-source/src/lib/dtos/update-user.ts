@@ -1,8 +1,14 @@
-import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { UpdateProfileDto } from './update-profile';
 import { UpdateContactDto } from './update-contact';
 import { Exclude, Type } from 'class-transformer';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { UserSocialDto } from './user-social';
 import { RolesDto } from './roles';
 import {
@@ -10,6 +16,7 @@ import {
   EditableUser,
   UserPassword,
 } from '@devmx/shared-api-interfaces';
+import { UserSkillDto } from './user-skill';
 
 export class UpdateUserDto implements EditableUser {
   @ApiProperty()
@@ -29,6 +36,13 @@ export class UpdateUserDto implements EditableUser {
 
   @Exclude()
   roles: RolesDto;
+
+  @IsArray()
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => UserSkillDto)
+  @ApiPropertyOptional({ type: () => [UserSkillDto] })
+  skills: UserSkillDto[];
 
   @ApiProperty()
   @ValidateNested()

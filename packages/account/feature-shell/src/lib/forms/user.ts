@@ -5,6 +5,7 @@ import { UserProfileForm } from './user-profile';
 import { UserContactForm } from './user-contact';
 import { UserSocialForm } from './user-social';
 import { UserRolesForm } from './user-roles';
+import { UserSkillsForm } from './user-skill';
 
 export class UserForm extends FormGroup<TypedForm<UpdateUser>> {
   constructor() {
@@ -26,6 +27,7 @@ export class UserForm extends FormGroup<TypedForm<UpdateUser>> {
       social: new UserSocialForm(),
       active: new FormControl(),
       roles: new UserRolesForm(),
+      skills: new UserSkillsForm(),
     });
   }
 
@@ -43,6 +45,10 @@ export class UserForm extends FormGroup<TypedForm<UpdateUser>> {
 
   get roles() {
     return this.controls.roles as UserRolesForm;
+  }
+
+  get skills() {
+    return this.controls.skills as UserSkillsForm;
   }
 
   patch(value: Partial<UpdateUser>) {

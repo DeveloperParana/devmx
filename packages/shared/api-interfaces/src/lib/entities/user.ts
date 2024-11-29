@@ -3,6 +3,7 @@ import { UserCode } from './user-code';
 import { UserContact } from './user-contact';
 import { UserPassword } from './user-password';
 import { UserProfile } from './user-profile';
+import { UserSkill } from './user-skill';
 import { UserSocial } from './user-social';
 
 export interface User {
@@ -15,6 +16,8 @@ export interface User {
   active: boolean;
 
   roles: Roles;
+
+  skills?: UserSkill[];
 
   contact: UserContact;
 

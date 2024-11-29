@@ -1,5 +1,6 @@
 import { PresentationCardListComponent } from '@devmx/presentation-ui-shared';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
 import { AuthenticationFacade } from '@devmx/account-data-access';
@@ -23,6 +24,7 @@ import { filter, map, take } from 'rxjs';
     MarkdownComponent,
     PresentationCardListComponent,
     EventCardListComponent,
+    MatProgressBarModule,
     AsyncPipe,
   ],
   standalone: true,
