@@ -1,5 +1,4 @@
 import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
-import { AuthenticationFacade } from '@devmx/account-data-access';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -53,8 +52,6 @@ import {
   ],
 })
 export class EventPageContainer {
-  authFacade = inject(AuthenticationFacade);
-
   route = inject(ActivatedRoute);
 
   event$ = this.route.data.pipe(
