@@ -1,11 +1,19 @@
 @use '@angular/material' as mat;
 
 :host {
+  flex: 1;
   display: flex;
   flex-direction: column;
 
   .app-shell-container {
     height: 100%;
+
+    .sidenav-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-height: 100vh;
+    }
   }
 
   .mat-toolbar.mat-primary {
@@ -15,15 +23,22 @@
   }
 
   .app-shell-scroll-wrapper {
+    flex: 1;
     margin: 1em;
-    height: calc(100dvh - 32px);
+    display: flex;
+    flex-direction: column;
+    // height: calc(100dvh - 64px);
+    height: 100%;
     overflow: auto;
     border-radius: 16px;
     box-sizing: border-box;
   }
 
   .app-shell-content {
-    max-height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
     @media (pointer: fine) {
@@ -33,6 +48,24 @@
       }
       &::-webkit-scrollbar-thumb {
         border-radius: 4px;
+      }
+    }
+  }
+
+  .app-shell-container {
+    .app-shell-scroll-wrapper {
+      height: calc(100dvh - 32px);
+
+      .app-shell-content {
+        max-height: calc(100vh - 32px);
+      }
+    }
+
+    .mat-toolbar + .app-shell-scroll-wrapper {
+      max-height: calc(100dvh - 64px);
+
+      .app-shell-content {
+        max-height: calc(100vh - 96px);
       }
     }
   }
