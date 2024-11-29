@@ -8,6 +8,6 @@ export function toAboutUserSchema(user: User): AboutUserSchema {
     // image: 'janedoe.jpg',
     // jobTitle: 'Professor',
     email: `mailto:${user.contact.email}`,
-    url: `https://devparana.mx/sobre/${user.name}`,
+    url: `https://devparana.mx/#/sobre/${user.name}`,
   };
 }
