@@ -1,0 +1,36 @@
+<header>
+  <devmx-job-opening-experience-filter
+  (filterChange)="onExperienceFilterChange($event)"
+  />
+  <devmx-job-opening-mode-filter
+  (filterChange)="onModeFilterChange($event)"
+  />
+</header>
+
+<!--  -->
+@if (jobOpeningFacade.response$ | async; as response) {
+
+<div class="job-openings-container">
+  @for (jobOpening of response.data; track jobOpening.id) {
+  <!--  -->
+  @defer (on viewport) {
+  <a [routerLink]="['/', 'carreiras', { outlets: { right: [jobOpening.id] }}]">
+    <devmx-job-opening-card class="job-opening-card" [data]="jobOpening" />
+  </a>
+  } @placeholder {
+  <devmx-skeleton [rows]="3" />
+  }
+  <!--  -->
+  }
+</div>
+
+<div class="spacer"></div>
+
+<footer>
+  <devmx-paginator
+    [size]="10"
+    [items]="response.items"
+    (pageChange)="onPageChange($event)"
+  />
+</footer>
+}

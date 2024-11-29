@@ -3,6 +3,13 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
+    path: 'vagas',
+    loadChildren: () =>
+      import('@devmx/career-feature-page').then(
+        (m) => m.careerFeaturePageRoutes
+      ),
+  },
+  {
     path: 'sobre',
     loadChildren: () =>
       import('@devmx/account-feature-about').then(
