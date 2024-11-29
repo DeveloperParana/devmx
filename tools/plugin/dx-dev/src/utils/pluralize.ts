@@ -302,7 +302,8 @@ pluralize.addIrregularRule = function (single: string, plural: string) {
   ],
   [/sis$/i, 'ses'],
   [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, '$1$2ves'],
-  [/([^aeiouy]|qu)y$/i, '$1ies'],
+  [/([aeiou]y)$/i, '$1s'], // <- Regra para 'company' → 'companies'
+  [/([^aeiouy]|qu)y$/i, '$1ies'], // <- Regra original mantida
   [/([^ch][ieo][ln])ey$/i, '$1ies'],
   [/(x|ch|ss|sh|zz)$/i, '$1es'],
   [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, '$1ices'],
