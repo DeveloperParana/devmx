@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .skill-list {
+    padding: 0;
+
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+
+    devmx-icon {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    li {
+      gap: 1.2em;
+      display: flex;
+      align-items: center;
+
+      & > div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        div {
+          padding-left: 0.5em;
+        }
+      }
+    }
+  }
+
+  .skills-list {
+    width: 500px;
+    max-width: 100%;
+    overflow: hidden;
+
+
+    li {
+      min-height: 3em;
+      box-sizing: border-box;
+      cursor: move;
+    }
+  }
+
+  .cdk-drag-preview {
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .skills-list.cdk-drop-list-dragging .skills-list li:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}

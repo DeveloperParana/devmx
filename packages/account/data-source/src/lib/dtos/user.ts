@@ -5,6 +5,7 @@ import { UserProfileDto } from './user-profile';
 import { ApiProperty } from '@nestjs/swagger';
 import { UserSocialDto } from './user-social';
 import { RolesDto } from './roles';
+import { UserSkillDto } from './user-skill';
 
 export class UserDto implements User {
   @ApiProperty()
@@ -22,6 +23,10 @@ export class UserDto implements User {
   @Type(() => RolesDto)
   @ApiProperty({ type: () => RolesDto })
   roles: RolesDto;
+
+  @Type(() => UserSkillDto)
+  @ApiProperty({ type: () => [UserSkillDto] })
+  skills: UserSkillDto[];
 
   @ApiProperty()
   @Type(() => UserContactDto)

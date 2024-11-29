@@ -3,9 +3,10 @@ import { UserContactCollection, UserContactSchema } from './user-contact';
 import { UserProfileCollection, UserProfileSchema } from './user-profile';
 import { UserSocialCollection, UserSocialSchema } from './user-social';
 import { UserCodeCollection, UserCodeSchema } from './user-code';
-import { Roles, User } from '@devmx/shared-api-interfaces';
+import { Roles, User, UserSkill } from '@devmx/shared-api-interfaces';
 import { createSchema } from '@devmx/shared-data-source';
 import { DEFAULT_ROLES } from '@devmx/shared-util-data';
+import { SkillSchema } from '@devmx/learn-data-source';
 import { Prop, raw, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
@@ -24,6 +25,16 @@ export class UserCollection extends Document implements User {
 
   @Prop({ required: true, type: Object, default: DEFAULT_ROLES })
   roles: Roles;
+
+  @Prop([
+    {
+      type: raw({
+        skill: { type: SkillSchema, required: true },
+        weight: { type: Number, required: true },
+      }),
+    },
+  ])
+  skills: UserSkill[];
 
   @Prop({ required: true, type: raw(UserContactSchema) })
   contact: UserContactCollection;

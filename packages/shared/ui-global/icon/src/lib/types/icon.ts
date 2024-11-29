@@ -12,6 +12,7 @@ import { FinanceIcon } from './finance';
 import { TextIcon } from './text';
 import { MessageIcon } from './message';
 import { SocialIcon } from './social';
+import { DragIcon } from './drag';
 
 type Root =
   | 'airplay'
@@ -145,4 +146,5 @@ export type Icon =
   | FinanceIcon
   | TextIcon
   | MessageIcon
-  | SocialIcon;
+  | SocialIcon
+  | DragIcon;

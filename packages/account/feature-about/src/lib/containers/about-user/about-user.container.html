@@ -12,6 +12,23 @@
 </mat-card>
 }
 <!--  -->
+
+@if (user.skills?.length) {
+<mat-card>
+  <mat-card-content>
+    <ol>
+      @for (item of user.skills; track item.skill.id) {
+      <li>
+        <p>{{item.skill.name}}</p>
+        <mat-progress-bar [value]="item.weight" />
+      </li>
+      }
+    </ol>
+  </mat-card-content>
+</mat-card>
+}
+
+<!--  -->
 }
 
 <!--  -->
