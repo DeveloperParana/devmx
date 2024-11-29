@@ -79,6 +79,9 @@
       "@devmx/career-feature-admin": [
         "packages/career/feature-admin/src/index.ts"
       ],
+      "@devmx/career-feature-page": [
+        "packages/career/feature-page/src/index.ts"
+      ],
       "@devmx/career-feature-shell": [
         "packages/career/feature-shell/src/index.ts"
       ],
