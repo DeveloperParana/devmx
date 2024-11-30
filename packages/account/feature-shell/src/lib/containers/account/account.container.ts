@@ -1,3 +1,4 @@
+import { VisibilityComponent } from './visibility/visibility.component';
 import { SelectFileComponent } from '@devmx/shared-ui-global/image';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProfileComponent } from './profile/profile.component';
@@ -24,6 +25,7 @@ import {
   AuthenticationFacade,
 } from '@devmx/account-data-access';
 
+
 @Component({
   selector: 'devmx-account',
   templateUrl: './account.container.html',
@@ -37,6 +39,7 @@ import {
     ContactComponent,
     SocialComponent,
     SkillsComponent,
+    VisibilityComponent,
     SelectFileComponent,
     MatButtonModule,
     AvatarComponent,

@@ -1,11 +1,12 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TypedForm } from '@devmx/shared-ui-global/forms';
 import { UpdateUser } from '@devmx/account-data-access';
+import { UserVisibilityForm } from './user-visibility';
 import { UserProfileForm } from './user-profile';
 import { UserContactForm } from './user-contact';
 import { UserSocialForm } from './user-social';
-import { UserRolesForm } from './user-roles';
 import { UserSkillsForm } from './user-skill';
+import { UserRolesForm } from './user-roles';
 
 export class UserForm extends FormGroup<TypedForm<UpdateUser>> {
   constructor() {
@@ -28,6 +29,7 @@ export class UserForm extends FormGroup<TypedForm<UpdateUser>> {
       active: new FormControl(),
       roles: new UserRolesForm(),
       skills: new UserSkillsForm(),
+      visibility: new UserVisibilityForm(),
     });
   }
 

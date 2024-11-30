@@ -8,7 +8,7 @@ export interface UserProfile {
 
   minibio?: string;
 
-  birthday?: string;
+  birthday?: Date;
 
   city?: City;
 }

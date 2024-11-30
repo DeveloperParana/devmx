@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: grid;
+    grid-auto-flow: dense;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 1278px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

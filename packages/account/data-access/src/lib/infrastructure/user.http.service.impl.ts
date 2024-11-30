@@ -37,7 +37,7 @@ export class UserHttpServiceImpl
     form.append('photo', data.photo);
     form.append('gender', data.gender ?? '');
     form.append('minibio', data.minibio ?? '');
-    form.append('birthday', data.birthday ?? '');
+    form.append('birthday', data.birthday?.toString() ?? '');
 
     const url = [this.url, id, 'photo'];
 

@@ -16,6 +16,7 @@
   @include component.stepper-theme(theme.$light);
   @include component.layout-theme(theme.$light);
   @include component.dialog-theme(theme.$light);
+  @include component.links-theme(theme.$light);
   @include component.form-theme(theme.$light);
   @include component.fab-theme(theme.$light);
 

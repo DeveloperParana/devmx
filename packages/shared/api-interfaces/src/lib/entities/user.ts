@@ -5,6 +5,7 @@ import { UserPassword } from './user-password';
 import { UserProfile } from './user-profile';
 import { UserSkill } from './user-skill';
 import { UserSocial } from './user-social';
+import { UserVisibility } from './user-visibility';
 
 export interface User {
   id: string;
@@ -16,6 +17,8 @@ export interface User {
   active: boolean;
 
   roles: Roles;
+
+  visibility?: UserVisibility
 
   skills?: UserSkill[];
 

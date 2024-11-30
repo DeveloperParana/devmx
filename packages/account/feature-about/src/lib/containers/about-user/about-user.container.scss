@@ -8,8 +8,26 @@
 
   & > section {
     gap: 1em;
+    display: grid;
+    grid-auto-flow: dense;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 1278px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .user-contact {
+    gap: 2em;
     display: flex;
-    flex-direction: column;
+    flex-flow: row wrap;
+
+    p {
+      gap: 0.4em;
+      display: flex;
+      align-items: center;
+    }
   }
 
   ol {
