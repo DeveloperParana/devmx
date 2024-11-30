@@ -1,45 +1,38 @@
-<div formArrayName="skills">
-  <ol class="skill-list" cdkDropList (cdkDropListDropped)="drop($event)">
-    @for (item of form.skills.controls; track item.value.skill?.id; let index =
-    $index) {
-    <li cdkDrag [cdkDragData]="item" [formGroupName]="index">
-      <devmx-icon name="drag/handle" cdkDragHandle />
-
-      <div>
-        <div>
-          {{ item.value.skill?.name }}
-        </div>
-
-        <mat-slider
-          min="0"
-          max="100"
-          step="10"
-          discrete
-          color="primary"
-          showTickMarks
-          [displayWith]="formatLabel"
-        >
-          <input matSliderThumb formControlName="weight" />
-        </mat-slider>
-      </div>
-
-      <strong> {{ item.value.weight }}% </strong>
-    </li>
-    }
-  </ol>
-</div>
-
-<mat-form-field>
-  <mat-label>Adicionar habilidade</mat-label>
-  <input matInput [formControl]="searchControl" [matAutocomplete]="auto" />
-  <mat-autocomplete
-    #auto="matAutocomplete"
-    [displayWith]="displayFn"
-    (optionSelected)="onOptionSelected($event.option.value)"
+<mat-accordion
+  hideToggle
+  cdkDropList
+  class="skills-list"
+  formArrayName="skills"
+  (cdkDropListDropped)="drop($event)"
+>
+  @for (item of form.skills.controls; track item.value.skill?.id; let index =
+  $index) {
+  <mat-expansion-panel
+    cdkDrag
+    class="skill-item"
+    [cdkDragData]="item"
+    [formGroupName]="index"
   >
-    @if (skillFacade.response$ | async; as response) { @for (option of
-    response.data; track option.id) {
-    <mat-option [value]="option">{{ option.name }}</mat-option>
-    } }
-  </mat-autocomplete>
-</mat-form-field>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ item.value.skill?.name }} </mat-panel-title>
+      <mat-panel-description> {{ item.value.weight }}% </mat-panel-description>
+      <devmx-icon name="drag/indicator" cdkDragHandle />
+    </mat-expansion-panel-header>
+
+    <div>
+      <mat-slider
+        min="0"
+        max="100"
+        step="10"
+        discrete
+        showTickMarks
+        [displayWith]="formatLabel"
+      >
+        <input matSliderThumb formControlName="weight" />
+      </mat-slider>
+    </div>
+  </mat-expansion-panel>
+  }
+</mat-accordion>
+
+<devmx-search-skill (selected)="onNewSkill($event)" />

@@ -1,0 +1,29 @@
+:host {
+  &.cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  > div {
+    gap: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+
+    .draggable-item-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    devmx-icon {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+}
