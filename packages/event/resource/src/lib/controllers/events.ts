@@ -18,6 +18,8 @@ import {
   Query,
   Delete,
   Controller,
+  Res,
+  BadRequestException,
 } from '@nestjs/common';
 import {
   EventDto,
@@ -27,9 +29,12 @@ import {
   UpdateEventDto,
   RSVPsFacade,
   CreateRSVPDto,
+  createSitemapFromEvents,
 } from '@devmx/event-data-source';
 import 'multer';
 import { subDays } from 'date-fns/subDays';
+import { Response } from 'express';
+
 
 @ApiTags('Eventos')
 @Controller('events')
@@ -46,6 +51,28 @@ export class EventsController {
       return await this.eventsFacade.create({ ...data, owner });
     } catch (err) {
       throw exceptionByError(err);
+    }
+  }
+
+  @Get('sitemap.xml')
+  @Allowed()
+  @ApiPage(EventDto)
+  async sitemap(@Res() res: Response) {
+    let date = new Date();
+    date = subDays(date, 1);
+
+    try {
+      const events = await this.eventsFacade.findFrom(date, {
+        page: 0,
+        size: 100,
+      });
+
+      const sitemap = createSitemapFromEvents(events.data);
+
+      res.setHeader('Content-Type', 'application/xml');
+      res.send(sitemap);
+    } catch (err) {
+      throw new BadRequestException();
     }
   }
 
