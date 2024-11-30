@@ -5,14 +5,17 @@ import { PresentationFacade } from '@devmx/presentation-data-access';
 import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { EventCardListComponent } from '@devmx/event-ui-shared';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { AsyncPipe, KeyValuePipe } from '@angular/common';
 import { markdownToText } from '@devmx/shared-util-data';
 import { EventFacade } from '@devmx/event-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { Graph } from '@devmx/shared-ui-global/graph';
 import { User } from '@devmx/shared-api-interfaces';
 import { ActivatedRoute } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
 import { filter, map, take } from 'rxjs';
+import { MatChipsModule } from '@angular/material/chips';
+import { RolePipe } from '@devmx/account-ui-shared';
 
 @Component({
   selector: 'devmx-about-user',
@@ -25,7 +28,11 @@ import { filter, map, take } from 'rxjs';
     PresentationCardListComponent,
     EventCardListComponent,
     MatProgressBarModule,
+    MatChipsModule,
+    IconComponent,
+    KeyValuePipe,
     AsyncPipe,
+    RolePipe,
   ],
   standalone: true,
 })

@@ -27,8 +27,8 @@ export class UserProfileCollection implements UserProfile {
   @Prop({ default: '' })
   minibio?: string;
 
-  @Prop({ default: '' })
-  birthday?: string;
+  @Prop({ default: '', type: Date })
+  birthday?: Date;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,

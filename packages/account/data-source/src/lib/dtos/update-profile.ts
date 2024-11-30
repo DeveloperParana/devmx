@@ -22,7 +22,7 @@ export class UpdateProfileDto implements UpdateProfile {
 
   @IsOptional()
   @ApiPropertyOptional()
-  birthday?: string;
+  birthday?: Date;
 
   @IsOptional()
   @ApiPropertyOptional()

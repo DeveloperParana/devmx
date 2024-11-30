@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+@mixin links-theme($theme) {
+  body {
+    a:link:not(.mdc-button):not(.mdc-icon-button):not(.mdc-fab),
+    a:active:not(.mdc-button):not(.mdc-icon-button):not(.mdc-fab),
+    a:visited:not(.mdc-button):not(.mdc-icon-button):not(.mdc-fab) {
+      color: mat.get-theme-color($theme, secondary, 70);
+    }
+
+    .mdc-icon-button:not(.mdc-fab):hover,
+    .mdc-icon-button:not(.mdc-fab):hover,
+    .mdc-icon-button:not(.mdc-fab):hover {
+      color: mat.get-theme-color($theme, secondary, 70);
+    }
+  }
+}

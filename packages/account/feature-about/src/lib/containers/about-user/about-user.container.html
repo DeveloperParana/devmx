@@ -2,45 +2,84 @@
 <header>
   <h2>{{user.displayName}}</h2>
   <h3>{{'@' + user.name}}</h3>
+
+  <div class="user-contact">
+    @if (user.contact.email && user.visibility?.email) {
+    <p>
+      <devmx-icon name="message/mail" />
+      <span>{{user.contact.email}}</span>
+    </p>
+    }
+    <!--  -->
+    @if (user.contact.phone && user.visibility?.phone) {
+    <p>
+      <devmx-icon name="tech/phone" />
+      <span>{{user.contact.phone}}</span>
+    </p>
+    }
+  </div>
 </header>
 
-@if (user.profile && user.profile.minibio) {
-<mat-card>
-  <mat-card-content>
-    <devmx-markdown [content]="user.profile.minibio" />
-  </mat-card-content>
-</mat-card>
-}
-<!--  -->
-
-@if (user.skills?.length) {
-<mat-card>
-  <mat-card-content>
-    <ol>
-      @for (item of user.skills; track item.skill.id) {
-      <li>
-        <p>{{item.skill.name}}</p>
-        <mat-progress-bar [value]="item.weight" />
-      </li>
-      }
-    </ol>
-  </mat-card-content>
-</mat-card>
+@if (user.visibility?.roles) {
+<div>
+  <mat-chip-set>
+    @for (role of user.roles | keyvalue; track role) {
+    <!--  -->
+    @if (role.value) {
+    <mat-chip>{{role.key | role}}</mat-chip>
+    }
+    <!--  -->
+    }
+  </mat-chip-set>
+</div>
 }
 
-<!--  -->
-}
+<section>
+  @if (user.profile && user.profile.minibio) {
+  <mat-card>
+    <mat-card-content>
+      <devmx-markdown [content]="user.profile.minibio" />
+    </mat-card-content>
+  </mat-card>
+  }
+  <!--  -->
 
+  @if (user.skills?.length && user.visibility?.skills) {
+  <mat-card>
+    <mat-card-content>
+      <ol>
+        @for (item of user.skills; track item.skill.id) {
+        <li>
+          <p>{{item.skill.name}}</p>
+          <mat-progress-bar [value]="item.weight" />
+        </li>
+        }
+      </ol>
+    </mat-card-content>
+  </mat-card>
+  }
+</section>
 <!--  -->
 
 <section>
+  @if (user.visibility?.events) {
+  <!--  -->
   @if (eventFacade.response$ | async; as response) {
   <devmx-event-card-list [data]="response.data" />
+  }
+  <!--  -->
   }
 
   <!--  -->
 
+  @if (user.visibility?.presentations) {
+  <!--  -->
   @if (presentationFacade.response$ | async; as response) {
   <devmx-presentation-card-list [data]="response.data" />
   }
+  <!--  -->
+  }
 </section>
+
+<!--  -->
+}

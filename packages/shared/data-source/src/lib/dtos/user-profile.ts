@@ -23,5 +23,5 @@ export class UserProfileDto implements UserProfile {
   minibio?: string;
 
   @ApiPropertyOptional()
-  birthday?: string;
+  birthday?: Date;
 }
