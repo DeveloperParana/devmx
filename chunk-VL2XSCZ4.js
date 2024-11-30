@@ -1,1 +1,0 @@
-import{e as r,j as a,l as e}from"./chunk-5R3537JV.js";var t=class extends a{get name(){return this.controls.name.value}constructor(l){super({id:new e("",{nonNullable:!0,validators:[r.required]}),name:new e("",{nonNullable:!0}),displayName:new e("",{nonNullable:!0,validators:[r.required]})}),l&&this.patchValue(l)}};export{t as a};
