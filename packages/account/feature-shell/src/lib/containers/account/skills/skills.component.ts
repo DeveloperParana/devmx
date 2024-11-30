@@ -1,28 +1,16 @@
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { inject, Component, ChangeDetectorRef } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SearchSkillComponent } from '@devmx/learn-ui-shared';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { UserForm, UserSkillForm } from '../../../forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
 import { SkillFacade } from '@devmx/learn-data-access';
 import { Skill } from '@devmx/shared-api-interfaces';
-import { debounceTime, filter } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import {
-  FormControl,
-  ControlContainer,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import {
-  CdkDragDrop,
-  DragDropModule,
-  moveItemInArray,
-} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'devmx-account-skills',
@@ -35,17 +23,15 @@ import {
     },
   ],
   imports: [
-    MatAutocompleteModule,
     MatProgressBarModule,
+    SearchSkillComponent,
     ReactiveFormsModule,
-    MatFormFieldModule,
+    MatExpansionModule,
     MatButtonModule,
-    MatSliderModule,
     DragDropModule,
-    MatInputModule,
-    MatListModule,
+    MatCardModule,
     IconComponent,
-    AsyncPipe,
+    MatSliderModule,
   ],
 })
 export class SkillsComponent {
@@ -59,29 +45,8 @@ export class SkillsComponent {
     return this.container.control as UserForm;
   }
 
-  searchControl = new FormControl<string | Skill>('');
-
-  constructor() {
-    this.searchControl.valueChanges
-      .pipe(
-        filter((value) => typeof value === 'string'),
-        filter((value) => value.length > 1),
-        takeUntilDestroyed(),
-        debounceTime(600)
-      )
-      .subscribe((name) => {
-        this.skillFacade.setFilter({ name });
-        this.skillFacade.load();
-      });
-  }
-
-  displayFn(skill: Skill) {
-    return skill && skill.name ? skill.name : '';
-  }
-
-  onOptionSelected(skill: Skill) {
+  onNewSkill(skill: Skill) {
     this.form.skills.add({ skill, weight: 0 });
-    this.searchControl.setValue('');
   }
 
   formatLabel(value: number) {

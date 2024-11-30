@@ -9,7 +9,9 @@
     <devmx-account-skills />
 
     <footer>
-      <button mat-flat-button>Salvar</button>
+      <button mat-flat-button [disabled]="state()">
+        {{state() ? state() : 'Salvar'}}
+      </button>
     </footer>
   </section>
 

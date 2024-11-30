@@ -2,6 +2,7 @@ import { SelectFileComponent } from '@devmx/shared-ui-global/image';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { debounceTime, filter, skip, take, timer } from 'rxjs';
 import { SkillsComponent } from './skills/skills.component';
 import { SocialComponent } from './social/social.component';
 import { UserPhoto, provideUserPhoto } from '../../dialogs';
@@ -11,7 +12,6 @@ import { UpdatePhoto } from '@devmx/account-data-access';
 import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserForm } from '../../forms/user';
-import { filter, take } from 'rxjs';
 import {
   inject,
   signal,
@@ -23,7 +23,6 @@ import {
   UserFacade,
   AuthenticationFacade,
 } from '@devmx/account-data-access';
-
 
 @Component({
   selector: 'devmx-account',
@@ -53,6 +52,10 @@ export class AccountContainer {
 
   photo = signal('');
 
+  state = signal<string | null>(null);
+
+  i = 0;
+
   constructor() {
     this.userFacade.selected$
       .pipe(
@@ -65,6 +68,8 @@ export class AccountContainer {
         }
 
         this.form.patch(user);
+
+        console.log((this.i += 1));
       });
 
     this.authFacade.auth$
@@ -73,6 +78,10 @@ export class AccountContainer {
         takeUntilDestroyed()
       )
       .subscribe((auth) => this.userFacade.loadOne(auth.id));
+
+    this.form.valueChanges
+      .pipe(takeUntilDestroyed(), debounceTime(4000), skip(1))
+      .subscribe(() => this.onSubmit());
   }
 
   changePhoto(file: File) {
@@ -88,11 +97,17 @@ export class AccountContainer {
   }
 
   onSubmit() {
+    const timer$ = timer(1000).pipe(take(1));
+
     if (this.form.valid) {
       const value = this.form.getRawValue() as UpdateUser;
-      return this.userFacade.update(value);
+      this.state.set('Salvando...');
+      this.userFacade.update(value);
+
+      return timer$.subscribe(() => this.state.set(null));
     }
 
-    return this.form.markAllAsTouched();
+    this.form.markAllAsTouched();
+    return timer$.subscribe(() => this.state.set(null));
   }
 }

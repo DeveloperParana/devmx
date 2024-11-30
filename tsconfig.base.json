@@ -191,6 +191,9 @@
       "@devmx/shared-ui-global/dialog": [
         "packages/shared/ui-global/dialog/src/index.ts"
       ],
+      "@devmx/shared-ui-global/draggable": [
+        "packages/shared/ui-global/draggable/src/index.ts"
+      ],
       "@devmx/shared-ui-global/editor": [
         "packages/shared/ui-global/editor/src/index.ts"
       ],

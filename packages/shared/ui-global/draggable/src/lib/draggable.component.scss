@@ -1,0 +1,25 @@
+:host {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+
+  .cdk-drag-preview {
+    border: none;
+    box-sizing: border-box;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  li[devmx-draggable-item]:last-child {
+    border: none;
+  }
+}
+
+::ng-deep
+  :host.cdk-drop-list-dragging
+  li[devmx-draggable-item]:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
