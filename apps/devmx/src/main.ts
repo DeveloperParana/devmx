@@ -1,11 +1,13 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { GoogleTagElement } from './app/utils/google-tag';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
 import { env } from './envs/env';
+import './app/utils/google-tag';
 
 if (env.prod) {
-  document.body.appendChild(new GoogleTagElement());
+  document.body.appendChild(
+    document.createElement('script', { is: 'google-tag' })
+  );
 }
 
 bootstrapApplication(AppComponent, appConfig).catch((err) =>

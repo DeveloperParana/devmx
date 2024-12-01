@@ -6,9 +6,12 @@
   flex-direction: column;
   max-width: calc(100vw - 2em);
 
-  math {
-    font-size: 200%;
-    margin: 2em;
+  .radio {
+    display: inline-flex;
+    background-color: #ffffff;
+    border-radius: 1.6em;
+    padding: 0.2em;
+    gap: 0.2em;
   }
 
   .banner {
