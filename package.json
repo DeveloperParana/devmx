@@ -10,7 +10,8 @@
     "affected": "pnpm exec nx affected -t lint test build --parallel=10",
     "lint:fix": "pnpm exec nx run-many -t lint --fix",
     "dev:setup": "./tools/scripts/setup.sh",
-    "commit": "czg"
+    "commit": "czg",
+    "prepare": "husky"
   },
   "private": true,
   "devDependencies": {
@@ -60,6 +61,7 @@
     "czg": "^1.9.4",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
