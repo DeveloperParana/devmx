@@ -1,5 +1,6 @@
 import { VisibilityComponent } from './visibility/visibility.component';
 import { SelectFileComponent } from '@devmx/shared-ui-global/image';
+import { UpdateUser, UserFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
@@ -12,6 +13,7 @@ import { AvatarComponent } from '@devmx/shared-ui-global';
 import { UpdatePhoto } from '@devmx/account-data-access';
 import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { UserForm } from '../../forms/user';
 import {
   inject,
@@ -19,13 +21,6 @@ import {
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import {
-  UpdateUser,
-  UserFacade,
-  AuthenticationFacade,
-} from '@devmx/account-data-access';
-import { RouterLink } from '@angular/router';
-
 
 @Component({
   selector: 'devmx-account',
@@ -44,11 +39,10 @@ import { RouterLink } from '@angular/router';
     SelectFileComponent,
     MatButtonModule,
     AvatarComponent,
-    RouterLink
+    RouterLink,
   ],
 })
 export class AccountContainer {
-  authFacade = inject(AuthenticationFacade);
   userFacade = inject(UserFacade);
 
   userPhoto = inject(UserPhoto);
@@ -73,16 +67,7 @@ export class AccountContainer {
         }
 
         this.form.patch(user);
-
-        console.log((this.i += 1));
       });
-
-    this.authFacade.auth$
-      .pipe(
-        filter((auth) => !!auth),
-        takeUntilDestroyed()
-      )
-      .subscribe((auth) => this.userFacade.loadOne(auth.id));
 
     this.form.valueChanges
       .pipe(takeUntilDestroyed(), debounceTime(4000), skip(1))
