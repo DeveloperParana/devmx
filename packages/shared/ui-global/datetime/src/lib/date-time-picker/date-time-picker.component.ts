@@ -60,18 +60,21 @@ export class DateTimePickerComponent
   }
 
   ngAfterViewInit() {
-    this.form.setValue(
-      {
-        date: this.control.value,
-        time: this.control.value,
-      },
-      { emitEvent: false }
-    );
+    if (!this.control.value) {
+      this.control.setValue(new Date())
+    }
+
+    const { value } = this.control
+
+    this.form.setValue({ date: value, time: value }, { emitEvent: false });
 
     const { date, time } = this.form.controls;
 
     date.valueChanges.subscribe((d) => {
       const { value } = this.control;
+
+      if (!d || !value) return;
+
       value.setDate(d.getDate());
       value.setMonth(d.getMonth());
       value.setFullYear(d.getFullYear());
@@ -81,6 +84,8 @@ export class DateTimePickerComponent
 
     time.valueChanges.subscribe((t) => {
       const { value } = this.control;
+      if (!t || !value) return;
+
       value.setHours(t.getHours());
       value.setMinutes(t.getMinutes());
       value.setSeconds(t.getSeconds());
