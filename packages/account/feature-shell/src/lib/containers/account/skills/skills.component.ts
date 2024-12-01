@@ -1,6 +1,10 @@
 import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 import { inject, Component, ChangeDetectorRef } from '@angular/core';
 import { SearchSkillComponent } from '@devmx/learn-ui-shared';
 import { MatButtonModule } from '@angular/material/button';

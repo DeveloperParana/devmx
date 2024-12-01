@@ -32,7 +32,7 @@ export class UserHttpServiceImpl
     return this.http.patch<User>(url.join('/'), data);
   }
 
-  updatePhoto({id, ...data}: UpdatePhoto) {
+  updatePhoto({ id, ...data }: UpdatePhoto) {
     const form = new FormData();
     form.append('photo', data.photo);
     form.append('gender', data.gender ?? '');

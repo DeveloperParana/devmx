@@ -21,7 +21,7 @@ export class FindPresentationsUseCase
       }
 
       if (params.filter.owner) {
-        params.filter.owner = params.filter.owner + ''
+        params.filter.owner = params.filter.owner + '';
       } else {
         delete params.filter.title;
       }

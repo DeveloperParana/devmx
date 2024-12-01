@@ -8,7 +8,10 @@ import {
 
 @Component({
   selector: 'devmx-markdown-view',
-  template: `<div class="markdown-view" [innerHTML]="content() | markdown | html"></div>`,
+  template: `<div
+    class="markdown-view"
+    [innerHTML]="content() | markdown | html"
+  ></div>`,
   styleUrl: './markdown-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

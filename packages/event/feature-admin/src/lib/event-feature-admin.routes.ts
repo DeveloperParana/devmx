@@ -24,7 +24,7 @@ export const eventFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Novo',
         },
-        title: 'Novo evento'
+        title: 'Novo evento',
       },
       {
         path: 'meus-eventos/:id',

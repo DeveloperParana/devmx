@@ -32,7 +32,7 @@ import {
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    PhoneMaskDirective
+    PhoneMaskDirective,
   ],
 })
 export class UserSocialDialog implements OnInit {

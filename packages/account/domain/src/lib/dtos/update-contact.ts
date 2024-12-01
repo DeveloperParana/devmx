@@ -1,5 +1,5 @@
 export interface UpdateContact {
-  email: string
+  email: string;
 
-  phone?: string
+  phone?: string;
 }
