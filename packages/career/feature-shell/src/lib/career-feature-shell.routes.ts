@@ -24,6 +24,7 @@ export const careerFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
+        title: 'Carreiras',
         component: JobOpeningsContainer,
       },
       {
@@ -33,6 +34,7 @@ export const careerFeatureShellRoutes: Route[] = [
             return data.jobOpening.title;
           },
         },
+        title: 'Vaga',
         resolve: { jobOpening: jobOpeningResolver },
         component: JobOpeningDetailsContainer,
         outlet: 'right',

@@ -22,6 +22,7 @@ export const eventFeaturePageRoutes: Route[] = [
             return data.page.title;
           },
         },
+        title: 'Sobre o evento',
         resolve: { page: eventPageResolver },
         component: EventPageContainer,
       },

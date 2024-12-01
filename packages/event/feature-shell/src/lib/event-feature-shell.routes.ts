@@ -28,6 +28,7 @@ export const eventFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
+        title: 'Eventos',
         component: EventsContainer,
       },
       {
@@ -37,6 +38,7 @@ export const eventFeatureShellRoutes: Route[] = [
             return data.event.title;
           },
         },
+        title: 'Evento',
         resolve: { event: eventResolver },
         component: EventDetailsContainer,
         outlet: 'right',

@@ -11,6 +11,7 @@ export const accountFeatureAdminRoutes: Route[] = [
     data: {
       breadcrumb: 'Administração',
     },
+    title: 'Administrar conta',
     providers: accountFeatureAdminProviders,
     component: AccountFeatureAdminComponent,
     children: [
@@ -19,6 +20,7 @@ export const accountFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Usuários',
         },
+        title: 'Contas de usuários',
         component: UsersContainer,
       },
       {
@@ -28,6 +30,7 @@ export const accountFeatureAdminRoutes: Route[] = [
             return data.user.displayName;
           },
         },
+        title: 'Usuário',
         resolve: { user: userResolver },
         component: UserContainer,
       },

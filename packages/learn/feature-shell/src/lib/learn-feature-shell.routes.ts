@@ -8,6 +8,7 @@ export const learnFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Aprenda',
     },
+    title: 'Habilidades',
     canActivate: [rolesGuard('member')],
     component: LearnFeatureShellComponent,
     children: [

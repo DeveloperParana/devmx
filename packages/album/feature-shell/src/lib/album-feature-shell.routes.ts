@@ -28,6 +28,7 @@ export const albumFeatureShellRoutes: Route[] = [
         data: {
           breadcrumb: 'Albuns',
         },
+        title: 'Albuns',
         component: AlbumsContainer,
       },
       {
@@ -37,20 +38,10 @@ export const albumFeatureShellRoutes: Route[] = [
             return data.album.title;
           },
         },
+        title: 'Album de fotos',
         resolve: { album: albumResolver },
         component: AlbumContainer,
       },
-      // {
-      //   path: ':id',
-      //   data: {
-      //     breadcrumb: (data: { album: Album }) => {
-      //       return data.album.title;
-      //     },
-      //   },
-      //   resolve: { album: albumResolver },
-      //   component: AlbumDetailsContainer,
-      //   outlet: 'right',
-      // },
     ],
   },
 ];
