@@ -7,6 +7,7 @@ import {
   HomeContainer,
   SignOutContainer,
 } from './containers';
+import { accountResolver } from './resolvers';
 
 export const accountFeatureShellRoutes: Route[] = [
   {
@@ -48,6 +49,7 @@ export const accountFeatureShellRoutes: Route[] = [
         path: 'configuracoes',
         title: 'Configurações da conta',
         component: AccountContainer,
+        resolve: { user: accountResolver },
       },
       {
         path: 'sair',
