@@ -116,9 +116,25 @@
       </section>
 
       <section>
-        <devmx-editor label="Objetivo" formControlName="goal" />
+        <devmx-markdown-toolbar>
+          <devmx-markdown-editor
+            label="Objetivo"
+            hint="Compatível com markdown do Github"
+            formControlName="goal"
+            [minRows]="10"
+          />
+          <devmx-markdown-view [content]="form.value.goal ?? ''" />
+        </devmx-markdown-toolbar>
 
-        <devmx-editor label="Detalhes" formControlName="details" />
+        <devmx-markdown-toolbar>
+          <devmx-markdown-editor
+            label="Detalhes"
+            hint="Compatível com markdown do Github"
+            formControlName="details"
+            [minRows]="10"
+          />
+          <devmx-markdown-view [content]="form.value.details ?? ''" />
+        </devmx-markdown-toolbar>
 
         <mat-form-field>
           <mat-label>Link</mat-label>

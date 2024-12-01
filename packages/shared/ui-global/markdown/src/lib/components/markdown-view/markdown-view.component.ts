@@ -1,4 +1,4 @@
-import { MarkdownPipe, HtmlPipe } from '../pipes';
+import { MarkdownPipe, HtmlPipe } from '../../pipes';
 import {
   input,
   Component,

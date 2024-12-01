@@ -1,7 +1,6 @@
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { InstitutionDialog, SubjectDialog } from '../../dialogs';
-import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -31,6 +30,11 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import {
+  MarkdownEditorComponent,
+  MarkdownToolbarComponent,
+  MarkdownViewComponent,
+} from '@devmx/shared-ui-global/markdown';
 
 @Component({
   selector: 'devmx-academy-admin-course',
@@ -38,13 +42,15 @@ import {
   styleUrl: './course.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    MarkdownToolbarComponent,
+    MarkdownEditorComponent,
+    MarkdownViewComponent,
     ReactiveFormsModule,
     MatExpansionModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatTooltipModule,
     MatButtonModule,
-    EditorComponent,
     MatInputModule,
     MatCardModule,
     MatListModule,

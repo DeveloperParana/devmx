@@ -2,7 +2,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -15,6 +14,11 @@ import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
 import { ListItemDialog } from '../../dialogs';
 import { PresentationForm } from '../../forms';
+import {
+  MarkdownViewComponent,
+  MarkdownEditorComponent,
+  MarkdownToolbarComponent,
+} from '@devmx/shared-ui-global/markdown';
 import {
   CdkDragDrop,
   DragDropModule,
@@ -34,13 +38,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
-    MatCardModule,
-    EditorComponent,
     MatProgressSpinnerModule,
+    MarkdownEditorComponent,
+    MarkdownToolbarComponent,
+    MarkdownViewComponent,
     MatFormFieldModule,
-    DragDropModule,
     MatCheckboxModule,
+    DragDropModule,
     MatInputModule,
+    MatCardModule,
     MatListModule,
     MatButtonModule,
     MatSelectModule,

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
+import { MarkdownViewComponent } from '@devmx/shared-ui-global/markdown';
 import { PresentationOut } from '@devmx/shared-api-interfaces';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -25,7 +25,7 @@ import {
     MatListModule,
     MatButtonModule,
     IconComponent,
-    MarkdownComponent,
+    MarkdownViewComponent,
     PresentationEmbedComponent,
     PresentationFormatPipe,
     PhotoPipe,

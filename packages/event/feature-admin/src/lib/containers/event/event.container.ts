@@ -1,8 +1,8 @@
 import { EventPresentationsComponent } from './event-presentations/event-presentations.component';
 import { EventLeadersComponent } from './event-leaders/event-leaders.component';
+import { AutoSaveButtonComponent } from '@devmx/shared-ui-global/button';
 import { EventFormComponent } from './event-form/event-form.component';
 import { SelectPresentation } from '@devmx/presentation-ui-shared';
-import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EditableEvent } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,11 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import {
+  MarkdownViewComponent,
+  MarkdownEditorComponent,
+  MarkdownToolbarComponent,
+} from '@devmx/shared-ui-global/markdown';
 
 @Component({
   selector: 'devmx-event-admin-event',
@@ -29,13 +34,16 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
+    MarkdownViewComponent,
+    MarkdownEditorComponent,
+    MarkdownToolbarComponent,
     EventPresentationsComponent,
+    AutoSaveButtonComponent,
     EventLeadersComponent,
     EventFormComponent,
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
-    EditorComponent,
   ],
 })
 export class EventContainer {
@@ -61,7 +69,7 @@ export class EventContainer {
         this.form.patch(event);
         this.form.onFormatChange(event.format);
 
-        if (event['date'] && this.form.controls.date) {
+        if (event['date']) {
           const date = new Date(event.date);
           this.form.patchValue({ date });
         }

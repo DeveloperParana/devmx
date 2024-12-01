@@ -194,9 +194,6 @@
       "@devmx/shared-ui-global/draggable": [
         "packages/shared/ui-global/draggable/src/index.ts"
       ],
-      "@devmx/shared-ui-global/editor": [
-        "packages/shared/ui-global/editor/src/index.ts"
-      ],
       "@devmx/shared-ui-global/empty": [
         "packages/shared/ui-global/empty/src/index.ts"
       ],
@@ -223,6 +220,9 @@
       ],
       "@devmx/shared-ui-global/markdown": [
         "packages/shared/ui-global/markdown/src/index.ts"
+      ],
+      "@devmx/shared-ui-global/pipes": [
+        "packages/shared/ui-global/pipes/src/index.ts"
       ],
       "@devmx/shared-ui-global/script": [
         "packages/shared/ui-global/script/src/index.ts"

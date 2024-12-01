@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Presentation } from '@devmx/shared-api-interfaces';
-import { SafeUrlPipe } from '@devmx/shared-ui-global/editor';
+import { SafeUrlPipe } from '@devmx/shared-ui-global/pipes';
 
 @Component({
   selector: 'devmx-presentation-embed',

@@ -8,9 +8,25 @@
           <mat-error>Obrigatório</mat-error>
         </mat-form-field>
 
-        <devmx-editor label="Descrição" formControlName="description" />
+        <devmx-markdown-toolbar>
+          <devmx-markdown-editor
+            label="Descrição"
+            hint="Compatível com markdown do Github"
+            formControlName="description"
+            [minRows]="10"
+          />
+          <devmx-markdown-view [content]="form.value.description ?? ''" />
+        </devmx-markdown-toolbar>
 
-        <devmx-editor label="Requisitos" formControlName="requirements" />
+        <devmx-markdown-toolbar>
+          <devmx-markdown-editor
+            label="Requisitos"
+            hint="Compatível com markdown do Github"
+            formControlName="requirements"
+            [minRows]="10"
+          />
+          <devmx-markdown-view [content]="form.value.requirements ?? ''" />
+        </devmx-markdown-toolbar>
       </section>
 
       <section>

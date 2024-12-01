@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MarkedPipe, SafeHtmlPipe } from '@devmx/shared-ui-global/editor';
+import { MarkdownPipe, HtmlPipe } from '@devmx/shared-ui-global/pipes';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,8 +21,8 @@ import { filter, map } from 'rxjs';
     MatListModule,
     MatButtonModule,
     IconComponent,
-    SafeHtmlPipe,
-    MarkedPipe,
+    MarkdownPipe,
+    HtmlPipe,
     AsyncPipe,
   ],
 })
