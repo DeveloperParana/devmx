@@ -33,14 +33,10 @@ export class UserFacade extends EntityFacade<User> {
     return null;
   });
 
-  social$ = this.select((state) => {
-    if (state.selected) {
-      const { social, id } = state.selected;
-      return { social, id };
-    }
-
-    return null;
-  });
+  social$ = this.selected$.pipe(
+    filter((selected) => !!selected),
+    map(({ id, social }) => ({ id, social }))
+  );
 
   schema$ = this.selected$.pipe(
     filter((selected) => !!selected),

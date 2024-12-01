@@ -1,9 +1,9 @@
 import { AccountFeatureAboutComponent } from './account-feature-about.component';
 import { accountFeatureAboutProviders } from './account-feature-about.providers';
 import { aboutUserResolver, aboutUserSchemaResolver } from './resolvers';
+import { User } from '@devmx/shared-api-interfaces';
 import { AboutUserContainer } from './containers';
 import { Route } from '@angular/router';
-import { User } from '@devmx/shared-api-interfaces';
 
 export const accountFeatureAboutRoutes: Route[] = [
   {
