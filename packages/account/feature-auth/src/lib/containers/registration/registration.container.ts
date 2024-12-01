@@ -8,8 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MessageService } from '@devmx/shared-ui-global';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CreateUserForm } from '../../forms';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'devmx-registration',
@@ -23,22 +24,33 @@ import { CreateUserForm } from '../../forms';
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    RouterLink,
+    RouterModule,
   ],
 })
 export class RegistrationContainer {
+  authFacade = inject(AuthenticationFacade);
+
   message = inject(MessageService);
 
   dialog = inject(DialogFacade);
 
-  authFacade = inject(AuthenticationFacade);
+  route = inject(ActivatedRoute);
+
+  router = inject(Router);
 
   form = new CreateUserForm();
 
   onSubmit() {
     if (this.form.valid) {
       const value = this.form.getRawValue();
-      this.authFacade.createUser(value);
+      const create$ = this.authFacade.createUser(value);
+      create$.pipe(take(1)).subscribe(() => {
+        const { redirectTo } = this.route.snapshot.queryParams;
+
+        const queryParams = { redirectTo };
+        const path = ['/', 'conta', 'autenticacao', 'acessar'];
+        this.router.navigate(path, { queryParams });
+      });
 
       const message = `Conta ${value.name} criada`;
       this.message.open({ message });

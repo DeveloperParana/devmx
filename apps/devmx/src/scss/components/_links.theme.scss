@@ -13,5 +13,10 @@
     .mdc-icon-button:not(.mdc-fab):hover {
       color: mat.get-theme-color($theme, secondary, 70);
     }
+
+    .mat-mdc-outlined-button:not(:disabled) {
+      border: 2px solid mat.get-theme-color($theme, on-surface);
+      color: mat.get-theme-color($theme, on-surface);
+    }
   }
 }

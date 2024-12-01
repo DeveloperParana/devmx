@@ -8,7 +8,7 @@ import { CodeFieldComponent } from '@devmx/account-ui-shared';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthenticationForm } from '../../forms';
 import { AsyncPipe } from '@angular/common';
 import {
@@ -38,6 +38,7 @@ import {
   ],
 })
 export class AuthenticationContainer {
+  route = inject(ActivatedRoute);
   router = inject(Router);
 
   stepper = viewChild(MatStepper);
@@ -50,7 +51,9 @@ export class AuthenticationContainer {
     this.authenticationFacade.connected$
       .pipe(takeUntilDestroyed())
       .subscribe((connected) => {
-        if (connected) this.router.navigate(['/']);
+        const { redirectTo } = this.route.snapshot.queryParams;
+        if (connected && redirectTo) this.router.navigateByUrl(redirectTo);
+        else if (connected) this.router.navigate(['/']);
       });
 
     this.form.controls.code.valueChanges
