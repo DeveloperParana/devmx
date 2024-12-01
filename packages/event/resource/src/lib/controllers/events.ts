@@ -35,7 +35,6 @@ import 'multer';
 import { subDays } from 'date-fns/subDays';
 import { Response } from 'express';
 
-
 @ApiTags('Eventos')
 @Controller('events')
 export class EventsController {

@@ -24,7 +24,7 @@ import {
     SkeletonComponent,
     RouterModule,
     AsyncPipe,
-  ]
+  ],
 })
 export class JobOpeningsContainer {
   jobOpeningFacade = inject(JobOpeningFacade);

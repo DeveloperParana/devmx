@@ -49,7 +49,7 @@ Para criar uma entidade `quiz` para o domínio `learn`.
 
 ```sh
 devmx$ nx g @devmx/plugin-dx-dev:entity quiz --scope learn -d
- 
+
  NX  Generating @devmx/plugin-dx-dev:entity
 
 CREATE packages/learn/data-access/src/lib/application/quiz.facade.ts

@@ -18,7 +18,7 @@ export interface User {
 
   roles: Roles;
 
-  visibility?: UserVisibility
+  visibility?: UserVisibility;
 
   skills?: UserSkill[];
 

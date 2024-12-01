@@ -14,23 +14,19 @@ describe('UserSocialForm', () => {
   });
 
   it('should remove item', () => {
-    form.patchValue([
-      { type: 'linkedIn', username: 'guilhermesiquinelli' },
-    ]);
+    form.patchValue([{ type: 'linkedIn', username: 'guilhermesiquinelli' }]);
 
     expect(form.value.length).toBe(2);
   });
 
   it('should remove item', () => {
-    form.patchValue([
-      { type: 'linkedIn', username: 'guilhermesiquinelli' },
-    ]);
+    form.patchValue([{ type: 'linkedIn', username: 'guilhermesiquinelli' }]);
 
     expect(form.value.length).toBe(2);
   });
 
   it('should remove item', () => {
-    form.removeAt(1)
+    form.removeAt(1);
 
     expect(form.value.length).toBe(1);
   });

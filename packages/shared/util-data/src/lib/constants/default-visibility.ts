@@ -1,4 +1,4 @@
-import { UserVisibility } from "@devmx/shared-api-interfaces";
+import { UserVisibility } from '@devmx/shared-api-interfaces';
 
 export const DEFAULT_VISIBILITY: UserVisibility = {
   email: false,

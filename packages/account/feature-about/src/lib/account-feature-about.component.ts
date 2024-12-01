@@ -22,10 +22,7 @@ import { filter, map } from 'rxjs';
     :host .toolbar { display: flex; gap: 1em; }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterModule,
-    AppShellComponent,
-  ],
+  imports: [RouterModule, AppShellComponent],
   standalone: true,
 })
 export class AccountFeatureAboutComponent {

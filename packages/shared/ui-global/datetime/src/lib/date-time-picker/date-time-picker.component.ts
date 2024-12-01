@@ -61,10 +61,10 @@ export class DateTimePickerComponent
 
   ngAfterViewInit() {
     if (!this.control.value) {
-      this.control.setValue(new Date())
+      this.control.setValue(new Date());
     }
 
-    const { value } = this.control
+    const { value } = this.control;
 
     this.form.setValue({ date: value, time: value }, { emitEvent: false });
 
