@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RSVPButtonComponent, RSVPForm } from '@devmx/event-ui-shared';
-import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
+import { MarkdownViewComponent } from '@devmx/shared-ui-global/markdown';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -30,7 +30,7 @@ import { EventFormatPipe } from '../../pipes';
     MatButtonModule,
     IconComponent,
     EventFormatPipe,
-    MarkdownComponent,
+    MarkdownViewComponent,
     PhotoPipe,
     AsyncPipe,
     DatePipe,

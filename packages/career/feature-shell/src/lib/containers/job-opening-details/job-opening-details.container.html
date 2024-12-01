@@ -74,18 +74,18 @@
 
   <mat-card-content>
     <h3>Detalhes</h3>
-    <div [innerHTML]="job.description | marked | safeHtml"></div>
+    <div [innerHTML]="job.description | markdown | html"></div>
   </mat-card-content>
 
   <mat-card-content>
     <h3>Requisitos</h3>
-    <div [innerHTML]="job.requirements | marked | safeHtml"></div>
+    <div [innerHTML]="job.requirements | markdown | html"></div>
   </mat-card-content>
 
   @if (job.benefits) {
   <mat-card-content>
     <h3>Benefícios</h3>
-    <div [innerHTML]="job.benefits | marked | safeHtml"></div>
+    <div [innerHTML]="job.benefits | markdown | html"></div>
   </mat-card-content>
   }
 

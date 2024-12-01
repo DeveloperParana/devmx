@@ -22,7 +22,7 @@
 
   <mat-card-content>
     <h3>Objetivo</h3>
-    <div [innerHTML]="course.goal | marked | safeHtml"></div>
+    <div [innerHTML]="course.goal | markdown | html"></div>
   </mat-card-content>
 
   <mat-list>
@@ -42,7 +42,7 @@
   @if (course.details) {
   <mat-card-content>
     <h3>Detalhes</h3>
-    <div [innerHTML]="course.details | marked | safeHtml"></div>
+    <div [innerHTML]="course.details | markdown | html"></div>
   </mat-card-content>
   }
   <!--  -->

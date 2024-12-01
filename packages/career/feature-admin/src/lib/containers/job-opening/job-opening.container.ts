@@ -1,7 +1,6 @@
-import { JobOpeningFacade } from '@devmx/career-data-access';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { EditorComponent } from '@devmx/shared-ui-global/editor';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { JobOpeningFacade } from '@devmx/career-data-access';
 import { EditableSkill } from '@devmx/shared-api-interfaces';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { SkillDialogService } from '@devmx/learn-ui-shared';
@@ -18,6 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JobOpeningForm } from '../../forms';
 import { Subject, take } from 'rxjs';
 import {
+  MarkdownEditorComponent,
+  MarkdownToolbarComponent,
+  MarkdownViewComponent,
+} from '@devmx/shared-ui-global/markdown';
+import {
   inject,
   Component,
   ChangeDetectorRef,
@@ -31,14 +35,16 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
-    MatCardModule,
+    MarkdownViewComponent,
+    MarkdownEditorComponent,
+    MarkdownToolbarComponent,
     MatFormFieldModule,
-    EditorComponent,
-    MatInputModule,
-    MatListModule,
     MatButtonModule,
     MatSelectModule,
     MatSliderModule,
+    MatInputModule,
+    MatListModule,
+    MatCardModule,
     IconComponent,
   ],
 })

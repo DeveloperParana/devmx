@@ -1,4 +1,4 @@
-import { MarkedPipe, SafeHtmlPipe } from '@devmx/shared-ui-global/editor';
+import { MarkdownPipe, HtmlPipe } from '@devmx/shared-ui-global/markdown';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogComponent } from '../dialog.component';
 import { DialogModule } from '@angular/cdk/dialog';
@@ -15,7 +15,7 @@ import {
   templateUrl: './read-me-dialog.component.html',
   styleUrl: '../dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DialogModule, MatButtonModule, MarkedPipe, SafeHtmlPipe],
+  imports: [DialogModule, MatButtonModule, MarkdownPipe, HtmlPipe],
 })
 export class ReadMeDialogComponent extends DialogComponent<
   boolean,

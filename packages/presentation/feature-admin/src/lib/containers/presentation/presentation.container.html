@@ -108,7 +108,15 @@
         </mat-checkbox>
       </section>
       <section>
-        <devmx-editor label="Resenha" formControlName="description" />
+        <devmx-markdown-toolbar>
+          <devmx-markdown-editor
+            label="Resenha da apresentação"
+            hint="Compatível com markdown do Github"
+            formControlName="description"
+            [maxRows]="20"
+          />
+          <devmx-markdown-view [content]="form.value.description ?? ''" />
+        </devmx-markdown-toolbar>
       </section>
     </mat-card-content>
 
