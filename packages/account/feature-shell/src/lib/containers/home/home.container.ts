@@ -4,6 +4,8 @@ import { PresentationFacade } from '@devmx/presentation-data-access';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { EventCardListComponent } from '@devmx/event-ui-shared';
 import { JobOpeningFacade } from '@devmx/career-data-access';
+import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { GithubFacade } from '@devmx/shared-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { AlbumFacade } from '@devmx/album-data-access';
@@ -27,6 +29,8 @@ import {
     AlbumCardListComponent,
     SkeletonComponent,
     MatCardModule,
+    MatButtonModule,
+    IconComponent,
     AsyncPipe,
   ],
   standalone: true,
