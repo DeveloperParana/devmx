@@ -9,5 +9,5 @@ Apesar de atualmente não haver intenção de automatizações para publicação
 
 Os commits podem ser feitos em português, mas use inglês para termos técnicos, não tente traduzi-los quando eles são conhecidos e usados em inglês, por gentileza.
 
-> [!WARNING]
-> Antes de escrever seu commit, execute o comando `pnpm affected` para verificar quaisquer possíveis problemas de `lint`, `test` e `build` nos projetos afetados pelas alterações.
+> [!NOTE]
+> Assim que escrever seu commit serão acionados automaticamente algumas verificações, como regras de lint, testes e build dos projetos afetados pela sua alteração, aguarde a conclusão e então siga com a PR **: )**
