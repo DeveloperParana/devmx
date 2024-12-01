@@ -11,6 +11,7 @@ export const academyFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Academia',
     },
+    title: 'Academia',
     canActivate: [rolesGuard('member')],
     component: AcademyFeatureShellComponent,
     children: [
@@ -27,6 +28,7 @@ export const academyFeatureShellRoutes: Route[] = [
         data: {
           breadcrumb: 'Cursos',
         },
+        title: 'Cursos',
         component: CoursesContainer,
       },
       {

@@ -24,6 +24,7 @@ export const accountFeatureShellRoutes: Route[] = [
     data: {
       breadcrumb: 'Conta',
     },
+    title: 'Conta',
     children: [
       {
         path: 'administracao',
@@ -45,14 +46,17 @@ export const accountFeatureShellRoutes: Route[] = [
       },
       {
         path: 'configuracoes',
+        title: 'Configurações da conta',
         component: AccountContainer,
       },
       {
         path: 'sair',
+        title: 'Sair',
         component: SignOutContainer,
       },
       {
         path: '',
+        title: 'Inicio',
         component: HomeContainer,
       },
       {

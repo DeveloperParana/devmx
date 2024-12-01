@@ -1,9 +1,11 @@
+import { env } from '../../envs/env';
+
 export class GoogleTagElement extends HTMLScriptElement {
   connectedCallback() {
     this.setAttribute('async', '');
     this.setAttribute(
       'src',
-      'https://www.googletagmanager.com/gtag/js?id=G-3562LSS0KB'
+      `https://www.googletagmanager.com/gtag/js?id=${env.googleTag}`
     );
 
     const script = document.createElement('script');
@@ -11,7 +13,7 @@ export class GoogleTagElement extends HTMLScriptElement {
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-3562LSS0KB');`;
+      gtag('config', '${env.googleTag}');`;
 
     document.body.appendChild(script);
   }

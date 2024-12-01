@@ -17,6 +17,7 @@ export const learnFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Habilidades',
         },
+        title: 'Administrar hbilidades',
         component: SkillsContainer,
       },
     ],

@@ -24,6 +24,7 @@ export const presentationFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Nova',
         },
+        title: 'Nova apresentação',
         component: PresentationContainer,
       },
       {
@@ -33,6 +34,7 @@ export const presentationFeatureAdminRoutes: Route[] = [
             return data.presentation.title;
           },
         },
+        title: 'Minha apresentação',
         resolve: { presentation: presentationResolver },
         component: PresentationContainer,
       },
@@ -41,6 +43,7 @@ export const presentationFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Minhas apresentações',
         },
+        title: 'Minhas apresentações',
         component: MyPresentationsContainer,
       },
       {
@@ -48,6 +51,7 @@ export const presentationFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Gerenciar apresentações',
         },
+        title: 'Gerenciar apresentações',
         canActivate: [rolesGuard('director', 'manager', 'staff')],
         component: ManagePresentationsContainer,
       },

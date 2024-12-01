@@ -16,6 +16,7 @@ export const academyFeatureAdminRoutes: Route[] = [
     data: {
       breadcrumb: 'Administração',
     },
+    title: 'Administração',
     providers: academyFeatureAdminProviders,
     component: AcademyFeatureAdminComponent,
     children: [
@@ -24,6 +25,7 @@ export const academyFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Novo',
         },
+        title: 'Novo curso',
         component: CourseContainer,
       },
 
@@ -34,6 +36,7 @@ export const academyFeatureAdminRoutes: Route[] = [
             return data.course.name;
           },
         },
+        title: 'Curso',
         resolve: { course: courseResolver },
         component: CourseContainer,
       },
@@ -42,6 +45,7 @@ export const academyFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Meus cursos',
         },
+        title: 'Meus cursos',
         component: MyCoursesContainer,
       },
       {
@@ -49,6 +53,7 @@ export const academyFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Gerenciar cursos',
         },
+        title: 'Gerenciar cursos',
         canActivate: [rolesGuard('director', 'manager', 'staff')],
         component: ManageCoursesContainer,
       },

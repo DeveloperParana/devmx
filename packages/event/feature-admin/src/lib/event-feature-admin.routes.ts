@@ -24,7 +24,7 @@ export const eventFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Novo',
         },
-        component: EventContainer,
+        title: 'Novo evento'
       },
       {
         path: 'meus-eventos/:id',
@@ -33,6 +33,7 @@ export const eventFeatureAdminRoutes: Route[] = [
             return data.event.title;
           },
         },
+        title: 'Meu evento',
         resolve: { event: eventResolver },
         component: EventContainer,
       },
@@ -41,6 +42,7 @@ export const eventFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Meus eventos',
         },
+        title: 'Meus eventos',
         component: MyEventsContainer,
       },
       {
@@ -48,6 +50,7 @@ export const eventFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Gerenciar eventos',
         },
+        title: 'Gerenciar eventos',
         canActivate: [rolesGuard('director', 'manager', 'staff')],
         component: ManageEventsContainer,
       },

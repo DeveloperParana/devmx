@@ -24,6 +24,7 @@ export const careerFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Nova',
         },
+        title: 'Nova vaga',
         component: JobOpeningContainer,
       },
       {
@@ -33,6 +34,7 @@ export const careerFeatureAdminRoutes: Route[] = [
             return data.jobOpening.title;
           },
         },
+        title: 'Minha vaga',
         resolve: { jobOpening: jobOpeningResolver },
         component: JobOpeningContainer,
       },
@@ -41,6 +43,7 @@ export const careerFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Minhas vagas',
         },
+        title: 'Minhas vagas',
         component: MyJobOpeningsContainer,
       },
       {
@@ -48,6 +51,7 @@ export const careerFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Gerenciar ofertas',
         },
+        title: 'Gerenciar vagas',
         canActivate: [rolesGuard('director', 'manager', 'staff')],
         component: ManageJobOpeningsContainer,
       },

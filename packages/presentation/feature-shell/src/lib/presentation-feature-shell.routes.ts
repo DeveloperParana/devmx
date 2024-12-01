@@ -29,6 +29,7 @@ export const presentationFeatureShellRoutes: Route[] = [
       },
       {
         path: '',
+        title: 'Apresentações',
         component: PresentationsContainer,
       },
       {
@@ -38,6 +39,7 @@ export const presentationFeatureShellRoutes: Route[] = [
             return data.presentation.title;
           },
         },
+        title: 'Apresentação',
         resolve: { presentation: presentationResolver },
         component: PresentationDetailsContainer,
         outlet: 'right',

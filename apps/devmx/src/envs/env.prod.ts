@@ -11,4 +11,5 @@ export const env = {
       url: 'https://api.devparana.mx/events/covers',
     },
   },
+  googleTag: 'G-3562LSS0KB',
 };

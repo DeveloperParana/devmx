@@ -22,6 +22,7 @@ export const accountFeatureAboutRoutes: Route[] = [
             return data.user.displayName;
           },
         },
+        title: 'Sobre um usuário',
         resolve: { about: aboutUserResolver },
         component: AboutUserContainer,
       },

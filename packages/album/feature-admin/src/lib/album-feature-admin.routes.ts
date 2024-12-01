@@ -26,6 +26,7 @@ export const albumFeatureAdminRoutes: Route[] = [
             return data.album.title;
           },
         },
+        title: 'Meu album',
         resolve: { album: albumResolver },
         component: AlbumContainer,
       },
@@ -34,6 +35,7 @@ export const albumFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Meus albuns',
         },
+        title: 'Meus albuns',
         component: MyAlbumsContainer,
       },
       {
@@ -41,6 +43,7 @@ export const albumFeatureAdminRoutes: Route[] = [
         data: {
           breadcrumb: 'Gerenciar albuns',
         },
+        title: 'Gerenciar albuns',
         canActivate: [rolesGuard('director', 'manager', 'staff')],
         component: ManageAlbumsContainer,
       },

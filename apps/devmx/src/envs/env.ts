@@ -11,4 +11,5 @@ export const env = {
       url: '/events/covers',
     },
   },
+  googleTag: '',
 };

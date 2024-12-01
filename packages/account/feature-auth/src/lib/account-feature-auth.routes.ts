@@ -11,10 +11,12 @@ export const accountFeatureAuthRoutes: Route[] = [
     children: [
       {
         path: 'acessar',
+        title: 'Acessar',
         component: AuthenticationContainer,
       },
       {
         path: 'cadastrar',
+        title: 'Cadastrar',
         component: RegistrationContainer,
       },
       {
