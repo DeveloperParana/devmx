@@ -24,6 +24,7 @@ import {
   UserFacade,
   AuthenticationFacade,
 } from '@devmx/account-data-access';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -43,6 +44,7 @@ import {
     SelectFileComponent,
     MatButtonModule,
     AvatarComponent,
+    RouterLink
   ],
 })
 export class AccountContainer {

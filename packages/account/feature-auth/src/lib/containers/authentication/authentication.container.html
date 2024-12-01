@@ -7,7 +7,12 @@
     </mat-card-header>
 
     <mat-card-content class="authentication-card-content">
-      <a routerLink="../cadastrar" mat-button>Quero criar minha conta</a>
+      <a
+        [routerLink]="['..','cadastrar']"
+        [queryParams]="route.snapshot.queryParams"
+        mat-button
+        >Quero criar minha conta</a
+      >
     </mat-card-content>
 
     <mat-vertical-stepper

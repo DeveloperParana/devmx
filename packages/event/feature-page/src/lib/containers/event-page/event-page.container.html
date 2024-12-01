@@ -30,52 +30,64 @@
     @if ((event.format | showEventLink) && event.link) {
     <devmx-youtube-button [data]="event" />
     }
+
+    <devmx-whats-app-button [data]="event" />
   </nav>
 </header>
 
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-  <mat-tab label="Descrição">
-    <ng-template matTabContent>
-      <article>
-        <devmx-markdown [content]="event.description" />
-      </article>
-    </ng-template>
-  </mat-tab>
-  @if (event.presentations.length) {
-  <mat-tab label="Agenda">
-    <ng-template matTabContent>
-      <mat-list>
-        @for (presentation of event.presentations; track presentation) {
-        <mat-list-item>
-          <devmx-icon matListItemIcon name="presentation" />
-          <div matListItemTitle>{{ presentation.title }}</div>
-          <div matListItemLine>{{ presentation.owner.displayName }}</div>
-          <devmx-heart-button matListItemMeta disabled [loved]="false" />
-        </mat-list-item>
-        }
-      </mat-list>
-    </ng-template>
-  </mat-tab>
-  }
-  <mat-tab label="Organizadores">
-    <ng-template matTabContent>
-      <mat-list>
-        <mat-list-item>
-          <devmx-icon matListItemIcon name="user-circle" />
-          <div matListItemTitle>{{ event.owner.displayName }}</div>
-        </mat-list-item>
-        @if (event.leaders.length) {
-        <!--  -->
-        @for (leader of event.leaders; track leader) {
-        <mat-list-item>
-          <devmx-icon matListItemIcon name="user-circle" />
-          <div matListItemTitle>{{ leader.displayName }}</div>
-        </mat-list-item>
-        }
-        <!--  -->
-        }
-      </mat-list>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
+<section class="event-page-content">
+  <form class="rsvp-button" [formGroup]="form">
+    <devmx-rsvp-button
+      class="rsvp-button"
+      formControlName="status"
+      (statusChange)="onStatusChange()"
+    />
+  </form>
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Descrição">
+      <ng-template matTabContent>
+        <article>
+          <devmx-markdown-view [content]="event.description" />
+        </article>
+      </ng-template>
+    </mat-tab>
+    @if (event.presentations.length) {
+    <mat-tab label="Agenda">
+      <ng-template matTabContent>
+        <mat-list>
+          @for (presentation of event.presentations; track presentation) {
+          <mat-list-item>
+            <devmx-icon matListItemIcon name="presentation" />
+            <div matListItemTitle>{{ presentation.title }}</div>
+            <div matListItemLine>{{ presentation.owner.displayName }}</div>
+            <devmx-heart-button matListItemMeta disabled [loved]="false" />
+          </mat-list-item>
+          }
+        </mat-list>
+      </ng-template>
+    </mat-tab>
+    }
+    <mat-tab label="Organizadores">
+      <ng-template matTabContent>
+        <mat-list>
+          <mat-list-item>
+            <devmx-icon matListItemIcon name="user-circle" />
+            <div matListItemTitle>{{ event.owner.displayName }}</div>
+          </mat-list-item>
+          @if (event.leaders.length) {
+          <!--  -->
+          @for (leader of event.leaders; track leader) {
+          <mat-list-item>
+            <devmx-icon matListItemIcon name="user-circle" />
+            <div matListItemTitle>{{ leader.displayName }}</div>
+          </mat-list-item>
+          }
+          <!--  -->
+          }
+        </mat-list>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</section>
 }

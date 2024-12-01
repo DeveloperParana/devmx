@@ -2,7 +2,7 @@ import { PresentationCardListComponent } from '@devmx/presentation-ui-shared';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PresentationFacade } from '@devmx/presentation-data-access';
-import { MarkdownComponent } from '@devmx/shared-ui-global/editor';
+import { MarkdownViewComponent } from '@devmx/shared-ui-global/markdown';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { EventCardListComponent } from '@devmx/event-ui-shared';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
@@ -24,7 +24,7 @@ import { RolePipe } from '@devmx/account-ui-shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatCardModule,
-    MarkdownComponent,
+    MarkdownViewComponent,
     PresentationCardListComponent,
     EventCardListComponent,
     MatProgressBarModule,

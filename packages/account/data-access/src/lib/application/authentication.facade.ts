@@ -73,6 +73,8 @@ export class AuthenticationFacade extends State<AuthenticationState> {
 
     const request$ = this.createUserUseCase.execute(data);
     request$.pipe(take(1)).subscribe();
+
+    return request$;
   }
 
   signOut() {

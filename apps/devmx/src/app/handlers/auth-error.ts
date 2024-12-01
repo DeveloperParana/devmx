@@ -33,7 +33,8 @@ export class AuthErrorHandler implements ErrorHandler {
       this.showMessage(error.status, message);
 
       if (error.status === 401) {
-        this.router.navigateByUrl('/conta/autenticacao');
+        const queryParams = { redirectTo: this.router.url };
+        this.router.navigate(['/', 'conta', 'autenticacao'], { queryParams });
         localStorage.removeItem('accessToken');
       }
     }
