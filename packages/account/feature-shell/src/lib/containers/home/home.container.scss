@@ -6,6 +6,11 @@
   flex-direction: column;
   max-width: calc(100vw - 2em);
 
+  math {
+    font-size: 200%;
+    margin: 2em;
+  }
+
   .banner {
     flex: 1;
     padding: 1em 1.2em;
@@ -13,12 +18,12 @@
     align-items: flex-end;
     justify-content: flex-end;
 
-    min-height: 128px;
-    max-height: 256px;
+    min-height: 256px;
+    max-height: 356px;
     border-radius: 1em;
 
-    background-image: url('/backgrounds/3d.webp');
-    background-position: center center;
+    background-image: url('/backgrounds/3d-horns.webp');
+    background-position: center 50%;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
     background-color: #999999;

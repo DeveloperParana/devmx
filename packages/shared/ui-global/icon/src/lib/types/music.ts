@@ -24,6 +24,8 @@ export type Music =
   | 'pause-circle'
   | 'play-circle'
   | 'play'
+  | 'stop-circle'
+  | 'stop'
   | 'playlist'
   | 'radio-alt'
   | 'radio'
@@ -36,6 +38,9 @@ export type Music =
   | 'sound-waves'
   | 'sound'
   | 'speaker-alt'
-  | 'speaker';
+  | 'speaker'
+  | 'volume-off'
+  | 'volume'
+  | 'volume-2';
 
 export type MusicIcon = `music/${Music}`;
