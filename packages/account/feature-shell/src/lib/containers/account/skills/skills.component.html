@@ -5,7 +5,7 @@
   formArrayName="skills"
   (cdkDropListDropped)="drop($event)"
 >
-  @for (item of form.skills.controls; track item.value.skill?.id; let index =
+  @for (item of form.skills.controls; track item.value; let index =
   $index) {
   <mat-expansion-panel
     cdkDrag
