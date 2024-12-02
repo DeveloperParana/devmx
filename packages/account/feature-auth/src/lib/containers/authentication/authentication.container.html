@@ -10,9 +10,10 @@
       <a
         [routerLink]="['..','cadastrar']"
         [queryParams]="route.snapshot.queryParams"
-        mat-button
-        >Quero criar minha conta</a
+        mat-raised-button
       >
+        Quero criar minha conta
+      </a>
     </mat-card-content>
 
     <mat-vertical-stepper
@@ -65,6 +66,13 @@
   </mat-card>
 
   <footer>
+    <a
+      [routerLink]="['..','cadastrar']"
+      [queryParams]="route.snapshot.queryParams"
+      mat-button
+    >
+      Criar minha conta
+    </a>
     <a
       target="_blank"
       rel="noopener noreferrer"

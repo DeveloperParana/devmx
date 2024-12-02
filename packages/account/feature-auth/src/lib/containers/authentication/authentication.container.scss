@@ -31,7 +31,7 @@
     }
 
     &-content {
-      padding: 0em 3.8em 0;
+      padding: 0.3em 3.8em 1em;
     }
 
     p {
@@ -48,6 +48,6 @@
   footer {
     margin: 1em;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 }

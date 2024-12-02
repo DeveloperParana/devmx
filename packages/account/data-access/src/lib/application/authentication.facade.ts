@@ -71,10 +71,7 @@ export class AuthenticationFacade extends State<AuthenticationState> {
   createUser(data: CreateUser) {
     this.setState({ loading: true });
 
-    const request$ = this.createUserUseCase.execute(data);
-    request$.pipe(take(1)).subscribe();
-
-    return request$;
+    return this.createUserUseCase.execute(data).pipe(take(1));
   }
 
   signOut() {
