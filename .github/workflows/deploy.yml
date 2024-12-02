@@ -38,20 +38,27 @@ jobs:
 
       - uses: nrwl/nx-set-shas@v4
 
-      - run: pnpm exec nx run-many -t build --projects server,devmx --configuration=production --parallel 10
+      - run: pnpm exec nx run-many -t build --projects devmx --configuration=production --parallel 10
+
+      - name: Deploy GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/devmx/browser
 
       - name: Build Docker image
-        run: docker build -t devmx-server -f Dockerfile.server .
+        run: |
+          docker build -t devmx-server -f Dockerfile.server .
 
       - name: Login to Azure Container Registry
-        uses: azure/docker-login@v1
+        uses: azure/docker-login@v2
         with:
-          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          login-server: devmx.azurecr.io
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Push Docker image to Azure Container Registry
-        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/devmx-server:latest
+        run: docker push devmx.azurecr.io/devmx-server:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,12 +71,12 @@ jobs:
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
         with:
-          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          login-server: devmx.azurecr.io
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Pull Docker image from Azure Container Registry
-        run: docker pull ${{ secrets.ACR_LOGIN_SERVER }}/devmx-server:latest
+        run: docker pull devmx.azurecr.io/devmx-server:latest
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -78,4 +85,4 @@ jobs:
           app-name: 'devpr'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AF340B23D99E4DE5BE0B99FA4D5BFB80 }}
-          images: ${{ secrets.ACR_LOGIN_SERVER }}/devmx-server:latest
+          images: devmx.azurecr.io/devmx-server:latest
