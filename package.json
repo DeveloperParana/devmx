@@ -12,7 +12,8 @@
     "dev:setup": "./tools/scripts/setup.sh",
     "commit": "czg",
     "prepare": "husky",
-    "docker:build": "docker build -t devmx-server ."
+    "docker:build": "docker build -t devmx-server .",
+    "docker-compose": "docker-compose up --build"
   },
   "private": true,
   "devDependencies": {

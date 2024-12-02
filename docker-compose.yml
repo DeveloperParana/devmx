@@ -9,3 +9,37 @@ services:
       MONGO_INITDB_DATABASE: ${DB_NAME}
     ports:
       - 27017:27017
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PORT: ${PORT}
+      DB_HOST: mongodb
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      JWT_SECRET: ${JWT_SECRET}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      CODE_LIFE_TIME: ${CODE_LIFE_TIME}
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+
+  devmx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PORT: ${PORT}
+    ports:
+      - 4200:4200
+    depends_on:
+      - server
+      - mongodb
