@@ -58,7 +58,7 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Push Docker image to Azure Container Registry
-        run: docker push devmx.azurecr.io/devmx-server:latest
+        run: docker push devmx.azurecr.io/devmx-server:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
