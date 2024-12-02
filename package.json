@@ -14,7 +14,7 @@
     "prepare": "husky",
     "docker:build:server": "docker build -t devmx-server -f Dockerfile.server .",
     "docker:build:front": "docker build -t devmx-front -f Dockerfile.front .",
-    "docker-compose": "docker-compose up --build",
+    "docker:compose": "docker compose up --build",
     "docker:run:server": "docker run -p 3000:3000 devmx-server",
     "docker:run:front": "docker run -p 4200:4200 devmx-front"
   },
