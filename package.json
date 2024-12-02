@@ -11,7 +11,8 @@
     "lint:fix": "pnpm exec nx run-many -t lint --fix",
     "dev:setup": "./tools/scripts/setup.sh",
     "commit": "czg",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:build": "docker build -t devmx-server ."
   },
   "private": true,
   "devDependencies": {
