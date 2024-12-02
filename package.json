@@ -12,10 +12,11 @@
     "dev:setup": "./tools/scripts/setup.sh",
     "commit": "czg",
     "prepare": "husky",
-    "docker:build": "docker build -t devmx-server .",
+    "docker:build:server": "docker build -t devmx-server -f Dockerfile.server .",
+    "docker:build:front": "docker build -t devmx-front -f Dockerfile.front .",
     "docker-compose": "docker-compose up --build",
-    "docker:build:devmx": "docker build -t devmx .",
-    "docker:run:devmx": "docker run -p 4200:4200 devmx"
+    "docker:run:server": "docker run -p 3000:3000 devmx-server",
+    "docker:run:front": "docker run -p 4200:4200 devmx-front"
   },
   "private": true,
   "devDependencies": {

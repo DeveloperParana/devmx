@@ -13,7 +13,7 @@ services:
   server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.server
     environment:
       PORT: ${PORT}
       DB_HOST: mongodb
@@ -35,7 +35,7 @@ services:
   devmx:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.front
     environment:
       PORT: ${PORT}
     ports:
