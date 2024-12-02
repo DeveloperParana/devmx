@@ -6,7 +6,7 @@ export const appSections: SectionHeaderOptions[] = [
     expanded: true,
     links: [
       {
-        label: 'Conta',
+        label: 'Inicio',
         route: ['/conta'],
         icon: 'menu/home-4',
       },
@@ -21,7 +21,7 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'camera-shutter',
       },
       {
-        label: 'Apresentações',
+        label: 'Conhecimento',
         route: ['/apresentacoes'],
         icon: 'presentation',
       },
@@ -76,11 +76,22 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'music/speaker',
         roles: ['recruiter'],
       },
+      // {
+      //   label: 'Aprenda',
+      //   route: ['/aprenda', 'administracao'],
+      //   icon: 'book-opened',
+      //   roles: ['member'],
+      // },
       {
-        label: 'Aprenda',
-        route: ['/aprenda', 'administracao'],
-        icon: 'book-opened',
+        label: 'Sobre você',
+        route: ['/conta', 'configuracoes'],
+        icon: 'doc/id-card',
         roles: ['member'],
+      },
+      {
+        label: 'Sair',
+        route: ['/conta', 'sair'],
+        icon: 'exit',
       },
     ],
   },
@@ -123,23 +134,6 @@ export const appSections: SectionHeaderOptions[] = [
         route: ['/conta', 'administracao', 'usuarios'],
         icon: 'gear',
         roles: ['manager', 'director'],
-      },
-    ],
-  },
-  {
-    label: 'Conta',
-    expanded: true,
-    links: [
-      {
-        label: 'Sobre você',
-        route: ['/conta', 'configuracoes'],
-        icon: 'doc/id-card',
-        roles: ['member'],
-      },
-      {
-        label: 'Sair',
-        route: ['/conta', 'sair'],
-        icon: 'exit',
       },
     ],
   },
