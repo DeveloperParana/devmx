@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       deploy_front:
-        description: 'Deploy front'
+        description: 'Mark this checkbox to deploy and build the front-end'
         required: true
         default: false
         type: boolean
