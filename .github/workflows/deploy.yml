@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-deploy-front:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: write
