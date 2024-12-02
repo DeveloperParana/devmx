@@ -13,7 +13,9 @@
     "commit": "czg",
     "prepare": "husky",
     "docker:build": "docker build -t devmx-server .",
-    "docker-compose": "docker-compose up --build"
+    "docker-compose": "docker-compose up --build",
+    "docker:build:devmx": "docker build -t devmx .",
+    "docker:run:devmx": "docker run -p 4200:4200 devmx"
   },
   "private": true,
   "devDependencies": {

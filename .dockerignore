@@ -1,0 +1,36 @@
+# Ignore node_modules directory
+node_modules
+
+# Ignore build output directories
+dist
+tmp
+
+# Ignore git directory
+.git
+
+# Ignore environment files
+.env
+.env.prod
+
+# Ignore IDE and editor directories
+.idea
+.vscode
+
+# Ignore log files
+npm-debug.log
+yarn-error.log
+testem.log
+
+# Ignore coverage directory
+coverage
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore nx cache
+.nx/cache
+.nx/workspace-data
+
+# Ignore angular cache
+.angular
