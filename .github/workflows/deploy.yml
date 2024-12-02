@@ -58,10 +58,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: |
-          docker build -t devmx-server -f Dockerfile.server .
-
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v2
         with:
@@ -69,10 +65,14 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
+      - name: Build Docker image
+        run: |
+          docker build -t devmx-server -f Dockerfile.server .
+
       - name: Push Docker image to Azure Container Registry
         run: |
-          docker tag devmx-server devmx.azurecr.io/devmx-server:${{ github.sha }}
-          docker push devmx.azurecr.io/devmx-server:${{ github.sha }}
+          docker tag devmx-server devmx.azurecr.io/devmx-server:latest
+          docker push devmx.azurecr.io/devmx-server:latest
 
   deploy-back:
     runs-on: ubuntu-latest
