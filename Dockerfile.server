@@ -19,7 +19,7 @@ COPY . .
 RUN pnpm nx build server --verbose
 
 # Expose port 3000
-EXPOSE 3000
+EXPOSE 8080
 
 # Set the command to run the application using node dist/apps/server/main.js
 CMD ["node", "dist/apps/server/main.js"]
