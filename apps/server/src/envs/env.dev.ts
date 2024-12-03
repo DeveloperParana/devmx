@@ -9,6 +9,9 @@ export const env = {
     user: process.env.DB_USER,
     pass: process.env.DB_PASS,
   },
+  mongo: {
+    uri: process.env.MONGO_URI ?? '',
+  },
   jwt: {
     secret: process.env.JWT_SECRET,
   },
