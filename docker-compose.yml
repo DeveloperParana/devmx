@@ -12,6 +12,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.server
+      args:
+        - PORT=${PORT}
     environment:
       PORT: ${PORT}
       DB_HOST: mongodb
@@ -25,8 +27,10 @@ services:
       SMTP_USER: ${SMTP_USER}
       SMTP_PASS: ${SMTP_PASS}
       CODE_LIFE_TIME: ${CODE_LIFE_TIME}
+      MONGO_URI: ${MONGO_URI}
+      NODE_ENV: ${NODE_ENV}
     ports:
-      - 8080:8080
+      - 8080:${PORT}
     depends_on:
       - mongodb
 
