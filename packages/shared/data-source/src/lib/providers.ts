@@ -8,10 +8,11 @@ export function provideMongoURI() {
   return {
     provide: 'MONGO_URI',
     useFactory(env: Env) {
-      const { user, pass, host, port, name } = env.db;
+      const { user, pass, host, port, name, } = env.db;
+      const { uri } = env.mongo;
 
       if (env.production) {
-        return `mongodb+srv://${user}:${pass}@${host}/?retryWrites=true&w=majority&appName=${name}`;
+        return `${uri}`;
       }
 
       return `mongodb://${user}:${pass}@${host}:${port}/${name}?authSource=admin`;
