@@ -2,6 +2,7 @@
   "name": "@devmx/source",
   "version": "0.0.0",
   "license": "MIT",
+  "nxCloudId": "66ed082b0f768c3e7a77e1a5",
   "scripts": {
     "dev": "nx run-many -t serve --projects=server,devmx --configuration=development",
     "dev:server": "nx serve server",
