@@ -16,6 +16,7 @@
     "docker:build:front": "docker build -t devmx-front -f Dockerfile.front .",
     "docker:compose": "docker compose up --build",
     "docker:compose:only:mongo": "docker compose up -d mongo",
+    "docker:compose:only:server": "docker compose up -d server",
     "docker:run:server": "docker run -p 3000:3000 devmx-server",
     "docker:run:front": "docker run -p 4200:4200 devmx-front"
   },
