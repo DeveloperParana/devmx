@@ -1,5 +1,10 @@
 import { TypedForm, FormOption } from '@devmx/shared-ui-global/forms';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { EventPresentationsForm } from './event-presentation';
 import { DURATION_TIMES } from '@devmx/shared-util-data';
 import { EventLeadersForm } from './event-leader';
@@ -25,6 +30,10 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
   static date = addDays(new Date(), 10);
 
   constructor() {
+    EventForm.date.setHours(19);
+    EventForm.date.setMinutes(0);
+    EventForm.date.setSeconds(0);
+
     super({
       id: new FormControl('', {
         nonNullable: true,
@@ -41,13 +50,13 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
         updateOn: 'blur',
       }),
 
-      time: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
+      // time: new FormControl('', {
+      //   nonNullable: true
+      // }),
 
       duration: new FormControl('2h', {
         nonNullable: true,
+        validators: [Validators.required],
       }),
 
       maxAttendees: new FormControl(0, {
@@ -56,6 +65,7 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
 
       description: new FormControl('', {
         nonNullable: true,
+        validators: [Validators.required],
       }),
 
       presentations: new EventPresentationsForm(),
@@ -64,6 +74,7 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
 
       format: new FormControl('', {
         nonNullable: true,
+        validators: [Validators.required],
       }),
 
       address: new FormControl('', {
@@ -115,19 +126,43 @@ export class EventForm extends FormGroup<TypedForm<EditableEvent>> {
   }
 
   onFormatChange(format = '') {
+    if (!this.controls.address || !this.controls.link) return;
+
     if (format === 'in-person') {
-      this.controls.address?.enable();
-      this.controls.link?.disable();
+      this.controls.address.enable();
+      this.controls.address.addValidators(Validators.required);
+
+      this.controls.link.disable();
+      this.controls.link.removeValidators(Validators.required);
     }
 
     if (format === 'online') {
-      this.controls.address?.disable();
-      this.controls.link?.enable();
+      this.controls.address.disable();
+      this.controls.address.removeValidators(Validators.required);
+
+      this.controls.link.enable();
+      this.controls.address.addValidators(Validators.required);
     }
 
     if (format === 'mixed') {
-      this.controls.link?.enable();
-      this.controls.address?.enable();
+      this.controls.link.enable();
+      this.controls.link.addValidators(Validators.required);
+
+      this.controls.address.enable();
+      this.controls.address.addValidators(Validators.required);
     }
+
+    this.updateValueAndValidity({ onlySelf: true });
+  }
+
+  getErrors() {
+    const errors = {} as Record<string, ValidationErrors | null>;
+
+    for (const key in this.controls) {
+      const k = key as keyof TypedForm<EditableEvent>;
+      errors[key] = this.controls[k]?.errors ?? null;
+    }
+
+    return errors;
   }
 }

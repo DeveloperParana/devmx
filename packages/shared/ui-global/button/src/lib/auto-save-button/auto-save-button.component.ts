@@ -1,33 +1,29 @@
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { TypedForm } from '@devmx/shared-ui-global/forms';
-import { debounceTime, skip, take, timer } from 'rxjs';
+import { debounceTime, skip } from 'rxjs';
 import {
   FormGroup,
   ControlContainer,
   ReactiveFormsModule,
+  FormGroupDirective,
 } from '@angular/forms';
 import {
-  signal,
+  input,
   inject,
   output,
   Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
   DestroyRef,
+  AfterViewInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
   selector: 'devmx-auto-save-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <button
-      type="button"
-      mat-flat-button
-      [disabled]="state()"
-      (click)="onClick()"
-    >
-      {{ state() ? state() : 'Salvar' }}
+    <button mat-flat-button [disabled]="saving()">
+      {{ saving() ? 'Salvando...' : 'Salvar' }}
     </button>
   `,
   viewProviders: [
@@ -41,35 +37,19 @@ import {
 export class AutoSaveButtonComponent<T> implements AfterViewInit {
   container = inject(ControlContainer);
 
-  destroyRef = inject(DestroyRef);
-
   get form() {
     return this.container.control as FormGroup<TypedForm<T>>;
   }
 
-  state = signal<string | null>(null);
+  destroyRef = inject(DestroyRef);
 
-  clicked = output<T>();
+  saving = input.required<boolean>();
+
+  autoSave = output<T>();
 
   ngAfterViewInit() {
     this.form.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(4000), skip(1))
-      .subscribe(() => this.onClick());
-  }
-
-  onClick() {
-    const timer$ = timer(1000).pipe(take(1));
-
-    if (this.form.valid) {
-      this.state.set('Salvando...');
-
-      this.clicked.emit(this.form.getRawValue() as T);
-
-      return timer$.subscribe(() => this.state.set(null));
-    }
-
-    this.form.markAllAsTouched();
-
-    return timer$.subscribe(() => this.state.set(null));
+      .subscribe(() => this.autoSave.emit(this.form.getRawValue() as T));
   }
 }
