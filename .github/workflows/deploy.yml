@@ -56,7 +56,7 @@ jobs:
       id-token: write
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
   
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
