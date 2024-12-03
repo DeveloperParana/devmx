@@ -9,6 +9,10 @@ export abstract class Env {
     pass: string;
   };
 
+  abstract mongo: {
+    uri: string;
+  }
+
   abstract jwt: {
     secret: string;
   };

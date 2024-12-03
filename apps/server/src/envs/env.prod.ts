@@ -1,5 +1,9 @@
 import { join } from 'node:path';
 
+if (!process.env.MONGO_URI) {
+  throw new Error('MONGO_URI environment variable is not set');
+}
+
 export const env = {
   production: true,
   db: {
@@ -8,6 +12,9 @@ export const env = {
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
     pass: process.env.DB_PASS,
+  },
+  mongo: {
+    uri: process.env.MONGO_URI,
   },
   jwt: {
     secret: process.env.JWT_SECRET,
