@@ -45,6 +45,7 @@ export class EventsController {
 
   @Post()
   @ApiBearerAuth()
+  @ApiOkResponse({ type: EventDto })
   async create(@User('id') owner: string, @Body() data: CreateEventDto) {
     try {
       return await this.eventsFacade.create({ ...data, owner });

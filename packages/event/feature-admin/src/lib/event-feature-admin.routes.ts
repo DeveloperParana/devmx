@@ -25,6 +25,7 @@ export const eventFeatureAdminRoutes: Route[] = [
           breadcrumb: 'Novo',
         },
         title: 'Novo evento',
+        component: EventContainer,
       },
       {
         path: 'meus-eventos/:id',

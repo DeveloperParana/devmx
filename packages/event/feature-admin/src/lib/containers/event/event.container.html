@@ -1,46 +1,38 @@
-<form id="event" [formGroup]="form">
-  <mat-tab-group mat-stretch-tabs dynamicHeight class="event-tab">
-    <mat-tab label="Evento">
-      <section class="event-tab-content">
-        <devmx-admin-event-form />
-      </section>
-    </mat-tab>
-    <mat-tab label="Detalhes">
-      <section class="event-tab-content">
-        <devmx-markdown-toolbar>
-          <devmx-markdown-editor
-            label="Descreva o evento"
-            hint="Compatível com markdown do Github"
-            formControlName="description"
-            [minRows]="20"
-            [maxRows]="40"
-          />
-          <devmx-markdown-view [content]="form.value.description ?? ''" />
-        </devmx-markdown-toolbar>
-      </section>
-    </mat-tab>
-    <mat-tab label="Organizadores">
-      <section class="event-tab-content">
-        <devmx-admin-event-leaders />
+<form id="event" [formGroup]="form" (submit)="onSubmit()">
+  <section class="event-tab-content">
+    <devmx-admin-event-form />
+  </section>
 
-        <button type="button" mat-button (click)="selectLeaders()">
-          Adicionar outras pessoas
-        </button>
-      </section>
-    </mat-tab>
-    <mat-tab label="Apresentações">
-      <section class="event-tab-content">
-        <devmx-admin-event-presentations />
+  <section class="event-tab-content">
+    <devmx-markdown-toolbar>
+      <devmx-markdown-editor
+        label="Descreva o evento"
+        hint="Compatível com markdown do Github"
+        formControlName="description"
+        [minRows]="20"
+        [maxRows]="40"
+      />
+      <devmx-markdown-view [content]="form.value.description ?? ''" />
+    </devmx-markdown-toolbar>
+  </section>
 
-        <button type="button" mat-button (click)="selectPresentations()">
-          Procure por conteúdos
-        </button>
-      </section>
-    </mat-tab>
-  </mat-tab-group>
+  <section class="event-tab-content">
+    <devmx-admin-event-leaders />
+
+    <button type="button" mat-button (click)="selectLeaders()">
+      Adicionar outras pessoas
+    </button>
+  </section>
+  <section class="event-tab-content">
+    <devmx-admin-event-presentations />
+
+    <button type="button" mat-button (click)="selectPresentations()">
+      Procure por conteúdos
+    </button>
+  </section>
 
   <footer class="event-footer">
-    <devmx-auto-save-button (clicked)="onSubmit()" />
+    <devmx-auto-save-button [saving]="saving()" (autoSave)="onSubmit()" />
     <!-- <button mat-flat-button>Salvar</button> -->
   </footer>
 </form>

@@ -4,15 +4,15 @@ import { AutoSaveButtonComponent } from '@devmx/shared-ui-global/button';
 import { EventFormComponent } from './event-form/event-form.component';
 import { SelectPresentation } from '@devmx/presentation-ui-shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { EditableEvent } from '@devmx/shared-api-interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { MessageService } from '@devmx/shared-ui-global';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventFacade } from '@devmx/event-data-access';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SelectUser } from '@devmx/account-ui-shared';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Event } from '@devmx/shared-api-interfaces';
 import { EventForm } from '../../forms';
 import { take } from 'rxjs';
 import {
@@ -20,6 +20,7 @@ import {
   Component,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
+  signal,
 } from '@angular/core';
 import {
   MarkdownViewComponent,
@@ -47,6 +48,8 @@ import {
   ],
 })
 export class EventContainer {
+  router = inject(Router);
+
   route = inject(ActivatedRoute);
 
   cdr = inject(ChangeDetectorRef);
@@ -60,6 +63,8 @@ export class EventContainer {
   selectPresentation = inject(SelectPresentation);
 
   selectUser = inject(SelectUser);
+
+  saving = signal(false);
 
   form = new EventForm();
 
@@ -110,14 +115,27 @@ export class EventContainer {
 
   onSubmit() {
     if (this.form.valid) {
-      const value = this.form.getRawValue();
-      if (value.id) this.eventFacade.update(value as EditableEvent);
-      else this.eventFacade.create(value as EditableEvent);
+      this.saving.set(true);
 
-      const message = `Armazenando informações`;
-      return this.messageService.open({ message });
+      const value = this.form.getRawValue() as Event;
+
+      if (value.id) {
+        this.eventFacade.update(value).subscribe(this.#onCompleteRequest);
+      } else {
+        this.eventFacade.create(value).subscribe(this.#onCompleteRequest);
+      }
+    } else {
+      this.form.markAllAsTouched();
     }
-
-    return this.form.markAllAsTouched();
   }
+
+  #onCompleteRequest = (event?: Event) => {
+    this.saving.set(false);
+    const message = `Armazenando informações`;
+    this.messageService.open({ message });
+
+    if (event && event.id) {
+      this.router.navigate(['..', event.id], { relativeTo: this.route });
+    }
+  };
 }
