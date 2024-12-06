@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { Institution, UseCase } from '@devmx/shared-api-interfaces';
 import { InstitutionService } from '../services';
 
@@ -9,4 +10,8 @@ export class DeleteInstitutionUseCase
   execute(id: string) {
     return this.institutionService.delete(id);
   }
+}
+
+export function provideDeleteInstitutionUseCase() {
+  return createUseCaseProvider(DeleteInstitutionUseCase, [InstitutionService]);
 }

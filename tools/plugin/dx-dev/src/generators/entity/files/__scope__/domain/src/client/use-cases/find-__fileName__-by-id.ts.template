@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { <%= className %>, UseCase } from '@devmx/shared-api-interfaces';
 import { <%= className %>Service } from '../services';
 
@@ -9,4 +10,8 @@ export class Find<%= className %>ByIDUseCase
   execute(id: string) {
     return this.<%= propertyName %>Service.findOne(id);
   }
+}
+
+export function provideFind<%= className %>ByIDUseCase() {
+  return createUseCaseProvider(Find<%= className %>ByIDUseCase, [<%= className %>Service]);
 }

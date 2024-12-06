@@ -76,12 +76,12 @@ export const appSections: SectionHeaderOptions[] = [
         icon: 'music/speaker',
         roles: ['recruiter'],
       },
-      // {
-      //   label: 'Aprenda',
-      //   route: ['/aprenda', 'administracao'],
-      //   icon: 'book-opened',
-      //   roles: ['member'],
-      // },
+      {
+        label: 'Aprenda',
+        route: ['/aprenda', 'administracao'],
+        icon: 'book-opened',
+        roles: ['member'],
+      },
       {
         label: 'Sobre você',
         route: ['/conta', 'configuracoes'],

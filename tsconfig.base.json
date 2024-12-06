@@ -259,6 +259,7 @@
         "packages/shared/util-authn/src/types.ts"
       ],
       "@devmx/shared-util-data": ["packages/shared/util-data/src/index.ts"],
+      "@devmx/shared-util-data/client": ["packages/shared/util-data/src/client.ts"],
       "@devmx/shared-util-errors": ["packages/shared/util-errors/src/index.ts"]
     }
   },

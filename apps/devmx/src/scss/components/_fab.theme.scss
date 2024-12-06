@@ -44,17 +44,20 @@
       }
     }
 
-    .mat-mdc-fab.primary-fab {
+    .mat-mdc-fab.primary-fab,
+    .mat-mdc-mini-fab.primary-fab {
       background-color: mat.get-theme-color($theme, primary-container);
       color: mat.get-theme-color($theme, on-primary-container);
     }
 
-    .mat-mdc-fab.secondary-fab {
+    .mat-mdc-fab.secondary-fab,
+    .mat-mdc-mini-fab.secondary-fab {
       background-color: mat.get-theme-color($theme, secondary-container);
       color: mat.get-theme-color($theme, on-secondary-container);
     }
 
-    .mat-mdc-fab.tertiary-fab {
+    .mat-mdc-fab.tertiary-fab,
+    .mat-mdc-mini-fab.tertiary-fab {
       background-color: mat.get-theme-color($theme, tertiary, 50);
       color: mat.get-theme-color($theme, on-tertiary);
     }

@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { <%= className %>Service } from '../services';
 import {
   UseCase,
@@ -13,4 +14,8 @@ export class Create<%= className %>UseCase
   execute(data: Editable<%= className %>) {
     return this.<%= propertyName %>Service.create(data);
   }
+}
+
+export function provideCreate<%= className %>UseCase() {
+  return createUseCaseProvider(Create<%= className %>UseCase, [<%= className %>Service]);
 }

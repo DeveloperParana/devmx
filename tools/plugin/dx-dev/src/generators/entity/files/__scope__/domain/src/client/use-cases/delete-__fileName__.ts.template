@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { <%= className %>, UseCase } from '@devmx/shared-api-interfaces';
 import { <%= className %>Service } from '../services';
 
@@ -7,4 +8,8 @@ export class Delete<%= className %>UseCase implements UseCase<string, <%= classN
   execute(id: string) {
     return this.<%= propertyName %>Service.delete(id);
   }
+}
+
+export function provideDelete<%= className %>UseCase() {
+  return createUseCaseProvider(Delete<%= className %>UseCase, [<%= className %>Service]);
 }

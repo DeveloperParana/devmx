@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { Institution, UseCase } from '@devmx/shared-api-interfaces';
 import { InstitutionService } from '../services';
 
@@ -9,4 +10,10 @@ export class FindInstitutionByIDUseCase
   execute(id: string) {
     return this.institutionService.findOne(id);
   }
+}
+
+export function provideFindInstitutionByIDUseCase() {
+  return createUseCaseProvider(FindInstitutionByIDUseCase, [
+    InstitutionService,
+  ]);
 }

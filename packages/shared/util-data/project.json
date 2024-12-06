@@ -12,7 +12,10 @@
         "outputPath": "dist/packages/shared/util-data",
         "main": "packages/shared/util-data/src/index.ts",
         "tsConfig": "packages/shared/util-data/tsconfig.lib.json",
-        "assets": []
+        "assets": [],
+        "additionalEntryPoints": [
+          "packages/shared/util-data/src/client.ts"
+        ]
       }
     }
   }

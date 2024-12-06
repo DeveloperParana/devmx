@@ -6,6 +6,7 @@
   (cdkDropListDropped)="drop($event)"
 >
   @for (item of form.skills.controls; track item.value; let index = $index) {
+
   <mat-expansion-panel
     cdkDrag
     class="skill-item"
@@ -13,6 +14,7 @@
     [formGroupName]="index"
   >
     <mat-expansion-panel-header>
+      <div *cdkDragPlaceholder></div>
       <mat-panel-title> {{ item.value.skill?.name }} </mat-panel-title>
       <mat-panel-description> {{ item.value.weight }}% </mat-panel-description>
       <devmx-icon name="drag/indicator" cdkDragHandle />

@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { InstitutionService } from '../services';
 import {
   UseCase,
@@ -13,4 +14,8 @@ export class CreateInstitutionUseCase
   execute(data: EditableInstitution) {
     return this.institutionService.create(data);
   }
+}
+
+export function provideCreateInstitutionUseCase() {
+  return createUseCaseProvider(CreateInstitutionUseCase, [InstitutionService]);
 }
