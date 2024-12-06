@@ -6,13 +6,27 @@
 
     <devmx-account-profile />
 
-    <devmx-account-skills />
-
     <fieldset>
       <legend>Informações públicas</legend>
 
       <devmx-account-visibility />
     </fieldset>
+
+    <devmx-account-skills />
+
+    <section formGroupName="profile">
+      <devmx-markdown-toolbar>
+        <devmx-markdown-editor
+          label="Bio"
+          #editor="markdownEditor"
+          formControlName="minibio"
+          [maxRows]="80"
+        />
+        <devmx-markdown-view
+          [content]="form.profile.controls.minibio?.value ?? ''"
+        />
+      </devmx-markdown-toolbar>
+    </section>
 
     <footer>
       <button mat-flat-button [disabled]="state()">

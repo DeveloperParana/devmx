@@ -16,6 +16,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { UserForm } from '../../forms/user';
 import {
+  MarkdownEditorComponent,
+  MarkdownToolbarComponent,
+  MarkdownViewComponent,
+} from '@devmx/shared-ui-global/markdown';
+import {
   inject,
   signal,
   Component,
@@ -30,6 +35,9 @@ import {
   providers: [provideUserPhoto()],
   imports: [
     ReactiveFormsModule,
+    MarkdownToolbarComponent,
+    MarkdownEditorComponent,
+    MarkdownViewComponent,
     UserComponent,
     ProfileComponent,
     ContactComponent,

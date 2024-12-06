@@ -7,11 +7,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { provideUserPhoto } from '../../../dialogs';
 import { UserForm } from '../../../forms';
-import {
-  MarkdownEditorComponent,
-  MarkdownToolbarComponent,
-  MarkdownViewComponent,
-} from '@devmx/shared-ui-global/markdown';
 
 @Component({
   selector: 'devmx-account-profile',
@@ -26,9 +21,6 @@ import {
   ],
   providers: [provideNativeDateAdapter(), provideUserPhoto()],
   imports: [
-    MarkdownToolbarComponent,
-    MarkdownEditorComponent,
-    MarkdownViewComponent,
     ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,

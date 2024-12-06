@@ -27,17 +27,4 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
-
-  <devmx-markdown-toolbar>
-    <devmx-markdown-editor
-      label="Bio"
-      #editor="markdownEditor"
-      formControlName="minibio"
-      [maxRows]="40"
-      [minRows]="40"
-    />
-    <devmx-markdown-view
-      [content]="form.profile.controls.minibio?.value ?? ''"
-    />
-  </devmx-markdown-toolbar>
 </div>
