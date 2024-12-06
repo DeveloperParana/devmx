@@ -21,3 +21,42 @@
     white-space: pre-wrap;
   }
 }
+
+:root .mat-typography .markdown-view {
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    font-weight: 600;
+    margin: 1em 0 0;
+  }
+
+  & > h1 {
+    font-size: 1.7em;
+  }
+  & > h2 {
+    font-size: 1.6em;
+  }
+  & > h3 {
+    font-size: 1.5em;
+  }
+  & > h4 {
+    font-size: 1.4em;
+  }
+  & > h5 {
+    font-size: 1.3em;
+  }
+  & > h6 {
+    font-size: 1.2em;
+  }
+
+  p {
+    padding: 1em 0 0;
+  }
+
+  ul + p {
+    margin-top: 1em;
+  }
+}

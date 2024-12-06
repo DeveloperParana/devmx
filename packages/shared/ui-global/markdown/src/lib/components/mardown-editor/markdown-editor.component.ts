@@ -41,6 +41,15 @@ export class MarkdownEditorComponent extends DefaultValueAccessor {
     return ref ? ref.nativeElement : null;
   }
 
+  autofocus = input<boolean | ''>(false);
+
+  get hasAutofocus() {
+    const value = this.autofocus();
+    return value === true || value === '';
+  }
+
+  resize = input(true);
+
   label = input('');
 
   hint = input('');
