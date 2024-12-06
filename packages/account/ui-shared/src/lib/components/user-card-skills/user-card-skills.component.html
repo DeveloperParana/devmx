@@ -1,0 +1,15 @@
+<mat-card class="user-card-skills">
+  <mat-card-header>
+    <mat-card-title>Habilidades</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (item of data(); track item.skill.id) {
+    <mat-list-item>
+      <devmx-icon matListItemIcon name="calendar" />
+      <div matListItemTitle>{{ item.skill.name }}</div>
+      <mat-progress-bar [value]="item.weight" />
+    </mat-list-item>
+    }
+  </mat-list>
+</mat-card>

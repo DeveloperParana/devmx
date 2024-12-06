@@ -1,21 +1,28 @@
-import { PresentationCardListComponent } from '@devmx/presentation-ui-shared';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { PresentationFacade } from '@devmx/presentation-data-access';
 import { MarkdownViewComponent } from '@devmx/shared-ui-global/markdown';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { PresentationFacade } from '@devmx/presentation-data-access';
 import { AuthenticationFacade } from '@devmx/account-data-access';
-import { EventCardListComponent } from '@devmx/event-ui-shared';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
-import { AsyncPipe, KeyValuePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 import { markdownToText } from '@devmx/shared-util-data';
 import { EventFacade } from '@devmx/event-data-access';
-import { MatCardModule } from '@angular/material/card';
 import { Graph } from '@devmx/shared-ui-global/graph';
 import { User } from '@devmx/shared-api-interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import { filter, map, take } from 'rxjs';
-import { MatChipsModule } from '@angular/material/chips';
-import { RolePipe } from '@devmx/account-ui-shared';
+import {
+  UserEventsComponent,
+  UserPresentationsComponent,
+  UserSkillsComponent,
+} from '../../components';
+import {
+  inject,
+  computed,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'devmx-about-user',
@@ -23,16 +30,15 @@ import { RolePipe } from '@devmx/account-ui-shared';
   styleUrl: './about-user.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatCardModule,
     MarkdownViewComponent,
-    PresentationCardListComponent,
-    EventCardListComponent,
+    UserPresentationsComponent,
+    MatSlideToggleModule,
+    UserSkillsComponent,
+    UserEventsComponent,
     MatProgressBarModule,
-    MatChipsModule,
+    MatButtonModule,
     IconComponent,
-    KeyValuePipe,
     AsyncPipe,
-    RolePipe,
   ],
   standalone: true,
 })
@@ -52,6 +58,10 @@ export class AboutUserContainer {
     map(({ about }) => about as User)
   );
 
+  designMode = computed(() => {
+    return document.designMode === 'on';
+  });
+
   constructor() {
     this.user$
       .pipe(
@@ -60,6 +70,8 @@ export class AboutUserContainer {
         take(1)
       )
       .subscribe((owner) => {
+        console.log('owner: ', owner);
+
         const filter = { title: '', owner };
         this.eventFacade.setFilter(filter);
         this.presentationFacade.setFilter(filter);
@@ -69,6 +81,8 @@ export class AboutUserContainer {
       });
 
     this.user$.pipe(take(1)).subscribe((user) => {
+      console.log('user: ', user);
+
       this.graph.setImage({
         title: `Perfil de ${user.displayName}`,
         description: markdownToText(user.profile?.minibio ?? ''),
@@ -79,5 +93,15 @@ export class AboutUserContainer {
         height: 800,
       });
     });
+  }
+
+  toggleDesignMode() {
+    const { designMode } = document;
+    const state = designMode === 'on' ? 'off' : 'on';
+    document.designMode = state;
+  }
+
+  print() {
+    window.print();
   }
 }

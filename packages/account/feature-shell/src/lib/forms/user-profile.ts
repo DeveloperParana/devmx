@@ -21,7 +21,7 @@ export class UserProfileForm extends FormGroup<TypedForm<UserProfile>> {
     super({
       minibio: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.maxLength(1024)],
+        validators: [Validators.maxLength(102400)],
       }),
       birthday: new FormControl(),
       gender: new FormControl(),

@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { SubjectService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindSubjectsUseCase
   execute(params: QueryParams<Subject>) {
     return this.subjectService.find(params);
   }
+}
+
+export function provideFindSubjectsUseCase() {
+  return createUseCaseProvider(FindSubjectsUseCase, [SubjectService]);
 }

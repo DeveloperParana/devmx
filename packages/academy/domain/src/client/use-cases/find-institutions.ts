@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { InstitutionService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindInstitutionsUseCase
   execute(params: QueryParams<Institution>) {
     return this.institutionService.find(params);
   }
+}
+
+export function provideFindInstitutionsUseCase() {
+  return createUseCaseProvider(FindInstitutionsUseCase, [InstitutionService]);
 }

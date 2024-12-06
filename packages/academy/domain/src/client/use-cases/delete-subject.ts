@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { Subject, UseCase } from '@devmx/shared-api-interfaces';
 import { SubjectService } from '../services';
 
@@ -7,4 +8,8 @@ export class DeleteSubjectUseCase implements UseCase<string, Subject | null> {
   execute(id: string) {
     return this.subjectService.delete(id);
   }
+}
+
+export function provideDeleteSubjectUseCase() {
+  return createUseCaseProvider(DeleteSubjectUseCase, [SubjectService]);
 }

@@ -1,0 +1,7 @@
+<ul>
+  @for (item of data(); track item.skill.id) {
+  <li [attr.data-weight]="item.weight">
+    {{ item.skill.name }}
+  </li>
+  }
+</ul>

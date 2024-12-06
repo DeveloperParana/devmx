@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { SubjectService } from '../services';
 import {
   UseCase,
@@ -11,4 +12,8 @@ export class CreateSubjectUseCase implements UseCase<EditableSubject, Subject> {
   execute(data: EditableSubject) {
     return this.subjectService.create(data);
   }
+}
+
+export function provideCreateSubjectUseCase() {
+  return createUseCaseProvider(CreateSubjectUseCase, [SubjectService]);
 }

@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { CourseService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindCoursesUseCase
   execute(params: QueryParams<Course>) {
     return this.courseService.find(params);
   }
+}
+
+export function provideFindCoursesUseCase() {
+  return createUseCaseProvider(FindCoursesUseCase, [CourseService]);
 }

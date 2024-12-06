@@ -55,18 +55,18 @@ describe('UserRolesForm', () => {
   });
 
   it('profile: should be invalid minibio', () => {
-    form.profile.patchValue({ minibio: '.'.repeat(1025) });
+    form.profile.patchValue({ minibio: '.'.repeat(102401) });
 
     expect(form.profile.valid).toBeFalsy();
   });
 
   it('profile: should be invalid minibio error', () => {
-    form.profile.patchValue({ minibio: '.'.repeat(1025) });
+    form.profile.patchValue({ minibio: '.'.repeat(102401) });
 
     expect(form.profile.controls.minibio?.errors).toStrictEqual({
       maxlength: {
-        actualLength: 1025,
-        requiredLength: 1024,
+        actualLength: 102401,
+        requiredLength: 102400,
       },
     });
   });

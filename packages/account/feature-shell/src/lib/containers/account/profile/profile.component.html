@@ -17,8 +17,8 @@
         matInput
         [matDatepicker]="picker"
         formControlName="birthday"
+        (focus)="picker.open()"
         readonly
-        tabindex="-1"
       />
       <mat-datepicker-toggle
         matIconSuffix
@@ -33,6 +33,8 @@
       label="Bio"
       #editor="markdownEditor"
       formControlName="minibio"
+      [maxRows]="40"
+      [minRows]="40"
     />
     <devmx-markdown-view
       [content]="form.profile.controls.minibio?.value ?? ''"

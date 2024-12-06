@@ -1,5 +1,5 @@
-import { provideFacades, provideServices, provideUseCases } from './providers';
+import { provideCourse, provideInstitution, provideSubject } from './providers';
 
 export function provideAcademy() {
-  return [...provideServices(), ...provideUseCases(), ...provideFacades()];
+  return [...provideSubject(), ...provideInstitution(), ...provideCourse()];
 }

@@ -19,6 +19,10 @@ export function buildBarrelPaths(scope: string, fileName: string): Barrel[] {
       file: `./${fileName}s.facade`,
     },
     {
+      path: `packages/${scope}/data-access/src/lib/providers/index.ts`,
+      file: `./${fileName}`,
+    },
+    {
       path: `packages/${scope}/data-source/src/lib/dtos/index.ts`,
       file: `./${fileName}`,
     },

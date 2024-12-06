@@ -1,32 +1,105 @@
 :host {
   flex: 1;
-  gap: 1em;
+  gap: 2em;
   padding: 1em;
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: white;
 
-  & > section {
-    gap: 1em;
-    display: grid;
-    grid-auto-flow: dense;
+  // width: calc(1280px - 2em);
 
-    grid-template-columns: repeat(2, 1fr);
+  @media print {
+    max-width: 822px;
+    width: 100vw;
+    padding: 0;
+  }
 
-    @media (max-width: 1278px) {
-      grid-template-columns: repeat(1, 1fr);
+  menu {
+    margin: 0;
+    padding: 0;
+    top: 16px;
+    right: 16px;
+    position: absolute;
+    display: flex;
+    gap: 8px;
+
+    @media print {
+      display: none;
     }
   }
 
-  .user-contact {
-    gap: 2em;
-    display: flex;
-    flex-flow: row wrap;
+  > header {
+    h2 {
+      font-size: 200%;
+    }
 
-    p {
-      gap: 0.4em;
+    > nav {
+      gap: 2em;
       display: flex;
-      align-items: center;
+      flex-flow: row wrap;
+
+      & > a {
+        gap: 0.4em;
+        display: flex;
+        align-items: center;
+
+        &:link:not(.mdc-button):not(.mdc-icon-button):not(.mdc-fab) {
+          color: #1e1e1e;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  > main {
+    flex: 1;
+    gap: 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media print {
+      width: 100%;
+    }
+
+    .user-card {
+      width: 100%;
+    }
+
+    article {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      @media print {
+        flex: 2;
+        min-width: 480px;
+      }
+    }
+
+    aside {
+      gap: 1em;
+      display: flex;
+      flex-direction: column;
+      width: 24em;
+
+      h3 {
+        margin: 0;
+        opacity: 0.6;
+        font-size: 120%;
+      }
+
+      ul {
+        padding: 0;
+      }
+
+      section {
+
+      }
     }
   }
 
@@ -42,6 +115,73 @@
   }
 }
 
-::ng-deep ol li .mdc-linear-progress .mdc-linear-progress__bar-inner {
-  border-color: #3bce53;
+::ng-deep :root .mat-typography article {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    margin: 1em 0 0;
+  }
+
+  h1 {
+    font-size: 1.7em;
+  }
+  h2 {
+    font-size: 1.6em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4 {
+    font-size: 1.4em;
+  }
+  h5 {
+    font-size: 1.3em;
+  }
+  h6 {
+    font-size: 1.2em;
+  }
+
+  p {
+    padding: 1em 0 0;
+  }
+
+  ul + p {
+    margin-top: 1em;
+  }
+
+  .markdown-view {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  @media print {
+    :root body .app-shell-container {
+      > .sidenav-content {
+        max-height: unset !important;
+      }
+
+      .app-shell-scroll-wrapper {
+        height: unset;
+        overflow: visible;
+
+        .app-shell-content {
+          max-height: 100% !important;
+        }
+      }
+    }
+  }
 }

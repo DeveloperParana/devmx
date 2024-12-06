@@ -1,0 +1,23 @@
+import { provide<%= className %>HttpService } from '../infrastructure';
+import { provide<%= className %>Facade } from '../application';
+import {
+  provideFind<%= className %>sUseCase,
+  provideCreate<%= className %>UseCase,
+  provideDelete<%= className %>UseCase,
+  provideUpdate<%= className %>UseCase,
+  provideFind<%= className %>ByIDUseCase,
+} from '@devmx/<%= scope %>-domain/client';
+
+export function provide<%= className %>() {
+  return [
+    provide<%= className %>HttpService(),
+
+    provideCreate<%= className %>UseCase(),
+    provideFind<%= className %>sUseCase(),
+    provideFind<%= className %>ByIDUseCase(),
+    provideUpdate<%= className %>UseCase(),
+    provideDelete<%= className %>UseCase(),
+
+    provide<%= className %>Facade(),
+  ];
+}
