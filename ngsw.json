@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1733591861345,
+  "timestamp": 1733609843610,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -40,6 +40,7 @@
         "/chunk-EC6LD5KM.js",
         "/chunk-ECEZPNFK.js",
         "/chunk-EDIJ2EBQ.js",
+        "/chunk-EGLBOYTX.js",
         "/chunk-F3MKD3IC.js",
         "/chunk-FLBC3GGY.js",
         "/chunk-GALTSOT5.js",
@@ -53,7 +54,6 @@
         "/chunk-IY2Q6KJD.js",
         "/chunk-J6QMVZUK.js",
         "/chunk-JEPABTNU.js",
-        "/chunk-JPSF7XFF.js",
         "/chunk-JQW63IXS.js",
         "/chunk-KI3VPBOH.js",
         "/chunk-KXTQ2UTD.js",
@@ -89,7 +89,7 @@
         "/chunk-VTXF2N72.js",
         "/chunk-W5KNOAKV.js",
         "/chunk-W625EKSJ.js",
-        "/chunk-WAON6IJS.js",
+        "/chunk-WBFVKDNF.js",
         "/chunk-WK53HQNR.js",
         "/chunk-WQEIDH5Z.js",
         "/chunk-XFNX5BZS.js",
@@ -103,10 +103,10 @@
         "/chunk-ZQOXWN4S.js",
         "/index.html",
         "/logo.svg",
-        "/main-SQLBBGB6.js",
+        "/main-IBTINHAP.js",
         "/manifest.webmanifest",
         "/polyfills-YTAVFQFU.js",
-        "/styles-C3UK55NB.css"
+        "/styles-3ZJYCE2C.css"
       ],
       "patterns": []
     },
@@ -1115,6 +1115,7 @@
     "/chunk-EC6LD5KM.js": "f0ceeb45af5c43f50b14bf1ab88c561ef12505dc",
     "/chunk-ECEZPNFK.js": "205fbe26ba24d4f791093335d6688539206de0ed",
     "/chunk-EDIJ2EBQ.js": "9ed1c47fefdc5c0807791e1f4e59da638e7c219a",
+    "/chunk-EGLBOYTX.js": "effb1fef6beca7e7eba46488dfb367bd5a150a77",
     "/chunk-F3MKD3IC.js": "9c42f13b289f5f31a4e5ec0f76bbe4697ea13d97",
     "/chunk-FLBC3GGY.js": "efa59afa9ae7b26b98360785c83f17486dcd7f12",
     "/chunk-GALTSOT5.js": "8c6ebb2ed60aac8cbd918faef9030d75d500881e",
@@ -1128,7 +1129,6 @@
     "/chunk-IY2Q6KJD.js": "dc0bbb6cef68049fa504598ec9ad359639d567e4",
     "/chunk-J6QMVZUK.js": "48e779b33c3b31bf6fa5ad73204f1991e62aaa7b",
     "/chunk-JEPABTNU.js": "67b267987b3193e17e153ce8db23b753005e9b32",
-    "/chunk-JPSF7XFF.js": "619ab515d087c956d8d5e7ac54842a05dd5686c8",
     "/chunk-JQW63IXS.js": "f8c06958ea22cc7ece931389ec337a81af732bc6",
     "/chunk-KI3VPBOH.js": "8ae5704b9173174868246d3d14ea8158cd918731",
     "/chunk-KXTQ2UTD.js": "70f649eab0e50b86d88752c65c89131036aa94b9",
@@ -1164,7 +1164,7 @@
     "/chunk-VTXF2N72.js": "44bc122f5310afaa46c30b7188b0639b68aa42fd",
     "/chunk-W5KNOAKV.js": "814f756d70b30483ca22e453f5c637f1f262e05d",
     "/chunk-W625EKSJ.js": "9218e3ac7d61bc60befa03aeefeee688e7e2e86e",
-    "/chunk-WAON6IJS.js": "a3a9a123f8a39549537037c5b2a026eff2217849",
+    "/chunk-WBFVKDNF.js": "d7d7c8c18044a0f7c6347b7a545834f3a9d9a4ff",
     "/chunk-WK53HQNR.js": "1bdf422c2eb54247c5d49fce92b19f98844732ed",
     "/chunk-WQEIDH5Z.js": "b9670426c8a2779dfc58195f86e2288db8c9da02",
     "/chunk-XFNX5BZS.js": "3277e7ff323d1d2b8dcfce948c9a6e87e31b18b0",
@@ -2053,17 +2053,17 @@
     "/illustrations/projetos.svg": "0808b82037b44d3563035c7b9497d2d3ce07250e",
     "/images/resume-folder.png": "36484a5502d2359b07c3c656a694345d16b88f6c",
     "/images/resume-folder.webp": "ad287528a078eba29452a90a9d973b6f68f77c0c",
-    "/index.html": "18ca4cb1f7a614a9d4fb35c448eb925f247e842f",
+    "/index.html": "ec92c4f9718eac227017f47556c03e971a726d3f",
     "/loader.svg": "805d529f2dcd845a527c394917dfbf91817efcf5",
     "/logo.svg": "2e202060974c416a93e07c04259c4aea01ffc8f7",
-    "/main-SQLBBGB6.js": "ec562d09d4388734ddee73438bfa64a22b1ce4db",
+    "/main-IBTINHAP.js": "4a95cd05f2e3bb962a14b2e209e07e9747c9cf4d",
     "/manifest.webmanifest": "5fb0d39d4d6f1d375edf05eff19dc89664c74ca9",
     "/photos/default.svg": "28187a03d38b2c569486a162c93a28d60372f9da",
     "/placeholder.svg": "033b33f152ea32d79c011c1b920e2eb7ce86488f",
     "/polyfills-YTAVFQFU.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "/screenshots/narrow.webp": "3e2fc52235bab947efb44db476dfec7c7ee03bb6",
     "/screenshots/wide.webp": "30579c73692fd1cb6658d2ef97ec7d2f189c7a51",
-    "/styles-C3UK55NB.css": "3bedf3c850772ee3a6846bb549e879b520176e5e"
+    "/styles-3ZJYCE2C.css": "14f2a3452c04162cd0afd891b465e7afabd1ed2e"
   },
   "navigationUrls": [
     {
