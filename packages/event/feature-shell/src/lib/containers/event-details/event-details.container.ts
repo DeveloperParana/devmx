@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RSVPButtonComponent, RSVPForm, ShowEventAddressPipe, ShowEventLinkPipe } from '@devmx/event-ui-shared';
+import {
+  RSVPButtonComponent,
+  RSVPForm,
+  ShowEventAddressPipe,
+  ShowEventLinkPipe,
+} from '@devmx/event-ui-shared';
 import { MarkdownViewComponent } from '@devmx/shared-ui-global/markdown';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -55,7 +60,7 @@ export class EventDetailsContainer {
 
   authFacade = inject(AuthenticationFacade);
 
-  eventFacade = inject(EventFacade)
+  eventFacade = inject(EventFacade);
 
   rsvpFacade = inject(RSVPFacade);
 

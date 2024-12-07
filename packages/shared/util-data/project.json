@@ -13,9 +13,7 @@
         "main": "packages/shared/util-data/src/index.ts",
         "tsConfig": "packages/shared/util-data/tsconfig.lib.json",
         "assets": [],
-        "additionalEntryPoints": [
-          "packages/shared/util-data/src/client.ts"
-        ]
+        "additionalEntryPoints": ["packages/shared/util-data/src/client.ts"]
       }
     }
   }

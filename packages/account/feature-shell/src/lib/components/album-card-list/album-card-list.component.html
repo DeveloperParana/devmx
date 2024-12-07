@@ -5,10 +5,7 @@
 
   <mat-list>
     @for (album of data(); track album.id) {
-    <a
-      mat-list-item
-      [routerLink]="['/', 'albuns', album.id]"
-    >
+    <a mat-list-item [routerLink]="['/', 'albuns', album.id]">
       <devmx-icon matListItemIcon name="photo" />
       <div matListItemTitle>{{ album.title }}</div>
       <div matListItemLine>{{ album.createdAt | date : 'longDate' }}</div>

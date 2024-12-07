@@ -11,7 +11,7 @@ export abstract class Env {
 
   abstract mongo: {
     uri: string;
-  }
+  };
 
   abstract jwt: {
     secret: string;
