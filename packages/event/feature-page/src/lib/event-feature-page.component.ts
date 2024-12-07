@@ -15,6 +15,7 @@ import { filter, map } from 'rxjs';
   `,
   styles: `
     :host {
+      flex: 1;
       display: flex;
       flex-direction: column;
     }

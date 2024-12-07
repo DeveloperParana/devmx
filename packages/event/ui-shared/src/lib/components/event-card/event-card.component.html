@@ -8,7 +8,7 @@
   </mat-card-header>
 
   <mat-list>
-    @if (event.date && event.time) {
+    @if (event.date) {
     <mat-list-item>
       <devmx-icon matListItemIcon name="transport/flag-pin" />
       <div matListItemTitle>{{ event.format | eventFormat }}</div>

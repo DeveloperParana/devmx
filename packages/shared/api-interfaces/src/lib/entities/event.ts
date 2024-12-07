@@ -14,7 +14,7 @@ export interface Event {
 
   date?: Date;
 
-  time?: string;
+  // time?: string;
 
   duration?: DurationTime;
 

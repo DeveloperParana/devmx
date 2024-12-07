@@ -21,6 +21,8 @@ import {
 export class WhatsAppButtonComponent implements AfterViewInit {
   data = input.required<EventPage>();
 
+  text = input('Enviar no WhatsApp');
+
   platform = inject(Platform);
 
   link = signal('');

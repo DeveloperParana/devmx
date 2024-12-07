@@ -26,8 +26,8 @@ export class CreatedEventDto {
   @Type(() => Date)
   date: Date;
 
-  @ApiProperty()
-  time: string;
+  // @ApiProperty()
+  // time: string;
 
   @ApiProperty()
   cover: string;

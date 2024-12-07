@@ -7,7 +7,7 @@
     @for (album of data(); track album.id) {
     <a
       mat-list-item
-      [routerLink]="['/', 'albuns', { outlets: { right: [album.id] } }]"
+      [routerLink]="['/', 'albuns', album.id]"
     >
       <devmx-icon matListItemIcon name="photo" />
       <div matListItemTitle>{{ album.title }}</div>

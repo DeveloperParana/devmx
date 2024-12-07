@@ -28,6 +28,12 @@
         margin-bottom: 0;
       }
     }
+
+    &-buttons {
+      gap: 1em;
+      display: flex;
+      flex-flow: row wrap;
+    }
   }
 
   .rsvp-button {

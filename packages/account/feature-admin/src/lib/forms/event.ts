@@ -65,10 +65,10 @@ export class EventForm extends FormGroup<TypedForm<Event>> {
       }),
       city: new FormControl(),
       cover: new FormControl(),
-      date: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
+      // date: new FormControl('', {
+      //   nonNullable: true,
+      //   validators: [Validators.required],
+      // }),
       time: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],
