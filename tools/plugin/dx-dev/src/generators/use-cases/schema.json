@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "UseCases",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "scope": {
+      "type": "string",
+      "description": ""
+    },
+    "x-prompt": "What scope would you like to place files?"
+  },
+  "required": ["name", "scope"]
+}

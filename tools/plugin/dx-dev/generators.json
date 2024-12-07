@@ -4,6 +4,11 @@
       "factory": "./src/generators/entity/generator",
       "schema": "./src/generators/entity/schema.json",
       "description": "Entity generator"
+    },
+    "use-cases": {
+      "factory": "./src/generators/use-cases/generator",
+      "schema": "./src/generators/use-cases/schema.json",
+      "description": "Use Cases"
     }
   }
 }
