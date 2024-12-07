@@ -21,6 +21,8 @@ import {
 export class MapsButtonComponent implements AfterViewInit {
   data = input.required<EventPage>();
 
+  text = input('Abrir com Google Maps');
+
   platform = inject(Platform);
 
   link = signal('');

@@ -21,6 +21,8 @@ import {
 export class YoutubeButtonComponent implements AfterViewInit {
   data = input.required<EventPage>();
 
+  text = input('Abrir com YouTube')
+
   platform = inject(Platform);
 
   link = signal('');

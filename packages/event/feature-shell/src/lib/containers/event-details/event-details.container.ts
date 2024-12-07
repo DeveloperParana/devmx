@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RSVPButtonComponent, RSVPForm } from '@devmx/event-ui-shared';
+import { RSVPButtonComponent, RSVPForm, ShowEventAddressPipe, ShowEventLinkPipe } from '@devmx/event-ui-shared';
 import { MarkdownViewComponent } from '@devmx/shared-ui-global/markdown';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -11,10 +11,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { combineLatest, filter, map, tap } from 'rxjs';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { RSVPFacade } from '@devmx/event-data-access';
+import { EventFacade, RSVPFacade } from '@devmx/event-data-access';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhotoPipe } from '@devmx/shared-ui-global';
 import { EventFormatPipe } from '../../pipes';
+import {
+  MapsButtonComponent,
+  YoutubeButtonComponent,
+  WhatsAppButtonComponent,
+  CalendarButtonComponent,
+} from '@devmx/shared-ui-global/button';
 
 @Component({
   selector: 'devmx-event-details',
@@ -25,12 +31,18 @@ import { EventFormatPipe } from '../../pipes';
     RouterModule,
     ReactiveFormsModule,
     RSVPButtonComponent,
+    CalendarButtonComponent,
+    YoutubeButtonComponent,
+    WhatsAppButtonComponent,
+    MapsButtonComponent,
     MatCardModule,
     MatListModule,
     MatButtonModule,
     IconComponent,
     EventFormatPipe,
     MarkdownViewComponent,
+    ShowEventAddressPipe,
+    ShowEventLinkPipe,
     PhotoPipe,
     AsyncPipe,
     DatePipe,
@@ -42,6 +54,8 @@ export class EventDetailsContainer {
   rsvpForm = new RSVPForm();
 
   authFacade = inject(AuthenticationFacade);
+
+  eventFacade = inject(EventFacade)
 
   rsvpFacade = inject(RSVPFacade);
 

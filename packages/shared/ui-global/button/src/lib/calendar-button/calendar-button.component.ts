@@ -19,6 +19,8 @@ import {
 export class CalendarButtonComponent implements AfterViewInit {
   data = input.required<EventPage>();
 
+  text = input('Adicionar ao calendário');
+
   link = signal('');
 
   ngAfterViewInit() {

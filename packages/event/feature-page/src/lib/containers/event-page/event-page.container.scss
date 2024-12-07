@@ -3,6 +3,7 @@
   gap: 2em;
   display: flex;
   flex-direction: column;
+  background-color: white;
 
   h1 {
     margin: 0;
@@ -48,6 +49,10 @@
   }
 
   .event-page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
     position: relative;
 
     .rsvp-button {

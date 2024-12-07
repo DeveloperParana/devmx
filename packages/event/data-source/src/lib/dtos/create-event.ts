@@ -36,10 +36,10 @@ export class CreateEventDto implements CreateEvent {
   @ApiPropertyOptional()
   date: Date;
 
-  @IsString()
-  @IsOptional()
-  @ApiPropertyOptional()
-  time: string;
+  // @IsString()
+  // @IsOptional()
+  // @ApiPropertyOptional()
+  // time: string;
 
   @IsString()
   @IsOptional()

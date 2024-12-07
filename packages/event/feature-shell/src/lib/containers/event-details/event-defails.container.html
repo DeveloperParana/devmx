@@ -24,13 +24,13 @@
     </mat-list-item>
 
     <mat-list-item>
-      <devmx-icon matListItemIcon name="alarm-clock-alert" />
-      <div matListItemTitle>{{event.time }}h</div>
+      <devmx-icon matListItemIcon name="calendar" />
+      <div matListItemTitle>{{event.date | date: 'shortDate' }}</div>
     </mat-list-item>
 
     <mat-list-item>
-      <devmx-icon matListItemIcon name="calendar" />
-      <div matListItemTitle>{{event.date | date }}</div>
+      <devmx-icon matListItemIcon name="alarm-clock-alert" />
+      <div matListItemTitle>{{event.date | date: 'shortTime' }}h</div>
     </mat-list-item>
 
     @if (event.address) {
@@ -40,6 +40,24 @@
     </mat-list-item>
     }
   </mat-list>
+
+  @if (eventFacade.page$ | async; as page) {
+  <mat-card-content class="event-card-buttons">
+    <devmx-calendar-button [data]="page" text="Definir lembrete" />
+
+    @if ((page.format | showEventAddress) && page.address) {
+    <devmx-maps-button [data]="page" text="Ver no mapa" />
+    }
+
+    <!--  -->
+
+    @if ((page.format | showEventLink) && page.link) {
+    <devmx-youtube-button [data]="page" text="Assistir" />
+    }
+
+    <devmx-whats-app-button [data]="page" text="Compartilhar" />
+  </mat-card-content>
+  }
 
   <mat-card-content>
     <devmx-markdown-view [content]="event.description" />
