@@ -1,0 +1,22 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
+import { <%= className %>Service } from '../services';
+import {
+  Page,
+  UseCase,
+  <%= className %>,
+  QueryParams,
+} from '@devmx/shared-api-interfaces';
+
+export class Find<%= classNamePlural %>UseCase
+  implements UseCase<QueryParams<<%= className %>>, Page<<%= className %>>>
+{
+  constructor(private <%= propertyName %>Service: <%= className %>Service) {}
+
+  execute(params: QueryParams<<%= className %>>) {
+    return this.<%= propertyName %>Service.find(params);
+  }
+}
+
+export function provideFind<%= classNamePlural %>UseCase() {
+  return createUseCaseProvider(Find<%= classNamePlural %>UseCase, [<%= className %>Service]);
+}

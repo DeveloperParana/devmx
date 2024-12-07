@@ -1,0 +1,21 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
+import { <%= className %>Service } from '../services';
+import {
+  UseCase,
+  <%= className %>,
+  Editable<%= className %>,
+} from '@devmx/shared-api-interfaces';
+
+export class Create<%= className %>UseCase
+  implements UseCase<Editable<%= className %>, <%= className %>>
+{
+  constructor(private <%= propertyName %>Service: <%= className %>Service) {}
+
+  execute(data: Editable<%= className %>) {
+    return this.<%= propertyName %>Service.create(data);
+  }
+}
+
+export function provideCreate<%= className %>UseCase() {
+  return createUseCaseProvider(Create<%= className %>UseCase, [<%= className %>Service]);
+}

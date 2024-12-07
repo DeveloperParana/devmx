@@ -1,12 +1,12 @@
 import { getAllNames } from '../../../utils';
 import {
-  EntityGeneratorSchema,
-  NormalizedEntityGeneratorSchema,
+  UseCasesGeneratorSchema,
+  NormalizedUseCasesGeneratorSchema,
 } from '../schema';
 
 export function normalizeOptions(
-  options: EntityGeneratorSchema
-): NormalizedEntityGeneratorSchema {
+  options: UseCasesGeneratorSchema
+): NormalizedUseCasesGeneratorSchema {
   const allNames = getAllNames(options.name);
   return { ...options, ...allNames };
 }
