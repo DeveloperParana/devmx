@@ -13,11 +13,28 @@
     [cdkDragData]="item"
     [formGroupName]="index"
   >
-    <mat-expansion-panel-header>
-      <div *cdkDragPlaceholder></div>
-      <mat-panel-title> {{ item.value.skill?.name }} </mat-panel-title>
-      <mat-panel-description class="skill-weight"> {{ item.value.weight }}% </mat-panel-description>
-      <devmx-icon name="drag/indicator" cdkDragHandle />
+    <mat-expansion-panel-header class="skill-header">
+      <div class="drag-placeholder" *cdkDragPlaceholder></div>
+
+      <mat-panel-title class="skill-title">
+        <devmx-icon name="drag/indicator" cdkDragHandle />
+
+        <span>
+          {{ item.value.skill?.name }}
+        </span>
+      </mat-panel-title>
+
+      <mat-panel-description class="skill-weight">
+        {{ item.value.weight }}%
+      </mat-panel-description>
+
+      <button
+        type="button"
+        mat-icon-button
+        (click)="form.skills.removeAt(index)"
+      >
+        <devmx-icon name="trash" />
+      </button>
     </mat-expansion-panel-header>
 
     <div>

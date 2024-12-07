@@ -230,6 +230,9 @@
       "@devmx/shared-ui-global/search": [
         "packages/shared/ui-global/search/src/index.ts"
       ],
+      "@devmx/shared-ui-global/shadow": [
+        "packages/shared/ui-global/shadow/src/index.ts"
+      ],
       "@devmx/shared-ui-global/sheet": [
         "packages/shared/ui-global/sheet/src/index.ts"
       ],
@@ -259,7 +262,9 @@
         "packages/shared/util-authn/src/types.ts"
       ],
       "@devmx/shared-util-data": ["packages/shared/util-data/src/index.ts"],
-      "@devmx/shared-util-data/client": ["packages/shared/util-data/src/client.ts"],
+      "@devmx/shared-util-data/client": [
+        "packages/shared/util-data/src/client.ts"
+      ],
       "@devmx/shared-util-errors": ["packages/shared/util-errors/src/index.ts"]
     }
   },

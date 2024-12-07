@@ -8,7 +8,7 @@ export function provideMongoURI() {
   return {
     provide: 'MONGO_URI',
     useFactory(env: Env) {
-      const { user, pass, host, port, name, } = env.db;
+      const { user, pass, host, port, name } = env.db;
       const { uri } = env.mongo;
 
       if (env.production) {

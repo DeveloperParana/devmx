@@ -24,7 +24,7 @@
     @if (user.visibility?.email) {
     <a [href]="'mailto:' + user.contact.email">
       <devmx-icon name="message/mail" />
-      <span>{{user.contact.email}}</span>
+      <span>{{user.contact.email | shadow: 'email'}}</span>
     </a>
     }
 
@@ -33,7 +33,7 @@
     @if (user.visibility?.phone) {
     <a [href]="'tel://' + user.contact.phone">
       <devmx-icon name="tech/phone" />
-      <span>{{user.contact.phone}}</span>
+      <span>{{user.contact.phone | shadow:'phone'}}</span>
     </a>
     }
   </nav>

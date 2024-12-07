@@ -4,6 +4,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PresentationFacade } from '@devmx/presentation-data-access';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { ShadowPipe } from '@devmx/shared-ui-global/shadow';
 import { MatButtonModule } from '@angular/material/button';
 import { markdownToText } from '@devmx/shared-util-data';
 import { EventFacade } from '@devmx/event-data-access';
@@ -38,6 +39,7 @@ import {
     MatProgressBarModule,
     MatButtonModule,
     IconComponent,
+    ShadowPipe,
     AsyncPipe,
   ],
   standalone: true,
