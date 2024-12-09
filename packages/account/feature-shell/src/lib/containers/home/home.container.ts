@@ -4,7 +4,6 @@ import { PresentationFacade } from '@devmx/presentation-data-access';
 import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 import { EventCardListComponent } from '@devmx/event-ui-shared';
 import { JobOpeningFacade } from '@devmx/career-data-access';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { GithubFacade } from '@devmx/shared-data-access';
 import { MatCardModule } from '@angular/material/card';
@@ -14,7 +13,7 @@ import { AsyncPipe } from '@angular/common';
 import {
   AlbumCardListComponent,
   JobOpeningCardListComponent,
-  ContributorCardListComponent,
+  ContributorsComponent,
 } from '../../components';
 @Component({
   selector: 'devmx-home',
@@ -23,14 +22,13 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     PresentationCardListComponent,
-    ContributorCardListComponent,
     JobOpeningCardListComponent,
     EventCardListComponent,
     AlbumCardListComponent,
+    ContributorsComponent,
     SkeletonComponent,
-    MatCardModule,
     MatButtonModule,
-    IconComponent,
+    MatCardModule,
     AsyncPipe,
   ],
   standalone: true,

@@ -1,29 +1,4 @@
-<header class="banner">
-  <div class="radio">
-    <audio #audioRef>
-      <source src="audios/loucos.mp3" type="audio/mp3" />
-    </audio>
-
-    <button mat-icon-button (click)="audioRef.muted = !audioRef.muted">
-      @if (audioRef.muted) {
-      <devmx-icon name="music/volume-off" />
-      } @else {
-      <devmx-icon name="music/volume" />
-      }
-    </button>
-
-    <button
-      mat-icon-button
-      (click)="audioRef.paused ? audioRef.play() :  audioRef.pause()"
-    >
-      @if (audioRef.paused) {
-      <devmx-icon name="music/play-circle" />
-      } @else {
-      <devmx-icon name="music/pause-circle" />
-      }
-    </button>
-  </div>
-</header>
+<header class="banner"></header>
 
 <div class="cards">
   <section class="event-container">
@@ -60,7 +35,9 @@
     } @placeholder {
     <devmx-skeleton [rows]="3" />
     }
+  </section>
 
+  <section>
     <!--  -->
 
     @defer (on timer(500ms)) {
@@ -73,16 +50,8 @@
     <devmx-skeleton [rows]="4" />
     }
   </section>
-
-  <section class="contribution-cards">
-    @defer (on timer(500ms)) {
-    <!--  -->
-    @if (githubFacade.contributors$ | async; as contributors) {
-    <devmx-contributor-card-list [data]="contributors" />
-    }
-    <!--  -->
-    } @placeholder {
-    <devmx-skeleton [rows]="3" />
-    }
-  </section>
 </div>
+
+@if (githubFacade.contributors$ | async; as contributors) {
+<devmx-contributors [data]="contributors" />
+}
