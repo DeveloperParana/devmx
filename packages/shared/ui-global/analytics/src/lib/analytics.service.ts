@@ -33,11 +33,16 @@ export class AnalyticsService {
   }
 
   #sendPage(url: string) {
-    // Won't re-send if the url hasn't changed.
     if (url === this.previousUrl) {
       return;
     }
     this.previousUrl = url;
+
+    this.#gtag('event', 'page_view', {
+      page_location: location.href,
+      page_path: this.previousUrl,
+      page_title: document.title,
+    });
   }
 
   #gtag(...args: unknown[]) {
