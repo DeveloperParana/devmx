@@ -1,4 +1,6 @@
 export abstract class Env {
+  abstract prod: boolean
+
   abstract api: {
     url: string;
   };
@@ -12,4 +14,6 @@ export abstract class Env {
       url: string;
     };
   };
+
+  abstract googleTag: string
 }
