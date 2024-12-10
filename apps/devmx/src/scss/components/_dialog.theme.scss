@@ -13,6 +13,17 @@
       color: mat.get-theme-color($theme, on-error);
     }
   }
+  .devmx-prompt-dialog {
+    border-radius: 16px;
+    overflow: hidden;
+
+    background-color: mat.get-theme-color($theme, surface-container-lowest);
+
+    .devmx-dialog-header {
+      background-color: mat.get-theme-color($theme, tertiary, 50);
+      color: mat.get-theme-color($theme, on-tertiary);
+    }
+  }
   .devmx-read-me-dialog {
     border-radius: 16px;
     overflow: hidden;

@@ -7,6 +7,10 @@ export class GithubFacade {
   findRepoContributors(repo: string) {
     return this.service.findRepoContributors('DeveloperParana', repo);
   }
+
+  findRepoIssues(repo: string) {
+    return this.service.findRepoIssues('DeveloperParana', repo);
+  }
 }
 
 export function provideGithubFacade() {

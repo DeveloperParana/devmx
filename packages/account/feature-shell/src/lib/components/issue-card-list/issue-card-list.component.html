@@ -1,0 +1,25 @@
+<mat-card class="contributors-card">
+  <mat-card-header>
+    <mat-card-title>Contribua</mat-card-title>
+  </mat-card-header>
+
+  <mat-list>
+    @for (issue of data(); track issue.id) {
+    <a
+      mat-list-item
+      target="_blank"
+      rel="noopener noreferrer"
+      [href]="issue.html_url"
+    >
+      <devmx-icon matListItemIcon name="transport/swap-locations" />
+      <div matListItemTitle>{{ issue.title }}</div>
+      <div matListItemLine>
+        @for (label of issue.labels; track label.id) {
+        <label>#{{ label.name }}</label>
+        }
+      </div>
+      <var matListItemMeta>#{{ issue.number }}</var>
+    </a>
+    }
+  </mat-list>
+</mat-card>

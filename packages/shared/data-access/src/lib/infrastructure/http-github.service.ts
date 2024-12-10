@@ -1,5 +1,5 @@
 import { Env, GithubService } from '@devmx/shared-api-interfaces/client';
-import { GithubContributor } from '@devmx/shared-api-interfaces';
+import { GithubContributor, GithubIssue } from '@devmx/shared-api-interfaces';
 import { HttpClient } from '../ports';
 import { createServiceProvider } from '../utils';
 
@@ -9,6 +9,11 @@ export class HttpGithubServiceImpl implements GithubService {
   findRepoContributors(repo: string) {
     const url = `${this.env.api.url}/github/contributors/${repo}`;
     return this.http.get<GithubContributor[]>(url);
+  }
+
+  findRepoIssues(repo: string) {
+    const url = `${this.env.api.url}/github/issues/${repo}`;
+    return this.http.get<GithubIssue[]>(url);
   }
 }
 

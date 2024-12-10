@@ -16,4 +16,13 @@ export class GithubController {
 
     return this.githubService.findRepoContributors(repo);
   }
+
+  @Get('issues/:repo')
+  async issues(@Param('repo') repo: string) {
+    if (!repo) {
+      throw new BadRequestException('Informe um repositório');
+    }
+
+    return this.githubService.findRepoIssues(repo);
+  }
 }

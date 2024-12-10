@@ -10,6 +10,7 @@ export * from './find-params';
 export * from './find';
 export * from './geo-coords';
 export * from './github-contributor';
+export * from './github-issue';
 export * from './image-ref';
 export * from './location';
 export * from './name';
