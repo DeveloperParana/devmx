@@ -265,6 +265,9 @@
       "@devmx/shared-util-data/client": [
         "packages/shared/util-data/src/client.ts"
       ],
+      "@devmx/shared-util-data/server": [
+        "packages/shared/util-data/src/server.ts"
+      ],
       "@devmx/shared-util-errors": ["packages/shared/util-errors/src/index.ts"]
     }
   },
