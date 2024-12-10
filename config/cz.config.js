@@ -1,3 +1,8 @@
+const {readdirSync} = require('node:fs')
+const {resolve} = require('node:path')
+
+const packages = readdirSync(resolve(__dirname, '..', 'packages'))
+
 // prettier-ignore
 /** @type {import('cz-git').UserConfig['prompt']} */
 module.exports = {
@@ -34,7 +39,7 @@ module.exports = {
   useAI: false,
   aiNumber: 1,
   themeColorCode: '',
-  scopes: [],
+  scopes: [...packages],
   allowCustomScopes: true,
   allowEmptyScopes: true,
   customScopesAlign: 'bottom',
