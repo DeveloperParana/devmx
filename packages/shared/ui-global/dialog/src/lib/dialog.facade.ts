@@ -1,4 +1,5 @@
 import { ConfirmDialogComponent, ConfirmDialogData } from './confirm-dialog';
+import { PromptDialogComponent, PromptDialogData } from './prompt-dialog';
 import { ReadMeDialogComponent } from './read-me-dialog';
 import { Dialog } from '@angular/cdk/dialog';
 import { from, switchMap, take } from 'rxjs';
@@ -19,6 +20,21 @@ export class DialogFacade {
       .open<boolean, ConfirmDialogData, ConfirmDialogComponent>(
         ConfirmDialogComponent,
         { data, panelClass, disableClose }
+      )
+      .closed.pipe(take(1));
+  }
+
+  prompt(label: string, value?: string, required?: boolean) {
+    const title = `Antes de continuar`;
+
+    const data = { title, label, value, required };
+
+    const panelClass = 'devmx-prompt-dialog';
+
+    return this.dialog
+      .open<string, PromptDialogData, PromptDialogComponent>(
+        PromptDialogComponent,
+        { data, panelClass }
       )
       .closed.pipe(take(1));
   }

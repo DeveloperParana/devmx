@@ -8,6 +8,7 @@ import {
   Event,
   RSVPStatus,
   QueryParams,
+  CopyEvent,
 } from '@devmx/shared-api-interfaces';
 
 export class EventHttpServiceImpl
@@ -17,6 +18,11 @@ export class EventHttpServiceImpl
   findAll(params: QueryParams<Event>) {
     const url = [`${this.url}/all`, createQueryParams(params)];
     return this.http.get<Page<Event>>(url.join('?'));
+  }
+
+  copy(id: string, data: CopyEvent) {
+    const url = [this.url, id, 'copy'];
+    return this.http.patch<Event>(url.join('/'), data);
   }
 
   createRSVP(event: string, status: RSVPStatus) {

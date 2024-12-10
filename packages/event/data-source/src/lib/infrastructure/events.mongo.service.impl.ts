@@ -50,7 +50,8 @@ export class EventsMongoServiceImpl
   ): U {
     const presentations = (data.presentations ?? []).map((p) => p.id);
     const leaders = (data.leaders ?? []).map((p) => p.id);
-    return { ...data, leaders, presentations } as U;
+    const owner = typeof data.owner === 'string' ? data.owner : data.owner.id;
+    return { ...data, owner, leaders, presentations } as U;
   }
 }
 

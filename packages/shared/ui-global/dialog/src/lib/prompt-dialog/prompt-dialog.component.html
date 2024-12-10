@@ -1,0 +1,20 @@
+<header class="devmx-dialog-header">
+  <h2>{{ data.title }}</h2>
+</header>
+
+<div class="devmx-dialog-content">
+  <mat-form-field>
+    <mat-label>{{ data.label }}</mat-label>
+    <input matInput [formControl]="control" />
+  </mat-form-field>
+</div>
+
+<footer class="devmx-dialog-footer" style="flex-direction: row-reverse; justify-content: flex-start;">
+  <button type="button" mat-button color="primary" (click)="onSubmit()">
+    Continuar
+  </button>
+
+  <button type="button" mat-button color="accent" (click)="close()">
+    Cancelar
+  </button>
+</footer>

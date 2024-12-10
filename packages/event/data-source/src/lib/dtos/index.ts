@@ -1,3 +1,4 @@
+export * from './copy-event';
 export * from './create-event';
 export * from './create-rsvp';
 export * from './created-event';

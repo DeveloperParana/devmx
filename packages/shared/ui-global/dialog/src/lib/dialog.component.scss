@@ -20,9 +20,10 @@
   }
 
   .devmx-dialog-content {
-    padding: 0 1em 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 1em 0;
     max-height: 50vh;
-    overflow: auto;
   }
 
   .devmx-dialog-footer {

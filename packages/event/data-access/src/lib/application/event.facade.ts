@@ -1,5 +1,5 @@
 import { createClientProvider, EntityFacade } from '@devmx/shared-data-access';
-import { EditableEvent, Event } from '@devmx/shared-api-interfaces';
+import { CopyEvent, EditableEvent, Event } from '@devmx/shared-api-interfaces';
 import { toEventPage, toEventSchema } from '../mappers';
 import { filter, map, take, tap } from 'rxjs';
 import {
@@ -9,6 +9,7 @@ import {
   UpdateEventUseCase,
   FindEventByIDUseCase,
   FindAllEventsUseCase,
+  CopyEventUseCase,
 } from '@devmx/event-domain/client';
 
 export class EventFacade extends EntityFacade<Event> {
@@ -25,6 +26,7 @@ export class EventFacade extends EntityFacade<Event> {
     private findAllEventsUseCase: FindAllEventsUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
+    private copyEventUseCase: CopyEventUseCase,
     private deleteEventUseCase: DeleteEventUseCase
   ) {
     super({
@@ -59,6 +61,14 @@ export class EventFacade extends EntityFacade<Event> {
     return request$.pipe(take(1), tap(onCreate));
   }
 
+  copy(data: CopyEvent) {
+    const request$ = this.copyEventUseCase.execute(data);
+
+    const onUpdate = (selected: Event) => this.setState({ selected });
+
+    return request$.pipe(take(1), tap(onUpdate));
+  }
+
   update(data: EditableEvent) {
     const request$ = this.updateEventUseCase.execute(data);
 
@@ -79,6 +89,7 @@ export function provideEventFacade() {
     FindAllEventsUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
+    CopyEventUseCase,
     DeleteEventUseCase,
   ]);
 }

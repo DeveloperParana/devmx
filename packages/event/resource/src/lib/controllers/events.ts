@@ -20,6 +20,8 @@ import {
   Controller,
   Res,
   BadRequestException,
+  ForbiddenException,
+  NotFoundException,
 } from '@nestjs/common';
 import {
   EventDto,
@@ -30,6 +32,7 @@ import {
   RSVPsFacade,
   CreateRSVPDto,
   createSitemapFromEvents,
+  CopyEventDto,
 } from '@devmx/event-data-source';
 import 'multer';
 import { subDays } from 'date-fns/subDays';
@@ -154,6 +157,32 @@ export class EventsController {
         code: 404,
         message: 'Evento não encontrado',
       });
+    }
+  }
+
+  @Patch(':id/copy')
+  @ApiBearerAuth()
+  @ApiOkResponse({ type: EventDto })
+  @Roles(['leader'])
+  async copy(
+    @User() auth: AuthUser,
+    @Param('id') id: string,
+    @Body() data: CopyEventDto
+  ) {
+    const event = await this.eventsFacade.findOne(id);
+
+    if (!event) {
+      throw new NotFoundException('Evento não encontrado');
+    }
+
+    if (event.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
+      throw new ForbiddenException('Acesso negado');
+    }
+
+    try {
+      return await this.eventsFacade.copy(id, data);
+    } catch (err) {
+      throw new BadRequestException(err);
     }
   }
 

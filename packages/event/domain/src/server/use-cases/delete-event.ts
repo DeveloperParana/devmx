@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { Event, UseCase } from '@devmx/shared-api-interfaces';
 import { PersistenceError } from '@devmx/shared-util-errors';
 import { EventsService } from '../services';
@@ -14,4 +15,8 @@ export class DeleteEventUseCase implements UseCase<string, Event> {
 
     return removed;
   }
+}
+
+export function provideDeleteEventUseCase() {
+  return createUseCaseProvider(DeleteEventUseCase, [EventsService]);
 }

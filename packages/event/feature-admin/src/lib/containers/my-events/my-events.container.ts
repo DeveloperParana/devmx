@@ -1,19 +1,19 @@
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageParams, PaginatorComponent } from '@devmx/shared-ui-global';
-import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
-import { EventCardComponent } from '@devmx/event-ui-shared';
+import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
+import { EventFacade, RSVPFacade } from '@devmx/event-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogFacade } from '@devmx/shared-ui-global/dialog';
-import { EventFacade, RSVPFacade } from '@devmx/event-data-access';
 import { combineLatest, filter, map, skip, take } from 'rxjs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthenticationFacade } from '@devmx/account-data-access';
+import { EventCardComponent } from '@devmx/event-ui-shared';
 import { Event } from '@devmx/shared-api-interfaces';
 import { AsyncPipe } from '@angular/common';
 import { EventRSVP } from '../../dialogs';
-import { SkeletonComponent } from '@devmx/shared-ui-global/skeleton';
 
 @Component({
   selector: 'devmx-event-admin-my-events',
@@ -81,10 +81,22 @@ export class MyEventsContainer {
     });
   }
 
+  copyEvent(event: Event) {
+    this.dialogFacade
+      .prompt('Qual nome do evento?', event.title, true)
+      .subscribe((title) => {
+        if (title) {
+          this.eventFacade.copy({ ...event, title }).subscribe(({ id }) => {
+            this.router.navigate([id], { relativeTo: this.route });
+          });
+        }
+      });
+  }
+
   deleteEvent({ id, title }: Event) {
     this.dialogFacade
       .confirm(
-        `Confirme que deseja apagar a vaga ${title}`,
+        `Confirme que deseja apagar ${title}`,
         `Esta ação não poderá ser desfeita`
       )
       .subscribe((confirmation) => {

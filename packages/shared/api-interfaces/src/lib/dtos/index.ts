@@ -5,6 +5,7 @@ export * from './account-ref';
 export * from './album-ref';
 export * from './challenge';
 export * from './city-ref';
+export * from './copy-event';
 export * from './create-event';
 export * from './create-presentation';
 export * from './editable-account';

@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { EventsService } from '../services';
 import {
   Event,
@@ -40,4 +41,8 @@ export class FindEventsUseCase
 
     return await this.eventsService.find(params);
   }
+}
+
+export function provideFindEventsUseCase() {
+  return createUseCaseProvider(FindEventsUseCase, [EventsService]);
 }

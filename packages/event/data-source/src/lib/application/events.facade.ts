@@ -1,7 +1,8 @@
-import { EventDto, CreateEventDto, UpdateEventDto } from '../dtos';
+import { EventDto, CreateEventDto, UpdateEventDto, CopyEventDto } from '../dtos';
 import { Event } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
+  CopyEventUseCase,
   CreateEventUseCase,
   DeleteEventUseCase,
   FindEventByIDUseCase,
@@ -22,11 +23,17 @@ export class EventsFacade {
     private findEventsFromUseCase: FindEventsFromUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
+    private copyEventUseCase: CopyEventUseCase,
     private deleteEventUseCase: DeleteEventUseCase
   ) {}
 
   async create(data: CreateEventDto) {
     const event = await this.createEventUseCase.execute(data);
+    return plainToInstance(EventDto, event);
+  }
+
+  async copy(id: string, data: CopyEventDto) {
+    const event = await this.copyEventUseCase.execute(data);
     return plainToInstance(EventDto, event);
   }
 
@@ -68,6 +75,7 @@ export function provideEventsFacade() {
     FindEventsFromUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
+    CopyEventUseCase,
     DeleteEventUseCase,
   ]);
 }

@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { EventService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindAllEventsUseCase
   execute(params: QueryParams<Event>) {
     return this.eventService.findAll(params);
   }
+}
+
+export function provideFindAllEventsUseCase() {
+  return createUseCaseProvider(FindAllEventsUseCase, [EventService]);
 }

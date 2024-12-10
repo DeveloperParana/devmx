@@ -1,6 +1,7 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { Event, UseCase } from '@devmx/shared-api-interfaces';
-import { EventsService } from '../services';
 import { NotFoundError } from '@devmx/shared-util-errors';
+import { EventsService } from '../services';
 
 export class FindEventByIDUseCase implements UseCase<string, Event> {
   constructor(private eventsService: EventsService) {}
@@ -14,4 +15,8 @@ export class FindEventByIDUseCase implements UseCase<string, Event> {
 
     return event;
   }
+}
+
+export function provideFindEventByIDUseCase() {
+  return createUseCaseProvider(FindEventByIDUseCase, [EventsService]);
 }

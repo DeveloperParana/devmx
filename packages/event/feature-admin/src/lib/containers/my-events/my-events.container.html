@@ -40,6 +40,16 @@
     <button
       type="button"
       mat-icon-button
+      matTooltip="Copiar evento"
+      matTooltipPosition="above"
+      (click)="copyEvent(event)"
+    >
+      <devmx-icon name="doc/copy" />
+    </button>
+
+    <button
+      type="button"
+      mat-icon-button
       matTooltip="Apagar evento"
       matTooltipPosition="after"
       (click)="deleteEvent(event)"

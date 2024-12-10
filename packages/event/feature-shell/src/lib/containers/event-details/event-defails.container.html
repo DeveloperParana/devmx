@@ -61,7 +61,12 @@
 
   <mat-card-content>
     <devmx-markdown-view [content]="event.description" />
+
+    <a [routerLink]="['/', 'evento', event.id]" mat-raised-button>
+      Ir para página do evento
+    </a>
   </mat-card-content>
+
 
   @if (event.presentations.length) {
   <mat-list>
