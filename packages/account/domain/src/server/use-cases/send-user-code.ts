@@ -24,6 +24,7 @@ export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
 
     const mail = createMail(
       user.contact.email,
+      // render('user-code.html', code)
       `<h2>${code.value}</h2>`,
       `Código de autenticação`
     );
