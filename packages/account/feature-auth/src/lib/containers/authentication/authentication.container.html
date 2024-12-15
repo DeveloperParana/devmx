@@ -16,11 +16,7 @@
       </a>
     </mat-card-content>
 
-    <mat-vertical-stepper
-      (animationDone)="onAnimationDone(codeFieldRef, nameRef)"
-      [linear]="true"
-      #stepper
-    >
+    <mat-vertical-stepper [linear]="true" #stepper>
       <mat-step [stepControl]="form" label="Identifique-se">
         <ng-template matStepperIcon="edit">
           <!-- prettier-ignore -->
@@ -34,10 +30,10 @@
             <input
               matInput
               #nameRef
-              devmxTrim
-              devmxLower
               formControlName="name"
               autocomplete="username"
+              devmxLower
+              devmxTrim
               autofocus
             />
             <mat-error>Obrigatório</mat-error>
