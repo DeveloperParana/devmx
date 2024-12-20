@@ -12,6 +12,7 @@ import {
   DeleteEventUseCase,
   FindEventByIDUseCase,
   FindEventsFromUseCase,
+  FindEventsUntilUseCase,
   FindEventsUseCase,
   FindMyEventsUseCase,
   UpdateEventUseCase,
@@ -28,6 +29,7 @@ export class EventsFacade {
     private findEventsUseCase: FindEventsUseCase,
     private findMyEventsUseCase: FindMyEventsUseCase,
     private findEventsFromUseCase: FindEventsFromUseCase,
+    private findEventsUntilUseCase: FindEventsUntilUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
     private copyEventUseCase: CopyEventUseCase,
@@ -67,6 +69,15 @@ export class EventsFacade {
     return new PageDto(events, items, pages);
   }
 
+  async findUntil(date: Date, params: QueryParamsDto<Event>) {
+    const { data, items, pages } = await this.findEventsUntilUseCase.execute([
+      date,
+      params,
+    ]);
+    const events = plainToInstance(EventDto, data);
+    return new PageDto(events, items, pages);
+  }
+
   async findOne(id: string) {
     const event = await this.findEventByIDUseCase.execute(id);
     return plainToInstance(EventDto, event);
@@ -89,6 +100,7 @@ export function provideEventsFacade() {
     FindEventsUseCase,
     FindMyEventsUseCase,
     FindEventsFromUseCase,
+    FindEventsUntilUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
     CopyEventUseCase,

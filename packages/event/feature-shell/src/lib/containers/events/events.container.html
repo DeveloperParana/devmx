@@ -1,5 +1,9 @@
 <header>
-  <devmx-event-filter (filterChange)="onFilterChange($event)" />
+  <div>
+    <devmx-event-filter (filterChange)="onFilterChange($event)" />
+
+    <devmx-event-time (timeChange)="onTimeChange($event)" />
+  </div>
 
   <devmx-sort-direction (sortChange)="onSortChange($event)" />
 </header>

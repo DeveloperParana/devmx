@@ -9,6 +9,7 @@ import { AsyncPipe } from '@angular/common';
 import {
   EventCardComponent,
   EventFilterComponent,
+  EventTimeComponent,
 } from '@devmx/event-ui-shared';
 
 @Component({
@@ -18,6 +19,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     PaginatorComponent,
+    EventTimeComponent,
     EventFilterComponent,
     SortDirectionComponent,
     EventCardComponent,
@@ -40,7 +42,7 @@ export class EventsContainer {
   }
 
   onQueryParams = (params: Params) => {
-    const { title = '', format = '', date = 'asc' } = params;
+    const { title = '', format = '', date = 'asc', time = '' } = params;
 
     const { page = 0, size = 10 } = params;
 
@@ -50,11 +52,20 @@ export class EventsContainer {
 
     this.eventFacade.setParams({ page, size, filter, sort });
 
-    this.eventFacade.load();
+    if (time === 'until') {
+      this.eventFacade.loadUntil();
+    } else {
+      this.eventFacade.load();
+    }
   };
 
   onFilterChange(format: string) {
     const queryParams = { format };
+    this.router.navigate([], { queryParams });
+  }
+
+  onTimeChange(time: string) {
+    const queryParams = { time };
     this.router.navigate([], { queryParams });
   }
 
