@@ -1,4 +1,3 @@
-import { NotFoundError, PersistenceError } from '@devmx/shared-util-errors';
 import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { Event, UseCase } from '@devmx/shared-api-interfaces';
 import { EventsService } from '../services';
@@ -8,21 +7,7 @@ export class UpdateEventUseCase implements UseCase<UpdateEvent, Event> {
   constructor(private eventsService: EventsService) {}
 
   async execute(data: UpdateEvent) {
-    const event = await this.eventsService.findOne(data.id);
-
-    if (!event) {
-      throw new NotFoundError(`Evento não encontrado`);
-    }
-
-    const updated = await this.eventsService.update(data.id, data);
-
-    if (!updated) {
-      throw new PersistenceError(
-        `Algo deu errado ao persistir os dados do evento`
-      );
-    }
-
-    return updated;
+    return await this.eventsService.update(data.id, data);
   }
 }
 

@@ -11,6 +11,7 @@ import {
 } from '@devmx/shared-data-source';
 import {
   Get,
+  Res,
   Post,
   Body,
   Param,
@@ -18,7 +19,6 @@ import {
   Query,
   Delete,
   Controller,
-  Res,
   BadRequestException,
   ForbiddenException,
   NotFoundException,
@@ -204,25 +204,24 @@ export class EventsController {
   async update(
     @User() auth: AuthUser,
     @Param('id') id: string,
-    @Body() updateEventDto: UpdateEventDto
+    @Body() data: UpdateEventDto
   ) {
     const event = await this.eventsFacade.findOne(id);
 
     if (!event) {
-      throw exceptionByError({
-        code: 404,
-        message: 'Evento não encontrado',
-      });
+      throw new NotFoundException('Evento não encontrado');
     }
 
-    if (event.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
-      throw exceptionByError({ code: 403, message: 'Acesso negado' });
+    const isLeader = event.leaders.some((leader) => leader.id === auth.id);
+
+    if (!isLeader && !authIsAdmin(auth.roles)) {
+      throw new ForbiddenException('Acesso negado');
     }
 
     try {
-      return await this.eventsFacade.update(id, updateEventDto);
+      return await this.eventsFacade.update(id, { ...data, owner: auth.id });
     } catch (err) {
-      throw exceptionByError({ code: 400, message: 'Solicitação incorreta' });
+      throw new BadRequestException(err);
     }
   }
 

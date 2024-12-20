@@ -1,9 +1,12 @@
+import { PresentationRefDto } from '@devmx/presentation-data-source';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { EventFormat } from '@devmx/shared-api-interfaces';
+import { UserRefDto } from '@devmx/shared-data-source';
 import { CreateEvent } from '@devmx/event-domain';
+import { Type } from 'class-transformer';
 import {
   IsBoolean,
-  IsDateString,
+  IsDate,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -31,15 +34,10 @@ export class CreateEventDto implements CreateEvent {
   })
   format: EventFormat;
 
-  @IsDateString()
-  @IsOptional()
-  @ApiPropertyOptional()
+  @IsDate({ message: 'Data inválida' })
+  @ApiProperty()
+  @Type(() => Date)
   date: Date;
-
-  // @IsString()
-  // @IsOptional()
-  // @ApiPropertyOptional()
-  // time: string;
 
   @IsString()
   @IsOptional()
@@ -51,14 +49,18 @@ export class CreateEventDto implements CreateEvent {
   @ApiPropertyOptional()
   visible = false;
 
+  @ApiProperty({ type: () => [PresentationRefDto] })
+  @Type(() => PresentationRefDto)
+  presentations: PresentationRefDto[];
+
+  @ApiProperty({ type: () => [UserRefDto] })
+  @Type(() => UserRefDto)
+  leaders: UserRefDto[];
+
   @IsString()
   @IsOptional()
   @ApiPropertyOptional()
   address: string;
-
-  // city?: string;
-
-  // location?: string;
 
   owner: string;
 }
