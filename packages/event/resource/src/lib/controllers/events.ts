@@ -93,6 +93,20 @@ export class EventsController {
     }
   }
 
+  @Get('until')
+  @Allowed()
+  @ApiPage(EventDto)
+  async findUntil(@Query() params: QueryParamsDto<Event>) {
+    let date = new Date();
+    date = subDays(date, 1);
+
+    try {
+      return await this.eventsFacade.findUntil(date, params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
   @Get('my')
   @Allowed()
   @ApiPage(EventDto)

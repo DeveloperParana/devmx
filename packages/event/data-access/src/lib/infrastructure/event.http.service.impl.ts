@@ -20,6 +20,11 @@ export class EventHttpServiceImpl
     return this.http.get<Page<Event>>(url.join('?'));
   }
 
+  findUntil(params: QueryParams<Event>) {
+    const url = [`${this.url}/until`, createQueryParams(params)];
+    return this.http.get<Page<Event>>(url.join('?'));
+  }
+
   findMyEvents(params: QueryParams<Event>) {
     const url = [`${this.url}/my`, createQueryParams(params)];
     return this.http.get<Page<Event>>(url.join('?'));

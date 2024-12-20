@@ -1,12 +1,12 @@
 import { QueryParams, EditableEntity } from '@devmx/shared-api-interfaces';
+import { Query, RootFilterQuery, SortOrder } from 'mongoose';
 import { EventsService } from '@devmx/event-domain/server';
 import { getModelToken } from '@nestjs/mongoose';
 import { EventCollection } from '../schemas';
-import { Query } from 'mongoose';
 import {
+  objectId,
   MongoService,
   createServiceProvider,
-  objectId,
 } from '@devmx/shared-data-source';
 
 export class EventsMongoServiceImpl
@@ -38,15 +38,38 @@ export class EventsMongoServiceImpl
   }
 
   async findFrom(date: Date, params: QueryParams<EventCollection>) {
-    const { page = 0, size = 10, filter, sort } = params;
+    const { page = 0, size = 10 } = params;
 
     const skip = page * size;
-    const where = this.applyFilter(filter ?? {});
-    const order = this.applySort(sort ?? {});
+    const filter = this.applyFilter(params.filter ?? {});
+    const sort = this.applySort(params.sort ?? {});
 
+    const where = { ...filter, date: { $gte: date } };
+
+    return this.findByWhere(where, sort, skip, size);
+  }
+
+  async findUntil(date: Date, params: QueryParams<EventCollection>) {
+    const { page = 0, size = 10 } = params;
+
+    const skip = page * size;
+    const filter = this.applyFilter(params.filter ?? {});
+    const sort = this.applySort(params.sort ?? {});
+
+    const where = { ...filter, date: { $lte: date } };
+
+    return this.findByWhere(where, sort, skip, size);
+  }
+
+  async findByWhere(
+    where: RootFilterQuery<EventCollection>,
+    sort: Record<string, SortOrder>,
+    skip: number,
+    size: number
+  ) {
     const query = this.entityModel
-      .find({ ...where, date: { $gte: date } })
-      .sort(order)
+      .find(where)
+      .sort(sort)
       .skip(skip)
       .limit(size);
 

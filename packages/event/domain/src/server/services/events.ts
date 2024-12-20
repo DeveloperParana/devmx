@@ -7,5 +7,10 @@ export abstract class EventsService extends EntityService<Event> {
     params: QueryParams<Event>
   ): Promise<Page<Event>>;
 
+  abstract findUntil(
+    date: Date,
+    params: QueryParams<Event>
+  ): Promise<Page<Event>>;
+
   abstract findMyEvents(params: QueryParams<Event>): Promise<Page<Event>>;
 }

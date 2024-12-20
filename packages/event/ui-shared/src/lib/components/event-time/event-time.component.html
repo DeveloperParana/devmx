@@ -1,0 +1,7 @@
+<mat-chip-listbox (change)="timeChange.emit($event.value)">
+  @for (time of times; track time.value) {
+  <mat-chip-option [value]="time.value">
+    {{ time.viewValue }}
+  </mat-chip-option>
+  }
+</mat-chip-listbox>

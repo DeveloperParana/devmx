@@ -14,6 +14,8 @@ export abstract class EventService extends EntityService<Event> {
 
   abstract findAll(params: QueryParams<Event>): Observable<Page<Event>>;
 
+  abstract findUntil(params: QueryParams<Event>): Observable<Page<Event>>;
+
   abstract findMyEvents(params: QueryParams<Event>): Observable<Page<Event>>;
 
   abstract createRSVP(event: string, status: RSVPStatus): Observable<RSVP>;
