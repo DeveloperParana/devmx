@@ -7,6 +7,7 @@ import {
   provideFindAllEventsUseCase,
   provideFindEventByIDUseCase,
   provideFindEventsUseCase,
+  provideFindMyEventsUseCase,
   provideUpdateEventUseCase,
 } from '@devmx/event-domain/client';
 
@@ -16,6 +17,7 @@ export function provideEvent() {
 
     provideCreateEventUseCase(),
     provideFindEventsUseCase(),
+    provideFindMyEventsUseCase(),
     provideFindAllEventsUseCase(),
     provideFindEventByIDUseCase(),
     provideUpdateEventUseCase(),

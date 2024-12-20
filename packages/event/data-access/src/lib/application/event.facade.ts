@@ -10,6 +10,7 @@ import {
   FindEventByIDUseCase,
   FindAllEventsUseCase,
   CopyEventUseCase,
+  FindMyEventsUseCase,
 } from '@devmx/event-domain/client';
 
 export class EventFacade extends EntityFacade<Event> {
@@ -23,6 +24,7 @@ export class EventFacade extends EntityFacade<Event> {
   constructor(
     private createEventUseCase: CreateEventUseCase,
     private findEventsUseCase: FindEventsUseCase,
+    private findMyEventsUseCase: FindMyEventsUseCase,
     private findAllEventsUseCase: FindAllEventsUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
@@ -47,6 +49,10 @@ export class EventFacade extends EntityFacade<Event> {
 
   loadAll() {
     this.onLoad(this.findAllEventsUseCase.execute(this.state.params));
+  }
+
+  loadMyEvents() {
+    this.onLoad(this.findMyEventsUseCase.execute(this.state.params));
   }
 
   loadOne(id: string) {
@@ -86,6 +92,7 @@ export function provideEventFacade() {
   return createClientProvider(EventFacade, [
     CreateEventUseCase,
     FindEventsUseCase,
+    FindMyEventsUseCase,
     FindAllEventsUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,

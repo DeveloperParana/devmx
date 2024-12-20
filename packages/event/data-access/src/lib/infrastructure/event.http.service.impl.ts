@@ -20,6 +20,11 @@ export class EventHttpServiceImpl
     return this.http.get<Page<Event>>(url.join('?'));
   }
 
+  findMyEvents(params: QueryParams<Event>) {
+    const url = [`${this.url}/my`, createQueryParams(params)];
+    return this.http.get<Page<Event>>(url.join('?'));
+  }
+
   copy(id: string, data: CopyEvent) {
     const url = [this.url, id, 'copy'];
     return this.http.patch<Event>(url.join('/'), data);

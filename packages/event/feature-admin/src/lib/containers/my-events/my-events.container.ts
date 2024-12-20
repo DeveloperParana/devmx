@@ -70,7 +70,7 @@ export class MyEventsContainer {
 
     this.eventFacade.setParams({ page, size, filter });
 
-    this.eventFacade.loadAll();
+    this.eventFacade.loadMyEvents();
   };
 
   openRSVP(event: string) {

@@ -5,6 +5,7 @@ export * from './delete-event';
 export * from './find-event-by-id';
 export * from './find-events-from';
 export * from './find-events';
+export * from './find-my-events';
 export * from './find-past-events';
 export * from './find-rsvp-by-event';
 export * from './find-rsvp-confirmed-by-event';

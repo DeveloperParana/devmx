@@ -1,4 +1,3 @@
-import { LowerDirective, TrimDirective } from '@devmx/shared-ui-global/forms';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,8 +30,6 @@ import {
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    LowerDirective,
-    TrimDirective,
     RouterLink,
     AsyncPipe,
   ],

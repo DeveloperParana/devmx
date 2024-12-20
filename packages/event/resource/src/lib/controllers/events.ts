@@ -93,6 +93,17 @@ export class EventsController {
     }
   }
 
+  @Get('my')
+  @Allowed()
+  @ApiPage(EventDto)
+  async findMyEvents(@Query() params: QueryParamsDto<Event>) {
+    try {
+      return await this.eventsFacade.findMyEvents(params);
+    } catch (err) {
+      throw exceptionByError(err);
+    }
+  }
+
   @Get('all')
   @Allowed()
   @ApiPage(EventDto)

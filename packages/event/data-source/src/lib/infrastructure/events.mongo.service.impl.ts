@@ -1,14 +1,42 @@
-import { createServiceProvider, MongoService } from '@devmx/shared-data-source';
-import { EditableEntity, QueryParams } from '@devmx/shared-api-interfaces';
+import { QueryParams, EditableEntity } from '@devmx/shared-api-interfaces';
 import { EventsService } from '@devmx/event-domain/server';
 import { getModelToken } from '@nestjs/mongoose';
 import { EventCollection } from '../schemas';
 import { Query } from 'mongoose';
+import {
+  MongoService,
+  createServiceProvider,
+  objectId,
+} from '@devmx/shared-data-source';
 
 export class EventsMongoServiceImpl
   extends MongoService<EventCollection>
   implements EventsService
 {
+  async findMyEvents(params: QueryParams<EventCollection>) {
+    const { page = 0, size = 10, filter, sort } = params;
+
+    const skip = page * size;
+    const where = this.applyFilter(filter ?? {});
+    const order = this.applySort(sort ?? {});
+
+    const { owner = '' } = filter ?? {};
+
+    const query = this.entityModel
+      .find({ leaders: { $in: [objectId(String(owner))] } })
+      .sort(order)
+      .skip(skip)
+      .limit(size);
+
+    const entities = await this.applyPopulate(query).exec();
+
+    const data = entities.map((item) => item.toJSON());
+    const items = await this.entityModel.countDocuments(where).exec();
+    const pages = Math.ceil(items / size);
+
+    return { data, items, pages };
+  }
+
   async findFrom(date: Date, params: QueryParams<EventCollection>) {
     const { page = 0, size = 10, filter, sort } = params;
 
@@ -50,7 +78,11 @@ export class EventsMongoServiceImpl
   ): U {
     const presentations = (data.presentations ?? []).map((p) => p.id);
     const leaders = (data.leaders ?? []).map((p) => p.id);
+
     const owner = typeof data.owner === 'string' ? data.owner : data.owner.id;
+
+    if (!data.id) leaders.push(owner);
+
     return { ...data, owner, leaders, presentations } as U;
   }
 }

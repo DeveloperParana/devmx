@@ -1,4 +1,9 @@
-import { EventDto, CreateEventDto, UpdateEventDto, CopyEventDto } from '../dtos';
+import {
+  EventDto,
+  CreateEventDto,
+  UpdateEventDto,
+  CopyEventDto,
+} from '../dtos';
 import { Event } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
@@ -8,6 +13,7 @@ import {
   FindEventByIDUseCase,
   FindEventsFromUseCase,
   FindEventsUseCase,
+  FindMyEventsUseCase,
   UpdateEventUseCase,
 } from '@devmx/event-domain/server';
 import {
@@ -20,6 +26,7 @@ export class EventsFacade {
   constructor(
     private createEventUseCase: CreateEventUseCase,
     private findEventsUseCase: FindEventsUseCase,
+    private findMyEventsUseCase: FindMyEventsUseCase,
     private findEventsFromUseCase: FindEventsFromUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
@@ -39,6 +46,14 @@ export class EventsFacade {
 
   async find(params: QueryParamsDto<Event>) {
     const { data, items, pages } = await this.findEventsUseCase.execute(params);
+    const events = plainToInstance(EventDto, data);
+    return new PageDto(events, items, pages);
+  }
+
+  async findMyEvents(params: QueryParamsDto<Event>) {
+    const { data, items, pages } = await this.findMyEventsUseCase.execute(
+      params
+    );
     const events = plainToInstance(EventDto, data);
     return new PageDto(events, items, pages);
   }
@@ -72,6 +87,7 @@ export function provideEventsFacade() {
   return createServerProvider(EventsFacade, [
     CreateEventUseCase,
     FindEventsUseCase,
+    FindMyEventsUseCase,
     FindEventsFromUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
