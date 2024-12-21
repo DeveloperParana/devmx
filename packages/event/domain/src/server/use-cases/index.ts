@@ -3,6 +3,7 @@ export * from './create-event';
 export * from './create-rsvp';
 export * from './delete-event';
 export * from './find-event-by-id';
+export * from './find-events-date-range';
 export * from './find-events-from';
 export * from './find-events-until';
 export * from './find-events';

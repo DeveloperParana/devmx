@@ -7,7 +7,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EventFacade } from '@devmx/event-data-access';
 import { AsyncPipe } from '@angular/common';
 import {
+  DateRange,
   EventCardComponent,
+  EventDateRangeComponent,
   EventFilterComponent,
   EventTimeComponent,
 } from '@devmx/event-ui-shared';
@@ -21,6 +23,7 @@ import {
     PaginatorComponent,
     EventTimeComponent,
     EventFilterComponent,
+    EventDateRangeComponent,
     SortDirectionComponent,
     EventCardComponent,
     SkeletonComponent,
@@ -48,11 +51,15 @@ export class EventsContainer {
 
     const filter = { title, format };
 
+    const { start, end } = params;
+
     const sort = { date };
 
     this.eventFacade.setParams({ page, size, filter, sort });
 
-    if (time === 'until') {
+    if (start && end) {
+      this.eventFacade.loadDateRange(new Date(start), new Date(end));
+    } else if (time === 'until') {
       this.eventFacade.loadUntil();
     } else {
       this.eventFacade.load();
@@ -60,7 +67,7 @@ export class EventsContainer {
   };
 
   onFilterChange(format: string) {
-    const queryParams = { format };
+    const queryParams = this.mergeQueryParams({ format });
     this.router.navigate([], { queryParams });
   }
 
@@ -69,12 +76,21 @@ export class EventsContainer {
     this.router.navigate([], { queryParams });
   }
 
+  onRangeChange({ start, end }: DateRange) {
+    const queryParams = this.mergeQueryParams({ start, end });
+    this.router.navigate([], { queryParams });
+  }
+
   onSortChange(date: string) {
-    const queryParams = { date };
+    const queryParams = this.mergeQueryParams({ date });
     this.router.navigate([], { queryParams });
   }
 
   onPageChange(queryParams: PageParams) {
     this.router.navigate([], { queryParams });
+  }
+
+  mergeQueryParams(queryParams: object) {
+    return { ...this.route.snapshot.queryParams, ...queryParams };
   }
 }

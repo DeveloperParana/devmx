@@ -1,6 +1,8 @@
 import { ApiTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthUser, Event } from '@devmx/shared-api-interfaces';
-import { exceptionByError } from '@devmx/shared-resource';
+import { exceptionByError, ParseDatePipe } from '@devmx/shared-resource';
+import { subDays } from 'date-fns/subDays';
+import { Response } from 'express';
 import {
   User,
   Roles,
@@ -26,17 +28,15 @@ import {
 import {
   EventDto,
   RSVPDto,
+  RSVPsFacade,
   EventsFacade,
   CreateEventDto,
   UpdateEventDto,
-  RSVPsFacade,
   CreateRSVPDto,
-  createSitemapFromEvents,
   CopyEventDto,
+  createSitemapFromEvents,
 } from '@devmx/event-data-source';
 import 'multer';
-import { subDays } from 'date-fns/subDays';
-import { Response } from 'express';
 
 @ApiTags('Eventos')
 @Controller('events')
@@ -90,6 +90,21 @@ export class EventsController {
       return await this.eventsFacade.findFrom(date, params);
     } catch (err) {
       throw exceptionByError(err);
+    }
+  }
+
+  @Get('range/:start/:end')
+  @Allowed()
+  @ApiPage(EventDto)
+  async findRange(
+    @Param('start', new ParseDatePipe()) start: Date,
+    @Param('end', new ParseDatePipe()) end: Date,
+    @Query() params: QueryParamsDto<Event>
+  ) {
+    try {
+      return await this.eventsFacade.findDateRange({ ...params, start, end });
+    } catch (err) {
+      throw new BadRequestException(err);
     }
   }
 

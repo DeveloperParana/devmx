@@ -12,6 +12,7 @@ import {
   CopyEventUseCase,
   FindMyEventsUseCase,
   FindEventsUntilUseCase,
+  FindEventsDateRangeUseCase,
 } from '@devmx/event-domain/client';
 
 export class EventFacade extends EntityFacade<Event> {
@@ -28,6 +29,7 @@ export class EventFacade extends EntityFacade<Event> {
     private findMyEventsUseCase: FindMyEventsUseCase,
     private findAllEventsUseCase: FindAllEventsUseCase,
     private findEventsUntilUseCase: FindEventsUntilUseCase,
+    private findEventsDateRangeUseCase: FindEventsDateRangeUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
     private copyEventUseCase: CopyEventUseCase,
@@ -51,6 +53,11 @@ export class EventFacade extends EntityFacade<Event> {
 
   loadAll() {
     this.onLoad(this.findAllEventsUseCase.execute(this.state.params));
+  }
+
+  loadDateRange(start: Date, end: Date) {
+    const params = { start, end, ...this.state.params };
+    this.onLoad(this.findEventsDateRangeUseCase.execute(params));
   }
 
   loadUntil() {
@@ -101,6 +108,7 @@ export function provideEventFacade() {
     FindMyEventsUseCase,
     FindAllEventsUseCase,
     FindEventsUntilUseCase,
+    FindEventsDateRangeUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
     CopyEventUseCase,

@@ -25,6 +25,14 @@ export class EventHttpServiceImpl
     return this.http.get<Page<Event>>(url.join('?'));
   }
 
+  findDateRange(start: Date, end: Date, params: QueryParams<Event>) {
+    const url = [
+      `${this.url}/range/${start}/${end}`,
+      createQueryParams(params),
+    ];
+    return this.http.get<Page<Event>>(url.join('?'));
+  }
+
   findMyEvents(params: QueryParams<Event>) {
     const url = [`${this.url}/my`, createQueryParams(params)];
     return this.http.get<Page<Event>>(url.join('?'));

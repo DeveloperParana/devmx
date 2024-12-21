@@ -4,13 +4,14 @@ import {
   UpdateEventDto,
   CopyEventDto,
 } from '../dtos';
-import { Event } from '@devmx/shared-api-interfaces';
+import { Event, QueryParamsDateRange } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
   CopyEventUseCase,
   CreateEventUseCase,
   DeleteEventUseCase,
   FindEventByIDUseCase,
+  FindEventsDateRangeUseCase,
   FindEventsFromUseCase,
   FindEventsUntilUseCase,
   FindEventsUseCase,
@@ -30,6 +31,7 @@ export class EventsFacade {
     private findMyEventsUseCase: FindMyEventsUseCase,
     private findEventsFromUseCase: FindEventsFromUseCase,
     private findEventsUntilUseCase: FindEventsUntilUseCase,
+    private findEventsDateRangeUseCase: FindEventsDateRangeUseCase,
     private findEventByIDUseCase: FindEventByIDUseCase,
     private updateEventUseCase: UpdateEventUseCase,
     private copyEventUseCase: CopyEventUseCase,
@@ -56,6 +58,13 @@ export class EventsFacade {
     const { data, items, pages } = await this.findMyEventsUseCase.execute(
       params
     );
+    const events = plainToInstance(EventDto, data);
+    return new PageDto(events, items, pages);
+  }
+
+  async findDateRange(params: QueryParamsDateRange<Event>) {
+    const { data, items, pages } =
+      await this.findEventsDateRangeUseCase.execute(params);
     const events = plainToInstance(EventDto, data);
     return new PageDto(events, items, pages);
   }
@@ -101,6 +110,7 @@ export function provideEventsFacade() {
     FindMyEventsUseCase,
     FindEventsFromUseCase,
     FindEventsUntilUseCase,
+    FindEventsDateRangeUseCase,
     FindEventByIDUseCase,
     UpdateEventUseCase,
     CopyEventUseCase,

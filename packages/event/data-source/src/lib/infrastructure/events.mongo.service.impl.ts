@@ -1,8 +1,12 @@
-import { QueryParams, EditableEntity } from '@devmx/shared-api-interfaces';
 import { Query, RootFilterQuery, SortOrder } from 'mongoose';
 import { EventsService } from '@devmx/event-domain/server';
 import { getModelToken } from '@nestjs/mongoose';
 import { EventCollection } from '../schemas';
+import {
+  QueryParams,
+  EditableEntity,
+  QueryParamsDateRange,
+} from '@devmx/shared-api-interfaces';
 import {
   objectId,
   MongoService,
@@ -13,28 +17,30 @@ export class EventsMongoServiceImpl
   extends MongoService<EventCollection>
   implements EventsService
 {
-  async findMyEvents(params: QueryParams<EventCollection>) {
-    const { page = 0, size = 10, filter, sort } = params;
+  async findDateRange(params: QueryParamsDateRange<EventCollection>) {
+    const { page = 0, size = 10, start, end } = params;
 
     const skip = page * size;
-    const where = this.applyFilter(filter ?? {});
-    const order = this.applySort(sort ?? {});
+    const filter = this.applyFilter(params.filter ?? {});
+    const sort = this.applySort(params.sort ?? {});
 
-    const { owner = '' } = filter ?? {};
+    const where = { ...filter, date: { $gte: start, $lte: end } };
 
-    const query = this.entityModel
-      .find({ leaders: { $in: [objectId(String(owner))] } })
-      .sort(order)
-      .skip(skip)
-      .limit(size);
+    return this.findByWhere(where, sort, skip, size);
+  }
 
-    const entities = await this.applyPopulate(query).exec();
+  async findMyEvents(params: QueryParams<EventCollection>) {
+    const { page = 0, size = 10 } = params;
 
-    const data = entities.map((item) => item.toJSON());
-    const items = await this.entityModel.countDocuments(where).exec();
-    const pages = Math.ceil(items / size);
+    const skip = page * size;
+    const filter = this.applyFilter(params.filter ?? {});
+    const sort = this.applySort(params.sort ?? {});
 
-    return { data, items, pages };
+    const { owner = '' } = params.filter ?? {};
+
+    const where = { ...filter, leaders: { $in: [objectId(String(owner))] } };
+
+    return this.findByWhere(where, sort, skip, size);
   }
 
   async findFrom(date: Date, params: QueryParams<EventCollection>) {
