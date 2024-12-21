@@ -16,6 +16,7 @@ export * from './location';
 export * from './name';
 export * from './page';
 export * from './query-location';
+export * from './query-params-date-range';
 export * from './query-params';
 export * from './range';
 export * from './response-message';

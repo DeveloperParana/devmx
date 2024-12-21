@@ -8,6 +8,12 @@
     flex-flow: row wrap;
     justify-content: space-between;
     padding: 0.4em 0.8em;
+
+    div {
+      gap: 1em;
+      display: flex;
+      align-items: baseline;
+    }
   }
 
   .events-container {

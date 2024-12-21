@@ -1,0 +1,13 @@
+<mat-form-field>
+  <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+    <input matStartDate formControlName="start" placeholder="Data inicial" />
+    <input matEndDate formControlName="end" placeholder="Data final" />
+  </mat-date-range-input>
+  <mat-datepicker-toggle [for]="picker" matIconSuffix />
+  <mat-date-range-picker #picker />
+  <mat-error>
+    @if (form.controls.start.hasError('matStartDateInvalid')) { Data inicial }
+    @if (form.controls.end.hasError('matEndDateInvalid')) { Data final }
+    inválida
+  </mat-error>
+</mat-form-field>
