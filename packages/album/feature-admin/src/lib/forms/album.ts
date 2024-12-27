@@ -19,7 +19,7 @@ export class AlbumForm extends FormGroup<TypedForm<EditableAlbum>> {
       id: new FormControl('', {
         nonNullable: true,
       }),
-      title: new FormControl(new Date().toLocaleDateString(), {
+      title: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],
       }),

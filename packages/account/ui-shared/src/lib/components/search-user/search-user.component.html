@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-label>{{ label() }}</mat-label>
+  <input matInput [formControl]="control" [matAutocomplete]="auto" />
+  <mat-hint>{{ hint() }}</mat-hint>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    [displayWith]="displayFn"
+    (optionSelected)="onOptionSelected($event.option.value)"
+  >
+    @if (userFacade.response$ | async; as response) {
+    <!--  -->
+    @for (option of response.data; track option.id) {
+    <mat-option [value]="option">{{ option.displayName }}</mat-option>
+    }
+    <!--  -->
+    }
+  </mat-autocomplete>
+</mat-form-field>

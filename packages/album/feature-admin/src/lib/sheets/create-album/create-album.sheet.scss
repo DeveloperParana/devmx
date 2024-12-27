@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  padding: 1.5em 1em 0.5em;
+  flex-direction: column;
+
+  form {
+    flex: 1;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
