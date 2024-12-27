@@ -31,7 +31,9 @@ import {
   withViewTransitions,
 } from '@angular/router';
 import {
+  HttpBackend,
   HttpClient,
+  HttpXhrBackend,
   provideHttpClient,
   withInterceptors,
 } from '@angular/common/http';
@@ -68,6 +70,10 @@ export const appConfig: ApplicationConfig = {
     },
     provideLayout(appSections),
     provideHttpClient(withInterceptors([authInterceptor, loaderInterceptor])),
+    {
+      provide: HttpBackend,
+      useExisting: HttpXhrBackend,
+    },
     provideHttpClientImpl(HttpClient),
     ...provideAccount(),
     provideLayoutToolbar(AuthenticationFacade),

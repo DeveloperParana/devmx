@@ -8,12 +8,13 @@ import { DialogFacade } from '@devmx/shared-ui-global/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@devmx/shared-ui-global/icon';
 import { AlbumCardComponent } from '@devmx/album-ui-shared';
+import { SheetFacade } from '@devmx/shared-ui-global/sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { combineLatest, filter, map, take } from 'rxjs';
 import { AlbumFacade } from '@devmx/album-data-access';
 import { Album } from '@devmx/shared-api-interfaces';
+import { CreateAlbumSheet } from '../../sheets';
 import { AsyncPipe } from '@angular/common';
-import { AlbumForm } from '../../forms';
 
 @Component({
   selector: 'devmx-admin-my-albums',
@@ -37,6 +38,8 @@ export class MyAlbumsContainer {
   route = inject(ActivatedRoute);
 
   dialogFacade = inject(DialogFacade);
+
+  sheetFacade = inject(SheetFacade);
 
   authFacade = inject(AuthenticationFacade);
 
@@ -74,15 +77,17 @@ export class MyAlbumsContainer {
   }
 
   createAlbum() {
-    const form = new AlbumForm();
-
-    form.patchValue({ title: new Date().toLocaleDateString() });
-
-    const request$ = this.albumFacade.create(form.getRawValue());
-
-    request$.pipe(take(1)).subscribe((album) => {
-      this.router.navigate([album.id], { relativeTo: this.route });
-    });
+    this.sheetFacade
+      .open<CreateAlbumSheet, void, Album>(CreateAlbumSheet)
+      .pipe(take(1))
+      .subscribe((value) => {
+        if (value) {
+          const request$ = this.albumFacade.create(value);
+          request$.pipe(take(1)).subscribe((album) => {
+            this.router.navigate([album.id], { relativeTo: this.route });
+          });
+        }
+      });
   }
 
   deleteAlbum({ id, title }: Album) {
