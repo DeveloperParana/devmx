@@ -5,10 +5,12 @@ import {
   DeletePhotoUseCase,
   FindPhotoByIDUseCase,
   FindPhotosUseCase,
+  UpdatePhotoTagsUseCase,
   UpdatePhotoUseCase,
   UploadPhoto,
   UploadPhotoUseCase,
 } from '@devmx/album-domain/client';
+import { take } from 'rxjs';
 
 export class PhotoFacade extends EntityFacade<Photo> {
   constructor(
@@ -16,6 +18,7 @@ export class PhotoFacade extends EntityFacade<Photo> {
     private findPhotosUseCase: FindPhotosUseCase,
     private findPhotoByIdUseCase: FindPhotoByIDUseCase,
     private updatePhotoUseCase: UpdatePhotoUseCase,
+    private updatePhotoTagsUseCase: UpdatePhotoTagsUseCase,
     private deletePhotoUseCase: DeletePhotoUseCase,
     private uploadPhotoUseCase: UploadPhotoUseCase
   ) {
@@ -49,11 +52,15 @@ export class PhotoFacade extends EntityFacade<Photo> {
   update(data: EditablePhoto) {
     const request$ = this.updatePhotoUseCase.execute(data);
 
-    this.onUpdate(request$);
+    // this.onUpdate(request$);
 
     this.loadOne(data.id);
 
-    return request$;
+    return request$.pipe(take(1));
+  }
+
+  updateTags(data: EditablePhoto) {
+    this.onUpdate(this.updatePhotoTagsUseCase.execute(data));
   }
 
   delete(id: string) {
@@ -67,6 +74,7 @@ export function providePhotoFacade() {
     FindPhotosUseCase,
     FindPhotoByIDUseCase,
     UpdatePhotoUseCase,
+    UpdatePhotoTagsUseCase,
     DeletePhotoUseCase,
     UploadPhotoUseCase,
   ]);

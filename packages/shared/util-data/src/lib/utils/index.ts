@@ -21,6 +21,7 @@ export * from './merge';
 export * from './paginate';
 export * from './percent';
 export * from './predicate';
+export * from './rect';
 export * from './same-keys';
 export * from './values';
 export * from './vector2';

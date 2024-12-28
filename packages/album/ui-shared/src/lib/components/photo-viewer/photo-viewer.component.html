@@ -1,0 +1,53 @@
+@if (data) {
+<header>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Opções de controle"
+  >
+    <devmx-icon name="menu/burguer-menu" />
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button
+      mat-menu-item
+      [disabled]="!hasTagWithMe(data.auth)"
+      (click)="removeMyTag(data.auth)"
+    >
+      Remover minha tag
+    </button>
+  </mat-menu>
+
+  <button mat-icon-button (click)="ref.close()">
+    <devmx-icon name="close-cross" />
+  </button>
+</header>
+
+<figure>
+  <div class="photo-viewer">
+    <img #imageRef [src]="data.photo.data" [alt]="data.photo.caption" />
+    @for (tag of data.photo.tags; track $index) {
+    <div
+      class="user-tag"
+      [style.left.%]="tag.x"
+      [style.top.%]="tag.y"
+      [matTooltip]="tag.user.displayName"
+      matTooltipPosition="after"
+    >
+      <devmx-icon name="tag" />
+    </div>
+    }
+  </div>
+
+  <figcaption>{{ data.photo.caption }}</figcaption>
+</figure>
+
+<footer>
+  <button
+    mat-flat-button
+    [disabled]="!hasUpdates()"
+    (click)="ref.close(data.photo)"
+  >
+    Salvar alterações
+  </button>
+</footer>
+}
