@@ -1,1 +1,0 @@
-import{xb as t}from"./chunk-5L47ZUSK.js";var a=(()=>{class e{transform(r){switch(r){case"hybrid":return"H\xEDbrido";case"office":return"Presencial";case"remote":return"Remoto"}}static \u0275fac=function(i){return new(i||e)};static \u0275pipe=t({name:"jobMode",type:e,pure:!0})}return e})();export{a};
