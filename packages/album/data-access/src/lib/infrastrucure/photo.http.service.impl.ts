@@ -7,6 +7,11 @@ export class PhotoHttpServiceImpl
   extends HttpService<Photo>
   implements PhotoService
 {
+  updateTags(id: string, data: Photo) {
+    const url = [this.url, id, 'tags'];
+    return this.http.patch<Photo>(url.join('/'), data);
+  }
+
   upload({ photo, ...value }: UploadPhoto) {
     const data = new FormData();
 

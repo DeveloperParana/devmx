@@ -36,6 +36,7 @@ import {
   UpdatePhotoDto,
 } from '@devmx/album-data-source';
 import 'multer';
+import { plainToClass } from 'class-transformer';
 
 @ApiTags('Fotos')
 @Controller('photos')
@@ -77,19 +78,27 @@ export class PhotosController {
     }
   }
 
-  // @Post(':id/upload')
-  // @UseInterceptors(FileInterceptor('file'))
-  // @ApiConsumes('multipart/form-data')
-  // async uploadFile(
-  //   @Param('id') albumId: string,
-  //   @UploadedFile() photo: Express.Multer.File
-  // ) {
-  //   try {
-  //     return await this.photosFacade.addPhoto({ albumId, photo });
-  //   } catch (err) {
-  //     throw new BadRequestException(err);
-  //   }
-  // }
+  @Patch(':id/tags')
+  @ApiBearerAuth()
+  @ApiOkResponse({ type: PhotoDto })
+  async photoTags(
+    @Param('id') id: string,
+    @Body() updatePhotoDto: UpdatePhotoDto
+  ) {
+    const photo = await this.photosFacade.findOne(id);
+
+    if (!photo) {
+      throw new NotFoundException('Foto não encontrada');
+    }
+
+    try {
+      const data = { ...photo, ...updatePhotoDto };
+      const value = plainToClass(UpdatePhotoDto, data);
+      return await this.photosFacade.update(id, value);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
+  }
 
   @Patch(':id')
   @ApiBearerAuth()
@@ -103,15 +112,20 @@ export class PhotosController {
     const photo = await this.photosFacade.findOne(id);
 
     if (!photo) {
-      throw new NotFoundException('Não encontrado');
+      throw new NotFoundException('Foto não encontrada');
     }
 
     if (photo.owner.id !== auth.id && !authIsAdmin(auth.roles)) {
       throw new ForbiddenException('Acesso negado');
     }
 
+    console.log(plainToClass(UpdatePhotoDto, { ...photo, ...updatePhotoDto }));
+
     try {
-      return await this.photosFacade.update(id, updatePhotoDto);
+      return await this.photosFacade.update(
+        id,
+        plainToClass(UpdatePhotoDto, { ...photo, ...updatePhotoDto })
+      );
     } catch (err) {
       throw new BadRequestException(err);
     }
@@ -125,7 +139,7 @@ export class PhotosController {
     const photo = await this.photosFacade.findOne(id);
 
     if (!photo) {
-      throw new NotFoundException('Não encontrado');
+      throw new NotFoundException('Foto não encontrada');
     }
 
     if (photo.owner.id !== auth.id && !authIsAdmin(auth.roles)) {

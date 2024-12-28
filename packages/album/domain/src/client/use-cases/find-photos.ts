@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { PhotoService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindPhotosUseCase
   execute(data: QueryParams<Photo>) {
     return this.albumService.find(data);
   }
+}
+
+export function provideFindPhotosUseCase() {
+  return createUseCaseProvider(FindPhotosUseCase, [PhotoService]);
 }

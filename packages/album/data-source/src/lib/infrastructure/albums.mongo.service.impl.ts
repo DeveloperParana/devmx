@@ -21,7 +21,10 @@ export class AlbumsMongoServiceImpl
       .populate('contributors', 'name displayName');
 
     if (method === 'findOne') {
-      query = query.populate('photos', 'type content caption createdAt');
+      query = query.populate(
+        'photos',
+        'type content caption width height tags createdAt'
+      );
     } else {
       query = query.select('-photos');
     }

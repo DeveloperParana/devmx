@@ -1,7 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
-import { UserRef } from '@devmx/shared-api-interfaces';
-import { UserRefDto } from '@devmx/shared-data-source';
+import { UserTag } from '@devmx/shared-api-interfaces';
+import { UserTagDto } from '@devmx/shared-data-source';
 import { CreatePhoto } from '@devmx/album-domain';
 import { Exclude, Type } from 'class-transformer';
 
@@ -14,7 +14,8 @@ export class CreatePhotoDto implements CreatePhoto {
   caption?: string;
 
   @IsString()
-  @ApiProperty()
+  @IsOptional()
+  @ApiPropertyOptional()
   album: string;
 
   @IsNumber()
@@ -35,8 +36,8 @@ export class CreatePhotoDto implements CreatePhoto {
   @ApiPropertyOptional()
   type: string;
 
-  @Type(() => UserRefDto)
-  tagged?: UserRef[];
+  @Type(() => UserTagDto)
+  tags?: UserTag[];
 
   owner: string;
 }

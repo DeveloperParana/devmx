@@ -12,22 +12,22 @@ export class PhotosMongoServiceImpl
   protected override applyPopulate<U>(query: Query<U, PhotoCollection>) {
     return query
       .populate('owner', 'name displayName')
-      .populate('tagged', 'name displayName profile')
-      .populate('album', 'title createdAt');
+      .populate('album', 'title createdAt')
+      .populate('tags');
   }
 
   protected override applyEditableParser<U>(
     data: EditableEntity<PhotoCollection>
   ): U {
-    const tagged = (data.tagged ?? []).map((p) => {
-      return typeof p === 'string' ? p : p.id;
-    });
+    // const tagged = (data.tags ?? []).map((p) => {
+    //   return typeof p === 'string' ? p : p.id;
+    // });
 
     const album = typeof data.album === 'string' ? data.album : data.album.id;
 
     const owner = typeof data.owner === 'string' ? data.owner : data.owner.id;
 
-    return { ...data, album, owner, tagged } as U;
+    return { ...data, album, owner } as U;
   }
 }
 
