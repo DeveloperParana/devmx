@@ -34,6 +34,7 @@ import {
   PhotosFacade,
   CreatePhotoDto,
   UpdatePhotoDto,
+  UpdatePhotoTagsDto,
 } from '@devmx/album-data-source';
 import 'multer';
 import { plainToClass } from 'class-transformer';
@@ -83,7 +84,7 @@ export class PhotosController {
   @ApiOkResponse({ type: PhotoDto })
   async photoTags(
     @Param('id') id: string,
-    @Body() updatePhotoDto: UpdatePhotoDto
+    @Body() updatePhotoDto: UpdatePhotoTagsDto
   ) {
     const photo = await this.photosFacade.findOne(id);
 
@@ -93,8 +94,8 @@ export class PhotosController {
 
     try {
       const data = { ...photo, ...updatePhotoDto };
-      const value = plainToClass(UpdatePhotoDto, data);
-      return await this.photosFacade.update(id, value);
+      const value = plainToClass(UpdatePhotoTagsDto, data);
+      return await this.photosFacade.updateTags(id, value);
     } catch (err) {
       throw new BadRequestException(err);
     }

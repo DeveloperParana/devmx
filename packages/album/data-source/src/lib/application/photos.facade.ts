@@ -1,4 +1,4 @@
-import { PhotoDto, CreatePhotoDto, UpdatePhotoDto } from '../dtos';
+import { PhotoDto, CreatePhotoDto, UpdatePhotoDto, UpdatePhotoTagsDto } from '../dtos';
 import { Photo } from '@devmx/shared-api-interfaces';
 import { plainToInstance } from 'class-transformer';
 import {
@@ -6,6 +6,7 @@ import {
   DeletePhotoUseCase,
   FindPhotoByIDUseCase,
   FindPhotosUseCase,
+  UpdatePhotoTagsUseCase,
   UpdatePhotoUseCase,
 } from '@devmx/album-domain/server';
 import {
@@ -20,7 +21,8 @@ export class PhotosFacade {
     private findPhotosUseCase: FindPhotosUseCase,
     private findPhotoByIDUseCase: FindPhotoByIDUseCase,
     private updatePhotoUseCase: UpdatePhotoUseCase,
-    private deletePhotoUseCase: DeletePhotoUseCase
+    private deletePhotoUseCase: DeletePhotoUseCase,
+    private updatePhotoTagsUseCase: UpdatePhotoTagsUseCase
   ) {}
 
   async create(data: CreatePhotoDto) {
@@ -30,23 +32,28 @@ export class PhotosFacade {
 
   async find(params: QueryParamsDto<Photo>) {
     const { data, items, pages } = await this.findPhotosUseCase.execute(params);
-    const albums = plainToInstance(PhotoDto, data);
-    return new PageDto(albums, items, pages);
+    const photos = plainToInstance(PhotoDto, data);
+    return new PageDto(photos, items, pages);
   }
 
   async findOne(id: string) {
-    const album = await this.findPhotoByIDUseCase.execute(id);
-    return plainToInstance(PhotoDto, album);
+    const photo = await this.findPhotoByIDUseCase.execute(id);
+    return plainToInstance(PhotoDto, photo);
   }
 
   async update(id: string, data: UpdatePhotoDto) {
-    const album = await this.updatePhotoUseCase.execute({ ...data, id });
-    return plainToInstance(PhotoDto, album);
+    const photo = await this.updatePhotoUseCase.execute({ ...data, id });
+    return plainToInstance(PhotoDto, photo);
+  }
+
+  async updateTags(id: string, data: UpdatePhotoTagsDto) {
+    const photo = await this.updatePhotoTagsUseCase.execute({ ...data, id });
+    return plainToInstance(PhotoDto, photo);
   }
 
   async delete(id: string) {
-    const album = this.deletePhotoUseCase.execute(id);
-    return plainToInstance(PhotoDto, album);
+    const photo = this.deletePhotoUseCase.execute(id);
+    return plainToInstance(PhotoDto, photo);
   }
 }
 
@@ -57,5 +64,6 @@ export function providePhotosFacade() {
     FindPhotoByIDUseCase,
     UpdatePhotoUseCase,
     DeletePhotoUseCase,
+    UpdatePhotoTagsUseCase
   ]);
 }

@@ -1,5 +1,10 @@
 import { createClientProvider, EntityFacade } from '@devmx/shared-data-access';
-import { Photo, EditablePhoto } from '@devmx/shared-api-interfaces';
+import { take } from 'rxjs';
+import {
+  Photo,
+  EditablePhoto,
+  UpdatePhotoTags,
+} from '@devmx/shared-api-interfaces';
 import {
   CreatePhotoUseCase,
   DeletePhotoUseCase,
@@ -10,7 +15,7 @@ import {
   UploadPhoto,
   UploadPhotoUseCase,
 } from '@devmx/album-domain/client';
-import { take } from 'rxjs';
+
 
 export class PhotoFacade extends EntityFacade<Photo> {
   constructor(
@@ -59,7 +64,7 @@ export class PhotoFacade extends EntityFacade<Photo> {
     return request$.pipe(take(1));
   }
 
-  updateTags(data: EditablePhoto) {
+  updateTags(data: UpdatePhotoTags) {
     this.onUpdate(this.updatePhotoTagsUseCase.execute(data));
   }
 

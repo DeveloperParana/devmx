@@ -35,5 +35,6 @@ export * from './query';
 export * from './sign-in';
 export * from './sign-up';
 export * from './update-event';
+export * from './update-photo-tags';
 export * from './update-roles';
 export * from './user-ref';

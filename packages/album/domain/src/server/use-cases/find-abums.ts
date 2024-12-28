@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { AlbumsService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindAlbumsUseCase
   async execute(params: QueryParams<Album>) {
     return this.albumsService.find(params);
   }
+}
+
+export function provideFindAlbumsUseCase() {
+  return createUseCaseProvider(FindAlbumsUseCase, [AlbumsService]);
 }
