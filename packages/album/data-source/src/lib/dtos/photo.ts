@@ -1,6 +1,6 @@
+import { AlbumRefDto, UserRefDto, UserTagDto } from '@devmx/shared-data-source';
 import { ImageMimeType, Photo } from '@devmx/shared-api-interfaces';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { AlbumRefDto, UserRefDto } from '@devmx/shared-data-source';
 import { Exclude, Type } from 'class-transformer';
 
 export class PhotoDto implements Photo {
@@ -25,9 +25,12 @@ export class PhotoDto implements Photo {
   @Exclude()
   content: Buffer;
 
-  @ApiPropertyOptional({ type: () => [UserRefDto] })
-  @Type(() => UserRefDto)
-  tagged?: UserRefDto[];
+  @Exclude()
+  tagged: UserRefDto[];
+
+  @ApiProperty({ type: () => [UserTagDto] })
+  @Type(() => UserTagDto)
+  tags: UserTagDto[] = [];
 
   @ApiProperty({ type: () => Date })
   @Type(() => Date)

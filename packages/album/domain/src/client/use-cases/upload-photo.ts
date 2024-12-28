@@ -1,4 +1,5 @@
 import { HttpProgressEvent } from '@devmx/shared-api-interfaces/client';
+import { createUseCaseProvider } from '@devmx/shared-util-data/client';
 import { UseCase } from '@devmx/shared-api-interfaces';
 import { AlbumService } from '../services';
 import { UploadPhoto } from '../dtos';
@@ -16,4 +17,8 @@ export class UploadPhotoUseCase
   // execute(data: UploadPhoto) {
   //   return this.photoService.upload(data);
   // }
+}
+
+export function provideUploadPhotoUseCase() {
+  return createUseCaseProvider(UploadPhotoUseCase, [AlbumService]);
 }
