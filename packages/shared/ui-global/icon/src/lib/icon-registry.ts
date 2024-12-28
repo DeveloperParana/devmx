@@ -21,10 +21,3 @@ export class IconRegistry {
     this.#cache[name] = icon;
   };
 }
-
-export function provideIconRegistry() {
-  return {
-    provide: IconRegistry,
-    deps: [HttpClient],
-  };
-}

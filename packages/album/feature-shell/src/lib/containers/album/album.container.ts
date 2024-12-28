@@ -34,14 +34,17 @@ export class AlbumContainer {
     map((data) => data['album'] as Album)
   );
 
-  open(photo: Photo, auth: Authentication) {
+  open(photo: Photo, auth: Authentication, album: string) {
     this.photoViewer
       .open({ photo, auth })
       .closed.pipe(take(1))
-      .subscribe(this.updateTags);
+      .subscribe(this.updateTags(album));
   }
 
-  updateTags = (photo?: Photo) => {
-    if (photo) this.photoFacade.updateTags(photo);
+  updateTags = (album: string) => (photo?: Photo) => {
+    if (photo && photo.tags) {
+      const tags = photo.tags ?? [];
+      this.photoFacade.updateTags({ ...photo, tags, album });
+    }
   };
 }

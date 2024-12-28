@@ -4,7 +4,11 @@
 
 <div class="grid">
   @for (photo of album.photos; track photo.id) {
-  <devmx-photo class="photo" [photo]="photo" (click)="open(photo, auth)" />
+  <devmx-photo
+    class="photo"
+    [photo]="photo"
+    (click)="open(photo, auth, album.id)"
+  />
   }
 </div>
 }

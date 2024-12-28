@@ -1,3 +1,4 @@
+import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { PhotosService } from '../services';
 import {
   Page,
@@ -14,4 +15,8 @@ export class FindPhotosUseCase
   async execute(params: QueryParams<Photo>) {
     return this.photosService.find(params);
   }
+}
+
+export function provideFindPhotosUseCase() {
+  return createUseCaseProvider(FindPhotosUseCase, [PhotosService]);
 }

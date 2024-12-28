@@ -8,4 +8,5 @@ export * from './find-album-by-id';
 export * from './find-photo-by-id';
 export * from './find-photos';
 export * from './update-album';
+export * from './update-photo-tags';
 export * from './update-photo';
