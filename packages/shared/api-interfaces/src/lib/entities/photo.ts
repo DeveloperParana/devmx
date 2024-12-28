@@ -1,5 +1,6 @@
-import { UserRef } from '../dtos';
 import { ImageMimeType } from '../types';
+import { UserTag } from './user-tag';
+import { UserRef } from '../dtos';
 
 export interface Photo {
   id: string;
@@ -14,5 +15,5 @@ export interface Photo {
 
   caption?: string;
 
-  tagged?: UserRef[];
+  tags?: UserTag[];
 }

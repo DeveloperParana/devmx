@@ -1,3 +1,2 @@
-export * from './facades';
-export * from './services';
-export * from './use-cases';
+export * from './album';
+export * from './photo';

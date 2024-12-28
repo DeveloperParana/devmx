@@ -1,17 +1,10 @@
 @if (album$ | async; as album) {
-
 <!--  -->
+@let auth = (authFacade.auth$ | async)!;
 
-@for (photo of album.photos; track photo.id) {
-
-<figure>
-  <img loading="lazy" [src]="photo.data" [alt]="photo.caption" />
-
-  <figcaption>{{ photo.caption }}</figcaption>
-</figure>
-
-}
-
-<!--  -->
-
+<div class="grid">
+  @for (photo of album.photos; track photo.id) {
+  <devmx-photo class="photo" [photo]="photo" (click)="open(photo, auth)" />
+  }
+</div>
 }

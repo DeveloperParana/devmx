@@ -19,3 +19,4 @@ export * from './range';
 export * from './skill';
 export * from './user-profile';
 export * from './user-ref';
+export * from './user-tag';

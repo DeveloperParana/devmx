@@ -6,7 +6,10 @@
     "@angular/core": "19.0.0",
     "@devmx/shared-ui-global": "0.0.1",
     "@angular/material": "19.0.0",
-    "@devmx/shared-api-interfaces": "0.0.1"
+    "@devmx/shared-api-interfaces": "0.0.1",
+    "@angular/cdk": "19.0.0",
+    "@devmx/account-ui-shared": "0.0.1",
+    "@devmx/shared-util-data": "0.0.1"
   },
   "sideEffects": false
 }

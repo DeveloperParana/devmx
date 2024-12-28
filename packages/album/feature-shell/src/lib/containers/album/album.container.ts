@@ -1,21 +1,47 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
+import { Album, Authentication, Photo } from '@devmx/shared-api-interfaces';
+import { AlbumFacade, PhotoFacade } from '@devmx/album-data-access';
+import { AuthenticationFacade } from '@devmx/account-data-access';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Album } from '@devmx/shared-api-interfaces';
+import { MatButtonModule } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
-import { filter, map } from 'rxjs';
+import { filter, map, take } from 'rxjs';
+import {
+  PhotoComponent,
+  PhotoViewerService,
+  providePhotoViewer,
+} from '@devmx/album-ui-shared';
 
 @Component({
   selector: 'devmx-album',
   templateUrl: './album.container.html',
   styleUrl: './album.container.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, AsyncPipe],
+  imports: [RouterModule, MatButtonModule, PhotoComponent, AsyncPipe],
+  providers: [providePhotoViewer()],
 })
 export class AlbumContainer {
   route = inject(ActivatedRoute);
+
+  authFacade = inject(AuthenticationFacade);
+  albumFacade = inject(AlbumFacade);
+  photoFacade = inject(PhotoFacade);
+
+  photoViewer = inject(PhotoViewerService);
 
   album$ = this.route.data.pipe(
     filter((data) => 'album' in data),
     map((data) => data['album'] as Album)
   );
+
+  open(photo: Photo, auth: Authentication) {
+    this.photoViewer
+      .open({ photo, auth })
+      .closed.pipe(take(1))
+      .subscribe(this.updateTags);
+  }
+
+  updateTags = (photo?: Photo) => {
+    if (photo) this.photoFacade.updateTags(photo);
+  };
 }

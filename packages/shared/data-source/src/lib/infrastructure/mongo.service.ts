@@ -87,11 +87,18 @@ export abstract class MongoService<T extends Entity>
   async update(id: string, data: EditableEntity<T>) {
     const value = this.applyEditableParser<T>(data);
 
-    const updated = await this.entityModel
-      .findOneAndUpdate({ _id: id }, value)
-      .exec();
+    try {
+      const updated = await this.entityModel
+        .findOneAndUpdate({ _id: id }, value)
+        .exec();
 
-    return updated?.toJSON() as T;
+      return updated?.toJSON() as T;
+    } catch (err) {
+      if (err instanceof Error) {
+        throw err;
+      }
+      throw new Error('erro');
+    }
   }
 
   async delete(id: string) {

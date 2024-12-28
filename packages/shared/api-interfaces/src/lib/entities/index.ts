@@ -22,5 +22,6 @@ export * from './user-password';
 export * from './user-profile';
 export * from './user-skill';
 export * from './user-social';
+export * from './user-tag';
 export * from './user-visibility';
 export * from './user';

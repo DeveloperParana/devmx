@@ -1,5 +1,5 @@
-import { provideFacades, provideServices, provideUseCases } from './providers';
+import { providePhoto, provideAlbum as $provideAlbum } from './providers';
 
 export function provideAlbum() {
-  return [...provideServices(), ...provideUseCases(), ...provideFacades()];
+  return [...providePhoto(), ...$provideAlbum()];
 }
