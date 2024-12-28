@@ -45,4 +45,4 @@ type ECommerce =
   | 'ticket-alt'
   | 'ticket';
 
-export type ECommerceIcon = `e-commerce/${ECommerce}`;
+export type ECommerceIcon = `commerce/${ECommerce}`;

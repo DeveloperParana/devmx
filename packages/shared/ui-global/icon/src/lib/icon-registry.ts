@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { of, tap } from 'rxjs';
 import { Icon } from './types';
+import { Injectable } from '@angular/core';
 
+@Injectable({ providedIn: 'root' })
 export class IconRegistry {
   #cache: Partial<Record<Icon, string>> = {};
 
@@ -17,5 +19,12 @@ export class IconRegistry {
 
   #setCache = (name: Icon) => (icon: string) => {
     this.#cache[name] = icon;
+  };
+}
+
+export function provideIconRegistry() {
+  return {
+    provide: IconRegistry,
+    deps: [HttpClient],
   };
 }

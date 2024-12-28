@@ -1,4 +1,4 @@
-import { ECommerceIcon } from './e-commerce';
+import { ECommerceIcon } from './commerce';
 import { TransportIcon } from './transport';
 import { SoftwareIcon } from './software';
 import { BuildingIcon } from './building';
@@ -111,6 +111,9 @@ type Root =
   | 'star'
   | 'sticker'
   | 'subtitles'
+  | 'tag'
+  | 'tag-plus'
+  | 'tag-minus'
   | 'time-loading'
   | 'time-sleep'
   | 'timer-alt'

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { IconRegistry } from './icon-registry';
 import { Icon } from './types';
 import { take } from 'rxjs';
@@ -20,12 +19,6 @@ import {
     }
   `,
   standalone: true,
-  providers: [
-    {
-      provide: IconRegistry,
-      deps: [HttpClient],
-    },
-  ],
 })
 export class IconComponent implements OnInit {
   renderer = inject(Renderer2);
