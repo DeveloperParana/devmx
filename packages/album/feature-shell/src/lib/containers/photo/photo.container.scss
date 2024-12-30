@@ -1,0 +1,22 @@
+:host {
+  flex: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  figure {
+    margin: 0;
+    gap: 0.6em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    overflow: hidden;
+
+    img {
+      display: flex;
+    }
+  }
+}

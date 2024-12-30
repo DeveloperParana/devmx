@@ -1,11 +1,15 @@
 import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { SearchUserComponent } from '@devmx/account-ui-shared';
+import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { UserRef } from '@devmx/shared-api-interfaces';
-import { DialogRef } from '@angular/cdk/dialog';
+import { TagUserData } from './tag-user-data';
 
 @Component({
   selector: 'devmx-tag-user',
-  template: `<devmx-search-user (selected)="dialogRef.close($event)" />`,
+  template: `<devmx-search-user
+    [except]="data.except ?? []"
+    (selected)="dialogRef.close($event)"
+  />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [SearchUserComponent],
   styles: `
@@ -19,4 +23,6 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class TagUserComponent {
   dialogRef = inject<DialogRef<UserRef, TagUserComponent>>(DialogRef);
+
+  data = inject<TagUserData>(DIALOG_DATA);
 }

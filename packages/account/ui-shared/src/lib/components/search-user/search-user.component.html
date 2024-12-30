@@ -1,7 +1,10 @@
 <mat-form-field>
   <mat-label>{{ label() }}</mat-label>
+
   <input matInput [formControl]="control" [matAutocomplete]="auto" />
+
   <mat-hint>{{ hint() }}</mat-hint>
+
   <mat-autocomplete
     #auto="matAutocomplete"
     [displayWith]="displayFn"
@@ -9,7 +12,7 @@
   >
     @if (userFacade.response$ | async; as response) {
     <!--  -->
-    @for (option of response.data; track option.id) {
+    @for (option of response.data | searchUserExcept: except(); track $index) {
     <mat-option [value]="option">{{ option.displayName }}</mat-option>
     }
     <!--  -->

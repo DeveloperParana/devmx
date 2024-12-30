@@ -4,7 +4,7 @@ import { AlbumsService } from '../services';
 import { AddPhoto } from '../dtos';
 import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 
-export class AddPhotoUseCase implements UseCase<AddPhoto, Album> {
+export class AddPhotoUseCase implements UseCase<AddPhoto, Album | null> {
   constructor(private albumsService: AlbumsService) {}
 
   async execute({ id, photo }: AddPhoto) {

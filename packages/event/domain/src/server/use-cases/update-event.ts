@@ -3,7 +3,7 @@ import { Event, UseCase } from '@devmx/shared-api-interfaces';
 import { EventsService } from '../services';
 import { UpdateEvent } from '../../lib/dtos';
 
-export class UpdateEventUseCase implements UseCase<UpdateEvent, Event> {
+export class UpdateEventUseCase implements UseCase<UpdateEvent, Event | null> {
   constructor(private eventsService: EventsService) {}
 
   async execute(data: UpdateEvent) {

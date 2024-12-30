@@ -1,0 +1,16 @@
+<mat-list>
+  @for (photo of data.photos; track $index) {
+  <mat-list-item>
+    <img matListItemAvatar [src]="photo.data" [alt]="photo.caption" />
+    <span matListItemTitle>{{photo.tags?.length}}</span>
+    <button matListItemMeta mat-icon-button>
+      <devmx-icon name="trash" />
+    </button>
+  </mat-list-item>
+  }
+</mat-list>
+
+<footer>
+  <button mat-button (click)="ref.dismiss()">Fechar</button>
+  <button mat-flat-button (click)="ref.dismiss()">Fechar</button>
+</footer>

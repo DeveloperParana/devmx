@@ -2,7 +2,6 @@ import { UserCollection } from '@devmx/account-data-source';
 import { createSchema } from '@devmx/shared-data-source';
 import { Prop, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { userTag } from './user-tag';
 import { toBase64 } from '../utils';
 import {
   Album,
@@ -10,7 +9,6 @@ import {
   UserTag,
   ImageMimeType,
 } from '@devmx/shared-api-interfaces';
-
 
 @Schema({ timestamps: { createdAt: true } })
 export class PhotoCollection extends Document implements Photo {
@@ -53,8 +51,19 @@ export class PhotoCollection extends Document implements Photo {
   caption?: string;
 
   @Prop({
-    type: [userTag],
+    type: [
+      {
+        x: Number,
+        y: Number,
+        user: {
+          id: mongoose.Schema.Types.ObjectId,
+          displayName: String,
+          name: String,
+        },
+      },
+    ],
     default: [],
+    _id: false,
   })
   tags?: UserTag[];
 

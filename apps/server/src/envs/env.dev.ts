@@ -2,6 +2,7 @@ import { join } from 'node:path';
 
 export const env = {
   production: false,
+  origin: 'http://localhost:4200',
   db: {
     name: process.env.DB_NAME,
     host: process.env.DB_HOST,

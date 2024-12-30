@@ -103,6 +103,7 @@ type Root =
   | 'send'
   | 'sent'
   | 'settings'
+  | 'share'
   | 'slash'
   | 'star-check'
   | 'star-close'

@@ -1,5 +1,13 @@
-<span>{{ current() === 'asc' ? ascText() : descText() }}</span>
+<mat-chip-listbox (change)="sortChange.emit($event.value)">
+  @for (direction of directions; track direction.value) {
+  <mat-chip-option [value]="direction.value">
+    {{ direction.viewValue }}
+  </mat-chip-option>
+  }
+</mat-chip-listbox>
+
+<!-- <span>{{ current() === 'asc' ? ascText() : descText() }}</span>
 
 <button mat-icon-button [ngClass]="current()" (click)="toggle()">
   <devmx-icon name="arrow/up" />
-</button>
+</button> -->

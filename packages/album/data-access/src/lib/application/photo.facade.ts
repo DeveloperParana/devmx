@@ -16,7 +16,6 @@ import {
   UploadPhotoUseCase,
 } from '@devmx/album-domain/client';
 
-
 export class PhotoFacade extends EntityFacade<Photo> {
   constructor(
     private createPhotoUseCase: CreatePhotoUseCase,
@@ -65,7 +64,7 @@ export class PhotoFacade extends EntityFacade<Photo> {
   }
 
   updateTags(data: UpdatePhotoTags) {
-    this.onUpdate(this.updatePhotoTagsUseCase.execute(data));
+    return this.updatePhotoTagsUseCase.execute(data);
   }
 
   delete(id: string) {

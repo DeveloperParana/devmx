@@ -1,0 +1,92 @@
+@if (photo$ | async; as photo) {
+<!--  -->
+@let auth = (authFacade.auth$ | async)!;
+
+<mat-card>
+  <mat-card-header class="photo-header">
+    <button
+      mat-icon-button
+      class="more-menu"
+      [matMenuTriggerFor]="menu"
+      aria-label="Opções de controle"
+    >
+      <devmx-icon name="menu/burguer-menu" />
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button
+        mat-menu-item
+        [disabled]="!hasTagWithMe(photo, auth)"
+        (click)="removeMyTag(photo, auth)"
+      >
+        Remover minha tag
+      </button>
+    </mat-menu>
+  </mat-card-header>
+
+  <figure>
+    <div class="photo-viewer">
+      <img
+        #imageRef
+        mat-card-image
+        [src]="photo.data"
+        [alt]="photo.caption"
+        (click)="toggleTags(photo)"
+      />
+      @for (tag of photo.tags; track $index) {
+      <div
+        class="user-tag"
+        [style.left.%]="tag.x"
+        [style.top.%]="tag.y"
+        [matTooltip]="tag.user.displayName"
+        matTooltipTouchGestures="off"
+        matTooltipPosition="after"
+      >
+        <devmx-icon name="tag" />
+      </div>
+      }
+    </div>
+  </figure>
+
+  <mat-card-content class="photo-content">
+    <dl>
+      <dt [ngPlural]="photo.tags?.length ?? 0">
+        <ng-template ngPluralCase="=0">Ninguém foi marcado ainda</ng-template>
+        <ng-template ngPluralCase="=1">Está na foto: </ng-template>
+        <ng-template ngPluralCase="other">Estão na foto: </ng-template>
+      </dt>
+      <dd>
+        @for (tag of photo.tags; track $index; let first = $first; let last =
+        $last) {
+        <!--  -->
+
+        @if (!first && !last) {,}
+        <!--  -->
+        @else if (last) {
+        <span>e</span>
+        }
+        <a [routerLink]="['/', 'sobre', tag.user.name]">
+          {{tag.user.displayName}}
+        </a>
+        <!--  -->
+        }
+      </dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-icon-button
+      #refTooltip="matTooltip"
+      [ariaLabel]="shareLabel()"
+      [matTooltip]="shareLabel()"
+      matTooltipPosition="after"
+      [cdkCopyToClipboard]="
+      'https://devparana.mx/#/albuns/fotos/' + photo.id
+    "
+      (click)="share(refTooltip)"
+    >
+      <devmx-icon name="share" />
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+}

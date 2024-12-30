@@ -9,7 +9,8 @@
     "@devmx/shared-api-interfaces": "0.0.1",
     "@angular/cdk": "19.0.0",
     "@devmx/account-ui-shared": "0.0.1",
-    "@devmx/shared-util-data": "0.0.1"
+    "@devmx/shared-util-data": "0.0.1",
+    "rxjs": "^7.8.0"
   },
   "sideEffects": false
 }

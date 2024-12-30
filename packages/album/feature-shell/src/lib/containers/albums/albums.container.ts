@@ -45,10 +45,6 @@ export class AlbumsContainer {
     this.albumFacade.load();
   };
 
-  private mergeParams(params: Params) {
-    return { ...this.route.snapshot.queryParams, ...params };
-  }
-
   onPageChange(queryParams: PageParams) {
     this.router.navigate([], { queryParams });
   }

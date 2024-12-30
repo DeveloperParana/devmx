@@ -24,7 +24,7 @@ export abstract class EntityService<T extends Entity>
     value: T[P]
   ): Promise<T | null>;
 
-  abstract update(id: string, data: EditableEntity<T>): Promise<T>;
+  abstract update(id: string, data: EditableEntity<T>): Promise<T | null>;
 
   abstract delete(id: string): Promise<T>;
 }

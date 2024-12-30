@@ -17,20 +17,26 @@
     </button>
   </mat-menu>
 
-  <button mat-icon-button (click)="ref.close()">
+  <button mat-icon-button (click)="close()">
     <devmx-icon name="close-cross" />
   </button>
 </header>
 
 <figure>
   <div class="photo-viewer">
-    <img #imageRef [src]="data.photo.data" [alt]="data.photo.caption" />
+    <img
+      #imageRef
+      [src]="data.photo.data"
+      [alt]="data.photo.caption"
+      (click)="toggleTags()"
+    />
     @for (tag of data.photo.tags; track $index) {
     <div
       class="user-tag"
       [style.left.%]="tag.x"
       [style.top.%]="tag.y"
       [matTooltip]="tag.user.displayName"
+      matTooltipTouchGestures="off"
       matTooltipPosition="after"
     >
       <devmx-icon name="tag" />
@@ -43,11 +49,31 @@
 
 <footer>
   <button
-    mat-flat-button
-    [disabled]="!hasUpdates()"
-    (click)="ref.close(data.photo)"
+    mat-icon-button
+    #refTooltip="matTooltip"
+    [ariaLabel]="shareLabel()"
+    [matTooltip]="shareLabel()"
+    matTooltipPosition="after"
+    [cdkCopyToClipboard]="
+      'https://devparana.mx/#/albuns/fotos/' + data.photo.id
+    "
+    (click)="share(refTooltip)"
   >
-    Salvar alterações
+    <devmx-icon name="share" />
+  </button>
+
+  <small>
+    Clique/toque e segure por ½ segundo para marcar alguém na foto. Se não
+    encontrar ela aqui, use o botão aqui do lado esquerdo
+    <strong>: &rpar;</strong>
+  </small>
+
+  <button
+    mat-flat-button
+    [disabled]="keepEquals()"
+    (click)="update(data.photo)"
+  >
+    Salvar
   </button>
 </footer>
 }
