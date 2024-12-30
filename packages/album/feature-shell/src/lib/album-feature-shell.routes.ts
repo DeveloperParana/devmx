@@ -1,10 +1,14 @@
 import { albumFeatureShellProviders } from './album-feature-shell.providers';
 import { AlbumFeatureShellComponent } from './album-feature-shell.component';
-import { AlbumContainer, AlbumsContainer } from './containers';
+import { Album, Photo } from '@devmx/shared-api-interfaces';
 import { rolesGuard } from '@devmx/shared-ui-global/guards';
-import { Album } from '@devmx/shared-api-interfaces';
-import { albumResolver } from './resolvers';
+import { albumResolver, photoResolver } from './resolvers';
 import { Route } from '@angular/router';
+import {
+  AlbumContainer,
+  AlbumsContainer,
+  PhotoDetailsContainer,
+} from './containers';
 
 export const albumFeatureShellRoutes: Route[] = [
   {
@@ -24,12 +28,15 @@ export const albumFeatureShellRoutes: Route[] = [
           ),
       },
       {
-        path: '',
+        path: 'fotos/:id',
         data: {
-          breadcrumb: 'Albuns',
+          breadcrumb: (data: { photo: Photo & { album: Album } }) => {
+            return `Foto do album ` + data.photo.album.title;
+          },
         },
-        title: 'Albuns',
-        component: AlbumsContainer,
+        title: 'Foto',
+        resolve: { photo: photoResolver },
+        component: PhotoDetailsContainer,
       },
       {
         path: ':id',
@@ -41,6 +48,14 @@ export const albumFeatureShellRoutes: Route[] = [
         title: 'Album de fotos',
         resolve: { album: albumResolver },
         component: AlbumContainer,
+      },
+      {
+        path: '',
+        data: {
+          breadcrumb: 'Albuns',
+        },
+        title: 'Albuns',
+        component: AlbumsContainer,
       },
     ],
   },

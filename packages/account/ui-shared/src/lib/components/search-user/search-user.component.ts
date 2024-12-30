@@ -1,12 +1,13 @@
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SearchUserExceptPipe } from './search-user-except.pipe';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { User, UserRef } from '@devmx/shared-api-interfaces';
 import { MatInputModule } from '@angular/material/input';
 import { UserFacade } from '@devmx/account-data-access';
-import { User } from '@devmx/shared-api-interfaces';
-import { AsyncPipe } from '@angular/common';
 import { debounceTime, filter, startWith } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 import {
   input,
   inject,
@@ -23,6 +24,7 @@ import {
   imports: [
     ReactiveFormsModule,
     MatAutocompleteModule,
+    SearchUserExceptPipe,
     MatFormFieldModule,
     MatInputModule,
     AsyncPipe,
@@ -38,6 +40,8 @@ export class SearchUserComponent {
   hint = input('');
 
   control = new FormControl<string | User>('');
+
+  except = input<UserRef[]>([]);
 
   constructor() {
     this.control.valueChanges

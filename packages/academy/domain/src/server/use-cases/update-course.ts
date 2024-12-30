@@ -1,7 +1,7 @@
 import { UseCase, Course, EditableCourse } from '@devmx/shared-api-interfaces';
 import { CoursesService } from '../services';
 
-export class UpdateCourseUseCase implements UseCase<EditableCourse, Course> {
+export class UpdateCourseUseCase implements UseCase<EditableCourse, Course | null> {
   constructor(private coursesService: CoursesService) {}
 
   async execute(data: EditableCourse) {

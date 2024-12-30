@@ -1,9 +1,9 @@
-import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { Album, Authentication, Photo } from '@devmx/shared-api-interfaces';
-import { AlbumFacade, PhotoFacade } from '@devmx/album-data-access';
+import { inject, Component, ChangeDetectionStrategy } from '@angular/core';
 import { AuthenticationFacade } from '@devmx/account-data-access';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { PhotoFacade } from '@devmx/album-data-access';
 import { AsyncPipe } from '@angular/common';
 import { filter, map, take } from 'rxjs';
 import {
@@ -24,7 +24,7 @@ export class AlbumContainer {
   route = inject(ActivatedRoute);
 
   authFacade = inject(AuthenticationFacade);
-  albumFacade = inject(AlbumFacade);
+
   photoFacade = inject(PhotoFacade);
 
   photoViewer = inject(PhotoViewerService);
@@ -35,10 +35,17 @@ export class AlbumContainer {
   );
 
   open(photo: Photo, auth: Authentication, album: string) {
-    this.photoViewer
-      .open({ photo, auth })
-      .closed.pipe(take(1))
-      .subscribe(this.updateTags(album));
+    const photoViewer = this.photoViewer.open({ photo, auth });
+    photoViewer.updated$.subscribe((updated) => {
+      const tags = updated.tags ?? [];
+
+      this.photoFacade
+        .updateTags({ ...updated, tags, album })
+        .pipe(take(1))
+        .subscribe((data) => {
+          photoViewer.updated(data);
+        });
+    });
   }
 
   updateTags = (album: string) => (photo?: Photo) => {

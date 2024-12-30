@@ -1,7 +1,9 @@
 import { UseCase, Skill, EditableSkill } from '@devmx/shared-api-interfaces';
 import { SkillsService } from '../services';
 
-export class UpdateSkillUseCase implements UseCase<EditableSkill, Skill> {
+export class UpdateSkillUseCase
+  implements UseCase<EditableSkill, Skill | null>
+{
   constructor(private skillsService: SkillsService) {}
 
   async execute(data: EditableSkill) {

@@ -1,3 +1,4 @@
+export * from './array-equals';
 export * from './async';
 export * from './by';
 export * from './create-code';

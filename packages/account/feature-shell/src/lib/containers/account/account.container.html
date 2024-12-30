@@ -1,4 +1,81 @@
-<form [formGroup]="form" (submit)="onSubmit()">
+<mat-tab-group>
+  <mat-tab label="Conta">
+    <ng-template matTabContent>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <section>
+          <devmx-account-user />
+
+          <devmx-account-contact />
+
+          <devmx-account-profile />
+
+          <fieldset>
+            <legend>Informações públicas</legend>
+
+            <devmx-account-visibility />
+          </fieldset>
+
+          <footer>
+            <button mat-flat-button [disabled]="state()">
+              {{state() ? state() : 'Salvar'}}
+            </button>
+          </footer>
+        </section>
+
+        <aside>
+          <div class="user-avatar">
+            <devmx-avatar [src]="photo()" />
+            <devmx-select-file
+              class="select-file"
+              (selectChange)="changePhoto($event)"
+            />
+          </div>
+
+          <a
+            mat-stroked-button
+            [routerLink]="['/', 'sobre', form.controls.name.value]"
+          >
+            Acessar página pública
+          </a>
+
+          <devmx-account-social />
+        </aside>
+      </form>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Biografia">
+    <ng-template matTabContent>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <section formGroupName="profile">
+          <devmx-markdown-toolbar>
+            <devmx-markdown-editor
+              label="Bio"
+              #editor="markdownEditor"
+              formControlName="minibio"
+              [maxRows]="64"
+            />
+            <devmx-markdown-view
+              [content]="form.profile.controls.minibio?.value ?? ''"
+            />
+          </devmx-markdown-toolbar>
+        </section>
+      </form>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Habilidades">
+    <ng-template matTabContent>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <section>
+          <devmx-account-skills />
+        </section>
+      </form>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+
+<!-- <form [formGroup]="form" (submit)="onSubmit()">
   <section>
     <devmx-account-user />
 
@@ -53,4 +130,4 @@
 
     <devmx-account-social />
   </aside>
-</form>
+</form> -->

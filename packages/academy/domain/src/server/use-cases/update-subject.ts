@@ -5,7 +5,7 @@ import {
   EditableSubject,
 } from '@devmx/shared-api-interfaces';
 
-export class UpdateSubjectUseCase implements UseCase<EditableSubject, Subject> {
+export class UpdateSubjectUseCase implements UseCase<EditableSubject, Subject | null> {
   constructor(private subjectsService: SubjectsService) {}
 
   async execute(data: EditableSubject) {

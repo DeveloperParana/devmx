@@ -1,15 +1,11 @@
 <header>
-  <section>
-    <devmx-event-filter (filterChange)="onFilterChange($event)" />
+  <devmx-event-date-range (rangeChange)="onRangeChange($event)" />
 
-    <devmx-event-time (timeChange)="onTimeChange($event)" />
-  </section>
+  <devmx-event-filter (filterChange)="onFilterChange($event)" />
 
-  <div>
-    <devmx-event-date-range (rangeChange)="onRangeChange($event)" />
+  <devmx-event-time (timeChange)="onTimeChange($event)" />
 
-    <devmx-sort-direction (sortChange)="onSortChange($event)" />
-  </div>
+  <devmx-sort-direction (sortChange)="onSortChange($event)" />
 </header>
 
 @defer (on timer(500ms)) {

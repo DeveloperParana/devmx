@@ -1,9 +1,8 @@
 import { createUseCaseProvider, render } from '@devmx/shared-util-data/server';
-import { MailerService } from '@devmx/shared-api-interfaces/server';
+import { Env, MailerService } from '@devmx/shared-api-interfaces/server';
+import { NotFoundError, RequestError } from '@devmx/shared-util-errors';
 import { UsersService } from '@devmx/account-domain/server';
 import { AlbumsService, PhotosService } from '../services';
-import { NotFoundError } from '@devmx/shared-util-errors';
-import { createMail } from '@devmx/shared-util-data';
 import {
   Photo,
   UseCase,
@@ -16,7 +15,8 @@ export class UpdatePhotoTagsUseCase implements UseCase<EditablePhoto, Photo> {
     private photosService: PhotosService,
     private albumsService: AlbumsService,
     private mailerService: MailerService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private env: Env
   ) {}
 
   async execute(data: UpdatePhotoTags) {
@@ -26,7 +26,9 @@ export class UpdatePhotoTagsUseCase implements UseCase<EditablePhoto, Photo> {
       throw new NotFoundError(`Photo ${data.id} não encontrada`);
     }
 
-    const album = await this.albumsService.findOne(data.album);
+    const album = await this.albumsService.findOne(
+      typeof data.album === 'object' ? data.album['id'] : data.album
+    );
 
     if (!album) {
       throw new NotFoundError(`Album ${data.album} não encontrado`);
@@ -38,6 +40,12 @@ export class UpdatePhotoTagsUseCase implements UseCase<EditablePhoto, Photo> {
       (tag) => !tagUserIds.has(tag.user.id)
     );
 
+    const updated = await this.photosService.update(data.id, data);
+
+    if (!updated) {
+      throw new RequestError(`Não foi possível alterar a foto`);
+    }
+
     if (newTags.length > 0) {
       for (const tag of newTags) {
         const user = await this.usersService.findOne(tag.user.id);
@@ -47,22 +55,23 @@ export class UpdatePhotoTagsUseCase implements UseCase<EditablePhoto, Photo> {
           );
         }
 
-        const title = album.title;
-        const displayName = user.displayName;
-        const url = `https://devparana.mx/#/albuns/${data.album}`;
+        const { title } = album;
+        const { name, contact } = user;
 
-        const mail = createMail(
-          user.contact.email,
-          render('user-tag.html', { displayName, url, title }),
-          `Você foi marcado em uma foto da comunidade`,
-          'portal@devparana.mx'
-        );
+        const url = `${this.env.origin}/#/albuns/fotos/${data.id}`;
 
-        await this.mailerService.send(mail);
+        const substitutions = { name, url, title };
+
+        await this.mailerService.send({
+          to: contact.email,
+          from: 'portal@devparana.mx',
+          html: render('user-tag.html', substitutions),
+          subject: `Você foi marcado em uma foto da comunidade`,
+        });
       }
     }
 
-    return this.photosService.update(data.id, data);
+    return updated;
   }
 }
 
@@ -72,5 +81,6 @@ export function provideUpdatePhotoTagsUseCase() {
     AlbumsService,
     MailerService,
     UsersService,
+    Env,
   ]);
 }

@@ -2,7 +2,7 @@ import { Photo, EditablePhoto, UseCase } from '@devmx/shared-api-interfaces';
 import { createUseCaseProvider } from '@devmx/shared-util-data/server';
 import { PhotosService } from '../services';
 
-export class UpdatePhotoUseCase implements UseCase<EditablePhoto, Photo> {
+export class UpdatePhotoUseCase implements UseCase<EditablePhoto, Photo | null> {
   constructor(private albumsService: PhotosService) {}
 
   async execute(data: EditablePhoto) {

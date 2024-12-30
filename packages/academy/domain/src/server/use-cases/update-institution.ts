@@ -6,7 +6,7 @@ import {
 } from '@devmx/shared-api-interfaces';
 
 export class UpdateInstitutionUseCase
-  implements UseCase<EditableInstitution, Institution>
+  implements UseCase<EditableInstitution, Institution | null>
 {
   constructor(private institutionsService: InstitutionsService) {}
 

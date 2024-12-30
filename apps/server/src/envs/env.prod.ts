@@ -6,6 +6,7 @@ if (!process.env.MONGO_URI) {
 
 export const env = {
   production: true,
+  origin: 'https://devparana.mx',
   db: {
     name: process.env.DB_NAME,
     host: process.env.DB_HOST,

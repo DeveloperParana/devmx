@@ -11,6 +11,7 @@ import { UserPhoto, provideUserPhoto } from '../../dialogs';
 import { MatButtonModule } from '@angular/material/button';
 import { AvatarComponent } from '@devmx/shared-ui-global';
 import { UpdatePhoto } from '@devmx/account-data-access';
+import { MatTabsModule } from '@angular/material/tabs';
 import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -26,6 +27,7 @@ import {
   Component,
   ChangeDetectionStrategy,
 } from '@angular/core';
+
 
 @Component({
   selector: 'devmx-account',
@@ -46,6 +48,7 @@ import {
     VisibilityComponent,
     SelectFileComponent,
     MatButtonModule,
+    MatTabsModule,
     AvatarComponent,
     RouterLink,
   ],

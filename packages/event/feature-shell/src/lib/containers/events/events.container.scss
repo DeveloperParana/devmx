@@ -1,19 +1,16 @@
 :host {
   flex: 1;
   display: flex;
+  padding-top: 0.6em;
   flex-direction: column;
 
   header {
+    gap: 0.4em;
     display: flex;
     flex-flow: row wrap;
+    align-items: baseline;
     justify-content: space-between;
     padding: 0.4em 0.8em;
-
-    div {
-      gap: 1em;
-      display: flex;
-      align-items: baseline;
-    }
   }
 
   .events-container {

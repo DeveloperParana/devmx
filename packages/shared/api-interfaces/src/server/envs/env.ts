@@ -1,6 +1,8 @@
 export abstract class Env {
   abstract production: boolean;
 
+  abstract origin: string;
+
   abstract db: {
     name: string;
     host: string;

@@ -1,32 +1,38 @@
-import { NgClass } from '@angular/common';
-import { Component, input, output, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { SortDirection } from '@devmx/shared-api-interfaces';
-import { IconComponent } from '@devmx/shared-ui-global/icon';
+import { FormOption } from '@devmx/shared-ui-global/forms';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   exportAs: 'sortDirection',
   selector: 'devmx-sort-direction',
   templateUrl: './sort-direction.component.html',
   styleUrl: './sort-direction.component.scss',
-  imports: [MatButtonModule, IconComponent, NgClass],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatChipsModule],
 })
 export class SortDirectionComponent {
-  ascText = input('');
-
-  descText = input('');
-
   sortChange = output<SortDirection>();
 
-  current = signal<SortDirection>('asc');
+  directions: FormOption<SortDirection>[] = [
+    { value: 'asc', viewValue: 'ASC' },
+    { value: 'desc', viewValue: 'DESC' },
+  ];
+  // ascText = input('');
 
-  toggle() {
-    if (this.current() === 'asc') {
-      this.current.set('desc');
-    } else {
-      this.current.set('asc');
-    }
+  // descText = input('');
 
-    this.sortChange.emit(this.current());
-  }
+  // sortChange = output<SortDirection>();
+
+  // current = signal<SortDirection>('asc');
+
+  // toggle() {
+  //   if (this.current() === 'asc') {
+  //     this.current.set('desc');
+  //   } else {
+  //     this.current.set('asc');
+  //   }
+
+  //   this.sortChange.emit(this.current());
+  // }
 }

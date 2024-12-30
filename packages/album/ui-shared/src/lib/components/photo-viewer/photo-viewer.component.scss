@@ -17,6 +17,7 @@
   figure {
     margin: 0;
     width: 100%;
+    max-height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -44,16 +45,12 @@
       position: absolute;
       transform: translate(-50%, -50%);
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: flex-end;
-      color: #f9e000;
-      opacity: 0.2;
       transition: opacity 250ms ease-in-out;
+      color: #f9e000;
       width: 64px;
       height: 64px;
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 
@@ -61,6 +58,20 @@
     gap: 1em;
     padding: 0.6em;
     display: flex;
-    justify-content: flex-end;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    small {
+      flex: 1;
+      line-height: 140%;
+      font-weight: normal;
+    }
+
+    .mat-mdc-icon-button {
+      devmx-icon {
+        display: flex;
+      }
+    }
   }
 }

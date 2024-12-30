@@ -1,0 +1,25 @@
+@if (photo$ | async; as photo) {
+<figure>
+  <img [src]="photo.data" [alt]="photo.caption" />
+
+  <figcaption>
+    <p>Foto do <strong>{{photo.album.title}}</strong>.</p>
+
+    @if (photo.tags?.length) {
+    <p>
+      <span [ngPlural]="photo.tags?.length ?? 0">
+        <ng-template ngPluralCase="=0">Ninguém foi marcado ainda</ng-template>
+        <ng-template ngPluralCase="=1">Está na foto: </ng-template>
+        <ng-template ngPluralCase="few">Estão na foto: </ng-template>
+      </span>
+
+      @for (tag of photo.tags; track $index) {
+      <a [routerLink]="['/', 'sobre', tag.user.name]">
+        {{tag.user.displayName}}
+      </a>
+      }
+    </p>
+    }
+  </figcaption>
+</figure>
+}
