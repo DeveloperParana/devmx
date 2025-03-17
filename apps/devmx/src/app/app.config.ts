@@ -2,6 +2,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideEnv, provideHttpClientImpl } from '@devmx/shared-data-access';
 import { providePresentation } from '@devmx/presentation-data-access';
+import { provideAnalytics } from '@devmx/shared-ui-global/analytics';
 import { authInterceptor, loaderInterceptor } from './interceptors';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideAcademy } from '@devmx/academy-data-access';
@@ -84,6 +85,7 @@ export const appConfig: ApplicationConfig = {
     ...provideAlbum(),
     ...provideAcademy(),
     ...provideLearn(),
+    provideAnalytics(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',

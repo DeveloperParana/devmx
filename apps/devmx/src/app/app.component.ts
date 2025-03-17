@@ -1,5 +1,7 @@
+import { Analytics } from '@devmx/shared-ui-global/analytics';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Component } from '@angular/core';
+import { env } from '../envs/env';
 
 @Component({
   selector: 'devmx-root',
@@ -13,4 +15,11 @@ import { Component } from '@angular/core';
   `,
   imports: [RouterOutlet],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor() {
+    if (env.prod) {
+      const analytics = inject(Analytics);
+      analytics.startTracking();
+    }
+  }
+}
