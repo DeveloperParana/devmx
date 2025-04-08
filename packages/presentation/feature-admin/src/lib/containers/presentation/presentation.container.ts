@@ -94,7 +94,7 @@ export class PresentationContainer {
       if (value.id) this.presentationFacade.update(value);
       else this.presentationFacade.create(value);
 
-      const message = `Armazenando informações`;
+      const message = `Informações salvas`;
       return this.messageService.open({ message });
     }
 

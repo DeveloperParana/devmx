@@ -94,7 +94,7 @@ export class EventsMongoServiceImpl
       .populate('leaders', 'name displayName profile')
       .populate({
         path: 'presentations',
-        select: 'title owner',
+        select: 'title description owner',
         populate: {
           path: 'owner',
           select: 'displayName profile',

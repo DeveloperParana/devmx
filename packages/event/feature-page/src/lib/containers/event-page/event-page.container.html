@@ -53,16 +53,22 @@
       </ng-template>
     </mat-tab>
     @if (event.presentations.length) {
-    <mat-tab label="Agenda">
+    <mat-tab label="Apresentações">
       <ng-template matTabContent>
         <mat-list>
           @for (presentation of event.presentations; track presentation) {
-          <mat-list-item>
+          <a
+            mat-list-item
+            [routerLink]="['/', 'apresentacoes', { outlets: { right: [presentation.id] } }]"
+            lines="3"
+          >
             <devmx-icon matListItemIcon name="presentation" />
-            <div matListItemTitle>{{ presentation.title }}</div>
-            <div matListItemLine>{{ presentation.owner.displayName }}</div>
+            <div matListItemTitle>
+              {{ presentation.title }}, por {{ presentation.owner.displayName}}
+            </div>
+            <span matListItemLine> {{ presentation.description }} </span>
             <devmx-heart-button matListItemMeta disabled [loved]="false" />
-          </mat-list-item>
+          </a>
           }
         </mat-list>
       </ng-template>
@@ -71,10 +77,6 @@
     <mat-tab label="Organizadores">
       <ng-template matTabContent>
         <mat-list>
-          <mat-list-item>
-            <devmx-icon matListItemIcon name="user-circle" />
-            <div matListItemTitle>{{ event.owner.displayName }}</div>
-          </mat-list-item>
           @if (event.leaders.length) {
           <!--  -->
           @for (leader of event.leaders; track leader) {
