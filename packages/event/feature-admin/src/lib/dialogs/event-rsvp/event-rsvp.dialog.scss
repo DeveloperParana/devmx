@@ -14,4 +14,9 @@
     margin: 0em 1em;
     opacity: 0.6;
   }
+
+  .overflow {
+    overflow: auto;
+    max-height: 60vh;
+  }
 }
