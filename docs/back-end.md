@@ -11,6 +11,28 @@ Preparei alguns seeds pra você importar na base de dados, mas primeiro verifiqu
 
 Para importar execute, não se esqueça de colocar seu usuário no `--username=seu-user` configurado no `.env`. Ao executar, ele irá solicitar a senha que foi configurada no mesmo arquivo.
 
-Para **cidades**: `mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=citycollections --file=assets/seeds/city-collection.json`
+Para **cidades**:
 
-Para **usuários**: `mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=usercollections --file=assets/seeds/user-collection.json`
+```
+mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=citycollections --file=assets/seeds/city-collection.json
+```
+
+Para **usuários**:
+
+```
+mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=usercollections --file=assets/seeds/user-collection.json
+```
+
+Para **eventos**:
+_(depende da seed de usuários)_
+
+```
+mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=eventcollections --file=assets/seeds/event-collection.json
+```
+
+Para **presenças em eventos (RSVP)**:
+_(depende da seed de usuários e eventos)_
+
+```
+mongoimport --host=localhost --port=27017 --username= --authenticationDatabase=admin --db=devparana --collection=rsvpcollections --file=assets/seeds/rsvp-collection.json
+```
