@@ -36,6 +36,13 @@
     }
   }
 
+  .presences {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-right: 1rem;
+  }
+
   .rsvp-button {
     padding: 1em;
   }
