@@ -67,7 +67,6 @@
     </a>
   </mat-card-content>
 
-
   @if (event.presentations.length) {
   <mat-list>
     <h3 mat-subheader>Apresentações</h3>
@@ -98,12 +97,16 @@
     <devmx-rsvp-button
       formControlName="status"
       (statusChange)="onStatusChange()"
+      [attendees]="presences.length"
+      [maxAttendees]="event.maxAttendees ?? 0"
     />
   </form>
 
   <mat-list>
-    <h3 mat-subheader>Presenças</h3>
-
+    <div class="presences">
+      <h3 mat-subheader>Presenças</h3>
+      <p>{{ presences.length }} / {{ event.maxAttendees }}</p>
+    </div>
     @for (rsvp of presences; track rsvp) {
     <mat-list-item>
       <img

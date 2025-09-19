@@ -3,8 +3,15 @@
   (change)="statusChange.emit()"
   aria-label="Presença"
   class="button-group"
+  [matTooltip]="'O evento chegou ao limite de participantes'"
+  [matTooltipDisabled]="attendees() < maxAttendees()"
 >
-  <mat-button-toggle value="confirmed">Vou!</mat-button-toggle>
+  <mat-button-toggle
+    [disabled]="attendees() >= maxAttendees()"
+    value="confirmed"
+  >
+    Vou!
+  </mat-button-toggle>
   <mat-button-toggle value="declined">Não vou</mat-button-toggle>
   <mat-button-toggle value="maybe">Talvez</mat-button-toggle>
 </mat-button-toggle-group>
