@@ -36,13 +36,17 @@
 </header>
 
 <section class="event-page-content">
+  @if (rsvpFacade.response$ | async; as presences){
   <form class="rsvp-button" [formGroup]="form">
     <devmx-rsvp-button
       class="rsvp-button"
       formControlName="status"
       (statusChange)="onStatusChange()"
+      [maxAttendees]="event.maxAttendees ?? 0"
+      [attendees]="presences.length"
     />
   </form>
+  }
 
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
     <mat-tab label="Descrição">
