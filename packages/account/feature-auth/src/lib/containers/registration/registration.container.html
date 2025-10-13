@@ -29,8 +29,8 @@
             placeholder="Ex.: chico"
           />
           <mat-error>
-            @if (form.controls.name.hasError('pattern')) { Use apenas letras do
-            alfabeto minúsculas } @if (form.controls.name.hasError('required'))
+            @if (form.controls.name.hasError('pattern')) { Use apenas letras
+            minúsculas e números, sem espaços ou caracteres especiais } @if (form.controls.name.hasError('required'))
             { Obrigatório }
           </mat-error>
         </mat-form-field>
