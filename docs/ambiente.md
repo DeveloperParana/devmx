@@ -24,13 +24,23 @@ Para mais informações, consulte a [documentação oficial do NVM](https://gith
 
 ---
 
-Para preparar o ambiente execute:
+Para preparar o ambiente, o primeiro passo é criar o arquivo de variáveis de ambiente `.env`. O projeto inclui um arquivo de exemplo chamado `.env-example` que deve ser usado como base.
+
+Você pode criar o seu arquivo `.env` copiando o exemplo.
+
+**No Linux ou macOS:**
 
 ```sh
-./tools/scripts/setup.sh
+cp .env-example .env
 ```
 
-Caso tenha dado tudo certo e você esteja com node e pnpm instalado com docker executado, está tudo pronto!
+**No Windows (PowerShell):**
+
+```powershell
+Copy-Item .env-example .env
+```
+
+Após criar o arquivo `.env`, você está pronto para iniciar o ambiente.
 
 Para começar execute:
 
