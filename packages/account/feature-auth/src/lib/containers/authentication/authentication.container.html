@@ -26,7 +26,7 @@
         </ng-template>
         <form [formGroup]="form" (submit)="sendUserCode()">
           <mat-form-field>
-            <mat-label>Seu usuário</mat-label>
+            <mat-label>Seu usuário ou email</mat-label>
             <input
               matInput
               #nameRef
@@ -34,7 +34,7 @@
               autocomplete="username"
               autofocus
             />
-            <mat-error>Obrigatório</mat-error>
+            <mat-error>Digite um usuário ou email válido</mat-error>
           </mat-form-field>
 
           <button mat-button matStepperNext>Enviar código por e-mail</button>

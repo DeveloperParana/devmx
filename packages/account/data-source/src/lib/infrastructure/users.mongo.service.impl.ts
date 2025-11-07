@@ -20,6 +20,11 @@ export class UsersMongoServiceImpl
     return entity ? (entity.toJSON() as UserCollection) : null;
   }
 
+  async findByEmail(email: string) {
+    const entity = await this.entityModel.findOne({ 'contact.email': email }).exec();
+    return entity ? (entity.toJSON() as UserCollection) : null;
+  }
+
   async updateCode(id: string, code: UserCode) {
     const updated = await this.entityModel
       .findByIdAndUpdate(id, { code })

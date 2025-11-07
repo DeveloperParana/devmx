@@ -12,7 +12,11 @@ export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
   ) {}
 
   async execute(name: string) {
-    const user = await this.usersService.findOneBy('name', name);
+    const isEmail = name.includes('@');
+    
+    const user = isEmail
+      ? await this.usersService.findByEmail(name)
+      : await this.usersService.findByName(name);
 
     if (!user) {
       throw new AuthenticationError();

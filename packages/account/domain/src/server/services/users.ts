@@ -11,6 +11,8 @@ import {
 export abstract class UsersService extends EntityService<User> {
   abstract findByName(name: string): Promise<User | null>;
 
+  abstract findByEmail(email: string): Promise<User | null>;
+
   abstract updateCode(id: string, code: UserCode): Promise<User | null>;
 
   abstract updatePassword(

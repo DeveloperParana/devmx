@@ -15,7 +15,11 @@ export class AuthenticationUseCase
   ) {}
 
   async execute(data: ValidateUserCode) {
-    const user = await this.usersService.findOneBy('name', data.name);
+    const isEmail = data.name.includes('@');
+    
+    const user = isEmail
+      ? await this.usersService.findByEmail(data.name)
+      : await this.usersService.findByName(data.name);
 
     if (!user || !user.code) {
       throw new AuthenticationError('Não autorizado, já criou sua conta?');
