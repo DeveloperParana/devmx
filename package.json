@@ -4,7 +4,7 @@
   "license": "MIT",
   "nxCloudId": "66ed082b0f768c3e7a77e1a5",
   "scripts": {
-    "dev": "nx run-many -t serve --projects=server,devmx --configuration=development",
+    "dev": "pnpm docker:compose:only:mongo && nx run-many -t serve --projects=server,devmx --configuration=development",
     "dev:server": "nx serve server",
     "build:server": "pnpm nx build server --verbose",
     "dev:mx": "nx serve devmx",
