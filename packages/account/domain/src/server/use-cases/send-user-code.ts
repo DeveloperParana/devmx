@@ -17,8 +17,8 @@ export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
     
     // Try to find user by email or username
     const user = isEmail
-      ? await this.usersService.findOneBy('contact.email', name)
-      : await this.usersService.findOneBy('name', name);
+      ? await this.usersService.findByEmail(name)
+      : await this.usersService.findByName(name);
 
     if (!user) {
       throw new AuthenticationError();

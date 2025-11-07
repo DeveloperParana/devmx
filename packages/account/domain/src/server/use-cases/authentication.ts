@@ -20,8 +20,8 @@ export class AuthenticationUseCase
     
     // Try to find user by email or username
     const user = isEmail
-      ? await this.usersService.findOneBy('contact.email', data.name)
-      : await this.usersService.findOneBy('name', data.name);
+      ? await this.usersService.findByEmail(data.name)
+      : await this.usersService.findByName(data.name);
 
     if (!user || !user.code) {
       throw new AuthenticationError('Não autorizado, já criou sua conta?');
