@@ -15,10 +15,8 @@ export class AuthenticationUseCase
   ) {}
 
   async execute(data: ValidateUserCode) {
-    // Check if the input is an email or username
     const isEmail = data.name.includes('@');
     
-    // Try to find user by email or username
     const user = isEmail
       ? await this.usersService.findByEmail(data.name)
       : await this.usersService.findByName(data.name);

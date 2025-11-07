@@ -12,10 +12,8 @@ export class SendUserCodeUseCase implements UseCase<string, ResponseMessage> {
   ) {}
 
   async execute(name: string) {
-    // Check if the input is an email or username
     const isEmail = name.includes('@');
     
-    // Try to find user by email or username
     const user = isEmail
       ? await this.usersService.findByEmail(name)
       : await this.usersService.findByName(name);
